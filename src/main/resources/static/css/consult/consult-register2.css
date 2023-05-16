@@ -3885,7 +3885,7 @@ button.Modal_modalClose__id8SR.btn-close:hover {
 
 .AnnouncementByMenuModal_modal__3sFAx.AnnouncementByMenuModal_bottomSheet__z7GiC.AnnouncementByMenuModal_slideUp__28GkX {
   opacity: 1;
-  max-height: calc(var(--vh) * 100 - 80px);
+  /*max-height: calc(!**!var(--vh) * 100 - 80px);*/
 }
 
 .AnnouncementByMenuModal_modal__3sFAx.AnnouncementByMenuModal_hasAccordion__V3dGS {
@@ -4467,9 +4467,9 @@ button.Modal_modalClose__id8SR.btn-close:hover {
   margin-left: -4px;
 }
 
-.AnnouncementModal_list__kcvWG {
+/*.AnnouncementModal_list__kcvWG {
   height: calc(var(--vh) * 100 - 80px);
-}
+}*/
 
 .AnnouncementModal_drawer__2C2oD {
   position: fixed;
@@ -5948,7 +5948,6 @@ button.Modal_modalClose__id8SR.btn-close:hover {
   border-radius: 4px;
   background-color: #fff;
   padding: 12px;
-  width: -webkit-max-content;
   width: max-content;
   color: #495057;
   pointer-events: none;
@@ -9877,7 +9876,7 @@ span.wz.text.caption1 {
 .wz.loader:before {
   display: block;
   margin: 0 auto;
-  background: url(https://static.wadiz.kr/studio/funding/static/media/loader.87b4225c.svg)) 0 0 no-repeat;
+  background: url(https://static.wadiz.kr/studio/funding/static/media/loader.87b4225c.svg) 0 0 no-repeat;
   width: 32px;
   height: 32px;
   content: '';

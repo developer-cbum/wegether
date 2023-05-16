@@ -216,7 +216,7 @@
 }
 
 .SatisfactionFilter_container__1q2UL .SatisfactionFilter_highlight__3Qt_3 {
-  color: #00b2b2;
+  color: #00BBFF;
 }
 
 .SatisfactionFilter_container__1q2UL .SatisfactionFilter_panel__2Rg9A {
@@ -568,9 +568,10 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-sizing: border-box;
 }
+
 .select-menu__option--is-selected {
   background-color: rgba(0, 0, 0, 0) !important;
-  color: #00b2b2 !important;
+  color: #00BBFF !important;
 }
 
 .css-9g7j0m-menu {
