@@ -81,12 +81,12 @@ label.wz.text.display1 {
 }
 
 .account-find .page-header .tab-list li.active {
-    border-bottom: 2px solid #00c4c4;
+    border-bottom: 2px solid #00BBFF;
     height: 47px;
 }
 
 .account-find .page-header .tab-list li.active a {
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 /* Contents */
@@ -176,7 +176,7 @@ label.wz.text.display1 {
     height: auto;
     box-sizing: border-box;
     pointer-events: none;
-    color: #00c4c4;
+    color: #00BBFF;
     font-size: 1.4117647059em;
 }
 
@@ -334,12 +334,12 @@ label.wz.text.display1 {
     }
 
     .account-find .page-header .tab-list li.active {
-        border-bottom: 2px solid #00c4c4;
+        border-bottom: 2px solid #00BBFF;
         height: 47px;
     }
 
     .account-find .page-header .tab-list li.active a {
-        color: #00b2b2;
+        color: #0097D2;
     }
 
     .account-find .page-header .tab-list ul:after {
