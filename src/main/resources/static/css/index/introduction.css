@@ -227,7 +227,7 @@ article, main, section {
 
 #wadiz-about-landing .visualContainer {
     position: relative;
-    background: url(/img/background.jpg) no-repeat 54%/cover;
+    background: url("/static/image/index/background.jpg") no-repeat 54%/cover;
     background-color: #0000004d;
 }
 
