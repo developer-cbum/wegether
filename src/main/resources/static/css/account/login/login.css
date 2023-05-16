@@ -615,8 +615,7 @@ input:not(:disabled) + label {
     fill: currentColor;
 }
 
-.SNSButtonList_appleIcon__e42Y0,
-.SNSButtonList_googleIcon__1DgBx,
+
 .SNSButtonList_naverIcon__3TjPM,
 .SNSButtonList_kakaoIcon__1s6gw {
     position: absolute;
@@ -652,89 +651,6 @@ button:not(:disabled) {
 
 .SNSButtonList_naverButton__1rzZ_:hover {
     background-color: #00d337;
-}
-
-.Button_button__3MO4n.Button_lg__D7OVb {
-    padding: 9px 24px;
-    line-height: 1.75;
-    font-size: 16px;
-}
-
-.Button_button__3MO4n.Button_hover__1eZMa,
-.Button_button__3MO4n:hover {
-    border-color: #adb5bd;
-    color: #343a40;
-}
-
-.Button_button__3MO4n.Button_block__3npc4 {
-    width: 100%;
-}
-
-.SNSButtonList_circularButtonWrapper__hZCKN {
-    display: flex;
-    justify-content: center;
-    margin-top: 48px;
-}
-
-.SNSButtonList_circularButtonWrapper__hZCKN {
-    margin-top: 56px;
-}
-
-.SNSButtonList_circularButton__2WsLD:first-child {
-    margin-left: 0;
-}
-
-.Button_button__3MO4n.Button_circular__2OlVa {
-    border-radius: 999em;
-}
-
-button:not(:disabled) {
-    cursor: pointer;
-}
-
-button:not(:disabled),
-input:not(:disabled),
-input:not(:disabled) + label {
-    cursor: pointer;
-}
-
-.SNSButtonList_circularButton__2WsLD {
-    margin-left: 12px;
-    padding: 0;
-    width: 48px;
-    height: 48px;
-    text-align: center;
-    line-height: 48px;
-    font-size: 20px;
-}
-
-.SNSButtonList_circularButton__2WsLD span {
-    vertical-align: text-top;
-}
-
-.Button_button__3MO4n .Button_children__raEW4 {
-    vertical-align: top;
-}
-
-.SNSButtonList_googleButton__1u6eV {
-    border-color: #ced4da;
-    background-color: #fff;
-}
-
-.SNSButtonList_googleButton__1u6eV:hover {
-    background-color: #fff;
-}
-
-.SNSButtonList_facebookButton__2el51 {
-    border-color: #1877f2;
-    background-color: #1877f2;
-    color: #fff;
-}
-
-.SNSButtonList_appleButton__1rA1b {
-    border-color: #000;
-    background-color: #000;
-    color: #fff;
 }
 
 .user-sign-container .wz.container.form-container.form-login .bottom-message {

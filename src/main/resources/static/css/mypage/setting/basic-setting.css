@@ -263,3 +263,77 @@ i.icon.kakao::before,
 .sns-text-wrap {
   margin-bottom: 10px !important;
 }
+
+/*연동*/
+
+
+  .Button_button__3MO4n {
+    position: relative;
+    transition-property: background-color, border-color, color, opacity;
+    transition-duration: 0.15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 4px;
+    background-color: #0000;
+    cursor: pointer;
+    padding: 9px 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    line-height: 1.43;
+    white-space: nowrap;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    box-sizing: border-box !important;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+.Button_button__3MO4n.Button_lg__D7OVb {
+  padding: 9px 24px;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+.Button_button__3MO4n.Button_block__3npc4 {
+  width: 100%;
+}
+
+
+
+.SNSButtonList_kakaoButton__2lTDs {
+  border-color: #fee500;
+  background-color: #fee500;
+}
+
+.SNSButtonList_kakaoButton__2lTDs:hover {
+  background-color: #fee500;
+}
+
+.SNSButtonList_spacer__38ac5 {
+  margin-top: 12px;
+}
+
+.Button_button__3MO4n .Button_children__raEW4 {
+  vertical-align: top;
+}
+
+.withIcon_icon__2KxnX {
+  display: block;
+  transform: scale(1);
+  transition: transform 0.3s ease-out;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.SNSButtonList_naverIcon__3TjPM,
+.SNSButtonList_kakaoIcon__1s6gw {
+  position: absolute;
+  left: 16px;
+  width: 22px;
+  height: 22px;
+}
+
+.Button_button__3MO4n.Button_block__3npc4 {
+  width: 100%;
+}
