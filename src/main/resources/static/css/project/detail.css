@@ -71,7 +71,7 @@ body > #root,
     right: 12px;
     bottom: 0;
     left: 12px;
-    background-color: #00b2b2;
+    background-color: #0097D2;
     height: 3px;
     content: '';
 }
@@ -1368,7 +1368,7 @@ path {
     font-size: 12px;
     font-weight: 400;
     display: block;
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 .Button_button__2FuOU.Button_sm__16X6h.Button_startIcon__3p6wN {
@@ -1424,7 +1424,7 @@ button.FollowingButton_followingButton__1wpuk > span {
     justify-content: space-between;
     align-items: center;
     margin-top: 12px;
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 .MakerInfoHeader_container__3ghbZ
@@ -1769,8 +1769,8 @@ button.FollowingButton_followingButton__1wpuk > span {
 /* active */
 .Button_button__2FuOU.Button_primary__2mZni.Button_contained__2SIAT.Button_hover__3JfDP,
 .Button_button__2FuOU.Button_primary__2mZni.Button_contained__2SIAT:hover {
-    border-color: #00b2b2;
-    background-color: #00b2b2;
+    border-color: #0097D2;
+    background-color: #0097D2;
     color: #fff;
 }
 
@@ -1785,7 +1785,7 @@ button.FollowingButton_followingButton__1wpuk > span {
 .Button_button__2FuOU.Button_primary__2mZni:hover {
     border-color: #00c4c4;
     background-color: #e7f9f9;
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 /* modal */
@@ -1989,8 +1989,8 @@ button.FollowingButton_followingButton__1wpuk > span {
 }
 
 .Button_button__2FuOU.Button_primary__2mZni.Button_contained__2SIAT {
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #00BBFF;
+    background-color: #00BBFF;
     color: #fff;
 }
 
@@ -2146,8 +2146,8 @@ button.FollowingButton_followingButton__1wpuk > span {
 }
 
 .Button_button__2FuOU.Button_primary__2mZni.Button_contained__2SIAT {
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #00BBFF;
+    background-color: #00BBFF;
     color: #fff;
 }
 
