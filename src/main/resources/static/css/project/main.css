@@ -298,7 +298,7 @@ html.scroll-top .MainWrapper_content__GZkTa {
 
 .ImageTab_tab__3siCY.ImageTab_simple__t8mcf.ImageTab_active__BGdXu .ImageTab_label__SvWW9,
 .ImageTab_active__BGdXu .ImageTab_thumbnailContainer__3Polb .ImageTab_thumbnailPlaceholder__3mluI {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
 }
 
 .ImageTab_tab__3siCY
@@ -589,13 +589,13 @@ html.scroll-top .MainWrapper_content__GZkTa {
 .ComingNotificationButton_button__3KY6r {
     outline: none;
     border-radius: 3px;
-    color: #00c4c4;
+    color: #00BBFF;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .Button_button__2FuOU.Button_primary__2mZni {
-    border-color: #00c4c4;
-    color: #00c4c4;
+    border-color: #00BBFF;
+    color: #00BBFF;
 }
 
 .ComingsoonMainCard_root__2PH89 .ComingsoonMainCard_notificationButton__rRop5 {
@@ -674,9 +674,9 @@ html.scroll-top .MainWrapper_content__GZkTa {
 /* active */
 .Button_button__2FuOU.Button_primary__2mZni.Button_hover__3JfDP,
 .Button_button__2FuOU.Button_primary__2mZni:hover {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
     background-color: #e7f9f9;
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 /* 반응형 */
@@ -1004,8 +1004,8 @@ html.scroll-top .MainWrapper_content__GZkTa {
     }
 
     .Button_button__2FuOU.Button_primary__2mZni {
-        border-color: #00c4c4;
-        color: #00c4c4;
+        border-color: #00BBFF;
+        color: #00BBFF;
     }
 
     .Button_button__2FuOU.Button_xs__2DWsb {

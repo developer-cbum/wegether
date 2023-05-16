@@ -75,9 +75,9 @@ h2.mypage-top-title {
 }
 
 .mypage-project .tab-list ul li.active a {
-    color: #00c4c4;
+    color: #00BBFF;
     height: 47px;
-    border-bottom: 2px solid #00c4c4;
+    border-bottom: 2px solid #00BBFF;
 }
 
 .mypage-project .tab-list ul li.active a {
@@ -228,7 +228,7 @@ i.icon::before,
 }
 
 .project-card .card-img-section .project-type.reward {
-    background: #00c4c4;
+    background: #00BBFF;
 }
 
 .project-card .card-img-section .project-type {
@@ -321,7 +321,7 @@ i.icon::before,
     margin-right: 6px;
     width: 8px;
     height: 8px;
-    background: #00c4c4;
+    background: #00BBFF;
     border-radius: 50%;
 }
 

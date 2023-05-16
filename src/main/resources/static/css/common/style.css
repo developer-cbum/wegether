@@ -1652,11 +1652,11 @@ i.icon.copy::before,
 }
 
 .wz.color.primary4 {
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 .wz.color.bg.primary4 {
-    background-color: #00b2b2;
+    background-color: #0097D2;
 }
 
 .wz.color.primary5 {
@@ -2004,7 +2004,7 @@ i.icon.copy::before,
 }
 
 .wz.color.border-primary {
-    border: 1px solid #00c4c4;
+    border: 1px solid #00BBFF;
 }
 
 .wz.color.border-info {
@@ -3351,7 +3351,7 @@ label.wz.text.caption1 {
 
 .wz.button.primary,
 .wz.button.primary-outline {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
 }
 
 .wz.button.primary:hover,
@@ -3360,13 +3360,13 @@ label.wz.text.caption1 {
 .wz.button.primary-outline:hover,
 .wz.button.primary-outline:focus,
 .wz.button.primary-outline.active {
-    border-color: #00b2b2;
-    background-color: #00b2b2;
+    border-color: #0097D2;
+    background-color: #0097D2;
     color: #fff;
 }
 
 .wz.button.primary {
-    background-color: #00c4c4;
+    background-color: #00BBFF;
     color: #fff;
 }
 
@@ -3376,18 +3376,18 @@ label.wz.text.caption1 {
 }
 
 .wz.button.primary.less {
-    color: #00c4c4;
+    color: #00BBFF;
 }
 
 .wz.button.primary.less:hover,
 .wz.button.primary.less:focus,
 .wz.button.primary.less.active {
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 .wz.button.primary-outline {
     background-color: transparent;
-    color: #00c4c4;
+    color: #00BBFF;
 }
 
 .wz.button.primary-outline:hover,
@@ -3893,7 +3893,7 @@ label.wz.text.caption1 {
 .wz.input > input.active,
 .wz.input > textarea:focus,
 .wz.input > textarea.active {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
 }
 
 .wz.input > input:focus.blue,
@@ -3974,7 +3974,7 @@ label.wz.text.caption1 {
     height: auto;
     box-sizing: border-box;
     pointer-events: none;
-    color: #00c4c4;
+    color: #00BBFF;
     font-size: 1.4117647059em;
 }
 
@@ -4006,7 +4006,7 @@ label.wz.text.caption1 {
 }
 
 .wz.input.success > input {
-    border: 1px solid #00c4c4;
+    border: 1px solid #00BBFF;
     padding-right: 2.4705882353em;
 }
 
@@ -4067,7 +4067,7 @@ label.wz.text.caption1 {
 
 .wz.input.labeled > .wz.label.primary {
     border: 1px solid #00a2a2;
-    background-color: #00c4c4;
+    background-color: #00BBFF;
     color: #fff;
 }
 
@@ -4114,7 +4114,7 @@ label.wz.text.caption1 {
 
 .wz.input.action > input:focus + button::before {
     border-radius: 3px;
-    border-color: #00c4c4;
+    border-color: #00BBFF;
 }
 
 .wz.input.action.icon > input {
@@ -4392,13 +4392,13 @@ label.wz.text.caption1 {
 }
 
 .wz.badge.primary {
-    background-color: #00c4c4;
+    background-color: #00BBFF;
     color: #fff;
 }
 
 .wz.badge.primary.text-only {
     background: none;
-    color: #00c4c4;
+    color: #00BBFF;
 }
 
 .wz.badge.navy {
@@ -4795,7 +4795,7 @@ hr.wz.divider.large {
 }
 
 .wz.form .field .helper.success {
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 .wz.form .field .helper.error,
@@ -4957,7 +4957,7 @@ hr.wz.divider.large {
 
 .wz.message.success .header,
 .wz.message.success p {
-    color: #00b2b2;
+    color: #0097D2;
 }
 
 .wz.message.value {
@@ -4997,7 +4997,7 @@ label.wz.checkbox > input::after {
 
 label.wz.checkbox > input:focus + span::before,
 label.wz.checkbox > input:hover + span::before {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
 }
 
 label.wz.checkbox > input:disabled + span::before {
@@ -5007,7 +5007,7 @@ label.wz.checkbox > input:disabled + span::before {
 
 label.wz.checkbox > input:checked + span::before {
     border-color: transparent;
-    background-color: #00c4c4;
+    background-color: #00BBFF;
 }
 
 label.wz.checkbox > span {
@@ -5173,13 +5173,13 @@ label.wz.radio > input::after {
 
 label.wz.radio > input:checked + span::after {
     opacity: 1;
-    background-color: #00c4c4;
+    background-color: #00BBFF;
 }
 
 label.wz.radio > input:focus + span::before,
 label.wz.radio > input:hover + span::before,
 label.wz.radio > input:checked + span::before {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
 }
 
 label.wz.radio > span {
@@ -5209,7 +5209,7 @@ label.wz.radio > span::after {
     left: 3px;
     opacity: 0;
     border-radius: 50%;
-    background-color: #00c4c4;
+    background-color: #00BBFF;
     width: 14px;
     height: 14px;
     content: '';
@@ -5725,7 +5725,7 @@ label.wz.radio.navy input:checked + span::after {
 }
 
 .wz.tab.left .list a.active {
-    color: #00c4c4;
+    color: #00BBFF;
     font-weight: bold;
 }
 
@@ -5786,7 +5786,7 @@ label.wz.radio.navy input:checked + span::after {
     right: 16px;
     bottom: 0;
     left: 16px;
-    background-color: #00c4c4;
+    background-color: #00BBFF;
     height: 3px;
     content: '';
 }
