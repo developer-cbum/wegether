@@ -10972,3 +10972,19 @@ body {
   font-size: 16px;
   font-weight: 400;
 }
+.SatisfactionFilter_container__1q2UL .SatisfactionFilter_selectBox__1SsgP {
+  top: 3px;
+  right: 16px;
+  width: 548px;
+  height: 48px;
+}
+
+
+.small .select-menu__control {
+  line-height: 20px;
+  letter-spacing: 0;
+  font-size: 14px;
+  font-weight: 400;
+  height: 48px;
+  min-height: 40px;
+}

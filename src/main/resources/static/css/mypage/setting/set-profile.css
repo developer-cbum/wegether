@@ -64,12 +64,12 @@ body {
   line-height: 20px;
   font-weight: normal;
 }
-.waccount-wrap .sub-text {
-  margin-bottom: 8px;
-  font-size: 12px;
-  line-height: 14px;
-  color: #4a4a4a;
-}
+/*.waccount-wrap .sub-text {*/
+/*  margin-bottom: 8px;*/
+/*  font-size: 12px;*/
+/*  line-height: 14px;*/
+/*  color: #4a4a4a;*/
+/*}*/
 .waccount-wrap .comment {
   margin-bottom: 10px;
   font-size: 11px;
@@ -378,24 +378,24 @@ body {
 .check-list-wrap ul li input[type='checkbox'] {
   display: none;
 }
-.check-list-wrap ul li .input-check {
-  cursor: pointer;
-}
-.check-list-wrap ul li .input-check i {
-  color: #23dbab;
-  margin-right: 5px;
-  display: inline-block;
-  vertical-align: middle;
-}
-.check-list-wrap ul li .input-check i.checked {
-  display: none;
-}
-.check-list-wrap ul li input[type='checkbox']:checked ~ .input-check i.checked {
-  display: inline-block;
-}
-.check-list-wrap ul li input[type='checkbox']:checked ~ .input-check i.unchecked {
-  display: none;
-}
+/*.check-list-wrap ul li .input-check {*/
+/*  cursor: pointer;*/
+/*}*/
+/*.check-list-wrap ul li .input-check i {*/
+/*  color: #23dbab;*/
+/*  margin-right: 5px;*/
+/*  display: inline-block;*/
+/*  vertical-align: middle;*/
+/*}*/
+/*.check-list-wrap ul li .input-check i.checked {*/
+/*  display: none;*/
+/*}*/
+/*.check-list-wrap ul li input[type='checkbox']:checked ~ .input-check i.checked {*/
+/*  display: inline-block;*/
+/*}*/
+/*.check-list-wrap ul li input[type='checkbox']:checked ~ .input-check i.unchecked {*/
+/*  display: none;*/
+/*}*/
 .textarea-wrap {
   width: 100%;
   margin-bottom: 20px;

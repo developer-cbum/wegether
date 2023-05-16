@@ -142,7 +142,7 @@
 }
 
 .school-summary .school-sum-info dl dd span {
-  color: ;
+  color: #00BBFF;
 }
 
 .school-summary .school-sum-info dl.long {
@@ -175,7 +175,7 @@
   padding-right: 20px;
   height: 50px;
   line-height: 50px;
-  color: ;
+  color: #00BBFF;
 }
 
 .school-summary .school-sum-info .school-btn-apply {
@@ -233,7 +233,7 @@
   font-size: 18px;
   font-weight: 500;
   color: #fff;
-  background: ;
+  background: #00BBFF;
   border: none;
   border-radius: 3px;
   border-top: 1px solid #e4e4e4;
@@ -284,7 +284,7 @@
   font-weight: 500;
   color: #fff;
   border-right: 1px solid #e4e4e4;
-  border-bottom: 1px solide #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
   background: #415061;
 }
 
@@ -644,7 +644,7 @@ input[type='text'].lect-val-num {
   font-size: 16px;
   color: #fff;
   font-weight: 500;
-  background: ;
+  background: #00BBFF;
   border: none;
   border-radius: 3px;
 }
