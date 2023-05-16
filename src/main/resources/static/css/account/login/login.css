@@ -191,7 +191,7 @@ label.wz.text.display2 {
     height: auto;
     box-sizing: border-box;
     pointer-events: none;
-    color: #00c4c4;
+    color: #00BBFF;
     font-size: 1.4117647059em;
 }
 
@@ -486,13 +486,13 @@ label.wz.text.display2 {
 }
 
 .wz.button.primary {
-    background-color: #00c4c4;
+    background-color: #00BBFF;
     color: #fff;
 }
 
 .wz.button.primary,
 .wz.button.primary-outline {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
 }
 
 .wz.button.block,
@@ -502,13 +502,13 @@ label.wz.text.display2 {
 }
 
 .wz.button.primary {
-    background-color: #00c4c4;
+    background-color: #00BBFF;
     color: #fff;
 }
 
 .wz.button.primary,
 .wz.button.primary-outline {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
 }
 
 .wz.button.block,
@@ -780,5 +780,5 @@ input:not(:disabled) + label {
 .user-sign-container .wz.container.form-container.form-login .bottom-message a {
     margin-left: 6px;
     text-decoration: underline;
-    color: #00c4c4;
+    color: #00BBFF;
 }
