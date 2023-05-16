@@ -1,0 +1,247 @@
+@media screen and (min-width: 1097px) {
+  .NotificationDenyPage_container__UQnOM {
+    padding-top: 80px;
+  }
+}
+
+.NotificationDenyPage_container__UQnOM {
+  margin: 0 auto;
+  padding: 25px 16px 0;
+  max-width: 640px;
+}
+
+.NotificationDenyHeader_header__11Tza {
+  margin-bottom: 40px;
+}
+.NotificationDenyHeader_header__11Tza h1 {
+  line-height: 34px;
+  letter-spacing: -0.51px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.NotificationDenyHeader_header__11Tza p {
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.NotificationDenyFilter_filter__XboMU {
+  position: relative;
+  border-bottom: 1px solid #343a40;
+  padding-bottom: 12px;
+}
+
+.NotificationDenyFilter_filter__XboMU h2.NotificationDenyFilter_title__ADTEH {
+  line-height: 30px;
+  letter-spacing: -0.6px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.NotificationDenyFilter_filter__XboMU .NotificationDenyFilter_button__ROL8n {
+  line-height: 20px;
+  letter-spacing: 0;
+  font-weight: 400;
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 30px;
+  font-size: 14px;
+}
+
+.NotificationDenyFilter_filter__XboMU label {
+  cursor: pointer;
+}
+
+.NotificationDenyFilter_filter__XboMU .NotificationDenyFilter_button__ROL8n span {
+  margin-right: 8px;
+}
+
+.NotificationDenyFilter_filter__XboMU .NotificationDenyFilter_button__ROL8n label {
+  vertical-align: text-top;
+}
+
+label.Checkbox_checkbox__26Voe {
+  display: inline-block;
+  position: relative;
+}
+
+label.Checkbox_checkbox__26Voe > input {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+
+label.Checkbox_checkbox__26Voe.Checkbox_small__CxxOu > .Checkbox_icon__3gXug {
+  font-size: 16px;
+}
+
+.NotificationDenyFilter_filter__XboMU .NotificationDenyFilter_button__ROL8n label > span {
+  margin-right: 0;
+}
+
+label.Checkbox_checkbox__26Voe > .Checkbox_icon__3gXug {
+  display: block;
+  transition-property: opacity, border-color, background-color;
+  transition-duration: 0.15s;
+  opacity: 1;
+  z-index: 1;
+  border: 0.8px solid #dde2e6;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 1em;
+  height: 1em;
+  box-sizing: border-box;
+}
+
+label.Checkbox_checkbox__26Voe > input + .Checkbox_icon__3gXug .Checkbox_removeIcon__3HUoJ {
+  display: none;
+}
+
+label.Checkbox_checkbox__26Voe > .Checkbox_icon__3gXug > svg {
+  transition-property: fill;
+  transition-duration: 0.15s;
+  margin: 0.0625em auto 0;
+  width: 0.7791666667em;
+  height: 0.7791666667em;
+  fill: #fff;
+}
+
+.withIcon_icon__3xAbN {
+  display: block;
+  transform: scale(1);
+  transition: transform 0.3s ease-out;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.NotificationDenyFilter_filter__XboMU .NotificationDenyFilter_button__ROL8n label > span {
+  margin-right: 0;
+}
+
+.NotificationDenyProjectListItem_projectListItem__12uqC {
+  display: block;
+  position: relative;
+  border-bottom: 1px solid #e9ecef;
+  padding: 16px 0;
+}
+
+.NotificationDenyProjectListItem_projectListItem__12uqC p {
+  line-height: 28px;
+  letter-spacing: -0.3px;
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  white-space: normal;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 235px;
+  height: 56px;
+}
+
+@media screen and (min-width: 1097px) {
+  .NotificationDenyProjectListItem_projectListItem__12uqC p {
+    width: 438px;
+    height: 56px;
+  }
+}
+
+.NotificationDenyProjectListItem_projectListItem__12uqC .NotificationDenyProjectListItem_switchButton__a8zKL {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.NotificationDenySwitch_switch__2gAVV.NotificationDenySwitch_active__3xCoD .NotificationDenySwitch_toggle__Ke0Nm {
+  border-color: #00c4c4;
+  background-color: #00c4c4;
+}
+
+.NotificationDenySwitch_switch__2gAVV .NotificationDenySwitch_toggle__Ke0Nm {
+  position: relative;
+  opacity: 1;
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  background-color: #f2f4f6;
+  width: 52px;
+  height: 32px;
+}
+
+.NotificationDenySwitch_switch__2gAVV.NotificationDenySwitch_active__3xCoD .NotificationDenySwitch_toggle__Ke0Nm .NotificationDenySwitch_toggleCircle__1bN6n,
+.NotificationDenySwitch_switch__2gAVV.NotificationDenySwitch_active__3xCoD .NotificationDenySwitch_loader__Kg1Yv {
+  left: 21px;
+}
+.NotificationDenySwitch_switch__2gAVV .NotificationDenySwitch_toggle__Ke0Nm .NotificationDenySwitch_toggleCircle__1bN6n {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: 0.3s all;
+  border-radius: 13px;
+  box-shadow: 0 6px 6px -1px #0a16461a, 0 0 5px #0a16460f;
+  background-color: #fff;
+  width: 26px;
+  height: 26px;
+}
+
+.NotificationDenySwitch_switch__2gAVV.NotificationDenySwitch_active__3xCoD .NotificationDenySwitch_toggle__Ke0Nm .NotificationDenySwitch_toggleCircle__1bN6n,
+.NotificationDenySwitch_switch__2gAVV.NotificationDenySwitch_active__3xCoD .NotificationDenySwitch_loader__Kg1Yv {
+  left: 21px;
+}
+
+.NotificationDenySwitch_switch__2gAVV .NotificationDenySwitch_loader__Kg1Yv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.3s all;
+  opacity: 0;
+}
+
+.NotificationDenySwitch_switch__2gAVV .NotificationDenySwitch_loader__Kg1Yv > svg {
+  display: inline-block;
+  width: 32px;
+}
+
+.Loader_circular__2_2A2 {
+  transform-origin: 100% 100%;
+  animation: Loader_waffle-loader-rotate__IxCq5 1.5s linear infinite;
+}
+
+.Loader_path__1azdF {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: Loader_waffle-loader-dash__24xZs 1.5s ease-in-out infinite, Loader_waffle-loader-color__2Wydu 3s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+.Loader_path__1azdF.Loader_primary__3a_Qt {
+  animation: Loader_waffle-loader-dash__24xZs 1.5s ease-in-out infinite, Loader_waffle-loader-color-primary__2vVpL 3s ease-in-out infinite;
+}
+
+/* 비활성화 */
+.NotificationDenySwitch_switch__2gAVV .NotificationDenySwitch_toggle__Ke0Nm .NotificationDenySwitch_toggleCircle__1bN6n {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: 0.3s all;
+  border-radius: 13px;
+  box-shadow: 0 6px 6px -1px #0a16461a, 0 0 5px #0a16460f;
+  background-color: #fff;
+  width: 26px;
+  height: 26px;
+}
+
+.NotificationDenySwitch_switch__2gAVV .NotificationDenySwitch_toggle__Ke0Nm .NotificationDenySwitch_toggleCircle__1bN6n {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: 0.3s all;
+  border-radius: 13px;
+  box-shadow: 0 6px 6px -1px #0a16461a, 0 0 5px #0a16460f;
+  background-color: #fff;
+  width: 26px;
+  height: 26px;
+}

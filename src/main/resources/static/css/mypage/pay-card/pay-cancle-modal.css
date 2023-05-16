@@ -1,0 +1,239 @@
+a,
+em,
+div {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.BasicDialog_modalWrap__3bCH_ {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  min-height: 100%;
+  text-align: center;
+}
+
+@media screen and (min-width: 769px) {
+  .BasicDialog_modalWrap__3bCH_ {
+    background: none;
+  }
+}
+
+.BasicDialog_modalWrapBox__2sdut {
+  position: relative;
+  padding-top: 56px;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+@media screen and (min-width: 769px) {
+  .BasicDialog_modalWrapBox__2sdut {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .BasicDialog_modalWrapBox__2sdut {
+    display: inline-block;
+    margin: 5%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    background: #fff;
+    min-width: 300px;
+  }
+}
+
+.BasicDialog_dialogBox__2Mi92 {
+  position: relative;
+  margin: 0 auto;
+  padding: 24px 32px 32px;
+  min-width: 320px;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 767px) {
+  .BasicDialog_dialogBox__2Mi92 {
+    max-width: 560px;
+  }
+}
+
+element.style {
+}
+.BasicDialog_dialogTitle__MXCow {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  line-height: 32px;
+  color: #44484b;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.BasicDialog_dialogMessage__12xfB {
+  margin-top: 12px;
+  margin-bottom: 24px;
+  color: #44484b;
+}
+
+.BasicDialog_dialogMessage__12xfB p {
+  margin: 12px 0;
+  line-height: 24px;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.BasicDialog_dialogButtonArea__3hd7n {
+  margin-right: 70px;
+  margin-top: 31px;
+  text-align: right;
+}
+
+.BasicDialog_dialogButtonArea__3hd7n.BasicDialog_reverse__3eMW_ .BasicDialog_dialogButton__17YDz {
+  float: right;
+}
+.Button_button__2FuOU {
+  position: relative;
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: 0.15s;
+  border: 1px solid #cdd3d8;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  padding: 9px 16px;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height: 1.43;
+  white-space: nowrap;
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+  box-sizing: border-box !important;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.Button_button__2FuOU.Button_primary__2mZni.Button_contained__2SIAT {
+  border-color: #00c4c4;
+  background-color: #00c4c4;
+  color: #fff;
+}
+
+.Button_button__2FuOU.Button_lg__1Dftp {
+  padding: 9px 24px;
+  line-height: 1.75;
+  font-size: 13px;
+}
+
+.Button_button__2FuOU span {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+}
+
+.Button_button__2FuOU .Button_children__ilFun {
+  vertical-align: top;
+}
+
+.BasicDialog_dialogButtonArea__3hd7n.BasicDialog_reverse__3eMW_ .BasicDialog_dialogButton__17YDz {
+  float: right;
+}
+
+.BasicDialog_dialogButton__17YDz:not([class*='Button_lg']) {
+  padding: 9px 24px;
+  line-height: 1.75;
+  font-size: 13px;
+}
+
+button[class*='Button_button'] {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.BasicDialog_dialogButtonArea__3hd7n:after {
+  display: block;
+  clear: both;
+  content: '';
+}
+
+.BasicDialog_modalWrap__3bCH_ button.BasicDialog_modalClose__1o3rb {
+  position: fixed;
+  top: 30px;
+  left: 28px;
+  transition: color 0.2s;
+  z-index: 50001;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 0 !important;
+  width: 30px !important;
+  height: 30px !important;
+  color: #60656a;
+  font-size: 22px !important;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+@supports (-webkit-backdrop-filter: initial) or (backdrop-filter: initial) {
+  .BasicDialog_modalWrap__3bCH_ button.BasicDialog_modalClose__1o3rb {
+    background-color: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+@media screen and (min-width: 769px) {
+  .BasicDialog_modalWrap__3bCH_ button.BasicDialog_modalClose__1o3rb {
+    position: absolute;
+  }
+}
+
+.withIcon_icon__3VTbq {
+  display: block;
+  transform: scale(1);
+  transition: transform 0.3s ease-out;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.BasicDialog_dialogButton__17YDz {
+  margin-left: 10px;
+}
+
+.DialogModal_dialogPortal__tWJEr {
+  position: static;
+}
+
+.DialogModal_dialogOverlay__1IIAi,
+.DialogModal_dialogContent__F81a7 {
+  transition-duration: 80ms;
+}
+
+.DialogModal_dialogOverlayAfterOpen__1ul6O {
+  opacity: 1;
+}
+
+.DialogModal_dialogOverlay__1IIAi.DialogModal_basic__LYr1j {
+  background: #fff;
+}
+
+@media screen and (min-width: 769px) {
+  .DialogModal_dialogOverlay__1IIAi.DialogModal_basic__LYr1j {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.DialogModal_dialogContentAfterOpen__3iQTA {
+  transform: none;
+}
+.DialogModal_dialogContent__F81a7 {
+  position: relative;
+  transition-property: opacity;
+  transition-timing-function: ease-out;
+  outline: none;
+  min-height: 100%;
+}
+
+.DialogModal_dialogContentAfterOpen__3iQTA {
+  height: 100vh;
+}

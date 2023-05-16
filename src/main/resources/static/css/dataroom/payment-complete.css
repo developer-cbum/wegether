@@ -1,0 +1,490 @@
+@charset "utf-8";
+
+body {
+    overflow-x: hidden;
+    line-height: inherit;
+    color: inherit;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -o-text-size-adjust: none;
+}
+
+@font-face {
+    font-family: 'Pretendard Variable';
+    font-weight: 45 920;
+    font-style: normal;
+    font-display: swap;
+    src: local('Pretendard Variable'), url('../../../packages/pretendard/dist/web/variable/woff2/PretendardVariable.woff2') format('woff2-variations');
+}
+
+body, table th {
+    font-weight: 400;
+}
+
+body, button, input, select, textarea {
+    font-family: Pretendard, Apple SD Gothic Neo, Segoe UI, Malgun Gothic, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, -apple-system, blinkmacsystemfont, sans-serif;
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+body {
+    display: block;
+    margin: 8px;
+}
+
+body > #root, #wadizTopBanner, #page-container {
+    transform-origin: 50% 0;
+    transition-property: opacity, transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+#page-container, #wadizTopBanner, body > #root {
+    transform-origin: 50% 0;
+    transition-property: opacity, transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+a, em, div {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+article, main, section {
+    display: block;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+main {
+    display: block;
+}
+
+@media screen and (min-width: 1097px) {
+    html.scroll-top .MainWrapper_content__GZkTa {
+        padding-top: 0;
+    }
+}
+
+html.scroll-top .MainWrapper_content__GZkTa, html.wadiz-app .MainWrapper_content__GZkTa, html.wadiz-app.scroll-top .MainWrapper_content__GZkTa {
+    padding-top: 0;
+}
+
+@media screen and (min-width: 1097px) {
+    .MainWrapper_content__GZkTa {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.MainWrapper_content__GZkTa {
+    transition: padding-top .25s;
+    padding-top: 0;
+}
+
+a, em, div {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 1097px) {
+    .PaymentSuccessPage_paymentSuccessPage__3OQvo {
+        padding: 0;
+    }
+}
+
+.PaymentSuccessPage_paymentSuccessPage__3OQvo {
+    background-color: #fff;
+    padding-top: 28px;
+    width: 100%;
+    text-align: center;
+}
+
+.PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_textContainer__20NEP {
+    text-align: center;
+}
+
+
+element.style {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin: 0px auto;
+    outline: none;
+}
+
+div[title] {
+    color: #212529;
+}
+
+element.style {
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0px, 0px, 0px);
+    content-visibility: visible;
+}
+
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+}
+
+:not(svg) {
+    transform-origin: 0px 0px;
+}
+
+image {
+    overflow: hidden;
+}
+
+mask {
+    mask-type: luminance;
+}
+
+
+g {
+    transform: matrix(1, 0, 0, 1, 0, -88);
+    opacity: 1;
+}
+
+@media screen and (min-width: 1097px) {
+    .PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_textContainer__20NEP p {
+        line-height: 34px;
+        letter-spacing: -.51px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+@media screen and (min-width: 769px) {
+    .PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_followingSection__1o8Of, .PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_buttonContainer__lYJii {
+        width: 332px;
+    }
+}
+
+
+.PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_buttonContainer__lYJii {
+    display: inline-flex;
+    justify-content: space-between;
+    margin-top: 32px
+}
+
+.PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_buttonContainer__lYJii .PaymentSuccessPage_buttonDetail__19S9E {
+    color: #495057;
+}
+
+.PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_buttonContainer__lYJii a {
+    flex-grow: 1;
+}
+
+.Button_button__2FuOU.Button_xl__1FM1L {
+    padding: 14px 28px;
+    line-height: 1.4;
+    font-size: 18px;
+}
+
+a.Button_button__2FuOU {
+    display: inline-block;
+    align-items: center;
+    padding-top: .07em;
+    text-decoration: none;
+}
+
+.Button_button__2FuOU {
+    position: relative;
+    transition-property: background-color, border-color, color, opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    padding: 9px 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    line-height: 1.43;
+    white-space: nowrap;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    box-sizing: border-box !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+a, button {
+    outline: none;
+}
+
+.Button_button__2FuOU span {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.Button_button__2FuOU .Button_children__ilFun {
+    vertical-align: top;
+}
+
+.Button_button__2FuOU span {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+.PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_buttonContainer__lYJii a:last-child {
+    margin-left: 8px;
+}
+
+.PaymentSuccessPage_paymentSuccessPage__3OQvo .PaymentSuccessPage_container__1TgiL .PaymentSuccessPage_buttonContainer__lYJii a {
+    flex-grow: 1;
+}
+
+.Button_button__2FuOU.Button_primary__2mZni.Button_contained__2SIAT {
+    border-color: #00c4c4;
+    background-color: #00c4c4;
+    color: #fff;
+}
+
+.Button_button__2FuOU.Button_xl__1FM1L {
+    padding: 14px 28px;
+    line-height: 1.4;
+    font-size: 18px;
+}
+
+a.Button_button__2FuOU {
+    display: inline-block;
+    align-items: center;
+    padding-top: .07em;
+    text-decoration: none;
+}
+
+.Button_button__2FuOU {
+    position: relative;
+    transition-property: background-color, border-color, color, opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    padding: 9px 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    line-height: 1.43;
+    white-space: nowrap;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    box-sizing: border-box !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+.Button_button__2FuOU span {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+.Button_button__2FuOU .Button_children__ilFun {
+    vertical-align: top;
+}
+
+html.scroll-top .FloatingButtons_container__2E5Fl {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.FloatingButtons_container__2E5Fl {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: fixed;
+    right: 16px;
+    bottom: 20px;
+    transition-property: transform, scale;
+    transition-duration: .25s;
+    transform: translateY(0) scale(0);
+    opacity: 0;
+    z-index: 1200;
+}
+
+html.scroll-top.scroll-apex .FloatingTopButton_pageTop__2gqm9 {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.FloatingTopButton_pageTop__2gqm9.FloatingTopButton_visible__2sh_N {
+    display: block;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1097px) {
+    .FloatingTopButton_pageTop__2gqm9 {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+    }
+}
+
+.FloatingTopButton_pageTop__2gqm9 {
+    display: none;
+    position: relative;
+    border: 1px solid #babdc0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .8);
+    cursor: pointer;
+    padding: 0 0 env(safe-area-inset-bottom);
+    width: 44px;
+    height: 44px;
+    color: #babdc0;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+
+body, button, input, select, textarea {
+    font-family: Pretendard, Apple SD Gothic Neo, Segoe UI, Malgun Gothic, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, -apple-system, blinkmacsystemfont, sans-serif;
+}
+
+a, button {
+    outline: none;
+}
+
+.FloatingTopButton_pageTop__2gqm9 svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.withIcon_icon__3VTbq {
+    display: block;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 1097px) {
+    .RecentView_container__1boAT {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.RecentView_container__1boAT {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #dde2e6;
+    transition-property: transform;
+    transition-duration: .25s;
+    transform: translateY(0);
+    overflow: hidden;
+    z-index: 1200;
+    box-shadow: 0 6px 6px -1px rgba(10, 22, 70, .1), 0 0 5px rgba(10, 22, 70, .06);
+    cursor: pointer;
+}
+
+body, button, input, select, textarea {
+    font-family: Pretendard, Apple SD Gothic Neo, Segoe UI, Malgun Gothic, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, -apple-system, blinkmacsystemfont, sans-serif;
+}
+
+.RecentView_container__1boAT .RecentView_thumbnail__1lnV0 {
+    border-radius: 50%;
+}
+
+.RecentView_container__1boAT * {
+    pointer-events: none;
+}
+
+.CardThumbnail_noanimation__23cSf {
+    transition: none;
+}
+
+.CardThumbnail_visible__343f4 {
+    opacity: 1;
+}
+
+.CardThumbnail_thumbnail__3bDBJ {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition-property: opacity;
+    transition-timing-function: ease-in-out;
+    transition-duration: .25s;
+    background: no-repeat 50%/cover border-box;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 10px;
+    opacity: 0;
+}

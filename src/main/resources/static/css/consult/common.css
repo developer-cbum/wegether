@@ -1,0 +1,656 @@
+@charset "utf-8";
+
+
+*{box-sizing:border-box}
+
+.clearfix:after{content:"";clear:both;display:block}
+.pull-right{float:right}
+.pull-left{float:left}
+.sr-only{display:none}
+.w2-layout-sub-content *{box-sizing:content-box}
+.wd-layout-sub-content *{box-sizing:content-box}
+.wd-ui-campaign3 *{box-sizing:content-box}
+
+
+/* reset with normalize */
+body, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td,
+	form, fieldset, legend, input, textarea, button, select {
+	font-family: Roboto, 'Noto Sans KR', sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea, select, button, table {
+	font-family: Roboto, 'Noto Sans KR', sans-serif;
+	color: #4d5256;
+	letter-spacing: -.03em
+}
+
+input::-ms-clear{
+	display:none;
+}
+
+a {
+	text-decoration: none;
+	color:inherit
+}
+
+a:hover, a:focus, a:active {
+	text-decoration: none;
+	color:inherit
+}
+/*
+a, button, input, textarea {
+	-webkit-transition: border-color .4s, background .4s, color .4s, opacity
+		.4s;
+	transition: border-color .4s, background .4s, color .4s, opacity .4s
+}
+*/
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td,
+	form, fieldset, legend, input, textarea, button, select {
+	margin: 0;
+	padding: 0
+}
+
+li {
+	list-style: none
+}
+
+address, em {
+	font-style: normal
+}
+
+label {
+	cursor: pointer
+}
+
+table {
+	width: 100%
+}
+
+/* common */
+a.skip {
+	display: block;
+	position: absolute;
+	top: -1px;
+	z-index: 999;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	text-align: center
+}
+
+a.skip:active, a.skip:focus {
+	z-index: 999;
+	width: 100%;
+	height: auto;
+	padding: 5px;
+	background: #FFF
+}
+
+.blank {
+	background: url(/resources/equity/img/blank.png)
+}
+
+.overflow {
+	overflow: hidden
+}
+
+.ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.pr {
+	position: relative
+}
+
+.va_mid {
+	vertical-align: middle
+}
+
+.d_block {
+	display: block
+}
+
+.d_iblock {
+	display: inline-block
+}
+
+.fw_500 {
+	font-weight: 500
+}
+
+.split_bar {
+	padding: 0 10px;
+	font-style: normal
+}
+
+.txt_line, .txt_line:hover, .txt_line:focus {
+	text-decoration: underline
+}
+
+/* grid */
+.row, .form-horizontal .form-group {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2,
+	.col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+	.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5,
+	.col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+	.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8,
+	.col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+	.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11,
+	.col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12
+	{
+	padding-left: 0;
+	padding-right: 0
+}
+
+.row_10>* {
+	float: left;
+	width: 20%
+}
+
+.w1200 {
+	max-width: 1200px;
+	margin: 0 auto
+}
+
+.w1100 {
+	max-width: 1100px;
+	margin: 0 auto
+}
+
+.wfull {
+	width: 100% !important
+}
+
+.w770 {
+	width: 770px !important
+}
+
+.w600 {
+	width: 600px !important
+}
+
+.w380 {
+	width: 380px !important
+}
+
+.w350 {
+	width: 350px !important
+}
+
+.w210 {
+	width: 210px !important
+}
+
+.w160 {
+	width: 160px !important
+}
+
+.w150 {
+	width: 150px !important
+}
+
+.w120 {
+	width: 120px !important
+}
+
+.w110 {
+	width: 110px !important
+}
+
+.w100 {
+	width: 100px !important
+}
+
+.w80 {
+	width: 80px !important
+}
+
+.wauto {
+	width: auto !important
+}
+
+/* heading */
+hr {
+	border-color: #e4e4e4
+}
+
+.h1 {
+	margin: 0;
+	padding: 20px 0;
+	font-weight: 400;
+	font-size: 22px;
+	text-align: center
+}
+
+.h1 small, .h1 .stauts {
+	font-size: 16px
+}
+
+.h2 {
+	margin: 0;
+	padding: 20px 40px;
+	font-size: 18px
+}
+
+.h2_2 {
+	height: 24px;
+	margin-bottom: 40px;
+	border-bottom: 1px solid #e4e4e4;
+	font-size: 32px
+}
+
+.h2_2>span {
+	padding-right: 10px;
+	background: #FFF
+}
+
+.h2_2 strong {
+	margin-right: 10px
+}
+
+.h3 {
+	margin: 1em 0;
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.h3_2 {
+	font-weight: 700;
+	font-size: 21px;
+}
+
+.h3_2 b {
+	float: left;
+	width: 50px;
+	margin: -10px 0;
+	font-size: 36px;
+	text-align: center;
+	color: #e4e4e4
+}
+
+.h3.v3 {
+	font-size: 24px;
+}
+
+.h3.v4 {
+	margin: 0;
+	padding-bottom: 40px;
+	font-size: 18px
+}
+
+.h3.v4 i {
+	display: block;
+	padding-bottom: 25px
+}
+
+.h3.v4 small {
+	font-size: 16px;
+	vertical-align: middle
+}
+
+.h4 {
+	margin: 1em 0;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.h4.v2 {
+	padding-bottom: .5em;
+	border-bottom: 1px solid #e4e4e4;
+	font-size:16px;
+}
+
+.bx .h2 {
+	border-bottom: 2px solid #ececec
+}
+
+.color_default {
+	color: #5e5e5e !important
+}
+
+.color_pink {
+	color: #ea5490 !important
+}
+
+.color_mint {
+	color: #369cab !important
+}
+
+.color_mint2 {
+	color: #14a5ba !important
+}
+
+.color_green {
+	color: #25b187 !important
+}
+
+.color_grey {
+	color: #a2a2a2 !important
+}
+
+.color_grey2 {
+	color: #666 !important
+}
+
+.color_blue {
+	color: #537abb !important
+}
+
+.bg_primary {
+	background: #009db3 !important
+}
+
+.bg_mint {
+	background: #369cab !important
+}
+
+.bg_mint2 {
+	background: #34a9b9 !important
+}
+
+.bg_pink {
+	background: #ea5490 !important
+}
+
+.bg_43 {
+	background: #434343 !important
+}
+
+.bg_f8 {
+	background: #f8f8f8 !important
+}
+
+.bg_alert {
+	background: #e7f0f1;
+	border: 1px solid #d8e5e6
+}
+
+.bg_blk {
+	background: #3b3b3b !important
+}
+
+.btn-equity-state button:disabled {border:1px solid #ddd !important;color:#aaa !important;background:#ddd !important;} /* 추가 161101 */
+
+[class^=underline_] {
+	display: inline-block;
+	height: 1.1em;
+	border-bottom: 5px solid #b2e1e8;
+	border-bottom: 5px solid rgba(21, 165, 185, 0.39)
+}
+
+.underline_green {
+	border-bottom: 5px solid #26c79f;
+	border-bottom: 5px solid rgba(38, 199, 159, 0.39)
+}
+
+.h2_2 [class^=underline_], .h3 [class^=underline_] {
+	border-bottom-width: 8px
+}
+
+.bx {
+	margin-bottom: 12px;
+	background: #FFF;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, .15)
+}
+
+.bx2 {
+	border: 1px solid #e4e4e4
+}
+
+.circle_num {
+	display: inline-block;
+	width: 21px;
+	height: 21px;
+	margin-right: 10px;
+	background: #fff;
+	border-radius: 21px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, .35);
+	font-style: normal;
+	color: #369cab;
+	text-align: center;
+	line-height: 23px;
+	font-size: 14px;
+	vertical-align: middle
+}
+
+.tx_circle {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%
+}
+
+.alert2 {
+	padding: 10px 15px !important;
+	border-top: 2px solid #009db3;
+	background: #f4f4f4
+}
+
+.alert2_hd {
+	text-align: center
+}
+
+.view .alert2 {
+	position: absolute !important;
+	top: -30px;
+	right: 40px;
+	width: 300px
+}
+
+.hover_green:hover, .hover_green:focus {
+	color: #009db3
+}
+
+.hover_green2:hover, .hover_green2:focus {
+	color: #24b086
+}
+
+/* icon, label */
+[class^=icon_] {
+	display: inline-block;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	font-size: 0;
+	line-height: 0;
+	text-decoration: none;
+	vertical-align: middle;
+	text-indent: -1000em
+}
+
+.icon_reset {
+	position: absolute;
+	z-index: 4;
+	top: 0;
+	right: 4px;
+	width: 34px;
+	height: 34px;
+	background-image: url(/resources/equity/img/icon_reset.png)
+}
+
+.icon_delete {
+	width: 17px;
+	height: 17px;
+	margin: -3px 0 0 4px;
+	background-image: url(/resources/equity/img/icon_delete.png)
+}
+
+.icon_re {
+	width: 16px;
+	height: 16px;
+	background-image: url(/resources/equity/img/icon_re.png)
+}
+
+.icon_play {
+	width: 74px;
+	height: 53px;
+	background-image: url(/resources/equity/img/icon_play.png);
+	background-position: 0 0
+}
+
+.icon_play_sm {
+	width: 40px;
+	height: 29px;
+	background-image: url(/resources/equity/img/icon_play_sm.png);
+	background-position: 0 0
+}
+
+.video_wrp:hover .icon_play, .video_wrp a:hover .icon_play_sm {
+	background-position: 100% 0
+}
+
+.icon_btn_memo {
+	width: 82px;
+	height: 24px;
+	background: url(/resources/equity/img/btn_memo.png);
+	transition: none
+}
+
+.icon_btn_memo:hover {
+	background-position: 100% 0
+}
+
+.icon_clip {
+	width: 9px;
+	height: 16px;
+	background-image: url(/resources/equity/img/icon_clip.png)
+}
+
+.icon_cmt {
+	width: 15px;
+	height: 14px;
+	background-image: url(/resources/equity/img/icon_cmt.png)
+}
+
+.icon_toggle {
+	width: 19px;
+	height: 9px;
+	background-image: url(/resources/equity/img/icon_toggle.png);
+	background-position: 0 0
+}
+
+.icon_toggle:hover, .icon_toggle:focus {
+	background-position: -19px 0
+}
+
+.open .icon_toggle {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+	-webkit-transform: scale(1, -1);
+	-ms-transform: scale(1, -1);
+	transform: scale(1, -1);
+}
+
+.icon_pop_close {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 10;
+	width: 30px;
+	height: 30px;
+	background-image: url(/resources/equity/img/icon_pop_close.png)
+}
+
+.icon_heart {
+	width: 19px;
+	height: 19px;
+	background-image: url(/resources/equity/img/heart.png)
+}
+
+.icon_chk_result1, .icon_chk_result2 {
+	width: 16px;
+	height: 16px;
+	margin-top: -4px;
+	background-image: url(/resources/equity/img/icon_chk_result1.png)
+}
+
+.icon_chk_result2 {
+	background-image: url(/resources/equity/img/icon_chk_result2.png)
+}
+
+.icon_angle_double {
+	width: 12px;
+	height: 10px;
+	margin: 0 4px;
+	background-image: url(/resources/equity/img/icon_angle_double.png)
+}
+
+.icon_target {
+	width: 25px;
+	height: 22px;
+	background-image: url(/resources/equity/img/icon_target.png)
+}
+
+[class^=icon_label_] {
+	width: 51px;
+	height: 20px;
+	background: url(/resources/equity/img/labelx2.png);
+	-webkit-background-size:100% auto;background-size:100% auto;
+}
+
+.icon_label_invest {
+	background-position: 0 100%
+}
+
+.icon_help {
+	width: 24px;
+	height: 24px;
+	background-image: url(/resources/equity/img/icon_help.png)
+}
+
+.icon_ribbon_bar {
+	width: 6px;
+	height: 24px;
+	margin: 0 -6px 0 8px;
+	background-image: url(/resources/equity/img/riboon_bar_sm.png)
+}
+
+.icon_search_xs {
+	width: 50px;
+	height: 50px;
+	background-image: url(/resources/equity/img/icon_search_xs.png)
+}
+
+.icon_arrow_btn {
+	width: 25px;
+	height: 25px;
+	margin: -5px 0 0 5px;
+	background-image: url(/resources/equity/img/cate_arrow.png);
+	background-position: 0 0;
+	transition: none
+}
+
+.icon_arrow_btn:hover, .icon_arrow_btn:focus {
+	background-position: 0 100%
+}
+
+/* form */
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder,
+	:-ms-input-placeholder, input-placeholder {
+	color: #5e5e5e
+}
+
+textarea {
+	resize: none
+}
+
+input[type=checkbox], input[type=radio] {
+	margin: 3px 0 0
+}
+
+.no_style {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none
+}

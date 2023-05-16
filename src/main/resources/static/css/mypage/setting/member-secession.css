@@ -1,0 +1,655 @@
+.account-drop {
+  background: #fff;
+  font-weight: 400;
+}
+
+.account-drop .wrap {
+  margin: 0 auto;
+  padding: 43px 16px 64px;
+}
+
+@media screen and (min-width: 732px) {
+  .account-drop .wrap {
+    margin: 0 auto;
+    padding-right: 0;
+    padding-left: 0;
+    width: 700px;
+  }
+}
+
+.account-drop h1 {
+  line-height: 36px;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.account-drop h1,
+.account-drop h2,
+.account-drop p {
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width: 732px) {
+  .account-drop h1 {
+    line-height: 44px;
+    font-size: 36px;
+  }
+}
+
+.account-drop p {
+  line-height: 28px;
+  letter-spacing: -0.4px;
+  color: #868e96;
+  font-size: 17px;
+}
+
+@media screen and (min-width: 732px) {
+  .account-drop p {
+    margin-right: -16px;
+  }
+}
+
+.account-drop .message-box {
+  margin: 20px auto;
+  border: 1px solid #adb5bd;
+  background: #f2f4f6;
+  padding: 16px;
+}
+
+.account-drop dl {
+  margin-bottom: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+.account-drop .message-box dl {
+  margin-bottom: 0;
+  border-top: 0;
+}
+
+.account-drop .message-box dt {
+  padding-top: 0;
+  letter-spacing: -0.3px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.account-drop .message-box dt,
+.account-drop .message-box dd {
+  line-height: 24px;
+}
+
+.account-drop .message-box dd {
+  margin-bottom: 20px;
+  border-bottom: 0;
+  padding-bottom: 0;
+  letter-spacing: -0.2px;
+  color: #495057;
+  font-size: 13px;
+}
+
+.account-drop .message-box a {
+  transition: color 0.2s;
+  text-decoration: underline;
+  color: #395bbf;
+}
+
+.account-drop .message-box dt {
+  padding-top: 0;
+  letter-spacing: -0.3px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.account-drop .message-box dd {
+  margin-bottom: 20px;
+  border-bottom: 0;
+  padding-bottom: 0;
+  letter-spacing: -0.2px;
+  color: #495057;
+  font-size: 13px;
+}
+.account-drop .message-box dt {
+  padding-top: 0;
+  letter-spacing: -0.3px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.account-drop .message-box dd:last-child {
+  margin-bottom: 0;
+}
+
+.account-drop h2 {
+  margin-top: 64px;
+  line-height: 32px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 732px) {
+  .account-drop h2 {
+    margin-top: 80px;
+    line-height: 36px;
+    font-size: 28px;
+  }
+}
+
+.account-drop p {
+  line-height: 28px;
+  letter-spacing: -0.4px;
+  color: #868e96;
+  font-size: 17px;
+}
+
+@media screen and (min-width: 732px) {
+  .account-drop p {
+    margin-right: -16px;
+  }
+}
+.selectbox {
+  width: 100%;
+  height: 44px;
+  border-color: #e7e7e7;
+  margin-bottom: 7px;
+  padding-left: 20px;
+  color: #4a4a4a;
+}
+
+.account-drop .selectbox {
+  position: relative;
+  margin: 24px 0;
+  border: 1px solid #e9ecef;
+  background: #fff;
+  max-width: 350px;
+  height: auto;
+  font-size: 0;
+}
+
+.account-drop .selectbox select {
+  position: relative;
+  opacity: 0;
+  z-index: 2;
+  border: 0;
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0);
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+}
+
+.account-drop .selectbox:after,
+.account-drop .selectbox select,
+.account-drop .selectbox span {
+  padding: 16px;
+  line-height: 25px;
+}
+
+.account-drop .selectbox span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-right: 43px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #495057;
+  font-size: 17px;
+  box-sizing: border-box;
+}
+
+.account-drop .selectbox em {
+  position: absolute;
+  bottom: -19px;
+  left: 0;
+  line-height: 1.3em;
+}
+
+.account-drop .reason-text em,
+.account-drop .selectbox em {
+  display: block;
+  color: #f66;
+  font-size: 13px;
+}
+
+.account-drop .selectbox:after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  line-height: 25px;
+  font-size: 24.99px;
+  display: inline-block;
+  margin-top: -0.2em;
+  vertical-align: middle;
+  text-transform: none;
+  line-height: 1;
+  font-family: wadizicon !important;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  content: '\003E';
+  transform: rotate(90deg);
+}
+
+.account-drop .reason-text {
+  margin-top: 40px;
+  max-width: 350px;
+}
+
+.account-drop .reason-text input {
+  width: 100%;
+}
+
+.account-drop .verify-box .user-verify input,
+.account-drop .verify-box .user-verify-confirm input,
+.account-drop .reason-text input {
+  margin-bottom: 0;
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 17px;
+}
+
+.account-drop .reason-text em {
+  margin-top: 2px;
+}
+
+@media screen and (min-width: 732px) {
+  .account-drop h2 {
+    margin-top: 80px;
+    line-height: 36px;
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 732px) {
+  .account-drop p {
+    margin-right: -16px;
+  }
+}
+
+.account-drop p em {
+  letter-spacing: -0.5px;
+  color: #f25555;
+  font-size: 15px;
+}
+
+.account-drop dl dt {
+  padding-top: 16px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.account-drop dl dt,
+.account-drop dl dd {
+  line-height: 24px;
+  letter-spacing: -0.4px;
+}
+
+.account-drop dl dd {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 20px;
+  color: #495057;
+  font-size: 13px;
+}
+
+label.wz.checkbox {
+  display: block;
+}
+
+.account-drop p label {
+  margin-right: 0;
+  line-height: 28px;
+  letter-spacing: -0.3px;
+  font-size: 15px;
+}
+
+label.wz.checkbox > input {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.account-drop p label input {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+label.wz.checkbox > span {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding-left: 24px;
+  vertical-align: top;
+}
+
+label.wz.checkbox > span::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.25s;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  content: '';
+}
+
+label.wz.checkbox > span::after {
+  display: inline-block;
+  margin-top: -0.2em;
+  vertical-align: middle;
+  text-transform: none;
+  line-height: 1;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-family: 'Font Awesome 5 Free';
+  content: '\f00c';
+  position: absolute;
+  top: 5px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 732px) {
+  .account-drop .verify-box {
+    width: 350px;
+  }
+}
+
+.account-drop .verify-box {
+  position: relative;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.wz.button.primary {
+  background-color: #00c4c4;
+  color: #fff;
+}
+
+.wz.button.primary,
+.wz.button.primary-outline {
+  border-color: #00c4c4;
+}
+
+.wz.button {
+  display: inline-block;
+  padding-top: 0.07em;
+  text-decoration: none;
+}
+
+.wz.button {
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 0 1.4117647059em;
+  height: 48px;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 17px;
+  font-weight: 400;
+  box-sizing: border-box !important;
+  -webkit-appearance: none;
+}
+
+.wz.input {
+  display: block;
+  position: relative;
+  font-size: 17px;
+}
+
+.wz.input.action {
+  display: flex;
+  outline: none;
+}
+
+.account-drop .verify-box .user-verify,
+.account-drop .verify-box .user-verify-confirm {
+  position: relative;
+}
+
+.account-drop .verify-box .user-verify {
+  margin-bottom: 8px;
+  padding-right: 102px;
+}
+
+.account-drop .verify-box .user-verify input,
+.account-drop .verify-box .user-verify-confirm input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.account-drop .verify-box .user-verify input,
+.account-drop .verify-box .user-verify-confirm input,
+.account-drop .reason-text input {
+  margin-bottom: 0;
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 17px;
+}
+
+.wz.input > input[readonly],
+.wz.input > textarea[readonly] {
+  color: rgba(0, 0, 0, 0.84);
+}
+.wz.input > input[readonly],
+.wz.input > input[disabled],
+.wz.input > textarea[readonly],
+.wz.input > textarea[disabled] {
+  border-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.06);
+  cursor: default;
+  pointer-events: none;
+}
+
+.wz.input.action > button,
+.wz.input.action > .wz.button {
+  position: absolute;
+  right: 0;
+  margin: 5px 5px 0 0;
+  outline: none;
+  padding-right: 1.0666666667em;
+  padding-left: 1.0666666667em;
+  height: 38px;
+  line-height: 38px;
+  word-break: keep-all;
+  font-size: 0.8823529412em;
+}
+
+.wz.input.action > input + button::before {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  transition-property: border-color;
+  transition-duration: 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0);
+  cursor: auto;
+  pointer-events: none;
+  content: '';
+}
+
+.wz.input::after {
+  display: inline-block;
+  margin-top: -0.2em;
+  vertical-align: middle;
+  text-transform: none;
+  line-height: 1;
+  font-family: 'wadizicon' !important;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  speak: none;
+  content: '\e934';
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: scale(0);
+  transition-property: transform, opacity;
+  transition-duration: 0.2s;
+  opacity: 0;
+  margin-top: 0;
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  pointer-events: none;
+  color: #00c4c4;
+  font-size: 1.4117647059em;
+}
+
+.account-drop .verify-box .user-verify,
+.account-drop .verify-box .user-verify-confirm {
+  position: relative;
+}
+
+.account-drop .verify-box .user-verify-confirm form {
+  margin-bottom: 2px;
+  padding-right: 121px;
+}
+
+.account-drop .verify-box .verify-code {
+  position: relative;
+  overflow: hidden;
+}
+
+.account-drop .verify-box .verify-code input {
+  padding-right: 50px;
+}
+
+.account-drop .verify-box .verify-code .timer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 9px;
+  line-height: 52px;
+  color: #557cf2;
+  font-size: 13px;
+}
+
+.wz.input.action > button,
+.wz.input.action > .wz.button {
+  position: absolute;
+  right: 0;
+  margin: 5px 5px 0 0;
+  outline: none;
+  padding-right: 1.0666666667em;
+  padding-left: 1.0666666667em;
+  height: 38px;
+  line-height: 38px;
+  word-break: keep-all;
+  font-size: 0.8823529412em;
+}
+
+.wz.button.gray {
+  background-color: #90949c;
+  color: #fff;
+}
+.wz.button.gray,
+.wz.button.gray-outline {
+  border-color: #90949c;
+}
+
+.wz.input::after {
+  display: inline-block;
+  margin-top: -0.2em;
+  vertical-align: middle;
+  text-transform: none;
+  line-height: 1;
+  font-family: 'wadizicon' !important;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  speak: none;
+  content: '\f00c';
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: scale(0);
+  transition-property: transform, opacity;
+  transition-duration: 0.2s;
+  opacity: 0;
+  margin-top: 0;
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  pointer-events: none;
+  color: #00c4c4;
+  font-size: 1.4117647059em;
+}
+
+.account-drop .verify-box .user-verify-confirm em {
+  color: #f66;
+  font-size: 13px;
+}
+
+.account-drop .verify-box .user-verify-confirm em {
+  color: #f66;
+  font-size: 13px;
+}
+
+.wz.button.red {
+  background-color: #f66;
+  color: #fff;
+}
+.wz.button.red,
+.wz.button.red-outline {
+  border-color: #f66;
+}
+.wz.button.disabled,
+.wz.button:disabled {
+  opacity: 0.45;
+  cursor: default;
+  color: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+
+.wz.button.red.disabled,
+.wz.button.red:disabled {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.wz.input > input,
+.wz.input > textarea {
+  transition-property: border-color, height, padding-right, color;
+  transition-duration: 0.2s, 0s;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 0.9411764706em;
+  width: 100%;
+  vertical-align: middle;
+  color: rgba(0, 0, 0, 0.84);
+  font-size: 17px;
+  font-weight: 300;
+}
+
+label.wz.checkbox > input:checked + span::before {
+  border-color: transparent;
+  background-color: #00c4c4;
+}

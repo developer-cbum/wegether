@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../my-page/mypage.css" />
+    <link rel="stylesheet" href="../setting/set-profile.css" />
+  </head>
+  <body>
+    <div class="waccount-wrap">
+      <div id="waccountContainer">
+        <h3>프로필 정보 설정</h3>
+        <div id="tabContent1" class="tab-content">
+          <h5>프로필 사진</h5>
+          <div class="profileimg-wrap">
+            <button
+              type="button"
+              id="resultProfileImg"
+              class="profileimg"
+              onclick="$('#uploadProfileImg').click();"
+            >
+              <em
+                style="
+                  background-image: url(https://static.wadiz.kr/assets/icon/profile-icon-6.png);
+                "
+              ></em>
+            </button>
+            <p class="setting-profileimg">
+              <button type="button" onclick="$('#uploadProfileImg').click()" id="btn_updatePhoto">
+                <span>바꾸기</span>
+              </button>
+              <button type="button" onclick="deletePhoto()" id="btn_deletePhoto">삭제</button>
+            </p>
+          </div>
+
+          <h5>관심사</h5>
+          <p class="sub-text">최소 5개 이상 관심사를 선택해주세요.</p>
+          <div class="check-list-wrap">
+            <ul>
+              <li>
+                <input type="checkbox" id="interest_1" name="interestGroup" value="SRV0001_01" />
+                <label class="input-check" for="interest_1"
+                  ><i class="icon-radio-button-unchecked unchecked"></i
+                  ><i class="icon-check-circle checked"></i>교육∙키즈</label
+                >
+              </li>
+
+              <li>
+                <input type="checkbox" id="interest_2" name="interestGroup" value="SRV0001_02" />
+                <label class="input-check" for="interest_2"
+                  ><i class="icon-radio-button-unchecked unchecked"></i
+                  ><i class="icon-check-circle checked"></i>패션∙잡화∙뷰티</label
+                >
+              </li>
+
+              <li>
+                <input type="checkbox" id="interest_3" name="interestGroup" value="SRV0001_03" />
+                <label class="input-check" for="interest_3"
+                  ><i class="icon-radio-button-unchecked unchecked"></i
+                  ><i class="icon-check-circle checked"></i>홈리빙∙디자인소품</label
+                >
+              </li>
+
+              <li>
+                <input type="checkbox" id="interest_4" name="interestGroup" value="SRV0001_04" />
+                <label class="input-check" for="interest_4"
+                  ><i class="icon-radio-button-unchecked unchecked"></i
+                  ><i class="icon-check-circle checked"></i>공연∙컬쳐</label
+                >
+              </li>
+
+              <li>
+                <input type="checkbox" id="interest_5" name="interestGroup" value="SRV0001_05" />
+                <label class="input-check" for="interest_5"
+                  ><i class="icon-radio-button-unchecked unchecked"></i
+                  ><i class="icon-check-circle checked"></i>스포츠∙모빌리티</label
+                >
+              </li>
+
+              <li>
+                <input type="checkbox" id="interest_6" name="interestGroup" value="SRV0001_06" />
+                <label class="input-check" for="interest_6"
+                  ><i class="icon-radio-button-unchecked unchecked"></i
+                  ><i class="icon-check-circle checked"></i>출판</label
+                >
+              </li>
+
+              <li>
+                <input type="checkbox" id="interest_7" name="interestGroup" value="SRV0001_07" />
+                <label class="input-check" for="interest_7"
+                  ><i class="icon-radio-button-unchecked unchecked"></i
+                  ><i class="icon-check-circle checked"></i>반려동물</label
+                >
+              </li>
+
+              <li>
+                <input type="checkbox" id="interest_8" name="interestGroup" value="SRV0001_08" />
+                <label class="input-check" for="interest_8"
+                  ><i class="icon-radio-button-unchecked unchecked"></i
+                  ><i class="icon-check-circle checked"></i>테크∙가전</label
+                >
+              </li>
+            </ul>
+          </div>
+          <h5>학교 / 전공</h5>
+          <ul class="input-div2">
+            <li>
+              <input
+                type="text"
+                class="input-text"
+                maxlength="20"
+                id="school"
+                placeholder="학교"
+                value=""
+              />
+            </li>
+            <li>
+              <input
+                type="text"
+                class="input-text"
+                maxlength="20"
+                id="major"
+                placeholder="전공"
+                value=""
+              />
+            </li>
+          </ul>
+
+          <h5>간단한 한 마디로 나를 소개해주세요</h5>
+          <div class="textarea-wrap">
+            <textarea id="introduceme" maxlength="80"></textarea>
+          </div>
+          <div class="btn-bottom">
+            <ul class="btn-div2">
+              <li>
+                <button type="button" class="wz button gray btn-darkgray" onclick="cancelModify()">
+                  취소
+                </button>
+              </li>
+              <li>
+                <button type="button" class="wz button primary btn-mint" onclick="modify()">
+                  확인
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="uploadProfileImg" class="file-profileimg" accept="image/*" />
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</html>

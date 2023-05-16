@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../my-page/mypage.css" />
+    <link rel="stylesheet" href="../setting/new-alarm.css" />
+  </head>
+  <body>
+    <main id="funding-notification-deny-app">
+      <div class="NotificationDenyPage_container__UQnOM">
+        <div>
+          <div class="NotificationDenyHeader_header__11Tza">
+            <h1>새소식 알림 설정</h1>
+            <p>
+              프로젝트별 새소식 알림을 설정할 수 있습니다.<br />알림을 꺼도 리워드 발송 및
+              교환/환불/AS, 와디즈 공지 새소식은 발송됩니다. (펀딩・프리오더 참여자에 한함)
+            </p>
+          </div>
+          <div class="NotificationDenyFilter_filter__XboMU">
+            <h2 class="NotificationDenyFilter_title__ADTEH">프로젝트</h2>
+            <label class="NotificationDenyFilter_button__ROL8n" for="filterCheckBox"
+              ><span>알림 끈 프로젝트만</span
+              ><label for="filterCheckBox" class="Checkbox_checkbox__26Voe Checkbox_small__CxxOu"
+                ><input name="filterCheckBox" type="checkbox" id="filterCheckBox" /><span
+                  class="Checkbox_icon__3gXug"
+                  aria-hidden="true"
+                  ><svg
+                    viewBox="0 0 16 2"
+                    focusable="false"
+                    role="presentation"
+                    class="withIcon_icon__3xAbN Checkbox_removeIcon__3HUoJ"
+                    aria-hidden="true"
+                  >
+                    <path fill-rule="evenodd" d="M0 0h16v2H0z"></path></svg
+                  ><svg
+                    viewBox="0 0 48 48"
+                    focusable="false"
+                    role="presentation"
+                    class="withIcon_icon__3xAbN Checkbox_checkIcon__130nh"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"
+                    ></path></svg></span
+                ><span class="Checkbox_label__2ywZU"></span></label
+            ></label>
+          </div>
+          <ul>
+            <li class="NotificationDenyProjectListItem_projectListItem__12uqC">
+              <p>하나만 먹어도 단백질 20g충전! 드디어 구현해낸 속세의 맛, 속세케익</p>
+              <button
+                class="NotificationDenySwitch_switch__2gAVV NotificationDenySwitch_active__3xCoD NotificationDenyProjectListItem_switchButton__a8zKL"
+              >
+                <div class="NotificationDenySwitch_toggle__Ke0Nm">
+                  <div class="NotificationDenySwitch_toggleCircle__1bN6n"></div>
+                </div>
+                <span class="NotificationDenySwitch_loader__Kg1Yv"
+                  ><svg viewBox="25 25 50 50" aria-label="Loading">
+                    <g class="Loader_circular__2_2A2">
+                      <circle
+                        class="Loader_path__1azdF Loader_primary__3a_Qt"
+                        cx="50"
+                        cy="50"
+                        r="20"
+                        fill="none"
+                        stroke-width="4"
+                        stroke-miterlimit="10"
+                      ></circle>
+                    </g></svg
+                ></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    <!-- 버튼 -->
+
+    const $switch = $('.NotificationDenySwitch_switch__2gAVV');
+
+    $switch.on('click', function () {
+      if ($(this).hasClass('NotificationDenySwitch_active__3xCoD')) {
+        $(this).removeClass('NotificationDenySwitch_active__3xCoD ');
+      } else {
+        $(this).addClass('NotificationDenySwitch_active__3xCoD ');
+      }
+    });
+  </script>
+</html>

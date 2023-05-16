@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
+    />
+
+    <link rel="stylesheet" href="../../common.css"/>
+    <link rel="stylesheet" href="../../style.css"/>
+    <link rel="stylesheet" href="change-pwd.css"/>
+
+    <title>비밀번호 재설정 | 위게더</title>
+</head>
+<body>
+<div id="page-container">
+    <!-- [S] Header -->
+    <!-- [E] Header -->
+
+    <div class="account-reset-password">
+        <div class="wz container">
+            <div class="page-header">
+                <h2>비밀번호 재설정</h2>
+                <p class="desc">새로 사용하기를 원하는 비밀번호를 입력해 주세요.</p>
+            </div>
+            <div class="page-body">
+                <form action="">
+                    <div class="label">비밀번호</div>
+                    <div class="text-field reset-password-new">
+                        <input
+                                id="password"
+                                type="password"
+                                class="input-text"
+                                placeholder="비밀번호 입력"
+                                maxlength="20"
+                        />
+                        <p class="help""></p>
+                    </div>
+                    <div class="text-field reset-password-confirm">
+                        <input
+                                id="verifyPassword"
+                                type="password"
+                                class="input-text"
+                                placeholder="비밀번호 확인"
+                                maxlength="20"
+                        />
+                        <p class="help""></p>
+                    </div>
+                    <div class="btn-wrap smaller">
+                        <button type="button" class="wz button primary block reset-password__submit">
+                            완료
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="change-pwd.js"></script>
+</html>

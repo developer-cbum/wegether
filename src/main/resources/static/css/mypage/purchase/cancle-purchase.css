@@ -1,0 +1,25 @@
+.Tooltip_tooltip__24HAm {
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    position: absolute;
+    z-index: 0;
+    border-radius: 3px;
+    background-color: #343a40;
+    max-width: 264px;
+    word-break: keep-all;
+    color: #fff;
+    overflow-wrap: break-word;
+    height: 60px;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+
+.Tooltip_helpIcon__3jf9Q {
+    display: none;
+}
+
+.Tooltip_helpOutlineIcon__JkkNy {
+    display: block;
+}

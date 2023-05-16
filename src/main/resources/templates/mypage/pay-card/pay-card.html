@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../my-page/mypage.css" />
+    <link rel="stylesheet" href="../../../static/css/mypage/pay-card/pay-card.css" />
+    <link rel="stylesheet" href="../../../static/css/mypage/pay-card/pay-modal.css" />
+    <link rel="stylesheet" href="../setting/check-password-modal.css" />
+    <link rel="stylesheet" href="../../../static/css/mypage/pay-card/card.css" />
+    <link rel="stylesheet" href="../../../static/css/mypage/pay-card/pay-cancle-modal.css" />
+  </head>
+  <body>
+    <div class="MyRewardContainer_container__2qXDp">
+      <h2 class="MyRewardContainer_title__2TKbO">결제 정보 관리</h2>
+      <div class="MyRewardContainer_column__1d06O">
+        <div class="SimplePayInfo_simplePayInfo__ejCel" id="registCardInfo">
+          <h3 class="SimplePayInfo_title__1a9F1">간편결제 정보</h3>
+          <div class="SimplePayCard_simplecard__2wYo7 SimplePayCard_info__3rLl3 SimplePayCard_noInfo__pdX40">
+            
+            <div class="SimplePayCard_addCard__2eagF">
+              <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon__3VTbq SimplePayCard_addIcon__2DOov" aria-hidden="true">
+                <path d="M30.4 15.2H16.8V1.6h-1.6v13.6H1.6v1.6h13.6v13.6h1.6V16.8h13.6v-1.6z"></path></svg
+              ><span class="SimplePayCard_title__PpPWZ">간편 결제 카드 등록</span
+              ><span class="SimplePayCard_description__IFa0t">카드 등록하고, 빠르게 결제 예약하세요!</span>
+            </div>
+            <div class="SimplePayCard_notice__3PRPU">
+              <i class="icon error-o"></i><em>와디즈에서 카드번호를 저장하지 않습니다!</em>
+              <p>카드사에서 제공하는 암호화된 정보만을 저장하기 때문에 안심하셔도 됩니다.</p>
+            </div>
+            <div class="SimplePayCard_registed__2yAC4">
+              <div class="SimplePayCard_creditCard__2nvHf">
+                <span class="SimplePayCard_cardName__1no5L">카드</span
+                ><button type="button" class="SimplePayCard_editButton__Q120P">
+                  <svg
+                    viewBox="0 0 40 40"
+                    focusable="false"
+                    role="presentation"
+                    class="withIcon_icon__3VTbq SimplePayCard_deleteIcon__1tC7k"
+                    aria-hidden="true"
+                  >
+                    <path d="M36.67 5.31H3.33v2h2.82v31.88h27.7V7.31h2.82zm-4.82 31.88H8.15V7.31h23.7zM15 .81h10v2H15z"></path>
+                    <path d="M14.75 15.18h2v15h-2zm8.5 0h2v15h-2z"></path></svg
+                  >삭제
+                </button>
+                <div class="SimplePayCard_cardNumber__3fnJ-"></div>
+                <span class="SimplePayCard_createdAt__Alwbk">간편 결제 등록일<span>YYYY. MM. DD</span></span>
+              </div>
+              <div class="SimplePayCard_notice__3PRPU"><em>할부는 직접 입력으로만 이용 가능합니다.</em></div>
+            </div>
+          </div>
+        </div>
+        <ul class="SimplePayInfo_noticeList__VXr7r">
+          <li>와디즈에서는 카드 번호를 저장하지 않으니 안심하세요.</li>
+          <li>간편 결제 카드 등록은 1개만 가능해요.</li>
+          <li>결제 비밀번호를 잊어버렸거나 변경을 원한다면, 기존 등록되었던 결제 정보를 삭제하고 다시 등록해 주세요.</li>
+          <li>
+            간편 결제 번호를 변경하더라도 변경 전 참여한 프로젝트의 결제 정보는 변경되지 않아요.<br />이미 참여한 프로젝트의 결제 정보 변경은 프로젝트 내역에서
+            변경할 수 있어요.
+          </li>
+          <li>할부는 직접 입력으로만 이용 가능합니다.</li>
+        </ul>
+        <input type="hidden" name="has-simplepay-info" value="false" />
+      </div>
+    </div>
+    <!-- 모달1 -->
+    <div class="ReactModalPortal" style="display: none">
+      <div class="ReactModal__Overlay ReactModal__Overlay--after-open SimplePayInfoFormDialogModal_overlay__-uxMQ">
+        <div
+          class="ReactModal__Content ReactModal__Content--after-open SimplePayInfoFormDialogModal_content__1XSUr"
+          tabindex="-1"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div class="SimplePayInfoForm_contents__frc3R">
+            <div class="SimplePayInfoFormNavBar_contents__MU7AO">
+              <div class="SimplePayInfoFormNavBar_title__3tFxV">간편결제 정보 등록</div>
+              <button
+                class="Button_button__2FuOU Button_secondary__LNLsN Button_text__2-UCU Button_md__46Ai- Button_iconOnly__F0Izx iconButton SimplePayInfoFormNavBar_closeButton__MzCd0"
+                type="button"
+              >
+                <span
+                  ><span class="Button_children__ilFun"
+                    ><svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq" aria-hidden="true">
+                      <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path></svg></span
+                ></span>
+              </button>
+              </div>
+            </div>
+            <div class="SimplePayCardInfoForm_contents__2G87A">
+              <h4 class="SimplePayCardInfoForm_title__1HYs8">결제 정보 등록</h4>
+              <div class="CardInfoForm_form__2GhgC">
+                <div class="CardNumberFormGroup_contents__1MoYv">
+                  <div class="CardNumberFormGroup_label__3O6rf">신용(체크)카드번호</div>
+                  <div class="CardNumberFormGroup_cardNumber__3MThX">
+                    <div class="CardNumberFormGroup_inputBox__1R0h_">
+                      <input
+                        pattern="[0-9]*"
+                        name="cardNum1"
+                        type="number"
+                        class="Input_input__3VoZt check Input_sm__3KLFX Input_error__ADOWg num1"
+                        maxlength="4"
+                        value=""
+                        oninput="maxLengthCheck(this)"
+                      />
+                    </div>
+                    <div class="CardNumberFormGroup_inputBox__1R0h_">
+                      <input
+                        name="cardNum1"
+                        type="password"
+                        maxlength="4"
+                        class="Input_input__3VoZt check Input_sm__3KLFX Input_error__ADOWg num2"
+                        value=""
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                      />
+                    </div>
+                    <div class="CardNumberFormGroup_inputBox__1R0h_">
+                      <input
+                        pattern="[0-9]*"
+                        name="cardNum1"
+                        maxlength="4"
+                        type="password"
+                        class="Input_input__3VoZt check Input_sm__3KLFX Input_error__ADOWg num3"
+                        value=""
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                      />
+                    </div>
+                    <div class="CardNumberFormGroup_inputBox__1R0h_">
+                      <input
+                        pattern="[0-9]*"
+                        name="cardNum4"
+                        type="number"
+                        maxlength="4"
+                        class="Input_input__3VoZt check Input_sm__3KLFX Input_error__ADOWg num4"
+                        value=""
+                        oninput="maxLengthCheck(this)"
+                      />
+                    </div>
+                  </div>
+                  <em class="CardNumberFormGroup_inputHelper__2vKO3 CardNumberFormGroup_error__3iB_q"></em>
+                </div>
+                <div class="CardInfoForm_twoColumn__ALZlH">
+                  <div class="ExpirationDateFormGroup_contents__2muEH">
+                    <label for="payment-info-form-valid-date"
+                      >유효기간
+                      <input
+                        type="text"
+                        class="Input_input__3VoZt check Input_sm__3KLFX ExpirationDateFormGroup_input__1n6vh ExpirationDateFormGroup_placeholder__2aquN date-input"
+                        value=""
+                        placeholder="MM/YY"
+                        maxlength="4"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></label
+                    ><input type="hidden" name="cardExpMM" value="" /><input type="hidden" name="cardExpYY" value="" /><em
+                      class="ExpirationDateFormGroup_inputHelper__1Mw8Q ExpirationDateFormGroup_error__tQdD5"
+                      ></em
+                    >
+                  </div>
+                  <div class="PasswordFormGroup_contents__1mA8c">
+                    <label class="PasswordFormGroup_label__1JzCX">카드 비밀번호</label>
+                    <div class="VirtualKeyboardInput_contents__18HD2">
+                      <input
+                        class="check VirtualKeyboardInput_inputWrapper__L5drA PasswordFormGroup_inputBox__28zsV PasswordFormGroup_inModal__NgVG2 error VirtualKeyboardInput_inModal__1TVjx"
+                        type="password"
+                        name="cardPwd"
+                        placeholder="앞 2자리"
+                        maxlength="2"
+                        value=""
+                      />
+                      <div class="VirtualKeyboardInput_value__2wNsj"></div>
+                    </div>
+                    <em class="PasswordFormGroup_inputHelper__aHM4C PasswordFormGroup_error__VfB2O"></em>
+                  </div>
+                </div>
+                <div class="BirthDayFormGroup_contents__pqtyV">
+                  <label class="BirthDayFormGroup_inputBox__2d0HM" for="payment-info-form-birthday"
+                    >생년월일 (주민번호 앞 6자리)
+                    <input
+                      id="payment-info-form-birthday"
+                      pattern="[0-9]*"
+                      name="buyerAuthNum"
+                      type="number"
+                      maxlength="6"
+                      oninput="maxLengthCheck(this)"
+                      class="check Input_input__3VoZt Input_sm__3KLFX Input_error__ADOWg"
+                      value="" /></label
+                  ><em class="BirthDayFormGroup_inputHelper__fyARf BirthDayFormGroup_error__tTy7v"></em>
+                </div>
+                <input type="hidden" name="isValidForm" value="false" />
+                <div class="SimplePayCardInfoForm_warningWrapper__2kBEB">
+                  <i class="icon error-o"><img src="../image/exclamation_mark.png" alt="" /></i>
+                  <div class="SimplePayCardInfoForm_warning__3cpZg">
+                    <h5>와디즈에서 카드번호를 저장하지 않습니다!</h5>
+                    <p>카드사에서 제공하는 암호화된 정보만을 저장하기 때문에 안심하셔도 됩니다.</p>
+                  </div>
+                </div>
+                <div class="SimplePayCardInfoForm_buttonWrapper__M5Frv">
+                  <button
+                    class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_lg__1Dftp Button_block__1-g8w Button_disabled__I7x9M confirm-button"
+                    type="button"
+                    disabled="disabled"
+                    style="cursor: default"
+                  >
+                    <span><span class="Button_children__ilFun">등록</span></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 모달2 -->
+    <div id="alertify-o-cover" class="alertify-o-cover" style="display: none"></div>
+    <section id="alertify-o" class="alertify-o alertify-o-alert" style="display: none">
+      <a id="alertify-o-resetFocusBack" class="alertify-o-resetFocus" href="#">Reset Focus</a>
+      <article class="alertify-o-inner" >
+        <p class="alertify-o-message" style="font-size: 15px; padding-top: 2px">카드 등록을 삭제하시겠습니까?</p>
+        <nav class="alertify-o-buttons">  <div class="BasicDialog_dialogButtonArea__3hd7n BasicDialog_reverse__3eMW_">
+          <button
+            class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_lg__1Dftp BasicDialog_dialogButton__17YDz"
+            type="button"
+          >
+            <span><span class="Button_children__ilFun yes-button">확인</span></span></button
+          ><button class="Button_button__2FuOU BasicDialog_dialogButton__17YDz" type="button">
+            <span><span class="Button_children__ilFun no-button">취소</span></span>
+          </button>
+        </div></nav>
+      </article>
+      <a id="alertify-o-resetFocus" class="alertify-o-resetFocus" href="#">Reset Focus</a>
+    </section
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="../pay-card/pay-card.js"></script>
+</html>

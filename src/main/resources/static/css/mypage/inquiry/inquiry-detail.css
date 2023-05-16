@@ -1,0 +1,247 @@
+.RatingFaq_container__1uVo5 {
+  display: block;
+  padding-top: 24px;
+  letter-spacing: -0.3px;
+  color: #495057;
+}
+
+@media screen and (min-width: 769px) {
+  .RatingFaq_container__1uVo5 {
+    padding-top: 0;
+  }
+}
+
+.RatingFaq_container__1uVo5 {
+  display: block;
+  padding-top: 24px;
+  letter-spacing: -0.3px;
+  color: #495057;
+}
+
+@media screen and (min-width: 769px) {
+  .RatingFaq_container__1uVo5 {
+    padding-top: 0;
+  }
+}
+
+.RatingFaq_title__EK2eZ {
+  margin-bottom: 24px;
+}
+
+.RatingFaq_title__EK2eZ .RatingFaq_info__3DGAB {
+  line-height: 20px;
+  letter-spacing: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #212529;
+}
+
+.RatingFaq_title__EK2eZ .RatingFaq_info__3DGAB strong {
+  font-weight: 700;
+}
+
+.RatingFaq_wrapper__1NK4g,
+.RatingFaq_question__2H7l7 {
+  font-size: 13px;
+}
+
+.RatingFaq_question__2H7l7 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 12px;
+}
+
+.RatingFaq_wrapper__1NK4g h2,
+.RatingFaq_question__2H7l7 h2 {
+  line-height: 28px;
+  letter-spacing: -0.6px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 8px;
+}
+
+.RatingFaq_wrapper__1NK4g .RatingFaq_explanation__1R7mU,
+.RatingFaq_question__2H7l7 .RatingFaq_explanation__1R7mU {
+  line-height: 20px;
+  letter-spacing: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #868e96;
+}
+
+.RatingFaq_explanation__1R7mU {
+  font-size: 50px;
+}
+
+.RatingFaq_wrapper__1NK4g,
+.RatingFaq_question__2H7l7 {
+  font-size: 13px;
+}
+
+.RewardFaqItem_faqItem__2qbzt {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.RewardFaqItem_faqItem__2qbzt .RewardFaqItem_title__2ryy1 {
+  position: relative;
+  cursor: pointer;
+  padding: 12px 0;
+  line-height: 20px;
+  letter-spacing: 0;
+  font-size: 18px;
+  font-weight: 400;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.RewardFaqItem_faqItem__2qbzt .RewardFaqItem_title__2ryy1 i {
+  position: absolute;
+  right: 0;
+  font-size: 20px;
+  color: #adb5bd;
+}
+
+.icon.expand-more:before,
+.icon-expand-more:before {
+  display: inline-block;
+  margin-top: -0.2em;
+  vertical-align: middle;
+  text-transform: none;
+  line-height: 1;
+  font-family: wadizicon !important;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  content: '\003E';
+  transform: rotate(90deg);
+}
+
+.RewardFaqList_faqList__1FDhJ .active .icon:before {
+  content: '\003E';
+  margin-right: 5px;
+  transform: rotate(270deg);
+}
+
+.RatingFaq_container__1uVo5 .RatingFaq_messageBox__IsEsx {
+  padding-bottom: 12px;
+  line-height: 18px;
+  letter-spacing: 0;
+  font-size: 15px;
+  font-weight: 400;
+  color: #495057;
+  box-sizing: border-box;
+}
+
+.RewardFaqItem_faqItem__2qbzt.active .RewardFaqItem_content__23yEc {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 1.62;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.RewardFaqItem_faqItem__2qbzt .RewardFaqItem_content__23yEc {
+  display: none;
+}
+
+.Community_contentWrapper__2tclW {
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.RewardFaqList_faqList__1FDhJ .RewardFaqList_helpCenterWrap__3RByl {
+  position: relative;
+  margin-top: 24px;
+  margin-bottom: 56px;
+  background-color: #f9fafb;
+  padding: 16px 0 24px;
+  font-size: 13px;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 1097px) {
+  .RewardFaqList_faqList__1FDhJ .RewardFaqList_helpCenterWrap__3RByl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+  }
+}
+
+.RewardFaqList_faqList__1FDhJ .RewardFaqList_helpCenterWrap__3RByl p {
+  line-height: 20px;
+  letter-spacing: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+@media screen and (min-width: 1097px) {
+  .RewardFaqList_faqList__1FDhJ .RewardFaqList_helpCenterWrap__3RByl p {
+    margin-right: 24px;
+    margin-bottom: 0;
+  }
+}
+
+.RewardFaqList_faqList__1FDhJ .RewardFaqList_helpCenterButtons__1ZhAd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.Button_button__2FuOU {
+  position: relative;
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: 0.15s;
+  border: 1px solid #cdd3d8;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  padding: 9px 16px;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height: 1.43;
+  white-space: nowrap;
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+  box-sizing: border-box !important;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.Button_button__2FuOU.Button_primary__2mZni.Button_contained__2SIAT {
+  border-color: #00c4c4;
+  background-color: #00c4c4;
+  color: #fff;
+}
+
+.RewardFaqList_faqList__1FDhJ .RewardFaqList_helpCenterButtons__1ZhAd button,
+.RewardFaqList_faqList__1FDhJ .RewardFaqList_helpCenterButtons__1ZhAd a {
+  width: 120px;
+  text-align: center;
+}
+
+.Button_button__2FuOU span {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+}
+
+.Button_button__2FuOU .Button_children__ilFun {
+  vertical-align: top;
+}
+
+.Button_button__2FuOU.Button_sm__16X6h {
+  padding: 6px 12px;
+  line-height: 1.5;
+  font-size: 12px;
+}
