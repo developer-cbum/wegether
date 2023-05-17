@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/data/*")
+@RequestMapping("/dataroom/*")
 public class DataFileController {
 
 }
