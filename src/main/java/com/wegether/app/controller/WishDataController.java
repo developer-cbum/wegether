@@ -6,11 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/wish/*")
+@RequestMapping("/dataroom/*")
 public class WishDataController {
 
 }
