@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-//@RequestMapping("/card/*")
+@RequestMapping("/card/*")
 public class CardController {
 
 }
