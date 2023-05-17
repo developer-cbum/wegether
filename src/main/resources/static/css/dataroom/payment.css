@@ -910,7 +910,7 @@ li {
 }
 
 .StorePaymentNicePay_storePaymentNicePay__1Yb59.StorePaymentNicePay_checked__14ngZ {
-    border-color: #00c4c4;
+    border-color: #00BBFF;
     padding: 12px 16px;
 }
 
@@ -936,7 +936,7 @@ li {
 
 .StorePaymentNicePay_storePaymentNicePay__1Yb59.StorePaymentNicePay_single__3-vFW .StorePaymentNicePay_checkIcon__3gaNh {
     margin-right: 12px;
-    color: #00c4c4;
+    color: #00BBFF;
 }
 
 .StorePaymentNicePay_storePaymentNicePay__1Yb59 .StorePaymentNicePay_title__1Ppay svg {
@@ -1017,7 +1017,7 @@ input[type="radio" i] {
 }
 
 label.Radio_radio__qgo5c > input:checked + .Radio_icon__TTjQX, label.Radio_radio__qgo5c > input:checked:hover + .Radio_icon__TTjQX {
-    border-color: #00c4c4 !important;
+    border-color: #00BBFF !important;
     background-color: #fff;
 }
 
@@ -1229,7 +1229,7 @@ input, textarea {
 }
 
 label.Radio_radio__qgo5c > input:checked + .Radio_icon__TTjQX, label.Radio_radio__qgo5c > input:checked:hover + .Radio_icon__TTjQX {
-    border-color: #00c4c4 !important;
+    border-color: #00BBFF !important;
     background-color: #fff;
 }
 
@@ -1258,7 +1258,7 @@ label.Radio_radio__qgo5c > .Radio_icon__TTjQX {
 }
 
 label.Radio_radio__qgo5c > input:checked + .Radio_icon__TTjQX:before, label.Radio_radio__qgo5c > input:checked:hover + .Radio_icon__TTjQX:before {
-    background-color: #00c4c4;
+    background-color: #00BBFF;
 }
 
 label.Radio_radio__qgo5c > .Radio_icon__TTjQX:before {
@@ -1957,8 +1957,8 @@ svg:not(:root) {
 }
 
 .Button_button__2FuOU.Button_primary__2mZni.Button_contained__2SIAT {
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #00BBFF;
+    background-color: #00BBFF;
     color: #fff;
 }
 

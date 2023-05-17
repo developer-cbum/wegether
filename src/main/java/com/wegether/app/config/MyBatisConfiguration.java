@@ -1,4 +1,4 @@
-package wegether.app.config;
+package com.wegether.app.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
