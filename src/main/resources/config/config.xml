@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+    <typeAliases>
+        <typeAlias type="com.wegether.app.domain.vo.AnswerVO" alias="answerVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.CardVO" alias="cardVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.CommunityFileVO" alias="communityFileVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.CommunityReplyVO" alias="communityReplyVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.CommunityVO" alias="communityVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.ConsultingReplyVO" alias="consultingReplyVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.ConsultingVO" alias="consultingVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.DataFileVO" alias="dataFileVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.DataPayVO" alias="dataPayVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.DataVO" alias="dataVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.FileVO" alias="fileVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.InquiryVO" alias="inquiryVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.LectureFileVO" alias="lectureFileVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.LectureMemberVO" alias="lectureMemberVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.LectureVO" alias="lectureVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.MemberVO" alias="memberVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.NoticeFileVO" alias="noticeFileVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.NoticeVO" alias="noticeVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.PayVO" alias="payVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.PointVO" alias="pointVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.ProjectFileVO" alias="projectFileVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.ReplyVO" alias="replyVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.WishDataVO" alias="wishDataVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.WishProjectVO" alias="wishProjectVO"/>
+    </typeAliases>
 </configuration>
