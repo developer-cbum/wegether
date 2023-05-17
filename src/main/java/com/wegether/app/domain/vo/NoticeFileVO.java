@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-public class WishVO {
+public class NoticeFileVO {
     private Long id;
-    private Long memberId;
-    private Long dataId;
+    private Long fileId;
+    private Long noticeId;
 }
