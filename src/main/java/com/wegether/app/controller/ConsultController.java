@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/answer/*")
-public class AnswerController {
+@RequestMapping("/consult/*")
+public class ConsultController {
 
 }
 

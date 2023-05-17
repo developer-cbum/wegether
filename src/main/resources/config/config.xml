@@ -15,7 +15,6 @@
         <typeAlias type="com.wegether.app.domain.vo.FileVO" alias="fileVO"/>
         <typeAlias type="com.wegether.app.domain.vo.InquiryVO" alias="inquiryVO"/>
         <typeAlias type="com.wegether.app.domain.vo.LectureFileVO" alias="lectureFileVO"/>
-        <typeAlias type="com.wegether.app.domain.vo.LectureMemberVO" alias="lectureMemberVO"/>
         <typeAlias type="com.wegether.app.domain.vo.LectureVO" alias="lectureVO"/>
         <typeAlias type="com.wegether.app.domain.vo.MemberVO" alias="memberVO"/>
         <typeAlias type="com.wegether.app.domain.vo.NoticeFileVO" alias="noticeFileVO"/>
