@@ -43,7 +43,7 @@ $(window).resize(function(){
     }
 }).resize();
 // 모바일 검색버튼
-$(".SearchField_container__2Wc6p").on("click", function(){
+/*$(".SearchField_container__2Wc6p").on("click", function(){
     if($(".MobileSearchAppMain_content__2OZNC").css("display") == "none"){
         $(".MobileSearchAppMain_content__2OZNC").show();
         $(".MobileTitleBar_container__2ywDg").show();
@@ -57,7 +57,7 @@ $(".MobileTitleBar_buttonContainer__3jnuy").on("click", function(){
         $(".web-header-mobile").show();
     $(".MobileTitleBar_container__2ywDg").hide();
     $(".MobileSearchAppMain_content__2OZNC").hide();
-})
+})*/
 // 알림버튼
 $(".HeaderDesktop_notificationContainer__1iRey").on("click", function(){
     if($(".NotificationPopover_container__3nC48").css("display") == "none"){
