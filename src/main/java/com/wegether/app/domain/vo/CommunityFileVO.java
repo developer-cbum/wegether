@@ -9,6 +9,5 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class CommunityFileVO {
     private Long id;
-    private Long fileId;
     private Long communityId;
 }
