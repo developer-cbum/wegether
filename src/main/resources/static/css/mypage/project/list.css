@@ -191,7 +191,7 @@
 }
 
 .WritableSatisfactionPopper_highlight__19d61 {
-  color: #00c4c4;
+  color: #00BBFF;
 }
 
 .SatisfactionFilter_container__1q2UL {
@@ -216,7 +216,7 @@
 }
 
 .SatisfactionFilter_container__1q2UL .SatisfactionFilter_highlight__3Qt_3 {
-  color: #00b2b2;
+  color: #00BBFF;
 }
 
 .SatisfactionFilter_container__1q2UL .SatisfactionFilter_panel__2Rg9A {
@@ -383,7 +383,7 @@
   .Badge_badge__ovUKI.Badge_label__2Rft2.Badge_primary__tTdjx.Badge_tertiary__3uYKh {
   border: solid 1px #e7f9f9;
   background-color: #e7f9f9;
-  color: #00c4c4;
+  color: #00BBFF;
 }
 
 .Badge_container__9G9PS .Badge_badge__ovUKI.Badge_label__2Rft2.Badge_md__1Ck0w {
@@ -494,7 +494,7 @@
 
 .select-menu__control--is-focused,
 .select-menu__control--menu-is-open {
-  border-color: #00c4c4 !important;
+  border-color: #00BBFF !important;
 }
 
 .isError .select-menu__control--is-focused,
@@ -568,9 +568,10 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-sizing: border-box;
 }
+
 .select-menu__option--is-selected {
   background-color: rgba(0, 0, 0, 0) !important;
-  color: #00b2b2 !important;
+  color: #00BBFF !important;
 }
 
 .css-9g7j0m-menu {
@@ -624,7 +625,7 @@
 
 .select-menu__control--is-focused,
 .select-menu__control--menu-is-open {
-  border-color: #00c4c4 !important;
+  border-color: #00BBFF !important;
 }
 
 .css-1n7v3ny-option {
