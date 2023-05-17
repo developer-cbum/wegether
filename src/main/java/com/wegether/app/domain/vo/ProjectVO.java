@@ -20,7 +20,6 @@ public class ProjectVO {
     private String projectUpdateDate;
     private String projectEndDate;
     private Long projectReadCount;
-    private Long projectHeartCount;
     private int projectNowPersonnel;
     private int projectTotalPersonnel;
 }

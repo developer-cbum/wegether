@@ -9,6 +9,5 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class NoticeFileVO {
     private Long id;
-    private Long fileId;
     private Long noticeId;
 }
