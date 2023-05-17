@@ -22,4 +22,5 @@ public class MemberVO {
     private String memberShcool;
     private String memberMajor;
     private String memberIntroducing;
+    private long fileId;
 }

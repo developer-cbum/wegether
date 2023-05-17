@@ -16,7 +16,6 @@ public class LectureVO {
     private String lectureDate;
     private String lectureTime;
     private String lectureLocation;
-    private int lectureNowPersonnel;
     private int lectureTotalPersonnel;
     private String lectureRegisterDate;
     private String lectureUpdateDate;

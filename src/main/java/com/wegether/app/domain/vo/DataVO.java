@@ -18,7 +18,6 @@ public class DataVO {
     private String dataSchool;
     private String dataMajor;
     private Long dataReadCount;
-    private Long dataHeartCount;
     private String dataRegisterDate;
     private String dataUpdateDate;
 }
