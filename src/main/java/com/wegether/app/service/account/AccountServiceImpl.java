@@ -29,4 +29,11 @@ public class AccountServiceImpl implements AccountService {
     public Optional<Long> login(String memberId, String memberPassword){
         return memberDAO.findByMemberIdAndMemberPassword(memberId, memberPassword);
     }
+
+    @Override
+    public void changePassword(Long id, String memberPassword) {
+        memberDAO.setPassword(id, memberPassword);
+    }
+
+
 }
