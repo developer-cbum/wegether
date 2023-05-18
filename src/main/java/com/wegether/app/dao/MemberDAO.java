@@ -28,6 +28,11 @@ public class MemberDAO {
         return memberMapper.selectByMemberIdAndMemberPassword(memberId, memberPassword);
     }
 
+    //비밀번호 재설정
+    public void setPassword(Long id, String memberPassword){
+        memberMapper.updatePassword(id, memberPassword);
+    }
+
 
 }
 
