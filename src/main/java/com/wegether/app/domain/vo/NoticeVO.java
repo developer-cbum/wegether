@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class NoticeVO {
     private Long id;
-    private Long memberId;
     private String noticeTitle;
     private String noticeContent;
     private String noticeRegisterDate;
+    private String noticeUpdateDate;
 }

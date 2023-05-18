@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/account/find/find.css">
     <link rel="stylesheet" href="/css/common/common.css">
     <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/account/account-header.css">
 
     <title>아이디 찾기 | 위게더</title>
 
@@ -21,6 +22,7 @@
 </head>
 <body>
 <div id="page-container">
+    <header th:replace="~{/account/account-header :: #wz-header}"></header>
     <!-- [S] Header -->
     <!-- [E] Header -->
 

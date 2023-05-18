@@ -41,10 +41,10 @@ $(function () {
     // });
 
     //   pwd - btn click event
-    $('#BtnSendlink').on('click', function () {
-        $('.pwd_modal').show();
-        console.log('나타나라 모달');
-    });
+    // $('#BtnSendlink').on('click', function () {
+    //     $('.pwd_modal').show();
+    //     console.log('나타나라 모달');
+    // });
 
     // 모달 닫기
     $(closeBtns).on('click', function () {
@@ -94,5 +94,33 @@ $(function () {
             }
         });
         });
+
+
+    // 비밀번호 찾기
+    $('#BtnSendlink').on("click", function () {
+        $.ajax({
+            type: "POST",
+            url: "/account/findId",
+            data: {"memberId": $("#memberId").val()},
+            success: function (data) {
+                if (data) {
+                    $.ajax({
+                        type : "POST",
+                        url : "/account/changePw",
+                        data : {
+                            "memberId" : $('#memberId').val()
+                        },
+                        success : function(){
+                                $('.warn-modal').css("width", "350px");
+                                showWarnModal(`<span>이메일로 비밀번호 재설정 주소를 발송하였습니다.</span>`)
+                        }
+                    })
+                } else {
+                    showWarnModal(`<span>등록되지 않은 아이디입니다.</span>`)
+                    $('#notJoinedEmail').css("display", "block");
+                }
+            }
+        });
+    });
 
     }); //E
