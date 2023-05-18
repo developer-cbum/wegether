@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CommunityController {
     private CommunityService communityService;
 
-    @GetMapping(value = {"read", "modify"})
+    @GetMapping("community-detail")
     public void read(Long id, Model model){
-        model.addAttribute("communityDetail", communityService.getCommunity(id));
+        model.addAttribute("detail", communityService.getCommunity(id));
     }
 
 }
