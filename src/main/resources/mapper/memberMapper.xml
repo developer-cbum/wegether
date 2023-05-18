@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.MemberMapper">
+    <!-- 아이디중복검사   -->
+    <select id="selectByMemberId" resultType="memberVO">
+        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE
+        FROM TBL_MEMBER
+        WHERE MEMBER_ID = #{memberId}
+    </select>
+
+    <!-- 회원가입-->
+    <insert id="insert">
+        INSERT INTO TBL_MEMBER
+        (ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE)
+        VALUES(SEQ_MEMBER.NEXTVAL, #{memberId}, #{memberPassword}, #{memberName}, #{memberNickname}, #{memberPhoneNumber}, '1' , 'USER')
+    </insert>
+
+    <!--  로그인 -->
+    <select id="selectByMemberIdAndMemberPassword" resultType="long">
+        SELECT ID FROM TBL_MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PASSWORD = #{memberPassword}
+    </select>
+
+    <!--아이디찾기-->
+
+
+
+
+    <!--비밀번호찾기-->
+
 </mapper>
