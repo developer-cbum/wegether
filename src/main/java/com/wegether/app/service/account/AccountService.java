@@ -15,6 +15,9 @@ public interface AccountService {
     //    로그인
     public Optional<Long> login(String memberId, String memberPassword);
 
+    // 비밀번호 재설정
+    public void changePassword(Long id, String memberPassword);
+
 }
 
 

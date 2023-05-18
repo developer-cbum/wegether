@@ -18,7 +18,7 @@ public class ChangePwSendMailService {
 
     private String  address = "http://localhost:10000/account/find/change-pwd"; // 비밀번호 재설정 주소
     // 메일 내용 작성
-    public MimeMessage createMessage(String to) throws MessagingException, UnsupportedEncodingException {
+    public MimeMessage createMessage(String to, Long id) throws MessagingException, UnsupportedEncodingException {
 //		System.out.println("보내는 대상 : " + to);
 
         MimeMessage message = emailsender.createMimeMessage();
@@ -37,7 +37,7 @@ public class ChangePwSendMailService {
         msgg += "<h3 style='color:blue;'>비밀번호 재설정 주소입니다.</h3>";
         msgg += "<div style='font-size:130%'>";
         msgg += "비밀번호 재설정 URL : <strong>";
-        msgg += "<a href="+address + ">" + "이 곳을 클릭하세요." + "</a></strong><div><br/> "; // 메일에 주소넣기
+        msgg += "<a href="+ address + "?id=" + id + ">" + "이 곳을 클릭하세요." + "</a></strong><div><br/> "; // 메일에 주소넣기
         msgg += "</div>";
         message.setText(msgg, "utf-8", "html");// 내용, charset 타입, subtype
         // 보내는 사람의 이메일 주소, 보내는 사람 이름
@@ -51,10 +51,10 @@ public class ChangePwSendMailService {
     // sendSimpleMessage 의 매개변수로 들어온 to 는 곧 이메일 주소가 되고,
     // MimeMessage 객체 안에 내가 전송할 메일의 내용을 담는다.
     // 그리고 bean 으로 등록해둔 javaMail 객체를 사용해서 이메일 send!!
-    public void sendSimpleMessage(String to) throws Exception {
+    public void sendSimpleMessage(String to, Long id) throws Exception {
 
         // TODO Auto-generated method stub
-        MimeMessage message = createMessage(to); // 메일 발송
+        MimeMessage message = createMessage(to, id); // 메일 발송
         try {// 예외처리
             emailsender.send(message);
         } catch (MailException es) {

@@ -43,4 +43,9 @@ public class MemberDAOTests {
                 memberDAO.findByMemberIdAndMemberPassword("hds1234@naver.com", "!hksehdtjr159");
         assertThat(foundByMemberIdAndMemberPassword.isPresent()).isEqualTo(true);
     }
+
+    @Test
+    public void setMemberPasswordTest(){
+        memberDAO.setPassword(1L, "0123456789");
+    }
 }
