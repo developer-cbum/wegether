@@ -11,9 +11,9 @@
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
     />
 
-    <link rel="stylesheet" href="../../../static/css/account/find/find.css">
-    <link rel="stylesheet" href="../../../static/css/common/common.css">
-    <link rel="stylesheet" href="../../../static/css/common/style.css">
+    <link rel="stylesheet" href="/css/account/find/find.css">
+    <link rel="stylesheet" href="/css/common/common.css">
+    <link rel="stylesheet" href="/css/common/style.css">
 
     <title>아이디 찾기 | 위게더</title>
 
@@ -31,7 +31,7 @@
             <div class="tab-list">
                 <ul>
                     <li class="active"><a href="#">아이디 찾기</a></li>
-                    <li><a href="pwd.html">비밀번호 찾기</a></li>
+                    <li><a href="/account/find/pwd">비밀번호 찾기</a></li>
                 </ul>
             </div>
         </div>
@@ -42,20 +42,20 @@
                     와디즈는 이메일을 아이디로 사용합니다.<br/>소유하고 계신 계정을 입력해보세요.<br/>가입여부를
                     확인해드립니다.
                 </p>
-                <form class="wz form" id="form-findId" onsubmit="checkEmail(); return false;">
+                <form class="wz form" id="form-findId">
                     <div class="label-hidden field">
-                        <label class="text-hidden" for="userName">이메일 주소</label>
+                        <label class="text-hidden" for="memberId">이메일 주소</label>
                         <div class="wz input">
                             <input
-                                    id="userName"
+                                    id="memberId"
                                     class="input-text"
                                     type="email"
-                                    name="userName"
+                                    name="memberId"
                                     value=""
                                     placeholder="이메일 계정"
                             />
                         </div>
-                        <em id="emailError" class="helper error">이메일 형식이 올바르지 않습니다.</em>
+                        <em id="emailError" class="helper error" style="display: none">이메일 형식이 올바르지 않습니다.</em>
                     </div>
                     <button id="btnIsJoinedEmail" class="wz primary block button" type="button">
                         확인
@@ -76,10 +76,10 @@
                         는 와디즈에 등록되어 있지 않은 계정입니다.
                     </p>
                     <div class="inner-container">
-                        <a id="goToJoin" class="wz primary block button" href="../regist/intro.html"
+                        <a id="goToJoin" class="wz primary block button" href="../register.html"
                         >회원가입하기</a
                         >
-                        <a id="goToLogin" class="wz primary block button" href="../login/login.html"
+                        <a id="goToLogin" class="wz primary block button" href="../login.html"
                         >로그인</a
                         >
                         <a id="btn-recheck" class="wz block button" href="id.html">다시 확인</a>
@@ -96,5 +96,5 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../../static/js/account/find/find.js"></script>
+<script src="/js/account/find/find.js"></script>
 </html>
