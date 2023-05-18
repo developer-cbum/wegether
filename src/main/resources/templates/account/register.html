@@ -95,7 +95,7 @@
             >
                 <h3 class="SignUpIntroApp_simpleSignUpTitle__3aC7M">이메일 간편가입</h3>
 <!--                form 태그 시작-->
-                <form th:action="@{/account/regist/intro}" method="post" th:object="${memberVO}">
+                <form th:action="@{/account/register}" method="post" th:object="${memberVO}">
                 <div class="EmailSignUpFormContainer_formField__1vy9Q">
                         <div class="EmailAuthField_emailAuthField__2E9P2">
                             <label class="EmailAuthField_fieldLabel__1jS_Z">이메일</label>
@@ -706,7 +706,7 @@
                                         id="btn_modal_agree"
                                         aria-label="confirmation"
                                         class="Button_button__3MO4n Button_primary__29fd0 Button_contained__1kfgl Button_xl__DdjPf Button_block__3npc4"
-                                        type="button"
+                                        type="submit"
                                 >
                                     <span><span class="Button_children__raEW4">확인</span></span>
                                 </button>
