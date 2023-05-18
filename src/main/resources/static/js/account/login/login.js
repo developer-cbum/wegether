@@ -1,8 +1,8 @@
 $(function () {
     /* input + btns */
-    let email = $('#userName');
-    let pwd = $('#password');
-    let inputs = $('#userName, #password');
+    let email = $('#memberId');
+    let pwd = $('#memberPassword');
+    let inputs = $('#memberId, #memberPassword');
     let loginBtn = $('#btnLogin');
 
     // 이메일 유효성 검사

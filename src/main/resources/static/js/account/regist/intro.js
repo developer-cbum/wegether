@@ -37,6 +37,9 @@ $(function () {
     let pwdCheck = false;
     let rePwdCheck = false;
     let chkboxCheck = false;
+    let nickNameCheck = false;
+    let phoneNumberCheck = false;
+    let emconfirmchk = false;
 
     // 이메일 유효성 검사
     var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
@@ -45,19 +48,22 @@ $(function () {
             $(this).next('.help').html('이메일을 입력해주세요.');
             $(this).addClass('error');
             $('this').focus();
+            $(BtnAuthentication).attr("disabled", true);
             emailCheck = false;
             return false;
         } else if (!getMail.test($('#email_input').val())) {
             $(this).next('.help').html('이메일에 형식에 맞게 입력해주세요.');
             $(this).addClass('error');
+            $(BtnAuthentication).attr("disabled", true);
             emailCheck = false;
             return false;
         } else {
             $(this).next('.help').html('');
             $(this).removeClass('error');
-            $(BtnAuthentication).hide();
-            $(BtnReSend).show();
-            $(authentication).show();
+            $(BtnAuthentication).attr("disabled", false);
+            // $(BtnAuthentication).hide();
+            // $(BtnReSend).show();
+            // $(authentication).show();
             emailCheck = true;
             console.log(emailCheck);
             return false;
@@ -67,15 +73,15 @@ $(function () {
     });
 
     // 인증번호 입력
-    $('#authCode').on('keyup', function () {
+/*    $('#authCode').on('keyup', function () {
         if ($(this).val().length == 6) {
             console.log($(this).val().length);
             $('#btn_check_mail').removeAttr('disabled');
         }
-    });
+    });*/
 
     // 이름 유효성 검사
-    $('#nick_name').on('keyup', function () {
+    $('#name').on('keyup', function () {
         if ($(this).val() == '') {
             $(this).next('.help').html('이름을 입력해주세요.');
             $(this).addClass('error');
@@ -91,6 +97,64 @@ $(function () {
         }
         flagCheck();
     });
+    // 닉네임
+    $('#nick_name').on('keyup', function () {
+        if ($(this).val() == '') {
+            $(this).next('.help2').html('닉네임을 입력해주세요.');
+            $(this).addClass('error');
+            $(this).focus();
+            nickNameCheck = false;
+            return false;
+        } else {
+            $(this).next('.help2').html('');
+            $(this).removeClass('error');
+            nickNameCheck = true;
+            console.log(nickNameCheck);
+            return false;
+        }
+        flagCheck();
+    });
+
+    // 휴대폰 번호 검사
+    $('#memberPhoneNumber').on('input', function () {
+        let numericVal = $(this).val().replace(/[^0-9]/g, '');
+
+        if (numericVal.length > 11) {
+            numericVal = numericVal.substr(0, 11); // 최대 11자리까지만 유지
+        }
+
+        $(this).val(numericVal);
+    });
+
+
+    $('#memberPhoneNumber').on('keyup', function () {
+
+
+        if ($(this).val() == '') {
+            $(this).next('.help3').html('휴대폰 번호를 입력해주세요.');
+            $(this).addClass('error');
+            $(this).focus();
+            phoneNumberCheck = false;
+            return false;
+        }else if(!fn_mbtlnumChk($(this).val())){
+            $(this).next('.help3').html('휴대폰 번호를 양식에 맞게 입력 해주세요.');
+            $(this).addClass('error');
+            $(this).focus();
+            phoneNumberCheck = false;
+            return false;
+        } else {
+            $(this).next('.help3').html('');
+            $(this).removeClass('error');
+            phoneNumberCheck = true;
+            return false;
+        }
+
+
+        flagCheck();
+    });
+
+
+
 
     // let pwd = $('#password').val();
 
@@ -100,7 +164,7 @@ $(function () {
     // let spe = $input.val().search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
 
     // 패스워드 유효성 검사
-    $('#password').on('keyup', function () {
+    $('#memberPassword').on('keyup', function () {
         if ($(this).val() == '') {
             $(this).next('.help').html('비밀번호를 입력해주세요.');
             $(this).addClass('error');
@@ -132,7 +196,7 @@ $(function () {
             $(this).focus();
             rePwdCheck = false;
             return false;
-        } else if ($(this).val() != $('#password').val()) {
+        } else if ($(this).val() != $('#memberPassword').val()) {
             $(this).next('.help').html('비밀번호가 일치하지 않습니다.');
             $(this).addClass('error');
             $(this).focus();
@@ -161,13 +225,13 @@ $(function () {
     $(firstsvg).on('click', function () {
         $(firstsvg).hide();
         $(secondsvg).show();
-        $('#password').prop('type', 'text');
+        $('#memberPassword').prop('type', 'text');
     });
 
     $(secondsvg).on('click', function () {
         $(firstsvg).show();
         $(secondsvg).hide();
-        $('#password').prop('type', 'password');
+        $('#memberPpassword').prop('type', 'password');
     });
 
     $(checkfirstsvg).on('click', function () {
@@ -261,14 +325,83 @@ $(function () {
         $(modal).hide();
     });
 
+    function fn_mbtlnumChk(mbtlnum){
+        var regExp = /^010\d{8}$/;
+        if(!regExp.test(mbtlnum)){
+            return false;
+        }
+        return true;
+    }
+
+
     // flag check
     function flagCheck() {
-        if (emailCheck && nameCheck && pwdCheck && rePwdCheck && chkboxCheck) {
+        if (emconfirmchk && emailCheck && nameCheck && pwdCheck && rePwdCheck && chkboxCheck && nickNameCheck && phoneNumberCheck) {
             console.log('gogo');
             BtnSubmit.attr('disabled', false);
         } else {
             BtnSubmit.attr('disabled', true);
         }
+    }
+
+
+
+
+    //
+
+    //중복확인 버튼클릭 이벤트
+    $(BtnAuthentication).on("click", () => {
+        $.ajax({
+            type  : "POST",
+            url : "checkId",
+            data : {"memberId" : $("#email_input").val()},
+            success : function (data) {
+                    if(data){
+                        showWarnModal("사용가능한 아이디입니다");
+                        $(BtnAuthentication).hide();
+                        $(BtnReSend).show();
+                        $(authentication).show();
+                        email.attr("readOnly", true);
+                        $('#authCode').attr("readOnly", true);
+                    } else {
+                        showWarnModal("중복된 아이디입니다.");
+                    }
+            }
+
+        })
+            });
+
+    // 이메일 발송
+    $('.email-submit').on("click",()=>{
+        $.ajax({
+            type : "POST",
+            url : "mailConfirm",
+            data : {
+                "memberId" : $('#email_input').val()
+            },
+            success : function(data){
+                $('.warn-modal').css("width", "350px");
+                showWarnModal(`<span>해당 이메일로 인증번호 발송이 완료되었습니다.</span><br/> <span>확인부탁드립니다.</span>`);
+                $('#btn_check_mail').removeAttr('disabled');
+                $('#authCode').attr("readOnly", false);
+                console.log("data : "+data);
+                chkEmailConfirm(data);
+            }
+        })
+    })
+
+    // 이메일 인증번호 체크 함수
+    function chkEmailConfirm(data){
+        $('#btn_check_mail').on("click", function(){
+            if (data != $('#authCode').val()) { //
+                emconfirmchk = false;
+                showWarnModal(`<span>인증번호가 잘못되었습니다</span>`);
+            } else {
+                emconfirmchk = true;
+                showWarnModal(`<span>인증번호가 확인완료</span>`);
+                flagCheck();
+            }
+        })
     }
 
     //
