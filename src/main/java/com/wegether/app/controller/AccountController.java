@@ -42,7 +42,7 @@ public class AccountController {
     @PostMapping("register")
     public RedirectView join(MemberVO memberVO){
         accountService.join(memberVO);
-        return new RedirectView("/account/login/login");
+        return new RedirectView("/account/login");
     }
 
 
