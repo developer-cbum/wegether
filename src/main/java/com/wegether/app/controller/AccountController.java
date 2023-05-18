@@ -2,6 +2,7 @@ package com.wegether.app.controller;
 
 import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.service.account.AccountService;
+import com.wegether.app.service.mail.ChangePwSendMailService;
 import com.wegether.app.service.mail.RegisterMailService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,8 +27,12 @@ public class AccountController {
     //계정
     private final AccountService accountService;
 
-    //메일
+    // 인증코드 메일
     private final RegisterMailService registerMailService;
+
+    // 비밀번호 재설정 메일
+    private final ChangePwSendMailService changePwSendMailService;
+
 
 //    회원가입 화면으로 이동
     @GetMapping("register")
@@ -86,6 +91,12 @@ public class AccountController {
         return code;
 
     }
+    // 비밀번호 재설정 메일전송
+    @PostMapping("changePw")
+    @ResponseBody
+    public void sendChangePwMail(String memberId) throws Exception{
+        changePwSendMailService.sendSimpleMessage(memberId);
+    }
 
     //아이디찾기
     @GetMapping("find/id")
@@ -105,6 +116,9 @@ public class AccountController {
     @GetMapping("find/pwd")
     public void goToFindPwForm(){;}
 
+    //비밀번호 재설정
+    @GetMapping("find/change-pwd")
+    public void goToChangePwForm(MemberVO memberVO){;}
 
 }
 
