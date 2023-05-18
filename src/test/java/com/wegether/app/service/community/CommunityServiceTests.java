@@ -1,4 +1,4 @@
-package com.wegether.app.mapper;
+package com.wegether.app.service.community;
 
 import com.wegether.app.domain.vo.CommunityVO;
 import lombok.extern.slf4j.Slf4j;
@@ -11,15 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Slf4j
-public class CommunityMapperTest {
+public class CommunityServiceTests {
 
     @Autowired
-    private CommunityMapper communityMapper;
+    private CommunityService communityService;
 
     @Test
-    public void selectTest() {
-        final Optional<CommunityVO> foundCommunity = communityMapper.select(1L);
+    public void getCommunityTest() {
+        final Optional<CommunityVO> foundCommunity = communityService.getCommunity(1L);
         foundCommunity.ifPresent(communityVO -> assertThat(communityVO.getCommunityTitle()).isEqualTo("첫 게시글"));
-
     }
 }

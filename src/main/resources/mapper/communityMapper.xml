@@ -3,6 +3,7 @@
 <mapper namespace="com.wegether.app.mapper.CommunityMapper">
     <select id="select" resultType="CommunityVO">
         SELECT ID, MEMBER_ID, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
-        FROM WEGETHER.TBL_COMMUNITY
+        FROM TBL_COMMUNITY
+        WHERE ID = #{id}
     </select>
 </mapper>
