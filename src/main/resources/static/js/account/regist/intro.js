@@ -321,9 +321,11 @@ $(function () {
     });
 
     // madal btn
+/*
     btn_modal_agree.click(function () {
         $(modal).hide();
     });
+*/
 
     function fn_mbtlnumChk(mbtlnum){
         var regExp = /^010\d{8}$/;
@@ -399,6 +401,8 @@ $(function () {
             } else {
                 emconfirmchk = true;
                 showWarnModal(`<span>인증번호가 확인완료</span>`);
+                $('#authCode').attr("readOnly", true);
+                $(this).attr("disabled", true);
                 flagCheck();
             }
         })
