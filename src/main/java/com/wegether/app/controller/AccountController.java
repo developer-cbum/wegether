@@ -6,11 +6,10 @@ import com.wegether.app.service.mail.ChangePwSendMailService;
 import com.wegether.app.service.mail.RegisterMailService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -21,7 +20,7 @@ import java.util.Optional;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/account/*")
+@RequestMapping("/accounts/*")
 public class AccountController {
 
     //계정
@@ -59,7 +58,7 @@ public class AccountController {
                 return new RedirectView("/index/main");
             }
             redirectAttributes.addFlashAttribute("login", "false");
-            return new RedirectView("/account/login");
+            return new RedirectView("/accounts/login");
 
         }
 
@@ -67,23 +66,21 @@ public class AccountController {
     @GetMapping("logout")
     public RedirectView logout(HttpSession session){
         session.invalidate();
-        return new RedirectView("/account/login");
+        return new RedirectView("/accounts/login");
     }
 
 
-    //    아이디중복검사
-    @PostMapping("checkId")
+    //    아이디중복검사 // 아이디찾기
+    @PostMapping("check-id")
     @ResponseBody
-    public boolean checkId(MemberVO memberVO){
-        Optional<MemberVO> foundMemberVO = accountService.checkId(memberVO.getMemberId());
-        if(foundMemberVO.isEmpty()){
-            return true;
-        }
-        return false;
+    public Optional<MemberVO> checkId(String memberId){
+        log.info(memberId);
+        Optional<MemberVO> foundMemberVO = accountService.checkId(memberId);
+        return foundMemberVO;
     }
 
     // 회원 가입 메일인증
-    @PostMapping("mailConfirm")
+    @PostMapping("mail-confirm")
     @ResponseBody
     public String mailConfirm(String memberId) throws Exception{
         String code = registerMailService.sendSimpleMessage(memberId);
@@ -92,25 +89,18 @@ public class AccountController {
 
     }
     // 비밀번호 재설정 메일전송
-    @PostMapping("changePw")
+    @PostMapping("change-pw")
     @ResponseBody
-    public void sendChangePwMail(String memberId) throws Exception{
-        changePwSendMailService.sendSimpleMessage(memberId);
+    public void sendChangePwMail(String memberId, Long id) throws Exception{
+        log.info(id.toString());
+        changePwSendMailService.sendSimpleMessage(memberId, id);
     }
+
 
     //아이디찾기
     @GetMapping("find/id")
     public void goToFindIdForm(){;}
 
-    @PostMapping("findId")
-    @ResponseBody
-    public boolean findId(String memberId){
-        Optional<MemberVO> foundMember = accountService.checkId(memberId);
-        if(foundMember.isEmpty()){
-            return false;
-        }
-        return true;
-    }
 
     //비밀번호찾기
     @GetMapping("find/pwd")
@@ -118,7 +108,19 @@ public class AccountController {
 
     //비밀번호 재설정
     @GetMapping("find/change-pwd")
-    public void goToChangePwForm(MemberVO memberVO){;}
+    public void goToChangePwForm(Long id, MemberVO memberVO, Model model){
+        log.info(id.toString());
+        model.addAttribute("id", id);
+
+    }
+
+    @PostMapping("find/change-pwd")
+    public RedirectView changePassword(Long id, MemberVO memberVO){
+        log.info(memberVO.getMemberPassword());
+        log.info(id.toString());
+        accountService.changePassword(Long.valueOf(id), memberVO.getMemberPassword());
+        return new RedirectView("/accounts/login");
+    }
 
 }
 
