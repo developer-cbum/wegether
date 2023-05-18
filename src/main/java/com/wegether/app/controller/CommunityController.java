@@ -17,9 +17,7 @@ public class CommunityController {
     private CommunityService communityService;
 
     @GetMapping("community-detail")
-    public void read(Long id, Model model){
-        model.addAttribute("detail", communityService.getCommunity(id));
-    }
+    public void goToForm(Long id, Model model){;}
 
 }
 

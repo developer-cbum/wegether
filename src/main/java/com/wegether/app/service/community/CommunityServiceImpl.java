@@ -16,4 +16,7 @@ public class CommunityServiceImpl implements CommunityService {
 
     @Override
     public Optional<CommunityVO> getCommunity(Long id) { return communityDAO.findById(id);}
+
+    @Override
+    public void write(CommunityVO communityVO) { communityDAO.save(communityVO);}
 }

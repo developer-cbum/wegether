@@ -6,4 +6,16 @@
         FROM TBL_COMMUNITY
         WHERE ID = #{id}
     </select>
+
+    <insert id="insert">
+        INSERT INTO TBL_COMMUNITY
+        (ID, MEMBER_ID, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT)
+        VALUES(SEQ_COMMUNITY.NEXTVAL, #{memberId}, #{communityTitle}, #{communitySubtitle}, #{communityContent})
+    </insert>
+
+    <update id="update">
+        UPDATE TBL_COMMUNITY
+        SET COMMUNITY_TITLE=#{communityTitle}, COMMUNITY_SUBTITLE=#{communitySubtitle}, COMMUNITY_CONTENT=#{communityContent}, COMMUNITY_UPDATE_DATE=SYSDATE
+        WHERE ID = #{id};
+    </update>
 </mapper>

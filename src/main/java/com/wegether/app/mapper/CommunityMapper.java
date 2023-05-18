@@ -9,4 +9,8 @@ import java.util.Optional;
 public interface CommunityMapper {
 
     public Optional<CommunityVO> select(Long id);
+
+    public void insert(CommunityVO communityVO);
+
+    public void update(CommunityVO communityVO);
 }

@@ -22,4 +22,14 @@ public class CommunityDAOTest {
         final Optional<CommunityVO> foundCommunity = communityDAO.findById(1L);
         foundCommunity.ifPresent(communityVO -> assertThat(communityVO.getCommunityTitle()).isEqualTo("첫 게시글"));
     }
+
+    @Test
+    public void saveTest() {
+        CommunityVO communityVO = new CommunityVO();
+        communityVO.setMemberId(1L);
+        communityVO.setCommunityTitle("인설트");
+        communityVO.setCommunitySubtitle("인설트테스트");
+        communityVO.setCommunityContent("인썰트테스트임당");
+        communityDAO.save(communityVO);
+    }
 }

@@ -14,5 +14,7 @@ public class CommunityDAO {
     private final CommunityMapper communityMapper;
 
     public Optional<CommunityVO> findById(Long id){ return communityMapper.select(id);}
+
+    public void save(CommunityVO communityVO){communityMapper.insert(communityVO);}
 }
 
