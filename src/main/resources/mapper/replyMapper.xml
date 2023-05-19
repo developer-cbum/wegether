@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.ReplyMapper">
-    <insert id="insert">
-        INSERT INTO TBL_REPLY
-        (ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE)
-        VALUES(SEQ_REPLY.NEXTVAL, #{replyContent} , #{} , 0, SYSDATE, SYSDATE
-        );
-
-    </insert>
 </mapper>
-        public void insert(ReplyVO replyVO) {
-        String query = "INSERT INTO TBL_REPLY"
-        + "(REPLY_ID, REPLY_CONTENT, USER_ID, BOARD_ID, REPLY_GROUP, REPLY_DEPTH) "
-        + "VALUES(SEQ_REPLY.NEXTVAL, ?, ?, ?, SEQ_REPLY.CURRVAL, 0)";
 
