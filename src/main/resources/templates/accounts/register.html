@@ -29,7 +29,7 @@
     </div>
 </div>
 <div id="page-container">
-    <header th:replace="~{/account/account-header :: #wz-header}"></header>
+    <header th:replace="~{/accounts/account-header :: #wz-header}"></header>
     <!-- [S] Header -->
     <!-- [E] Header -->
 
@@ -38,18 +38,18 @@
         <main class="SignUpIntroApp_signUpIntro__2v2wv">
             <div class="AccountContainer_container__PwFiE">
                 <h2 class="AccountTitle_title__2gD-3">간편가입</h2>
-                <div class="FirstBenefitPopper_firstBenefitPopper__1dKmf">
+             <!--   <div class="FirstBenefitPopper_firstBenefitPopper__1dKmf">
                     <div class="FirstBenefitPopper_content__2XS-G">
                 <span class="FirstBenefitPopper_giftIcon__1RCpf"></span
                 ><span class="FirstBenefitPopper_text__3hDUb"
                     >위게더가 처음이라면? <strong>최대 2만원 혜택</strong></span
                     >
                     </div>
-                </div>
+                </div>-->
                 <div>
                     <button
                             class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_kakaoButton__2lTDs SNSButtonList_spacer__38ac5"
-                            type="button"
+                            type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=4d189f87999895c1fba5bb291861d41d&redirect_uri=http://localhost:10000/login&response_type=code'"
                     >
                 <span
                 ><span class="Button_children__raEW4"
@@ -68,7 +68,7 @@
                 ></button
                     >
                     <button
-                            class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_naverButton__1rzZ_ SNSButtonList_spacer__38ac5"
+                            class="naver-button Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_naverButton__1rzZ_ SNSButtonList_spacer__38ac5"
                             type="button"
                     >
                 <span
@@ -95,7 +95,7 @@
             >
                 <h3 class="SignUpIntroApp_simpleSignUpTitle__3aC7M">이메일 간편가입</h3>
 <!--                form 태그 시작-->
-                <form th:action="@{/account/regist/intro}" method="post" th:object="${memberVO}">
+                <form th:action="@{/accounts/register}" method="post" th:object="${memberVO}">
                 <div class="EmailSignUpFormContainer_formField__1vy9Q">
                         <div class="EmailAuthField_emailAuthField__2E9P2">
                             <label class="EmailAuthField_fieldLabel__1jS_Z">이메일</label>
@@ -706,7 +706,7 @@
                                         id="btn_modal_agree"
                                         aria-label="confirmation"
                                         class="Button_button__3MO4n Button_primary__29fd0 Button_contained__1kfgl Button_xl__DdjPf Button_block__3npc4"
-                                        type="button"
+                                        type="submit"
                                 >
                                     <span><span class="Button_children__raEW4">확인</span></span>
                                 </button>

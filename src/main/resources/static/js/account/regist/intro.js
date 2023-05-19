@@ -321,9 +321,11 @@ $(function () {
     });
 
     // madal btn
+/*
     btn_modal_agree.click(function () {
         $(modal).hide();
     });
+*/
 
     function fn_mbtlnumChk(mbtlnum){
         var regExp = /^010\d{8}$/;
@@ -353,10 +355,11 @@ $(function () {
     $(BtnAuthentication).on("click", () => {
         $.ajax({
             type  : "POST",
-            url : "checkId",
+            url : "check-id",
             data : {"memberId" : $("#email_input").val()},
-            success : function (data) {
-                    if(data){
+            dataType: "json",
+            success : function (member) {
+                    if(member == null){
                         showWarnModal("사용가능한 아이디입니다");
                         $(BtnAuthentication).hide();
                         $(BtnReSend).show();
@@ -375,7 +378,7 @@ $(function () {
     $('.email-submit').on("click",()=>{
         $.ajax({
             type : "POST",
-            url : "mailConfirm",
+            url : "mail-confirm",
             data : {
                 "memberId" : $('#email_input').val()
             },
@@ -388,6 +391,7 @@ $(function () {
                 chkEmailConfirm(data);
             }
         })
+
     })
 
     // 이메일 인증번호 체크 함수
@@ -399,10 +403,15 @@ $(function () {
             } else {
                 emconfirmchk = true;
                 showWarnModal(`<span>인증번호가 확인완료</span>`);
+                $('#authCode').attr("readOnly", true);
+                $(this).attr("disabled", true);
                 flagCheck();
             }
         })
     }
+
+
+
 
     //
 }); //E

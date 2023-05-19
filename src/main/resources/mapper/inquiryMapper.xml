@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.InquiryMapper">
+
+<!--    문의 등록-->
+    <insert id="insert">
+        INSERT INTO TBL_INQUIRY
+        (ID, MEMBER_ID, INQUIRY_TITLE, INQUIRY_CONTENT)
+        VALUES(SEQ_INQUIRY.NEXTVAL, #{memberId}, #{inquiryTitle}, #{inquiryContent})
+    </insert>
+
+<!--    문의 답변 리스트-->
+<!--    <select id="selectAll" resultType="inquiryDTO">-->
+<!--        SELECT MEMBER_ID, i.ID, i.INQUIRY_TITLE, i.INQUIRY_CONTENT, a.ANSWER_CONTENT-->
+<!--		from TBL_INQUIRY i left join TBL_ANSWER a-->
+<!--		on i.ID=a.INQUIRY_ID-->
+<!--		where MEMBER_ID =1-->
+<!--		order by i.ID DESC;-->
+<!--    </select>-->
+
+
 </mapper>

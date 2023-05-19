@@ -21,7 +21,6 @@ public class RegisterMailService {
  private final JavaMailSender emailsender; // Bean 등록해둔 MailConfig 를 emailsender
 
     private String ePw; // 인증번호
-
     // 메일 내용 작성
     public MimeMessage createMessage(String to) throws MessagingException, UnsupportedEncodingException {
 //		System.out.println("보내는 대상 : " + to);

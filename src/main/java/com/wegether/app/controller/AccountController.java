@@ -2,14 +2,14 @@ package com.wegether.app.controller;
 
 import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.service.account.AccountService;
+import com.wegether.app.service.mail.ChangePwSendMailService;
 import com.wegether.app.service.mail.RegisterMailService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -20,14 +20,18 @@ import java.util.Optional;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/account/*")
+@RequestMapping("/accounts/*")
 public class AccountController {
 
     //계정
     private final AccountService accountService;
 
-    //메일
+    // 인증코드 메일
     private final RegisterMailService registerMailService;
+
+    // 비밀번호 재설정 메일
+    private final ChangePwSendMailService changePwSendMailService;
+
 
 //    회원가입 화면으로 이동
     @GetMapping("register")
@@ -37,13 +41,25 @@ public class AccountController {
     @PostMapping("register")
     public RedirectView join(MemberVO memberVO){
         accountService.join(memberVO);
-        return new RedirectView("/account/login/login");
+        return new RedirectView("/account/login");
+    }
+
+    // 카카오 회원가입
+    @GetMapping("kakao-register")
+    public void goToKakakJoinForm(String memberId, String memberPassword, MemberVO memberVO, HttpSession session
+    ){;}
+
+    @PostMapping("kakao-register")
+    public RedirectView joinToKakao(MemberVO memberVO){
+        accountService.join(memberVO);
+        accountService.changeLoginStatusToKakao(memberVO.getMemberId());
+        return new RedirectView("/index/main");
     }
 
 
 //    로그인
         @GetMapping("login")
-        public void goToLoginForm(MemberVO memberVO){;}
+        public void goToLoginForm(MemberVO memberVO, HttpSession session){;}
 
         @PostMapping("login")
         public RedirectView login(String memberId, String memberPassword, HttpSession session, RedirectAttributes redirectAttributes){
@@ -54,7 +70,7 @@ public class AccountController {
                 return new RedirectView("/index/main");
             }
             redirectAttributes.addFlashAttribute("login", "false");
-            return new RedirectView("/account/login");
+            return new RedirectView("/accounts/login");
 
         }
 
@@ -62,23 +78,21 @@ public class AccountController {
     @GetMapping("logout")
     public RedirectView logout(HttpSession session){
         session.invalidate();
-        return new RedirectView("/account/login");
+        return new RedirectView("/accounts/login");
     }
 
 
-    //    아이디중복검사
-    @PostMapping("checkId")
+    //    아이디중복검사 // 아이디찾기
+    @PostMapping("check-id")
     @ResponseBody
-    public boolean checkId(MemberVO memberVO){
-        Optional<MemberVO> foundMemberVO = accountService.checkId(memberVO.getMemberId());
-        if(foundMemberVO.isEmpty()){
-            return true;
-        }
-        return false;
+    public Optional<MemberVO> checkId(String memberId){
+        log.info(memberId);
+        Optional<MemberVO> foundMemberVO = accountService.checkId(memberId);
+        return foundMemberVO;
     }
 
     // 회원 가입 메일인증
-    @PostMapping("mailConfirm")
+    @PostMapping("mail-confirm")
     @ResponseBody
     public String mailConfirm(String memberId) throws Exception{
         String code = registerMailService.sendSimpleMessage(memberId);
@@ -86,24 +100,41 @@ public class AccountController {
         return code;
 
     }
+    // 비밀번호 재설정 메일전송
+    @PostMapping("change-pw")
+    @ResponseBody
+    public void sendChangePwMail(String memberId, Long id) throws Exception{
+        log.info(id.toString());
+        changePwSendMailService.sendSimpleMessage(memberId, id);
+    }
+
 
     //아이디찾기
     @GetMapping("find/id")
     public void goToFindIdForm(){;}
 
-    @PostMapping("findId")
-    @ResponseBody
-    public boolean findId(String memberId){
-        Optional<MemberVO> foundMember = accountService.checkId(memberId);
-        if(foundMember.isEmpty()){
-            return false;
-        }
-        return true;
-    }
 
     //비밀번호찾기
     @GetMapping("find/pwd")
     public void goToFindPwForm(){;}
+
+    //비밀번호 재설정
+    @GetMapping("find/change-pwd")
+    public void goToChangePwForm(Long id, MemberVO memberVO, Model model){
+        log.info(id.toString());
+        model.addAttribute("id", id);
+
+    }
+
+    @PostMapping("find/change-pwd")
+    public RedirectView changePassword(Long id, MemberVO memberVO){
+        log.info(memberVO.getMemberPassword());
+        log.info(id.toString());
+        accountService.changePassword(Long.valueOf(id), memberVO.getMemberPassword());
+        return new RedirectView("/accounts/login");
+    }
+
+
 
 
 }

@@ -39,5 +39,9 @@ public class AccountServiceTests {
         accountService.join(memberVO);
     }
 
+    @Test
+    public void changePasswordTest(){
+        accountService.changePassword(1L, "!dlwhdans159");
+    }
 
 }

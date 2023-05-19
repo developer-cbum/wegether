@@ -14,7 +14,7 @@ public class DataVO {
     private Long memberId;
     private String dataTitle;
     private String dataContent;
-    private String dataPrice;
+    private Long dataPrice;
     private String dataSchool;
     private String dataMajor;
     private Long dataReadCount;
