@@ -26,7 +26,7 @@ public class CardDAOTests {
     }
 
     @Test
-    public void insertTest(){
+    public void removeTest(){
         cardDAO.remove(2L);
     }
 

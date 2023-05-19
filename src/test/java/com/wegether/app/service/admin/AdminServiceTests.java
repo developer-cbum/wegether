@@ -17,6 +17,8 @@ public class AdminServiceTests {
     @Autowired
     private AdminService adminService;
 
+    /* ------------------------------------------------------------------------------------ */
+
     //    공지사항 목록 테스트
     @Test
     public void noticeGetListTest(){
@@ -52,5 +54,25 @@ public class AdminServiceTests {
     public void noticeRemoveTest() {
         adminService.noticeRemove(23L);
     }
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    자료 목록 테스트
+    @Test
+    public void dataGetListTest() { assertThat(adminService.dataGetList()).hasSize(1); }
+
+    //    자료 삭제 테스트
+    @Test
+    public void dataRemoveTest() { adminService.dataRemove(2L);}
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    프로젝트 목록 테스트
+    @Test
+    public void projectGetListAll() { assertThat(adminService.projectGetList()).hasSize(1); }
+
+    //    프로젝트 삭제 테스트
+    @Test
+    public void projectRemoveTest() { adminService.projectRemove(2L);}
 
 }

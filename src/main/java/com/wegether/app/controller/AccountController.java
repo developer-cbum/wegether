@@ -46,18 +46,20 @@ public class AccountController {
 
     // 카카오 회원가입
     @GetMapping("kakao-register")
-    public void goToKakakJoinForm(String memberId, String memberPassword, MemberVO memberVO){;}
+    public void goToKakakJoinForm(String memberId, String memberPassword, MemberVO memberVO, HttpSession session
+    ){;}
 
     @PostMapping("kakao-register")
     public RedirectView joinToKakao(MemberVO memberVO){
         accountService.join(memberVO);
+        accountService.changeLoginStatusToKakao(memberVO.getMemberId());
         return new RedirectView("/index/main");
     }
 
 
 //    로그인
         @GetMapping("login")
-        public void goToLoginForm(MemberVO memberVO){;}
+        public void goToLoginForm(MemberVO memberVO, HttpSession session){;}
 
         @PostMapping("login")
         public RedirectView login(String memberId, String memberPassword, HttpSession session, RedirectAttributes redirectAttributes){

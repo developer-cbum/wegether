@@ -2,6 +2,7 @@ package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.mapper.DataMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -29,5 +30,28 @@ public class DataDAO {
     public Optional<DataDTO> findById(Long id){
         return dataMapper.select(id);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    소영 마이페이지 내가 등록한 자료 조회
+    public List<DataVO> showmydata(Long memberId){return dataMapper.selectmydata(memberId);}
 
 }

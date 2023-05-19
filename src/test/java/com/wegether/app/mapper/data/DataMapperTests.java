@@ -1,6 +1,7 @@
 package com.wegether.app.mapper.data;
 
 import com.wegether.app.domain.dto.DataDTO;
+import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.mapper.DataMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -33,5 +34,31 @@ public class DataMapperTests {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    소영 마이페이지
+//    내가 등록한 자료 조회 test
+    @Test
+    public void selectmydataTest(){
+        assertThat(dataMapper.selectmydata(1L)).hasSize(1);
+//        dataMapper.selectmydata(1L).map(DataVO::getMemberId).ifPresent(log::info);
+    }
     
 }

@@ -91,8 +91,7 @@
                         <div>
                             <button
                                     class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_kakaoButton__2lTDs SNSButtonList_spacer__38ac5"
-                                    type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=4d189f87999895c1fba5bb291861d41d&redirect_uri=\n'+
-                                                                                'http://localhost:10000/login&response_type=code'; console.log(sessionStorage.getItem('token'))"
+                                    type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=4d189f87999895c1fba5bb291861d41d&redirect_uri=http://localhost:10000/login&response_type=code'"
                             >
                     <span
                     ><span class="Button_children__raEW4"
@@ -165,8 +164,14 @@
 <script src="/js/modal/modal.js"></script>
 <script th:inline="javascript">
     let check = [[${login}]];
+    let statusCheck =[[${status}]];
+    console.log(statusCheck);
     if (check) {
         showWarnModal("<span>아이디 또는 비밀번호를</span><span>확인해주세요.</span>");
+    }
+
+    if(statusCheck){
+        showWarnModal("<span>SNS 연동 설정</span><span>확인해주세요.</span>");
     }
 
 

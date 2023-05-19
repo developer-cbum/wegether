@@ -2,6 +2,7 @@ package com.wegether.app.service.account;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,10 @@ import java.util.HashMap;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class KakaoService {
+
+    private final AccountService accountService;
 
     public String getKaKaoAccessToken(String code){
         String access_Token="";
@@ -112,15 +116,20 @@ public class KakaoService {
             log.info("id : " + id);
             log.info("email : " + email);
 
+
+
             map.put("memberId", email);
             map.put("memberPassword", id);
 
 
             br.close();
 
+
         } catch (IOException e) {
             e.printStackTrace();
+
         }
+
 
         return map;
     }

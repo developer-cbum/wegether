@@ -4,12 +4,12 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>관리자 페이지- 공지사항 게시판 작성</title>
+        <title>관리자 페이지- 공지사항 게시판 상세보기</title>
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
-        <link rel="stylesheet" href="/css/admin/admin_board_notice_write.css" />
+        <link rel="stylesheet" href="/css/admin/admin_board_detail.css" />
+        <link rel="stylesheet" href="/css/admin/admin_inquire_detail.css" />
         <link rel="icon" href="/image/logo/favicon.png" />
     </head>
-
     <body>
         <div>
             <div class="info-title-box info-title-box-flex">
@@ -29,7 +29,7 @@
             </div>
             <div class="wrap">
                 <!-- 사이드 바 -->
-                <div th:replace="~{admin/side-bar :: sidebar}"></div>
+                <div th:replace="~{admins/side-bar :: sidebar}"></div>
 
                 <div class="container">
                     <div class="container-margin">
@@ -39,43 +39,37 @@
                                 <a href="">
                                     <img src="/image/admin/prev_icon.png" class="prev-icon" />
                                 </a>
-                                <a class="back-page" href="">리스트로 돌아가기</a>
+                                <span class="prev-title">리스트로 돌아가기</span>
                             </div>
                         </div>
 
                         <!-- 내용 섹션 -->
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
-                                <div class="board-info-title-box">
-                                    <span>공지사항 등록하기</span>
+                                <div class="board-info-title-box" style="position: relative">
+                                    <span>공지사항 상세보기</span>
+                                    <a href="" class="btn_done">수정</a>
+                                </div>
+                                <div class="info-table">
+                                    <div class="info-member">
+                                        <span class="span-bold">제목 :</span>
+                                        <!-- 제목  -->
+                                        <span text="">[공지] 공지 제목 </span>
+                                    </div>
+                                    <div class="info-member">
+                                        <span class="span-bold">작성 날짜 :</span>
+                                        <!-- 작성 날짜  -->
+                                        <span text="">
+                                            2023-04-24
+                                        </span>
+                                    </div>
                                 </div>
                                 <hr />
                                 <div class="info-table">
-                                    <form action="" method="post">
-                                        <div>
-                                            <input
-                                                type="text"
-                                                class="board-title"
-                                                name="noticeTitle"
-                                                placeholder="제목을 입력해주세요."
-                                                autocomplete="off"
-                                                value=""
-                                            />
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            <textarea
-                                                class="board-content"
-                                                name="noticeContent"
-                                                placeholder="내용을 입력해주세요."
-                                                text=""
-                                            ></textarea>
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            <button class="btn_done" type="submit">등록 완료</button>
-                                        </div>
-                                    </form>
+                                    <div text="">
+                                        <!-- 게시판 내용 -->
+                                        게시판 내용
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -85,6 +79,5 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <!-- <script src="/js/admin/sidemenu.js"></script> -->
     <script src="/js/admin/sidemenu.js"></script>
 </html>
