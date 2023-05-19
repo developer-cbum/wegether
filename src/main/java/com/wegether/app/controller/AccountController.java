@@ -44,6 +44,16 @@ public class AccountController {
         return new RedirectView("/account/login");
     }
 
+    // 카카오 회원가입
+    @GetMapping("kakao-register")
+    public void goToKakakJoinForm(String memberId, String memberPassword, MemberVO memberVO){;}
+
+    @PostMapping("kakao-register")
+    public RedirectView joinToKakao(MemberVO memberVO){
+        accountService.join(memberVO);
+        return new RedirectView("/index/main");
+    }
+
 
 //    로그인
         @GetMapping("login")
@@ -121,6 +131,9 @@ public class AccountController {
         accountService.changePassword(Long.valueOf(id), memberVO.getMemberPassword());
         return new RedirectView("/accounts/login");
     }
+
+
+
 
 }
 
