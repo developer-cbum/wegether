@@ -27,4 +27,11 @@
         WHERE ID = #{id}
     </update>
 
+<!--   카카오나 로그인 상태 업데이트-->
+    <update id="updateLoginStatusToKakao">
+         UPDATE TBL_MEMBER
+        SET MEMBER_LOGIN_STATUS = 'KAKAO'
+        WHERE MEMBER_ID = #{memberId}
+    </update>
+
 </mapper>
