@@ -23,4 +23,7 @@ public interface MemberMapper {
     //카카오 로그인 상태 업데이트
     public void updateLoginStatusToKakao(String memberId);
 
+    //아이디 찾기 세션으로
+    public Optional<MemberVO> selectById(Long id);
+
 }
