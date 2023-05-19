@@ -17,4 +17,7 @@ public interface MemberMapper {
     // 로그인
     public Optional<Long> selectByMemberIdAndMemberPassword(String memberId,String memberPassword);
 
+    //비밀번호 재설정
+    public void updatePassword(@Param("id") Long id, @Param("memberPassword") String memberPassword);
+
 }

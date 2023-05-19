@@ -1,15 +1,15 @@
-package com.wegether.app.domain.vo;
+package com.wegether.app.domain.dto;
 
+import com.wegether.app.domain.vo.FileVO;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
-@Slf4j
 @Data
-@NoArgsConstructor
-public class DataVO {
+public class DataDTO {
     private Long id;
     private Long memberId;
     private String dataTitle;
@@ -20,4 +20,6 @@ public class DataVO {
     private Long dataReadCount;
     private String dataRegisterDate;
     private String dataUpdateDate;
+    private List<FileVO> files = new ArrayList<>();
+    private List<Long> fileIdsForDelete = new ArrayList<>();
 }

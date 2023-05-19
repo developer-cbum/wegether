@@ -7,19 +7,18 @@
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,viewport-fit=cover"
         />
-        <link rel="stylesheet" href="../static/css/community-register.css" />
-        <title>상품 등록</title>
+        <link rel="stylesheet" href="/css/dataroom/register.css" />
 
         <!-- 상품 등록 css -->
         <link href="https://static.wadiz.kr/studio/funding/static/css/5.6aa6dee4.chunk.css" rel="stylesheet" />
-
         <link href="https://static.wadiz.kr/studio/funding/static/css/main.2b8a3946.chunk.css" rel="stylesheet" />
-
         <link
             rel="stylesheet"
             type="text/css"
             href="https://static.wadiz.kr/studio/funding/static/css/6.eb91f874.chunk.css"
         />
+
+        <title>자료 등록 | 위게더</title>
     </head>
     <body class="ReactModal__Body--open" aria-hidden="true">
         <div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
@@ -242,71 +241,6 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="/js/dataroom/register.js"></script>
 
-    <!-- 모달 부분 js -->
-    <script>
-        let modalCheck;
-        function showWarnModal(modalMessage) {
-            modalCheck = false;
-            $('div#content-wrap').html(modalMessage);
-            $('div.warn-modal').css('animation', 'popUp 0.5s');
-            $('div.modal').css('display', 'flex').hide().fadeIn(500);
-            setTimeout(function () {
-                modalCheck = true;
-            }, 500);
-        }
-
-        $('div.modal').on('click', function () {
-            if (modalCheck) {
-                $('div.warn-modal').css('animation', 'popDown 0.5s');
-                $('div.modal').fadeOut(500);
-            }
-        });
-    </script>
-
-    <!-- 유효성 검사 -->
-    <!-- 여기 부분 다른 곳 작업 끝나면 유효성 검사 추가 -->
-    <script>
-        function check() {
-            // 자료 제목 유효성 검사
-            if (document.registerForm.dataTitle.value == '') {
-                showWarnModal('자료 제목을 입력해주세요');
-                document.registerForm.dataTitle.focus();
-                return;
-            }
-
-            // 자료 가격
-            if (document.registerForm.dataPrice.value == '') {
-                showWarnModal('자료 가격을 입력해주세요');
-                document.registerForm.dataPrice.focus();
-                return;
-            }
-
-            // 자료 출처(학교)
-            if (document.registerForm.dataSchool.value == '') {
-                showWarnModal('자료 출처(학교)를 입력해주세요');
-                document.registerForm.dataSchool.focus();
-                return;
-            }
-
-            // 자료 출처(전공)
-            if (document.registerForm.dataMajor.value == '') {
-                showWarnModal('자료 출처(전공)을 입력해주세요');
-                document.registerForm.dataMajor.focus();
-                return;
-            }
-
-            // 자료 내용 유효성 검사
-            if (document.registerForm.dataContent.value == '') {
-                showWarnModal('자료 내용을 입력해주세요');
-                document.registerForm.dataContent.focus();
-                return;
-            }
-
-            showWarnModal('저장이 완료되었습니다');
-            setTimeout(function () {
-                document.registerForm.submit();
-            }, 2000);
-        }
-    </script>
 </html>

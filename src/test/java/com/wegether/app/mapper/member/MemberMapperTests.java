@@ -46,5 +46,10 @@ public class MemberMapperTests {
         log.info(foundId.get().toString());
     }
 
+    @Test
+    public void updatePasswordTest(){
+        memberMapper.updatePassword(1L, "1234567890");
+    }
+
 
 }
