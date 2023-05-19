@@ -18,6 +18,9 @@ public interface AccountService {
     // 비밀번호 재설정
     public void changePassword(Long id, String memberPassword);
 
+    //카카오 로그인 상태 업데이트
+    public void changeLoginStatusToKakao(String memberId);
+
 }
 
 
