@@ -20,6 +20,7 @@ public class DataDTO {
     private Long dataReadCount;
     private String dataRegisterDate;
     private String dataUpdateDate;
+    private String memberNickname;
     private List<FileVO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
 }
