@@ -4,7 +4,7 @@
     <insert id="insertConsulting">
         INSERT INTO TBL_CONSULTING
         (ID, MEMBER_ID, CONSULTING_TITLE, CONSULTING_CONTENT, CONSULTING_CATEGORY)
-        VALUES(SEQ_CONSULTING.NEXTVAL, #{id}, #{ConsultingTitle}, #{ConsultingContent}, #{ConsultingCategory})
+        VALUES(SEQ_CONSULTING.NEXTVAL, #{memberId}, #{consultingTitle}, #{consultingContent}, #{consultingCategory})
     </insert>
 
 
