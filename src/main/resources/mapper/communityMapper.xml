@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.CommunityMapper">
-    <select id="selectAll" resultType="CommunityVO">
-        SELECT ID, MEMBER_ID, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
+    <select id="selectAll" resultType="CommunityDTO">
+        SELECT C.ID, C.MEMBER_ID, MEMBER_NAME, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
         FROM (
-        SELECT ID, MEMBER_ID, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
+        SELECT ROWNUM R, C.ID, C.MEMBER_ID, MEMBER_NAME, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
         FROM TBL_MEMBER M JOIN TBL_COMMUNITY C
         <![CDATA[
-        ON M.ID = C.MEMBER_ID AND ROWNUM <= #{pagination.page} * #{pagination.rowCount}
+        ON M.ID = C.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
         ]]>
         ORDER BY C.ID
         DESC
         <![CDATA[
-        ) P WHERE R > (#{pagination.page} - 1) * #{pagination.rowCount}
+        ) C WHERE R > (#{page} - 1) * #{rowCount}
         ]]>
     </select>
 

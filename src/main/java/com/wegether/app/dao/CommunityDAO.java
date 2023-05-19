@@ -1,6 +1,7 @@
 package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.CommunityDTO;
+import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.vo.CommunityVO;
 import com.wegether.app.mapper.CommunityMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ public class CommunityDAO {
 
     private final CommunityMapper communityMapper;
 
-    public List<CommunityDTO> findAll() { return communityMapper.selectAll(); }
+    public List<CommunityDTO> findAll(CommunityPagination communityPagination) { return communityMapper.selectAll(communityPagination); }
 
     public Optional<CommunityDTO> findById(Long id){ return communityMapper.select(id);}
 

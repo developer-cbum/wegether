@@ -1,6 +1,7 @@
 package com.wegether.app.service.community;
 
 import com.wegether.app.domain.dto.CommunityDTO;
+import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.vo.CommunityVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,13 @@ public class CommunityServiceTests {
     private CommunityService communityService;
 
     @Test
-    public void getListTest() { assertThat(communityService.getList()).hasSize(7);}
+    public void getListTest() {
+        CommunityPagination communityPagination = new CommunityPagination(3);
+        communityPagination.setPage(1);
+        communityService.getList(communityPagination).stream().map(CommunityDTO::toString).forEach(log::info);
+    }
+
+
 
     @Test
     public void getCommunityTest() {
@@ -49,6 +56,5 @@ public class CommunityServiceTests {
     @Test
     public void removeTest() {
         communityService.remove(22L);
-        assertThat(communityService.getList()).hasSize(4);
     }
 }

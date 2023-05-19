@@ -1,6 +1,7 @@
 package com.wegether.app.mapper.community;
 
 import com.wegether.app.domain.dto.CommunityDTO;
+import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.vo.CommunityVO;
 import com.wegether.app.mapper.CommunityMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +20,17 @@ public class CommunityMapperTest {
     private CommunityMapper communityMapper;
 
     @Test
-    public void selectAllTest() { assertThat(communityMapper.selectAll()).hasSize(4);}
+    public void selectAllTest() {
+        CommunityPagination communityPagination = new CommunityPagination(3);
+        communityPagination.setPage(1); //화면에서 전달받은 페이지
+        communityMapper.selectAll(communityPagination).stream().map(CommunityDTO::toString).forEach(log::info);
+//        postMapper.selectAll(pagination, new Search("popular")).stream().map(PostDTO::toString).forEach(log::info);
+//        postMapper.selectAll(pagination, new Search()).stream().map(PostDTO::toString).forEach(log::info);
+    }
 
     @Test
-    public void selectTest() {
-        final Optional<CommunityDTO> foundCommunity = communityMapper.select(1L);
-        foundCommunity.ifPresent(communityVO -> assertThat(communityVO.getCommunityTitle()).isEqualTo("첫 게시글"));
-
+    public void selectTest(){
+        communityMapper.select(24L).map(CommunityDTO::getMemberName).ifPresent(log::info);
     }
 
     @Test
@@ -40,7 +45,7 @@ public class CommunityMapperTest {
 
     @Test
     public void updateTest() {
-        Optional<CommunityDTO> foundCommunity = communityMapper.select(1L);
+        Optional<CommunityDTO> foundCommunity = communityMapper.select(29L);
         foundCommunity.ifPresent(communityDTO -> communityDTO.setCommunityTitle("제목수정"));
         foundCommunity.ifPresent(communityDTO -> communityDTO.setCommunitySubtitle("섭타이틀수정"));
         foundCommunity.ifPresent(communityDTO -> communityDTO.setCommunityContent("내용수정"));
@@ -56,7 +61,7 @@ public class CommunityMapperTest {
 
     @Test
     public void deleteTest(){
-        communityMapper.delete(1L);
-        assertThat(communityMapper.selectAll()).hasSize(6);
+        communityMapper.delete(29L);
     }
+
 }

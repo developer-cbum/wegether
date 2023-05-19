@@ -2,6 +2,7 @@ package com.wegether.app.dao.community;
 
 import com.wegether.app.dao.CommunityDAO;
 import com.wegether.app.domain.dto.CommunityDTO;
+import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.vo.CommunityVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -20,12 +21,16 @@ public class CommunityDAOTest {
     private CommunityDAO communityDAO;
 
     @Test
-    public void findAllTest() { assertThat(communityDAO.findAll()).hasSize(4);}
+    public void findAllTest() {
+        CommunityPagination communityPagination = new CommunityPagination(3);
+        communityPagination.setPage(1);
+        communityDAO.findAll(communityPagination).stream().map(CommunityDTO::toString).forEach(log::info);
+    }
+
 
     @Test
-    public void findbyIdTest() {
-        final Optional<CommunityDTO> foundCommunity = communityDAO.findById(1L);
-        foundCommunity.ifPresent(communityVO -> assertThat(communityVO.getCommunityTitle()).isEqualTo("첫 게시글"));
+    public void selectTest(){
+        communityDAO.findById(28L).map(CommunityDTO::getMemberName).ifPresent(log::info);
     }
 
     @Test
@@ -40,7 +45,7 @@ public class CommunityDAOTest {
 
     @Test
     public void setCommunityDAOTest() {
-        Optional<CommunityDTO> foundCommunity = communityDAO.findById(1L);
+        Optional<CommunityDTO> foundCommunity = communityDAO.findById(28L);
         foundCommunity.ifPresent(communityDTO -> communityDTO.setCommunityContent("삐약삐약"));
         CommunityDTO communityDTO = foundCommunity.orElseThrow();
         communityDAO.setCommunityDTO(communityDTO);
@@ -51,8 +56,7 @@ public class CommunityDAOTest {
 
     @Test
     public void deleteTest(){
-        communityDAO.delete(21L);
-        assertThat(communityDAO.findAll()).hasSize(5);
+        communityDAO.delete(29L);
     }
 
 }

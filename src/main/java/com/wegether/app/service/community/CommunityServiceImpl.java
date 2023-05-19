@@ -2,6 +2,7 @@ package com.wegether.app.service.community;
 
 import com.wegether.app.dao.CommunityDAO;
 import com.wegether.app.domain.dto.CommunityDTO;
+import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.vo.CommunityVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,8 +17,9 @@ public class CommunityServiceImpl implements CommunityService {
 
     private final CommunityDAO communityDAO;
 
+
     @Override
-    public List<CommunityDTO> getList() { return communityDAO.findAll(); }
+    public List<CommunityDTO> getList(CommunityPagination communityPagination) { return communityDAO.findAll(communityPagination); }
 
     @Override
     public Optional<CommunityDTO> getCommunity(Long id) { return communityDAO.findById(id);}
