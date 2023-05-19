@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.vo.CommunityVO;
 import com.wegether.app.mapper.CommunityMapper;
 import lombok.RequiredArgsConstructor;
@@ -14,13 +15,13 @@ public class CommunityDAO {
 
     private final CommunityMapper communityMapper;
 
-    public List<CommunityVO> findAll() { return communityMapper.selectAll(); }
+    public List<CommunityDTO> findAll() { return communityMapper.selectAll(); }
 
-    public Optional<CommunityVO> findById(Long id){ return communityMapper.select(id);}
+    public Optional<CommunityDTO> findById(Long id){ return communityMapper.select(id);}
 
-    public void save(CommunityVO communityVO){communityMapper.insert(communityVO);}
+    public void save(CommunityDTO communityDTO){communityMapper.insert(communityDTO);}
 
-    public void setCommunityVO(CommunityVO communityVO){communityMapper.update(communityVO);}
+    public void setCommunityDTO(CommunityDTO communityDTO){communityMapper.update(communityDTO);}
 
     public void delete(Long id){communityMapper.delete(id);}
 }
