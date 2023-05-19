@@ -30,7 +30,7 @@ public class CommunityMapperTest {
 
     @Test
     public void selectTest(){
-        communityMapper.select(24L).map(CommunityDTO::getMemberName).ifPresent(log::info);
+        communityMapper.select(24L).map(CommunityDTO::toString).ifPresent(log::info);
     }
 
     @Test

@@ -29,8 +29,8 @@ public class CommunityDAOTest {
 
 
     @Test
-    public void selectTest(){
-        communityDAO.findById(28L).map(CommunityDTO::getMemberName).ifPresent(log::info);
+    public void findByIdTest(){
+        communityDAO.findById(24L).map(CommunityDTO::toString).ifPresent(log::info);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class CommunityDAOTest {
 
     @Test
     public void setCommunityDAOTest() {
-        Optional<CommunityDTO> foundCommunity = communityDAO.findById(28L);
+        Optional<CommunityDTO> foundCommunity = communityDAO.findById(30L);
         foundCommunity.ifPresent(communityDTO -> communityDTO.setCommunityContent("삐약삐약"));
         CommunityDTO communityDTO = foundCommunity.orElseThrow();
         communityDAO.setCommunityDTO(communityDTO);
@@ -56,7 +56,7 @@ public class CommunityDAOTest {
 
     @Test
     public void deleteTest(){
-        communityDAO.delete(29L);
+        communityDAO.delete(30L);
     }
 
 }

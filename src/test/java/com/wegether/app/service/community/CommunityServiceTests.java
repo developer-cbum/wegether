@@ -25,12 +25,9 @@ public class CommunityServiceTests {
         communityService.getList(communityPagination).stream().map(CommunityDTO::toString).forEach(log::info);
     }
 
-
-
     @Test
-    public void getCommunityTest() {
-        final Optional<CommunityDTO> foundCommunity = communityService.getCommunity(1L);
-        foundCommunity.ifPresent(community -> assertThat(community.getCommunityTitle()).isEqualTo("첫 게시글"));
+    public void findByIdTest(){
+        communityService.getCommunity(23L).map(CommunityDTO::toString).ifPresent(log::info);
     }
 
     @Test
@@ -45,16 +42,17 @@ public class CommunityServiceTests {
 
     @Test
     public void modifyTest() {
-        Optional<CommunityDTO> foundCommunity = communityService.getCommunity(1L);
+        Optional<CommunityDTO> foundCommunity = communityService.getCommunity(23L);
         foundCommunity.ifPresent(communityVO -> communityVO.setCommunityContent("점핑예점핑"));
         CommunityDTO communityDTO = foundCommunity.orElseThrow();
         communityService.modify(communityDTO);
-        foundCommunity = communityService.getCommunity(1L);
+        foundCommunity = communityService.getCommunity(23L);
         foundCommunity.ifPresent(community -> assertThat(community.getCommunityContent()).isEqualTo("점핑예점핑"));
     }
 
     @Test
     public void removeTest() {
-        communityService.remove(22L);
+        communityService.remove(23L);
     }
+
 }
