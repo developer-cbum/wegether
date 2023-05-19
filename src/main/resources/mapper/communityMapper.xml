@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.CommunityMapper">
+    <select id="selectAll" resultType="CommunityDTO">
+        SELECT C.ID, C.MEMBER_ID, MEMBER_NAME, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
+        FROM (
+        SELECT ROWNUM R, C.ID, C.MEMBER_ID, MEMBER_NAME, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
+        FROM TBL_MEMBER M JOIN TBL_COMMUNITY C
+        <![CDATA[
+        ON M.ID = C.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
+        ]]>
+        ORDER BY C.ID
+        DESC
+        <![CDATA[
+        ) C WHERE R > (#{page} - 1) * #{rowCount}
+        ]]>
+    </select>
+
+    <select id="select" resultType="CommunityDTO">
+        SELECT C.ID, C.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
+        FROM TBL_COMMUNITY C JOIN TBL_MEMBER M
+        ON C.MEMBER_ID = M.ID AND C.ID = #{id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO TBL_COMMUNITY
+        (ID, MEMBER_ID, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT)
+        VALUES(SEQ_COMMUNITY.NEXTVAL, #{memberId}, #{communityTitle}, #{communitySubtitle}, #{communityContent})
+    </insert>
+
+    <update id="update">
+        UPDATE TBL_COMMUNITY
+        SET COMMUNITY_TITLE=#{communityTitle}, COMMUNITY_SUBTITLE=#{communitySubtitle}, COMMUNITY_CONTENT=#{communityContent}, COMMUNITY_UPDATE_DATE=SYSDATE
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TBL_COMMUNITY
+        WHERE ID = #{id}
+    </delete>
 </mapper>

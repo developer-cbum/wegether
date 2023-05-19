@@ -28,6 +28,13 @@ public class MemberDAO {
         return memberMapper.selectByMemberIdAndMemberPassword(memberId, memberPassword);
     }
 
+    //비밀번호 재설정
+    public void setPassword(Long id, String memberPassword){
+        memberMapper.updatePassword(id, memberPassword);
+    }
+
+    //카카오 로그인 상태 업데이트
+    public void setLoginStatusToKakao(String memberId){memberMapper.updateLoginStatusToKakao(memberId);}
 
 }
 

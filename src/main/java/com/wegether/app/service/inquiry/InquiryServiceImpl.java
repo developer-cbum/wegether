@@ -1,9 +1,17 @@
 package com.wegether.app.service.inquiry;
 
+import com.wegether.app.dao.InquiryDAO;
+import com.wegether.app.domain.vo.InquiryVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class InquiryServiceImpl implements InquiryService {
+public class InquiryServiceImpl implements InquiryService{
+    private final InquiryDAO inquiryDAO;
+
+    @Override
+    public void register(InquiryVO inquiryVO) {
+        inquiryDAO.save(inquiryVO);
+    }
 }

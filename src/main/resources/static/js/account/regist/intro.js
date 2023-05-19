@@ -355,10 +355,11 @@ $(function () {
     $(BtnAuthentication).on("click", () => {
         $.ajax({
             type  : "POST",
-            url : "checkId",
+            url : "check-id",
             data : {"memberId" : $("#email_input").val()},
-            success : function (data) {
-                    if(data){
+            dataType: "json",
+            success : function (member) {
+                    if(member == null){
                         showWarnModal("사용가능한 아이디입니다");
                         $(BtnAuthentication).hide();
                         $(BtnReSend).show();
@@ -377,7 +378,7 @@ $(function () {
     $('.email-submit').on("click",()=>{
         $.ajax({
             type : "POST",
-            url : "mailConfirm",
+            url : "mail-confirm",
             data : {
                 "memberId" : $('#email_input').val()
             },
@@ -390,6 +391,7 @@ $(function () {
                 chkEmailConfirm(data);
             }
         })
+
     })
 
     // 이메일 인증번호 체크 함수
@@ -407,6 +409,9 @@ $(function () {
             }
         })
     }
+
+
+
 
     //
 }); //E
