@@ -1,6 +1,9 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.dto.DataAdminDTO;
+import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.domain.vo.NoticeVO;
+import com.wegether.app.domain.vo.ProjectVO;
 import com.wegether.app.service.admin.AdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/admin/*")
+@RequestMapping("/admins/*")
 public class AdminController {
     private final AdminService adminService;
 
+/* -------------------------------------------------------- */
 
 //    공지사항 작성 이동
     @GetMapping("notice/write")
@@ -33,7 +37,17 @@ public class AdminController {
     @GetMapping("notice/modify")
     public void goToModifyForm(NoticeVO noticeVO){;}
 
+/* -------------------------------------------------------- */
 
+//    자료 목록 이동
+    @GetMapping("data/list")
+    public void goToListForm(DataAdminDTO dataAdminDTO){;}
+
+/* -------------------------------------------------------- */
+
+//    프로젝트 목록 이동
+    @GetMapping("project/list")
+    public void goToListForm(ProjectVO projectVO){;}
 
 }
 
