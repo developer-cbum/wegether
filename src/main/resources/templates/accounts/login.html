@@ -164,8 +164,14 @@
 <script src="/js/modal/modal.js"></script>
 <script th:inline="javascript">
     let check = [[${login}]];
+    let statusCheck =[[${status}]];
+    console.log(statusCheck);
     if (check) {
         showWarnModal("<span>아이디 또는 비밀번호를</span><span>확인해주세요.</span>");
+    }
+
+    if(statusCheck){
+        showWarnModal("<span>SNS 연동 설정</span><span>확인해주세요.</span>");
     }
 
 
