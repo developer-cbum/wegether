@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.AdminMapper">
 
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
+
     <!-- 공지사항 목록 -->
     <select id="noticeSelectAll" resultType="noticeVO">
         SELECT ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGISTER_DATE
@@ -32,5 +34,39 @@
     <delete id="noticeDelete">
         DELETE FROM TBL_NOTICE WHERE ID = #{id}
     </delete>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- 자료 목록 -->
+    <select id="dataSelectAll" resultType="dataAdminDTO">
+        SELECT D.ID, D.DATA_TITLE, M.MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE
+        FROM TBL_MEMBER M INNER JOIN TBL_DATA D
+        ON M.MEMBER_ID = D.MEMBER_ID
+    </select>
+
+    <!-- 자료 삭제 -->
+    <delete id="dataDelete">
+        DELETE FROM TBL_DATA WHERE ID = #{Id}
+    </delete>
+
+    <!-- 자료 선택 삭제(작업 필요) -->
+    <delete id="dataDeleteAll">
+    </delete>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- 프로젝트 목록 -->
+    <select id="projectSelectAll" resultType="projectAdminDTO">
+        SELECT P.ID, P.PROJECT_TITLE, M.MEMBER_NICKNAME, P.PROJECT_SCHOOL, P.PROJECT_MAJOR, P.PROJECT_END_DATE, P.PROJECT_REGISTER_DATE
+        FROM TBL_MEMBER M INNER JOIN TBL_PROJECT P
+        ON M.MEMBER_ID = P.MEMBER_ID
+    </select>
+
+    <!-- 프로젝트 삭제 -->
+    <delete id="projectDelete">
+        DELETE FROM TBL_PROJECT WHERE ID = #{Id}
+    </delete>
+
+
 
 </mapper>

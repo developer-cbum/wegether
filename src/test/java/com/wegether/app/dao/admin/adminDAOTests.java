@@ -16,6 +16,8 @@ public class adminDAOTests {
     @Autowired
     private AdminDAO adminDAO;
 
+    /* ------------------------------------------------------------------------------------ */
+
     //    공지사항 목록 테스트
     @Test
     public void noticeFindAllTest() {
@@ -51,5 +53,25 @@ public class adminDAOTests {
     public void noticeDeleteTest() {
         adminDAO.noticeDelete(22L);
     }
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    자료 목록 테스트
+    @Test
+    public void dataFindAllTest() { assertThat(adminDAO.dataFindAll()).hasSize(2); }
+
+    //    자료 삭제 테스트
+    @Test
+    public void dataDeleteTest() { adminDAO.dataDelete(1L);}
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    프로젝트 목록 테스트
+    @Test
+    public void projectFindAll() { assertThat(adminDAO.projectFindAll()).hasSize(2); }
+
+    //    프로젝트 삭제 테스트
+    @Test
+    public void projectDeleteTest() { adminDAO.projectDelete(1L);}
 
 }
