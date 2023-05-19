@@ -20,6 +20,8 @@ public class AdminMapperTests {
     @Autowired
     private AdminMapper adminMapper;
 
+    /* ------------------------------------------------------------------------------------ */
+
     //    공지사항 목록 테스트
     @Test
     public void noticeSelectAllTest() {
@@ -38,7 +40,7 @@ public class AdminMapperTests {
     //    공지사항 상세 테스트
     @Test
     public void noticeSelectTest() {
-        adminMapper.noticeSelect(2L).map(NoticeVO::getNoticeTitle).ifPresent(log::info);
+        adminMapper.noticeSelect(21L).map(NoticeVO::getNoticeTitle).ifPresent(log::info);
     }
 
     //    공지사항 수정 테스트
@@ -55,5 +57,25 @@ public class AdminMapperTests {
     public void noticeDeleteTest() {
         adminMapper.noticeDelete(2L);
     }
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    자료 목록 테스트
+    @Test
+    public void dataSelectAllTest() { assertThat(adminMapper.dataSelectAll()).hasSize(1); }
+
+    //    자료 삭제 테스트
+    @Test
+    public void dataDeleteTest() { adminMapper.dataDelete(1L);}
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    프로젝트 목록 테스트
+    @Test
+    public void projectSelectAllTest() { assertThat(adminMapper.projectSelectAll()).hasSize(1); }
+
+    //    프로젝트 삭제 테스트
+    @Test
+    public void projectDeleteTest() { adminMapper.projectDelete(1L);}
 
 }
