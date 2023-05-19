@@ -21,6 +21,11 @@ public class DataDTO {
     private String dataRegisterDate;
     private String dataUpdateDate;
     private String memberNickname;
+    private String memberSchool;
+    private String memberMajor;
+    private String memberIntroducing;
+    private Long dataId;
+//    private Long WishDataId;
     private List<FileVO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
 }
