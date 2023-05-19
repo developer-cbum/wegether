@@ -42,5 +42,38 @@
 <!--        FROM TBL_MEMBER M JOIN TBL_DATA D-->
 <!--        ON M.ID = D.MEMBER_ID AND D.ID = #{id}-->
 <!--    </select>-->
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    소영 마이페이지에서 내가 구매한 자료, 내가 등록한 자료 조회-->
+
+<!--    내가 등록한 자료-->
+    <select id="selectmydata" resultType="dataVO">
+    SELECT ID, DATA_TITLE, DATA_UPDATE_DATE
+    FROM TBL_DATA WHERE MEMBER_ID=#{memberId}
+    </select>
 </mapper>

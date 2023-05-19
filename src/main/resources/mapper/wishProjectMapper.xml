@@ -10,9 +10,9 @@
     </insert>
 
 <!--    찜 조회-->
-    <select id="select" resultType="wishProjectVO">
+    <select id="selectAll" resultType="wishProjectVO">
       SELECT ID, MEMBER_ID, PROJECT_ID
-      FROM TBL_WISH_PROJECT;
+      FROM TBL_WISH_PROJECT
     </select>
 
 <!--    찜 취소-->
