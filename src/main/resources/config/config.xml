@@ -12,6 +12,7 @@
         <typeAlias type="com.wegether.app.domain.vo.DataFileVO" alias="dataFileVO"/>
         <typeAlias type="com.wegether.app.domain.vo.DataPayVO" alias="dataPayVO"/>
         <typeAlias type="com.wegether.app.domain.vo.DataVO" alias="dataVO"/>
+        <typeAlias type="com.wegether.app.domain.dto.DataDTO" alias="dataDTO"/>
         <typeAlias type="com.wegether.app.domain.vo.FileVO" alias="fileVO"/>
         <typeAlias type="com.wegether.app.domain.vo.InquiryVO" alias="inquiryVO"/>
         <typeAlias type="com.wegether.app.domain.vo.LectureFileVO" alias="lectureFileVO"/>
@@ -30,6 +31,6 @@
         <typeAlias type="com.wegether.app.domain.dto.DataAdminDTO" alias="dataAdminDTO"/>
         <!-- 05월 19일 김인진 ProjectAdminDTO 추가 -->
         <typeAlias type="com.wegether.app.domain.dto.ProjectAdminDTO" alias="projectAdminDTO"/>
-
+        <typeAlias type="com.wegether.app.domain.dto.Pagination" alias="pagination"/>
     </typeAliases>
 </configuration>

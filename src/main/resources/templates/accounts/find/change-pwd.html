@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -11,9 +11,10 @@
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
     />
 
-    <link rel="stylesheet" href="../../../static/css/account/find/change-pwd.css">
-    <link rel="stylesheet" href="../../../static/css/common/common.css">
-    <link rel="stylesheet" href="../../../static/css/common/style.css">
+    <link rel="stylesheet" href="/css/account/find/change-pwd.css">
+    <link rel="stylesheet" href="/css/common/common.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/account/account-header.css">
 
     <title>비밀번호 재설정 | 위게더</title>
 
@@ -21,6 +22,7 @@
 </head>
 <body>
 <div id="page-container">
+    <header th:replace="~{/accounts/account-header :: #wz-header}"></header>
     <!-- [S] Header -->
     <!-- [E] Header -->
 
@@ -31,17 +33,18 @@
                 <p class="desc">새로 사용하기를 원하는 비밀번호를 입력해 주세요.</p>
             </div>
             <div class="page-body">
-                <form action="">
+                <form th:action="@{/accounts/find/change-pwd}" method="post" th:object="${memberVO}">
                     <div class="label">비밀번호</div>
                     <div class="text-field reset-password-new">
+                        <input type="hidden" name="id" th:value="${id}">
                         <input
-                                id="password"
+                                th:field="*{memberPassword}"
                                 type="password"
                                 class="input-text"
                                 placeholder="비밀번호 입력"
                                 maxlength="20"
                         />
-                        <p class="help""></p>
+                        <p class="help"></p>
                     </div>
                     <div class="text-field reset-password-confirm">
                         <input
@@ -51,10 +54,10 @@
                                 placeholder="비밀번호 확인"
                                 maxlength="20"
                         />
-                        <p class="help""></p>
+                        <p class="help"></p>
                     </div>
                     <div class="btn-wrap smaller">
-                        <button type="button" class="wz button primary block reset-password__submit">
+                        <button type="submit" class="wz button primary block reset-password__submit" disabled="disabled">
                             완료
                         </button>
                     </div>
@@ -65,5 +68,5 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../../static/js/account/find/change-pwd.js"></script>
+<script src="/js/account/find/change-pwd.js"></script>
 </html>

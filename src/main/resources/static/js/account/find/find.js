@@ -41,10 +41,10 @@ $(function () {
     // });
 
     //   pwd - btn click event
-    $('#BtnSendlink').on('click', function () {
-        $('.pwd_modal').show();
-        console.log('나타나라 모달');
-    });
+    // $('#BtnSendlink').on('click', function () {
+    //     $('.pwd_modal').show();
+    //     console.log('나타나라 모달');
+    // });
 
     // 모달 닫기
     $(closeBtns).on('click', function () {
@@ -57,11 +57,10 @@ $(function () {
     $('#btnIsJoinedEmail').on("click", function () {
         $.ajax({
             type: "POST",
-            url: "/account/findId",
+            url: "/accounts/check-id",
             data: {"memberId": $("#memberId").val()},
             success: function (data) {
-                console.log("들어옴");
-                if (data) {
+                if (data != null) {
                     $('.page-body').html(`
                                              <div class="wz container id-result" style="display: block;">
                                         <div class="isJoin-email-wrap">
@@ -69,8 +68,8 @@ $(function () {
                                         <p id="joinedEmail" class="wz text body1" style="display: block;">회원으로 등록된 이메일 아이디입니다.<br>해당 이메일로 로그인하고 와디즈를 이용하세요!
                                         </p>
                                         <div class="inner-container">
-                                        <a id="goToLogin" class="wz primary block button" href="/account/login" style="display: inline-block;">로그인</a>
-                                      <a id="btn-recheck" class="wz block button" href="/account/find/id">다시 확인</a>
+                                        <a id="goToLogin" class="wz primary block button" href="/accounts/login" style="display: inline-block;">로그인</a>
+                                      <a id="btn-recheck" class="wz block button" href="/accounts/find/id">다시 확인</a>
                                         </div>
                                         </div>
                                         </div>
@@ -84,8 +83,8 @@ $(function () {
                                         </p>
                                         <p id="notJoinedEmail" class="wz text body1" style="display: block;">는 와디즈에 등록되어 있지 않은 계정입니다.</p>
                                         <div class="inner-container">
-                                        <a id="goToJoin" class="wz primary block button" href="/account/register" style="display: block;">회원가입하기</a>
-                                        <a id="btn-recheck" class="wz block button" href="/account/find/id">다시 확인</a>
+                                        <a id="goToJoin" class="wz primary block button" href="/accounts/register" style="display: block;">회원가입하기</a>
+                                        <a id="btn-recheck" class="wz block button" href="/accounts/find/id">다시 확인</a>
                                         </div>
                                         </div>
                                         </div>
@@ -94,5 +93,37 @@ $(function () {
             }
         });
         });
+
+
+    // 비밀번호 찾기
+    $('#BtnSendlink').on("click", function () {
+        $.ajax({
+            type: "POST",
+            url: "/accounts/check-id",
+            data: {"memberId": $("#memberId").val()},
+            success: function (data) {
+
+                if (data != null) {
+                    console.log(data);
+                    console.log(data.id);
+                    $.ajax({
+                        type : "POST",
+                        url : "/accounts/change-pw",
+                        data : {
+                            "memberId" : $('#memberId').val(),
+                            "id" : data.id
+                        },
+                        success : function(){
+                                $('.warn-modal').css("width", "350px");
+                                showWarnModal(`<span>이메일로 비밀번호 재설정 주소를 발송하였습니다.</span>`)
+                        }
+                    })
+                } else {
+                    showWarnModal(`<span>등록되지 않은 아이디입니다.</span>`)
+                    $('#notJoinedEmail').css("display", "block");
+                }
+            }
+        });
+    });
 
     }); //E
