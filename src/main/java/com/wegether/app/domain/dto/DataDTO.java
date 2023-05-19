@@ -28,4 +28,7 @@ public class DataDTO {
 //    private Long WishDataId;
     private List<FileVO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
+
+
+    String order;
 }

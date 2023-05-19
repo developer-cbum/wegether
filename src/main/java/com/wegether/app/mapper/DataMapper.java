@@ -12,7 +12,7 @@ import java.util.Optional;
 @Mapper
 public interface DataMapper {
 //    자료 목록 조회
-    public List<DataDTO> selectAll(@Param("pagination") Pagination pagination);
+    public List<DataDTO> selectAll(@Param("pagination") Pagination pagination, @Param("DataDTO") String string);
 
 //    자료 추가
     public void insert(DataDTO dataDTO);
@@ -20,26 +20,8 @@ public interface DataMapper {
 //    자료 상세 조회
     public Optional<DataDTO> select(Long id);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//    게시글 총 개수
+    public int selectCountOfData(@Param("DataDTO") String string);
 
 
 

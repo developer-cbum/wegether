@@ -15,12 +15,10 @@ import java.util.Optional;
 public class DataDAO {
     private final DataMapper dataMapper;
 
-
     //    자료 목록
-    public List<DataDTO> findAll(Pagination pagination){
-        return dataMapper.selectAll(pagination);
+    public List<DataDTO> findAll(Pagination pagination, String string){
+        return dataMapper.selectAll(pagination, string);
     }
-
     //    자료 추가
     public void save(DataDTO dataDTO){
         dataMapper.insert(dataDTO);
@@ -31,24 +29,10 @@ public class DataDAO {
         return dataMapper.select(id);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //    게시글 총 개수
+    public int findCountOfData(String string){
+        return dataMapper.selectCountOfData(string);
+    }
 
 
 //    소영 마이페이지 내가 등록한 자료 조회

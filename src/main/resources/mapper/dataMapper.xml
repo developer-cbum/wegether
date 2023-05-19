@@ -3,42 +3,42 @@
 <mapper namespace="com.wegether.app.mapper.DataMapper">
 
 <!--  자료 목록 조회  -->
-<!--    <select id="selectAll" resultType="DataDTO">-->
-<!--        SELECT D.ID, DATA_TITLE, DATA_CONTENT,DATA_PRICE ,DATA_SCHOOL, DATA_MAJOR, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME-->
-<!--        FROM-->
-<!--        (-->
-<!--        SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT,DATA_PRICE ,DATA_SCHOOL ,DATA_MAJOR ,DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME-->
-<!--        FROM TBL_MEMBER M JOIN TBL_DATA D-->
-<!--        <![CDATA[-->
-<!--            ON M.ID = D.MEMBER_ID AND ROWNUM <= #{pagination.page} * #{pagination.rowCount}-->
-<!--        ]]>-->
-<!--        ORDER BY-->
-<!--        <choose>-->
-<!--            <when test="search.order == 'popular'">-->
-<!--                DATA_READ_COUNT-->
-<!--            </when>-->
-<!--            <otherwise>-->
-<!--                D.ID-->
-<!--            </otherwise>-->
-<!--        </choose>-->
-<!--        DESC-->
-<!--        <![CDATA[-->
-<!--        ) P WHERE R > (#{pagination.page} - 1) * #{pagination.rowCount}-->
-<!--        ]]>-->
-<!--    </select>-->
+    <select id="selectAll" resultType="dataDTO">
+        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NICKNAME, MEMBER_INTRODUCING
+        FROM
+        (
+        SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_INTRODUCING
+        FROM TBL_MEMBER M JOIN TBL_DATA D
+        <![CDATA[
+            ON M.ID = D.MEMBER_ID AND ROWNUM <= #{pagination.page} * #{pagination.rowCount}
+        ]]>
+        ORDER BY
+        <choose>
+            <when test="search.order == 'popular'">
+                POST_READ_COUNT
+            </when>
+            <otherwise>
+                P.ID
+            </otherwise>
+        </choose>
+        DESC
+        <![CDATA[
+        ) P WHERE R > (#{pagination.page} - 1) * #{pagination.rowCount}
+        ]]>
+    </select>
 
-    <!--  자료 추가  -->
+    <!--  자료 등록  -->
     <insert id="insert">
-<!--        <selectKey keyProperty="id" order="BEFORE" resultType="dataDTO">-->
-<!--            SELECT SEQ_DATA.NEXTVAL FROM DUAL-->
-<!--        </selectKey>-->
+        <selectKey keyProperty="id" order="BEFORE" resultType="dataDTO">
+            SELECT SEQ_DATA.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_DATA(ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
-        VALUES(#{id,jdbcType=VARCHAR}, #{dataTitle,jdbcType=VARCHAR}, #{dataContent,jdbcType=VARCHAR}, #{dataPrice,jdbcType=VARCHAR}, #{dataSchool,jdbcType=VARCHAR}, #{dataMajor,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR})
+        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice,jdbcType=VARCHAR}, #{dataSchool,jdbcType=VARCHAR}, #{dataMajor,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR})
     </insert>
 
-<<<<<<< HEAD
-    <!--  자료 상세 조회 : member  -->
-    <select id="selectMember" resultType="dataDTO">
+
+    <!--  자료 상세 조회  -->
+    <select id="select" resultType="dataDTO">
         SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING
         FROM TBL_DATA D JOIN TBL_MEMBER M
                         ON M.ID = D.MEMBER_ID AND D.ID = #{id}
@@ -46,58 +46,24 @@
     </select>
 
     <!--  자료 상세 조회 : wish  -->
-    <select id="selectWish" resultType="dataDTO">
-        SELECT COUNT(W.DATA_ID)
-            FROM TBL_DATA D INNER JOIN TBL_WISH_DATA W
-            ON D.ID = W.DATA_ID;
-    </select>
+<!--    <select id="selectWish" resultType="_int">-->
+<!--        SELECT COUNT(W.DATA_ID)-->
+<!--            FROM TBL_DATA D INNER JOIN TBL_WISH_DATA W-->
+<!--            ON D.ID = W.DATA_ID;-->
+<!--    </select>-->
 
     <!--  자료 상세 조회 : file  -->
-    <select id="selectFile" resultType="dataDTO">
-        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING
-        FROM TBL_DATA D JOIN TBL_DATA_FILE F ON F.DATA_ID = D.ID
-    </select>
+<!--    <select id="selectFile" resultType="dataDTO">-->
+<!--        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING-->
+<!--        FROM TBL_DATA D JOIN TBL_DATA_FILE F ON F.DATA_ID = D.ID-->
+<!--    </select>-->
 
     <!--  list count  -->
     <select id="selectCountOfData" resultType="_int">
-        SELECT COUNT(ID)
-        FROM TBL_POST
-        <where>
-            <trim prefixOverrides="AND(" suffixOverrides=")"></trim>
-        </where>
+        SELECT COUNT(D.ID)
+        FROM TBL_MEMBER M JOIN TBL_DATA D
+        ON M.ID = D.MEMBER_ID
     </select>
-
-    
-=======
-    <!--  자료 상세 조회  -->
-<!--    <select id="select" resultType="dataDTO">-->
-<!--        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME-->
-<!--        FROM TBL_MEMBER M JOIN TBL_DATA D-->
-<!--        ON M.ID = D.MEMBER_ID AND D.ID = #{id}-->
-<!--    </select>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -109,5 +75,4 @@
     SELECT ID, DATA_TITLE, DATA_UPDATE_DATE
     FROM TBL_DATA WHERE MEMBER_ID=#{memberId}
     </select>
->>>>>>> master
 </mapper>

@@ -1,12 +1,10 @@
 package com.wegether.app.domain.dto;
 
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
-@Component
 @Data
 public class Pagination {
-    private int page;
+    private Integer page;
     private int rowCount;
     private int pageCount;
     private int startPage;
@@ -15,13 +13,10 @@ public class Pagination {
     private boolean prev, next;
     private int total;
 
-    public Pagination() {
-        this(0);
-    }
-
-    public Pagination(int total) {
-        this.rowCount = 8;
-        this.pageCount = 10;
+    public void progress() {
+        this.page = page == null ? 1 : page;
+        this.rowCount = 5;
+        this.pageCount = 5;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
         this.startPage = endPage - pageCount + 1;
