@@ -2,7 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.ReplyMapper">
     <insert id="insert">
-        INSERT INTO 
+        INSERT INTO TBL_REPLY
+        (ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE)
+        VALUES(SEQ_REPLY.NEXTVAL, #{replyContent} , #{} , 0, SYSDATE, SYSDATE
+        );
+
     </insert>
 </mapper>
         public void insert(ReplyVO replyVO) {
