@@ -34,6 +34,9 @@ public class KakaoController {
 
     log.info(String.valueOf(accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()));
 
+    //애초에 카카오 로그인 할때 그 아이디가 있을때 중복이고 그 계정이 카카오 연동이 아닐떄
+
+
 //    카카오 로그인 한적 없을때
         if(!accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()){
             log.info("아래");

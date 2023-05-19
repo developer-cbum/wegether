@@ -35,5 +35,10 @@ public class AccountServiceImpl implements AccountService {
         memberDAO.setPassword(id, memberPassword);
     }
 
+    @Override
+    public void changeLoginStatusToKakao(String memberId) {
+        memberDAO.setLoginStatusToKakao(memberId);
+    }
+
 
 }
