@@ -40,5 +40,8 @@ public class AccountServiceImpl implements AccountService {
         memberDAO.setLoginStatusToKakao(memberId);
     }
 
-
+    @Override
+    public Optional<MemberVO> getMemberById(Long id) {
+        return memberDAO.findById(id);
+    }
 }

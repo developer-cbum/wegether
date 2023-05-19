@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public class ConsultingVO {
     private Long id;
     private Long memberId;
-    private String ConsultingTitle;
-    private String ConsultingContent;
-    private String ConsultingCategory;
-    private String ConsultingRegisterDate;
+    private String consultingTitle;
+    private String consultingContent;
+    private String consultingCategory;
+    private String consultingRegisterDate;
 }
 
