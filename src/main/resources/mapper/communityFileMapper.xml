@@ -8,7 +8,7 @@
     </select>
 
     <select id="selectAll" resultType="fileVO">
-        SELECT ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, COMMUNITY_ID
+        SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, COMMUNITY_ID
         FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C
         ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
     </select>
@@ -18,9 +18,8 @@
     </delete>
 
     <delete id="deleteAll">
-        DELETE FROM
-        (SELECT ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, COMMUNITY_ID
+        DELETE
         FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C
-        ON F.ID = C.ID AND COMMUNITY_ID = #{communityId})
+        ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
     </delete>
 </mapper>

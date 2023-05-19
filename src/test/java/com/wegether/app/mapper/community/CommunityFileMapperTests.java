@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.activation.FileTypeMap;
 import java.util.UUID;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
 @Slf4j
 public class CommunityFileMapperTests {
@@ -29,5 +31,15 @@ public class CommunityFileMapperTests {
         communityFileMapper.insert(fileVO);
     }
 
+    @Test
+    public void selectAllTest() {
+        communityFileMapper.selectAll(31L).stream().map(FileVO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void deleteTest() {
+        communityFileMapper.delete(1L);
+        assertThat(communityFileMapper.selectAll(31L)).hasSize(0);
+    }
 
 }
