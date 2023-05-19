@@ -33,6 +33,8 @@ public class MemberDAO {
         memberMapper.updatePassword(id, memberPassword);
     }
 
+    //카카오 로그인 상태 업데이트
+    public void setLoginStatusToKakao(String memberId){memberMapper.updateLoginStatusToKakao(memberId);}
 
 }
 

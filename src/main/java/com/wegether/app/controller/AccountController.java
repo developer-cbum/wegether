@@ -51,6 +51,7 @@ public class AccountController {
     @PostMapping("kakao-register")
     public RedirectView joinToKakao(MemberVO memberVO){
         accountService.join(memberVO);
+        accountService.changeLoginStatusToKakao(memberVO.getMemberId());
         return new RedirectView("/index/main");
     }
 
