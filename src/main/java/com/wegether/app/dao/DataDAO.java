@@ -52,6 +52,6 @@ public class DataDAO {
 
 
 //    소영 마이페이지 내가 등록한 자료 조회
-    public List<DataVO> showmydata(Long memberId){dataMapper.selectmydata(memberId);}
+    public List<DataVO> showmydata(Long memberId){return dataMapper.selectmydata(memberId);}
 
 }
