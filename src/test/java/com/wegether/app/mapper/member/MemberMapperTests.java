@@ -51,5 +51,11 @@ public class MemberMapperTests {
         memberMapper.updatePassword(1L, "1234567890");
     }
 
+    @Test
+    public void selectByIdTest(){
+        Optional<MemberVO> foundmemberVO = memberMapper.selectById(1L);
+        log.info(foundmemberVO.get().toString());
+    }
+
 
 }
