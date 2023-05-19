@@ -36,6 +36,7 @@
         VALUES(#{id,jdbcType=VARCHAR}, #{dataTitle,jdbcType=VARCHAR}, #{dataContent,jdbcType=VARCHAR}, #{dataPrice,jdbcType=VARCHAR}, #{dataSchool,jdbcType=VARCHAR}, #{dataMajor,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR})
     </insert>
 
+<<<<<<< HEAD
     <!--  자료 상세 조회 : member  -->
     <select id="selectMember" resultType="dataDTO">
         SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING
@@ -67,4 +68,46 @@
     </select>
 
     
+=======
+    <!--  자료 상세 조회  -->
+<!--    <select id="select" resultType="dataDTO">-->
+<!--        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME-->
+<!--        FROM TBL_MEMBER M JOIN TBL_DATA D-->
+<!--        ON M.ID = D.MEMBER_ID AND D.ID = #{id}-->
+<!--    </select>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    소영 마이페이지에서 내가 구매한 자료, 내가 등록한 자료 조회-->
+
+<!--    내가 등록한 자료-->
+    <select id="selectmydata" resultType="dataVO">
+    SELECT ID, DATA_TITLE, DATA_UPDATE_DATE
+    FROM TBL_DATA WHERE MEMBER_ID=#{memberId}
+    </select>
+>>>>>>> master
 </mapper>

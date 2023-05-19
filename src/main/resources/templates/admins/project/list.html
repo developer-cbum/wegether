@@ -24,13 +24,13 @@
                 </div>
                 <div>
                     <div class="select-name">
-                        <span>자료 목록</span>
+                        <span>프로젝트 목록</span>
                     </div>
                 </div>
             </div>
             <div class="wrap">
                 <!-- 사이드 바 -->
-                 <div th:replace="~{admin/side-bar :: sidebar}"></div>
+                <div th:replace="~{admins/side-bar :: sidebar}"></div>
 
                 <div class="container">
                     <div class="container-margin">
@@ -41,7 +41,7 @@
                                     class="deleteButton delete-button"
                                     onclick="deleteMembers(getSelectedMemberIds())"
                                 >
-                                    자료 삭제
+                                    프로젝트 삭제
                                 </button>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
                                 <div class="board-info-title-box">
-                                    <span>자료 목록</span>
+                                    <span>프로젝트 목록</span>
                                 </div>
 
                                 <div class="info-table">
@@ -61,15 +61,15 @@
                                                     <input type="checkbox" id="allSelect" />
                                                 </th>
                                                 <th>No</th>
-                                                <th>자료 제목</th>
-                                                <th>닉네임</th>
-                                                <th>자료 가격</th>
-                                                <th>자료 출처(학교)</th>
-                                                <th>자료 출처(전공)</th>
+                                                <th>프로젝트 제목</th>
+                                                <th>개설자 닉네임</th>
+                                                <th>프로젝트 학교</th>
+                                                <th>프로젝트 전공</th>
+                                                <th>프로젝트 종료일</th>
                                                 <th>등록일</th>
                                             </tr>
                                         </thead>
-                                        <tr>
+                                        <tr">
                                             <td class="checkbox-line">
                                                 <input
                                                     type="checkbox"
@@ -80,20 +80,17 @@
                                             </td>
                                             <td>1</td>
                                             <td>
-                                                <a  href="">
-                                                    족보 팝니다
+                                                <a href="">
+                                                    스터디 그룹 개설
                                                 </a>
                                                 <!-- 디테일 컨트롤러 제작하고 연결  -->
                                             </td>
                                             <td class="member_type is_active">
                                                 소미주
                                             </td>
-                                            <td>30000</td>
-                                            <td>서울대학교</td>
-                                            <td>컴퓨터공학과</td>
-                                            <td>
-                                                20230515
-                                            </td>
+                                            <td>사회복지학과</td>
+                                            <td>20230515</td>
+                                            <td>20230515</td>
                                         </tr>
                                         <tr>
                                             <td class="checkbox-line">
@@ -105,18 +102,17 @@
                                                 />
                                             </td>
                                             <td>2</td>
-                                            <td class="member_type is_active">
-                                                강의 내용 팝니다
-                                            </td>
                                             <td>
                                                 <a href="">
-                                                    소미주
+                                                    프로젝트 같이 하실 분
                                                 </a>
                                                 <!-- 디테일 컨트롤러 제작하고 연결  -->
                                             </td>
-                                            <td>30000</td>
-                                            <td>서울대학교</td>
-                                            <td>컴퓨터공학과</td>
+                                            <td class="member_type is_active">
+                                                소미주
+                                            </td>
+                                            <td>사회복지학과</td>
+                                            <td>20230515</td>
                                             <td>20230515</td>
                                         </tr>
                                     </table>
@@ -164,7 +160,6 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-
     <script src="/js/admin/checkbox.js"></script>
     <script src="/js/admin/page.js"></script>
     <script src="/js/admin/sidemenu.js"></script>

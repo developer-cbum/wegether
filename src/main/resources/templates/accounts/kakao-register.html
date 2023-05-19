@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/account/regist/intro.css">
+    <link rel="stylesheet" href="/css/common/common.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/account/account-header.css">
+    <link rel="stylesheet" href="/css/account/find/find.css">
+</head>
+<body>
+<header th:replace="~{/accounts/account-header :: #wz-header}"></header>
+<div class="AccountContainer_container__PwFiE SignUpIntroApp_signUpIntroEmailContainer__3sN5d">
+    <h3 class="SignUpIntroApp_simpleSignUpTitle__3aC7M">카카오 간편가입</h3>
+    <!--                form 태그 시작-->
+    <form form th:action="@{/accounts/kakao-register}" method="post">
+        <input type="hidden" name="memberId" th:value="${memberId}">
+        <input type="hidden" name="memberPassword" th:value="${memberPassword}">
+        <input type="hidden" name="userName"><input type="hidden" name="loginIdType"><input type="hidden" name="secureStateBagKey" value=""><input type="hidden" name="termsUpdateRequest[0].value" value="[object Object]">
+        <div class="TextField_textField__2k9OA TextField_md__2Z-6K EmailSignUpFormContainer_formField__1vy9Q">
+            <label>이름</label>
+            <div class="error_section TextField_field__3gj8N">
+                <input id="memberName" placeholder="이름 입력" type="text" class="Input_input__1bbbo Input_md__1Nsby" aria-invalid="false" name="memberName" value="">
+                <em class="help HelperMessage_helperMessage__1xhad HelperMessage_error__1ojoG"></em>
+            </div>
+        </div>
+        <div class="TextField_textField__2k9OA TextField_md__2Z-6K EmailSignUpFormContainer_formField__1vy9Q">
+            <label>닉네임</label>
+            <div class="error_section TextField_field__3gj8N">
+                <input id="memberNickname" placeholder="닉네임 입력" type="text" class="Input_input__1bbbo Input_md__1Nsby" aria-invalid="false" name="memberNickname" value="">
+                <em class="help2 HelperMessage_helperMessage__1xhad HelperMessage_error__1ojoG"></em>
+            </div>
+        </div>
+        <div class="TextField_textField__2k9OA TextField_md__2Z-6K EmailSignUpFormContainer_formField__1vy9Q">
+            <label>핸드폰 번호</label>
+            <div class="error_section TextField_field__3gj8N">
+                <input placeholder="핸드폰 번호 입력" type="text" class="phone-number Input_input__1bbbo Input_md__1Nsby" aria-invalid="false" id="memberPhoneNumber" name="memberPhoneNumber" value="">
+                <em class="help3 HelperMessage_helperMessage__1xhad HelperMessage_error__1ojoG"></em>
+            </div>
+        </div>
+        <button id="btn_submit" class="Button_button__3MO4n Button_primary__29fd0 Button_contained__1kfgl Button_lg__D7OVb Button_block__3npc4 EmailSignUpFormContainer_signUpSubmitButton__3cZeI" type="submit" disabled="disabled">
+            <span><span class="Button_children__raEW4">완료</span></span>
+        </button>
+    </form>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/modal/modal.js"></script>
+<script src="/js/account/login/kakao.js"></script>
+</html>

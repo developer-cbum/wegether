@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>관리자 페이지- 공지사항 게시판 작성</title>
-
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
         <link rel="stylesheet" href="/css/admin/admin_board_notice_write.css" />
         <link rel="icon" href="/image/logo/favicon.png" />
@@ -30,7 +29,7 @@
             </div>
             <div class="wrap">
                 <!-- 사이드 바 -->
-                <div th:replace="~{admin/side-bar :: sidebar}"></div>
+                <div th:replace="~{admins/side-bar :: sidebar}"></div>
 
                 <div class="container">
                     <div class="container-margin">
@@ -40,7 +39,7 @@
                                 <a href="">
                                     <img src="/image/admin/prev_icon.png" class="prev-icon" />
                                 </a>
-                                <a class="back-page"href="">리스트로 돌아가기</a>
+                                <a class="back-page" href="">리스트로 돌아가기</a>
                             </div>
                         </div>
 
@@ -48,7 +47,7 @@
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
                                 <div class="board-info-title-box">
-                                    <span>공지사항 수정하기</span>
+                                    <span>공지사항 등록하기</span>
                                 </div>
                                 <hr />
                                 <div class="info-table">
@@ -74,7 +73,7 @@
                                         </div>
                                         <hr />
                                         <div>
-                                            <button class="btn_done" type="submit">수정 완료</button>
+                                            <button class="btn_done" type="submit">등록 완료</button>
                                         </div>
                                     </form>
                                 </div>
@@ -86,5 +85,6 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <!-- <script src="/js/admin/sidemenu.js"></script> -->
     <script src="/js/admin/sidemenu.js"></script>
 </html>

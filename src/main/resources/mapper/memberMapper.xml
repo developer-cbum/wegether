@@ -3,7 +3,7 @@
 <mapper namespace="com.wegether.app.mapper.MemberMapper">
     <!-- 아이디중복검사 & 아이디 찾기  -->
     <select id="selectByMemberId" resultType="memberVO">
-        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE
+        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS
         FROM TBL_MEMBER
         WHERE MEMBER_ID = #{memberId}
     </select>
@@ -25,6 +25,13 @@
         UPDATE TBL_MEMBER
         SET MEMBER_PASSWORD = #{memberPassword}
         WHERE ID = #{id}
+    </update>
+
+<!--   카카오나 로그인 상태 업데이트-->
+    <update id="updateLoginStatusToKakao">
+         UPDATE TBL_MEMBER
+        SET MEMBER_LOGIN_STATUS = 'KAKAO'
+        WHERE MEMBER_ID = #{memberId}
     </update>
 
 </mapper>
