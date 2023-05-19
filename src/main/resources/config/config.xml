@@ -32,5 +32,7 @@
         <!-- 05월 19일 김인진 ProjectAdminDTO 추가 -->
         <typeAlias type="com.wegether.app.domain.dto.ProjectAdminDTO" alias="projectAdminDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.Pagination" alias="pagination"/>
+
+        <typeAlias type="com.wegether.app.domain.dto.CommunityDTO" alias="communityDTO"/>
     </typeAliases>
 </configuration>

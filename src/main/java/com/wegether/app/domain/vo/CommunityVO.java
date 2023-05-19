@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class CommunityVO {
     private Long id;
-    private String CommunityTitle;
-    private String CommunitySubtitle;
-    private String CommunityContent;
-    private String CommunityRegisterDate;
-    private String CommunityUpdateDate;
+    private String communityTitle;
+    private String communitySubtitle;
+    private String communityContent;
+    private String communityRegisterDate;
+    private String communityUpdateDate;
     private Long memberId;
 }
