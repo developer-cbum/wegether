@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,8 +16,17 @@ public class CommunityServiceImpl implements CommunityService {
     private final CommunityDAO communityDAO;
 
     @Override
+    public List<CommunityVO> getList() { return communityDAO.findAll(); }
+
+    @Override
     public Optional<CommunityVO> getCommunity(Long id) { return communityDAO.findById(id);}
 
     @Override
     public void write(CommunityVO communityVO) { communityDAO.save(communityVO);}
+
+    @Override
+    public void modify(CommunityVO communityVO) { communityDAO.setCommunityVO(communityVO); }
+
+    @Override
+    public void remove(Long id) { communityDAO.delete(id); }
 }

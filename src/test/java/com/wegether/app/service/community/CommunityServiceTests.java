@@ -17,6 +17,9 @@ public class CommunityServiceTests {
     private CommunityService communityService;
 
     @Test
+    public void getListTest() { assertThat(communityService.getList()).hasSize(7);}
+
+    @Test
     public void getCommunityTest() {
         final Optional<CommunityVO> foundCommunity = communityService.getCommunity(1L);
         foundCommunity.ifPresent(communityVO -> assertThat(communityVO.getCommunityTitle()).isEqualTo("첫 게시글"));
@@ -30,5 +33,21 @@ public class CommunityServiceTests {
         communityVO.setCommunitySubtitle("인설트테스트");
         communityVO.setCommunityContent("인썰트테스트임당");
         communityService.write(communityVO);
+    }
+
+    @Test
+    public void modifyTest() {
+        Optional<CommunityVO> foundCommunity = communityService.getCommunity(1L);
+        foundCommunity.ifPresent(communityVO -> communityVO.setCommunityContent("점핑예점핑"));
+        CommunityVO communityVO = foundCommunity.orElseThrow();
+        communityService.modify(communityVO);
+        foundCommunity = communityService.getCommunity(1L);
+        foundCommunity.ifPresent(community -> assertThat(community.getCommunityContent()).isEqualTo("점핑예점핑"));
+    }
+
+    @Test
+    public void removeTest() {
+        communityService.remove(22L);
+        assertThat(communityService.getList()).hasSize(4);
     }
 }

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.CommunityMapper">
+    <select id="selectAll" resultType="CommunityVO">
+        SELECT ID, MEMBER_ID, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
+        FROM TBL_COMMUNITY
+    </select>
+
     <select id="select" resultType="CommunityVO">
         SELECT ID, MEMBER_ID, COMMUNITY_TITLE, COMMUNITY_SUBTITLE, COMMUNITY_CONTENT, COMMUNITY_REGISTER_DATE, COMMUNITY_UPDATE_DATE
         FROM TBL_COMMUNITY
@@ -16,6 +21,11 @@
     <update id="update">
         UPDATE TBL_COMMUNITY
         SET COMMUNITY_TITLE=#{communityTitle}, COMMUNITY_SUBTITLE=#{communitySubtitle}, COMMUNITY_CONTENT=#{communityContent}, COMMUNITY_UPDATE_DATE=SYSDATE
-        WHERE ID = #{id};
+        WHERE ID = #{id}
     </update>
+
+    <delete id="delete">
+        DELETE FROM TBL_COMMUNITY
+        WHERE ID = #{id}
+    </delete>
 </mapper>

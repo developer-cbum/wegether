@@ -18,6 +18,9 @@ public class CommunityMapperTest {
     private CommunityMapper communityMapper;
 
     @Test
+    public void selectAllTest() { assertThat(communityMapper.selectAll()).hasSize(7);}
+
+    @Test
     public void selectTest() {
         final Optional<CommunityVO> foundCommunity = communityMapper.select(1L);
         foundCommunity.ifPresent(communityVO -> assertThat(communityVO.getCommunityTitle()).isEqualTo("첫 게시글"));
@@ -48,5 +51,11 @@ public class CommunityMapperTest {
         foundCommunity = communityMapper.select(1L);
 
         foundCommunity.ifPresent(community -> assertThat(community.getCommunityTitle()).isEqualTo("제목수정"));
+    }
+
+    @Test
+    public void deleteTest(){
+        communityMapper.delete(1L);
+        assertThat(communityMapper.selectAll()).hasSize(6);
     }
 }

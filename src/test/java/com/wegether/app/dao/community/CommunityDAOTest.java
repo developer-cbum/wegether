@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,6 +17,9 @@ public class CommunityDAOTest {
 
     @Autowired
     private CommunityDAO communityDAO;
+
+    @Test
+    public void findAllTest() { assertThat(communityDAO.findAll()).hasSize(7);}
 
     @Test
     public void findbyIdTest() {
@@ -32,4 +36,22 @@ public class CommunityDAOTest {
         communityVO.setCommunityContent("인썰트테스트임당");
         communityDAO.save(communityVO);
     }
+
+    @Test
+    public void setCommunityDAOTest() {
+        Optional<CommunityVO> foundCommunity = communityDAO.findById(1L);
+        foundCommunity.ifPresent(communityVO -> communityVO.setCommunityContent("삐약삐약"));
+        CommunityVO communityVO = foundCommunity.orElseThrow();
+        communityDAO.setCommunityVO(communityVO);
+        foundCommunity = communityDAO.findById(1L);
+        foundCommunity.ifPresent(community -> assertThat(community.getCommunityContent()).isEqualTo("삐약삐약"));
+
+    }
+
+    @Test
+    public void deleteTest(){
+        communityDAO.delete(21L);
+        assertThat(communityDAO.findAll()).hasSize(5);
+    }
+
 }
