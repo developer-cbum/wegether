@@ -13,8 +13,11 @@ public class FileDAO {
 
     private final FileMapper fileMapper;
 
-    public List<CommunityFileDTO> findAll(Long communityId) { return fileMapper.communitySelectAll(communityId); }
+    public List<CommunityFileDTO> communityFindAll(Long communityId) { return fileMapper.communitySelectAll(communityId); }
 
-    public void save(CommunityFileDTO communityFileDTO) { fileMapper.communityInsert(communityFileDTO);}
+    public void communitySave(CommunityFileDTO communityFileDTO) { fileMapper.communityInsert(communityFileDTO);}
 
+    public void communityDelete(Long id){ fileMapper.communityDelete(id);}
+
+    public void communityDeleteAll(Long communityId) { fileMapper.communityDeleteAll(communityId);}
 }

@@ -31,7 +31,7 @@ public class CommunityFileDAOTests {
         communityFileDTO.setFileSize(1238L);
         communityFileDTO.setFileUuid(UUID.randomUUID().toString());
         log.info(communityFileDTO.toString());
-        fileDAO.save(communityFileDTO);
+        fileDAO.communitySave(communityFileDTO);
     }
 
     @Test
@@ -44,6 +44,16 @@ public class CommunityFileDAOTests {
 
     @Test
     public void selectAllTest() {
-        fileDAO.findAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
+        fileDAO.communityFindAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void deleteTest(){
+        fileDAO.communityDelete(10L);
+    }
+
+    @Test
+    public void deleteAllTest(){
+        fileDAO.communityFindAll(4L);
     }
 }

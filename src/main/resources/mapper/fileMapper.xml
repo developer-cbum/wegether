@@ -15,4 +15,18 @@
         FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C
         ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
     </select>
+
+    <delete id="communityDelete">
+        DELETE FROM TBL_FILE
+        WHERE ID = #{id}
+    </delete>
+
+    <delete id="communityDeleteAll">
+        DELETE FROM TBL_FILE F
+        WHERE EXISTS (
+        SELECT 1
+        FROM TBL_COMMUNITY_FILE C
+        WHERE F.ID = C.ID AND C.COMMUNITY_ID = #{communityId}
+        )
+    </delete>
 </mapper>

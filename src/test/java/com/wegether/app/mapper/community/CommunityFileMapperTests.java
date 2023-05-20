@@ -55,4 +55,14 @@ public class CommunityFileMapperTests {
 //        assertThat(communityFileMapper.selectAll(31L)).hasSize(0);
 //    }
 
+    @Test
+    public void communityDeleteTest() {
+        fileMapper.communityDelete(7L);
+    }
+
+    @Test
+    public void communityDeleteAllTest() {
+        fileMapper.communityDeleteAll(3L);
+    }
+
 }

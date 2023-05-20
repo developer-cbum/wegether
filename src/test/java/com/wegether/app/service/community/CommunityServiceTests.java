@@ -32,7 +32,7 @@ public class CommunityServiceTests {
 
     @Test
     public void findByIdTest(){
-        communityService.getCommunity(31L).map(CommunityDTO::toString).ifPresent(log::info);
+        communityService.getCommunity(8L).map(CommunityDTO::toString).ifPresent(log::info);
     }
 
     @Test
