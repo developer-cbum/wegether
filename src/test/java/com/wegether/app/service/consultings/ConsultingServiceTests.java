@@ -53,4 +53,14 @@ public class ConsultingServiceTests {
     public void getConsultTest(){
         log.info(consultService.getConsulting(90L).toString());
     }
+
+    //상담 수정
+    @Test
+    public void modifyTest(){
+        ConsultingDTO consultingDTO = consultService.getConsulting(1L);
+        consultingDTO.setConsultingTitle("안녕2");
+        consultService.modifyConsulting(consultingDTO);
+        log.info(consultingDTO.toString());
+    }
+
 }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,18 +27,27 @@ public class ConsultServiceImpl implements ConsultService {
         return consultingDAO.findAll(pagination);
     }
 
+    // 총 개수
     @Override
     public int getTotal() {
         return consultingDAO.findCountOfConsulting();
     }
 
+    //상담 상세
     @Override
-    public ConsultingDTO getConsulting(Long id) {
+    public Optional<ConsultingDTO> getConsulting(Long id) {
         return consultingDAO.findConsulting(id);
     }
 
+    // 상담 수정
     @Override
     public void modifyConsulting(ConsultingDTO consultingDTO) {
         consultingDAO.setConsulting(consultingDTO);
+    }
+
+    // 상담 삭제
+    @Override
+    public void removeConsulting(Long id) {
+        consultingDAO.deleteConsulting(id);
     }
 }

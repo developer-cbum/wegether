@@ -49,4 +49,10 @@
         WHERE ID=#{id}
     </update>
 
+<!--  삭제  -->
+    <delete id="deleteConsulting">
+        DELETE TBL_CONSULTING
+        WHERE ID = #{id}
+    </delete>
+
 </mapper>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/modal/modal.css">
 
 </head>
-<body>
+<body th:object="${consultDTO}">
 <div class="modal">
     <div class="warn-modal">
         <div id="content-wrap"></div>
@@ -58,7 +58,7 @@
 
                     </div>
 
-                    <form class="consulting-form ProjectTypeFormContainer_form__3kGVN" th:action="@{/consults/modify}" method="post" th:object="${consultDTO}">
+                    <form class="consulting-form ProjectTypeFormContainer_form__3kGVN" th:action="@{/consults/modify}" method="post">
                         <input type="hidden" th:field="*{id}" th:value="*{id}">
                         <section class="Section_container__3md8M spacing-9">
                             <div style="max-width: 630px">
