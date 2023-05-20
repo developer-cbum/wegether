@@ -15,6 +15,13 @@ public interface ConsultService {
 
     // 총개수
     public int getTotal();
+
+    // 상담 상세
+    public ConsultingDTO getConsulting(Long id);
+
+    // 상담 수정
+    public void modifyConsulting(ConsultingDTO consultingDTO);
+
 }
 
 

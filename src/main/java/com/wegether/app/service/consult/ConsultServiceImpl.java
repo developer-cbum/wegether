@@ -30,4 +30,14 @@ public class ConsultServiceImpl implements ConsultService {
     public int getTotal() {
         return consultingDAO.findCountOfConsulting();
     }
+
+    @Override
+    public ConsultingDTO getConsulting(Long id) {
+        return consultingDAO.findConsulting(id);
+    }
+
+    @Override
+    public void modifyConsulting(ConsultingDTO consultingDTO) {
+        consultingDAO.setConsulting(consultingDTO);
+    }
 }

@@ -46,4 +46,10 @@ public class consultingDAOTests {
         int total = consultingDAO.findCountOfConsulting();
         log.info(String.valueOf(total));
     }
+
+    //상담 상세
+    @Test
+    public void findConsultingTest(){
+        log.info(consultingDAO.findConsulting(90L).toString());
+    }
 }
