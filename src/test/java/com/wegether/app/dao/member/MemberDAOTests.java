@@ -48,4 +48,9 @@ public class MemberDAOTests {
     public void setMemberPasswordTest(){
         memberDAO.setPassword(1L, "0123456789");
     }
+
+    @Test
+    public void findByIdTest(){
+        log.info(memberDAO.findById(1L).get().toString());
+    }
 }

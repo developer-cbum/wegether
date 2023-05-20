@@ -44,4 +44,9 @@ public class AccountServiceTests {
         accountService.changePassword(1L, "!dlwhdans159");
     }
 
+    @Test
+    public void getMemberById(){
+        log.info(accountService.getMemberById(1L).get().toString());
+    }
+
 }
