@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface DataService {
     //    게시글 목록
-    public List<DataDTO> getList(Pagination pagination, String string);
+    public List<DataDTO> getList(Pagination pagination);
 
     //    게시글 추가
     public void write(DataDTO dataDTO);
@@ -20,7 +20,7 @@ public interface DataService {
     public Optional<DataDTO> read(Long id);
 
     //    게시글 전체 개수 조회
-    public int getTotal(String string);
+    public int getTotal();
 
 
 

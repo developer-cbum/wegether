@@ -28,17 +28,27 @@ public class DataController {
 
 //    목록 조회
     @GetMapping("list")
-    public void list(Pagination pagination, String string, Model model){
-        pagination.setTotal(dataService.getTotal(string));
+    public void goToDataList(Pagination pagination, Model model){
+        pagination.setTotal(dataService.getTotal());
         pagination.progress();
-        model.addAttribute("datas", dataService.getList(pagination, string));
+        model.addAttribute("consults", dataService.getList(pagination));
     }
+//
+////    목록 조회
+//    @GetMapping("list")
+//    public void goToConsultingList(Pagination pagination, Model model){
+//        pagination.setTotal(dataService.getTotal());
+//        pagination.progress();
+//        model.addAttribute("consults", dataService.getList(pagination));
+//    }
 
 //    자료 등록
     @GetMapping("register")
-    public void goToWriteForm(DataVO dataVO, HttpSession session, Model model){
-//        model.addAttribute("memberName", accountService.getMember((Long)session.getAttribute("id")).get().getMemberName());
-    }
+        public void goToRegisterForm(DataVO dataVO, HttpSession session, Model model){
+
+        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
+        model.addAttribute("nickName", nickName);
+    };
 
 //    자료 등록 > 리스트 이동
     @PostMapping("register")

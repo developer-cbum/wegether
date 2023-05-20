@@ -15,11 +15,7 @@ public class Pagination {
 
     public void progress() {
         this.page = page == null ? 1 : page;
-<<<<<<< HEAD
-        this.rowCount = 5;
-=======
         this.rowCount = 10;
->>>>>>> master
         this.pageCount = 5;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);

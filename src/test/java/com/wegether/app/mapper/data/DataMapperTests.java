@@ -24,14 +24,15 @@ public class DataMapperTests {
     public void insertTest() {
         DataDTO dataDTO = new DataDTO();
 
-        dataDTO.setId(1L);
+        dataDTO.setId(2L);
         dataDTO.setDataTitle("테스트 제목1");
         dataDTO.setDataContent("테스트 내용1");
         dataDTO.setDataPrice(20000L);
         dataDTO.setDataSchool("서울대학교");
         dataDTO.setDataMajor("컴퓨터공학과");
-        dataDTO.setMemberId(1L);
+        dataDTO.setMemberId(2L);
         dataMapper.insert(dataDTO);
+
     }
 
         @Test
@@ -39,14 +40,14 @@ public class DataMapperTests {
             Pagination pagination = new Pagination();
             pagination.setPage(1); //화면에서 전달받은 페이지
 //        assertThat(dataMapper.selectAll(pagination)).hasSize(2);
-//        postMapper.selectAll(pagination, new Search("popular")).stream().map(PostDTO::toString).forEach(log::info);
+//        dataMapper.selectAll(pagination, "").stream().map(dataDTO::toString).forEach(log::info);
 //        postMapper.selectAll(pagination, new Search()).stream().map(PostDTO::toString).forEach(log::info);
         }
 
         @Test
         public void selectTest(){
             dataMapper.select(1L).stream().map(DataDTO::toString).forEach(log::info);
-            dataMapper.select(1L).stream().map(DataDTO::getMemberNickname).forEach(log::info);
+//            dataMapper.select(1L).stream().map(DataDTO::getMemberNickname).forEach(log::info);
 //            dataMapper.select(1L).stream().map(DataDTO::getWishDataId).forEach(log::info);
 
 
