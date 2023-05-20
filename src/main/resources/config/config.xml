@@ -32,22 +32,18 @@
         <!-- 05월 19일 김인진 ProjectAdminDTO 추가 -->
         <typeAlias type="com.wegether.app.domain.dto.ProjectAdminDTO" alias="projectAdminDTO"/>
 
-
         <!--05월 20일 consultingDTO 추가-->
         <typeAlias type="com.wegether.app.domain.dto.ConsultingDTO" alias="consultingDTO"/>
         <!--  05월 19일 김치윤 Community DTO 추가    -->
         <typeAlias type="com.wegether.app.domain.dto.CommunityDTO" alias="communityDTO"/>
         <!--  05월 20일 김치윤 CommunityFileDTO 추가  -->
         <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityFileDTO"/>
-<<<<<<< HEAD
-
 
         <!--  5월 21일 박유미 Data   -->
         <typeAlias type="com.wegether.app.domain.dto.DataFileDTO" alias="dataFileDTO"/>
 
-=======
         <!-- 05월 21일 이종문 search 추가-->
         <typeAlias type="com.wegether.app.domain.dto.Search" alias="search"/>
->>>>>>> master
+
     </typeAliases>
 </configuration>

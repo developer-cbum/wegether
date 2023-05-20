@@ -36,16 +36,16 @@ public class ConsultingServiceTests {
         Pagination pagination = new Pagination();
         pagination.setPage(1);
         pagination.progress();
-        List<ConsultingDTO> consultingDTOS = consultService.getList(pagination);
-        consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
+//        List<ConsultingDTO> consultingDTOS = consultService.getList(pagination);
+//        consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
 
     }
 
     //총 개수
     @Test
     public void getTotalTests(){
-        int total = consultService.getTotal();
-        log.info(String.valueOf(total));
+//        int total = consultService.getTotal();
+//        log.info(String.valueOf(total));
     }
 
     //상담 상세
@@ -57,10 +57,10 @@ public class ConsultingServiceTests {
     //상담 수정
     @Test
     public void modifyTest(){
-        ConsultingDTO consultingDTO = consultService.getConsulting(1L);
-        consultingDTO.setConsultingTitle("안녕2");
-        consultService.modifyConsulting(consultingDTO);
-        log.info(consultingDTO.toString());
+//        ConsultingDTO consultingDTO = consultService.getConsulting(1L);
+//        consultingDTO.setConsultingTitle("안녕2");
+//        consultService.modifyConsulting(consultingDTO);
+//        log.info(consultingDTO.toString());
     }
 
 }

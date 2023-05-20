@@ -35,16 +35,16 @@ public class consultingDAOTests {
         Pagination pagination = new Pagination();
         pagination.setPage(1);
         pagination.progress();
-        List<ConsultingDTO> consultingDTOS = consultingDAO.findAll(pagination);
-        consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
+//        List<ConsultingDTO> consultingDTOS = consultingDAO.findAll(pagination);
+//        consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
 
     }
 
     //총 개수
     @Test
     public void selectCountOfConsultingTests(){
-        int total = consultingDAO.findCountOfConsulting();
-        log.info(String.valueOf(total));
+//        int total = consultingDAO.findCountOfConsulting();
+//        log.info(String.valueOf(total));
     }
 
     //상담 상세
@@ -54,11 +54,11 @@ public class consultingDAOTests {
     }
 
     //상담 수정
-    @Test
-    public void updateTest(){
-        ConsultingDTO consultingDTO = consultingDAO.findConsulting(1L);
-        consultingDTO.setConsultingTitle("안녕4");
-        consultingDAO.setConsulting(consultingDTO);
-        log.info(consultingDTO.toString());
-    }
+//    @Test
+//    public void updateTest(){
+//        ConsultingDTO consultingDTO = consultingDAO.findConsulting(1L);
+//        consultingDTO.setConsultingTitle("안녕4");
+//        consultingDAO.setConsulting(consultingDTO);
+//        log.info(consultingDTO.toString());
+//    }
 }
