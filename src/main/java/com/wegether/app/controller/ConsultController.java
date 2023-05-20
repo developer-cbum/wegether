@@ -47,12 +47,20 @@ public class ConsultController {
         model.addAttribute("consults", consultService.getList(pagination, search));
         }
 
-    @GetMapping(value = {"detail", "modify"})
+    @GetMapping("detail")
     public void goToConsultingDetail(@RequestParam Long id, Model model, HttpSession session){
+        log.info(consultService.getConsulting(id).get().toString());
         model.addAttribute("consultDTO", consultService.getConsulting(id).get());
-        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
+    }
+
+    @GetMapping("modify")
+    public void goToConsultingModify(@RequestParam Long id, Model model, HttpSession session){
+        log.info(consultService.getConsulting(id).get().toString());
+        model.addAttribute("consultDTO", consultService.getConsulting(id).get());
+        String nickName = accountService.getMemberById((Long)session.getAttribute("id")).get().getMemberNickname();
         model.addAttribute("nickName", nickName);
     }
+
 
     @PostMapping("modify")
     public RedirectView modify(ConsultingDTO consultingDTO, RedirectAttributes redirectAttributes){
