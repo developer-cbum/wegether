@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @Data
-@NoArgsConstructor
+//@NoArgsConstructor
 public class ProjectVO {
     private Long id;
     private Long memberId;
@@ -22,4 +22,11 @@ public class ProjectVO {
     private Long projectReadCount;
     private int projectNowPersonnel;
     private int projectTotalPersonnel;
+
+    public ProjectVO() {
+    }
+
+    public ProjectVO(Long id) {
+        this.id = id;
+    }
 }

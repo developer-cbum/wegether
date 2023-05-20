@@ -4,29 +4,30 @@
 
     <!--    <프로젝트 목록>-->
     <select id="projectSelectAll" resultType="projectDTO">
-        SELECT ID, MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
+        SELECT ID,MEMBER_ID,PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
          PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT, PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
         FROM TBL_PROJECT
     </select>
 
+
     <!-- 프로젝트 등록>-->
-    <insert id="insert">
+    <insert id="projectInsert">
     INSERT INTO TBL_PROJECT
     (ID, MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
     PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT, PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL)
     VALUES(SEQ_PROJECT.NEXTVAL, #{memberId},#{projectTitle},#{projectIntroducing},#{projectMajor},#{projectSchool},
      SYSDATE,SYSDATE,#{projectEndDate},#{projectReadCount},#{projectNowPersonnel},#{projectTotalPersonnel})
-    </insert>
+</insert>
 
     <!--     <프로젝트 상세>-->
-    <select id="projectSelectAll" resultType="projectVo">
+    <select id="select" resultType="ProjectDTO">
         SELECT ID, MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
          PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT, PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
         FROM TBL_PROJECT
         WHERE ID= #{id}
     </select>
 
-    <update>
+    <update id="projectUpdate">
         UPDATE TBL_PROJECT
             SET MEMBER_ID=#{memberId}, PROJECT_TITLE=#{projectTitle}, PROJECT_INTRODUCING=#{projectIntroducing}, PROJECT_MAJOR=#{projectMajor},
             PROJECT_SCHOOL=#{projectSchool},PROJECT_REGISTER_DATE=SYSDATE, PROJECT_UPDATE_DATE=SYSDATE, PROJECT_END_DATE=#{projectEndDate},
@@ -34,7 +35,7 @@
             WHERE ID= #{id}
     </update>
 
-    <delete id="delete">
+    <delete id="projectDelete">
         DELETE FROM TBL_PROJECT
         WHERE ID= #{id}
     </delete>
