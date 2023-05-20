@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -30,13 +31,18 @@ public class ConsultingDAO {
     }
 
     // 상담 상세
-    public ConsultingDTO findConsulting(Long id){
+    public Optional<ConsultingDTO> findConsulting(Long id){
         return consultingMapper.selectConsulting(id);
     }
 
     // 상담 수정
     public void setConsulting(ConsultingDTO ConsultingDTO){
         consultingMapper.updateConsulting(ConsultingDTO);
+    }
+
+    // 상담 삭제
+    public void deleteConsulting(Long id){
+        consultingMapper.deleteConsulting(id);
     }
 
 

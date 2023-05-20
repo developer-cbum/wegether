@@ -52,4 +52,13 @@ public class consultingDAOTests {
     public void findConsultingTest(){
         log.info(consultingDAO.findConsulting(90L).toString());
     }
+
+    //상담 수정
+    @Test
+    public void updateTest(){
+        ConsultingDTO consultingDTO = consultingDAO.findConsulting(1L);
+        consultingDTO.setConsultingTitle("안녕4");
+        consultingDAO.setConsulting(consultingDTO);
+        log.info(consultingDTO.toString());
+    }
 }

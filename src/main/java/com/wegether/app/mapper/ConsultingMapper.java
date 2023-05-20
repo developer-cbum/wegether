@@ -6,6 +6,7 @@ import com.wegether.app.domain.vo.ConsultingVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface ConsultingMapper {
@@ -19,9 +20,12 @@ public interface ConsultingMapper {
     public int selectCountOfConsulting();
 
     // 상담 상세
-    public ConsultingDTO selectConsulting(Long id);
+    public Optional<ConsultingDTO> selectConsulting(Long id);
 
     // 상담 수정
     public void updateConsulting(ConsultingDTO consultingDTO);
+
+    // 상담 삭제
+    public void deleteConsulting(Long id);
 
 }

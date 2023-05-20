@@ -28,9 +28,6 @@ public class ConsultController {
 
     @GetMapping("register")
     public void goToRegisterForm(ConsultingVO consultingVO, HttpSession session, Model model){
-
-
-
        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
        model.addAttribute("nickName", nickName);
     };
@@ -50,11 +47,13 @@ public class ConsultController {
         }
 
     @GetMapping(value = {"detail", "modify"})
-    public void goToConsultingDetail(@RequestParam Long id, Model model){
-        model.addAttribute("consultDTO", consultService.getConsulting(id));
+    public void goToConsultingDetail(@RequestParam Long id, Model model, HttpSession session){
+        model.addAttribute("consultDTO", consultService.getConsulting(id).get());
+        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
+        model.addAttribute("nickName", nickName);
     }
 
-    @PostMapping
+    @PostMapping("modify")
     public RedirectView modify(ConsultingDTO consultingDTO, RedirectAttributes redirectAttributes){
         log.info(consultingDTO.toString());
         consultService.modifyConsulting(consultingDTO);
@@ -62,6 +61,11 @@ public class ConsultController {
         return new RedirectView("/consults/detail");
     }
 
+    @GetMapping("remove")
+    public RedirectView remove(@RequestParam Long id){
+        consultService.removeConsulting(id);
+        return new RedirectView("/consults/list");
+    }
 
 }
 

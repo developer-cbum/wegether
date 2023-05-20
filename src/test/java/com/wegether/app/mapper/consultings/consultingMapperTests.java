@@ -55,5 +55,13 @@ public class consultingMapperTests {
         log.info(consultingMapper.selectConsulting(90L).toString());
     }
 
+    //상담 수정
+    @Test
+    public void updateTest(){
+        ConsultingDTO consultingDTO = consultingMapper.selectConsulting(1L);
+        consultingDTO.setConsultingTitle("안녕3");
+        consultingMapper.updateConsulting(consultingDTO);
+        log.info(consultingDTO.toString());
+    }
 
 }
