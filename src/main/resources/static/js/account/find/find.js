@@ -102,6 +102,10 @@ $(function () {
             url: "/accounts/check-id",
             data: {"memberId": $("#memberId").val()},
             success: function (data) {
+                       if(data.memberLoginStatus == 'KAKAO' || data.memberLoginStatus == 'NAVER'){
+                           showWarnModal(`<span> SNS 연동계정입니다.</span>`)
+                           return;
+                       }
 
                 if (data != null) {
                     console.log(data);

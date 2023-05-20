@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,7 +29,6 @@ public class KakaoController {
         String token = kakaoService.getKaKaoAccessToken(code);
         session.setAttribute("token", token);
         HashMap<String, Object> kakaoInfo = kakaoService.getKakaoInfo(token);
-
 
 
     //애초에 카카오 로그인 할때 그 아이디가 있을때 중복이고 그 계정이 카카오 연동이 아닐떄
@@ -52,9 +52,14 @@ public class KakaoController {
         }
 
 //        카카오 로그인해서 db에 계정이 있을때
-        accountService.login(kakaoInfo.get("memberId").toString(), kakaoInfo.get("memberPassword").toString());
-        return new RedirectView("/index/main");
+        Optional<Long> foundNumber = accountService.login(kakaoInfo.get("memberId").toString(), kakaoInfo.get("memberPassword").toString());
+        if(foundNumber.isPresent()){
+            session.setAttribute("id", foundNumber.get());
+        }
 
+
+
+        return new RedirectView("/index/main");
     }
 
     @GetMapping("/logout")
