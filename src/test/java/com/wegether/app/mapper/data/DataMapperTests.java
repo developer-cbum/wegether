@@ -1,7 +1,6 @@
 package com.wegether.app.mapper.data;
 
-import com.wegether.app.domain.dto.DataDTO;
-import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.mapper.DataMapper;
 
@@ -9,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,14 +36,15 @@ public class DataMapperTests {
 
     }
 
-        @Test
-        public void selectAllTest(){
-            Pagination pagination = new Pagination();
-            pagination.setPage(1); //화면에서 전달받은 페이지
-//        assertThat(dataMapper.selectAll(pagination)).hasSize(2);
-//        dataMapper.selectAll(pagination, "").stream().map(dataDTO::toString).forEach(log::info);
-//        postMapper.selectAll(pagination, new Search()).stream().map(PostDTO::toString).forEach(log::info);
-        }
+//    자료 목록
+    @Test
+    public void selectAllTest(){
+        DataPagination dataPagination = new DataPagination();
+        dataPagination.setPage(1);
+        dataPagination.progress();
+        List<DataDTO> dataDTOS = dataMapper.selectAll(dataPagination);
+        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
+    }
 
         @Test
         public void selectTest(){

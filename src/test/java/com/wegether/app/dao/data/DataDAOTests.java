@@ -54,11 +54,11 @@ public class DataDAOTests {
     }
 
     //총 개수
-//    @Test
-//    public void selectCountOfConsultingTests(){
-//        int total = consultingDAO.findCountOfConsulting();
-//        log.info(String.valueOf(total));
-//    }
+    @Test
+    public void selectCountOfDataTests(){
+        int total = dataDAO.findCountOfData();
+        log.info(String.valueOf(total));
+    }
 
 
 }
