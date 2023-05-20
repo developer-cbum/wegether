@@ -1,9 +1,9 @@
 package com.wegether.app.service.data;
 
-import com.wegether.app.domain.dto.DataDTO;
-import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.DataFileVO;
 import com.wegether.app.domain.vo.DataVO;
+import com.wegether.app.domain.vo.FileVO;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface DataService {
     //    게시글 목록
-    public List<DataDTO> getList(Pagination pagination);
+    public List<DataDTO> getList(DataPagination dataPagination);
 
     //    게시글 추가
     public void write(DataDTO dataDTO);
@@ -48,6 +48,16 @@ public interface DataService {
         dataDTO.setMemberId(dataVO.getMemberId());
 
         return dataDTO;
+    }
+
+    default DataFileDTO toDTO(FileVO fileVO){
+        DataFileDTO dataFileDTO = new DataFileDTO();
+        dataFileDTO.setId(fileVO.getId());
+        dataFileDTO.setFileName(fileVO.getFileName());
+        dataFileDTO.setFileUuid(fileVO.getFileUuid());
+        dataFileDTO.setFileSize(fileVO.getFileSize());
+        dataFileDTO.setFilePath(fileVO.getFilePath());
+        return dataFileDTO;
     }
 
 

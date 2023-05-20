@@ -15,7 +15,7 @@ public interface DataFileMapper {
     public DataFileVO select(Long id);
 
     //    파일 추가
-    public void insert(FileVO fileVO);
+    public void insert(DataFileVO dataFileVO);
 
     //    게시글의 파일 삭제
     public void delete(Long id);

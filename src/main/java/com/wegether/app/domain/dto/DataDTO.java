@@ -26,7 +26,8 @@ public class DataDTO {
     private String memberIntroducing;
     private Long dataId;
 //    private Long WishDataId;
-    private List<FileVO> files = new ArrayList<>();
+//    private List<FileVO> files = new ArrayList<>();
+    private List<DataFileDTO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
 
 

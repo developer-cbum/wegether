@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class DataFileDTO {
     private Long id;
-    private Long communityId;
+    private Long dataId;
     private String filePath;
     private String fileUuid;
     private String fileName;

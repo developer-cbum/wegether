@@ -24,9 +24,9 @@ public class DataMapperTests {
     public void insertTest() {
         DataDTO dataDTO = new DataDTO();
 
-        dataDTO.setId(2L);
-        dataDTO.setDataTitle("테스트 제목1");
-        dataDTO.setDataContent("테스트 내용1");
+        dataDTO.setId(3L);
+        dataDTO.setDataTitle("테스트 제목2");
+        dataDTO.setDataContent("테스트 내용2");
         dataDTO.setDataPrice(20000L);
         dataDTO.setDataSchool("서울대학교");
         dataDTO.setDataMajor("컴퓨터공학과");

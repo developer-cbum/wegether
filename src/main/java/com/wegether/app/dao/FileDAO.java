@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.DataFileDTO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.dto.CommunityFileDTO;
 import com.wegether.app.mapper.FileMapper;
@@ -14,13 +15,16 @@ public class FileDAO {
     private final FileMapper fileMapper;
 
 //        파일 조회
-    public void find(Long id){
-        fileMapper.select(id);
-    }
+//    public void find(Long id){
+//        fileMapper.select(id);
+//    }
+
+
+    public List<DataFileDTO> dataFindAll(Long dataId) { return fileMapper.dataSelectAll(dataId); }
 
 //        파일 추가
-    public void save(FileVO fileVO){
-        fileMapper.insert(fileVO);
+    public void save(DataFileDTO dataFileDTO){
+        fileMapper.insert(dataFileDTO);
     }
 
 //       파일 삭제

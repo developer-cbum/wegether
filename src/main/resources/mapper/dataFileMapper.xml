@@ -13,10 +13,16 @@
         WHERE ID = #{id}
     </select>
 
+<!--    <insert id="insert">-->
+<!--        INSERT INTO TBL_FILE-->
+<!--        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, POST_ID, FILE_TYPE)-->
+<!--        VALUES(SEQ_FILE.NEXTVAL, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{postId}, #{fileType})-->
+<!--    </insert>-->
+
     <insert id="insert">
-        INSERT INTO TBL_FILE
-        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, POST_ID, FILE_TYPE)
-        VALUES(SEQ_FILE.NEXTVAL, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{postId}, #{fileType})
+        INSERT INTO TBL_DATA_FILE
+        (ID, DATA_ID)
+        VALUES(#{id}, #{dataId})
     </insert>
 
     <delete id="delete">

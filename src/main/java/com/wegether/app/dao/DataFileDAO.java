@@ -24,8 +24,8 @@ public class DataFileDAO {
     }
 
     //    파일 추가
-    public void save(FileVO fileVO){
-        dataFileMapper.insert(fileVO);
+    public void save(DataFileVO dataFileVO){
+        dataFileMapper.insert(dataFileVO);
     }
 
     //    파일 삭제

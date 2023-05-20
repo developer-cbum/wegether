@@ -1,9 +1,9 @@
 package com.wegether.app.dao.data;
 
 import com.wegether.app.dao.DataDAO;
-import com.wegether.app.domain.dto.ConsultingDTO;
+import com.wegether.app.domain.dto.CommunityDTO;
+import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.Pagination;
-import com.wegether.app.domain.vo.ConsultingVO;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -28,15 +28,19 @@ public class DataDAOTests {
 
 
     // 자료 등록
-//    @Test
-//    public void saveConsultingTest(){
-//        ConsultingVO consultingVO = new ConsultingVO();
-//        consultingVO.setMemberId(1L);
-//        consultingVO.setConsultingTitle("연세대가고싶어요");
-//        consultingVO.setConsultingContent("어떻게하죠?");
-//        consultingVO.setConsultingCategory("입시");
-//        consultingDAO.saveConsulting(consultingVO);
-//    }
+    @Test
+    public void saveDataTest(){
+        DataDTO dataDTO = new DataDTO();
+        dataDTO.setId(4L);
+        dataDTO.setDataId(2L);
+        dataDTO.setDataTitle("내 자료 팜");
+        dataDTO.setDataContent("얼마에 살래");
+        dataDTO.setDataMajor("디자인학과");
+        dataDTO.setDataSchool("홍익대");
+        dataDTO.setDataPrice(10000000L);
+        dataDAO.save(dataDTO);
+    }
+
 
     //자료 목록
 //    @Test

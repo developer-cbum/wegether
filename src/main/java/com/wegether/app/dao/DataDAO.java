@@ -2,6 +2,7 @@ package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.DataDTO;
+import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.dto.Pagination;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.mapper.DataMapper;
@@ -17,8 +18,8 @@ public class DataDAO {
     private final DataMapper dataMapper;
 
     //    자료 목록
-    public List<DataDTO> findAll(Pagination pagination){
-        return dataMapper.selectAll(pagination);
+    public List<DataDTO> findAll(DataPagination dataPagination){
+        return dataMapper.selectAll(dataPagination);
     }
 
     //    자료 추가

@@ -28,7 +28,7 @@
 <!--    </select>-->
 
 
-    <select id="selectAll" resultType="consultingDTO">
+    <select id="selectAll" resultType="dataDTO">
     SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NICKNAME, MEMBER_INTRODUCING
     FROM
     (
@@ -47,7 +47,7 @@
 <!--            SELECT SEQ_DATA.NEXTVAL FROM DUAL-->
 <!--        </selectKey>-->
         INSERT INTO TBL_DATA(ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
-        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice,jdbcType=VARCHAR}, #{dataSchool}, #{dataMajor}, #{memberId})
+        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, #{memberId})
     </insert>
 
 
@@ -64,12 +64,6 @@
 <!--        SELECT COUNT(W.DATA_ID)-->
 <!--            FROM TBL_DATA D INNER JOIN TBL_WISH_DATA W-->
 <!--            ON D.ID = W.DATA_ID;-->
-<!--    </select>-->
-
-    <!--  자료 상세 조회 : file  -->
-<!--    <select id="selectFile" resultType="dataDTO">-->
-<!--        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING-->
-<!--        FROM TBL_DATA D JOIN TBL_DATA_FILE F ON F.DATA_ID = D.ID-->
 <!--    </select>-->
 
     <!--  list count  -->

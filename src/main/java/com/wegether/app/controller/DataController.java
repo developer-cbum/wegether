@@ -1,7 +1,7 @@
 package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.DataDTO;
-import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.data.DataService;
@@ -28,10 +28,10 @@ public class DataController {
 
 //    목록 조회
     @GetMapping("list")
-    public void goToDataList(Pagination pagination, Model model){
-        pagination.setTotal(dataService.getTotal());
-        pagination.progress();
-        model.addAttribute("consults", dataService.getList(pagination));
+    public void goToDataList(DataPagination dataPagination, Model model){
+        dataPagination.setTotal(dataService.getTotal());
+        dataPagination.progress();
+        model.addAttribute("datas", dataService.getList(dataPagination));
     }
 //
 ////    목록 조회
