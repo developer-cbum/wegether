@@ -3,6 +3,7 @@ package com.wegether.app.service.consult;
 import com.wegether.app.dao.ConsultingDAO;
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,14 +24,14 @@ public class ConsultServiceImpl implements ConsultService {
     }
     //상담 조회
     @Override
-    public List<ConsultingDTO> getList(Pagination pagination) {
-        return consultingDAO.findAll(pagination);
+    public List<ConsultingDTO> getList(Pagination pagination, Search search) {
+        return consultingDAO.findAll(pagination, search);
     }
 
     // 총 개수
     @Override
-    public int getTotal() {
-        return consultingDAO.findCountOfConsulting();
+    public int getTotal(Search search) {
+        return consultingDAO.findCountOfConsulting(search);
     }
 
     //상담 상세

@@ -23,9 +23,14 @@
                        ORDER BY G.ID DESC
 	                 )
 	            <![CDATA[
-        	        WHERE ROWNUM <= #{page} * #{rowCount}
-			) C WHERE R > (#{page} - 1) * #{rowCount}
+        	        WHERE ROWNUM <= #{pagination.page} * #{pagination.rowCount}
+			) C WHERE R > (#{pagination.page} - 1) * #{pagination.rowCount}
 		        ]]>
+                <if test="search.keyword != null">
+                    AND (CONSULTING_TITLE LIKE'%'||#{search.keyword}||'%'
+                    OR CONSULTING_CONTENT LIKE '%'||#{search.keyword}||'%'
+                    OR CONSULTING_CATEGORY LIKE '%'||#{search.keyword}||'%')
+                </if>
     </select>
 
 <!--  전체 개수  -->
@@ -33,6 +38,14 @@
         SELECT COUNT(C.ID)
         FROM TBL_MEMBER M JOIN TBL_CONSULTING C
         ON M.ID = C.MEMBER_ID
+        <where>
+                <if test="search.keyword != null">
+                 AND (CONSULTING_TITLE LIKE '%'||#{search.keyword}||'%'
+                    OR CONSULTING_CONTENT LIKE '%'||#{search.keyword}||'%'
+                    OR CONSULTING_CATEGORY LIKE '%'||#{search.keyword}||'%')
+
+                </if>
+        </where>
     </select>
 
 <!-- 상세보기 -->

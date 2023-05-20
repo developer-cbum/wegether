@@ -2,6 +2,7 @@ package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.consult.ConsultService;
@@ -40,10 +41,10 @@ public class ConsultController {
     }
 
     @GetMapping("list")
-    public void goToConsultingList(Pagination pagination, Model model){
-        pagination.setTotal(consultService.getTotal());
+    public void goToConsultingList(Pagination pagination, Search search, Model model){
+        pagination.setTotal(consultService.getTotal(search));
         pagination.progress();
-        model.addAttribute("consults", consultService.getList(pagination));
+        model.addAttribute("consults", consultService.getList(pagination, search));
         }
 
     @GetMapping(value = {"detail", "modify"})

@@ -40,5 +40,7 @@
         <typeAlias type="com.wegether.app.domain.dto.CommunityDTO" alias="communityDTO"/>
         <!--  05월 20일 김치윤 CommunityFileDTO 추가  -->
         <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityFileDTO"/>
+        <!-- 05월 21일 이종문 search 추가-->
+        <typeAlias type="com.wegether.app.domain.dto.Search" alias="search"/>
     </typeAliases>
 </configuration>
