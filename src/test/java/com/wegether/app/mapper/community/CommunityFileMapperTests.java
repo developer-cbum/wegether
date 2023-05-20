@@ -1,6 +1,8 @@
 package com.wegether.app.mapper.community;
 
+import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.CommunityFileDTO;
+import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.mapper.CommunityFileMapper;
 import com.wegether.app.mapper.FileMapper;
@@ -19,6 +21,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CommunityFileMapperTests {
 
     @Autowired
+    private FileMapper fileMapper;
+
+    @Autowired
     private CommunityFileMapper communityFileMapper;
 
     @Test
@@ -28,18 +33,26 @@ public class CommunityFileMapperTests {
         communityFileDTO.setFilePath("2023/05/19");
         communityFileDTO.setFileSize(1238L);
         communityFileDTO.setFileUuid(UUID.randomUUID().toString());
-        communityFileMapper.insert(communityFileDTO);
+        fileMapper.insert(communityFileDTO);
     }
 
     @Test
     public void selectAllTest() {
-        communityFileMapper.selectAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
+        fileMapper.selectAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
     }
 
     @Test
-    public void deleteTest() {
-        communityFileMapper.delete(1L);
-        assertThat(communityFileMapper.selectAll(31L)).hasSize(0);
+    public void communityFileInsertTest() {
+        CommunityFileVO communityFileVO = new CommunityFileVO();
+        communityFileVO.setId(89L);
+        communityFileVO.setCommunityId(45L);
+        communityFileMapper.insert(communityFileVO);
     }
+
+//    @Test
+//    public void deleteTest() {
+//        communityFileMapper.delete(1L);
+//        assertThat(communityFileMapper.selectAll(31L)).hasSize(0);
+//    }
 
 }

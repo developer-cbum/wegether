@@ -1,6 +1,7 @@
 package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.CommunityFileDTO;
+import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.mapper.CommunityFileMapper;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +15,5 @@ public class CommunityFileDAO {
 
     private final CommunityFileMapper communityFileMapper;
 
-    public List<CommunityFileDTO> findAll(Long communityId) { return communityFileMapper.selectAll(communityId); }
-
-    public void save(CommunityFileDTO communityFileDTO) { communityFileMapper.insert(communityFileDTO);}
-
+    public void save(CommunityFileVO communityFileVO){communityFileMapper.insert(communityFileVO);}
 }

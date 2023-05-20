@@ -41,6 +41,7 @@ public class CommunityServiceTests {
         List<CommunityFileDTO> communityFileDTOS = new ArrayList<>();
         CommunityFileDTO file1 = new CommunityFileDTO();
         CommunityFileDTO file2 = new CommunityFileDTO();
+        CommunityFileDTO file3 = new CommunityFileDTO();
 
         file1.setFileName("새빨간로즈.png");
         file1.setFilePath("2023/05/19");
@@ -52,6 +53,11 @@ public class CommunityServiceTests {
         file2.setFileSize(1238L);
         file2.setFileUuid(UUID.randomUUID().toString());
 
+        file3.setFileName("새빨간로즈.png");
+        file3.setFilePath("2023/05/19");
+        file3.setFileSize(1238L);
+        file3.setFileUuid(UUID.randomUUID().toString());
+
 
         CommunityDTO communityDTO = new CommunityDTO();
         communityDTO.setMemberId(1L);
@@ -60,6 +66,7 @@ public class CommunityServiceTests {
         communityDTO.setCommunityContent("인썰트테스트임당");
         communityFileDTOS.add(file1);
         communityFileDTOS.add(file2);
+        communityFileDTOS.add(file3);
         communityDTO.setFiles(communityFileDTOS);
         communityService.write(communityDTO);
     }

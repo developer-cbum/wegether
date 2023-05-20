@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.FileMapper">
     <insert id="insert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+            SELECT SEQ_FILE.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_FILE
         (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE)
         VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize})
