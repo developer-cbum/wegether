@@ -33,8 +33,12 @@
         <typeAlias type="com.wegether.app.domain.dto.ProjectAdminDTO" alias="projectAdminDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.Pagination" alias="pagination"/>
 
-        <typeAlias type="com.wegether.app.domain.dto.CommunityDTO" alias="communityDTO"/>
+
         <!--05월 20일 consultingDTO 추가-->
         <typeAlias type="com.wegether.app.domain.dto.ConsultingDTO" alias="consultingDTO"/>
+        <!--  05월 19일 김치윤 Community DTO 추가    -->
+        <typeAlias type="com.wegether.app.domain.dto.CommunityDTO" alias="communityDTO"/>
+        <!--  05월 20일 김치윤 CommunityFileDTO 추가  -->
+        <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityFileDTO"/>
     </typeAliases>
 </configuration>

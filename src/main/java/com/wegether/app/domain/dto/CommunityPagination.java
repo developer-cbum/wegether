@@ -20,7 +20,7 @@ public class CommunityPagination {
     }
 
     public CommunityPagination(int total) {
-        this.rowCount = 2;
+        this.rowCount = 100;
         this.pageCount = 5;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
