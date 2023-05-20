@@ -34,5 +34,7 @@
         <typeAlias type="com.wegether.app.domain.dto.Pagination" alias="pagination"/>
 
         <typeAlias type="com.wegether.app.domain.dto.CommunityDTO" alias="communityDTO"/>
+        <typeAlias type="com.wegether.app.domain.dto.InquiryDTO" alias="inquiryDTO"/>
+
     </typeAliases>
 </configuration>

@@ -1,5 +1,7 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.vo.CardVO;
+import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.service.mypage.CardImpl;
 import com.wegether.app.service.mypage.InquiryImpl;
 import com.wegether.app.service.mypage.MypageService;
@@ -7,10 +9,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @Slf4j
@@ -19,44 +24,45 @@ import org.springframework.web.servlet.view.RedirectView;
 
 public class MypageController {
 
+//
+//    //    서비스 : 간편결제
+//    private final CardImpl card;
+//
+//    //    카드 리스트
+//    @GetMapping("/pay-card/pay-card")
+//    public void list(Long memberId, Model model) {
+//        model.addAttribute("cards", card.getList(memberId));
+//    }
+//
+///*    카드 등록 모달 화면
+//    모달인데 매핑 ?*/
+//    @GetMapping("/pay-card/pay-card")
+//    public void goToWriteForm(CardVO cardVO){;}
+//
+//    //    카드 등록 후 리스트
+//    @PostMapping("register")
+//    public RedirectView register(CardVO cardVO) {
+//        card.register(cardVO);
+//        return new RedirectView("/pay-card/pay-card");
+//    }
+//
+//    //    카드 삭제
+//    @PostMapping("remove")
+//    public RedirectView withdraw(Long id) {
+//        card.remove(id);
+//        return new RedirectView("/pay-card/pay-card");
+//    }
 
-    private final CardImpl card;
+//    1:1문의
+    private final InquiryImpl inquiry;
 
-    @GetMapping("card")
-    public void cardRegister(){
-
-
+    //목록 조회
+    @GetMapping("/inquiry/inquiry-detail")
+    public void goToDetail(Long memberId, Model model) {
+        model.addAttribute("inquiry", inquiry.read(1L));
     }
-//    카드 등록 화면
-    @GetMapping("/pay-card")
-    public void goToWriteForm(CardVO cardVO){;}
-
-    @PostMapping("write")
-    public RedirectView write(PostVO postVO){
-        postService.write(postVO);
-        return new RedirectView("/post/list");
-    }
-
-
-
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

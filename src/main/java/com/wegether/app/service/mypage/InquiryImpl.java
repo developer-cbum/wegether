@@ -1,20 +1,34 @@
 package com.wegether.app.service.mypage;
 
 
+import com.wegether.app.dao.InquiryDAO;
+import com.wegether.app.domain.dto.InquiryDTO;
+import com.wegether.app.domain.vo.InquiryVO;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class InquiryImpl implements MypageService{
+    private final InquiryDAO inquiryDAO;
+
     @Override
-    public void mypge() {
-        ;
+    public void mypage() {
+        log.info("d");
     }
 
-    public void in(){
-        log.info("in");
+
+//    문의 등록
+    public void register(InquiryVO inquiryVO) {
+        inquiryDAO.save(inquiryVO);
+    }
+//    문의 상세
+    public List<InquiryDTO> read(Long memberId){
+        return inquiryDAO.findAll(memberId);
     }
 }

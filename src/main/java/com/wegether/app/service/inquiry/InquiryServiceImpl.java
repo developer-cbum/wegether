@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("inquiry")
+
 public class InquiryServiceImpl implements InquiryService{
     private final InquiryDAO inquiryDAO;
 
+//   문의 등록
     @Override
     public void register(InquiryVO inquiryVO) {
         inquiryDAO.save(inquiryVO);
