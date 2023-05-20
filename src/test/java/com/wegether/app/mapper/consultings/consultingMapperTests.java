@@ -1,11 +1,19 @@
 package com.wegether.app.mapper.consultings;
 
+import com.wegether.app.domain.dto.ConsultingDTO;
+import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.mapper.ConsultingMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Slf4j
@@ -18,13 +26,46 @@ public class consultingMapperTests {
     @Test
     public void insertConsultingTest(){
         ConsultingVO consultingVO = new ConsultingVO();
-        consultingVO.setId(1L);
         consultingVO.setMemberId(1L);
-        consultingVO.setConsultingTitle("서울대가고싶어요");
+        consultingVO.setConsultingTitle("고려대가고싶어요");
         consultingVO.setConsultingContent("어떻게하죠?");
-        consultingVO.setConsultingCategory("입시");
+        consultingVO.setConsultingCategory("진로");
 
         consultingMapper.insertConsulting(consultingVO);
+    }
+
+    //상담 조회
+    @Test
+    public void selectAllTest(){
+        Pagination pagination = new Pagination();
+        Search search = new Search();
+        pagination.setPage(1);
+        pagination.progress();
+        List<ConsultingDTO> consultingDTOS = consultingMapper.selectAll(pagination, search);
+        consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
+    }
+
+    //총 개수
+    @Test
+    public void selectCountOfConsultingTests(){
+        Search search = new Search();
+        int total = consultingMapper.selectCountOfConsulting(search);
+        log.info(String.valueOf(total));
+    }
+
+    //상담 상세
+    @Test
+    public void selectConsultTest(){
+        log.info(consultingMapper.selectConsulting(90L).toString());
+    }
+
+    //상담 수정
+    @Test
+    public void updateTest(){
+        Optional<ConsultingDTO> consultingDTO = consultingMapper.selectConsulting(1L);
+        consultingDTO.get().setConsultingTitle("안녕3");
+        consultingMapper.updateConsulting(consultingDTO.get());
+        log.info(consultingDTO.toString());
     }
 
 }

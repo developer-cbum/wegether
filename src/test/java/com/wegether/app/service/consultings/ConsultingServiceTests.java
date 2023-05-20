@@ -1,10 +1,11 @@
-package com.wegether.app.dao.consulting;
+package com.wegether.app.service.consultings;
 
 import com.wegether.app.dao.ConsultingDAO;
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
 import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
+import com.wegether.app.service.consult.ConsultService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,10 @@ import java.util.Optional;
 
 @SpringBootTest
 @Slf4j
-public class consultingDAOTests {
+public class ConsultingServiceTests {
 
     @Autowired
-    private ConsultingDAO consultingDAO;
+    private ConsultService consultService;
 
     // 상담 등록
     @Test
@@ -28,7 +29,7 @@ public class consultingDAOTests {
         consultingVO.setConsultingTitle("연세대가고싶어요");
         consultingVO.setConsultingContent("어떻게하죠?");
         consultingVO.setConsultingCategory("입시");
-        consultingDAO.saveConsulting(consultingVO);
+        consultService.register(consultingVO);
     }
 
     //상담 목록
@@ -38,31 +39,32 @@ public class consultingDAOTests {
         Search search = new Search();
         pagination.setPage(1);
         pagination.progress();
-        List<ConsultingDTO> consultingDTOS = consultingDAO.findAll(pagination, search);
+        List<ConsultingDTO> consultingDTOS = consultService.getList(pagination, search);
         consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
 
     }
 
     //총 개수
     @Test
-    public void selectCountOfConsultingTests(){
+    public void getTotalTests(){
         Search search = new Search();
-        int total = consultingDAO.findCountOfConsulting(search);
+        int total = consultService.getTotal(search);
         log.info(String.valueOf(total));
     }
 
     //상담 상세
     @Test
-    public void findConsultingTest(){
-        log.info(consultingDAO.findConsulting(90L).toString());
+    public void getConsultTest(){
+        log.info(consultService.getConsulting(90L).toString());
     }
 
     //상담 수정
     @Test
-    public void updateTest(){
-        Optional<ConsultingDTO> consultingDTO = consultingDAO.findConsulting(1L);
-        consultingDTO.get().setConsultingTitle("안녕4");
-        consultingDAO.setConsulting(consultingDTO.get());
-        log.info(consultingDTO.toString());
+    public void modifyTest(){
+        Optional<ConsultingDTO> consulting = consultService.getConsulting(1L);
+        consulting.get().setConsultingTitle("안녕2");
+        consultService.modifyConsulting( consulting.get());
+        log.info( consulting.get().toString());
     }
+
 }

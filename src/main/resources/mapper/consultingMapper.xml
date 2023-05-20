@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.ConsultingMapper">
+<!-- 등록하기-->
     <insert id="insertConsulting">
         INSERT INTO TBL_CONSULTING
         (ID, MEMBER_ID, CONSULTING_TITLE, CONSULTING_CONTENT, CONSULTING_CATEGORY)
@@ -8,5 +9,63 @@
     </insert>
 
 
+<!--  목록 조회  -->
+    <select id="selectAll" resultType="consultingDTO">
+		 SELECT C.ID, C.MEMBER_ID, CONSULTING_TITLE, CONSULTING_CONTENT, CONSULTING_CATEGORY, MEMBER_NICKNAME, CONSULTING_REGISTER_DATE
+    	 FROM
+    		(
+                SELECT ROWNUM R, ID, MEMBER_ID, CONSULTING_TITLE, CONSULTING_CONTENT, CONSULTING_CATEGORY, MEMBER_NICKNAME, CONSULTING_REGISTER_DATE
+                FROM
+                     (
+                       SELECT ROWNUM D, G.ID, G.MEMBER_ID, CONSULTING_TITLE, CONSULTING_CONTENT, CONSULTING_CATEGORY, MEMBER_NICKNAME, CONSULTING_REGISTER_DATE
+                       FROM TBL_MEMBER M JOIN TBL_CONSULTING G
+                       ON M.ID = G.MEMBER_ID
+                       ORDER BY G.ID DESC
+	                 )
+	            <![CDATA[
+        	        WHERE ROWNUM <= #{pagination.page} * #{pagination.rowCount}
+			) C WHERE R > (#{pagination.page} - 1) * #{pagination.rowCount}
+		        ]]>
+                <if test="search.keyword != null">
+                    AND (CONSULTING_TITLE LIKE'%'||#{search.keyword}||'%'
+                    OR CONSULTING_CONTENT LIKE '%'||#{search.keyword}||'%'
+                    OR CONSULTING_CATEGORY LIKE '%'||#{search.keyword}||'%')
+                </if>
+    </select>
+
+<!--  전체 개수  -->
+    <select id="selectCountOfConsulting" resultType="_int">
+        SELECT COUNT(C.ID)
+        FROM TBL_MEMBER M JOIN TBL_CONSULTING C
+        ON M.ID = C.MEMBER_ID
+        <where>
+                <if test="search.keyword != null">
+                 AND (CONSULTING_TITLE LIKE '%'||#{search.keyword}||'%'
+                    OR CONSULTING_CONTENT LIKE '%'||#{search.keyword}||'%'
+                    OR CONSULTING_CATEGORY LIKE '%'||#{search.keyword}||'%')
+
+                </if>
+        </where>
+    </select>
+
+<!-- 상세보기 -->
+    <select id="selectConsulting" resultType="consultingDTO">
+        SELECT C.ID, C.MEMBER_ID, CONSULTING_TITLE, CONSULTING_CONTENT, CONSULTING_CATEGORY, MEMBER_NICKNAME, CONSULTING_REGISTER_DATE
+        FROM TBL_MEMBER M JOIN TBL_CONSULTING C
+        ON M.ID = C.MEMBER_ID AND C.ID = #{id}
+    </select>
+
+<!-- 수정   -->
+    <update id="updateConsulting">
+        UPDATE TBL_CONSULTING
+        SET CONSULTING_TITLE = #{consultingTitle}, CONSULTING_CONTENT = #{consultingContent}, CONSULTING_CATEGORY = #{consultingCategory}
+        WHERE ID=#{id}
+    </update>
+
+<!--  삭제  -->
+    <delete id="deleteConsulting">
+        DELETE TBL_CONSULTING
+        WHERE ID = #{id}
+    </delete>
 
 </mapper>

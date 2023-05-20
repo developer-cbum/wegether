@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="/css/consult/common.css">
     <link rel="stylesheet" href="/css/consult/mypage.css">
     <link rel="stylesheet" href="/css/mypage/project/list.css">
-  <link rel="stylesheet" href="/css/modal/modal.css">
+    <link rel="stylesheet" href="/css/modal/modal.css">
 
 </head>
-<body>
+<body th:object="${consultDTO}">
 <div class="modal">
-  <div class="warn-modal">
-    <div id="content-wrap"></div>
-  </div>
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
 </div>
 <div id="AppLayout_Container" class="AppLayout_container__3zbzb">
     <div class="AppLayout_main__14bCi">
@@ -53,12 +53,13 @@
                     </nav>
                     <div class="HeaderLayout_container__3fXkO">
                         <div class="HeaderLayout_contents__F4hlC">
-                            <h2 class="ProjectTypeFormContainer_title__3Zn37">상담 등록</h2>
+                            <h2 class="ProjectTypeFormContainer_title__3Zn37">상담 수정</h2>
                         </div>
 
                     </div>
 
-                    <form class="consulting-form ProjectTypeFormContainer_form__3kGVN" th:action="@{/consults/register}" method="post" th:object="${consultingVO}">
+                    <form class="consulting-form ProjectTypeFormContainer_form__3kGVN" th:action="@{/consults/modify}" method="post">
+                        <input type="hidden" th:field="*{id}" th:value="*{id}">
                         <section class="Section_container__3md8M spacing-9">
                             <div style="max-width: 630px">
                                 <div class="Section_header__1qwS7 spacing-4">
@@ -80,9 +81,9 @@
                                                 <div
                                                         class="select-menu__value-container select-menu__value-container--has-value css-1hwfws3"
                                                 >
-                                                    <div class="menu-value select-menu__single-value css-1uccc91-singleValue">전체
+                                                    <div class="menu-value select-menu__single-value css-1uccc91-singleValue" th:text="*{consultingCategory}">
                                                     </div>
-                                                  <input  th:field="*{consultingCategory}" class="value" type="hidden" value="">
+                                                    <input  th:field="*{consultingCategory}" class="value" type="hidden" value="">
                                                     <input
                                                             id="react-select-4-input"
                                                             readonly=""
@@ -211,8 +212,7 @@
                                         <label></label>
                                         <div class="TextField_field__1E9vt">
                                             <input th:field="*{consultingTitle}" class="Input_title Input_input__2kAAL Input_md__3-eZ6"
-                                                   placeholder="제목을 작성해주세요" maxlength="30"/>
-
+                                                   placeholder="제목을 작성해주세요" maxlength="30" th:value="*{consultingTitle}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                         <label></label>
                                         <div class="TextField_field__1E9vt">
                                             <textarea class="content-textarea Input_input__2kAAL Input_md__3-eZ6"
-                                                      placeholder="내용을 작성해주세요"></textarea>
+                                                      placeholder="내용을 작성해주세요" th:text="*{consultingContent}"></textarea>
                                             <input th:field="*{consultingContent}" class="consult-content" type="hidden" value="">
                                         </div>
                                     </div>
@@ -257,7 +257,7 @@
                                     type="button"
                                     style="width: 548px; max-width: 100%" disabled="disabled"
                             >
-                                <span><span class="Button_children__q9VCZ">저장하기</span></span>
+                                <span><span class="Button_children__q9VCZ">수정하기</span></span>
                             </button>
                         </div>
                     </form>
@@ -270,5 +270,5 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/modal/modal.js"></script>
 <script src="/js/consult/register-list.js"></script>
-<script src="/js/consult/consult-register.js"></script>
+<script src="/js/consult/consult-modify.js"></script>
 </html>
