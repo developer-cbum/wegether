@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProjectController {
     private final ProjectService projectService;
 
-    @GetMapping("project/list")
-    public void
+//    @GetMapping("project/list")
+//    public void
 }
 
 

@@ -1,6 +1,7 @@
 package com.wegether.app.service.project;
 
 import com.wegether.app.domain.dto.ProjectDTO;
+import com.wegether.app.domain.dto.ProjectPagination;
 import com.wegether.app.domain.vo.ProjectVO;
 
 import java.util.List;
@@ -9,23 +10,23 @@ import java.util.Optional;
 public interface ProjectService {
 
     // 프로젝트 목록
-    public List<ProjectDTO> getList();
+    public List<ProjectDTO> getList(ProjectPagination projectPagination);
 
     // 프로젝트 등록
-    public void Write(ProjectVO projectVO);
+    public void write(ProjectDTO projectDTO);
 
     // 프로젝트  상세
-    public Optional<ProjectDTO> read(Long id);
+    public Optional<ProjectDTO> getProject(Long id);
 
     // 프로젝트  수정
-    public void modify(ProjectVO projectVO);
+    public void modify(ProjectDTO projectDTO);
 
     // 프로젝트 삭제
     public void remove(Long id);
 
 
 
-    default ProjectDTO toDTO(ProjectVO projectVO) {
+    default ProjectDTO toDTO(ProjectDTO projectVO) {
         ProjectDTO projectDTO = new ProjectDTO();
         projectDTO.setId(projectVO.getId());
         projectDTO.setMemberId(projectVO.getMemberId());

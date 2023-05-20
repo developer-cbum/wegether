@@ -2,6 +2,7 @@ package com.wegether.app.service.project;
 
 import com.wegether.app.dao.ProjectDAO;
 import com.wegether.app.domain.dto.ProjectDTO;
+import com.wegether.app.domain.dto.ProjectPagination;
 import com.wegether.app.domain.vo.ProjectVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,23 +15,25 @@ import java.util.Optional;
 public class ProjectServiceImpl implements ProjectService {
     private final ProjectDAO projectDAO;
     @Override
-    public List<ProjectDTO> getList() {
-        return projectDAO.projectfindAll();
+    public List<ProjectDTO> getList(ProjectPagination projectPagination) {
+        return projectDAO.projectFindAll(projectPagination);
     }
 
     @Override
-    public void Write(ProjectVO projectVO) {
-        projectDAO.projectSave(projectVO);
+    public void write(ProjectDTO projectDTO) {
+        projectDAO.projectSave(projectDTO);
     }
 
+
+
     @Override
-    public Optional<ProjectDTO> read(Long id) {
+    public Optional<ProjectDTO> getProject(Long id) {
         return projectDAO.findById(id);
     }
 
     @Override
-    public void modify(ProjectVO projectVO) {
-        projectDAO.setProjectDTO(toDTO(projectVO));
+    public void modify(ProjectDTO projectDTO) {
+        projectDAO.setProjectDTO(toDTO(projectDTO));
     }
 
     @Override
