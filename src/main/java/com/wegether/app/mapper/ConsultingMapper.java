@@ -18,5 +18,10 @@ public interface ConsultingMapper {
     //상담 총 개수
     public int selectCountOfConsulting();
 
+    // 상담 상세
+    public ConsultingDTO selectConsulting(Long id);
+
+    // 상담 수정
+    public void updateConsulting(ConsultingDTO consultingDTO);
 
 }
