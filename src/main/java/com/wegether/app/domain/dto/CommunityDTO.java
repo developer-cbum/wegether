@@ -19,6 +19,6 @@ public class CommunityDTO {
     private Long memberId;
     private String memberName;
     private String memberNickname;
-    private List<FileVO> files = new ArrayList<>();
+    private List<CommunityFileDTO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
 }

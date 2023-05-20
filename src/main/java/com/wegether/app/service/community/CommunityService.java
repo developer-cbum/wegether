@@ -18,6 +18,19 @@ public interface CommunityService {
     public void modify(CommunityDTO communityDTO);
 
     public void remove(Long id);
+
+    default CommunityDTO toDTO(CommunityVO communityVO){
+        CommunityDTO communityDTO = new CommunityDTO();
+        communityDTO.setId(communityVO.getId());
+        communityDTO.setMemberId(communityVO.getMemberId());
+        communityDTO.setCommunityTitle(communityVO.getCommunityTitle());
+        communityDTO.setCommunitySubtitle(communityVO.getCommunitySubtitle());
+        communityDTO.setCommunityContent(communityVO.getCommunityContent());
+        communityDTO.setCommunityRegisterDate(communityVO.getCommunityRegisterDate());
+        communityDTO.setCommunityUpdateDate(communityVO.getCommunityUpdateDate());
+        return communityDTO;
+    }
+
 }
 
 

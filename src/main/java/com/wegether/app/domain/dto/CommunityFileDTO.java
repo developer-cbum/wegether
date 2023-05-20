@@ -1,14 +1,13 @@
-package com.wegether.app.domain.vo;
+package com.wegether.app.domain.dto;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @Data
-@NoArgsConstructor
-public class FileVO {
+public class CommunityFileDTO {
     private Long id;
+    private Long communityId;
     private String filePath;
     private String fileUuid;
     private String fileName;
