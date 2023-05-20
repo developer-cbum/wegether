@@ -1,9 +1,10 @@
-package com.wegether.app.dao.consulting;
+package com.wegether.app.service.consultings;
 
 import com.wegether.app.dao.ConsultingDAO;
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
 import com.wegether.app.domain.vo.ConsultingVO;
+import com.wegether.app.service.consult.ConsultService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,10 @@ import java.util.List;
 
 @SpringBootTest
 @Slf4j
-public class consultingDAOTests {
+public class ConsultingServiceTests {
 
     @Autowired
-    private ConsultingDAO consultingDAO;
+    private ConsultService consultService;
 
     // 상담 등록
     @Test
@@ -26,7 +27,7 @@ public class consultingDAOTests {
         consultingVO.setConsultingTitle("연세대가고싶어요");
         consultingVO.setConsultingContent("어떻게하죠?");
         consultingVO.setConsultingCategory("입시");
-        consultingDAO.saveConsulting(consultingVO);
+        consultService.register(consultingVO);
     }
 
     //상담 목록
@@ -35,15 +36,15 @@ public class consultingDAOTests {
         Pagination pagination = new Pagination();
         pagination.setPage(1);
         pagination.progress();
-        List<ConsultingDTO> consultingDTOS = consultingDAO.findAll(pagination);
+        List<ConsultingDTO> consultingDTOS = consultService.getList(pagination);
         consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
 
     }
 
     //총 개수
     @Test
-    public void selectCountOfConsultingTests(){
-        int total = consultingDAO.findCountOfConsulting();
+    public void getTotalTests(){
+        int total = consultService.getTotal();
         log.info(String.valueOf(total));
     }
 }
