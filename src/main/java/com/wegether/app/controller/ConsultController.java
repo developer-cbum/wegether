@@ -1,5 +1,6 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.dto.Pagination;
 import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.consult.ConsultService;
@@ -27,6 +28,9 @@ public class ConsultController {
 
     @GetMapping("register")
     public void goToRegisterForm(ConsultingVO consultingVO, HttpSession session, Model model){
+
+
+
        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
        model.addAttribute("nickName", nickName);
     };
@@ -39,7 +43,11 @@ public class ConsultController {
     }
 
     @GetMapping("list")
-    public void goToConsultingList(){;}
+    public void goToConsultingList(Pagination pagination, Model model){
+        pagination.setTotal(consultService.getTotal());
+        pagination.progress();
+        model.addAttribute("consults", consultService.getList(pagination));
+        }
 }
 
 
