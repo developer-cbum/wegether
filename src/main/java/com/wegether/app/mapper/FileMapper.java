@@ -8,11 +8,11 @@ import java.util.List;
 @Mapper
 public interface FileMapper {
 
-    public void insert(CommunityFileDTO fileVO);
+    public void communityInsert(CommunityFileDTO fileVO);
 
-    public List<CommunityFileDTO> selectAll(Long communityId);
+    public List<CommunityFileDTO> communitySelectAll(Long communityId);
 
-    public void delete(Long id);
+    public void communityDelete(Long id);
 
-    public void deleteAll(Long communityId);
+    public void communityDeleteAll(Long communityId);
 }

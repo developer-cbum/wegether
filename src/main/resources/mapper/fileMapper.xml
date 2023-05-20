@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.FileMapper">
-    <insert id="insert">
+    <insert id="communityInsert">
         <selectKey keyProperty="id" order="BEFORE" resultType="Long">
             SELECT SEQ_FILE.NEXTVAL FROM DUAL
         </selectKey>
@@ -10,7 +10,7 @@
         VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize})
     </insert>
 
-    <select id="selectAll" resultType="communityFileDTO">
+    <select id="communitySelectAll" resultType="communityFileDTO">
         SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, COMMUNITY_ID
         FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C
         ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}

@@ -33,12 +33,12 @@ public class CommunityFileMapperTests {
         communityFileDTO.setFilePath("2023/05/19");
         communityFileDTO.setFileSize(1238L);
         communityFileDTO.setFileUuid(UUID.randomUUID().toString());
-        fileMapper.insert(communityFileDTO);
+        fileMapper.communityInsert(communityFileDTO);
     }
 
     @Test
     public void selectAllTest() {
-        fileMapper.selectAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
+        fileMapper.communitySelectAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
     }
 
     @Test
