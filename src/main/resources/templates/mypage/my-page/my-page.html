@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -231,23 +232,7 @@
                             ></path></svg></span
                       ></a>
                     </li>
-                    <li class="MyWadizMenu_menu__3b-H-">
-                      <a href="/web/wmypage/myfunding/investfundinglist"
-                        ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
-                          ><i class="fa-regular fa-calendar" style=" font-size:22px; margin-right: 15px"></i><span class="MyWadizMenu_text__9ryGW" >내 강연</span
-                        ><span class="MyWadizMenu_arrowIcon__2sutN" aria-hidden="true"
-                          ><svg
-                            viewBox="0 0 40 40"
-                            focusable="false"
-                            role="presentation"
-                            class="withIcon_icon__3VTbq"
-                            aria-hidden="true"
-                          >
-                            <path
-                              d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"
-                            ></path></svg></span
-                      ></a>
-                    </li>
+
                     <li class="MyWadizMenu_menu__3b-H-">
                       <a href="/web/wmypage/myfunding/investfundinglist"
                         ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
@@ -273,8 +258,7 @@
                 <div>
                   <ul>
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a href="/web/board/personalMessage/inbox"
-                        ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
+                      <a th:href="@{/mypage/inquiry}"> <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><svg
                             viewBox="0 0 32 32"
                             focusable="false"
