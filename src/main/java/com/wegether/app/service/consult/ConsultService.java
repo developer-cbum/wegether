@@ -2,6 +2,7 @@ package com.wegether.app.service.consult;
 
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
 
 import java.util.List;
@@ -12,10 +13,10 @@ public interface ConsultService {
     public void register(ConsultingVO consultingVO);
 
     // 목록
-    public List<ConsultingDTO> getList(Pagination pagination);
+    public List<ConsultingDTO> getList(Pagination pagination, Search search);
 
     // 총개수
-    public int getTotal();
+    public int getTotal(Search search);
 
     // 상담 상세
     public Optional<ConsultingDTO> getConsulting(Long id);

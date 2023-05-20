@@ -2,6 +2,7 @@ package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.mapper.ConsultingMapper;
 import lombok.RequiredArgsConstructor;
@@ -21,13 +22,13 @@ public class ConsultingDAO {
     }
 
     // 상담목록
-    public List<ConsultingDTO> findAll(Pagination pagination){
-       return consultingMapper.selectAll(pagination);
+    public List<ConsultingDTO> findAll(Pagination pagination, Search search){
+       return consultingMapper.selectAll(pagination, search);
     }
 
     //상담 총 개수
-    public int findCountOfConsulting(){
-      return consultingMapper.selectCountOfConsulting();
+    public int findCountOfConsulting(Search search){
+      return consultingMapper.selectCountOfConsulting(search);
     }
 
     // 상담 상세

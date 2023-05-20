@@ -2,8 +2,10 @@ package com.wegether.app.mapper;
 
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,10 +16,10 @@ public interface ConsultingMapper {
     public void insertConsulting(ConsultingVO consultingVO);
 
     //상담 게시글 목록
-    public List<ConsultingDTO> selectAll(Pagination pagination);
+    public List<ConsultingDTO> selectAll(@Param("pagination") Pagination pagination, @Param ("search")Search search);
 
     //상담 총 개수
-    public int selectCountOfConsulting();
+    public int selectCountOfConsulting(@Param("search") Search search);
 
     // 상담 상세
     public Optional<ConsultingDTO> selectConsulting(Long id);
