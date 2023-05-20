@@ -1,5 +1,5 @@
 // 등록하기 이동 버튼
-$(document).ready(function(){
+
 let $registerButton = $('.register-move-button');
 
 // 목록 컨테이너 안에 ul 태그
@@ -25,7 +25,7 @@ $registerButton.on("click", function () {
     consults.forEach(consult => {
         text+= `
                      <li>                   
-              <a class="article " href="#">
+              <a class="article " href="/consults/detail?id=${consult.id}">
                 <em class="category">카테고리</em>
               <em class="status closed">${consult.consultingCategory}</em>
                     <div class="info">
@@ -49,4 +49,3 @@ $registerButton.on("click", function () {
     });
 
 
-})

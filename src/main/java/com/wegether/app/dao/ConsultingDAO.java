@@ -29,5 +29,16 @@ public class ConsultingDAO {
       return consultingMapper.selectCountOfConsulting();
     }
 
+    // 상담 상세
+    public ConsultingDTO findConsulting(Long id){
+        return consultingMapper.selectConsulting(id);
+    }
+
+    // 상담 수정
+    public void setConsulting(ConsultingDTO ConsultingDTO){
+        consultingMapper.updateConsulting(ConsultingDTO);
+    }
+
+
 
 }

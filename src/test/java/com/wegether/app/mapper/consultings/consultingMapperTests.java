@@ -49,5 +49,11 @@ public class consultingMapperTests {
         log.info(String.valueOf(total));
     }
 
+    //상담 상세
+    @Test
+    public void selectConsultTest(){
+        log.info(consultingMapper.selectConsulting(90L).toString());
+    }
+
 
 }
