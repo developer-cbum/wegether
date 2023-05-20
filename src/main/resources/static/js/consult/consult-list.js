@@ -20,9 +20,19 @@ $registerButton.on("click", function () {
     }
 })
 
+if(consults.length == 0) {
+    console.log("들어옴");
+    text = `
+      <div class="css-1lo9184">검색된 정보가 없습니다.</div>
+      `
+}
+
 
 // 상담 목록 뿌리기
     consults.forEach(consult => {
+            console.log(consult);
+
+
         text+= `
                      <li>                   
               <a class="article " href="/consults/detail?id=${consult.id}">
@@ -36,7 +46,9 @@ $registerButton.on("click", function () {
                     </a>
                   </li>
         `
+
     })
+
 
     $ul.html(text);
 
@@ -45,7 +57,8 @@ $registerButton.on("click", function () {
     $("a.change-page").on("click", function(e){
         e.preventDefault();
         let page = $(this).attr("href");
-       location.href = `/consults/list?page=${page}`
+        let keyword = $('.search-input').val();
+       location.href = `/consults/list?page=${page}&keyword=${keyword}`
     });
 
 

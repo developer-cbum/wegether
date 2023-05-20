@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/mentoring/consult-detail.css"/>
     <link rel="stylesheet" href="/css/common/common.css">
     <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/modal/modal.css">
     <title>커뮤니티디테일</title>
     <!-- 와디즈 블로그 css 가져오기 -->
     <link
@@ -42,6 +43,11 @@
     /> -->
 </head>
 <body th:object="${consultDTO}" style="font-family: Pretendard;">
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
 <div id="page-container" style="overflow-y: hidden">
     <div id="et-boc" class="et-boc">
         <div id="et-main-area">
@@ -210,8 +216,9 @@
                                                 >
                                                 <a
                                                         id="pa-back-button3"
-                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
-                                                        href="community.html"
+                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light remove-button"
+                                                        href="#"
+                                                        style="display: none";
                                                 >삭제</a
                                                 >
                                             </div>
@@ -900,6 +907,7 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/modal/modal.js"></script>
 <script>
     $(function () {
         <!-- 리뷰 버튼, 답글 버튼 관련 -->
@@ -925,21 +933,26 @@
     let consult = [[${consultDTO}]];
     let session = [[${session.id}]];
 
-    // <a th:if="${consultDTO.memberId == session.id}"
-    //     id="pa-back-button2"
-    // class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
-    // th:href="@{/consults/modify(id=*{id})}"
-    //     >수정</a
+
+
+    if(session != null && consult.memberId == session ) {
+        $('.remove-button').css("display", "inline-block");
+        $('.remove-button').on("click", function (e) {
+            e.preventDefault();
+            showWarnModal("<span>삭제되었습니다.<span>")
+            $('.modal').on("click", function () {
+                location.href = `/consults/remove?id=${consult.id}`
+            })
+        })
+    }
 
     if(session != null && consult.memberId == session ){
         $('.modify-button').css("display", "inline-block");
         $('.modify-button').on("click",function(e){
             e.preventDefault();
-            location.href=`/consults/modify?id=${consult.id}`
-        });
+                location.href=`/consults/modify?id=${consult.id}`
+            })
     }
 
-
-    console.log(consult);
 </script>
 </html>
