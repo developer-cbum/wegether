@@ -47,4 +47,10 @@ public class ConsultingServiceTests {
         int total = consultService.getTotal();
         log.info(String.valueOf(total));
     }
+
+    //상담 상세
+    @Test
+    public void getConsultTest(){
+        log.info(consultService.getConsulting(90L).toString());
+    }
 }

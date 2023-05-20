@@ -669,7 +669,6 @@ var {
 }
 
 .board-footer .pagination .prev-page {
-  margin-right: 16px;
 }
 
 .board-footer .pagination .next-page,
@@ -702,7 +701,6 @@ var {
 }
 
 .board-footer .pagination .next-page {
-  margin-left: 16px;
   background: transparent;
   border: none;
 }
@@ -941,7 +939,6 @@ i.icon.chevron-right::before,
 }
 
 .board-footer .pagination .prev-page {
-  margin-right: 16px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -965,6 +962,7 @@ i.icon.chevron-left::before,
 i.wadizicon.wa-chevron-right::before,
 i.icon.chevron-right::before,
 .icon-chevron-right::before {
+  width: 1px !important;
   content: '>';
 }
 
