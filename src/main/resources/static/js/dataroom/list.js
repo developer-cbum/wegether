@@ -12,13 +12,34 @@ $(document).ready(function () {
                 <a class="StoreCard_item__1hRfz"
                    href="#">
                    <div class="CardThumbnail_thumbnailContainer__DwnpC">
-                      <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K"
-                         style="padding-top: calc(100% - 0px);">
-                         <div aria-hidden="true"
-                            class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
-                            style="background-image: url(&quot;https://cdn2.wadiz.kr/2021/09/01/a003835f-bbf7-4493-a4a1-ea0359fc9dab.jpg/wadiz/resize/1000/format/jpg/quality/85/&quot;); border-radius: 8px;">
-                         </div>
-                      </div>
+                   `
+                        data.files.forEach(file => {
+                            if(file.fileType == "REPRESENTATIVE"){
+                                text += `
+                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px);">
+                                     <div aria-hidden="true"
+                                        class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                        style="background-image: url("/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}"); border-radius: 8px;">
+                                     </div>
+                                </div>`;
+                            } else {
+                                text += `
+                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px);">
+                                     <div aria-hidden="true"
+                                        class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                        style="min-height: 270px;  border-radius: 8px; background-image: url(../../image/data/no-image.png);">
+                                     </div>
+                                </div>`;
+                            }
+                        })
+// <!--                      <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K"-->
+// <!--                         style="padding-top: calc(100% - 0px);">-->
+// <!--                         <div aria-hidden="true"-->
+// <!--                            class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"-->
+// <!--                            style="background-image: url(&quot;https://cdn2.wadiz.kr/2021/09/01/a003835f-bbf7-4493-a4a1-ea0359fc9dab.jpg/wadiz/resize/1000/format/jpg/quality/85/&quot;); border-radius: 8px;">-->
+// <!--                         </div>-->
+// <!--                      </div>-->
+        text += `
                    </div>
                    <div class="StoreCard_contentContainer__tQfaN">
                       <div class="StoreCard_title__2hUM7">${data.dataTitle}
@@ -64,6 +85,7 @@ $(document).ready(function () {
                       </path>
                    </svg>
                 </button>
+            </div>
         `
     });
 

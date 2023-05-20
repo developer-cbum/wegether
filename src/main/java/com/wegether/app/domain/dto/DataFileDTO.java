@@ -12,4 +12,5 @@ public class DataFileDTO {
     private String fileUuid;
     private String fileName;
     private Long fileSize;
+    private String fileType;
 }
