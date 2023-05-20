@@ -39,27 +39,17 @@ public class ConsultingServiceTests {
         Search search = new Search();
         pagination.setPage(1);
         pagination.progress();
-<<<<<<< HEAD
-//        List<ConsultingDTO> consultingDTOS = consultService.getList(pagination);
-//        consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
-=======
         List<ConsultingDTO> consultingDTOS = consultService.getList(pagination, search);
         consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
->>>>>>> master
 
     }
 
     //총 개수
     @Test
     public void getTotalTests(){
-<<<<<<< HEAD
-//        int total = consultService.getTotal();
-//        log.info(String.valueOf(total));
-=======
         Search search = new Search();
         int total = consultService.getTotal(search);
         log.info(String.valueOf(total));
->>>>>>> master
     }
 
     //상담 상세
@@ -71,17 +61,10 @@ public class ConsultingServiceTests {
     //상담 수정
     @Test
     public void modifyTest(){
-<<<<<<< HEAD
-//        ConsultingDTO consultingDTO = consultService.getConsulting(1L);
-//        consultingDTO.setConsultingTitle("안녕2");
-//        consultService.modifyConsulting(consultingDTO);
-//        log.info(consultingDTO.toString());
-=======
         Optional<ConsultingDTO> consulting = consultService.getConsulting(1L);
         consulting.get().setConsultingTitle("안녕2");
         consultService.modifyConsulting( consulting.get());
         log.info( consulting.get().toString());
->>>>>>> master
     }
 
 }

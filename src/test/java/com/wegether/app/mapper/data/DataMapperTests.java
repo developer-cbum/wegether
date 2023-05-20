@@ -24,7 +24,7 @@ public class DataMapperTests {
     public void insertTest() {
         DataDTO dataDTO = new DataDTO();
 
-        dataDTO.setId(3L);
+        dataDTO.setId(4L);
         dataDTO.setDataTitle("자료 팜");
         dataDTO.setDataContent("내 자료 팔아요");
         dataDTO.setDataPrice(20000L);

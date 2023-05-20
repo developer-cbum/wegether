@@ -41,26 +41,16 @@ public class consultingMapperTests {
         Search search = new Search();
         pagination.setPage(1);
         pagination.progress();
-<<<<<<< HEAD
-//        List<ConsultingDTO> consultingDTOS = consultingMapper.selectAll(pagination);
-//        consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
-=======
         List<ConsultingDTO> consultingDTOS = consultingMapper.selectAll(pagination, search);
         consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
->>>>>>> master
     }
 
     //총 개수
     @Test
     public void selectCountOfConsultingTests(){
-<<<<<<< HEAD
-//        int total = consultingMapper.selectCountOfConsulting();
-//        log.info(String.valueOf(total));
-=======
         Search search = new Search();
         int total = consultingMapper.selectCountOfConsulting(search);
         log.info(String.valueOf(total));
->>>>>>> master
     }
 
     //상담 상세
@@ -72,17 +62,10 @@ public class consultingMapperTests {
     //상담 수정
     @Test
     public void updateTest(){
-<<<<<<< HEAD
-//        ConsultingDTO consultingDTO = consultingMapper.selectConsulting(1L);
-//        consultingDTO.setConsultingTitle("안녕3");
-//        consultingMapper.updateConsulting(consultingDTO);
-//        log.info(consultingDTO.toString());
-=======
         Optional<ConsultingDTO> consultingDTO = consultingMapper.selectConsulting(1L);
         consultingDTO.get().setConsultingTitle("안녕3");
         consultingMapper.updateConsulting(consultingDTO.get());
         log.info(consultingDTO.toString());
->>>>>>> master
     }
 
 }
