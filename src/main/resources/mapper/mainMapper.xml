@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.MainMapper">
-<!--    <select id="SelectProject" resultType="mainDTO">-->
-<!--        SELECT ID, PROJECT_TITLE-->
-<!--        FROM TBL_PROJECT-->
-<!--        WHERE ID= #{id}-->
-<!--    </select>-->
-
-    <select id="ProjectSelectAll" resultType="mainDTO">
-        SELECT ID, PROJECT_TITLE
-        FROM TBL_PROJECT
-    </select>
 
 
 

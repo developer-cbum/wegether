@@ -20,7 +20,7 @@ public class Pagination {
     }
 
     public Pagination(int total) {
-        this.rowCount = 8;
+        this.rowCount = 2;
         this.pageCount = 10;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
