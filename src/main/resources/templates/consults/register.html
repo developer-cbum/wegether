@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/consult/consult-register1.css">
+    <link rel="stylesheet" href="/css/consult/consult-register2.css">
+    <link rel="stylesheet" href="/css/consult/common.css">
+    <link rel="stylesheet" href="/css/consult/mypage.css">
+    <link rel="stylesheet" href="/css/mypage/project/list.css">
+  <link rel="stylesheet" href="/css/modal/modal.css">
+
+</head>
+<body>
+<div class="modal">
+  <div class="warn-modal">
+    <div id="content-wrap"></div>
+  </div>
+</div>
+<div id="AppLayout_Container" class="AppLayout_container__3zbzb">
+    <div class="AppLayout_main__14bCi">
+
+        <div id="AppLayout_Contents" class="AppLayout_contents__wv3DF">
+            <div id="container" class="ContentsLayout_container__11k-W">
+                <div>
+                    <div class="Breadcrumb_container__3YjD4"></div>
+                    <nav class="DetailNavbar_container__3SkEf">
+                        <div class="AppNavbar_container__5uOnI">
+                            <div
+                                    style="
+                  background: url('https://static.wadiz.kr/studio/funding/static/media/wadiz-logo.549edcd7.svg')
+                    50% center / contain no-repeat;
+                  width: 129px;
+                  height: 48px;
+                  cursor: pointer;
+                "
+                            ></div>
+                            <div class="AppNavbar_maker__2WVfm">
+                                <div class="Avatar_avatar__2DI5d Avatar_xs__i50kh"><span></span></div>
+                                <div th:text="${nickName}"></div>
+                            </div>
+                            <div class="AppNavbar_buttonGroup__UcLfm">
+
+                                <button
+                                        class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG"
+                                        type="button" onclick="location.href='/consults/list'">
+                                    <span><span class="Button_children__q9VCZ">나가기</span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="HeaderLayout_container__3fXkO">
+                        <div class="HeaderLayout_contents__F4hlC">
+                            <h2 class="ProjectTypeFormContainer_title__3Zn37">상담 등록</h2>
+                        </div>
+
+                    </div>
+
+                    <form class="consulting-form ProjectTypeFormContainer_form__3kGVN" th:action="@{/consults/register}" method="post" th:object="${consultingVO}">
+                        <section class="Section_container__3md8M spacing-9">
+                            <div style="max-width: 630px">
+                                <div class="Section_header__1qwS7 spacing-4">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">카테고리</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="SatisfactionFilter_container__1q2UL">
+                                    <div class="select-menu small SatisfactionFilter_selectBox__1SsgP" style="width: 548px!important;
+    height: 48px!important;">
+                                        <div class="css-2b097c-container">
+            <span
+                    aria-live="polite"
+                    aria-atomic="false"
+                    aria-relevant="additions text"
+                    class="css-7pg0cj-a11yText"
+            ></span>
+                                            <div class="select-menu__control css-yk16xz-control"
+                                                 style="height:48px!important;">
+                                                <div
+                                                        class="select-menu__value-container select-menu__value-container--has-value css-1hwfws3"
+                                                >
+                                                    <div class="menu-value select-menu__single-value css-1uccc91-singleValue">전체
+                                                    </div>
+                                                  <input  th:field="*{consultingCategory}" class="value" type="hidden" value="">
+                                                    <input
+                                                            id="react-select-4-input"
+                                                            readonly=""
+                                                            tabindex="0"
+                                                            aria-autocomplete="list"
+                                                            class="css-62g3xt-dummyInput"
+                                                            value=""
+                                                    />
+                                                </div>
+                                                <div class="select-menu__indicators css-1wy0on6">
+                                                    <span class="select-menu__indicator-separator css-0"></span>
+                                                    <div
+                                                            class="select-menu__indicator select-menu__dropdown-indicator css-tlfecz-indicatorContainer"
+                                                            aria-hidden="true"
+                                                    >
+                                                        <svg
+                                                                viewBox="0 0 32 32"
+                                                                focusable="false"
+                                                                role="presentation"
+                                                                class="withIcon_icon__3VTbq"
+                                                                aria-hidden="true"
+                                                        >
+                                                            <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="select-menu__menu css-9g7j0m-menu" style="display: none">
+                                                <div class="select-menu__menu-list css-11unzgr">
+                                                    <div
+                                                            class="select-menu__option select-menu__option--is-focused select-menu__option--is-selected css-9gakcf-option"
+                                                            id="react-select-6-option-0"
+                                                            tabindex="-1"
+                                                    >
+                                                        선택해주세요
+                                                    </div>
+                                                    <div
+                                                            class="select-menu__option css-yt9ioa-option"
+                                                            id="react-select-6-option-1"
+                                                            tabindex="-1"
+                                                    >
+                                                        학습
+                                                    </div>
+                                                    <div
+                                                            class="select-menu__option css-yt9ioa-option"
+                                                            id="react-select-6-option-2"
+                                                            tabindex="-1"
+                                                    >
+                                                        진로
+                                                    </div>
+                                                    <div
+                                                            class="select-menu__option css-yt9ioa-option"
+                                                            id="react-select-6-option-3"
+                                                            tabindex="-1"
+                                                    >
+                                                        입시
+                                                    </div>
+                                                    <div
+                                                            class="select-menu__option css-yt9ioa-option"
+                                                            id="react-select-6-option-4"
+                                                            tabindex="-1"
+                                                    >
+                                                        자소서
+                                                    </div>
+                                                    <div
+                                                            class="select-menu__option css-yt9ioa-option"
+                                                            id="react-select-6-option-5"
+                                                            tabindex="-1"
+                                                    >
+                                                        면접
+                                                    </div>
+                                                    <div
+                                                            class="select-menu__option css-yt9ioa-option"
+                                                            id="react-select-6-option-6"
+                                                            tabindex="-1"
+                                                    >
+                                                        기타
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--                <div class="Section_content__3OkLZ">-->
+                                <!--                  <div class="select-menu">-->
+                                <!--                    <div class="css-2b097c-container" id="category">-->
+                                <!--                      <span-->
+                                <!--                        aria-live="polite"-->
+                                <!--                        aria-atomic="false"-->
+                                <!--                        aria-relevant="additions text"-->
+                                <!--                        class="css-7pg0cj-a11yText"-->
+                                <!--                      ></span>-->
+                                <!--                      -->
+
+                                <!--                          <select class="select-menu__control css-1m205as-control">-->
+
+                                <!--                            <option selected>선택해주세요</option>-->
+                                <!--                            <option value="학습">학습</option>-->
+                                <!--                            <option value="진로">진로</option>-->
+                                <!--                            <option value="입시">입시</option>-->
+                                <!--                            <option value="자소서/면접">자소서/면접</option>-->
+                                <!--                            <option value="기타">기타</option>-->
+                                <!--                          </select>-->
+
+                                <!--                          -->
+                                <!--                      </div>-->
+                                <!--                    </div>-->
+                                <!--                  </div>-->
+                            </div>
+
+                        </section>
+
+
+                        <section class="Section_container__3md8M">
+                            <div style="max-width: 630px">
+                                <div class="Section_header__1qwS7">
+                                    <h2 class="Section_title__ikPIm">제목</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+
+                                <div class="Section_content__3OkLZ">
+                                    <div
+                                            class="TextField_textField__23rCe TextField_md__2zsQn TextField_right__1qt_G"
+                                    >
+                                        <label></label>
+                                        <div class="TextField_field__1E9vt">
+                                            <input th:field="*{consultingTitle}" class="Input_title Input_input__2kAAL Input_md__3-eZ6"
+                                                   placeholder="제목을 작성해주세요" maxlength="30"/>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="max-width: 630px">
+                                <div class="Section_header__1qwS7">
+                                    <h2 class="Section_title__ikPIm">내용 작성</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_description__10Uwo">
+                                    <p>자유롭게 내용을 작성해주세요.</p>
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div
+                                            class="TextField_textField__23rCe TextField_md__2zsQn TextField_right__1qt_G"
+                                    >
+                                        <label></label>
+                                        <div class="TextField_field__1E9vt">
+                                            <textarea class="content-textarea Input_input__2kAAL Input_md__3-eZ6"
+                                                      placeholder="내용을 작성해주세요"></textarea>
+                                            <input th:field="*{consultingContent}" class="consult-content" type="hidden" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Section_guideMessage__3XqrM">
+                                <h4>
+                                    <a
+                                            href="https://www.wadiz.kr/link/goal"
+                                            target="blank"
+                                            rel="nofollow noopener noreferrer"
+                                    ><strong>답변은 전문가님이! </strong></a
+                                    >
+                                </h4>
+                                <p>전문가 멘토가 답변을 달아줍니다.</p>
+                                <p>마이페이지에서 확인해주세요.</p>
+                            </div>
+                        </section>
+                        <div class="ProjectTypeFormContainer_buttonWrapper__3fh_J">
+                            <button
+                                    class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_xl__2x3J_ button_save"
+                                    type="button"
+                                    style="width: 548px; max-width: 100%" disabled="disabled"
+                            >
+                                <span><span class="Button_children__q9VCZ">저장하기</span></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/modal/modal.js"></script>
+<script src="/js/consult/register-list.js"></script>
+<script src="/js/consult/consult-register.js"></script>
+</html>

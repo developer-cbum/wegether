@@ -1,0 +1,59 @@
+package com.wegether.app.mapper.consultings;
+
+import com.wegether.app.domain.dto.ConsultingDTO;
+import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.vo.ConsultingVO;
+import com.wegether.app.mapper.ConsultingMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@SpringBootTest
+@Slf4j
+public class consultingMapperTests {
+
+    @Autowired
+    private ConsultingMapper consultingMapper;
+
+    // 컨설팅 등록
+    @Test
+    public void insertConsultingTest(){
+        ConsultingVO consultingVO = new ConsultingVO();
+        consultingVO.setMemberId(1L);
+        consultingVO.setConsultingTitle("고려대가고싶어요");
+        consultingVO.setConsultingContent("어떻게하죠?");
+        consultingVO.setConsultingCategory("진로");
+
+        consultingMapper.insertConsulting(consultingVO);
+    }
+
+    //상담 조회
+    @Test
+    public void selectAllTest(){
+        Pagination pagination = new Pagination();
+        pagination.setPage(1);
+        pagination.progress();
+        List<ConsultingDTO> consultingDTOS = consultingMapper.selectAll(pagination);
+        consultingDTOS.stream().map(consultingDTO -> consultingDTO.toString()).forEach(log::info);
+    }
+
+    //총 개수
+    @Test
+    public void selectCountOfConsultingTests(){
+        int total = consultingMapper.selectCountOfConsulting();
+        log.info(String.valueOf(total));
+    }
+
+    //상담 상세
+    @Test
+    public void selectConsultTest(){
+        log.info(consultingMapper.selectConsulting(90L).toString());
+    }
+
+
+}

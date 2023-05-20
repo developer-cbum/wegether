@@ -16,7 +16,7 @@ public class ChangePwSendMailService {
 
     private final JavaMailSender emailsender; // Bean 등록해둔 MailConfig 를 emailsender
 
-    private String  address = "http://localhost:10000/account/find/change-pwd"; // 비밀번호 재설정 주소
+    private String  address = "http://localhost:10000/accounts/find/change-pwd"; // 비밀번호 재설정 주소
     // 메일 내용 작성
     public MimeMessage createMessage(String to, Long id) throws MessagingException, UnsupportedEncodingException {
 //		System.out.println("보내는 대상 : " + to);

@@ -1,5 +1,7 @@
 package com.wegether.app.domain.dto;
 
+import com.wegether.app.domain.vo.CommunityFileVO;
+import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.domain.vo.FileVO;
 import lombok.Data;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,6 @@ public class CommunityDTO {
     private Long memberId;
     private String memberName;
     private String memberNickname;
-    private List<FileVO> files = new ArrayList<>();
+    private List<CommunityFileDTO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
 }
