@@ -1,6 +1,10 @@
 package com.wegether.app.dao;
 
+<<<<<<< HEAD
 import com.wegether.app.domain.vo.FileVO;
+=======
+import com.wegether.app.domain.dto.CommunityFileDTO;
+>>>>>>> master
 import com.wegether.app.mapper.FileMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -10,6 +14,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class FileDAO {
+<<<<<<< HEAD
     private final FileMapper fileMapper;
 
 //        파일 조회
@@ -30,5 +35,13 @@ public class FileDAO {
 
 
 
+=======
+
+    private final FileMapper fileMapper;
+
+    public List<CommunityFileDTO> findAll(Long communityId) { return fileMapper.selectAll(communityId); }
+
+    public void save(CommunityFileDTO communityFileDTO) { fileMapper.insert(communityFileDTO);}
+>>>>>>> master
 
 }
