@@ -14,7 +14,6 @@ import java.util.List;
 public class FileDAO {
     private final FileMapper fileMapper;
 
-<<<<<<< HEAD
 //        파일 조회
 //    public void find(Long id){
 //        fileMapper.select(id);
@@ -38,10 +37,9 @@ public class FileDAO {
 
 
 
-    public List<CommunityFileDTO> findAll(Long communityId) { return fileMapper.selectAll(communityId); }
-=======
+//    public List<CommunityFileDTO> findAll(Long communityId) { return fileMapper.selectAll(communityId); }
+
     public List<CommunityFileDTO> communityFindAll(Long communityId) { return fileMapper.communitySelectAll(communityId); }
->>>>>>> 7db43bdc8918d5f84bcbd6bf6277e598800a8d7d
 
     public void communitySave(CommunityFileDTO communityFileDTO) { fileMapper.communityInsert(communityFileDTO);}
 

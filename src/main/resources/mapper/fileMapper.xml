@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.FileMapper">
-<<<<<<< HEAD
 <!--    <select id="selectAll" resultType="fileVO">-->
 <!--        SELECT ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE-->
 <!--        FROM TBL_FILE-->
@@ -14,10 +13,7 @@
 <!--    </select>-->
 
 
-    <insert id="insert">
-=======
     <insert id="communityInsert">
->>>>>>> 7db43bdc8918d5f84bcbd6bf6277e598800a8d7d
         <selectKey keyProperty="id" order="BEFORE" resultType="Long">
             SELECT SEQ_FILE.NEXTVAL FROM DUAL
         </selectKey>
@@ -32,7 +28,6 @@
         ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
     </select>
 
-<<<<<<< HEAD
 <!--  data  -->
     <select id="dataSelectAll" resultType="dataFileDTO">
         SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, DATA_ID
@@ -41,10 +36,8 @@
     </select>
 
 
-=======
     <delete id="communityDelete">
         DELETE FROM TBL_FILE
         WHERE ID = #{id}
     </delete>
->>>>>>> 7db43bdc8918d5f84bcbd6bf6277e598800a8d7d
 </mapper>
