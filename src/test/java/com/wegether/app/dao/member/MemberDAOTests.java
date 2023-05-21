@@ -1,6 +1,7 @@
 package com.wegether.app.dao.member;
 
 import com.wegether.app.dao.MemberDAO;
+import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -47,5 +49,25 @@ public class MemberDAOTests {
     @Test
     public void setMemberPasswordTest(){
         memberDAO.setPassword(1L, "0123456789");
+    }
+
+    @Test
+    public void findByIdTest(){
+        log.info(memberDAO.findById(1L).get().toString());
+    }
+
+
+
+
+
+
+
+
+
+
+    @Test
+    public void showmypage(){
+        Optional<MemberDTO> foundmypage=memberDAO.showmypage(1L);
+        assertThat(foundmypage.isPresent()).isEqualTo(true);
     }
 }

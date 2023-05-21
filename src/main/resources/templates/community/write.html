@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleag.org">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,7 +7,7 @@
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,viewport-fit=cover"
         />
-        <link rel="stylesheet" href="../../static/css/community/community-register.css" />
+        <link rel="stylesheet" href="/css/community/community-register.css"/>
         <title>커뮤니티 등록</title>
 
         <!-- 커뮤니티 등록 css -->
@@ -43,9 +43,7 @@
                                 </div>
                                 <form
                                     class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
-                                    action=""
-                                    name="registerForm"
-                                >
+                                    th:action="@{/community/write}" method="post" th:object="${communityDTO}">
                                     <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
 
                                     <!-- 커뮤니티 큰 제목 -->
@@ -60,14 +58,7 @@
                                             <div class="TextField_textField__23rCe TextField_md__2zsQn">
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
-                                                    <input
-                                                        placeholder="제목을 입력해 주세요"
-                                                        maxlength="40"
-                                                        type="text"
-                                                        class="Input_input__2kAAL Input_md__3-eZ6"
-                                                        aria-invalid="false"
-                                                        name="title"
-                                                    />
+                                                    <input th:field="*{communityTitle}" placeholder="제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,14 +76,7 @@
                                             <div class="TextField_textField__23rCe TextField_md__2zsQn">
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
-                                                    <input
-                                                        placeholder="소제목을 입력해 주세요"
-                                                        maxlength="40"
-                                                        type="text"
-                                                        class="Input_input__2kAAL Input_md__3-eZ6"
-                                                        aria-invalid="false"
-                                                        name="subTitle"
-                                                    />
+                                                    <input th:field="*{communitySubtitle}" placeholder="소제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,13 +145,7 @@
                                                     <div class="wide column-2"></div>
                                                     <div class="wide column-4">
                                                         <div class="wz input">
-                                                            <textarea
-                                                                placeholder="내용 입력"
-                                                                helper="[object Object]"
-                                                                maxlength="100"
-                                                                name="content"
-                                                                rows="3"
-                                                            ></textarea>
+                                                            <textarea th:field="*{communityContent}" placeholder="내용 입력"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,7 +156,7 @@
                                     <div class="FundingStoryContainer_btnWrapper__32tvJ">
                                         <button
                                             class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_lg__3vRQD"
-                                            type="button"
+                                            type="submit"
                                             style="width: 100%"
                                             onclick="check()"
                                         >

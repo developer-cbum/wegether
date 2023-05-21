@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="stylesheet" href="/mentoring/consult-detail.css"/>
+    <link rel="stylesheet" href="/css/common/common.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/modal/modal.css">
+    <title>커뮤니티디테일</title>
+    <!-- 와디즈 블로그 css 가져오기 -->
+    <link
+            rel="stylesheet"
+            id="divi-dynamic-css"
+            href="https://blog.wadiz.kr/wp-content/et-cache/1/2/364941/et-divi-dynamic-tb-17239-tb-13526-tb-17457-364941.css?ver=1683687114"
+            as="style"
+            media="all"
+            onload="this.onload=null;this.rel='stylesheet'"/>
+
+    <link
+            rel="stylesheet"
+            as="style"
+            id="et-core-unified-tb-17239-tb-13526-tb-17457-deferred-364941-cached-inline-styles"
+            href="https://blog.wadiz.kr/wp-content/et-cache/1/2/364941/et-core-unified-tb-17239-tb-13526-tb-17457-deferred-364941.min.css?ver=1683687115"
+            onload="this.onload=null;this.rel='stylesheet';"/>
+
+    <!-- 댓글 글씨체 -->
+    <link rel="stylesheet" href="https://static.wadiz.kr/static/web/wui.css?c542abcf"/>
+
+    <!-- 댓글 전체화면 로딩에 필요한 부분 -->
+    <script type="text/javascript" src="https://static.wadiz.kr/static/web/common.js?db524cda"></script>
+    <link rel="stylesheet" href="/css/consult/consult-detail.css">
+
+    <!-- 댓글 css -->
+    <!-- <link rel="stylesheet" href="https://static.wadiz.kr/main/main.c1266dc7.css" /> -->
+
+    <!-- 와디즈 캠페인 css 댓글 -->
+    <!-- <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://static.wadiz.kr/main/css/reward-community.bb8838fc.chunk.css"
+    /> -->
+</head>
+<body th:object="${consultDTO}" style="font-family: Pretendard;">
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
+<div id="page-container" style="overflow-y: hidden">
+    <div id="et-boc" class="et-boc">
+        <div id="et-main-area">
+            <div id="main-content">
+                <div class="et-l et-l--body">
+                    <div class="et_builder_inner_content et_pb_gutters3">
+                        <div
+                                class="et_pb_section et_pb_section_0_tb_body et_pb_with_background et_section_regular"
+                                style="padding-bottom: 0px"
+                        >
+                            <div class="et_pb_row et_pb_row_0_tb_body">
+                                <div
+                                        class="et_pb_column et_pb_column_4_4 et_pb_column_0_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
+                                >
+                                    <div
+                                            class="et_pb_module et_pb_post_title et_pb_post_title_0_tb_body et_pb_bg_layout_light et_pb_text_align_center"
+                                    >
+                                        <!-- 제목 부분 -->
+                                        <div class="et_pb_title_container">
+                                            <h1 class="entry-title" th:text="*{consultingTitle}"></h1>
+                                            <p class="et_pb_title_meta_container">
+                                                <!-- 작성일 -->
+                                                <span class="published" th:text="*{consultingCategory}"></span> |
+                                                <span class="published">작성자 : <th:block
+                                                        th:text="*{memberNickname}"></th:block> </span> |
+                                                <th:block
+                                                        th:with="splitDate=${#strings.arraySplit(consultDTO.consultingRegisterDate, ' ')}">
+                                                    <span class="published">날짜 <th:block
+                                                            th:text="${splitDate[0]}"></th:block> </span>
+                                                </th:block>
+                                                <!-- <a
+                                                href="https://blog.wadiz.kr/category/platform-story/planning-note/"
+                                                rel="category tag"
+                                                >커뮤니티 네모칸 부분 1</a
+                                            >,
+                                            <a
+                                                href="https://blog.wadiz.kr/category/platform-story/"
+                                                rel="category tag"
+                                                >커뮤니티 네모칸 부분 2</a
+                                            > -->
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="et_pb_section et_pb_section_1_tb_body et_section_regular">
+                            <div class="et_pb_row et_pb_row_1_tb_body">
+                                <!-- 내용 부분 -->
+                                <div
+                                        class="et_pb_column et_pb_column_4_4 et_pb_column_1_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
+                                >
+
+                                    <div style="
+                                        padding: 50px;
+                                        border-top: 1px solid;
+                                        border-bottom: 1px solid;">
+                                        <h4><th:block th:text="*{consultingContent}"></th:block></h4>
+                                    </div>
+
+
+                                    <div class="et_pb_row et_pb_row_2_tb_body">
+                                        <div
+                                                class="et_pb_column et_pb_column_4_4 et_pb_column_2_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
+                                        ></div>
+                                    </div>
+                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px">
+                                        <div
+                                                class="et_pb_column et_pb_column_1_2 et_pb_column_3_tb_body et_pb_css_mix_blend_mode_passthrough"
+                                        >
+                                            <div
+                                                    class="et_pb_with_border et_pb_module dssb_sharing_buttons dssb_sharing_buttons_0_tb_body"
+                                            >
+                                                <div class="et_pb_module_inner">
+                                                    <div class="dssb-sharning-buttons-container">
+                                                        <div
+                                                                class="dssb-sharing-buttons dssb-columns-3 dssb-tablet-columns-3 dssb-phone-columns-3"
+                                                        >
+                                                            <div
+                                                                    class="dssb_sharing_button dssb_sharing_button_0_tb_body"
+                                                            >
+                                                                <div class="et_pb_module_inner">
+                                                                    <div class="dssb-sharing-button">
+                                                                        <a
+                                                                                class="dssb-sharing-button-facebook"
+                                                                                href="javascript:void(0)"
+                                                                                data-network-type="facebook"
+                                                                                data-network-url="https://www.facebook.com/sharer.php?u=https://blog.wadiz.kr/%ec%98%81%ea%b0%90%ec%9d%84-%ec%b1%84%ec%9b%8c%ec%a4%84-%ec%a7%84%ea%b5%ad%ec%9d%b8-%ec%8b%9c%eb%a6%ac%ec%a6%88-best-4%eb%8a%94/"
+                                                                                rel="nofollow"
+                                                                        >
+                                                                            <span
+                                                                                    class="dssb-sharing-icon dssb-sharing-facebook"
+                                                                            ></span>
+                                                                            <div class="dssb-sharing-text">
+                                                                                Facebook
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                    class="dssb_sharing_button dssb_sharing_button_1_tb_body"
+                                                            >
+                                                                <div class="et_pb_module_inner">
+                                                                    <div class="dssb-sharing-button">
+                                                                        <a
+                                                                                class="dssb-sharing-button-twitter"
+                                                                                href="javascript:void(0)"
+                                                                                data-network-type="twitter"
+                                                                                data-network-url="https://twitter.com/intent/tweet?text=%EC%98%81%EA%B0%90%EC%9D%84+%EC%B1%84%EC%9B%8C%EC%A4%84+%EC%A7%84%EA%B5%AD%EC%9D%B8+%EC%8B%9C%EB%A6%AC%EC%A6%88+BEST+4%EB%8A%94%3F&amp;url=https://blog.wadiz.kr/%ec%98%81%ea%b0%90%ec%9d%84-%ec%b1%84%ec%9b%8c%ec%a4%84-%ec%a7%84%ea%b5%ad%ec%9d%b8-%ec%8b%9c%eb%a6%ac%ec%a6%88-best-4%eb%8a%94/"
+                                                                                rel="nofollow"
+                                                                        >
+                                                                            <span
+                                                                                    class="dssb-sharing-icon dssb-sharing-twitter"
+                                                                            ></span>
+                                                                            <div class="dssb-sharing-text">Twitter</div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                    class="dssb_sharing_button dssb_sharing_button_2_tb_body"
+                                                            >
+                                                                <div class="et_pb_module_inner">
+                                                                    <div class="dssb-sharing-button">
+                                                                        <a
+                                                                                class="dssb-sharing-button-copy"
+                                                                                href="javascript:void(0)"
+                                                                                data-network-type="copy"
+                                                                                data-network-url="https://blog.wadiz.kr/영감을-채워줄-진국인-시리즈-best-4는/"
+                                                                                rel="nofollow"
+                                                                        >
+                                                                            <span
+                                                                                    class="dssb-sharing-icon dssb-sharing-copy"
+                                                                            ></span>
+                                                                            <div class="dssb-sharing-text">
+                                                                                URL Copy
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                                class="et_pb_column et_pb_column_1_2 et_pb_column_4_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
+                                        >
+                                            <div
+                                                    class="et_pb_button_module_wrapper et_pb_button_0_tb_body_wrapper et_pb_button_alignment_right et_pb_module"
+                                            >
+                                                <a
+                                                        id="pa-back-button1"
+                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
+                                                        href="/consults/list"
+                                                >목록</a
+                                                >
+                                                <a href="#"
+                                                        id="pa-back-button2"
+                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light modify-button"
+                                                        style="display: none";
+                                                >수정</a
+                                                >
+                                                <a
+                                                        id="pa-back-button3"
+                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light remove-button"
+                                                        href="#"
+                                                        style="display: none";
+                                                >삭제</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 여기서부터 댓글 부분 -->
+                    <div class="MainWrapper_content__GZkTa">
+                        <div class="Community_container__MwLTJ">
+                            <div class="Community_header__2PWnH"></div>
+                            <div class="Community_contentWrapper__2tclW">
+                                <div class="Community_content__2v6zi" style="display: flex; justify-content: center">
+                                    <div class="Community_left__2RQhH">
+                                        <div>
+                                            <div class="RewardCommunityPage_wrapper__weR3u"></div>
+                                            <div class="CommunityComment_container__mA0K2">
+                                                <!-- 커뮤니티 디테일 댓글 -->
+                                                <div class="CommunityComment_titleArea__28rwm">
+                                                    <div class="CommunityCommentTitle_commentTitle__1Jbgx">
+                                                        <div class="CommentTitle_container__3JkFA">
+                                                            <p>
+                                                                답변<em class="CommentTitle_count__8olvZ"
+                                                            >27 (전체갯수)</em
+                                                            >
+                                                            </p>
+                                                        </div>
+                                                        <!-- <p class="CommunityCommentTitle_explanation__XfmmD">
+                                                            커뮤니티 관련 댓글입니다.
+                                                        </p> -->
+                                                    </div>
+                                                    <div>
+                                                        <div>
+                                                            <button
+                                                                    class="Button_button__2FuOU Button_secondary__LNLsN Button_contained__2SIAT Button_lg__1Dftp gray CommunityCommentWriteButton_button__3bPl4"
+                                                                    type="button"
+                                                            >
+                                                                <span
+                                                                ><span class="Button_children__ilFun reviewButton"
+                                                                >댓글 쓰기</span
+                                                                ></span
+                                                                >
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 댓글 달기 폼 -->
+                                                <div
+                                                        class="CommunityCommentReplyWriteForm_container__10W0O reviewWrite"
+                                                        style="display: none"
+                                                >
+                                                    <div class="CommentUserWrapper_container__10Bt-">
+                                                        <div class="CommentUserWrapper_avatar__1MYTO">
+                                                            <a href="/web/wmypage/myprofile/fundinglist/"
+                                                            >
+                                                                <div
+                                                                        class="Avatar_avatar__1d9Wt"
+                                                                        style="width: 36px; height: 36px"
+                                                                >
+                                                                    <span
+                                                                            class="Avatar_hasImage__2TKl6"
+                                                                            style="
+                                                                            background-image: url('https://www.wadiz.kr/wwwwadiz/green001/sns_profile_pics/20200602130606402_1372299961.jpg'),
+                                                                                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYzl1cmF3eHIyYSIgZD0iTTAgMGg4MHY4MEgweiIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8Zz4KICAgICAgICAgICAgPG1hc2sgaWQ9IjZ2emt3OXN5NWIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYzl1cmF3eHIyYSIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04MCA0MGMwIDIyLjA5Mi0xNy45MDkgNDAtNDAgNDBTMCA2Mi4wOTIgMCA0MCAxNy45MDkgMCA0MCAwczQwIDE3LjkwOCA0MCA0MCIgZmlsbD0iI0U5RUNFRiIgbWFzaz0idXJsKCM2dnprdzlzeTViKSIvPgogICAgICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJtMjIuMzA1IDI2LjkxNC4yMyAyLjEyMWMtLjAxLjI5LjA0OS41NTkuMTgxLjgwNy4wODUuMjYxLjIyOC40ODUuNDMzLjY3Ni4xOS4yMDMuNDEzLjM0OC42NzQuNDMyLjI0OS4xMzIuNTE5LjE5MS44MDYuMThsLjU1Ny0uMDc1Yy4zNTUtLjA5OS42NjMtLjI3OS45MjQtLjUzN2wuMzI4LS40MjVjLjE5LS4zMjYuMjg1LS42OC4yODctMS4wNTgtLjA3OC0uNzA2LS4xNTQtMS40MTUtLjIzLTIuMTIxLjAxLS4yOS0uMDUtLjU1OS0uMTgtLjgwN2ExLjU3IDEuNTcgMCAwIDAtLjQzNC0uNjc1IDEuNTUzIDEuNTUzIDAgMCAwLS42NzQtLjQzMyAxLjU4NCAxLjU4NCAwIDAgMC0uODA3LS4xOGMtLjE4NS4wMjYtLjM3Mi4wNS0uNTU3LjA3NWEyLjA4MyAyLjA4MyAwIDAgMC0uOTI1LjUzOGwtLjMyNi40MjRjLS4xOS4zMjctLjI4NS42NzktLjI4NyAxLjA1OE01My44ODIgMjcuMzI4djIuNTIyYzAgLjUzOC4yMzMgMS4xMDIuNjEzIDEuNDgyLjE5LjIwMy40MTQuMzQ4LjY3NC40MzMuMjUuMTMuNTE4LjE5LjgwNy4xOC41NDItLjAyNCAxLjEwNC0uMjAyIDEuNDgxLS42MTMuMzc2LS40MS42MTQtLjkxNC42MTQtMS40ODJ2LTIuNTIyYzAtLjUzNi0uMjM0LTEuMS0uNjE0LTEuNDhhMS41NzYgMS41NzYgMCAwIDAtLjY3NC0uNDM0IDEuNTczIDEuNTczIDAgMCAwLS44MDctLjE4Yy0uNTQyLjAyNC0xLjEwNC4yMDItMS40ODEuNjE0LS4zNzYuNDA5LS42MTMuOTEzLS42MTMgMS40OE0zNi4yOTcgMjUuOTQ1Yy0uNzQzIDQuMzM1LTEuNDg0IDguNjczLTIuMjI1IDEzLjAxLS4xODQgMS4wNzUuMjg1IDIuMzA3IDEuNDYzIDIuNTc2IDEuMDE0LjIzIDIuMzc4LS4zMDkgMi41NzYtMS40NjJsMi4yMjUtMTMuMDExYy4xODQtMS4wNzUtLjI4NS0yLjMwOC0xLjQ2My0yLjU3Ny0xLjAxNS0uMjMtMi4zOC4zMDgtMi41NzYgMS40NjRNNDUuMTU4IDUwLjM4NmMtLjE2LS4zMy0uMTAxLS40NzctLjA0NS0uODA2LS4xMTEuMTc1LS4xMjUuMjAxLS4wNDIuMDc3YS4zNy4zNyAwIDAgMSAuMjAzLS4xNzhjLS4yMi4xMTctLjIzNS4xMzgtLjA0Ny4wNjRhMy40MyAzLjQzIDAgMCAxLS4zOTMuMTE2Yy0uMDgyLjAyLS42NTkuMS0uMjY1LjA1Ny0xLjExNS4xMjQtMi4yNC4xOS0zLjM2LjI4NWwtNi44NzcuNTc3Yy0xLjA4OS4wOTItMi4xNDguODk3LTIuMDk1IDIuMDk0LjA0OCAxLjA1Ni45MjYgMi4xOTIgMi4wOTUgMi4wOTNsOC44NC0uNzRjMS40NS0uMTIzIDMuMDQxLS4xMyA0LjI4Ny0uOTggMS42LTEuMDkzIDIuMTYzLTMuMDI4IDEuMzE2LTQuNzcyLS40OC0uOTktMS45NjYtMS4zMzMtMi44NjYtLjc1Mi0xLjAxMy42NTQtMS4yNjMgMS44MDctLjc1IDIuODY1IiBmaWxsPSIjQ0REM0Q4Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=');
+                                                                            border: 1px solid rgb(221, 226, 230);
+                                                                        "
+                                                                    ></span></div
+                                                                >
+                                                            </a>
+                                                        </div>
+                                                        <div class="CommentUserWrapper_main__2oHy1">
+                                                            <div
+                                                                    class="CommunityCommentReplyWriteForm_writeForm__2YHmv"
+                                                            >
+                                                                <form
+                                                                        class="CommentForm_container__2bT5x CommentForm_fold__20KZS"
+                                                                >
+                                                                    <div class="CommentForm_textarea__yw5Av">
+                                                                        <textarea
+                                                                                placeholder="내용을 입력해 주세요."
+                                                                                maxlength="5000"
+                                                                                rows="2"
+                                                                                class="Textarea_textarea__2EtST"
+                                                                        ></textarea
+                                                                        >
+                                                                        <!-- <textarea
+                                                                            aria-hidden="true"
+                                                                            readonly=""
+                                                                            tabindex="-1"
+                                                                            class="Textarea_textarea__2EtST"
+                                                                            style="
+                                                                                visibility: hidden;
+                                                                                position: absolute;
+                                                                                overflow: hidden;
+                                                                                height: 0px;
+                                                                                top: 0px;
+                                                                                left: 0px;
+                                                                                transform: translateZ(0px);
+                                                                                pointer-events: none;
+                                                                            "
+                                                                        ></textarea> -->
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div style="display: flex; justify-content: flex-end">
+                                                            <div style="text-align: right; margin-top: 10px">
+                                                                <button
+                                                                        class="Button_button__2FuOU Button_primary__2mZni Button_md__46Ai-"
+                                                                        type="button"
+                                                                >
+                                                                    <span
+                                                                    ><span class="Button_children__ilFun"
+                                                                    >확인</span
+                                                                    ></span
+                                                                    >
+                                                                </button>
+                                                            </div>
+
+                                                            <div style="text-align: right; margin-top: 10px">
+                                                                <button
+                                                                        class="Button_button__2FuOU Button_primary__2mZni Button_md__46Ai- reviewButtonBack"
+                                                                        type="button"
+                                                                        style="margin-left: 10px"
+                                                                >
+                                                                    <span
+                                                                    ><span class="Button_children__ilFun"
+                                                                    >취소</span
+                                                                    ></span
+                                                                    >
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- 댓글 부분 전체 -->
+                                                <div class="CommunityCommentList_communityCommentListContainer__ru19J">
+                                                    <!-- 체험 리뷰, 전체 버튼 -->
+                                                    <div class="CommunityCommentList_filter__3bDGX">
+                                                        <label class="CommunityCommentList_selectSearch__4RR1u"
+                                                        ><span>상담 답변</span>
+                                                            <div>
+                                                                <button
+                                                                        type="button"
+                                                                        class="Tooltip_button__2xpDd"
+                                                                        aria-describedby="Tooltip_1"
+                                                                >
+                                                                    <span class="Tooltip_label__eKqLa"></span
+                                                                    ><span class="Tooltip_helpIconWrap__3bvP3"
+                                                                ><svg
+                                                                        viewBox="0 0 40 40"
+                                                                        focusable="false"
+                                                                        role="presentation"
+                                                                        class="withIcon_icon__3VTbq Tooltip_helpOutlineIcon__JkkNy"
+                                                                        aria-hidden="true"
+                                                                >
+                                                                            <path fill="none" d="M0 0h40v40H0z"></path>
+                                                                            <path
+                                                                                    d="M20 39a19 19 0 1 1 19-19 19.06 19.06 0 0 1-19 19zm0-36a17 17 0 1 0 17 17A17 17 0 0 0 20 3z"
+                                                                            ></path>
+                                                                            <path
+                                                                                    d="M24.34 10A5.75 5.75 0 0 0 20 8.33a5.7 5.7 0 0 0-6 6h2a3.7 3.7 0 0 1 4-4 3.7 3.7 0 0 1 4 4A4.29 4.29 0 0 1 22 18l-.7.6a6.51 6.51 0 0 0-2.3 5.7h2c0-1.9 0-2.6 1.7-4.3l.6-.5a6.28 6.28 0 0 0 2.7-5.2 5.73 5.73 0 0 0-1.66-4.3zM20 26.87a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 1 0 0-3.6z"
+                                                                            ></path></svg
+                                                                ><svg
+                                                                        viewBox="0 0 40 40"
+                                                                        focusable="false"
+                                                                        role="presentation"
+                                                                        class="withIcon_icon__3VTbq Tooltip_helpIcon__3jf9Q"
+                                                                        aria-hidden="true"
+                                                                >
+                                                                            <path fill="none" d="M0 0h40v40H0z"></path>
+                                                                            <path
+                                                                                    d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm0 29.5a1.8 1.8 0 1 1 1.8-1.79 1.8 1.8 0 0 1-1.8 1.75zm6-16.13a6.28 6.28 0 0 1-2.7 5.2l-.6.5c-1.7 1.7-1.7 2.4-1.7 4.3h-2a6.51 6.51 0 0 1 2.3-5.7L22 18a4.29 4.29 0 0 0 2-3.7 3.7 3.7 0 0 0-4-4 3.7 3.7 0 0 0-4 4h-2a5.7 5.7 0 0 1 6-6 5.7 5.7 0 0 1 6 6z"
+                                                                            ></path></svg
+                                                                ></span>
+                                                                </button>
+                                                            </div
+                                                            >
+                                                        </label>
+                                                        <div class="SortingSelect_sortingSelect__2zf4r">
+                                                            전체
+                                                            <svg
+                                                                    viewBox="0 0 32 32"
+                                                                    focusable="false"
+                                                                    role="presentation"
+                                                                    class="withIcon_icon__3VTbq SortingSelect_icon__28ocK"
+                                                                    aria-hidden="true"
+                                                            >
+                                                                <path
+                                                                        d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"
+                                                                ></path>
+                                                            </svg
+                                                            >
+                                                            <select
+                                                                    name="alignType"
+                                                                    class="SortingSelect_select__21qNT"
+                                                            >
+                                                                <option value="">전체</option>
+                                                                <option value="SUPPORT">응원</option>
+                                                                <option value="SUGGESTION">의견</option>
+                                                                <option value="REVIEW">체험 리뷰만</option>
+                                                                <option value="PHOTO_REVIEW">사진 체험 리뷰만</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <hr
+                                                            class="Divider_divider__ToZaf Divider_horizontal__3W5eD Divider_lightBG__3bAAk Divider_spacing5__C3W8V Divider_caption2__3b6Dr"
+                                                    />
+                                                    <div>
+                                                        <!-- 댓글 1개 -->
+                                                        <div class="CommunityCommentItem_container__BOufe">
+                                                            <div class="CommunityCommentItem_content__2N4Mb">
+                                                                <div
+                                                                        class="CommentUserWrapper_container__10Bt- CommunityCommentContent_container__25oHX"
+                                                                >
+                                                                    <div class="CommentUserWrapper_avatar__1MYTO">
+                                                                        <a
+                                                                                href="/web/wmypage/myprofile/fundinglist/732152617"
+                                                                        >
+                                                                            <div
+                                                                                    class="Avatar_avatar__1d9Wt"
+                                                                                    style="width: 40px; height: 40px"
+                                                                            >
+                                                                                <span
+                                                                                        class="Avatar_hasImage__2TKl6"
+                                                                                        style="
+                                                                                        background-image: url('https://www.wadiz.kr/wwwwadiz/green001/2020/0405/20200405201126903_430678.jpeg'),
+                                                                                            url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYzl1cmF3eHIyYSIgZD0iTTAgMGg4MHY4MEgweiIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8Zz4KICAgICAgICAgICAgPG1hc2sgaWQ9IjZ2emt3OXN5NWIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYzl1cmF3eHIyYSIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04MCA0MGMwIDIyLjA5Mi0xNy45MDkgNDAtNDAgNDBTMCA2Mi4wOTIgMCA0MCAxNy45MDkgMCA0MCAwczQwIDE3LjkwOCA0MCA0MCIgZmlsbD0iI0U5RUNFRiIgbWFzaz0idXJsKCM2dnprdzlzeTViKSIvPgogICAgICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJtMjIuMzA1IDI2LjkxNC4yMyAyLjEyMWMtLjAxLjI5LjA0OS41NTkuMTgxLjgwNy4wODUuMjYxLjIyOC40ODUuNDMzLjY3Ni4xOS4yMDMuNDEzLjM0OC42NzQuNDMyLjI0OS4xMzIuNTE5LjE5MS44MDYuMThsLjU1Ny0uMDc1Yy4zNTUtLjA5OS42NjMtLjI3OS45MjQtLjUzN2wuMzI4LS40MjVjLjE5LS4zMjYuMjg1LS42OC4yODctMS4wNTgtLjA3OC0uNzA2LS4xNTQtMS40MTUtLjIzLTIuMTIxLjAxLS4yOS0uMDUtLjU1OS0uMTgtLjgwN2ExLjU3IDEuNTcgMCAwIDAtLjQzNC0uNjc1IDEuNTUzIDEuNTUzIDAgMCAwLS42NzQtLjQzMyAxLjU4NCAxLjU4NCAwIDAgMC0uODA3LS4xOGMtLjE4NS4wMjYtLjM3Mi4wNS0uNTU3LjA3NWEyLjA4MyAyLjA4MyAwIDAgMC0uOTI1LjUzOGwtLjMyNi40MjRjLS4xOS4zMjctLjI4NS42NzktLjI4NyAxLjA1OE01My44ODIgMjcuMzI4djIuNTIyYzAgLjUzOC4yMzMgMS4xMDIuNjEzIDEuNDgyLjE5LjIwMy40MTQuMzQ4LjY3NC40MzMuMjUuMTMuNTE4LjE5LjgwNy4xOC41NDItLjAyNCAxLjEwNC0uMjAyIDEuNDgxLS42MTMuMzc2LS40MS42MTQtLjkxNC42MTQtMS40ODJ2LTIuNTIyYzAtLjUzNi0uMjM0LTEuMS0uNjE0LTEuNDhhMS41NzYgMS41NzYgMCAwIDAtLjY3NC0uNDM0IDEuNTczIDEuNTczIDAgMCAwLS44MDctLjE4Yy0uNTQyLjAyNC0xLjEwNC4yMDItMS40ODEuNjE0LS4zNzYuNDA5LS42MTMuOTEzLS42MTMgMS40OE0zNi4yOTcgMjUuOTQ1Yy0uNzQzIDQuMzM1LTEuNDg0IDguNjczLTIuMjI1IDEzLjAxLS4xODQgMS4wNzUuMjg1IDIuMzA3IDEuNDYzIDIuNTc2IDEuMDE0LjIzIDIuMzc4LS4zMDkgMi41NzYtMS40NjJsMi4yMjUtMTMuMDExYy4xODQtMS4wNzUtLjI4NS0yLjMwOC0xLjQ2My0yLjU3Ny0xLjAxNS0uMjMtMi4zOC4zMDgtMi41NzYgMS40NjRNNDUuMTU4IDUwLjM4NmMtLjE2LS4zMy0uMTAxLS40NzctLjA0NS0uODA2LS4xMTEuMTc1LS4xMjUuMjAxLS4wNDIuMDc3YS4zNy4zNyAwIDAgMSAuMjAzLS4xNzhjLS4yMi4xMTctLjIzNS4xMzgtLjA0Ny4wNjRhMy40MyAzLjQzIDAgMCAxLS4zOTMuMTE2Yy0uMDgyLjAyLS42NTkuMS0uMjY1LjA1Ny0xLjExNS4xMjQtMi4yNC4xOS0zLjM2LjI4NWwtNi44NzcuNTc3Yy0xLjA4OS4wOTItMi4xNDguODk3LTIuMDk1IDIuMDk0LjA0OCAxLjA1Ni45MjYgMi4xOTIgMi4wOTUgMi4wOTNsOC44NC0uNzRjMS40NS0uMTIzIDMuMDQxLS4xMyA0LjI4Ny0uOTggMS42LTEuMDkzIDIuMTYzLTMuMDI4IDEuMzE2LTQuNzcyLS40OC0uOTktMS45NjYtMS4zMzMtMi44NjYtLjc1Mi0xLjAxMy42NTQtMS4yNjMgMS44MDctLjc1IDIuODY1IiBmaWxsPSIjQ0REM0Q4Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=');
+                                                                                        border: 1px solid
+                                                                                            rgb(221, 226, 230);
+                                                                                    "
+                                                                                ></span></div
+                                                                            >
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="CommentUserWrapper_main__2oHy1">
+                                                                        <div
+                                                                                class="CommunityCommentContent_header__2y2W0"
+                                                                        >
+                                                                            <div
+                                                                                    class="CommunityCommentContent_userInfo__2veqg CommentUserInfo_container__2G0cq"
+                                                                            >
+                                                                                <span
+                                                                                        class="CommentUserInfo_name__3WGGI"
+                                                                                ><a
+                                                                                        href="/web/wmypage/myprofile/fundinglist/732152617"
+                                                                                ><strong>김인진</strong></a
+                                                                                ></span
+                                                                                ><span
+                                                                                    class="Badge_container__9G9PS Badge_visible__3LNXv CommentUserInfo_waffleBadge__2Oqhl"
+                                                                            ><span
+                                                                                    class="Badge_badge__ovUKI Badge_label__2Rft2 Badge_sm__1OBNp Badge_primary__tTdjx Badge_contained___xvcv"
+                                                                            >참여</span
+                                                                            ></span
+                                                                            ><span
+                                                                                    class="CommentUserInfo_date__1ggwf"
+                                                                            >응원 • 3시간 전(댓글 등록
+                                                                                    시간)</span
+                                                                            >
+                                                                            </div>
+                                                                            <div
+                                                                                    class="CommunityCommentContent_moreWrap__3ans8"
+                                                                            >
+                                                                                <svg
+                                                                                        viewBox="0 0 40 40"
+                                                                                        focusable="false"
+                                                                                        role="presentation"
+                                                                                        class="withIcon_icon__3VTbq"
+                                                                                        aria-hidden="true"
+                                                                                >
+                                                                                    <path
+                                                                                            d="M24.52 5A4.52 4.52 0 1 0 20 9.57 4.53 4.53 0 0 0 24.52 5zm0 30A4.52 4.52 0 1 0 20 39.48 4.53 4.53 0 0 0 24.52 35zm0-15A4.52 4.52 0 1 0 20 24.52 4.53 4.53 0 0 0 24.52 20z"
+                                                                                    ></path>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <div
+                                                                                    class="CommentTextContent_container__3EM7N"
+                                                                            >
+                                                                                <div
+                                                                                        class="CommentTextContent_contentBox__uvt_R"
+                                                                                >
+                                                                                    10360995(여기 삭제 해도 될듯)<br/>
+                                                                                    댓글 어렵구만 :)
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                                class="CommunityCommentContent_bottom__-IKRP CommunityCommentContent_noReply__1c4Cz"
+                                                                        >
+                                                                            <button
+                                                                                    class="Button_button__2FuOU Button_secondary__LNLsN Button_sm__16X6h CommunityCommentContent_replyBtn__2T16c reviewReviewButton"
+                                                                                    type="button"
+                                                                            >
+                                                                                <span
+                                                                                ><span
+                                                                                        class="Button_children__ilFun"
+                                                                                >답글
+                                                                                    </span></span
+                                                                                >
+                                                                            </button>
+                                                                        </div>
+                                                                        <div
+                                                                                class="CommunityCommentContent_utils__oo7sJ"
+                                                                        ></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                    class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite"
+                                                                    style="display: none"
+                                                            >
+                                                                <div
+                                                                        class="CommunityCommentReplyListContainer_container__1waBy"
+                                                                >
+                                                                    <div class="CommentReplyList_container__2phlF">
+                                                                        <div
+                                                                                class="CommunityCommentReplyWriteForm_container__10W0O"
+                                                                        >
+                                                                            <div
+                                                                                    class="CommentUserWrapper_container__10Bt-"
+                                                                            >
+                                                                                <div
+                                                                                        class="CommentUserWrapper_avatar__1MYTO"
+                                                                                >
+                                                                                    <a
+                                                                                            href="/web/wmypage/myprofile/fundinglist/"
+                                                                                    >
+                                                                                        <div
+                                                                                                class="Avatar_avatar__1d9Wt"
+                                                                                                style="
+                                                                                                width: 36px;
+                                                                                                height: 36px;
+                                                                                            "
+                                                                                        >
+                                                                                            <span></span></div
+                                                                                        >
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="CommentUserWrapper_main__2oHy1"
+                                                                                >
+                                                                                    <div
+                                                                                            class="CommunityCommentReplyWriteForm_writeForm__2YHmv"
+                                                                                    >
+                                                                                        <textarea
+                                                                                                placeholder="내용을 입력해 주세요."
+                                                                                                maxlength="2000"
+                                                                                                rows="2"
+                                                                                                class="Textarea_textarea__2EtST"
+                                                                                        ></textarea>
+                                                                                        <div
+                                                                                                style="
+                                                                                                text-align: right;
+                                                                                                margin-top: 10px;
+                                                                                            "
+                                                                                        >
+                                                                                            <div
+                                                                                                    style="
+                                                                                                    display: flex;
+                                                                                                    justify-content: flex-end;
+                                                                                                "
+                                                                                            >
+                                                                                                <div
+                                                                                                        style="
+                                                                                                        text-align: right;
+                                                                                                        margin-top: 10px;
+                                                                                                    "
+                                                                                                >
+                                                                                                    <button
+                                                                                                            class="Button_button__2FuOU Button_primary__2mZni Button_md__46Ai-"
+                                                                                                            type="button"
+                                                                                                    >
+                                                                                                        <span
+                                                                                                        ><span
+                                                                                                                class="Button_children__ilFun"
+                                                                                                        >확인</span
+                                                                                                        ></span
+                                                                                                        >
+                                                                                                    </button>
+                                                                                                </div>
+
+                                                                                                <div
+                                                                                                        style="
+                                                                                                        text-align: right;
+                                                                                                        margin-top: 10px;
+                                                                                                    "
+                                                                                                >
+                                                                                                    <button
+                                                                                                            class="Button_button__2FuOU Button_primary__2mZni Button_md__46Ai- reviewReviewButtonBack"
+                                                                                                            type="button"
+                                                                                                            style="
+                                                                                                            margin-left: 10px;
+                                                                                                        "
+                                                                                                    >
+                                                                                                        <span
+                                                                                                        ><span
+                                                                                                                class="Button_children__ilFun"
+                                                                                                        >취소</span
+                                                                                                        ></span
+                                                                                                        >
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr
+                                                                    class="Divider_divider__ToZaf Divider_horizontal__3W5eD Divider_lightBG__3bAAk Divider_spacing6__8L6D1 Divider_caption2__3b6Dr"
+                                                            />
+                                                        </div>
+
+                                                        <!-- 댓글 1개 -->
+                                                        <div class="CommunityCommentItem_container__BOufe">
+                                                            <div class="CommunityCommentItem_content__2N4Mb">
+                                                                <div
+                                                                        class="CommentUserWrapper_container__10Bt- CommunityCommentContent_container__25oHX"
+                                                                >
+                                                                    <div class="CommentUserWrapper_avatar__1MYTO">
+                                                                        <a
+                                                                                href="/web/wmypage/myprofile/fundinglist/181471505"
+                                                                        >
+                                                                            <div
+                                                                                    class="Avatar_avatar__1d9Wt"
+                                                                                    style="width: 40px; height: 40px"
+                                                                            >
+                                                                                <span
+                                                                                        class="Avatar_hasImage__2TKl6"
+                                                                                ></span></div
+                                                                            >
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="CommentUserWrapper_main__2oHy1">
+                                                                        <div
+                                                                                class="CommunityCommentContent_header__2y2W0"
+                                                                        >
+                                                                            <div
+                                                                                    class="CommunityCommentContent_userInfo__2veqg CommentUserInfo_container__2G0cq"
+                                                                            >
+                                                                                <span
+                                                                                        class="CommentUserInfo_name__3WGGI"
+                                                                                ><a
+                                                                                        href="/web/wmypage/myprofile/fundinglist/181471505"
+                                                                                ><strong>조세연</strong></a
+                                                                                ></span
+                                                                                ><span
+                                                                                    class="Badge_container__9G9PS Badge_visible__3LNXv CommentUserInfo_waffleBadge__2Oqhl"
+                                                                            ><span
+                                                                                    class="Badge_badge__ovUKI Badge_label__2Rft2 Badge_sm__1OBNp Badge_primary__tTdjx Badge_contained___xvcv"
+                                                                            >참여</span
+                                                                            ></span
+                                                                            ><span
+                                                                                    class="CommentUserInfo_date__1ggwf"
+                                                                            >응원 • 하루 전</span
+                                                                            >
+                                                                            </div>
+                                                                            <div
+                                                                                    class="CommunityCommentContent_moreWrap__3ans8"
+                                                                            >
+                                                                                <svg
+                                                                                        viewBox="0 0 40 40"
+                                                                                        focusable="false"
+                                                                                        role="presentation"
+                                                                                        class="withIcon_icon__3VTbq"
+                                                                                        aria-hidden="true"
+                                                                                >
+                                                                                    <path
+                                                                                            d="M24.52 5A4.52 4.52 0 1 0 20 9.57 4.53 4.53 0 0 0 24.52 5zm0 30A4.52 4.52 0 1 0 20 39.48 4.53 4.53 0 0 0 24.52 35zm0-15A4.52 4.52 0 1 0 20 24.52 4.53 4.53 0 0 0 24.52 20z"
+                                                                                    ></path>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <div
+                                                                                    class="CommentTextContent_container__3EM7N"
+                                                                            >
+                                                                                <div
+                                                                                        class="CommentTextContent_contentBox__uvt_R"
+                                                                                >
+                                                                                    댓글에 답글 예시 화면<br/>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                                class="CommunityCommentContent_bottom__-IKRP"
+                                                                        >
+                                                                            <button
+                                                                                    class="Button_button__2FuOU Button_secondary__LNLsN Button_sm__16X6h CommunityCommentContent_replyBtn__2T16c CommunityCommentContent_active__4SdQQ"
+                                                                                    type="button"
+                                                                            >
+                                                                                <span
+                                                                                ><span
+                                                                                        class="Button_children__ilFun"
+                                                                                >답글 1</span
+                                                                                ></span
+                                                                                >
+                                                                            </button>
+                                                                        </div>
+                                                                        <div
+                                                                                class="CommunityCommentContent_utils__oo7sJ"
+                                                                        ></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="CommunityCommentItem_replyContent__3UQ-7">
+                                                                <div
+                                                                        class="CommunityCommentReplyListContainer_container__1waBy"
+                                                                >
+                                                                    <div class="CommentReplyList_container__2phlF">
+                                                                        <div
+                                                                                class="CommunityCommentReplyContent_container__ImfPm"
+                                                                        >
+                                                                            <div
+                                                                                    class="CommentUserWrapper_container__10Bt-"
+                                                                            >
+                                                                                <div
+                                                                                        class="CommentUserWrapper_avatar__1MYTO"
+                                                                                >
+                                                                                    <a href="/web/maker/detail/3701904"
+                                                                                    >
+                                                                                        <div
+                                                                                                class="Avatar_avatar__1d9Wt"
+                                                                                                style="
+                                                                                                width: 36px;
+                                                                                                height: 36px;
+                                                                                            "
+                                                                                        >
+                                                                                            <span
+                                                                                                    class="Avatar_hasImage__2TKl6"
+                                                                                            ></span></div
+                                                                                        >
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="CommentUserWrapper_main__2oHy1"
+                                                                                >
+                                                                                    <div
+                                                                                            class="CommentUserInfo_container__2G0cq"
+                                                                                    >
+                                                                                        <span
+                                                                                                class="CommentUserInfo_name__3WGGI"
+                                                                                        ><a
+                                                                                                href="/web/maker/detail/3701904"
+                                                                                        ><strong
+                                                                                        >회사이름</strong
+                                                                                        ></a
+                                                                                        ></span
+                                                                                        ><span
+                                                                                            class="Badge_container__9G9PS Badge_visible__3LNXv CommentUserInfo_waffleBadge__2Oqhl"
+                                                                                    ><span
+                                                                                            class="Badge_badge__ovUKI Badge_label__2Rft2 Badge_sm__1OBNp Badge_info__2cLy3 Badge_contained___xvcv"
+                                                                                    >메이커</span
+                                                                                    ></span
+                                                                                    ><span
+                                                                                            class="CommentUserInfo_date__1ggwf"
+                                                                                    >하루 전</span
+                                                                                    >
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <div
+                                                                                                class="CommentTextContent_container__3EM7N"
+                                                                                        >
+                                                                                            <div
+                                                                                                    class="CommentTextContent_contentBox__uvt_R"
+                                                                                            >
+                                                                                                리뷰에 답글 다는 기능은
+                                                                                                관리자가 하는거인데
+                                                                                                우리는 사용자가 다는
+                                                                                                형식으로 진행<br/>
+                                                                                                그래서 우리는 여기서
+                                                                                                커뮤니티에 대한 댓글, 그
+                                                                                                댓글에 대한 답글까지
+                                                                                                설계 예정
+                                                                                                <br/>그니까 지금 여기는
+                                                                                                댓글에 답글 달았을 때
+                                                                                                화면으로 사용 <br/>
+                                                                                                이글씨 아래 보이는 답글
+                                                                                                '내용을 입력해주세요'
+                                                                                                부분은 삭제 예정
+                                                                                                <br/>
+                                                                                                <br/>
+                                                                                                댓글에 답글에 답글이면
+                                                                                                3depth라서 어려운데 여기
+                                                                                                맡은 사람이 댓글해보고,
+                                                                                                댓글에 답글까지 해보고
+                                                                                                <br/>시간남거나
+                                                                                                욕심나면 댓글에 답글에
+                                                                                                답글까지 해보는건 어떨지
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div
+                                                                                            class="CommunityCommentReplyContent_utils__-Na0q"
+                                                                                    ></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                                class="CommunityCommentReplyWriteForm_container__10W0O"
+                                                                        >
+                                                                            <div
+                                                                                    class="CommentUserWrapper_container__10Bt-"
+                                                                            >
+                                                                                <div
+                                                                                        class="CommentUserWrapper_avatar__1MYTO"
+                                                                                >
+                                                                                    <a
+                                                                                            href="/web/wmypage/myprofile/fundinglist/"
+                                                                                    >
+                                                                                        <div
+                                                                                                class="Avatar_avatar__1d9Wt"
+                                                                                                style="
+                                                                                                width: 36px;
+                                                                                                height: 36px;
+                                                                                            "
+                                                                                        >
+                                                                                            <span></span></div
+                                                                                        >
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="CommentUserWrapper_main__2oHy1"
+                                                                                >
+                                                                                    <div
+                                                                                            class="CommunityCommentReplyWriteForm_writeForm__2YHmv"
+                                                                                    >
+                                                                                        <div
+                                                                                                class="CommunityCommentReplyWriteForm_writeDisabledForm__3mZUY"
+                                                                                        >
+                                                                                            답글 내용을 입력해주세요
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- 더보기 버튼 -->
+                                                <div class="CommunityCommentListContainer_moreButton__3RWMg">
+                                                    <button
+                                                            class="Button_button__2FuOU Button_secondary__LNLsN Button_text__2-UCU Button_md__46Ai-"
+                                                            type="button"
+                                                    >
+                                                        <span
+                                                        ><span class="Button_children__ilFun"
+                                                        >더보기<svg
+                                                                viewBox="0 0 40 40"
+                                                                focusable="false"
+                                                                role="presentation"
+                                                                class="withIcon_icon__3VTbq CommunityCommentListContainer_icon__1TvFN"
+                                                                aria-hidden="true"
+                                                        >
+                                                                    <path
+                                                                            d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"
+                                                                    ></path></svg></span
+                                                        ></span>
+                                                    </button>
+                                                </div>
+                                                <!-- 너무 바닥 붙어서 만든 div 삭제 예정 -->
+                                                <div style="height: 50px"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/modal/modal.js"></script>
+<script>
+    $(function () {
+        <!-- 리뷰 버튼, 답글 버튼 관련 -->
+        $('.reviewButton').on('click', function () {
+            $('.reviewWrite').show();
+        });
+
+        $('.reviewButtonBack').on('click', function () {
+            $('.reviewWrite').hide();
+        });
+
+        $('.reviewReviewButton').on('click', function () {
+            $('.reviewReviewWrite').show();
+        });
+
+        $('.reviewReviewButtonBack').on('click', function () {
+            $('.reviewReviewWrite').hide();
+        });
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let consult = [[${consultDTO}]];
+    let session = [[${session.id}]];
+
+
+
+    if(session != null && consult.memberId == session ) {
+        $('.remove-button').css("display", "inline-block");
+        $('.remove-button').on("click", function (e) {
+            e.preventDefault();
+            showWarnModal("<span>삭제되었습니다.<span>")
+            $('.modal').on("click", function () {
+                location.href = `/consults/remove?id=${consult.id}`
+            })
+        })
+    }
+
+    if(session != null && consult.memberId == session ){
+        $('.modify-button').css("display", "inline-block");
+        $('.modify-button').on("click",function(e){
+            e.preventDefault();
+                location.href=`/consults/modify?id=${consult.id}`
+            })
+    }
+
+</script>
+</html>

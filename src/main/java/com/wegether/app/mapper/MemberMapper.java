@@ -1,5 +1,7 @@
 package com.wegether.app.mapper;
 
+import com.wegether.app.domain.dto.ConsultingDTO;
+import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -22,5 +24,25 @@ public interface MemberMapper {
 
     //카카오 로그인 상태 업데이트
     public void updateLoginStatusToKakao(String memberId);
+
+    //네이버로 로그인 상태 업데이트
+    public void updateLoginStatusToNaver(String memberId);
+
+    //아이디 찾기 세션으로
+    public Optional<MemberVO> selectById(Long id);
+
+
+
+
+
+
+
+
+
+
+
+
+//    소영 마이페이지 화면 띄우기
+    public Optional<MemberDTO> selectmypage(Long id);
 
 }

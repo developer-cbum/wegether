@@ -5,6 +5,8 @@ import com.wegether.app.mapper.CardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class CardDAO {
@@ -21,5 +23,8 @@ public class CardDAO {
         cardMapper.delete(id);
     }
 
-
+    //    카드 목록
+    public List<CardVO> list(Long memberId){
+        return cardMapper.selectAll(memberId);
+    }
 }

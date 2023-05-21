@@ -1,5 +1,9 @@
 package com.wegether.app.mapper.community;
 
+import com.wegether.app.domain.dto.CommunityDTO;
+import com.wegether.app.domain.dto.CommunityFileDTO;
+import com.wegether.app.domain.type.FileType;
+import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.mapper.CommunityFileMapper;
 import com.wegether.app.mapper.FileMapper;
@@ -18,28 +22,49 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CommunityFileMapperTests {
 
     @Autowired
+    private FileMapper fileMapper;
+
+    @Autowired
     private CommunityFileMapper communityFileMapper;
 
     @Test
     public void insertTest() {
-        FileVO fileVO = new FileVO();
-        fileVO.setFileName("새빨간로즈.png");
-        fileVO.setFilePath("2023/05/19");
-        fileVO.setFileSize(1238L);
-        fileVO.setFileUuid(UUID.randomUUID().toString());
-        fileVO.setFileType("후후후");
-        communityFileMapper.insert(fileVO);
+        CommunityFileDTO communityFileDTO = new CommunityFileDTO();
+        communityFileDTO.setFileName("새빨간로즈.png");
+        communityFileDTO.setFilePath("2023/05/19");
+        communityFileDTO.setFileSize(1238L);
+        communityFileDTO.setFileUuid(UUID.randomUUID().toString());
+        communityFileDTO.setFileType(FileType.REPRESENTATIVE.name());
+        fileMapper.communityInsert(communityFileDTO);
     }
 
     @Test
     public void selectAllTest() {
-        communityFileMapper.selectAll(31L).stream().map(FileVO::toString).forEach(log::info);
+        fileMapper.communitySelectAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
     }
 
     @Test
-    public void deleteTest() {
-        communityFileMapper.delete(1L);
-        assertThat(communityFileMapper.selectAll(31L)).hasSize(0);
+    public void communityFileInsertTest() {
+        CommunityFileVO communityFileVO = new CommunityFileVO();
+        communityFileVO.setId(89L);
+        communityFileVO.setCommunityId(45L);
+        communityFileMapper.insert(communityFileVO);
+    }
+
+//    @Test
+//    public void deleteTest() {
+//        communityFileMapper.delete(1L);
+//        assertThat(communityFileMapper.selectAll(31L)).hasSize(0);
+//    }
+
+    @Test
+    public void communityDeleteTest() {
+        fileMapper.communityDelete(7L);
+    }
+
+    @Test
+    public void communityDeleteAllTest() {
+        fileMapper.communityDeleteAll(3L);
     }
 
 }

@@ -4,30 +4,10 @@ let $memberNickname = $("#memberNickname");
 let $memberPhoneNumber = $("#memberPhoneNumber");
 let $BtnSubmit = $("#btn_submit");
 
-let nameCheck = false;
 let nickNameCheck = false;
 let phoneNumberCheck = false;
 
 
-// 이름 유효성 검사
-$('#memberName').on('keyup', function () {
-    if ($(this).val() == '') {
-        $(this).next('.help').html('이름을 입력해주세요.');
-        $(this).addClass('error');
-        $(this).focus();
-        nameCheck = false;
-        flagCheck();
-        return false;
-    } else {
-        $(this).next('.help').html('');
-        $(this).removeClass('error');
-        nameCheck = true;
-        console.log(nameCheck);
-        flagCheck();
-        return false;
-    }
-    flagCheck();
-});
 // 닉네임
 $('#memberNickname').on('keyup', function () {
     if ($(this).val() == '') {
@@ -89,7 +69,7 @@ $('#memberPhoneNumber').on('keyup', function () {
 
 // flag check
 function flagCheck() {
-    if ( nameCheck &&  nickNameCheck && phoneNumberCheck) {
+    if (nickNameCheck && phoneNumberCheck) {
         console.log('gogo');
         $BtnSubmit.attr('disabled', false);
     } else {

@@ -129,9 +129,8 @@ if ($confirmButton.attr('disabled') !== undefined) {
             <div class="number"></div>
             <div class="card-holder">
               <label>Card holder</label>
-              <div class="card-num">${$('.num1').val()}-${$('.num2').val()}-${$('.num3').val()}-${$(
-      '.num4'
-    ).val()}</div>
+<!--              <div class="card-num">${$('.num1').val()}-${$('.num2').val()}-${$('.num3').val()}-${$('.num4').val()}</div>-->
+              <div class="card-num"></div>
             </div>
             <div class="card-expiration-date">
               <label>Expires</label>

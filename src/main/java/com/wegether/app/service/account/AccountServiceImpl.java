@@ -40,5 +40,13 @@ public class AccountServiceImpl implements AccountService {
         memberDAO.setLoginStatusToKakao(memberId);
     }
 
+    @Override
+    public void changeLoginStatusToNaver(String memberId) {
+        memberDAO.setLoginStatusToNaver(memberId);
+    }
 
+    @Override
+    public Optional<MemberVO> getMemberById(Long id) {
+        return memberDAO.findById(id);
+    }
 }

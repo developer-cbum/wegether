@@ -1,6 +1,7 @@
 package com.wegether.app.mapper.member;
 
 import com.wegether.app.dao.MemberDAO;
+import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.mapper.MemberMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -51,5 +52,23 @@ public class MemberMapperTests {
         memberMapper.updatePassword(1L, "1234567890");
     }
 
+    @Test
+    public void selectByIdTest(){
+        Optional<MemberVO> foundmemberVO = memberMapper.selectById(1L);
+        log.info(foundmemberVO.get().toString());
+    }
 
+
+
+
+
+
+
+
+
+
+    @Test
+    public void selectMypageTest(){
+        Optional<MemberDTO> mypage=memberMapper.selectmypage(1L);
+    }
 }

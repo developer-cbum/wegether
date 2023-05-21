@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" href="../static/mentoring/consult-detail.css"/>
+        <link rel="stylesheet" href="../../static/css/community/community-detail.css" />
         <title>커뮤니티디테일</title>
         <!-- 와디즈 블로그 css 가져오기 -->
         <link
@@ -14,33 +14,34 @@
             href="https://blog.wadiz.kr/wp-content/et-cache/1/2/364941/et-divi-dynamic-tb-17239-tb-13526-tb-17457-364941.css?ver=1683687114"
             as="style"
             media="all"
-            onload="this.onload=null;this.rel='stylesheet'"/>
+            onload="this.onload=null;this.rel='stylesheet'"
+        />
 
         <link
             rel="stylesheet"
             as="style"
             id="et-core-unified-tb-17239-tb-13526-tb-17457-deferred-364941-cached-inline-styles"
             href="https://blog.wadiz.kr/wp-content/et-cache/1/2/364941/et-core-unified-tb-17239-tb-13526-tb-17457-deferred-364941.min.css?ver=1683687115"
-            onload="this.onload=null;this.rel='stylesheet';"/>
+            onload="this.onload=null;this.rel='stylesheet';"
+        />
 
         <!-- 댓글 글씨체 -->
         <link rel="stylesheet" href="https://static.wadiz.kr/static/web/wui.css?c542abcf" />
 
         <!-- 댓글 전체화면 로딩에 필요한 부분 -->
         <script type="text/javascript" src="https://static.wadiz.kr/static/web/common.js?db524cda"></script>
-        <link rel="stylesheet" href="../../static/css/consult/consult-detail.css">
 
         <!-- 댓글 css -->
-        <!-- <link rel="stylesheet" href="https://static.wadiz.kr/main/main.c1266dc7.css" /> -->
+        <link rel="stylesheet" href="https://static.wadiz.kr/main/main.c1266dc7.css" />
 
         <!-- 와디즈 캠페인 css 댓글 -->
-        <!-- <link
+        <link
             rel="stylesheet"
             type="text/css"
             href="https://static.wadiz.kr/main/css/reward-community.bb8838fc.chunk.css"
-        /> -->
+        />
     </head>
-    <body>
+    <body th:object="${community}" style="font-family: Pretendard;">
         <div id="page-container" style="overflow-y: hidden">
             <div id="et-boc" class="et-boc">
                 <div id="et-main-area">
@@ -60,59 +61,60 @@
                                             >
                                                 <!-- 제목 부분 -->
                                                 <div class="et_pb_title_container">
-                                                    <h1 class="entry-title">상담 제목</h1>
+                                                    <h1 class="entry-title" th:text="*{communityTitle}"></h1>
                                                     <p class="et_pb_title_meta_container">
                                                         <!-- 작성일 -->
-                                                        <span class="published">입시</span> |
-                                                        <span class="published">작성자 : 000 </span> |
-                                                        <span class="published">2023년 5월 10일(작성일 여기로)</span> 
-                                                        <!-- <a
-                                                            href="https://blog.wadiz.kr/category/platform-story/planning-note/"
-                                                            rel="category tag"
-                                                            >커뮤니티 네모칸 부분 1</a
-                                                        >,
-                                                        <a
-                                                            href="https://blog.wadiz.kr/category/platform-story/"
-                                                            rel="category tag"
-                                                            >커뮤니티 네모칸 부분 2</a
-                                                        > -->
+                                                        <span class="published" th:text="*{communityRegisterDate}"></span> |
+                                                        <a>작성자: </a>
+                                                        <a th:text="*{memberNickname}"></a>
                                                     </p>
                                                 </div>
-                                               
+                                                <div class="et_pb_title_featured_container">
+                                                    <span class="et_pb_image_wrap"
+                                                        ><img
+                                                            decoding="async"
+                                                            loading="lazy"
+                                                            width="1280"
+                                                            height="750"
+                                                            src="https://blog.wadiz.kr/wp-content/uploads/sites/2/2023/05/planning-note_5th_1.png"
+                                                            alt="진국월드 기획노트 별책부록"
+                                                            title="진국월드 기획노트 별책부록"
+                                                            srcset="
+                                                                https://blog.wadiz.kr/wp-content/uploads/sites/2/2023/05/planning-note_5th_1.png         1280w,
+                                                                https://blog.wadiz.kr/wp-content/uploads/sites/2/2023/05/planning-note_5th_1-980x574.png  980w,
+                                                                https://blog.wadiz.kr/wp-content/uploads/sites/2/2023/05/planning-note_5th_1-480x281.png  480w
+                                                            "
+                                                            sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) 1280px, 100vw"
+                                                            class="wp-image-364958"
+                                                    /></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="et_pb_section et_pb_section_1_tb_body et_section_regular">
-                                    <div class="et_pb_row et_pb_row_1_tb_body">
+                                    <div class="et_pb_row et_pb_row_1_tb_body"
+                                         style="margin-left: 955px;">
                                         <!-- 내용 부분 -->
                                         <div
                                             class="et_pb_column et_pb_column_4_4 et_pb_column_1_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
                                         >
-                                                
-                                            
-                                                <hr />
-                                                <p>&nbsp;</p>
-                                               
-                                             
-                                                
-                                              
-                                                <p>&nbsp;</p>
-                                                <h4>ㅇㅇㅇㅇㅇㅇ</h4>
-                                             
-                                                <p>&nbsp;</p>
-                                                <hr />
-                                               
-                                                
-                                               
-                                               
-                                
+                                            <div class="et_pb_with_border et_pb_module et_pb_post_content et_pb_post_content_0_tb_body">
+                                                <th:block th:text="*{communityContent}"></th:block>
+                                            </div>
+                                            <div
+                                                class="et_pb_with_border et_pb_module et_pb_text et_pb_text_1_tb_body et_pb_text_align_left et_pb_bg_layout_light"
+                                            >
+                                            </div>
+                                            <div class="et_pb_module et_pb_code et_pb_code_0_tb_body"></div>
+                                        </div>
+                                    </div>
                                     <div class="et_pb_row et_pb_row_2_tb_body">
                                         <div
                                             class="et_pb_column et_pb_column_4_4 et_pb_column_2_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
                                         ></div>
                                     </div>
-                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px">
+                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px; margin-left: 572px;">
                                         <div
                                             class="et_pb_column et_pb_column_1_2 et_pb_column_3_tb_body et_pb_css_mix_blend_mode_passthrough"
                                         >
@@ -200,23 +202,17 @@
                                                 class="et_pb_button_module_wrapper et_pb_button_0_tb_body_wrapper et_pb_button_alignment_right et_pb_module"
                                             >
                                                 <a
-                                                    id="pa-back-button"
                                                     class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
-                                                    href="community.html"
-                                                    >목록</a
-                                                >
+                                                    href="/community/list"
+                                                    style="border: solid 1px;">목록</a>
                                                 <a
-                                                        id="pa-back-button"
                                                         class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
-                                                        href="community.html"
-                                                >수정</a
-                                                >
+                                                        href="/community/modify?id=#{community.id}"
+                                                        style="border: solid 1px;">수정</a>
                                                 <a
-                                                        id="pa-back-button"
                                                         class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
-                                                        href="community.html"
-                                                >삭제</a
-                                                >
+                                                        href="list.html"
+                                                        style="border: solid 1px;">삭제</a>
                                             </div>
                                         </div>
                                     </div>
@@ -239,14 +235,14 @@
                                                     <div class="CommunityCommentTitle_commentTitle__1Jbgx">
                                                         <div class="CommentTitle_container__3JkFA">
                                                             <p>
-                                                                답변<em class="CommentTitle_count__8olvZ"
-                                                                    >27 (전체갯수)</em
+                                                                커뮤니티 리뷰<em class="CommentTitle_count__8olvZ"
+                                                                    >27(전체갯수)</em
                                                                 >
                                                             </p>
                                                         </div>
-                                                        <!-- <p class="CommunityCommentTitle_explanation__XfmmD">
+                                                        <p class="CommunityCommentTitle_explanation__XfmmD">
                                                             커뮤니티 관련 댓글입니다.
-                                                        </p> -->
+                                                        </p>
                                                     </div>
                                                     <div>
                                                         <div>
@@ -295,12 +291,11 @@
                                                                     <div class="CommentForm_textarea__yw5Av">
                                                                         <textarea
                                                                             placeholder="내용을 입력해 주세요."
-                                                                            maxlength="5000"
+                                                                            maxlength="2000"
                                                                             rows="2"
                                                                             class="Textarea_textarea__2EtST"
                                                                         ></textarea
-                                                                        >
-                                                                        <!-- <textarea
+                                                                        ><textarea
                                                                             aria-hidden="true"
                                                                             readonly=""
                                                                             tabindex="-1"
@@ -315,7 +310,7 @@
                                                                                 transform: translateZ(0px);
                                                                                 pointer-events: none;
                                                                             "
-                                                                        ></textarea> -->
+                                                                        ></textarea>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -356,7 +351,7 @@
                                                     <!-- 체험 리뷰, 전체 버튼 -->
                                                     <div class="CommunityCommentList_filter__3bDGX">
                                                         <label class="CommunityCommentList_selectSearch__4RR1u"
-                                                            ><span>상담 답변</span>
+                                                            ><span>체험 리뷰</span>
                                                             <div>
                                                                 <button
                                                                     type="button"
@@ -880,8 +875,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
             </div>
         </div>
     </body>

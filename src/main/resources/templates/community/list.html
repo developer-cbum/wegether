@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="stylesheet" href="/css/community/community.css" />
+        <link rel="stylesheet" href="/css/community/community-detail.css" />
+        <title>커뮤니티 페이지</title>
+        <!-- 와디즈 블로그 css 가져오기 -->
+        <link
+            data-optimized="1"
+            rel="stylesheet"
+            id="divi-blog-extras-styles-css"
+            href="https://blog.wadiz.kr/wp-content/litespeed/css/2/97e7a22975018a11027d016ff42c75b0.css?ver=5003c"
+            type="text/css"
+            media="all"
+        />
+        <link
+            data-optimized="1"
+            rel="stylesheet"
+            id="et-core-unified-11670-cached-inline-styles"
+            href="https://blog.wadiz.kr/wp-content/litespeed/css/2/ce880ba27a8316a5ab46909c9db7b22c.css?ver=85536"
+        />
+        <link
+            rel="stylesheet"
+            as="style"
+            id="et-core-unified-tb-17239-tb-17457-deferred-11670-cached-inline-styles"
+            href="https://blog.wadiz.kr/wp-content/et-cache/1/2/11670/et-core-unified-tb-17239-tb-17457-deferred-11670.min.css?ver=1683677778"
+            onload="this.onload=null;this.rel='stylesheet';"
+        />
+    </head>
+    <body>
+        <div id="page-container" style="overflow-y: hidden">
+            <div id="et-boc" class="et-boc">
+                <div id="et-main-area">
+                    <div id="main-content">
+                        <article id="post-11670" class="post-11670 page type-page status-publish hentry">
+                            <div class="entry-content">
+                                <div class="et-l et-l--post">
+                                    <div class="et_builder_inner_content et_pb_gutters3">
+                                        <div class="et_pb_section et_pb_section_2 et_section_regular">
+                                            <div class="et_pb_row et_pb_row_1 et_pb_gutters2">
+                                                <div
+                                                    class="et_pb_column et_pb_column_4_4 et_pb_column_2 et_pb_css_mix_blend_mode_passthrough et-last-child"
+                                                    style="padding-top: 80px"
+                                                >
+                                                    <div
+                                                        class="et_pb_module et_pb_text et_pb_text_2 et_pb_text_align_left et_pb_bg_layout_light"
+                                                    >
+                                                        <div
+                                                            class="et_pb_text_inner"
+                                                            style="display: flex; justify-content: space-between"
+                                                        >
+                                                            <h2><strong>커뮤니티</strong></h2>
+                                                            <button
+                                                                class="Button_button__2FuOU Button_secondary__LNLsN Button_contained__2SIAT Button_lg__1Dftp gray CommunityCommentWriteButton_button__3bPl4"
+                                                                type="button"
+                                                            >
+                                                                <span
+                                                                    ><span class="Button_children__ilFun reviewButton"
+                                                                        ><a href="write.html"
+                                                                            >커뮤니티 등록</a
+                                                                        ></span
+                                                                    ></span
+                                                                >
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="et_pb_with_border et_pb_module et_pb_blog_extras et_pb_blog_extras_0"
+                                                    >
+                                                        <div class="et_pb_module_inner">
+                                                            <div
+                                                                class="et_pb_posts et_pb_bg_layout_light"
+                                                                data-scroll-top-animation="ajax_load_more,numbered_pagination,filterable_categories"
+                                                            >
+                                                                <div class="el-dbe-blog-extra block_extended">
+<!--                                                                     내용 1개 전체 div는 article 기준 -->
+
+                                                                    <!-- 더보기 버튼 부분 -->
+                                                                    <div class="ajax-pagination">
+                                                                        <a
+                                                                            class="et_pb_button el-pagination-button el-button el-load-more"
+                                                                            href="https://blog.wadiz.kr/page/2/?_ga=2.1004657.1932837877.1683531943-2042997786.1683531943&amp;_gac=1.85592683.1683772571.CjwKCAjwge2iBhBBEiwAfXDBR7hWbBzFZCzOp3SLU94uLYNHdSvRG5f6nRAKUhCVDFtk5xyk3dou-BoCMBcQAvD_BwE&amp;el_dbe_page"
+                                                                            data-icon='"'
+                                                                            >더 보기</a
+                                                                        >
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script th:inline="javascript">
+        let communities = [[${communities}]]
+        let nowPage = [[${communityPagination.page}]]
+    </script>
+    <script src="/js/community/list.js"></script>
+</html>

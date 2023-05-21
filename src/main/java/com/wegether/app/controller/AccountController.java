@@ -59,16 +59,34 @@ public class AccountController {
 
 //    로그인
         @GetMapping("login")
-        public void goToLoginForm(MemberVO memberVO, HttpSession session){;}
+        public void goToLoginForm(MemberVO memberVO, HttpSession session){
+        ;}
 
         @PostMapping("login")
         public RedirectView login(String memberId, String memberPassword, HttpSession session, RedirectAttributes redirectAttributes){
             Optional<Long> foundMember = accountService.login(memberId, memberPassword);
+
+
+
+            //카카오나 네이버 계정으로 일반로그인했을 때
+            if(foundMember.isPresent()) {
+                if (accountService.checkId(memberId).get().getMemberLoginStatus().equals("KAKAO") ||
+                        accountService.checkId(memberId).get().getMemberLoginStatus().equals("NAVER")) {
+                    redirectAttributes.addFlashAttribute("loginStatus", "false");
+                    return new RedirectView("/accounts/login");
+                }
+            }
+
+
+            // 일반 계정 로그인 성공
             if(foundMember.isPresent()){
                 session.setAttribute("id", foundMember.get());
-                log.info(session.getAttribute("id").toString());
                 return new RedirectView("/index/main");
             }
+
+
+
+            // 아예 로그인 실패
             redirectAttributes.addFlashAttribute("login", "false");
             return new RedirectView("/accounts/login");
 
@@ -104,7 +122,6 @@ public class AccountController {
     @PostMapping("change-pw")
     @ResponseBody
     public void sendChangePwMail(String memberId, Long id) throws Exception{
-        log.info(id.toString());
         changePwSendMailService.sendSimpleMessage(memberId, id);
     }
 
@@ -134,6 +151,25 @@ public class AccountController {
         return new RedirectView("/accounts/login");
     }
 
+
+    //네이버 로그인
+
+
+    @GetMapping("naver-login")
+    public void naverLogin(){;}
+
+    @PostMapping("naver-register")
+    public void naverRegister(String memberId, String memberName, String memberPassword, Model model){
+        model.addAttribute("memberId", memberId);
+        model.addAttribute("memberName", memberName);
+        model.addAttribute("memberPassword", memberPassword);
+        ;}
+    @PostMapping("naver-join")
+    public RedirectView naverJoin(MemberVO memberVO){
+        accountService.join(memberVO);
+        accountService.changeLoginStatusToNaver(memberVO.getMemberId());
+        return new RedirectView("/index/main");
+    }
 
 
 

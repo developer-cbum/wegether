@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/consult/consult-list.css">
+    <link rel="stylesheet" href="/css/modal/modal.css">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"/>
+    <link rel="stylesheet" href="/css/fix/header.css">
+</head>
+<body>
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
+<div id="page-container">
+    <div id="header"></div>
+    <main class="board wzui">
+        <!-- 공지사항 상단부 -->
+        <div class="ui-header">
+            <h2 class="title">위게더 상담소</h2>
+        </div>
+        <div aria-hidden="true"></div>
+        <div class="ui-tabs" style="height: 70px; display: flex;   justify-content: right;">
+            <div class="DesktopSearchApp_container__2VF9O">
+                <form th:action="@{/consults/list}">
+                    <div class="SearchController_container__35K5i" style="
+                                    margin-bottom: 50px;
+                               ">
+                        <!-- 검색창 -->
+                        <div class="SearchController_keyword__3FcFo">
+                            <input class="search-input" type="search"  name="keyword" placeholder="제목 또는 내용을 입력하세요" th:value="${search.keyword}" style="padding: 11px;">
+                        </div>
+                        <!-- 검색 버튼 누르기 -->
+                        <button type="submit" class="SearchController_searchIcon__Zhy7F">
+                            <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq"
+                                 aria-hidden="true" style="width: 24px; height: 24px">
+                                <path fill="none" d="M0 0h40v40H0z"></path>
+                                <path d="M29.2 27.91a14.38 14.38 0 1 0-1.42 1.4l7.16 7.15.07.08 1.41-1.41zM18.45 6a12.36 12.36 0 0 1 8.35 3.23 12.24 12.24 0 0 1 4 8.59A12.39 12.39 0 1 1 17.88 6z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+                <!-- 검색창 눌렀을 때 나오는 메뉴 -->
+            </div>
+            <button style="
+                margin-top: 8px;
+                height: 40px;
+                margin-right: 389px;
+                background: #00BBFF;
+                color: white;
+                border: 1px;
+                border-radius: 6px;
+                padding: 13px;
+                " class="register-move-button"> 등록하기
+            </button>
+        </div>
+        <!-- 공지사항 목록 -->
+        <div class="board-main">
+            <ul>
+                <!--             <li>
+                              <a class="article " href="/web/wboard/newsBoardDetail/8459?headWordId=&amp;cPage=1">
+                                <em class="category">카테</em>
+                              <em class="status closed">학습</em>
+                                         <em class="notice">중요</em>
+                                         <em class="notice">BEST</em>
+                                    <div class="info">
+                                          <div class="answer-status" >답변중</div>
+                                       <h3 class="title">[학습] 국어 내신 공부법 </h3>
+                                        <span class="author">와디즈</span><span class="created-at">2023.05.10</span>
+                                      </div>
+                                    </a>
+                                  </li>-->
+            </ul>
+        </div>
+        <!-- 페이징 -->
+        <div class="board-footer">
+            <div class="pagination">
+                <div class="page">
+                    <div class="desktop-only">
+                        <!-- 데스크탑용 버튼 -->
+                        <!--                    <button class="prev-page icon-chevron-left" onclick="movePage(0)" disabled="">-->
+                        <!--                      <span class="text-hidden">이전 목록</span>-->
+                        <!--                    </button>-->
+                        <a th:if="${pagination.prev}" th:href="${pagination.startPage - 1}"
+                           class="prev-page icon-chevron-left change-page" style="width: 19px;"></a>
+                        <!-- 데스크탑용 페이지 리스트 -->
+                        <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                            <a th:if="${page eq pagination.page}" class="current" th:text="${page}"></a>
+                            <a th:unless="${page eq pagination.page}" class="change-page" th:href="${page}"
+                               th:text="${page}"></a>
+                        </th:block>
+                        <!-- 데스크탑용 버튼 -->
+                        <!--      <button class="next-page icon-chevron-right" onclick="movePage(7)">
+                                <span class="text-hidden">다음 목록</span>
+                              </button>-->
+                        <a th:if="${pagination.next}" th:href="${pagination.endPage + 1}"
+                           class="next-page icon-chevron-right change-page paging paging-move" style="width: 1px;"></a>
+                    </div>
+                </div>
+                <div class="search">
+                </div>
+            </div>
+            <div aria-hidden="true" style="position: relative; left: 0px; bottom: 48px; width: 100%;"></div>
+    </main>
+    <div id="footer"></div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/modal/modal.js"></script>
+<script th:inline="javascript">
+    let session = [[${session.id}]];
+
+    let consults = [[${consults}]];
+    console.log(consults)
+
+</script>
+<script src="/js/consult/consult-list.js"></script>
+</html>

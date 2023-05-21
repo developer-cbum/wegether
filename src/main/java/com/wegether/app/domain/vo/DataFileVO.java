@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 public class DataFileVO {
     private Long id;
     private Long dataId;
+    private Long fileId;
 }

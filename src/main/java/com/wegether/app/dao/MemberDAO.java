@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,32 @@ public class MemberDAO {
     //카카오 로그인 상태 업데이트
     public void setLoginStatusToKakao(String memberId){memberMapper.updateLoginStatusToKakao(memberId);}
 
+    //네이버 로그인 상태 업데이트
+    public void setLoginStatusToNaver(String memberId){memberMapper.updateLoginStatusToNaver(memberId);}
+
+    // 세션값으로 회원정보찾기
+    public Optional<MemberVO> findById(Long id){
+        return memberMapper.selectById(id);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //    소영 마이페이지 화면 띄우기
+    public Optional<MemberDTO> showmypage(Long id){
+        return memberMapper.selectmypage(id);
+    };
 }
 
 
