@@ -36,8 +36,8 @@ public class MypageController {
 //
 ///*    카드 등록 모달 화면
 //    모달인데 매핑 ?*/
-//    @GetMapping("/pay-card/pay-card")
-//    public void goToWriteForm(CardVO cardVO){;}
+///*    @GetMapping("/pay-card/pay-card")
+//    public void goToWriteForm(CardVO cardVO){;}*/
 //
 //    //    카드 등록 후 리스트
 //    @PostMapping("register")
