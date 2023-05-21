@@ -2,6 +2,7 @@ package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.consult.ConsultService;
@@ -28,9 +29,6 @@ public class ConsultController {
 
     @GetMapping("register")
     public void goToRegisterForm(ConsultingVO consultingVO, HttpSession session, Model model){
-
-
-
        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
        model.addAttribute("nickName", nickName);
     };
@@ -43,18 +41,28 @@ public class ConsultController {
     }
 
     @GetMapping("list")
-    public void goToConsultingList(Pagination pagination, Model model){
-        pagination.setTotal(consultService.getTotal());
+    public void goToConsultingList(Pagination pagination, Search search, Model model){
+        pagination.setTotal(consultService.getTotal(search));
         pagination.progress();
-        model.addAttribute("consults", consultService.getList(pagination));
+        model.addAttribute("consults", consultService.getList(pagination, search));
         }
 
-    @GetMapping(value = {"detail", "modify"})
-    public void goToConsultingDetail(@RequestParam Long id, Model model){
-        model.addAttribute("consultDTO", consultService.getConsulting(id));
+    @GetMapping("detail")
+    public void goToConsultingDetail(@RequestParam Long id, Model model, HttpSession session){
+        log.info(consultService.getConsulting(id).get().toString());
+        model.addAttribute("consultDTO", consultService.getConsulting(id).get());
     }
 
-    @PostMapping
+    @GetMapping("modify")
+    public void goToConsultingModify(@RequestParam Long id, Model model, HttpSession session){
+        log.info(consultService.getConsulting(id).get().toString());
+        model.addAttribute("consultDTO", consultService.getConsulting(id).get());
+        String nickName = accountService.getMemberById((Long)session.getAttribute("id")).get().getMemberNickname();
+        model.addAttribute("nickName", nickName);
+    }
+
+
+    @PostMapping("modify")
     public RedirectView modify(ConsultingDTO consultingDTO, RedirectAttributes redirectAttributes){
         log.info(consultingDTO.toString());
         consultService.modifyConsulting(consultingDTO);
@@ -62,6 +70,11 @@ public class ConsultController {
         return new RedirectView("/consults/detail");
     }
 
+    @GetMapping("remove")
+    public RedirectView remove(@RequestParam Long id){
+        consultService.removeConsulting(id);
+        return new RedirectView("/consults/list");
+    }
 
 }
 

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+    <body>
+    <script type="text/javascript">
+        var naver_id_login = new naver_id_login("yPLfiIWc1PIqc4_vQtH5", "http://localhost:10000/accounts/naver-login");
+        // 접근 토큰 값 출력
+        // 네이버 사용자 프로필 조회
+        naver_id_login.get_naver_userprofile("naverSignInCallback()");
+        // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+        function naverSignInCallback() {
+            let memberId = naver_id_login.getProfileData('email');
+            let nickname = naver_id_login.getProfileData('nickname');
+            let id = naver_id_login.getProfileData('id');
+            $.ajax({
+                url: "check-id",
+                type: "POST",
+                data: {
+                    memberId: memberId,
+                },
+                success: function (result) {
+                    if (result == null) {
+                        $('#memberId').val(memberId);
+                        $('#memberName').val(nickname);
+                        $('#memberPassword').val(id);
+                        $('#naver-form').submit();
+                    } else if (result != null && result.memberLoginStatus == 'NAVER') {
+                        location.href = "/index/main";
+                        return;
+                    } else if ((result.memberLoginStatus == 'WEGERTHER'
+                        || result.memberLoginStatus == 'KAKAO')
+                    ) {
+                        location.href = "/accounts/login?status=false";
+                    }
+                }
+            });
+        }
+    </script>
+    <form id="naver-form" th:action="@{naver-register}" method="post">
+        <input type="hidden" id="memberId" name="memberId">
+        <input type="hidden" id="memberName" name="memberName" >
+        <input type="hidden" id="memberPassword" name="memberPassword">
+    </form>
+    </body>
+</html>
