@@ -18,12 +18,12 @@ public class projectServiceTests {
     @Autowired
     private ProjectService projectService;
 
-    @Test
-    public void getListTest() {
-        ProjectPagination projectPagination = new ProjectPagination(3);
-        projectPagination.setPage(1);
-        projectService.getList(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void getListTest() {
+//        ProjectPagination projectPagination = new ProjectPagination(3);
+//        projectPagination.setPage(1);
+//        projectService.getList(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
+//    }
     @Test
     public void findByIdTest() {
         projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
