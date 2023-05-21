@@ -15,14 +15,14 @@
 
     <body>
         <div>
-            <div class="ikfo-title-box info-title-box-flex">
+            <div class="info-title-box info-title-box-flex">
                 <div class="logo-box-layout">
                     <div class="logo-box">
                         <img src="/image/admin/wegether.svg" style="padding-top: 17px" />
                     </div>
-                    <div class="logo-title">
-                        <span>Jar</span>
-                    </div>
+                    <!-- <div class="logo-title">
+                    <span>Jar</span>
+                </div> -->
                 </div>
                 <div>
                     <div class="select-name">
@@ -39,7 +39,12 @@
                         <!-- 헤더 -->
                         <div class="delete-box-layout">
                             <div class="delete-box">
-                                <button class="delete-button"><a href="modify.html">수정 하기</a></button>
+                                <button
+                                        class="deleteButton delete-button"
+                                        onclick="deleteMembers(getSelectedMemberIds())"
+                                >
+                                    수정하기
+                                </button>
                             </div>
                         </div>
 

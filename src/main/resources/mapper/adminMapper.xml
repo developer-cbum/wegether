@@ -38,12 +38,30 @@
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- 자료 목록 -->
+<!--    <select id="dataSelectAll" resultType="dataAdminDTO">-->
+<!--        SELECT D.ID, D.DATA_TITLE, M.MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE-->
+<!--        FROM TBL_MEMBER M INNER JOIN TBL_DATA D-->
+<!--        ON M.MEMBER_ID = D.MEMBER_ID-->
+<!--    </select>-->
+
+    <!-- 자료 목록 페이징 -->
     <select id="dataSelectAll" resultType="dataAdminDTO">
-        SELECT D.ID, D.DATA_TITLE, M.MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE
-        FROM TBL_MEMBER M INNER JOIN TBL_DATA D
-        ON M.MEMBER_ID = D.MEMBER_ID
+    SELECT D.ID, D.DATA_TITLE, MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE
+    FROM
+    (
+            SELECT ROWNUM R, D.ID, D.DATA_TITLE, M.MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE
+            FROM TBL_MEMBER M INNER JOIN TBL_DATA D
+    <![CDATA[
+            ON M.MEMBER_ID = D.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
+            ORDER BY D.ID
+    ) D WHERE R > (#{page} - 1) * #{rowCount}
+    ]]>
     </select>
 
+    <!-- 자료 총 갯수 -->
+    <select id="selectCountOfData" resultType="_int">
+        SELECT COUNT(ID) FROM TBL_DATA
+    </select>
     <!-- 자료 삭제 -->
     <delete id="dataDelete">
         DELETE FROM TBL_DATA WHERE ID = #{Id}
@@ -67,6 +85,78 @@
         DELETE FROM TBL_PROJECT WHERE ID = #{Id}
     </delete>
 
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
+    <!-- 문의사항 목록 -->
+    <select id="inquirySelectAll" resultType="inquiryAdminDTO">
+        SELECT I.ID, M.MEMBER_NICKNAME, I.INQUIRY_TITLE, I.INQUIRY_REGISTER_DATE
+        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M
+        ON I.MEMBER_ID = M.MEMBER_ID
+    </select>
+
+    <!-- 문의사항 답변 등록 -->
+    <insert id="answerInsert">
+        INSERT INTO TBL_ANSWER(ID, INQUIRY_ID, ANSWER_CONTENT)
+        VALUES(SEQ_ANSWER.NEXTVAL, #{inquiryId}, #{answerContent})
+    </insert>
+
+    <!-- 문의사항 상세 -->
+    <select id="inquirySelect" resultType="inquiryAdminDTO">
+        SELECT I.ID, M.MEMBER_NICKNAME, I.INQUIRY_TITLE, I.INQUIRY_CONTENT, I.INQUIRY_REGISTER_DATE
+        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M
+        ON I.MEMBER_ID = M.MEMBER_ID
+        WHERE I.ID = #{id}
+    </select>
+
+    <!-- 문의사항 답변 상세 -->
+    <select id="answerSelect" resultType="answerVO">
+        SELECT ID, INQUIRY_ID, ANSWER_CONTENT, ANSWER_REGISTER_DATE
+        FROM tbl_answer
+        WHERE INQUIRY_ID = #{inquiryId}
+    </select>
+
+    <!-- 문의사항 답변 수정 -->
+    <update id="answerUpdate">
+        UPDATE TBL_ANSWER
+        SET ANSWER_CONTENT = #{answerContent}
+        WHERE ID = #{id}
+    </update>
+
+    <!-- 문의사항 답변 삭제 -->
+    <delete id="answerDelete">
+        DELETE FROM TBL_ANSWER WHERE ID = #{id}
+    </delete>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- 회원 목록 -->
+    <select id="memberSelectAll" resultType="memberVO">
+        SELECT ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
+        FROM TBL_MEMBER
+    </select>
+
+    <!-- 회원 삭제 -->
+    <delete id="memberDelete">
+        DELETE FROM TBL_MEMBER WHERE ID = #{Id}
+    </delete>
+
+    <!-- 회원 선택 삭제(작업 필요) -->
+    <delete id="">
+    </delete>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- 강연 목록 -->
+    <select id="lectureSelectAll" resultType="lectureVO">
+        SELECT ID, LECTURE_TITLE, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL
+        FROM TBL_LECTURE
+    </select>
+
+    <!-- 강연 삭제 -->
+    <delete id="lectureDelete">
+        DELETE FROM TBL_LECTURE WHERE ID = #{Id}
+    </delete>
+
+    <!-- 강연 선택 삭제(작업 필요) -->
 
 </mapper>
