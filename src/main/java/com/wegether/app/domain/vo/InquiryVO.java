@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class InquiryVO {
     private Long id;
     private Long memberId;
-    private String InquiryTitle;
-    private String InquiryContent;
-    private String InquiryRegisterDate;
+    private String inquiryTitle;
+    private String inquiryContent;
+    private String inquiryRegisterDate;
 }

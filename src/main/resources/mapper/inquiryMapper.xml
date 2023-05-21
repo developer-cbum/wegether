@@ -10,13 +10,13 @@
     </insert>
 
 <!--    문의 답변 리스트-->
-<!--    <select id="selectAll" resultType="inquiryDTO">-->
-<!--        SELECT MEMBER_ID, i.ID, i.INQUIRY_TITLE, i.INQUIRY_CONTENT, a.ANSWER_CONTENT-->
-<!--		from TBL_INQUIRY i left join TBL_ANSWER a-->
-<!--		on i.ID=a.INQUIRY_ID-->
-<!--		where MEMBER_ID =1-->
-<!--		order by i.ID DESC;-->
-<!--    </select>-->
+    <select id="selectAll" resultType="inquiryDTO">
+        SELECT MEMBER_ID, i.ID, i.INQUIRY_TITLE, i.INQUIRY_CONTENT, a.ANSWER_CONTENT
+		from TBL_INQUIRY i left join TBL_ANSWER a
+		on i.ID=a.INQUIRY_ID
+		where MEMBER_ID =#{memberId}
+		order by i.ID DESC
+    </select>
 
 
 </mapper>

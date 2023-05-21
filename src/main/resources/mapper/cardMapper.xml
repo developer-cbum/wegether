@@ -8,6 +8,13 @@
 
     </insert>
 
+    <select id="selectAll" resultType="cardVO">
+        SELECT CARD_NUMBER, CARD_BIRTH_DATE
+        FROM TBL_CARD
+        WHERE MEMBER_ID = #{memberId}
+        ORDER BY ID DESC
+    </select>
+
     <delete id="delete">
         DELETE FROM TBL_CARD
         WHERE ID = #{id}

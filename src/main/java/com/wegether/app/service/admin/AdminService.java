@@ -1,8 +1,9 @@
 package com.wegether.app.service.admin;
 
+import com.wegether.app.domain.dto.AdminPagination;
 import com.wegether.app.domain.dto.DataAdminDTO;
-import com.wegether.app.domain.vo.NoticeVO;
-import com.wegether.app.domain.vo.ProjectVO;
+import com.wegether.app.domain.dto.InquiryAdminDTO;
+import com.wegether.app.domain.vo.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +30,10 @@ public interface AdminService {
     /* --------------------------------------------------------------------------------- */
 
     // 자료 목록
-    public List<DataAdminDTO> dataGetList();
+    public List<DataAdminDTO> dataGetList(AdminPagination adminPagination);
+
+    // 자료 총 갯수
+    public int getDataTotal();
 
     // 자료 삭제
     public void dataRemove(Long id);
@@ -41,6 +45,44 @@ public interface AdminService {
 
     // 프로젝트 삭제
     public void projectRemove(Long id);
+
+    /* --------------------------------------------------------------------------------- */
+
+    // 문의사항 목록
+    public List<ProjectVO> inquiryGetList();
+
+    // 문의사항 답변 등록
+    public void answerWrite(AnswerVO answerVO);
+
+    // 문의사항 상세
+    public Optional<InquiryAdminDTO> inquiryRead(Long id);
+
+    // 문의사항 답변 상세
+    public Optional<AnswerVO> answerRead(Long inquiryId);
+
+    // 문의사항 답변 수정
+    public void answerModify(AnswerVO answerVO);
+
+    // 문의사항 답변 삭제
+    public void answerRemove(Long id);
+
+    /* --------------------------------------------------------------------------------- */
+
+    // 회원 목록
+    public List<MemberVO> memberGetList();
+
+    // 회원 삭제
+    public void memberRemove(Long id);
+
+    /* --------------------------------------------------------------------------------- */
+
+    // 강연 목록
+    public List<LectureVO> lectureGetList();
+
+    // 강연 삭제
+    public void lectureRemove(Long id);
+
+    /* --------------------------------------------------------------------------------- */
 }
 
 
