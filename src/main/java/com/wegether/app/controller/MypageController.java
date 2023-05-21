@@ -36,7 +36,7 @@ public class MypageController {
     @GetMapping("/my-page/my-page")
     public void main(Long id, Model model){
 
-        model.addAttribute("main", mine.loadMine(1L).get());
+        model.addAttribute("main", mine.loadMine(2L).get());
     }
 
 //
@@ -92,5 +92,3 @@ public class MypageController {
     model.addAttribute("consulting", mine.readMyConsulting(1L));
     }
 }
-
-
