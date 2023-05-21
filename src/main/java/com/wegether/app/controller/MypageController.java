@@ -1,13 +1,11 @@
 package com.wegether.app.controller;
 
-<<<<<<< HEAD
-=======
+
 import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.service.mypage.CardImpl;
 import com.wegether.app.service.mypage.InquiryImpl;
 import com.wegether.app.service.mypage.MineServiceImpl;
->>>>>>> master
 import com.wegether.app.service.mypage.MypageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
