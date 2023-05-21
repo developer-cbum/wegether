@@ -5,7 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class CommunityPagination {
+public class ProjectPagination {
+
     private int page;
     private int rowCount;
     private int pageCount;
@@ -15,12 +16,12 @@ public class CommunityPagination {
     private boolean prev, next;
     private int total;
 
-    public CommunityPagination() {
+    public ProjectPagination() {
         this(0);
     }
 
-    public CommunityPagination(int total) {
-        this.rowCount = 100;
+    public ProjectPagination(int total) {
+        this.rowCount = 10;
         this.pageCount = 5;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
@@ -32,5 +33,4 @@ public class CommunityPagination {
         this.prev = startPage > 1;
         this.next = endPage < realEnd;
     }
-
 }

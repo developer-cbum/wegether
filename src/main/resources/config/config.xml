@@ -24,6 +24,7 @@
         <typeAlias type="com.wegether.app.domain.vo.PointVO" alias="pointVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ProjectFileVO" alias="projectFileVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectDTO"/>
         <typeAlias type="com.wegether.app.domain.vo.ReplyVO" alias="replyVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishDataVO" alias="wishDataVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishProjectVO" alias="wishProjectVO"/>
@@ -34,10 +35,15 @@
         <typeAlias type="com.wegether.app.domain.dto.ProjectAdminDTO" alias="projectAdminDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.Pagination" alias="pagination"/>
 
-        <typeAlias type="com.wegether.app.domain.dto.CommunityDTO" alias="communityDTO"/>
 
         <!--05월 20일 consultingDTO 추가-->
         <typeAlias type="com.wegether.app.domain.dto.ConsultingDTO" alias="consultingDTO"/>
+        <!--  05월 19일 김치윤 Community DTO 추가    -->
+        <typeAlias type="com.wegether.app.domain.dto.CommunityDTO" alias="communityDTO"/>
+        <!--  05월 20일 김치윤 CommunityFileDTO 추가  -->
+        <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityFileDTO"/>
+        <!-- 05월 21일 이종문 search 추가-->
+        <typeAlias type="com.wegether.app.domain.dto.Search" alias="search"/>
 
     </typeAliases>
 </configuration>
