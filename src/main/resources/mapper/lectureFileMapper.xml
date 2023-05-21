@@ -2,10 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.LectureFileMapper">
 
+    <!--파일인설트-->
         <insert id="insert">
+            <selectKey keyProperty="id" order="BEFORE" resultType="long">
+                SELECT SEQ_FILE.NEXTVAL FROM DUAL
+            </selectKey>
             INSERT INTO TBL_FILE
             (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE)
-            VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{file_type})
+            VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{fileType})
         </insert>
+
+    <!--중간테이블 인설트-->
+    <insert id="insertMiddle">
+        <selectKey keyProperty="id" order="BEFORE" resultType="long">
+            SELECT SEQ_LECTURE_FILE.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_LECTURE_FILE
+        (ID, LECTURE_ID)
+        VALUES(#{id}, #{lectureId})
+    </insert>
+
+<!-- 파일 불러오기 -->
+    <select id="lectureSelectAll" resultType="lectureFileDTO">
+        SELECT LF.LECTURE_ID, F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE
+        FROM TBL_LECTURE L, TBL_LECTURE_FILE LF, TBL_FILE F
+        WHERE L.ID = LF.LECTURE_ID AND LECTURE_ID = #{lectureId} AND LF.ID = F.ID
+    </select>
 
 </mapper>

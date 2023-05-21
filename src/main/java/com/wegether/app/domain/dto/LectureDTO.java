@@ -20,6 +20,6 @@ public class LectureDTO {
     private String lectureRegisterDate;
     private String lectureUpdateDate;
     private Long memberId;
-    private List<FileVO> files = new ArrayList<>();
+    private List<LectureFileDTO> files = new ArrayList<>();
     private List<Long> filesIdsForDelete = new ArrayList<>();
 }
