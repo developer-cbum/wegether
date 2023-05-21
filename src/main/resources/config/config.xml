@@ -52,8 +52,8 @@
         <!-- 05월 21일 이종문 search 추가-->
         <typeAlias type="com.wegether.app.domain.dto.Search" alias="search"/>
 
-
-
+        <!-- 05월 22일 이종문 LectureDTO 추가   -->
+        <typeAlias type="com.wegether.app.domain.dto.LectureDTO" alias="lectureDTO"/>
 
         <!--  문소영 inquiryDTO, memberDTO 추가-->
         <typeAlias type="com.wegether.app.domain.dto.InquiryDTO" alias="inquiryDTO"/>

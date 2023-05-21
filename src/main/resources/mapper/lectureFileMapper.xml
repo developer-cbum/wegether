@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.LectureFileMapper">
+
+        <insert id="insert">
+            INSERT INTO TBL_FILE
+            (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE)
+            VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{file_type})
+        </insert>
+
 </mapper>

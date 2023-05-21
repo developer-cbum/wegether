@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.LectureMapper">
+
+<!-- 강연등록   -->
+    <insert id="insert">
+        INSERT INTO TBL_LECTURE
+        (ID, LECTURE_TITLE, LECTURE_CONTENT, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL)
+        VALUES(SEQ_LECTURE.NEXTVAL, #{lectureTitle}, #{lectureContent}, #{lectureDate}, #{lectureTime}, #{lectureLocation}, #{lectureTotalPersonnel})
+    </insert>
+
+
 </mapper>
