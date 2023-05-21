@@ -1,11 +1,16 @@
 package com.wegether.app.dao.admin;
 
 import com.wegether.app.dao.AdminDAO;
+import com.wegether.app.domain.dto.InquiryAdminDTO;
+import com.wegether.app.domain.vo.AnswerVO;
+import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -68,10 +73,75 @@ public class adminDAOTests {
 
     //    프로젝트 목록 테스트
     @Test
-    public void projectFindAll() { assertThat(adminDAO.projectFindAll()).hasSize(2); }
+    public void projectFindAllTest() { assertThat(adminDAO.projectFindAll()).hasSize(2); }
 
     //    프로젝트 삭제 테스트
     @Test
     public void projectDeleteTest() { adminDAO.projectDelete(1L);}
 
+    /* ------------------------------------------------------------------------------------ */
+
+    //    문의사항 목록 테스트
+    @Test
+    public void inquiryFindAllTest() {
+        assertThat(adminDAO.inquiryFindAll()).hasSize(1);
+    }
+
+    //    문의사항 답변 등록 테스트
+    @Test
+    public void answerSaveTest() {
+        AnswerVO answerVO = new AnswerVO();
+        answerVO.setAnswerContent("답변 내용");
+        answerVO.setInquiryId(1L);
+        adminDAO.answerSave(answerVO);
+    }
+
+    //    문의사항 상세 테스트
+    @Test
+    public void inquiryFindByIdTest() {
+        adminDAO.inquiryFindById(1L).map(InquiryAdminDTO::getInquiryTitle).ifPresent(log::info);
+    }
+
+    //    문의사항 답변 상세 테스트
+    @Test
+    public void answerFindByIdTest() {
+        adminDAO.answerFindById(5L).map(AnswerVO::getAnswerContent).ifPresent(log::info);
+    }
+
+    //    문의사항 답변 수정 테스트
+    @Test
+    public void setAnswerVOTest() {
+        adminDAO.answerFindById(5L).ifPresent(answerVO -> {
+            answerVO.setAnswerContent("수정 다오 테스트");
+            adminDAO.setAnswerVO(answerVO);
+        });
+    }
+
+    //    문의사항 답변 삭제 테스트
+    @Test
+    public void answerDeleteTest() {
+        adminDAO.answerDelete(1L);
+    }
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    회원 목록 테스트
+    @Test
+    public void memberFindAllTest() { assertThat(adminDAO.memberFindAll()).hasSize(3); }
+
+    //    회원 삭제 테스트
+    @Test
+    public void memberDeleteTest() { adminDAO.memberDelete(3L);}
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    강연 목록 테스트
+    @Test
+    public void lectureFindAllTest() { assertThat(adminDAO.lectureFindAll()).hasSize(2); }
+
+    //    강연 삭제 테스트
+    @Test
+    public void lectureDeleteTest() { adminDAO.lectureDelete(3L);}
+
+    /* ------------------------------------------------------------------------------------ */
 }

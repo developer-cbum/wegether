@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://kit.fontawesome.com/f28d5f57bb.js" crossorigin="anonymous"></script>
     <script async="" src="//www.google-analytics.com/analytics.js"></script>
     <link rel="stylesheet" href="../../../static/css/mypage/my-page/mypage.css">
@@ -12,74 +12,79 @@
     <link rel="stylesheet" href="../../../static/css/account/login/login.css">
 
     <title>기본 설정 | 위게더</title>
-  </head>
-  <body>
-    <div id="accountWrap">
-      <!-- S : #newContainer -->
-      <div id="newContainer">
+</head>
+<body>
+<div id="accountWrap">
+    <!-- S : #newContainer -->
+    <div id="newContainer">
         <!-- account-wrap -->
         <div class="account-wrap">
-          <h2>기본 정보 설정</h2>
-          <form id="saveForm">
-            <div class="email-input-wrap">
-              <input type="text" name="nickName" class="input-text" maxlength="20" placeholder="닉네임" value="이종문" />
-              <input type="text" name="realName" class="input-text disable hide" maxlength="20" placeholder="이름" value="" disabled="" style="display: none" />
-              <div class="input-btn-wrap">
-                <div class="input">
-                  <input
-                    type="email"
-                    id="userName"
-                    name="userName"
-                    class="disable input-text"
-                    placeholder="이메일 계정"
-                    value="dal.semicolon@gmail.com"
-                    disabled=""
-                  />
+            <h2>기본 정보 설정</h2>
+            <form id="saveForm">
+                <div class="email-input-wrap">
+                    <input type="text" name="nickName" class="input-text" maxlength="20" placeholder="닉네임" value="이종문"/>
+                    <input type="text" name="realName" class="input-text disable hide" maxlength="20" placeholder="이름"
+                           value="" disabled="" style="display: none"/>
+                    <div class="input-btn-wrap">
+                        <div class="input">
+                            <input
+                                    type="email"
+                                    id="userName"
+                                    name="userName"
+                                    class="disable input-text"
+                                    placeholder="이메일 계정"
+                                    value="dal.semicolon@gmail.com"
+                                    disabled=""
+                            />
+                        </div>
+                        <div id="emailChangeBtn" class="emailAuthBtn btn"
+                             style="display: block; background-color: #8c8881;">
+                            <a href="#" onclick="return false;">
+                                <span>변경</span>
+                            </a>
+                        </div>
+                        <div id="emailCheckBtn" class="emailAuthBtn btn" style="display: none" data-status="check">
+                            <button class="email-change-button" type="button" disabled="disable">
+                                <span>변경하기</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div id="emailChangeBtn" class="emailAuthBtn btn" style="display: block; background-color: #8c8881;">
-                  <a href="#" onclick="return false;">
-                    <span>변경</span>
-                  </a>
-                </div>
-                <div id="emailCheckBtn" class="emailAuthBtn btn" style="display: none" data-status="check">
-                  <button class="email-change-button"type="button" disabled="disable">
-                    <span>변경하기</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <p id="emailError" class="error-text emailMsg" style="display: none">이메일 형식이 올바르지 않습니다.</p>
-            <p id="emailJoinedError" class="error-text emailMsg" style="display: none">이미 회원가입된 계정입니다. 다른 이메일을 입력해주세요.</p>
-            <p id="emailDropOutError" class="error-text emailMsg" style="display: none">
-              90일 이내에 탈퇴한 이력이 있는 계정은 사용하실 수 없습니다. 다른 이메일을 입력해주세요.
-            </p>
+                <p id="emailError" class="error-text emailMsg" style="display: none">이메일 형식이 올바르지 않습니다.</p>
+                <p id="emailJoinedError" class="error-text emailMsg" style="display: none">이미 회원가입된 계정입니다. 다른 이메일을
+                    입력해주세요.</p>
+                <p id="emailDropOutError" class="error-text emailMsg" style="display: none">
+                    90일 이내에 탈퇴한 이력이 있는 계정은 사용하실 수 없습니다. 다른 이메일을 입력해주세요.
+                </p>
 
-              <div class="input-btn-wrap">
-                <div class="input">
-                  <input id="mobileNumber" name="mobileNumber" type="tel" class="input-text" placeholder="휴대폰 번호" value="01040573327" readonly
-                  />
+                <div class="input-btn-wrap">
+                    <div class="input">
+                        <input id="mobileNumber" name="mobileNumber" type="tel" class="input-text" placeholder="휴대폰 번호"
+                               value="01040573327" readonly
+                        />
+                    </div>
+                    <div id="mobileCheckBtn" class="mobileAuthBtn btn" style="display: none">
+                        <button class="mobile-change-button" type="button" disabled="disable">
+                            <span>변경하기</span>
+                        </button>
+                    </div>
+                    <div id="mobileChangeBtn" class="mobileAuthBtn btn"
+                         style="display: block; background-color: #8c8881;">
+                        <a href="#" onclick="return false;">
+                            <span>변경</span>
+                        </a>
+                    </div>
                 </div>
-                <div id="mobileCheckBtn" class="mobileAuthBtn btn" style="display: none" >
-                  <button class="mobile-change-button"type="button" disabled="disable">
-                    <span>변경하기</span>
-                  </button>
-                </div>
-                <div id="mobileChangeBtn" class="mobileAuthBtn btn"  style="display: block; background-color: #8c8881;">
-                  <a href="#" onclick="return false;">
-                    <span>변경</span>
-                  </a>
-                </div>
-              </div>
-              <p id="phoneError" class="error-text emailMsg" style="display: none">휴대폰 번호 형식이 올바르지 않습니다.</p>
-              <p class="sns-text-wrap">
-                  <strong class="sns-text">SNS 연동</strong>
-                  <br>
-                카카오를 연동하시면 피드에서 친구의 활동을 확인할 수 있어요</p>
-            <div>
-              <button
-                      class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_kakaoButton__2lTDs SNSButtonList_spacer__38ac5"
-                      type="button"
-              >
+                <p id="phoneError" class="error-text emailMsg" style="display: none">휴대폰 번호 형식이 올바르지 않습니다.</p>
+                <p class="sns-text-wrap">
+                    <strong class="sns-text">SNS 연동</strong>
+                    <br>
+                    카카오를 연동하시면 피드에서 친구의 활동을 확인할 수 있어요</p>
+                <div>
+                    <button
+                            class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_kakaoButton__2lTDs SNSButtonList_spacer__38ac5"
+                            type="button"
+                    >
                     <span
                     ><span class="Button_children__raEW4"
                     ><svg
@@ -95,11 +100,11 @@
                     >카카오 연동하기</span
                     ></span
                     ></button
-              >
-              <button
-                      class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_naverButton__1rzZ_ SNSButtonList_spacer__38ac5"
-                      type="button"
-              >
+                    >
+                    <button
+                            class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_naverButton__1rzZ_ SNSButtonList_spacer__38ac5"
+                            type="button"
+                    >
                     <span
                     ><span class="Button_children__raEW4"
                     ><svg
@@ -115,47 +120,49 @@
                     >네이버 연동하기</span
                     ></span
                     >
-              </button>
+                    </button>
 
-            </div>
-            <!--  <div class="social-account-wrap">
-                <ul>
-                  <li class="facebook">
-                    <a href="#" id="facebookLink" class="unlinked"><img src="../image/facebook.png" alt="" style="width: 32px; margin-top: 4px" /></a>
-                  </li>
-                  <li class="naver">
-                    <a href="#" id="naverLink" class="unlinked"><img src="../image/naver.png" alt="" style="width: 35px; margin-top: 4px" /></a>
-                  </li>
-                  <li class="kakao">
-                    <a href="#" id="kakaoLink" class="unlinked"><img src="../image/kakao.png" style="width: 30px; margin-top: 7px" alt="" /></a>
-                  </li>
-                  <li class="google">
-                    <a href="#" id="googleLink" class="unlinked"><img src="../image/google.png" alt="" style="width: 30px; margin-top: 5px" /></a>
-                  </li>
-                </ul>
-              </div>-->
-              <div class="email-input-wrap small">
-                <div class="btn-wrap">
-                  <button type="button" id="saveBtn" class="wz button primary block btn-block-mint">확인</button>
                 </div>
-              </div>
-            </div>
-            <input type="hidden" id="validEmailFirstCheck" value="Y" />
-            <input type="hidden" id="validEmail" value="1" />
-          </form>
+                <!--  <div class="social-account-wrap">
+                    <ul>
+                      <li class="facebook">
+                        <a href="#" id="facebookLink" class="unlinked"><img src="../image/facebook.png" alt="" style="width: 32px; margin-top: 4px" /></a>
+                      </li>
+                      <li class="naver">
+                        <a href="#" id="naverLink" class="unlinked"><img src="../image/naver.png" alt="" style="width: 35px; margin-top: 4px" /></a>
+                      </li>
+                      <li class="kakao">
+                        <a href="#" id="kakaoLink" class="unlinked"><img src="../image/kakao.png" style="width: 30px; margin-top: 7px" alt="" /></a>
+                      </li>
+                      <li class="google">
+                        <a href="#" id="googleLink" class="unlinked"><img src="../image/google.png" alt="" style="width: 30px; margin-top: 5px" /></a>
+                      </li>
+                    </ul>
+                  </div>-->
+                <div class="email-input-wrap small">
+                    <div class="btn-wrap">
+                        <button type="button" id="saveBtn" class="wz button primary block btn-block-mint">확인</button>
+                    </div>
+                </div>
         </div>
-        <!-- //account-wrap -->
-      </div>
-      <!-- E : #newContainer -->
+        <input type="hidden" id="validEmailFirstCheck" value="Y"/>
+        <input type="hidden" id="validEmail" value="1"/>
+        </form>
     </div>
-    <div id="alertify-o-cover" class="alertify-o-cover" style="display: none;"></div>
-    <section id="alertify-o" class="alertify-o alertify-o-alert" style="display: none;">
-      <article class="alertify-o-inner">
+    <!-- //account-wrap -->
+</div>
+<!-- E : #newContainer -->
+</div>
+<div id="alertify-o-cover" class="alertify-o-cover" style="display: none;"></div>
+<section id="alertify-o" class="alertify-o alertify-o-alert" style="display: none;">
+    <article class="alertify-o-inner">
         <p class="alertify-o-message" style="font-size: 15px; padding-top: 2px">저장되었습니다.</p>
-        <nav class="alertify-o-buttons"><button class="alertify-o-button alertify-o-button-ok" id="alertify-o-ok">확인</button></nav>
-      </article>
-    </section>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="../../../static/js/mypage/setting/basic-setting.js"></script>
+        <nav class="alertify-o-buttons">
+            <button class="alertify-o-button alertify-o-button-ok" id="alertify-o-ok">확인</button>
+        </nav>
+    </article>
+</section>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../../../static/js/mypage/setting/basic-setting.js"></script>
 </html>

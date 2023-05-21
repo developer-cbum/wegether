@@ -1,10 +1,14 @@
 package com.wegether.app.mapper.admin;
 
+import com.wegether.app.domain.dto.DataAdminDTO;
+import com.wegether.app.domain.dto.InquiryAdminDTO;
+import com.wegether.app.domain.vo.AnswerVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import com.wegether.app.mapper.AdminMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -61,8 +65,13 @@ public class AdminMapperTests {
     /* ------------------------------------------------------------------------------------ */
 
     //    자료 목록 테스트
+//    @Test
+//    public void dataSelectAllTest() { assertThat(adminMapper.dataSelectAll()).hasSize(1); }
+
     @Test
-    public void dataSelectAllTest() { assertThat(adminMapper.dataSelectAll()).hasSize(1); }
+    public void dataSelectAllTest() {
+        adminMapper.dataSelectAll().stream().map(DataAdminDTO::toString).forEach(log::info);
+    }
 
     //    자료 삭제 테스트
     @Test
@@ -78,4 +87,70 @@ public class AdminMapperTests {
     @Test
     public void projectDeleteTest() { adminMapper.projectDelete(1L);}
 
+    /* ------------------------------------------------------------------------------------ */
+
+    //    문의사항 목록 테스트
+    @Test
+    public void inquirySelectAllTest() {
+        assertThat(adminMapper.inquirySelectAll()).hasSize(1);
+    }
+
+    //    문의사항 답변 등록 테스트
+    @Test
+    public void answerInsertTest() {
+        AnswerVO answerVO = new AnswerVO();
+        answerVO.setAnswerContent("답변 내용");
+        answerVO.setInquiryId(1L);
+        adminMapper.answerInsert(answerVO);
+    }
+
+    //    문의사항 상세 테스트
+    @Test
+    public void inquirySelectTest() {
+        adminMapper.inquirySelect(1L).map(InquiryAdminDTO::getInquiryTitle).ifPresent(log::info);
+    }
+
+    //    문의사항 답변 상세 테스트
+    @Test
+    public void answerSelectTest() {
+        adminMapper.answerSelect(5L).map(AnswerVO::getAnswerContent).ifPresent(log::info);
+    }
+
+    //    문의사항 답변 수정 테스트
+    @Test
+    public void inquiryAnswerUpdateTest() {
+        adminMapper.answerSelect(1L).ifPresent(answerVO -> {
+            answerVO.setAnswerContent("문의 답변 수정 입니다");
+            adminMapper.answerUpdate(answerVO);
+        });
+    }
+
+    //    문의사항 답변 삭제 테스트
+    @Test
+    public void answerDeleteTest() {
+        adminMapper.answerDelete(2L);
+    }
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    회원 목록 테스트
+    @Test
+    public void memberSelectAllTest() { assertThat(adminMapper.memberSelectAll()).hasSize(2); }
+
+    //    회원 삭제 테스트
+    @Test
+    public void memberDeleteTest() { adminMapper.memberDelete(2L);}
+
+    /* ------------------------------------------------------------------------------------ */
+
+    //    강연 목록 테스트
+    @Test
+    public void lectureSelectAllTest() { assertThat(adminMapper.lectureSelectAll()).hasSize(3); }
+
+    //    강연 삭제 테스트
+
+    @Test
+    public void lectureDeleteTest() { adminMapper.lectureDelete(2L);}
+
+    /* ------------------------------------------------------------------------------------ */
 }

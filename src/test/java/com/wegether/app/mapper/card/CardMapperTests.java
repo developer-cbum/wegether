@@ -29,6 +29,12 @@ public class CardMapperTests {
     public void deleteTest(){
         cardMapper.delete(2L);
     }
+
+    @Test
+    public void listTest(){
+        cardMapper.selectAll(1L);
+
+    }
 }
 
 

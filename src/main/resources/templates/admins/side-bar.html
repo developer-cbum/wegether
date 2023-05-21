@@ -27,7 +27,7 @@
                                     <div>
                                         <img src="/image/admin/board_icon.png" class="icon" />
                                     </div>
-                                    <a href="">
+                                    <a>
                                         <span>게시판 관리</span>
                                     </a>
                                     <div class="triangle-button">
@@ -38,26 +38,13 @@
                                     </div>
                                 </div>
                                 <ul class="menus1 menus" style="display: none">
-                                    <!-- <li class="select-menu">
-                                <a href="adminPage-boardList.jsp">
-                                    <span>전체 게시판</span>
-                                </a>
-                            </li> -->
                                     <li class="select-menu">
-                                        <!-- <a th:href="@{/admin/board/challenge/list}">
-                                            <span>공지사항 게시판</span>
-                                        </a> -->
-                                        <a href="">
+                                        <a th:href="@{/admins/notice/list}">
                                             <span>공지사항 게시판</span>
                                         </a>
                                     </li>
-                                    <!-- <li class="select-menu">
-                                        <a th:href="@{/admin/board/groupChallenge/list}">
-                                            <span>문의답변 게시판</span>
-                                        </a>
-                                    </li> -->
                                     <li class="select-menu">
-                                        <a href="">
+                                        <a th:href="@{/admins/inquiry/list}">
                                             <span>문의답변 게시판</span>
                                         </a>
                                     </li>
@@ -81,18 +68,12 @@
                                 </div>
                                 <ul class="menus2 menus" style="display: none">
                                     <li class="select-menu">
-                                        <!-- <a th:href="@{/admin/board/notice/list}">
-                                            <span>자료 목록</span>
-                                        </a> -->
-                                        <a href="">
+                                        <a th:href="@{/admins/data/list}">
                                             <span>자료 목록</span>
                                         </a>
                                     </li>
                                     <li class="select-menu">
-                                        <!-- <a th:href="@{/admin/board/notice/write}">
-                                            <span>프로젝트 목록</span>
-                                        </a> -->
-                                        <a href="">
+                                        <a th:href="@{/admins/project/list}">
                                             <span>프로젝트 목록</span>
                                         </a>
                                     </li>
@@ -119,10 +100,7 @@
                                 </div>
                                 <ul class="menus2 menus" style="display: none">
                                     <li class="select-menu">
-                                        <!-- <a th:href="@{/admin/board/notice/list}">
-                                            <span>강연 등록</span>
-                                        </a> -->
-                                        <a href="">
+                                        <a th:href="@{/admins/lecture/list}">
                                             <span>강연 목록</span>
                                         </a>
                                     </li>
@@ -134,9 +112,9 @@
                                     <div>
                                         <img src="/image/admin/user_icon.png" class="icon" />
                                     </div>
-                                    <!-- <a th:href="@{/admin/member/list}">
+                                    <!--<a th:href="@{/admins/member/list}">
                                         <span>회원정보 관리</span>
-                                    </a> -->
+                                    </a>-->
                                     <a href="">
                                         <span>회원정보 관리</span>
                                     </a>
@@ -150,6 +128,5 @@
         <!-- 사이드 바 끝-->
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <!-- <script src="/js/admin/sidemenu.js"></script> -->
     <script src="/js/admin/sidemenu.js"></script>
 </html>

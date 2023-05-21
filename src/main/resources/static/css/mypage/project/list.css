@@ -520,12 +520,13 @@
 }
 
 .withIcon_icon__3VTbq {
-  display: block;
-  transform: scale(1.5);
+  display: inline-block;
+  transform: scale(0.9);
   transition: transform 0.3s ease-out;
   width: 1em;
-  height: 1em;
+  height: 1.2em;
   fill: currentColor;
+  float: right;
 }
 
 .css-yk16xz-control {

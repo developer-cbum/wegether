@@ -28,6 +28,16 @@
         ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
     </select>
 
+
+
+
+
+
+
+
+
+
+
 <!--  data  -->
     <select id="dataSelectAll" resultType="dataFileDTO">
         SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, DATA_ID
@@ -40,4 +50,5 @@
         DELETE FROM TBL_FILE
         WHERE ID = #{id}
     </delete>
+
 </mapper>

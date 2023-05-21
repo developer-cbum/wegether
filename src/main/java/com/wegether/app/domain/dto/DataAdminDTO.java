@@ -12,8 +12,13 @@ import org.springframework.stereotype.Component;
 public class DataAdminDTO {
     private Long id;
     private Long memberId;
-    private String InquiryTitle;
-    private String InquiryContent;
-    private String InquiryRegisterDate;
-    private String memberName;
+    private String dataTitle;
+    private String dataContent;
+    private Long dataPrice;
+    private String dataSchool;
+    private String dataMajor;
+    private Long dataReadCount;
+    private String dataRegisterDate;
+    private String dataUpdateDate;
+    private String memberNickName;
 }
