@@ -36,6 +36,9 @@ public class MemberDAO {
     //카카오 로그인 상태 업데이트
     public void setLoginStatusToKakao(String memberId){memberMapper.updateLoginStatusToKakao(memberId);}
 
+    //네이버 로그인 상태 업데이트
+    public void setLoginStatusToNaver(String memberId){memberMapper.updateLoginStatusToNaver(memberId);}
+
     // 세션값으로 회원정보찾기
     public Optional<MemberVO> findById(Long id){
         return memberMapper.selectById(id);
