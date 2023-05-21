@@ -152,6 +152,25 @@ public class AccountController {
     }
 
 
+    //네이버 로그인
+
+
+    @GetMapping("naver-login")
+    public void naverLogin(){;}
+
+    @PostMapping("naver-register")
+    public void naverRegister(String memberId, String memberName, String memberPassword, Model model){
+        model.addAttribute("memberId", memberId);
+        model.addAttribute("memberName", memberName);
+        model.addAttribute("memberPassword", memberPassword);
+        ;}
+    @PostMapping("naver-join")
+    public RedirectView naverJoin(MemberVO memberVO){
+        accountService.join(memberVO);
+        accountService.changeLoginStatusToNaver(memberVO.getMemberId());
+        return new RedirectView("/index/main");
+    }
+
 
 
 }
