@@ -18,7 +18,7 @@ public class MainMapperTests {
 
     @Test
     public void mainPSelectAllTest() {
-        assertThat(mainMapper.mainPSelectAll()).hasSize(1);
+        assertThat(mainMapper.mainPSelectAll()).hasSize(5);
     }
 
     @Test

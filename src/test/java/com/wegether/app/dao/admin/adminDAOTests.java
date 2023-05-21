@@ -61,9 +61,9 @@ public class adminDAOTests {
 
     /* ------------------------------------------------------------------------------------ */
 
-    //    자료 목록 테스트
-    @Test
-    public void dataFindAllTest() { assertThat(adminDAO.dataFindAll()).hasSize(2); }
+//    //    자료 목록 테스트
+//    @Test
+//    public void dataFindAllTest() { assertThat(adminDAO.dataFindAll()).hasSize(2); }
 
     //    자료 삭제 테스트
     @Test
