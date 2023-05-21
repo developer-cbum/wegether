@@ -19,7 +19,7 @@ public class InquiryImpl implements MypageService{
 
     @Override
     public void mypage() {
-        log.info("d");
+        log.info("문의");
     }
 
 
@@ -27,7 +27,7 @@ public class InquiryImpl implements MypageService{
     public void register(InquiryVO inquiryVO) {
         inquiryDAO.save(inquiryVO);
     }
-//    문의 상세
+//    문의 답변 리스트
     public List<InquiryDTO> read(Long memberId){
         return inquiryDAO.findAll(memberId);
     }

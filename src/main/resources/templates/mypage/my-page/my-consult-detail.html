@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../../static/css/mypage/my-page/mypage.css">
-    <link rel="stylesheet" href="../../../static/css/consult/my-consult-detail.css">
-    <link rel="stylesheet" href="../../../static/css/mypage/project/list.css">
+    <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/consult/my-consult-detail.css">
+    <link rel="stylesheet" href="/css/mypage/project/list.css">
   </head>
   <body>
     <div class="Community_contentWrapper__2tclW">
@@ -24,9 +25,10 @@
         <div class="RatingFaq_wrapper__1NK4g">
           <div class="RewardFaqList_faqList__1FDhJ">
             <div>
+              <th:block th:each="consulting : ${consulting}">
               <div class="RewardFaqItem_faqItem__2qbzt">
                 <div class="RewardFaqItem_title__2ryy1">
-                  교외활동
+                  <span th:text="${consulting.consultingTitle}"></span>
                   <svg
                           viewBox="0 0 40 40"
                           focusable="false"
@@ -38,9 +40,9 @@
                   </svg>
                 </div>
 
-              </div>
+              </div></th:block>
 
-              <div class="RewardFaqItem_faqItem__2qbzt">
+             <!-- <div class="RewardFaqItem_faqItem__2qbzt">
                 <div class="RewardFaqItem_title__2ryy1">
                   대학 입학 전형은 언제 정해야하나요 ?
                   <svg
@@ -71,7 +73,7 @@
                 </div>
 
               </div>
-
+-->
 
             <div class="RewardFaqList_helpCenterWrap__3RByl">
               <p>더 궁금한 사항이 있다면?</p>

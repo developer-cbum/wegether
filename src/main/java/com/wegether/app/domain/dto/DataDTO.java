@@ -22,4 +22,9 @@ public class DataDTO {
     private String dataUpdateDate;
     private List<FileVO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
+
+
+
+
+    private String info;
 }

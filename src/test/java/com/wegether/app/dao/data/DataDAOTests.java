@@ -16,7 +16,7 @@ public class DataDAOTests {
     private DataDAO dataDAO;
 
     @Test
-    public void selectmydata(){
+    public void showmydataTest(){
         Assertions.assertThat(dataDAO.showmydata(1L)).hasSize(1);
     }
     

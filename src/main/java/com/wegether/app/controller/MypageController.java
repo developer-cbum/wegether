@@ -4,6 +4,7 @@ import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.service.mypage.CardImpl;
 import com.wegether.app.service.mypage.InquiryImpl;
+import com.wegether.app.service.mypage.MineServiceImpl;
 import com.wegether.app.service.mypage.MypageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -63,6 +64,20 @@ public class MypageController {
     }
 
 
+//    내 자료
+
+    private final MineServiceImpl mine;
+
+    @GetMapping("/my-page/my-data-list")
+    public void goToData(Long memberId, Model model) {
+        model.addAttribute("data", mine.readMine(1L));
+    }
+
+    //    내 상담
+    @GetMapping("/my-page/my-consult-detail")
+    public void goToConsulting(Long memberId, Model model) {
+    model.addAttribute("consulting", mine.readMyConsulting(1L));
+}
 }
 
 

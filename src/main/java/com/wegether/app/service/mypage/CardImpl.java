@@ -19,7 +19,7 @@ public class CardImpl implements MypageService {
 
     @Override
     public void mypage() {
-        log.info("cardImpl");
+        log.info("카드");
     }
 
     //    카드 등록
@@ -28,7 +28,7 @@ public class CardImpl implements MypageService {
     }
 
 
-//    카드 목록
+    //    카드 목록
     public List<CardVO> getList(Long memberId){
         return cardDAO.list(memberId);
     }

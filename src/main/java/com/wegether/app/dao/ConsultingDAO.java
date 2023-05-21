@@ -48,4 +48,16 @@ public class ConsultingDAO {
 
 
 
+
+
+
+
+
+
+//    소영 마이페이지 내 상담 조회
+
+    public List<ConsultingVO> getmyconsult(Long memberId){
+        return consultingMapper.selectmyconsult(memberId);
+    };
+
 }

@@ -15,4 +15,13 @@
         FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C
         ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
     </select>
+
+
+
+
+
+
+
+
+
 </mapper>

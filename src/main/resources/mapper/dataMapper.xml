@@ -72,8 +72,28 @@
 <!--    소영 마이페이지에서 내가 구매한 자료, 내가 등록한 자료 조회-->
 
 <!--    내가 등록한 자료-->
-    <select id="selectmydata" resultType="dataVO">
+    <select id="selectmydata" resultType="dataDTO">
     SELECT ID, DATA_TITLE, DATA_UPDATE_DATE
     FROM TBL_DATA WHERE MEMBER_ID=#{memberId}
     </select>
+
+
+
+    <!--    소영 마이페이지-내가 업로드한 자료-->
+
+
+    <select id="selectMyData" resultType="dataDTO">
+        SELECT D.ID || TO_CHAR(DATA_REGISTER_DATE,'YYYYMMDD') NUM, DATA_TITLE, DATA_CONTENT,  CONCAT(CONCAT(DATA_SCHOOL, ' '), DATA_MAJOR) || ' / ' || DATA_PRICE INFO, DATA_UPDATE_DATE
+        FROM TBL_DATA D LEFT JOIN TBL_DATA_FILE DF ON D.ID=DF.DATA_ID JOIN TBL_FILE F ON DF.ID = F.ID
+        WHERE D.MEMBER_ID=#{memberId}
+    </select>
+
+
+
+<!--    <select id="selectMyData" resultType="dataDTO">-->
+<!--        SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE-->
+<!--        FROM TBL_FILE F JOIN TBL_DATA_FILE DF JOIN TBL_DATA D -->
+<!--        ON F.ID = DF.ID AND DF.DATA_ID = #{dataId}-->
+
+<!--    </select>-->
 </mapper>
