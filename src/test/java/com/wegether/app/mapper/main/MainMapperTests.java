@@ -1,10 +1,15 @@
 package com.wegether.app.mapper.main;
 
+import com.wegether.app.domain.type.FileType;
+import com.wegether.app.domain.vo.FileVO;
+import com.wegether.app.mapper.FileMapper;
 import com.wegether.app.mapper.MainMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,6 +20,8 @@ public class MainMapperTests {
     @Autowired
     private MainMapper mainMapper;
 
+    @Autowired
+    private FileMapper fileMapper;
 
     @Test
     public void mainPSelectAllTest() {
@@ -31,8 +38,6 @@ public class MainMapperTests {
     public void mainCSelectAllTest() {
         assertThat(mainMapper.mainCSelectAll()).hasSize(1);
     }
-
-
 
 
     }

@@ -40,16 +40,14 @@ public class MainController {
 
     @GetMapping("main")
     public void goToListForm(Model model){
+        List<MainDTO> projects = mainService.mainPGetList();
         model.addAttribute("projects", mainService.mainPGetList());
         model.addAttribute("datas", mainService.mainDGetList());
         model.addAttribute("communitys", mainService.mainCGetList());
+
     }
-    
-    @GetMapping("display")
-    @ResponseBody
-    public byte[] display(String fileName) throws IOException{
-        return FileCopyUtils.copyToByteArray(new File("C:/upload/", fileName));
-    }
+
+
 
 
 

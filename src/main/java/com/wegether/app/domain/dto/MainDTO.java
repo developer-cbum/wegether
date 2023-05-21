@@ -1,7 +1,11 @@
 package com.wegether.app.domain.dto;
 
+import com.wegether.app.domain.vo.FileVO;
 import lombok.Data;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Data
@@ -19,6 +23,8 @@ public class MainDTO {
     private String dataRegisterDate;
     private String communityTitle;
     private String communityRegisterDate;
+    private byte[] imageData;
+    private List<FileVO> files = new ArrayList<>();
 
 
 
