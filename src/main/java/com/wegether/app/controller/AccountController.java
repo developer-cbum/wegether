@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -50,6 +51,7 @@ public class AccountController {
     ){;}
 
     @PostMapping("kakao-register")
+    @Transactional(rollbackFor = Exception.class)
     public RedirectView joinToKakao(MemberVO memberVO){
         accountService.join(memberVO);
         accountService.changeLoginStatusToKakao(memberVO.getMemberId());
@@ -165,13 +167,26 @@ public class AccountController {
         model.addAttribute("memberPassword", memberPassword);
         ;}
     @PostMapping("naver-join")
-    public RedirectView naverJoin(MemberVO memberVO){
+    @Transactional(rollbackFor = Exception.class)
+    public RedirectView naverJoin(MemberVO memberVO, HttpSession session){
+
         accountService.join(memberVO);
         accountService.changeLoginStatusToNaver(memberVO.getMemberId());
+        Optional<MemberVO> JoinMemberVO = accountService.checkId(memberVO.getMemberId());
+        session.setAttribute("id", JoinMemberVO.get().getId());
+        log.info(session.getAttribute("id").toString());
         return new RedirectView("/index/main");
     }
 
-
+    // 세션에 담기위함..
+    @PostMapping("naver-login")
+    @ResponseBody
+    public void naverlogin(@RequestBody MemberVO memberVO, HttpSession session){
+        if(memberVO.getMemberLoginStatus().equals("NAVER") &&
+                accountService.getMemberById(memberVO.getId()).get() != null){
+           session.setAttribute("id", memberVO.getId());
+        }
+    }
 
 }
 
