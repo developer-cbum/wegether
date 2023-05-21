@@ -43,9 +43,9 @@
 
     <!--  자료 등록  -->
     <insert id="insert">
-<!--        <selectKey keyProperty="id" order="BEFORE" resultType="dataDTO">-->
-<!--            SELECT SEQ_DATA.NEXTVAL FROM DUAL-->
-<!--        </selectKey>-->
+        <selectKey keyProperty="id" order="BEFORE" resultType="dataDTO">
+            SELECT SEQ_DATA.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_DATA(ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
         VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, #{memberId})
     </insert>
