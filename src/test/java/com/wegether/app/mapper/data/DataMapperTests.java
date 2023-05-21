@@ -1,12 +1,15 @@
 package com.wegether.app.mapper.data;
 
-import com.wegether.app.domain.dto.DataDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.mapper.DataMapper;
+
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,37 +22,38 @@ public class DataMapperTests {
 
     //    자료 등록 테스트
     @Test
-    public void insertTest(){
+    public void insertTest() {
         DataDTO dataDTO = new DataDTO();
 
-        dataDTO.setId(1L);
-        dataDTO.setDataTitle("테스트 제목1");
-        dataDTO.setDataContent("테스트 내용1");
+        dataDTO.setId(4L);
+        dataDTO.setDataTitle("자료 팜");
+        dataDTO.setDataContent("내 자료 팔아요");
         dataDTO.setDataPrice(20000L);
-        dataDTO.setDataSchool("서울대학교");
-        dataDTO.setDataMajor("컴퓨터공학과");
-        dataDTO.setMemberId(1L);
+        dataDTO.setDataSchool("홍익대");
+        dataDTO.setDataMajor("디자인과");
+        dataDTO.setMemberId(2L);
         dataMapper.insert(dataDTO);
 
     }
 
+//    자료 목록
+    @Test
+    public void selectAllTest(){
+        DataPagination dataPagination = new DataPagination();
+        dataPagination.setPage(1);
+        dataPagination.progress();
+        List<DataDTO> dataDTOS = dataMapper.selectAll(dataPagination);
+        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
+    }
+
+        @Test
+        public void selectTest(){
+            dataMapper.select(1L).stream().map(DataDTO::toString).forEach(log::info);
+//            dataMapper.select(1L).stream().map(DataDTO::getMemberNickname).forEach(log::info);
+//            dataMapper.select(1L).stream().map(DataDTO::getWishDataId).forEach(log::info);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 

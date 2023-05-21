@@ -3,7 +3,7 @@ package com.wegether.app.domain.dto;
 import lombok.Data;
 
 @Data
-public class Pagination {
+public class DataPagination {
     private Integer page;
     private int rowCount;
     private int pageCount;
@@ -13,10 +13,9 @@ public class Pagination {
     private boolean prev, next;
     private int total;
 
-
     public void progress() {
         this.page = page == null ? 1 : page;
-        this.rowCount = 10;
+        this.rowCount = 24;
         this.pageCount = 5;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
