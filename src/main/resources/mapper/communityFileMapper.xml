@@ -6,6 +6,7 @@
         (ID, COMMUNITY_ID)
         VALUES(#{id}, #{communityId})
     </insert>
+
 <!--    <delete id="delete">-->
 <!--        DELETE FROM TBL_FILE WHERE ID = #{id}-->
 <!--    </delete>-->

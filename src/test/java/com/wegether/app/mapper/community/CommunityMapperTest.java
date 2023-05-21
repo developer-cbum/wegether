@@ -21,7 +21,7 @@ public class CommunityMapperTest {
 
     @Test
     public void selectAllTest() {
-        CommunityPagination communityPagination = new CommunityPagination(3);
+        CommunityPagination communityPagination = new CommunityPagination();
         communityPagination.setPage(1); //화면에서 전달받은 페이지
         communityMapper.selectAll(communityPagination).stream().map(CommunityDTO::toString).forEach(log::info);
 //        postMapper.selectAll(pagination, new Search("popular")).stream().map(PostDTO::toString).forEach(log::info);

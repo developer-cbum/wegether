@@ -69,13 +69,20 @@ public class CommunityServiceImpl implements CommunityService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void modify(CommunityDTO communityDTO) {
+        communityDTO.getFileIdsForDelete().forEach(fileDAO::communityDelete);
+
         communityDAO.setCommunityDTO(communityDTO);
-        communityDTO.getFiles().forEach(file -> {
-            file.setCommunityId(communityDTO.getId());
-            fileDAO.communitySave();
+        communityDTO.getFiles().forEach(communityFileDTO -> {
+            communityFileDTO.setCommunityId(communityDTO.getId());
+            fileDAO.communitySave(communityFileDTO);
+        });
+        communityDTO.getFiles().forEach(communityFileDTO ->
+        { CommunityFileVO communityFileVO = new CommunityFileVO();
+            communityFileVO.setId(communityFileDTO.getId());
+            communityFileVO.setCommunityId(communityFileDTO.getCommunityId());
+            communityFileDAO.save(communityFileVO);
         });
 
-        communityDTO.getFileIdsForDelete().forEach(fileDAO.communityDelete());
 
     }
 
@@ -84,7 +91,7 @@ public class CommunityServiceImpl implements CommunityService {
     public void remove(Long id) {
         communityDAO.delete(id);
 //        replyDAO.deleteAll(id);
-        fileDAO.communityDeleteAll();
+        fileDAO.communityDeleteAll(id);
     }
 
 }
