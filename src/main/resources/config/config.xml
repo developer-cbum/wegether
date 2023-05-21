@@ -28,12 +28,11 @@
         <typeAlias type="com.wegether.app.domain.vo.ReplyVO" alias="replyVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishDataVO" alias="wishDataVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishProjectVO" alias="wishProjectVO"/>
+        <typeAlias type="com.wegether.app.domain.dto.MainDTO" alias="mainDTO"/>
         <!-- 05월 19일 김인진 DataAdminDTO 추가 -->
         <typeAlias type="com.wegether.app.domain.dto.DataAdminDTO" alias="dataAdminDTO"/>
         <!-- 05월 19일 김인진 ProjectAdminDTO 추가 -->
         <typeAlias type="com.wegether.app.domain.dto.ProjectAdminDTO" alias="projectAdminDTO"/>
-        <typeAlias type="com.wegether.app.domain.dto.Pagination" alias="pagination"/>
-
 
         <!--05월 20일 consultingDTO 추가-->
         <typeAlias type="com.wegether.app.domain.dto.ConsultingDTO" alias="consultingDTO"/>
@@ -42,13 +41,19 @@
 
         <!--  05월 20일 김치윤 CommunityFileDTO 추가  -->
         <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityFileDTO"/>
+
+        <!--  5월 21일 박유미 Data   -->
+        <typeAlias type="com.wegether.app.domain.dto.DataFileDTO" alias="dataFileDTO"/>
+
         <!-- 05월 21일 이종문 search 추가-->
         <typeAlias type="com.wegether.app.domain.dto.Search" alias="search"/>
+
 
 
 
         <!--  문소영 inquiryDTO, memberDTO 추가-->
         <typeAlias type="com.wegether.app.domain.dto.InquiryDTO" alias="inquiryDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.MemberDTO" alias="memberDTO"/>
+
     </typeAliases>
 </configuration>

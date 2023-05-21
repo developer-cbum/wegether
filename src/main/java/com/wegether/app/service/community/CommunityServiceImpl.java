@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,7 @@ public class CommunityServiceImpl implements CommunityService {
     private final FileDAO fileDAO;
     private final CommunityFileVO communityFileVO;
     private final FileVO fileVO;
+    private final CommunityFileDTO communityFileDTO;
 
 
     @Override
@@ -35,7 +37,7 @@ public class CommunityServiceImpl implements CommunityService {
 //        게시글 전체 목록
         final List<CommunityDTO> communityDTOS = communityDAO.findAll(communityPagination);
 //        게시글 하나씩 첨부파일 목록 담기
-        communityDTOS.forEach(communityDTO -> communityDTO.setFiles(fileDAO.findAll(communityDTO.getId())));
+        communityDTOS.forEach(communityDTO -> communityDTO.setFiles(fileDAO.communityFindAll(communityDTO.getId())));
         return communityDTOS;
     }
 
@@ -44,7 +46,7 @@ public class CommunityServiceImpl implements CommunityService {
     public Optional<CommunityDTO> getCommunity(Long id) {
         final Optional<CommunityDTO> foundPost = communityDAO.findById(id);
         if(foundPost.isPresent()){
-            foundPost.get().setFiles(fileDAO.findAll(foundPost.get().getId()));
+            foundPost.get().setFiles(fileDAO.communityFindAll(foundPost.get().getId()));
         }
         return foundPost;
     }
@@ -55,7 +57,7 @@ public class CommunityServiceImpl implements CommunityService {
         communityDAO.save(communityDTO);
         communityDTO.getFiles().forEach(communityFileDTO -> {
             communityFileDTO.setCommunityId(communityDTO.getId());
-            fileDAO.save(communityFileDTO);
+            fileDAO.communitySave(communityFileDTO);
         });
         communityDTO.getFiles().forEach(communityFileDTO ->
         { CommunityFileVO communityFileVO = new CommunityFileVO();
@@ -67,8 +69,35 @@ public class CommunityServiceImpl implements CommunityService {
 
 
     @Override
-    public void modify(CommunityDTO communityDTO) { communityDAO.setCommunityDTO(communityDTO); }
+    @Transactional(rollbackFor = Exception.class)
+    public void modify(CommunityDTO communityDTO) {
+
+        communityDTO.getFiles().forEach(communityFileDTO -> {
+            communityFileDTO.setCommunityId(communityDTO.getId());
+            fileDAO.communitySave(communityFileDTO);
+        });
+        communityDTO.getFiles().forEach(communityFileDTO ->
+        { CommunityFileVO communityFileVO = new CommunityFileVO();
+            communityFileVO.setId(communityFileDTO.getId());
+            communityFileVO.setCommunityId(communityFileDTO.getCommunityId());
+            communityFileDAO.save(communityFileVO);
+        });
+
+        communityDTO.getFileIdsForDelete().forEach(fileDAO::communityDelete);
+
+    }
 
     @Override
-    public void remove(Long id) { communityDAO.delete(id); }
+    @Transactional(rollbackFor = Exception.class)
+    public void remove(Long id) {
+        CommunityDTO communityDTO = communityDAO.findById(id).get();
+        fileDAO.communityFindAll(id).forEach(communityFileDTO ->
+                fileDAO.communityDelete(communityFileDTO.getId())
+        );
+        communityDAO.delete(id);
+//        replyDAO.deleteAll(id);
+        communityFileDAO.delete(id);
+
+    }
+
 }
