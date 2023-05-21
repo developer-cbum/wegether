@@ -68,14 +68,17 @@ public class AdminMapperTests {
 //    @Test
 //    public void dataSelectAllTest() { assertThat(adminMapper.dataSelectAll()).hasSize(1); }
 
-    @Test
-    public void dataSelectAllTest() {
-        adminMapper.dataSelectAll().stream().map(DataAdminDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void dataSelectAllTest() {
+//        adminMapper.dataSelectAll().stream().map(DataAdminDTO::toString).forEach(log::info);
+//    }
+
+
 
     //    자료 삭제 테스트
     @Test
     public void dataDeleteTest() { adminMapper.dataDelete(1L);}
+
 
     /* ------------------------------------------------------------------------------------ */
 
