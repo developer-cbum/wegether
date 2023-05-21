@@ -14,18 +14,6 @@ import java.util.List;
 public class MainDAO {
     private final MainMapper mainMapper;
 
-    //    게시글 목록
-    public List<MainDTO> ProjectfindAll(Pagination pagination, Search search){
-        return mainMapper.ProjectSelectAll(pagination, search);
-    }
-
-
-    //    게시글 총 개수
-    public int findCountOfPost(Search search){
-        return mainMapper.selectCountOfProject(search);
-    }
-
-
 
 
 
