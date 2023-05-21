@@ -1,6 +1,10 @@
 package com.wegether.app.controller;
 
+
 import com.wegether.app.domain.dto.MemberDTO;
+
+
+
 import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.service.mypage.CardImpl;
@@ -86,7 +90,7 @@ public class MypageController {
     @GetMapping("/my-page/my-consult-detail")
     public void goToConsulting(Long memberId, Model model) {
     model.addAttribute("consulting", mine.readMyConsulting(1L));
-}
+    }
 }
 
 

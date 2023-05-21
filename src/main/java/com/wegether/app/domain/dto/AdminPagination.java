@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class ProjectPagination {
+public class AdminPagination {
     private Integer page;
     private int rowCount;
     private int pageCount;
@@ -15,8 +15,9 @@ public class ProjectPagination {
     private boolean prev, next;
     private int total;
 
+
     public void progress() {
-        this.page = page == null ? 1 : page;
+        this.page = page == null ? 1: page;
         this.rowCount = 10;
         this.pageCount = 5;
         this.total = total;
