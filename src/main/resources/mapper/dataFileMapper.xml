@@ -9,7 +9,7 @@
 
     <select id="select" resultType="dataFileVO">
         SELECT ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE
-        FROM TBL_PRODUCT
+        FROM TBL_DATA
         WHERE ID = #{id}
     </select>
 

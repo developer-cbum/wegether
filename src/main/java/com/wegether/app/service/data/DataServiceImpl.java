@@ -54,10 +54,10 @@ public class DataServiceImpl implements DataService {
             file.setDataId(dataDTO.getId());
             fileDAO.save(file);
         });
-        dataDTO.getFiles().forEach(data -> {
+        dataDTO.getFiles().forEach(dataFileDTO -> {
             DataFileVO dataFileVO = new DataFileVO();
-            dataFileVO.setId(data.getId());
-            dataFileVO.setDataId(data.getDataId());
+            dataFileVO.setId(dataFileDTO.getId());
+            dataFileVO.setDataId(dataFileDTO.getDataId());
             dataFileDAO.save(dataFileVO);
         });
     }

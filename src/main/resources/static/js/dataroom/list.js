@@ -17,9 +17,9 @@ $(document).ready(function () {
                             if(file.fileType == "REPRESENTATIVE"){
                                 text += `
                                 <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px);">
-                                     <div aria-hidden="true"
-                                        class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
-                                        style="background-image: url("/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}"); border-radius: 8px;">
+                                     
+                                     <div class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4" style="border-radius: 8px;">
+                                        <img src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" >
                                      </div>
                                 </div>`;
                             } else {
