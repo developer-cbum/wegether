@@ -44,7 +44,12 @@ public class CommunityController {
         return new RedirectView("/community/list");
     }
 
-    @GetMapping(value = {"detail", "modify"})
+    @GetMapping("modify")
+    public void goToConsultingModify(@RequestParam Long id, Model model){
+        model.addAttribute("community", communityService.getCommunity(id).get());
+    }
+
+    @GetMapping("detail")
     public void goToCommunityDetail(@RequestParam Long id, Model model){
         model.addAttribute("community", communityService.getCommunity(id).get());
         log.info(communityService.getCommunity(1L).toString());

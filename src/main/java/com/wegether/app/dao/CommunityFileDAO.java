@@ -16,4 +16,6 @@ public class CommunityFileDAO {
     private final CommunityFileMapper communityFileMapper;
 
     public void save(CommunityFileVO communityFileVO){communityFileMapper.insert(communityFileVO);}
+
+    public void delete(Long communityId) {communityFileMapper.delete(communityId);}
 }

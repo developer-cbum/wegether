@@ -2,6 +2,7 @@ package com.wegether.app.mapper.community;
 
 import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.CommunityFileDTO;
+import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.mapper.CommunityFileMapper;
@@ -33,6 +34,7 @@ public class CommunityFileMapperTests {
         communityFileDTO.setFilePath("2023/05/19");
         communityFileDTO.setFileSize(1238L);
         communityFileDTO.setFileUuid(UUID.randomUUID().toString());
+        communityFileDTO.setFileType(FileType.REPRESENTATIVE.name());
         fileMapper.communityInsert(communityFileDTO);
     }
 

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,7 @@ public class CommunityServiceImpl implements CommunityService {
     private final FileDAO fileDAO;
     private final CommunityFileVO communityFileVO;
     private final FileVO fileVO;
+    private final CommunityFileDTO communityFileDTO;
 
 
     @Override
@@ -69,9 +71,7 @@ public class CommunityServiceImpl implements CommunityService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void modify(CommunityDTO communityDTO) {
-        communityDTO.getFileIdsForDelete().forEach(fileDAO::communityDelete);
 
-        communityDAO.setCommunityDTO(communityDTO);
         communityDTO.getFiles().forEach(communityFileDTO -> {
             communityFileDTO.setCommunityId(communityDTO.getId());
             fileDAO.communitySave(communityFileDTO);
@@ -83,15 +83,21 @@ public class CommunityServiceImpl implements CommunityService {
             communityFileDAO.save(communityFileVO);
         });
 
+        communityDTO.getFileIdsForDelete().forEach(fileDAO::communityDelete);
 
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void remove(Long id) {
+        CommunityDTO communityDTO = communityDAO.findById(id).get();
+        fileDAO.communityFindAll(id).forEach(communityFileDTO ->
+                fileDAO.communityDelete(communityFileDTO.getId())
+        );
         communityDAO.delete(id);
 //        replyDAO.deleteAll(id);
-        fileDAO.communityDeleteAll(id);
+        communityFileDAO.delete(id);
+
     }
 
 }

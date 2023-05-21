@@ -6,12 +6,12 @@
             SELECT SEQ_FILE.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_FILE
-        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE)
-        VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize})
+        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE)
+        VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{fileType})
     </insert>
 
     <select id="communitySelectAll" resultType="communityFileDTO">
-        SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, COMMUNITY_ID
+        SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE, COMMUNITY_ID
         FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C
         ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
     </select>
@@ -19,14 +19,5 @@
     <delete id="communityDelete">
         DELETE FROM TBL_FILE
         WHERE ID = #{id}
-    </delete>
-
-    <delete id="communityDeleteAll">
-        DELETE FROM TBL_FILE F
-        WHERE EXISTS (
-        SELECT 1
-        FROM TBL_COMMUNITY_FILE C
-        WHERE F.ID = C.ID AND C.COMMUNITY_ID = #{communityId}
-        )
     </delete>
 </mapper>

@@ -1,8 +1,10 @@
 package com.wegether.app.service.community;
 
+import com.wegether.app.dao.FileDAO;
 import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.CommunityFileDTO;
 import com.wegether.app.domain.dto.CommunityPagination;
+import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.CommunityVO;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,9 @@ public class CommunityServiceTests {
 
     @Autowired
     private CommunityService communityService;
+
+    @Autowired
+    private FileDAO fileDAO;
 
     @Test
     public void getListTest() {
@@ -48,16 +53,19 @@ public class CommunityServiceTests {
         file1.setFilePath("2023/05/19");
         file1.setFileSize(1238L);
         file1.setFileUuid(UUID.randomUUID().toString());
+        file1.setFileType(FileType.REPRESENTATIVE.name());
 
         file2.setFileName("새빨간로즈.png");
         file2.setFilePath("2023/05/19");
         file2.setFileSize(1238L);
         file2.setFileUuid(UUID.randomUUID().toString());
+        file2.setFileType(FileType.NON_REPRESENTATIVE.name());
 
         file3.setFileName("새빨간로즈.png");
         file3.setFilePath("2023/05/19");
         file3.setFileSize(1238L);
         file3.setFileUuid(UUID.randomUUID().toString());
+        file3.setFileType(FileType.NON_REPRESENTATIVE.name());
 
 
         CommunityDTO communityDTO = new CommunityDTO();
@@ -73,8 +81,8 @@ public class CommunityServiceTests {
     }
 
 
-//    @Test
-//    public void modifyTest() {
+    @Test
+    public void modifyTest() {
 //        List<CommunityFileDTO> communityFileDTOS = new ArrayList<>();
 //        CommunityFileDTO file1 = new CommunityFileDTO();
 //        CommunityFileDTO file2 = new CommunityFileDTO();
@@ -105,22 +113,27 @@ public class CommunityServiceTests {
 //        CommunityDTO communityDTO = foundCommunity.orElseThrow();
 //        communityService.modify(communityDTO);
 //        communityService.getCommunity(1L);
-//
+
 //        CommunityDTO communityDTO = communityService.getCommunity(1L).orElseThrow();
 //        List<Long> tests = new ArrayList<>();
-//
-//        tests.add(200L);
-//        tests.add(201L);
-//        tests.a
-//
-//        communityDTO.setFileIdsForDelete(communityFileDTOS)
-//
-//    }
+
+        CommunityDTO communityDTO = communityService.getCommunity(5L).get();
+
+        List<Long> test = communityService.getCommunity(5L).get().getFileIdsForDelete();
+        test.add(10L);
+        test.add(11L);
+
+        communityDTO.setFileIdsForDelete(test);
+
+        communityService.modify(communityDTO);
+
+
+    }
 
 
     @Test
     public void removeTest() {
-        communityService.remove(6L);
+        communityService.remove(4L);
     }
 
 }
