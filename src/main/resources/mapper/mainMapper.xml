@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wegether.app.mapper.MainMapper">
+
+
+    <select id="mainPSelectAll" resultType="MainDTO">
+      SELECT P.ID, P.PROJECT_TITLE, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH
+      FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F
+      WHERE P.ID = PF.PROJECT_ID AND PF.ID = F.ID
+    </select>
+
+    <select id="mainDSelectAll" resultType="MainDTO">
+    SELECT D.ID, D.DATA_TITLE,D.DATA_READ_COUNT, D.DATA_REGISTER_DATE, F.FILE_UUID , F.FILE_NAME , F.FILE_PATH, F.FILE_SIZE
+    FROM TBL_DATA D, TBL_DATA_FILE DF, TBL_FILE F
+    WHERE D.ID = DF.DATA_ID AND DF.ID = F.ID
+   </select>
+
+    <select id="mainCSelectAll" resultType="MainDTO">
+    SELECT C.ID, C.COMMUNITY_TITLE, C.COMMUNITY_REGISTER_DATE, F.FILE_UUID , F.FILE_NAME , F.FILE_PATH, F.FILE_SIZE
+    FROM TBL_COMMUNITY C, TBL_COMMUNITY_FILE CF, TBL_FILE F
+    WHERE C.ID = CF.COMMUNITY_ID AND CF.ID = F.ID
+    ORDER BY C.COMMUNITY_REGISTER_DATE DESC
+</select>
+
+
+
+
+
+
+
+
+
+</mapper>
