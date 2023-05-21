@@ -44,7 +44,12 @@ public class MainController {
         model.addAttribute("datas", mainService.mainDGetList());
         model.addAttribute("communitys", mainService.mainCGetList());
     }
-
+    
+    @GetMapping("display")
+    @ResponseBody
+    public byte[] display(String fileName) throws IOException{
+        return FileCopyUtils.copyToByteArray(new File("C:/upload/", fileName));
+    }
 
 
 

@@ -18,12 +18,12 @@ public class MainMapperTests {
 
     @Test
     public void mainPSelectAllTest() {
-        assertThat(mainMapper.mainPSelectAll()).hasSize(1);
+        assertThat(mainMapper.mainPSelectAll()).hasSize(5);
     }
 
     @Test
     public void mainDSelectAllTest() {
-        assertThat(mainMapper.mainDSelectAll()).hasSize(1);
+        assertThat(mainMapper.mainDSelectAll()).hasSize(5);
     }
 
 

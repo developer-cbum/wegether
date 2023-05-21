@@ -11,7 +11,7 @@ spring:
     hikari:
       driver-class-name: oracle.jdbc.OracleDriver
       jdbc-url: jdbc:oracle:thin:@//localhost:1521/XE
-      username: hr
-      password: hr
+      username: wegether
+      password: wegether
 #      username: wegether
 #      password: wegether
