@@ -1,6 +1,7 @@
 package com.wegether.app.mapper.member;
 
 import com.wegether.app.dao.MemberDAO;
+import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.mapper.MemberMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -58,4 +59,16 @@ public class MemberMapperTests {
     }
 
 
+
+
+
+
+
+
+
+
+    @Test
+    public void selectMypageTest(){
+        Optional<MemberDTO> mypage=memberMapper.selectmypage(1L);
+    }
 }

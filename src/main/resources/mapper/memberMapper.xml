@@ -48,4 +48,41 @@
         WHERE ID = #{id}
     </select>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    소영 마이페이지 화면 띄우기-->
+    <select id="selectmypage" resultType="memberDTO">
+    SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, P.POINT_HISTORY
+    FROM TBL_MEMBER M LEFT JOIN TBL_POINT P ON M.ID =P.MEMBER_ID
+    WHERE M.ID =#{id}
+
+    </select>
 </mapper>
