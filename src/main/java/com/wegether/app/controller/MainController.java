@@ -15,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 @Controller
@@ -28,11 +29,16 @@ public class MainController {
     @GetMapping("main")
     public void goToListForm(Model model){
         model.addAttribute("projects", mainService.mainPGetList());
-
+        model.addAttribute("datas", mainService.mainDGetList());
+        model.addAttribute("communitys", mainService.mainCGetList());
     }
 
 
 }
+
+
+
+
 
 
 
