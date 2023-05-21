@@ -30,4 +30,17 @@ public interface ConsultingMapper {
     // 상담 삭제
     public void deleteConsulting(Long id);
 
+
+
+
+
+
+
+
+
+
+
+//    소영 마이페이지 내 상담 조회
+
+    public List<ConsultingVO> selectmyconsult(Long memberId);
 }
