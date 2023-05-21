@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마이 페이지 | 위게더</title>
     <script src="https://kit.fontawesome.com/f28d5f57bb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../../static/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
   </head>
   <body>
     <section class="MyWadizPage_myWadizPage__wOTdS">
       <div class="MyWadizPage_profileBackground__T_LTr" aria-hidden="true"></div>
+
+
       <div class="MyWadizPage_inner__1oq9M">
         <div class="MyWadizPage_popperBox__113hj">
           <div class="MyWadizHeader_wadizHeader__8fJ9f">
@@ -64,7 +66,7 @@
               <div class="MyWadizSupporterProfile_profileUser__a_r1P">
                 <button data-event="profile">
                   <b class="MyWadizSupporterProfile_userName__3hSE4"
-                    >이종문<span aria-label="프로필 상세 보기">님</span
+                    ><span aria-label="프로필 상세 보기"><span th:text="${main.memberName}">님</span></span
                     ><svg
                       viewBox="0 0 40 40"
                       focusable="false"
@@ -88,7 +90,7 @@
                   <li>스포츠∙모빌리티</li>
                 </ul>
               <div class="MyWadizSupporterProfile_setting__n8-M7">
-                <p class="MyWadizLoginMode_loginMode__2smkD">위게더 계정으로 로그인 중</p>
+                <p class="MyWadizLoginMode_loginMode__2smkD"><span th:text="${main.memberLoginStatus}">으로 로그인 중</span></p>
                 <button
                   class="Button_button__1HNjI Button_md__2Tyci Button_circular__3BLWf Button_block__3-IpL"
                   type="button"
@@ -212,7 +214,7 @@
                             <path
                               d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"
                             ></path></svg></span
-                      ></a>
+                      ></span></a>
                     </li>
                     <li class="MyWadizMenu_menu__3b-H-">
                       <a href="/web/wmypage/myfunding/investfundinglist"
@@ -248,7 +250,7 @@
                             <path
                               d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"
                             ></path></svg></span
-                      ></a>
+                      ></span></a>
                     </li>
                   </ul>
                 </div>
@@ -258,7 +260,7 @@
                 <div>
                   <ul>
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a th:href="@{/mypage/inquiry}"> <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
+                      <a <!--th:href="@{/mypage/inquiry}"-->> <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><svg
                             viewBox="0 0 32 32"
                             focusable="false"
@@ -343,6 +345,9 @@
           </div>
         </div>
       </div>
+      </div>
     </section>
+
   </body>
+
 </html>
