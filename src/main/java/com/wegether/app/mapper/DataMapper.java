@@ -49,10 +49,10 @@ public interface DataMapper {
 
 
     //    소영 마이페이지 (내가 등록한 자료 / 내가 구매한 자료 조회)
-=======
+
 //    게시글 총 개수
     public int selectCountOfData();
->>>>>>> master
+
 
     //    내가 등록한 자료 조회
     public List<DataDTO> selectmydata(Long memberId);
