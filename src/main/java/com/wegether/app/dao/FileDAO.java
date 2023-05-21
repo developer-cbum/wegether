@@ -19,7 +19,6 @@ public class FileDAO {
 //        fileMapper.select(id);
 //    }
 
-
     public List<DataFileDTO> dataFindAll(Long dataId) { return fileMapper.dataSelectAll(dataId); }
 
 //        파일 추가
