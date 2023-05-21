@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tr="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,9 +37,10 @@
                         <!-- 헤더 -->
                         <div class="delete-box-layout">
                             <div class="delete-box">
+                                <!-- 삭제 버튼 -->
                                 <button
                                     class="deleteButton delete-button"
-                                    onclick="deleteMembers(getSelectedMemberIds())"
+                                    onclick="deleteDatas(getSelectedDataIds())"
                                 >
                                     자료 삭제
                                 </button>
@@ -69,174 +70,120 @@
                                                 <th>등록일</th>
                                             </tr>
                                         </thead>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                    type="checkbox"
-                                                    class="memberCheckbox"
-                                                    name="check"
-                                                    value=""
-                                                />
-                                            </td>
-                                            <td>1</td>
-                                            <td>
-                                                <a  href="">
-                                                    족보 팝니다
-                                                </a>
-                                                <!-- 디테일 컨트롤러 제작하고 연결  -->
-                                            </td>
-                                            <td class="member_type is_active">
-                                                소미주
-                                            </td>
-                                            <td>30000</td>
-                                            <td>서울대학교</td>
-                                            <td>컴퓨터공학과</td>
-                                            <td>
-                                                20230515
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                    type="checkbox"
-                                                    class="memberCheckbox"
-                                                    name="check"
-                                                    value=""
-                                                />
-                                            </td>
-                                            <td>2</td>
-                                            <td class="member_type is_active">
-                                                강의 내용 팝니다
-                                            </td>
-                                            <td>
-                                                <a href="">
-                                                    소미주
-                                                </a>
-                                                <!-- 디테일 컨트롤러 제작하고 연결  -->
-                                            </td>
-                                            <td>30000</td>
-                                            <td>서울대학교</td>
-                                            <td>컴퓨터공학과</td>
-                                            <td>20230515</td>
-                                        </tr>
+                                        <tbody class="list-tr">
+                                            <tr th:each="datas : ${datas}">
+                                                <td class="checkbox-line">
+                                                    <input
+                                                        type="checkbox"
+                                                        class="dataCheckbox"
+                                                        name="check"
+                                                        th:value="${datas.id}"
+                                                    />
+                                                </td>
+
+                                                <td th:text="${datas.id}"></td>
+                                                <td th:text="${datas.dataTitle}"></td>
+                                                <td th:text="${datas.memberNickName}" class="member_type is_active">
+
+                                                </td>
+                                                <td th:text="${datas.dataPrice}"></td>
+                                                <td th:text="${datas.dataSchool}"></td>
+                                                <td th:text="${datas.dataMajor}"></td>
+                                                <td th:text="${datas.dataRegisterDate}"></td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
                         </section>
                         <!-- 폼태그 -->
 
-                        <!-- 페이지 버튼 -->
-                        <div class="page-button-box-layout">
-                            <div class="page-button-box">
-                                <!-- 페이지 번호 -->
-                                <div class="">
-                                    <div class="page-button-margin">
-                                        <div>
-                                            <img
-                                                src="/image/admin/left_icon.png"
-                                                class="left-button"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <th:block>
-                                    <a class="" href="">
-                                        <span class="page-button"></span>
-                                    </a>
-                                    <div style="width: 2px"></div>
-                                </th:block>
-                                <div class="">
-                                    <div class="page-button-margin">
-                                        <div>
-                                            <img
-                                                src="/image/admin/right_icon.png"
-                                                class="right-button"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- 페이지 부분 -->
+                        <div id="paging-wrap">
+                            <a th:if="${adminPagination.prev}" th:href="${adminPagination.startPage - 1}" class="change-page paging paging-move">
+                                <img src="/image/admin/prev.png" width="15px"></a>
+                            <th:block th:each="page:${#numbers.sequence(adminPagination.startPage, adminPagination.endPage)}">
+                                <a th:if="${page eq adminPagination.page}" class="paging paging-checked" th:text="${page}"></a>
+                                <a th:unless="${page eq adminPagination.page}" th:href="${page}" class="change-page paging" th:text="${page}"></a>
+                            </th:block>
+                            <a th:if="${adminPagination.next}" th:href="${adminPagination.endPage + 1}" class="change-page paging paging-move">
+                                <img src="/image/admin/next.png" width="15px"></a>
+                            <div></div>
                         </div>
-                        <!-- 페이지 버튼 끝 -->
                     </div>
                 </div>
             </div>
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-
+    <script th:inline="javascript">
+        let datas = [[${datas}]];
+        console.log(datas);
+        let adminPagination = [[${adminPagination}]];
+        console.log(adminPagination);
+    </script>
     <script src="/js/admin/checkbox.js"></script>
     <script src="/js/admin/page.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
-    <script>
-        const memberId = '${memberDTO.id}';
+    <script src="/js/admin/Paging.js"></script>
+    <script th:inline="javascript">
+        let text = "";
 
-        function getSelectedMemberIds() {
-            const memberIds = [];
-            $('.memberCheckbox:checked').each(function () {
-                memberIds.push($(this).val());
+        function getSelectedDataIds() {
+            const dataIds = [];
+            $(".dataCheckbox:checked").each(function() {
+                dataIds.push($(this).val());
             });
-            return memberIds;
+            return dataIds;
+            console.log(dataIds);
         }
 
-        function deleteMembers(memberIds) {
+        function deleteDatas(dataIds) {
             $.ajax({
-                url: '/admin/member/delete',
-                type: 'DELETE',
-                contentType: 'application/json',
-                data: JSON.stringify(memberIds),
-                traditional: true,
-                success: function () {
-                    location.reload();
+                url: "/admins/data/delete",
+                type: "POST",
+                // method: "DELETE",
+                // dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(dataIds),
+                success: function() {
+                    showList();
                 },
-                error: function () {
-                    alert('게시물 삭제에 실패했습니다.');
-                },
-            });
-        }
-
-        /* url에 있는 페이지 번호를 가져와서 css 수정하는 코드*/
-        $(document).ready(function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentPage = parseInt(urlParams.get('page'));
-
-            if (currentPage) {
-                $('.page-button').each(function (index, element) {
-                    if (parseInt($(element).text()) === currentPage) {
-                        $(element).addClass('page-button-active');
-                    } else {
-                        $(element).removeClass('page-button-active');
-                    }
-                });
-            }
-        });
-
-        $(document).ready(function () {
-            // 삭제 버튼 클릭 이벤트 핸들러
-            $('#deleteButton').on('click', function () {
-                const checkedItems = $('.memberCheckbox:checked');
-                const memberIds = [];
-                checkedItems.each(function () {
-                    memberIds.push($(this).val());
-                });
-
-                if (memberIds.length > 0) {
-                    if (confirm('선택한 게시물을 삭제하시겠습니까?')) {
-                        deleteSuggests(memberIds);
-                    }
-                } else {
-                    alert('삭제할 게시물을 선택해주세요.');
+                error: function() {
+                    alert("게시물 삭제에 실패했습니다.");
+                    console.log(dataIds);
                 }
             });
-        });
+        }
 
-        //페이지 번호 링크로 가져오는 코드
-        let $pageForm = $("form[name='pageForm']");
 
-        $('a.changePage').on('click', function (e) {
-            e.preventDefault();
-            $pageForm.find("input[name='page']").val($(this).attr('href'));
-            $pageForm.submit();
-        });
+
+        function showList(){
+            $(".list-tr").html("");
+            datas = [[${datas}]];
+            datas.forEach(data => {
+                text += `
+                            <tr>
+                                                <td class="checkbox-line">
+                                                    <input
+                                                        type="checkbox"
+                                                        class="dataCheckbox"
+                                                        name="check"
+                                                        value="${data.id}"
+                                                    />
+                                                </td>
+
+                                                <td>${data.id}</td>
+                                                <td>${data.dataTitle}</td>
+                                                <td class="member_type is_active">${data.memberNickName}</td>
+                                                <td>${data.dataPrice}</td>
+                                                <td>${data.dataSchool}</td>
+                                                <td>${data.dataMajor}</td>
+                                                <td>${data.dataRegisterDate}</td>
+                                            </tr>
+                        `
+            })
+            $('.list-tr').html(text);
+        }
     </script>
 </html>

@@ -1,4 +1,4 @@
-package com.wegether.app.domain.vo;
+package com.wegether.app.domain.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,10 +9,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Data
 @NoArgsConstructor
-public class InquiryVO {
+public class InquiryAdminDTO {
     private Long id;
     private Long memberId;
-    private String inquiryTitle;
-    private String inquiryContent;
-    private String inquiryRegisterDate;
+    private String InquiryTitle;
+    private String InquiryContent;
+    private String InquiryRegisterDate;
+    private String memberNickname;
 }
