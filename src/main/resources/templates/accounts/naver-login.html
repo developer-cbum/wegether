@@ -21,17 +21,29 @@
                 data: {
                     memberId: memberId,
                 },
-                success: function (result) {
-                    if (result == null) {
+                success: function (memberVO) {
+                    if (memberVO == null) {
                         $('#memberId').val(memberId);
                         $('#memberName').val(nickname);
                         $('#memberPassword').val(id);
                         $('#naver-form').submit();
-                    } else if (result != null && result.memberLoginStatus == 'NAVER') {
-                        location.href = "/index/main";
+                    } else if (memberVO != null && memberVO.memberLoginStatus == 'NAVER') {
+                        // alert("들어옴")
+                       //네이버 로그인 세션담기
+                        $.ajax({
+                            url: "naver-login",
+                            type: "POST",
+                            data: JSON.stringify(memberVO),
+                            contentType: "application/json; charset=UTF-8;",
+                            success: function () {
+                                // alert("세션담기 성공")
+                                location.href="/index/main";
+                            }
+                        })
+
                         return;
-                    } else if ((result.memberLoginStatus == 'WEGERTHER'
-                        || result.memberLoginStatus == 'KAKAO')
+                    } else if ((memberVO.memberLoginStatus == 'WEGERTHER'
+                        || memberVO.memberLoginStatus == 'KAKAO')
                     ) {
                         location.href = "/accounts/login?status=false";
                     }
