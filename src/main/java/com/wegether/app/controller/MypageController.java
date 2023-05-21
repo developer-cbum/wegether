@@ -1,5 +1,6 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.service.mypage.CardImpl;
@@ -30,7 +31,8 @@ public class MypageController {
 
     @GetMapping("/my-page/my-page")
     public void main(Long id, Model model){
-        model.addAttribute("main", mine.loadMine(1L));
+
+        model.addAttribute("main", mine.loadMine(1L).get());
     }
 
 //
