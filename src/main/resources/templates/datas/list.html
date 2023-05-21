@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<!--<html lang="en">-->
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자료실 목록 | 위게더</title>
+	<link rel="stylesheet" href="/css/dataroom/list.css" />
+</head>
+
+<body style="overflow:auto;">
+	<div id="page-container">
+		<main id="main-app">
+			<div class="MainWrapper_content__GZkTa">
+				<div class="Main_rootContainer__vlVi7">
+					<div></div>
+					<div class="CategoryTab_container__1XTA0 undefined Main_tab__3q3R0" style="top: 0px;">
+						<div class="TabsMobile_tabRoot__1KBCT">
+							<div class="TabsMobile_tabsWrapper__3zP94">
+								<ul class="TabsMobile_tabs__39ewt TabsMobile_hideScrollbar__3v5I5">
+									<li data-index="0">
+										<button class="ImageTab_tab__3siCY ImageTab_first__2C8Ry ImageTab_active__BGdXu"
+											data-ga-category="학과_카테고리" data-ga-action="클릭" data-ga-label="전체">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTAgMEg0MFY0MEgweiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE3NDguMDAwMDAwLCAtMjM5Ny4wMDAwMDApIHRyYW5zbGF0ZSgxNzQ4LjAwMDAwMCwgMjM5Ny4wMDAwMDApIi8+CiAgICAgICAgICAgICAgICA8ZyBmaWxsLXJ1bGU9Im5vbnplcm8iPgogICAgICAgICAgICAgICAgICAgIDxwYXRoIGZpbGw9IiMwRTdDODIiIGQ9Ik0xNS4wOTIgMTYuNmwtMTMuOCA1LjZDLjUyIDIyLjQ2IDAgMjMuMTg1IDAgMjRjMCAuODE1LjUyIDEuNTQgMS4yOTIgMS44bDEzLjggNS42YzEuOTIuOCA0LjA4LjggNiAwbDEzLjgtNS42Yy42OS0uMzM0IDEuMTI4LTEuMDMzIDEuMTI4LTEuOCAwLS43NjctLjQzOC0xLjQ2Ni0xLjEyOC0xLjhsLTEzLjgtNS42Yy0xLjkyLS44LTQuMDgtLjgtNiAweiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE3NDguMDAwMDAwLCAtMjM5Ny4wMDAwMDApIHRyYW5zbGF0ZSgxNzQ4LjAwMDAwMCwgMjM5Ny4wMDAwMDApIHRyYW5zbGF0ZSgyLjAwMDAwMCwgNC4wMDAwMDApIi8+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iIzBCOEM5MCIgZD0iTTE1LjA5MiA4LjZsLTEzLjggNS42Qy41MiAxNC40NiAwIDE1LjE4NSAwIDE2YzAgLjgxNS41MiAxLjU0IDEuMjkyIDEuOGwxMy44IDUuNmMxLjkyLjggNC4wOC44IDYgMGwxMy44LTUuNmMuNjktLjMzNCAxLjEyOC0xLjAzMyAxLjEyOC0xLjggMC0uNzY3LS40MzgtMS40NjYtMS4xMjgtMS44bC0xMy44LTUuNmMtMS45Mi0uOC00LjA4LS44LTYgMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNzQ4LjAwMDAwMCwgLTIzOTcuMDAwMDAwKSB0cmFuc2xhdGUoMTc0OC4wMDAwMDAsIDIzOTcuMDAwMDAwKSB0cmFuc2xhdGUoMi4wMDAwMDAsIDQuMDAwMDAwKSIvPgogICAgICAgICAgICAgICAgICAgIDxwYXRoIGZpbGw9IiMwMEIyQjIiIGQ9Ik0xNS4wOTIuNmwtMTMuOCA1LjZDLjYwMiA2LjUzNC4xNjQgNy4yMzMuMTY0IDhjMCAuNzY3LjQzOCAxLjQ2NiAxLjEyOCAxLjhsMTMuOCA1LjZjMS45Mi44IDQuMDguOCA2IDBsMTMuOC01LjZjLjY5LS4zMzQgMS4xMjgtMS4wMzMgMS4xMjgtMS44IDAtLjc2Ny0uNDM4LTEuNDY2LTEuMTI4LTEuOEwyMS4wOTIuNmMtMS45Mi0uOC00LjA4LS44LTYgMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNzQ4LjAwMDAwMCwgLTIzOTcuMDAwMDAwKSB0cmFuc2xhdGUoMTc0OC4wMDAwMDAsIDIzOTcuMDAwMDAwKSB0cmFuc2xhdGUoMi4wMDAwMDAsIDQuMDAwMDAwKSIvPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K)">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">전체</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="1">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="컴퓨터공학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/computer-science.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">컴퓨터공학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="2">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="디자인학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/art.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">디자인학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="3">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="스포츠과학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/athletic.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">스포츠과학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="4">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="생명과학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/biology.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">생명과학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="5">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="화학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/chemical.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">화학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="6">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="기계공학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/Engineering.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">기계공학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="7">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="전기공학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/electrical-engineering.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">전기공학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="8">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="수학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/math.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">수학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="9">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="미디어영상학과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/media.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">미디어영상학과</span>
+											</div>
+										</button>
+									</li>
+									<li data-index="10">
+										<button class="ImageTab_tab__3siCY" data-ga-category="학과_카테고리"
+											data-ga-action="클릭" data-ga-label="실용음악과">
+											<div class="ImageTab_thumbnailContainer__3Polb">
+												<div class="ImageTab_thumbnailPlaceholder__3mluI">
+													<div class="ImageTab_thumbnail__3mZWA"
+														style="background-image: url(/image/data/music.png);">
+													</div>
+												</div>
+											</div>
+											<div class="ImageTab_labelContainer__2apP3">
+												<span class="ImageTab_label__SvWW9">실용음악과</span>
+											</div>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="Main_category__rPdmH">
+						<p class="Main_categoryName__3JZzJ">전체</p>
+						<div>
+							<ul class="OrderSelectDesktop_sortContainer__1YLsr">
+								<li class="OrderSelectDesktop_sortItem__12TKi OrderSelectDesktop_active__YTP2K"
+									data-ga-category="스토어(홈)_정렬" data-ga-action="클릭" data-ga-label="인기순">인기순</li>
+								<li class="OrderSelectDesktop_sortItem__12TKi" data-ga-category="스토어(홈)_정렬"
+									data-ga-action="클릭" data-ga-label="추천순">조회순</li>
+								<li class="OrderSelectDesktop_sortItem__12TKi" data-ga-category="스토어(홈)_정렬"
+									data-ga-action="클릭" data-ga-label="최신순">최신순</li>
+							</ul>
+						</div>
+					</div>
+					<div class="Main_cardListContainer__1P_Ai">
+						<div id="list-container" class="CardTable_container__1H8Vc" style="width: calc(100% - 0px);">
+
+
+						</div>
+						<div style="height: 1px;"></div>
+					</div>
+				</div>
+				<div style="height: 160px;"></div>
+			</div>
+			<div class="FloatingButtons_container__2E5Fl">
+				<button type="button" class="FloatingTopButton_pageTop__2gqm9 FloatingTopButton_visible__2sh_N"
+					title="위로 이동">
+					<svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq"
+						aria-hidden="true">
+						<path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path>
+					</svg>
+				</button>
+				<button type="button" data-ga-category="공통_최근본_UI" data-ga-action="클릭" data-ga-label=""
+					class="RecentView_container__1boAT" aria-label="최근본" style="display: block;">
+					<div aria-hidden="true"
+						class="RecentView_thumbnail__1lnV0 CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4 CardThumbnail_noanimation__23cSf"
+						style="background-image: url(&quot;https://cdn2.wadiz.kr/2022/12/13/b1c973d0-aae9-4778-9751-71c3f2953a13.jpg/wadiz/resize/400/format/jpg/quality/85/&quot;);">
+					</div>
+				</button>
+			</div>
+		</main>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script th:inline="javascript">
+		let datas = [[${datas}]];
+		let page = [[${dataPagination.page}]]
+		console.log(datas);
+	</script>
+	<script src="/js/dataroom/list.js"></script>
+</body>
+
+
+</html>

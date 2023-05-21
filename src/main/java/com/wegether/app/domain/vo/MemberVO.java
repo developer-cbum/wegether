@@ -19,7 +19,7 @@ public class MemberVO {
     private String memberRegisterDate;
     private String memberUpdateDate;
     private String memberPoint;
-    private String memberShcool;
+    private String memberSchool;
     private String memberMajor;
     private String memberIntroducing;
     private long fileId;
