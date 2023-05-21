@@ -1,15 +1,15 @@
-package com.wegether.app.domain.vo;
+package com.wegether.app.domain.dto;
 
+import com.wegether.app.domain.vo.ProjectVO;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
-@Slf4j
 @Data
-//@NoArgsConstructor
-public class ProjectVO {
+public class ProjectDTO {
     private Long id;
     private Long memberId;
     private String projectTitle;
@@ -23,10 +23,4 @@ public class ProjectVO {
     private int projectNowPersonnel;
     private int projectTotalPersonnel;
 
-    public ProjectVO() {
-    }
-
-    public ProjectVO(Long id) {
-        this.id = id;
-    }
 }

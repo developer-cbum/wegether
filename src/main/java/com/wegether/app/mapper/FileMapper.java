@@ -18,12 +18,16 @@ public interface FileMapper {
 
 
 
-    public void insert(CommunityFileDTO fileVO);
+    public void communityInsert(CommunityFileDTO fileVO);
 
-    public List<CommunityFileDTO> selectAll(Long communityId);
+    public List<CommunityFileDTO> communitySelectAll(Long communityId);
 
+<<<<<<< HEAD
     //    파일 삭제
     public void delete(Long id);
+=======
+    public void communityDelete(Long id);
+>>>>>>> 7db43bdc8918d5f84bcbd6bf6277e598800a8d7d
 
-    public void deleteAll(Long communityId);
+    public void communityDeleteAll(Long communityId);
 }

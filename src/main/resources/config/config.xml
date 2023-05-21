@@ -24,9 +24,11 @@
         <typeAlias type="com.wegether.app.domain.vo.PointVO" alias="pointVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ProjectFileVO" alias="projectFileVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectVO"/>
+        <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectDTO"/>
         <typeAlias type="com.wegether.app.domain.vo.ReplyVO" alias="replyVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishDataVO" alias="wishDataVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishProjectVO" alias="wishProjectVO"/>
+        <typeAlias type="com.wegether.app.domain.dto.MainDTO" alias="mainDTO"/>
         <!-- 05월 19일 김인진 DataAdminDTO 추가 -->
         <typeAlias type="com.wegether.app.domain.dto.DataAdminDTO" alias="dataAdminDTO"/>
         <!-- 05월 19일 김인진 ProjectAdminDTO 추가 -->

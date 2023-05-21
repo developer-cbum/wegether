@@ -2,6 +2,7 @@ package com.wegether.app.mapper.community;
 
 import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.CommunityFileDTO;
+import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.mapper.CommunityFileMapper;
@@ -33,12 +34,13 @@ public class CommunityFileMapperTests {
         communityFileDTO.setFilePath("2023/05/19");
         communityFileDTO.setFileSize(1238L);
         communityFileDTO.setFileUuid(UUID.randomUUID().toString());
-        fileMapper.insert(communityFileDTO);
+        communityFileDTO.setFileType(FileType.REPRESENTATIVE.name());
+        fileMapper.communityInsert(communityFileDTO);
     }
 
     @Test
     public void selectAllTest() {
-        fileMapper.selectAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
+        fileMapper.communitySelectAll(31L).stream().map(CommunityFileDTO::toString).forEach(log::info);
     }
 
     @Test
@@ -54,5 +56,15 @@ public class CommunityFileMapperTests {
 //        communityFileMapper.delete(1L);
 //        assertThat(communityFileMapper.selectAll(31L)).hasSize(0);
 //    }
+
+    @Test
+    public void communityDeleteTest() {
+        fileMapper.communityDelete(7L);
+    }
+
+    @Test
+    public void communityDeleteAllTest() {
+        fileMapper.communityDeleteAll(3L);
+    }
 
 }

@@ -10,4 +10,6 @@ import java.util.List;
 @Mapper
 public interface CommunityFileMapper {
     public void insert(CommunityFileVO communityFileVO);
+
+    public void delete(Long communityId);
 }

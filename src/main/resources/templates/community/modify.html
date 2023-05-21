@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="/css/community/community-register.css"/>
+    <title>커뮤니티 등록</title>
+
+    <!-- 커뮤니티 등록 css -->
+    <link href="https://static.wadiz.kr/studio/funding/static/css/5.6aa6dee4.chunk.css" rel="stylesheet" />
+
+    <link href="https://static.wadiz.kr/studio/funding/static/css/main.2b8a3946.chunk.css" rel="stylesheet" />
+
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://static.wadiz.kr/studio/funding/static/css/6.eb91f874.chunk.css"
+    />
+</head>
+<body class="ReactModal__Body--open" aria-hidden="true" th:object="${community}">
+<div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
+<div id="root">
+    <div id="AppLayout_Container" class="AppLayout_container__3zbzb">
+        <div class="AppLayout_main__14bCi">
+            <div id="AppLayout_Contents" class="AppLayout_contents__wv3DF">
+                <div
+                        id="container"
+                        class="ContentsLayout_container__11k-W"
+                        style="display: flex; justify-content: center"
+                >
+                    <div class="FundingStoryContainer_container__33WY0">
+                        <div class="HeaderLayout_container__3fXkO">
+                            <div class="HeaderLayout_contents__F4hlC">
+                                <h2 class="FundingStoryContainer_title__1r0ZE">커뮤니티 작성</h2>
+                                <p class="FundingStoryContainer_description__1sMTR">
+                                    커뮤니티 관련 내용을 작성해주세요.
+                                </p>
+                            </div>
+                        </div>
+                        <form
+                                class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
+                                th:action="@{/community/modify}" method="post" th:object="${communityDTO}">
+                            <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
+
+                            <!-- 커뮤니티 큰 제목 -->
+                            <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
+                                <div class="Section_header__1qwS7 spacing-4">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">
+                                        커뮤니티 제목
+                                    </h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                                        <label></label>
+                                        <div class="TextField_field__1E9vt">
+                                            <input th:field="*{communityTitle}" th:value="*{communityTitle}" placeholder="제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- 커뮤니티 소 제목 -->
+                            <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
+                                <div class="Section_header__1qwS7 spacing-4">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">
+                                        커뮤니티 소 제목
+                                    </h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                                        <label></label>
+                                        <div class="TextField_field__1E9vt">
+                                            <input th:field="*{communitySubtitle}" th:value="*{communitySubtitle}" placeholder="소제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- 사진 등록 -->
+                            <section class="Section_container__3md8M" style="max-width: 630px">
+                                <div class="Section_header__1qwS7">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">썸네일 등록</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_description__10Uwo">
+                                    커뮤니티 대표 사진을 등록해 주세요.
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="StoryVideoOrImageField_container__1lnfV">
+                                        <div
+                                                class="field Form_field__35I9T required ImageFormField_field__X1jTW StoryImageField_field__3O6yy"
+                                                style="padding-left: 0px"
+                                        >
+                                            <div class="ImageFormField_buttonWrapper__su3pO">
+                                                <label
+                                                        class="wz label ImageFileButton_label__3thB2 Label_label__3oH0h"
+                                                ><button
+                                                        type="button"
+                                                        class="wz button gray ImageFileButton_button__3gAHD"
+                                                >
+                                                    <i class="icon-camera-o" aria-hidden="true"></i>등록하기
+                                                </button>
+                                                    <div class="wz input right ImageFileButton_input__1Dnch">
+                                                        <input
+                                                                accept="image/JPG,image/JPEG,image/GIF,image/PNG"
+                                                                name="uploadFile"
+                                                                placeholder=""
+                                                                type="file"
+                                                                value=""
+                                                        /></div></label
+                                                ><em class="helper error"></em
+                                            ><em class="helper ImageFormField_helper__3XC5c"
+                                            >2MB 이하의 JPG, JPEG, GIF, PNG 파일</em
+                                            ><em class="helper ImageFormField_helper__3XC5c"
+                                            >해상도 630x400 픽셀 이상</em
+                                            >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="Section_container__3md8M" style="max-width: 630px">
+                                <div class="Section_header__1qwS7">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">
+                                        커뮤니티 내용
+                                    </h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <br />(여기에 썸머노트 라이브러리 필요, 실제로 저장이 되는지도 같이 확인을
+                                해야해서 기능 구현하면서 넣어서 진행하면 될듯)
+                                <div class="Section_description__10Uwo">
+                                    커뮤니티 소개 사진과 함께 보이는 글이에요. 커뮤니티를 쉽고 간결하게 소개해
+                                    주세요.
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="StorySummaryField_container__25ePA">
+                                        <div class="field Form_field__35I9T FormFieldTextarea_field__33Ncu">
+                                            <div class="wide column-2"></div>
+                                            <div class="wide column-4">
+                                                <div class="wz input">
+                                                    <textarea th:field="*{communityContent}" th:value="*{communityContent}" placeholder="내용 입력"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="StoryEditorForComingWrapper_container__1cngW"></div>
+                            <div class="FundingStoryContainer_btnWrapper__32tvJ">
+                                <button
+                                        class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_lg__3vRQD"
+                                        type="submit"
+                                        style="width: 100%"
+                                        onclick="check()"
+                                >
+                                    <span><span class="Button_children__q9VCZ">저장하기</span></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Toast_toast__1b_B2"><div class="Toast_content__G-bTq"></div></div>
+</div>
+
+<div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
+
+<!-- 모달 부분 -->
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<!-- 모달 부분 js -->
+<script>
+    let modalCheck;
+    function showWarnModal(modalMessage) {
+        modalCheck = false;
+        $('div#content-wrap').html(modalMessage);
+        $('div.warn-modal').css('animation', 'popUp 0.5s');
+        $('div.modal').css('display', 'flex').hide().fadeIn(500);
+        setTimeout(function () {
+            modalCheck = true;
+        }, 500);
+    }
+
+    $('div.modal').on('click', function () {
+        if (modalCheck) {
+            $('div.warn-modal').css('animation', 'popDown 0.5s');
+            $('div.modal').fadeOut(500);
+        }
+    });
+</script>
+
+<!-- 유효성 검사 -->
+<!-- 여기 부분 다른 곳 작업 끝나면 유효성 검사 추가 -->
+<script>
+    function check() {
+        // 제목 유효성 검사
+        if (document.registerForm.title.value == '') {
+            showWarnModal('제목을 입력해주세요');
+            document.registerForm.title.focus();
+            return;
+        }
+
+        // 소제목 유효성 검사
+        if (document.registerForm.subTitle.value == '') {
+            showWarnModal('소제목을 입력해주세요');
+            document.registerForm.subTitle.focus();
+            return;
+        }
+
+        // 내용 유효성 검사
+        if (document.registerForm.content.value == '') {
+            showWarnModal('내용을 입력해주세요');
+            document.registerForm.content.focus();
+            return;
+        }
+        showWarnModal('저장이 완료되었습니다');
+        setTimeout(function () {
+            document.registerForm.submit();
+        }, 2000);
+    }
+</script>
+</html>

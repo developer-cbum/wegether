@@ -22,7 +22,7 @@ public class CommunityDAOTest {
 
     @Test
     public void findAllTest() {
-        CommunityPagination communityPagination = new CommunityPagination(3);
+        CommunityPagination communityPagination = new CommunityPagination();
         communityPagination.setPage(1);
         communityDAO.findAll(communityPagination).stream().map(CommunityDTO::toString).forEach(log::info);
     }
