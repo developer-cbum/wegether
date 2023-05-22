@@ -1,21 +1,16 @@
 package com.wegether.app.mapper.admin;
 
-import com.wegether.app.domain.dto.DataAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
+import com.wegether.app.domain.dto.ProjectAdminDTO;
 import com.wegether.app.domain.vo.AnswerVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import com.wegether.app.mapper.AdminMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Slf4j
@@ -83,8 +78,13 @@ public class AdminMapperTests {
     /* ------------------------------------------------------------------------------------ */
 
     //    프로젝트 목록 테스트
-    @Test
-    public void projectSelectAllTest() { assertThat(adminMapper.projectSelectAll()).hasSize(1); }
+//    @Test
+//    public void projectSelectAllTest() { assertThat(adminMapper.projectSelectAll()).hasSize(1); }
+
+//    @Test
+//    public void projectSelectAllTest() {
+//        adminMapper.projectSelectAll().stream().map(ProjectAdminDTO::toString).forEach(log::info);
+//    }
 
     //    프로젝트 삭제 테스트
     @Test

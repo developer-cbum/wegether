@@ -21,7 +21,7 @@
             href="https://static.wadiz.kr/studio/funding/static/css/6.eb91f874.chunk.css"
     />
 </head>
-<body class="ReactModal__Body--open" aria-hidden="true" th:object="${community}">
+<body>
 <div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
 <div id="root">
     <div id="AppLayout_Container" class="AppLayout_container__3zbzb">
@@ -43,7 +43,8 @@
                         </div>
                         <form
                                 class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
-                                th:action="@{/community/modify}" method="post" th:object="${communityDTO}">
+                                th:action="@{/community/modify}" method="post" th:object="${community}">
+                            <input type="hidden" th:field="${community.id}" th:value="${community.id}">
                             <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
 
                             <!-- 커뮤니티 큰 제목 -->
@@ -58,7 +59,7 @@
                                     <div class="TextField_textField__23rCe TextField_md__2zsQn">
                                         <label></label>
                                         <div class="TextField_field__1E9vt">
-                                            <input th:field="*{communityTitle}" th:value="*{communityTitle}" placeholder="제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
+                                            <input th:field="${community.communityTitle}" th:value="${community.communityTitle}" placeholder="제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +77,7 @@
                                     <div class="TextField_textField__23rCe TextField_md__2zsQn">
                                         <label></label>
                                         <div class="TextField_field__1E9vt">
-                                            <input th:field="*{communitySubtitle}" th:value="*{communitySubtitle}" placeholder="소제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
+                                            <input th:field="${community.communitySubtitle}" th:value="${community.communitySubtitle}" placeholder="소제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +146,7 @@
                                             <div class="wide column-2"></div>
                                             <div class="wide column-4">
                                                 <div class="wz input">
-                                                    <textarea th:field="*{communityContent}" th:value="*{communityContent}" placeholder="내용 입력"></textarea>
+                                                    <textarea th:field="${community.communityContent}" th:value="${community.communityContent}" placeholder="내용 입력"></textarea>
                                                 </div>
                                             </div>
                                         </div>

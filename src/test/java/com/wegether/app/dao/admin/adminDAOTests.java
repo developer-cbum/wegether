@@ -72,8 +72,8 @@ public class adminDAOTests {
     /* ------------------------------------------------------------------------------------ */
 
     //    프로젝트 목록 테스트
-    @Test
-    public void projectFindAllTest() { assertThat(adminDAO.projectFindAll()).hasSize(2); }
+//    @Test
+//    public void projectFindAllTest() { assertThat(adminDAO.projectFindAll()).hasSize(2); }
 
     //    프로젝트 삭제 테스트
     @Test

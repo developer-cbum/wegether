@@ -22,5 +22,5 @@ public class ProjectAdminDTO {
     private Long projectReadCount;
     private int projectNowPersonnel;
     private int projectTotalPersonnel;
-    private String memberName;
+    private String memberNickName;
 }

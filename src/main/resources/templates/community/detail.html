@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleag.org">
-<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -41,7 +40,7 @@
             href="https://static.wadiz.kr/main/css/reward-community.bb8838fc.chunk.css"
         />
     </head>
-    <body th:object="${community}" style="font-family: Pretendard;">
+    <body style="font-family: Pretendard;">
         <div id="page-container" style="overflow-y: hidden">
             <div id="et-boc" class="et-boc">
                 <div id="et-main-area">
@@ -61,32 +60,17 @@
                                             >
                                                 <!-- 제목 부분 -->
                                                 <div class="et_pb_title_container">
-                                                    <h1 class="entry-title" th:text="*{communityTitle}"></h1>
+                                                    <h1 class="entry-title" th:text="${community.communityTitle}"></h1>
                                                     <p class="et_pb_title_meta_container">
                                                         <!-- 작성일 -->
-                                                        <span class="published" th:text="*{communityRegisterDate}"></span> |
+                                                        <span class="published" th:text="${community.communityRegisterDate}"></span> |
                                                         <a>작성자: </a>
-                                                        <a th:text="*{memberNickname}"></a>
+                                                        <a th:text="${community.memberNickname}"></a>
                                                     </p>
                                                 </div>
                                                 <div class="et_pb_title_featured_container">
-                                                    <span class="et_pb_image_wrap"
-                                                        ><img
-                                                            decoding="async"
-                                                            loading="lazy"
-                                                            width="1280"
-                                                            height="750"
-                                                            src="https://blog.wadiz.kr/wp-content/uploads/sites/2/2023/05/planning-note_5th_1.png"
-                                                            alt="진국월드 기획노트 별책부록"
-                                                            title="진국월드 기획노트 별책부록"
-                                                            srcset="
-                                                                https://blog.wadiz.kr/wp-content/uploads/sites/2/2023/05/planning-note_5th_1.png         1280w,
-                                                                https://blog.wadiz.kr/wp-content/uploads/sites/2/2023/05/planning-note_5th_1-980x574.png  980w,
-                                                                https://blog.wadiz.kr/wp-content/uploads/sites/2/2023/05/planning-note_5th_1-480x281.png  480w
-                                                            "
-                                                            sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) 1280px, 100vw"
-                                                            class="wp-image-364958"
-                                                    /></span>
+                                                    <span class="et_pb_image_wrap">
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,7 +84,7 @@
                                             class="et_pb_column et_pb_column_4_4 et_pb_column_1_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
                                         >
                                             <div class="et_pb_with_border et_pb_module et_pb_post_content et_pb_post_content_0_tb_body">
-                                                <th:block th:text="*{communityContent}"></th:block>
+                                                <th:block th:text="${community.communityContent}"></th:block>
                                             </div>
                                             <div
                                                 class="et_pb_with_border et_pb_module et_pb_text et_pb_text_1_tb_body et_pb_text_align_left et_pb_bg_layout_light"
@@ -205,13 +189,12 @@
                                                     class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
                                                     href="/community/list"
                                                     style="border: solid 1px;">목록</a>
-                                                <a
+                                                <a      th:href="@{/community/modify(id=${community.id})}"
                                                         class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
-                                                        href="/community/modify?id=#{community.id}"
                                                         style="border: solid 1px;">수정</a>
                                                 <a
-                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
-                                                        href="list.html"
+                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light deletebtn"
+                                                        th:href="@{/community/remove(id=${community.id})}"
                                                         style="border: solid 1px;">삭제</a>
                                             </div>
                                         </div>
@@ -880,6 +863,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
+
         $(function () {
             <!-- 리뷰 버튼, 답글 버튼 관련 -->
             $('.reviewButton').on('click', function () {
@@ -899,4 +883,8 @@
             });
         });
     </script>
+    <script th:inline="javascript">
+        let files = [[${community.files}]]
+    </script>
+    <script src="/js/community/detail.js"></script>
 </html>

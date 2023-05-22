@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="/css/class-register.css" />
         <link rel="stylesheet" href="/css/admin/class-register.css" />
         <link rel="stylesheet" href="/css/admin/community.css" />
+        <link rel="stylesheet" href="/css/admin/admin_board.css">
+        <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
+        <link rel="stylesheet" href="/css/admin/admin_common.css">
         <title>강연 등록</title>
 
         <!-- 강연 등록 css -->
@@ -33,7 +36,7 @@
                             class="ContentsLayout_container__11k-W"
                             style="display: flex; justify-content: center"
                         >
-                            <div class="FundingStoryContainer_container__33WY0">
+                            <div class="FundingStoryContainer_container__33WY0" style="width: 550px">
                                 <div class="HeaderLayout_container__3fXkO">
                                     <div class="HeaderLayout_contents__F4hlC">
                                         <div style="display: flex; justify-content: space-between">
@@ -171,7 +174,7 @@
                                                         placeholder="강연 총 인원을 입력해 주세요"
                                                         maxlength="40"
                                                         type="text"
-                                                        class="Input_input__2kAAL Input_md__3-eZ6"
+                                                        class="Input_input__2kAAL Input_md__3-eZ6 personnel"
                                                         aria-invalid="false"
                                                         name="lectureTotalPersonnel"
                                                     />
@@ -182,48 +185,10 @@
 
                                     <!-- 강연 유,무료 -->
                                     <section class="Section_container__3md8M" style="max-width: 630px">
-                                        <div class="Section_header__1qwS7">
-                                            <h2 class="Section_title__ikPIm Section_isRequired__F8rij">강연 비용</h2>
-                                            <div class="Section_guide__2xeJO"></div>
-                                        </div>
-                                        <div class="Section_description__10Uwo">강연비용 관련하여 선택해주세요</div>
-                                        <div class="Section_content__3OkLZ">
-                                            <div class="StoryVideoOrImageField_container__1lnfV">
-                                                <label class="wz Radio_radio__15She radio"
-                                                    ><input name="representVisual" type="radio" checked="" />
-                                                    <div>무료</div></label
-                                                ><label class="wz Radio_radio__15She radio"
-                                                    ><input name="representVisual" type="radio" />
-                                                    <div>유료</div></label
-                                                >
-                                                <div
-                                                    class="field Form_field__35I9T required ImageFormField_field__X1jTW StoryImageField_field__3O6yy"
-                                                ></div>
-                                            </div>
-                                        </div>
                                     </section>
 
                                     <!-- 강연 가격 -->
                                     <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
-                                        <div class="Section_header__1qwS7 spacing-4">
-                                            <h2 class="Section_title__ikPIm">강연료</h2>
-                                            <div class="Section_guide__2xeJO"></div>
-                                        </div>
-                                        <div class="Section_content__3OkLZ">
-                                            <div class="TextField_textField__23rCe TextField_md__2zsQn">
-                                                <label></label>
-                                                <div class="TextField_field__1E9vt">
-                                                    <input
-                                                        placeholder="강연료가 있을 경우 입력해주세요"
-                                                        maxlength="40"
-                                                        type="text"
-                                                        class="Input_input__2kAAL Input_md__3-eZ6"
-                                                        aria-invalid="false"
-                                                        name="lecturePrice"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
                                     </section>
 
                                     <!-- 사진 등록 -->
@@ -276,20 +241,17 @@
                                             <h2 class="Section_title__ikPIm Section_isRequired__F8rij">강연 내용</h2>
                                             <div class="Section_guide__2xeJO"></div>
                                         </div>
-                                        <br />(여기에 썸머노트 라이브러리 필요, 실제로 저장이 되는지도 같이 확인을
-                                        해야해서 기능 구현하면서 넣어서 진행하면 될듯)
                                         <div class="Section_content__3OkLZ">
                                             <div class="StorySummaryField_container__25ePA">
                                                 <div class="field Form_field__35I9T FormFieldTextarea_field__33Ncu">
                                                     <div class="wide column-2"></div>
                                                     <div class="wide column-4">
                                                         <div class="wz input">
-                                                            <textarea
+                                                            <textarea style="resize: none"
                                                                 placeholder="내용 입력"
-                                                                helper="[object Object]"
                                                                 maxlength="100"
                                                                 name="lectureContent"
-                                                                rows="3"
+                                                                rows="5"
                                                             ></textarea>
                                                         </div>
                                                     </div>
@@ -400,5 +362,19 @@
                 document.registerForm.submit();
             }, 2000);
         }
+
+
+        // 휴대폰 번호 검사
+        $('.personnel').on('input', function () {
+            let numericVal = $(this).val().replace(/[^0-9]/g, '');
+
+            if (numericVal.length > 11) {
+                numericVal = numericVal.substr(0, 11); // 최대 11자리까지만 유지
+            }
+
+            $(this).val(numericVal);
+        });
+
+
     </script>
 </html>
