@@ -53,7 +53,6 @@ public interface DataMapper {
 //    게시글 총 개수
     public int selectCountOfData();
 
-
     //    내가 등록한 자료 조회
     public List<DataDTO> selectmydata(Long memberId);
 
