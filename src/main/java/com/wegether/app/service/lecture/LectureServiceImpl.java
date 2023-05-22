@@ -4,6 +4,7 @@ import com.wegether.app.dao.LectureDAO;
 import com.wegether.app.dao.LectureFileDAO;
 import com.wegether.app.dao.LectureMemberDAO;
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.type.FileType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,14 +21,17 @@ public class LectureServiceImpl implements LectureService {
 
     //강연등록
     @Override
-    public void write(LectureDTO lectureDTO) {
+    @Transactional(rollbackFor = Exception.class)
+    public void register(LectureDTO lectureDTO) {
         lectureDAO.save(lectureDTO);
+        for (int i = 0; i < lectureDTO.getFiles().size(); i++) {
+            lectureDTO.getFiles().get(i).setId(lectureDTO.getId());
+            lectureDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            lectureFileDAO.save(lectureDTO.getFiles().get(i));
+        }
     }
 
-//    @Override
-//    public List<LectureDTO> getList(LecturePagination lecturePagination) {
-//        return lectureDAO.findAll(lecturePagination);
-//    }
+
 
     @Override
     public int getTotal() {

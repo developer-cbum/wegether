@@ -115,7 +115,11 @@ $(document).ready(function () {
                                     </span>
                                 </button>
                             </div>
+<<<<<<< HEAD
 
+=======
+                            
+>>>>>>> master
                             <button rel="noreferrer noopener"
                                 class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA"
                                 type="button">

@@ -41,4 +41,10 @@
         DELETE FROM TBL_COMMUNITY
         WHERE ID = #{id}
     </delete>
+
+    <select id="selectCountOfCommunity" resultType="_int">
+        SELECT COUNT(C.ID)
+        FROM TBL_MEMBER M JOIN TBL_COMMUNITY C
+        ON M.ID = C.MEMBER_ID
+    </select>
 </mapper>
