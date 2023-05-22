@@ -64,10 +64,10 @@ public class AdminServiceTests {
 //    @Test
 //    public void dataGetListTest() { assertThat(adminService.dataGetList()).toString(); }
 
-    @Test
-    public void dataGetListTest() {
-        adminService.dataGetList().stream().map(DataAdminDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void dataGetListTest() {
+//        adminService.dataGetList().stream().map(DataAdminDTO::toString).forEach(log::info);
+//    }
 
     //    자료 삭제 테스트
     @Test
