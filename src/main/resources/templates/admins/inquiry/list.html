@@ -10,6 +10,10 @@
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
         <link rel="stylesheet" href="/css/admin/admin_board.css" />
         <link rel="stylesheet" href="/css/admin/admin_board_proposal.css" />
+        <link rel="stylesheet" href="/css/admin/admin_board.css">
+        <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
+        <link rel="stylesheet" href="/css/admin/admin_common.css">
+        <link rel="stylesheet" href="/css/admin/modal.css"/>
         <link rel="icon" href="/image/logo/favicon.png" />
     </head>
 
@@ -20,9 +24,6 @@
                     <div class="logo-box">
                         <img src="/image/admin/wegether.svg" style="padding-top: 17px" />
                     </div>
-                    <!-- <div class="logo-title">
-                    <span>Jar</span>
-                </div> -->
                 </div>
                 <div>
                     <div class="select-name">
@@ -41,9 +42,9 @@
                             <div class="delete-box">
                                 <button
                                         class="deleteButton delete-button"
-                                        onclick="deleteMembers(getSelectedMemberIds())"
+                                        onclick="deleteInquiries(getSelectedInquiryIds())"
                                 >
-                                    수정하기
+                                    삭제하기
                                 </button>
                             </div>
                         </div>
@@ -59,131 +60,50 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th class="checkbox-line" style="visibility: hidden">
+                                                <th class="checkbox-line">
                                                     <input type="checkbox" id="allSelect" />
                                                 </th>
                                                 <th>No</th>
-                                                <!-- <th>카테고리</th> -->
                                                 <th>문의 제목</th>
                                                 <th>작성자 명</th>
                                                 <th>작성 날짜</th>
-                                                <th>답변</th>
+                                                <th>답변 여부</th>
                                             </tr>
                                         </thead>
-                                        <tr>
+                                        <tr th:each="inquiries : ${inquiries}">
                                             <td class="checkbox-line">
-                                                <input type="checkbox" name="check" />
+                                                <input
+                                                        type="checkbox"
+                                                        class="inquiryCheckbox"
+                                                        name="check"
+                                                        th:value="${inquiries.id}"/>
                                             </td>
-                                            <td class="noticeId">1</td>
-                                            <!-- <td>자유 게시판</td> -->
-                                            <td>
-                                                <a href=""> 이게 궁금해요 </a>
-                                            </td>
-                                            <td>소미주</td>
-                                            <td>2023.04.23 10:55</td>
-                                            <td class="is_answer is_warning">
-                                                미답변
-                                                <hr />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input type="checkbox" name="check" />
-                                            </td>
-                                            <td class="noticeId">2</td>
-                                            <!-- <td>자유 게시판</td> -->
-                                            <td>
-                                                <a href=""> 도와주세요 </a>
-                                            </td>
-                                            <td>모른다</td>
-                                            <td>2023.04.23 10:55</td>
-                                            <td class="is_answer is_active">
-                                                답변완료
-                                                <hr />
-                                            </td>
+                                            <td th:text="${inquiries.id}"></td>
+                                            <td th:text="${inquiries.inquiryTitle}"></td>
+                                            <td th:text="${inquiries.memberNickname}"></td>
+                                            <td th:text="${inquiries.inquiryRegisterDate}"></td>
+                                            <td th:text="${inquiries.inquiryStatus ? '답변 완료' : '미답변'}"></td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- 페이지 버튼 -->
-
-                        <!-- <section id="content-wrap">
-                        <ul></ul>
+                        <!-- 페이지 부분 -->
                         <div id="paging-wrap">
-                            <c:if test="${prev}">
-                                <a href="javascript:location.href='${pageContext.request.contextPath}/adminFreeBoardList.admin?page=${startPage - 1}'"
-                                    class="paging paging-move"><img
-                                        src="${pageContext.request.contextPath}/images/prev.png"
-                                        width="15px"></a>
-                            </c:if>
-                            <c:forEach var="i" begin="${startPage}" end="${endPage}">
-                                <c:choose>
-                                    <c:when test="${i eq page}">
-                                        <a href="javascript:void(0)" class="paging paging-checked">
-                                            <c:out value="${i}" />
-                                        </a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a href="javascript:location.href='${pageContext.request.contextPath}/adminFreeBoardList.admin?page=${i}'"
-                                            class="paging">
-                                            <c:out value="${i}" />
-                                        </a>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
+                            <a th:if="${adminPagination.prev}" th:href="${adminPagination.startPage - 1}"
+                               class="inquiry-change-page paging paging-move">
+                                <img src="/image/admin/prev.png" width="15px"></a>
+                            <th:block th:each="page:${#numbers.sequence(adminPagination.startPage, adminPagination.endPage)}">
+                                <a th:if="${page eq adminPagination.page}" class="paging paging-checked" th:text="${page}"></a>
+                                <a th:unless="${page eq adminPagination.page}" th:href="${page}"
+                                   class="inquiry-change-page paging" th:text="${page}"></a>
+                            </th:block>
+                            <a th:if="${adminPagination.next}" th:href="${adminPagination.endPage + 1}"
+                               class="inquiry-change-page paging paging-move">
+                                <img src="/image/admin/next.png" width="15px"></a>
                             <div></div>
                         </div>
-                    </section> -->
-
-                        <div class="page-button-box-layout">
-                            <div class="page-button-box">
-                                <!-- 페이지 번호 -->
-                                <div class="">
-                                    <div class="page-button-margin">
-                                        <div>
-                                            <img
-                                                src="/image/admin/left_icon.png"
-                                                class="left-button"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="page-button-active page-button">
-                                    <div class="page-button-margin">
-                                        <div>
-                                            <span>1</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="page-button">
-                                    <div class="page-button-margin">
-                                        <div>
-                                            <span>2</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="page-button">
-                                    <div class="page-button-margin">
-                                        <div>
-                                            <span>3</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <div class="page-button-margin">
-                                        <div>
-                                            <img
-                                                src="/image/admin/right_icon.png"
-                                                class="right-button"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 페이지 버튼 끝 -->
                     </div>
                 </div>
             </div>
@@ -193,4 +113,43 @@
     <script src="/js/admin/checkbox.js"></script>
     <script src="/js/admin/board_proposal.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
+    <script src="/js/admin/modal.js"></script>
+    <script src="/js/admin/paging.js"></script>
+    <script src="/js/admin/page.js"></script>
+    <script>
+        // let notices = [[${notices}]];
+        // console.log(notices);
+    </script>
+    <script th:inline="javascript">
+        let text = "";
+
+        function getSelectedInquiryIds() {
+            const inquiryIds = [];
+            $(".inquiryCheckbox:checked").each(function () {
+                inquiryIds.push($(this).val());
+            });
+            return inquiryIds;
+        }
+
+        function deleteInquiries(inquiryIds) {
+            $.ajax({
+                url: "/admins/inquiry/delete",
+                type: "POST",
+                // method: "DELETE",
+                // dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(inquiryIds),
+                success: function () {
+                    console.log(inquiryIds);
+                    showWarnModal("회원 상태를 변경하였습니다");
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                },
+                error: function () {
+                    showWarnModal("회원 상태 변경을 실패 하였습니다.");
+                }
+            });
+        }
+    </script>
 </html>
