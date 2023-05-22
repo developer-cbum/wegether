@@ -23,8 +23,7 @@ public class MainDTO {
     private String dataRegisterDate;
     private String communityTitle;
     private String communityRegisterDate;
-    private byte[] imageData;
-    private List<FileVO> files = new ArrayList<>();
+    private List<MainFileDTO> files = new ArrayList<>();
 
 
 

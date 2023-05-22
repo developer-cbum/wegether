@@ -1,8 +1,11 @@
 package com.wegether.app.mapper.main;
 
+import com.wegether.app.domain.dto.CommunityFileDTO;
+import com.wegether.app.domain.dto.MainFileDTO;
 import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.mapper.FileMapper;
+import com.wegether.app.mapper.MainFileMapper;
 import com.wegether.app.mapper.MainMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -21,7 +24,7 @@ public class MainMapperTests {
     private MainMapper mainMapper;
 
     @Autowired
-    private FileMapper fileMapper;
+    private MainFileMapper mainFileMapper;
 
     @Test
     public void mainPSelectAllTest() {
@@ -37,6 +40,11 @@ public class MainMapperTests {
     @Test
     public void mainCSelectAllTest() {
         assertThat(mainMapper.mainCSelectAll()).hasSize(1);
+    }
+
+    @Test
+    public void mainPFSelectAllTest() {
+        mainFileMapper.MainPFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
     }
 
 

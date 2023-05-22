@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.FileMapper">
+    <select id="MainPFSelectAll" resultType="mainFileDTO">
+        SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE, PROJECT_ID
+        FROM TBL_FILE F JOIN TBL_PROJECT_FILE P
+        ON F.ID = P.ID AND PROJECT_ID = #{projectId}
+    </select>
+
+    <select id="MainDFSelectAll" resultType="mainFileDTO">
+        SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE, DATA_ID
+        FROM TBL_FILE F JOIN TBL_DATA_FILE D
+        ON F.ID = D.ID AND DATA_ID = #{dataId}
+    </select>
+
+    <select id="MainCFSelectAll" resultType="mainFileDTO">
+        SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE, COMMUNITY_ID
+        FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C
+        ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
+    </select>
+
+
+
+</mapper>

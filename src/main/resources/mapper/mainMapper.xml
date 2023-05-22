@@ -22,4 +22,6 @@
     ORDER BY C.COMMUNITY_REGISTER_DATE DESC
 </select>
 
+
+
 </mapper>

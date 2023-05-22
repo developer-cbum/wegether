@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <!-- 프로젝트 목록 -->
-                                    <div class="RecommendFundingWrap_cardListGroup__1nRxw">
+                                    <div class="RecommendFundingWrap_cardListGroup__1nRxw project-list">
                                         <div class="RecommendFundingWrap_card___LnVO">
                                             <div>
                                                 <a class="CardType_projectCard__3xhjb CardType_projectCardB__3N8ks"
@@ -208,7 +208,7 @@
                                                    data-gtm-vis-has-fired-11319722_2073="1">
                                                     <article>
                                                         <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe project_height">
-                                                            <img src="files/display?fileName=${projects[4].filePath}/t_${projects[4].fileUuid}_${projects[4].fileName}" class="thumbnail" alt="Image">                                                        </div>
+                                                            <img src="@{files/display?fileName}=${projects[4].filePath}/t_${projects[4].fileUuid}_${projects[4].fileName}" class="thumbnail" alt="Image">                                                        </div>
                                                         <div class="commons_content__2K1SH CardType_content__1Pavj">
                                                             <em class="commons_title__1yGWm" th:text="${projects[4].projectTitle}"></em>
 
@@ -1044,7 +1044,7 @@
         </main>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/index/banner.js"></script>
 <script th:inline="javascript">
     let projects = [[${projects}]];
