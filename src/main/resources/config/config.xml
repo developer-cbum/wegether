@@ -55,7 +55,7 @@
         <!-- 05월 22일 이종문 LectureDTO 추가   -->
         <typeAlias type="com.wegether.app.domain.dto.LectureDTO" alias="lectureDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.LectureFileDTO" alias="lectureFileDTO"/>
-
+        <typeAlias type="com.wegether.app.domain.dto.ConsultReplyDTO" alias="consultReplyDTO"/>
         <!--  문소영 inquiryDTO, memberDTO 추가-->
         <typeAlias type="com.wegether.app.domain.dto.InquiryDTO" alias="inquiryDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.MemberDTO" alias="memberDTO"/>
