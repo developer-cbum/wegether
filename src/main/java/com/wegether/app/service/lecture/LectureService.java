@@ -5,6 +5,7 @@ import com.wegether.app.domain.dto.LecturePagination;
 import com.wegether.app.domain.dto.Pagination;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LectureService {
 
@@ -17,5 +18,7 @@ public interface LectureService {
     //강연 총 개수
     public int getTotal();
 
+    //강연 상세
+    public Optional<LectureDTO> get(Long id);
 
 }

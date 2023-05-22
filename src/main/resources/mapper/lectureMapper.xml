@@ -38,5 +38,10 @@
         VALUES(#{id}, #{lectureTitle}, #{lectureContent}, #{lectureDate}, #{lectureTime}, #{lectureLocation}, #{lectureTotalPersonnel})
     </insert>
 
-
+    <!--강연 상세-->
+    <select id="select" resultType="lectureDTO">
+       SELECT ID, LECTURE_TITLE, LECTURE_CONTENT, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL
+       FROM TBL_LECTURE
+       WHERE ID = #{id}
+    </select>
 </mapper>
