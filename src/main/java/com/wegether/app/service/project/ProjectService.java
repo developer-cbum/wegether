@@ -24,6 +24,8 @@ public interface ProjectService {
     // 프로젝트 삭제
     public void remove(Long id);
 
+    public int getTotal();
+
 
 
     default ProjectDTO toDTO(ProjectDTO projectVO) {
@@ -42,6 +44,8 @@ public interface ProjectService {
         projectDTO.setProjectTotalPersonnel(projectVO.getProjectTotalPersonnel());
         return projectDTO;
     }
+
+
 }
 
 
