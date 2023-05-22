@@ -4,45 +4,16 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <link rel="stylesheet" href="/mentoring/consult-detail.css"/>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
     <link rel="stylesheet" href="/css/common/common.css">
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/modal/modal.css">
-    <link rel="stylesheet" href="/css/fix/header.css">
-    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/consult/consult-detail.css"/>
+
+
     <title>커뮤니티디테일</title>
-    <!-- 와디즈 블로그 css 가져오기 -->
-    <link
-            rel="stylesheet"
-            id="divi-dynamic-css"
-            href="https://blog.wadiz.kr/wp-content/et-cache/1/2/364941/et-divi-dynamic-tb-17239-tb-13526-tb-17457-364941.css?ver=1683687114"
-            as="style"
-            media="all"
-            onload="this.onload=null;this.rel='stylesheet'"/>
 
-    <link
-            rel="stylesheet"
-            as="style"
-            id="et-core-unified-tb-17239-tb-13526-tb-17457-deferred-364941-cached-inline-styles"
-            href="https://blog.wadiz.kr/wp-content/et-cache/1/2/364941/et-core-unified-tb-17239-tb-13526-tb-17457-deferred-364941.min.css?ver=1683687115"
-            onload="this.onload=null;this.rel='stylesheet';"/>
-
-    <!-- 댓글 글씨체 -->
-    <link rel="stylesheet" href="https://static.wadiz.kr/static/web/wui.css?c542abcf"/>
-
-    <!-- 댓글 전체화면 로딩에 필요한 부분 -->
-    <script type="text/javascript" src="https://static.wadiz.kr/static/web/common.js?db524cda"></script>
-    <link rel="stylesheet" href="/css/consult/consult-detail.css">
-
-    <!-- 댓글 css -->
-    <!-- <link rel="stylesheet" href="https://static.wadiz.kr/main/main.c1266dc7.css" /> -->
-
-    <!-- 와디즈 캠페인 css 댓글 -->
-    <!-- <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://static.wadiz.kr/main/css/reward-community.bb8838fc.chunk.css"
-    /> -->
 </head>
 <body th:object="${consultDTO}" style="font-family: Pretendard;">
 <header th:replace="~{/fix/header :: #header}"></header>
@@ -109,7 +80,9 @@
                                         padding: 50px;
                                         border-top: 1px solid;
                                         border-bottom: 1px solid;">
-                                        <h4><th:block th:text="*{consultingContent}"></th:block></h4>
+                                        <h4>
+                                            <th:block th:text="*{consultingContent}"></th:block>
+                                        </h4>
                                     </div>
 
 
@@ -118,87 +91,11 @@
                                                 class="et_pb_column et_pb_column_4_4 et_pb_column_2_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
                                         ></div>
                                     </div>
-                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px">
-                                        <div
-                                                class="et_pb_column et_pb_column_1_2 et_pb_column_3_tb_body et_pb_css_mix_blend_mode_passthrough"
-                                        >
-                                            <div
-                                                    class="et_pb_with_border et_pb_module dssb_sharing_buttons dssb_sharing_buttons_0_tb_body"
-                                            >
-                                                <div class="et_pb_module_inner">
-                                                    <div class="dssb-sharning-buttons-container">
-                                                        <div
-                                                                class="dssb-sharing-buttons dssb-columns-3 dssb-tablet-columns-3 dssb-phone-columns-3"
-                                                        >
-                                                            <div
-                                                                    class="dssb_sharing_button dssb_sharing_button_0_tb_body"
-                                                            >
-                                                                <div class="et_pb_module_inner">
-                                                                    <div class="dssb-sharing-button">
-                                                                        <a
-                                                                                class="dssb-sharing-button-facebook"
-                                                                                href="javascript:void(0)"
-                                                                                data-network-type="facebook"
-                                                                                data-network-url="https://www.facebook.com/sharer.php?u=https://blog.wadiz.kr/%ec%98%81%ea%b0%90%ec%9d%84-%ec%b1%84%ec%9b%8c%ec%a4%84-%ec%a7%84%ea%b5%ad%ec%9d%b8-%ec%8b%9c%eb%a6%ac%ec%a6%88-best-4%eb%8a%94/"
-                                                                                rel="nofollow"
-                                                                        >
-                                                                            <span
-                                                                                    class="dssb-sharing-icon dssb-sharing-facebook"
-                                                                            ></span>
-                                                                            <div class="dssb-sharing-text">
-                                                                                Facebook
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                    class="dssb_sharing_button dssb_sharing_button_1_tb_body"
-                                                            >
-                                                                <div class="et_pb_module_inner">
-                                                                    <div class="dssb-sharing-button">
-                                                                        <a
-                                                                                class="dssb-sharing-button-twitter"
-                                                                                href="javascript:void(0)"
-                                                                                data-network-type="twitter"
-                                                                                data-network-url="https://twitter.com/intent/tweet?text=%EC%98%81%EA%B0%90%EC%9D%84+%EC%B1%84%EC%9B%8C%EC%A4%84+%EC%A7%84%EA%B5%AD%EC%9D%B8+%EC%8B%9C%EB%A6%AC%EC%A6%88+BEST+4%EB%8A%94%3F&amp;url=https://blog.wadiz.kr/%ec%98%81%ea%b0%90%ec%9d%84-%ec%b1%84%ec%9b%8c%ec%a4%84-%ec%a7%84%ea%b5%ad%ec%9d%b8-%ec%8b%9c%eb%a6%ac%ec%a6%88-best-4%eb%8a%94/"
-                                                                                rel="nofollow"
-                                                                        >
-                                                                            <span
-                                                                                    class="dssb-sharing-icon dssb-sharing-twitter"
-                                                                            ></span>
-                                                                            <div class="dssb-sharing-text">Twitter</div>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                    class="dssb_sharing_button dssb_sharing_button_2_tb_body"
-                                                            >
-                                                                <div class="et_pb_module_inner">
-                                                                    <div class="dssb-sharing-button">
-                                                                        <a
-                                                                                class="dssb-sharing-button-copy"
-                                                                                href="javascript:void(0)"
-                                                                                data-network-type="copy"
-                                                                                data-network-url="https://blog.wadiz.kr/영감을-채워줄-진국인-시리즈-best-4는/"
-                                                                                rel="nofollow"
-                                                                        >
-                                                                            <span
-                                                                                    class="dssb-sharing-icon dssb-sharing-copy"
-                                                                            ></span>
-                                                                            <div class="dssb-sharing-text">
-                                                                                URL Copy
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px; display: flex;
+    padding-bottom: 0px;
+    justify-content: right;
+text-align: right;">
+
                                         <div
                                                 class="et_pb_column et_pb_column_1_2 et_pb_column_4_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
                                         >
@@ -212,16 +109,16 @@
                                                 >목록</a
                                                 >
                                                 <a href="#"
-                                                        id="pa-back-button2"
-                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light modify-button"
-                                                        style="display: none";
+                                                   id="pa-back-button2"
+                                                   class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light modify-button"
+                                                   style="display: none" ;
                                                 >수정</a
                                                 >
                                                 <a
                                                         id="pa-back-button3"
                                                         class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light remove-button"
                                                         href="#"
-                                                        style="display: none";
+                                                        style="display: none" ;
                                                 >삭제</a
                                                 >
                                             </div>
@@ -910,7 +807,7 @@
 </div>
 <footer th:replace="~{/fix/footer :: #footer}"></footer>
 </body>
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/modal/modal.js"></script>
 <script>
     $(function () {
@@ -932,14 +829,12 @@
         });
     });
 </script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
     let consult = [[${consultDTO}]];
     let session = [[${session.id}]];
 
 
-
-    if(session != null && consult.memberId == session ) {
+    if (session != null && consult.memberId == session) {
         $('.remove-button').css("display", "inline-block");
         $('.remove-button').on("click", function (e) {
             e.preventDefault();
@@ -950,12 +845,12 @@
         })
     }
 
-    if(session != null && consult.memberId == session ){
+    if (session != null && consult.memberId == session) {
         $('.modify-button').css("display", "inline-block");
-        $('.modify-button').on("click",function(e){
+        $('.modify-button').on("click", function (e) {
             e.preventDefault();
-                location.href=`/consults/modify?id=${consult.id}`
-            })
+            location.href = `/consults/modify?id=${consult.id}`
+        })
     }
 
 </script>

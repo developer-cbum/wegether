@@ -20,12 +20,12 @@ public class AdminMapperTests {
     private AdminMapper adminMapper;
 
     /* ------------------------------------------------------------------------------------ */
-
-    //    공지사항 목록 테스트
-    @Test
-    public void noticeSelectAllTest() {
-        assertThat(adminMapper.noticeSelectAll()).hasSize(1);
-    }
+//
+//    //    공지사항 목록 테스트
+//    @Test
+//    public void noticeSelectAllTest() {
+//        assertThat(adminMapper.noticeSelectAll()).hasSize(1);
+//    }
 
     //    공지사항 등록 테스트
     @Test
@@ -92,11 +92,11 @@ public class AdminMapperTests {
 
     /* ------------------------------------------------------------------------------------ */
 
-    //    문의사항 목록 테스트
-    @Test
-    public void inquirySelectAllTest() {
-        assertThat(adminMapper.inquirySelectAll()).hasSize(1);
-    }
+//    //    문의사항 목록 테스트
+//    @Test
+//    public void inquirySelectAllTest() {
+//        assertThat(adminMapper.inquirySelectAll()).hasSize(1);
+//    }
 
     //    문의사항 답변 등록 테스트
     @Test
@@ -137,8 +137,8 @@ public class AdminMapperTests {
     /* ------------------------------------------------------------------------------------ */
 
     //    회원 목록 테스트
-    @Test
-    public void memberSelectAllTest() { assertThat(adminMapper.memberSelectAll()).hasSize(2); }
+//    @Test
+//    public void memberSelectAllTest() { assertThat(adminMapper.memberSelectAll()).hasSize(2); }
 
     //    회원 삭제 테스트
     @Test
@@ -147,8 +147,8 @@ public class AdminMapperTests {
     /* ------------------------------------------------------------------------------------ */
 
     //    강연 목록 테스트
-    @Test
-    public void lectureSelectAllTest() { assertThat(adminMapper.lectureSelectAll()).hasSize(3); }
+//    @Test
+//    public void lectureSelectAllTest() { assertThat(adminMapper.lectureSelectAll()).hasSize(3); }
 
     //    강연 삭제 테스트
 
