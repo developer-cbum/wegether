@@ -32,7 +32,6 @@ a, em, div {
     --dark: #1d2129;
     position: relative;
     background: #fff;
-    padding-top: 120px;
     color: #212121;
     font-size: 12px;
     -webkit-text-size-adjust: none;

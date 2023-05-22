@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.DataFileMapper">
 
-    <select id="selectAll" resultType="dataFileVO">
-        SELECT FILE_ID, DATA_ID FROM TBL_DATA_FILE WHERE DATA_ID = #{dataId}
-        ORDER BY DATA_ID
+    <select id="dataSelectAll" resultType="dataFileDTO">
+        SELECT DF.DATA_ID, F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE
+        FROM TBL_DATA D, TBL_DATA_FILE DF, TBL_FILE F
+        WHERE D.ID = DF.DATA_ID AND DF.ID = F.ID
     </select>
 
     <select id="select" resultType="dataFileVO">
@@ -15,8 +16,8 @@
 
 <!--    <insert id="insert">-->
 <!--        INSERT INTO TBL_FILE-->
-<!--        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, POST_ID, FILE_TYPE)-->
-<!--        VALUES(SEQ_FILE.NEXTVAL, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{postId}, #{fileType})-->
+<!--        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, DATA_ID, FILE_TYPE)-->
+<!--        VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{dataId}, #{fileType})-->
 <!--    </insert>-->
 
     <insert id="insert">

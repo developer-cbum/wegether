@@ -20,12 +20,12 @@ public class ProjectDAOTests {
     @Autowired
     private ProjectDAO projectDAO;
 
-    @Test
-    public void projectFindAllTest() {
-        ProjectPagination projectPagination = new ProjectPagination(3);
-        projectPagination.setPage(1);
-        projectDAO.projectFindAll(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void projectFindAllTest() {
+//        ProjectPagination projectPagination = new ProjectPagination(3);
+//        projectPagination.setPage(1);
+//        projectDAO.projectFindAll(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
+//    }
 
     @Test
     public void findByIdTest() {

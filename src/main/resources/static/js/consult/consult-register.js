@@ -76,6 +76,6 @@ $('.modal').on("click", function () {
 
 
 function lastok() {
-    location.href = "./consult-main.html";
+    location.href = "./main.html";
     // 마이페이지 이동
 }

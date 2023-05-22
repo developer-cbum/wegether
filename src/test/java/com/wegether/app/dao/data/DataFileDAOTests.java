@@ -29,10 +29,8 @@ public class DataFileDAOTests {
     public void saveTest() {
         DataFileDTO dataFileDTO = new DataFileDTO();
         dataFileDTO.setFileName("icon2.png");
-        dataFileDTO.setFilePath("2023/05/19");
         dataFileDTO.setFileSize(1238L);
-        dataFileDTO.setDataId(5L);
-        dataFileDTO.setFileType(FileType.REPRESENTATIVE.name());
+        dataFileDTO.setDataId(1L);
         dataFileDTO.setFileUuid(UUID.randomUUID().toString());
         log.info(dataFileDTO.toString());
         fileDAO.save(dataFileDTO);
