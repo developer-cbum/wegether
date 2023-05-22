@@ -60,6 +60,7 @@
         <typeAlias type="com.wegether.app.domain.dto.InquiryDTO" alias="inquiryDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.MemberDTO" alias="memberDTO"/>
 
-
+        <!--  이기철 projectFileDTO 추가-->
+        <typeAlias type="com.wegether.app.dom ain.dto.ProjectFileDTO" alias="projectFileDTO"/>
     </typeAliases>
 </configuration>

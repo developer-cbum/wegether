@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.ProjectFileMapper">
+
+    <select id="projectSelectAll" resultType="projectFileDTO">
+        SELECT PF.PROJECT_ID, F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE
+        FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F
+        WHERE P.ID = PF.PROJECT_ID AND PF.ID = F.ID
+    </select>
+
+    <select id="select" resultType="projectFileVO">
+        SELECT ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE
+        FROM TBL_PROJECT
+        WHERE ID = #{id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO TBL_PROJECT_FILE
+        (ID, PROJECT_ID)
+        VALUES(#{id}, #{projectId})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_PROJECT WHERE ID = #{id}
+    </delete>
 </mapper>
