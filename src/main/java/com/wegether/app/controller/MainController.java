@@ -40,10 +40,13 @@ public class MainController {
 
     @GetMapping("main")
     public void goToListForm(Model model){
-        List<MainDTO> projects = mainService.mainPGetList();
+//        List<MainDTO> projects = mainService.mainPGetList();
+//        List<MainDTO> datas = mainService.mainDGetList();
+//        List<MainDTO> communities = mainService.mainCGetList();
         model.addAttribute("projects", mainService.mainPGetList());
         model.addAttribute("datas", mainService.mainDGetList());
-        model.addAttribute("communitys", mainService.mainCGetList());
+        model.addAttribute("datards", mainService.mainDRGetList());
+        model.addAttribute("communities", mainService.mainCGetList());
 
     }
 

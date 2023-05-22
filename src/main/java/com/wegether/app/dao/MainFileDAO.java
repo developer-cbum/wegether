@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.CommunityFileDTO;
 import com.wegether.app.domain.dto.MainFileDTO;
 import com.wegether.app.domain.vo.DataFileVO;
 import com.wegether.app.mapper.MainFileMapper;
@@ -15,13 +16,21 @@ import java.util.List;
 public class MainFileDAO {
     private final MainFileMapper mainFileMapper;
 
+    public List<MainFileDTO> mainPFFindAll(Long projectId) { return mainFileMapper.mainPFSelectAll(projectId); }
+    public List<MainFileDTO> mainDFFindAll(Long dataId) { return mainFileMapper.mainDFSelectAll(dataId); }
+    public List<MainFileDTO> mainCFFindAll(Long communityId) { return mainFileMapper.mainCFSelectAll(communityId); }
+    public List<MainFileDTO> mainDRFindAll(Long dataId) { return mainFileMapper.mainDRSelectAll(dataId); }
 
-    //   file list
-    public List<MainFileDTO> findPFFiles(Long projectId) {
-        return mainFileMapper.MainPFSelectAll(projectId);
-    };
+//    //   file list
+//    public List<MainFileDTO> findPFFiles(Long projectId) {
+//        return mainFileMapper.MainPFSelectAll(projectId);
+//    };
 
     //    파일 조회
-    public List<MainFileDTO> findByPId(Long projectId){return mainFileMapper.MainPFSelectAll(projectId);
+//    public List<MainFileDTO> findByPId(Long projectId){return mainFileMapper.mainPFSelectAll(projectId);
+
+
+
+
     }
-}
+

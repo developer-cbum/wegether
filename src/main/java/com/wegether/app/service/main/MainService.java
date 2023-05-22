@@ -16,7 +16,7 @@ public interface MainService {
 
     public List<MainDTO> mainDGetList();
 
-
+    public List<MainDTO> mainDRGetList();
 
 
 }

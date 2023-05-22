@@ -1,8 +1,8 @@
 package com.wegether.app.mapper.main;
 
-import com.wegether.app.domain.dto.CommunityFileDTO;
 import com.wegether.app.domain.dto.MainFileDTO;
 import com.wegether.app.domain.type.FileType;
+import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.mapper.FileMapper;
 import com.wegether.app.mapper.MainFileMapper;
@@ -19,6 +19,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @Slf4j
 public class MainMapperTests {
+
+    @Autowired
+    private FileMapper fileMapper;
 
     @Autowired
     private MainMapper mainMapper;
@@ -44,8 +47,19 @@ public class MainMapperTests {
 
     @Test
     public void mainPFSelectAllTest() {
-        mainFileMapper.MainPFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
+        mainFileMapper.mainPFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
     }
 
+    @Test
+    public void mainDFSelectAllTest() {
+        mainFileMapper.mainDFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
+    }
 
+    @Test
+    public void mainCFSelectAllTest() {
+        mainFileMapper.mainCFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
+    }
+
+    
+    
     }
