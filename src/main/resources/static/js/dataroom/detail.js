@@ -134,27 +134,7 @@ $(document).ready(function () {
                                     </span>
                                 </button>
                             </div>
-                            <!--
-                            <button aria-label="찜하기 버튼" aria-pressed="true" data-ga-category="스토어_상세"
-                                data-ga-action="찜하기_취소" data-ga-label=""
-                                class="Button_button__2FuOU ProductFloatButton_wishButton__2uCyk"
-                                type="button" style="display:none;">
-                                <span>
-                                    <span class="Button_children__ilFun">
-                                        <div>
-                                            <svg viewBox="0 0 32 32" focusable="false" role="presentation"
-                                                class="withIcon_icon__3VTbq" aria-hidden="true"
-                                                style="width: 24px; height: 24px;">
-                                                <path
-                                                    d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z">
-                                                </path>
-                                            </svg>
-                                            <span class="ProductFloatButton_count__1a-7B">1,668</span>
-                                        </div>
-                                    </span>
-                                </span>
-                            </button>
-                        -->
+                            
                             <button rel="noreferrer noopener"
                                 class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA"
                                 type="button">
