@@ -60,9 +60,9 @@ public class projectServiceTests {
         }
     }
 
-//    @Test
-//    public void removeTest() {
-//        projectService.remove(1L);
-//    }
+    @Test
+    public void removeTest() {
+        projectService.remove(1L);
+    }
 
 }

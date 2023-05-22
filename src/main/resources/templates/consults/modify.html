@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="/css/consult/mypage.css">
     <link rel="stylesheet" href="/css/mypage/project/list.css">
     <link rel="stylesheet" href="/css/modal/modal.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
 
 </head>
+<header th:replace="~{/fix/header :: #header}"></header>
 <body th:object="${consultDTO}">
 <div class="modal">
     <div class="warn-modal">
@@ -266,6 +269,7 @@
         </div>
     </div>
 </div>
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/modal/modal.js"></script>

@@ -1,11 +1,9 @@
 package com.wegether.app.domain.dto;
 
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
-@Component
 @Data
-public class CommunityPagination {
+public class LecturePagination {
     private Integer page;
     private int rowCount;
     private int pageCount;
@@ -15,10 +13,11 @@ public class CommunityPagination {
     private boolean prev, next;
     private int total;
 
-    public void progress() {
+
+    public void progress(int pageCount, int rowCount) {
         this.page = page == null ? 1 : page;
-        this.rowCount = 20;
-        this.pageCount = 5;
+        this.rowCount = rowCount;
+        this.pageCount = pageCount;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
         this.startPage = endPage - pageCount + 1;

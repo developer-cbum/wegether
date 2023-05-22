@@ -18,7 +18,7 @@ let clickCheck = false;
 
 // image_divs.forEach((image_div, i) => image_div.style.backgroundImage = `url(00${i + 1}.png)`);
 // first_div.style.backgroundImage = `url(006.png)`;
-// last_div.style.backgroundImage = `url(001.png)`;
+// last_div.style.backgroundImage = `url(banner.png)`;
 
 $image_divs.each((i, image_div) => {$(image_div).css("background-image", `url(img/00${i + 1}.jpeg)`)});
 $first_div.css("background-image", `url(img/00${$image_divs.length}.jpeg)`);
