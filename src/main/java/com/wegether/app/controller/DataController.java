@@ -2,6 +2,7 @@ package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.DataPagination;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.data.DataService;
@@ -27,18 +28,21 @@ public class DataController {
     private final DataService dataService;
     private final AccountService accountService;
 
+
 //    자료 목록
     @GetMapping("list")
-    public void goToDataList(DataPagination dataPagination, Model model){
+    public void goToDataList(DataPagination dataPagination, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order, Model model){
         dataPagination.setTotal(dataService.getTotal());
         dataPagination.progress();
-        model.addAttribute("datas", dataService.getList(dataPagination));
+        categoryType.setType(type);
+        categoryType.setOrder(order);
+        model.addAttribute("datas", dataService.getList(dataPagination, categoryType));
     }
 
 //    자료 상세
     @GetMapping("detail")
     public void read(@RequestParam Long id, Model model){
-        model.addAttribute("dataDTO", dataService.read(id));
+        model.addAttribute("dataDTO", dataService.read(id).get());
     }
 
 //    자료 등록 - HttpSession session

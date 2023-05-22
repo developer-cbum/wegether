@@ -3,30 +3,6 @@
 <mapper namespace="com.wegether.app.mapper.DataMapper">
 
 <!--  자료 목록 조회  -->
-<!--    <select id="selectAll" resultType="dataDTO">-->
-<!--        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NICKNAME, MEMBER_INTRODUCING-->
-<!--        FROM-->
-<!--        (-->
-<!--        SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_INTRODUCING-->
-<!--        FROM TBL_MEMBER M JOIN TBL_DATA D-->
-<!--        <![CDATA[-->
-<!--            ON M.ID = D.MEMBER_ID AND ROWNUM <= #{pagination.page} * #{pagination.rowCount}-->
-<!--        ]]>-->
-<!--        ORDER BY-->
-<!--        <choose>-->
-<!--            <when test="order == 'popular'">-->
-<!--                DATA_READ_COUNT-->
-<!--            </when>-->
-<!--            <otherwise>-->
-<!--                D.ID-->
-<!--            </otherwise>-->
-<!--        </choose>-->
-<!--        DESC-->
-<!--        <![CDATA[-->
-<!--        ) D WHERE R > (#{pagination.page} - 1) * #{pagination.rowCount}-->
-<!--        ]]>-->
-<!--    </select>-->
-
 
     <select id="selectAll" resultType="dataDTO">
     SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NICKNAME
@@ -35,8 +11,17 @@
         SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NICKNAME
         FROM TBL_MEMBER M JOIN TBL_DATA D
          <![CDATA[
-        ON M.ID = D.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
-        ORDER BY D.ID DESC
+        ON M.ID = D.MEMBER_ID AND ROWNUM <= #{dataPagination.page} * #{dataPagination.rowCount} AND DATA_MAJOR = #{categoryType.type}
+        ORDER BY
+        <choose>
+            <when test="categoryType.order == 'new'">
+                DATA_REGISTER_DATE
+            </when>
+            <otherwise>
+                DATA_READ_COUNT
+            </otherwise>
+        </choose>
+        DESC
     ) D WHERE R > (#{page} - 1) * #{rowCount}
          ]]>
     </select>
@@ -53,8 +38,8 @@
 
     <!--  자료 상세 조회  -->
     <select id="select" resultType="dataDTO">
-        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING
-        FROM TBL_DATA D JOIN TBL_MEMBER M
+        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, DATA_SCHOOL, DATA_MAJOR, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING, MEMBER_POINT
+        FROM TBL_DATA D JOIN TBL_MEMBER M AND
                         ON M.ID = D.MEMBER_ID AND D.ID = #{id}
 
     </select>

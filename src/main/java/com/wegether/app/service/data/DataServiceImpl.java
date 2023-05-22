@@ -4,6 +4,7 @@ import com.wegether.app.dao.DataDAO;
 import com.wegether.app.dao.DataFileDAO;
 import com.wegether.app.dao.FileDAO;
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,9 +30,9 @@ public class DataServiceImpl implements DataService {
 //    자료 목록 - 파일
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<DataDTO> getList(DataPagination dataPagination) {
+    public List<DataDTO> getList(DataPagination dataPagination, CategoryType categoryType) {
     //        게시글 전체 목록
-        final List<DataDTO> datas = dataDAO.findAll(dataPagination);
+        final List<DataDTO> datas = dataDAO.findAll(dataPagination, categoryType);
     //        게시글 하나씩 첨부파일 목록 담기
         datas.forEach(data -> data.setFiles(fileDAO.dataFindAll(data.getId())));
         return datas;

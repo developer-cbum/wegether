@@ -1,38 +1,30 @@
 $(document).ready(function () {
 
     const $imageContainer = $("#image_container");
-
     console.log(dataDTO);
 
     let image = "";
-    dataDTO.forEach(files => {
-        image +=
 
-            files.forEach(file => {
+            dataDTO.files.forEach(file => {
                 if(file.fileType == "REPRESENTATIVE") {
+                    console.log("file!!!!!!!!!!!!");
                     image += `
 
-                        <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline: none; width: 626px;">
-                               <div>
-                                  <div tabindex="-1" style="width: 100%; display: inline-block;">
-                                    <div class="StoreSlider_slickBackgroundImage__1CH4Y" style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName});">
-                                     </div>
-                                  </div>
-                               </div>
-                            </div>
-
-
-
-
-
-                        
-                   `;
+                        <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline: none; width: 552px;">
+                           <div>
+                              <div tabindex="-1" style="width: 100%; display: inline-block;">
+                                <div class="StoreSlider_slickBackgroundImage__1CH4Y" 
+                                    style=" background-position: center;
+                                    background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName});">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>`;
                 }
-            })
+            });
 
-            
 
-    });
+
 
     $imageContainer.append(image);
 
@@ -41,18 +33,17 @@ $(document).ready(function () {
     const $textContainer = $("#text_container");
 
     let text = "";
-    dataDTO.forEach(data => {
         text += `
-        
+
               <div class="DetailInfo_container__9Q8ap">
                     <div class="DetailInfoHeader_container__2EKRL">
                         <h2 class="DetailInfoHeader_textBlind__2owz5">스토어 스토리 상세페이지</h2>
                         <div class="DetailInfoHeader_searchInfoWrapper__1R1Pn">
                             <div class="ProjectSearchTags_container__7YZNA">
-                                <a href="/web/wcampaign/search?category=292,316,sc019"
+                                <a href="#" style="cursor:default;"
                                     class="ProjectSearchTags_category__3ofgG ProjectSearchTags_gaElement__1mZHZ"
                                     data-ga-category="스토어(상세)_카테고리" data-ga-action="클릭" data-ga-label="대학교">
-                                    <span aria-label="카테고리">${data.dataSchool}</span>
+                                    <span aria-label="카테고리">${dataDTO.dataSchool}</span>
                                     <svg viewBox="0 0 40 40" focusable="false" role="presentation"
                                         class="withIcon_icon__3VTbq" aria-hidden="true"
                                         style="width: 18px; height: 18px;">
@@ -61,13 +52,13 @@ $(document).ready(function () {
                                 </a>
                                 <div class="ProjectSearchTags_hashTags__3v6i6">
                                     <a data-ga-category="스토어(상세)_검색태그" data-ga-action="클릭"
-                                        data-ga-label="학과" href="/web/wcampaign/search?keyword=캠핑"
+                                        data-ga-label="학과" href="#" style="cursor:default;"
                                         class="Button_button__2FuOU Button_tertiaryGrey__3jJV7 Button_contained__2SIAT Button_xs__2DWsb Button_circular__1cdcJ ProjectSearchTags_hashTagButton__fCndq ProjectSearchTags_gaElement__1mZHZ">
                                         <span>
                                             <span class="Button_children__ilFun">
                                                 <div class="ProjectSearchTags_hashTag__2UMo_">
                                                     <span class="ProjectSearchTags_hash__IgbO9">#</span>
-                                                    <span>${data.dataMajor}</span>
+                                                    <span>${dataDTO.dataMajor}</span>
                                                 </div>
                                             </span>
                                         </span>
@@ -76,12 +67,12 @@ $(document).ready(function () {
                             </div>
                         </div>
                         <div class="DetailInfoHeader_titleInfo__2nx8Q">
-                            <h3 class="DetailInfoHeader_title__i0kaY">[누적1억] 화투야 작품이야?! 손에 착착 감기는 장화투 [만월화투]
+                            <h3 class="DetailInfoHeader_title__i0kaY">${dataDTO.dataTitle}
                             </h3>
                         </div>
                         <div class="DetailInfoHeader_buyInfo__160ZZ">
                             <em class="DetailInfoHeader_price__2PVzf">
-                                <span>7,000</span>
+                                <span>${dataDTO.dataPrice}</span>
                                 <span class="DetailInfoHeader_unit__2s2Vz">원</span>
                             </em>
                         </div>
@@ -100,7 +91,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="ProductBuyInfo_container__1nPti undefined">
                         <div class="ProductFloatButton_container__2jWfi">
                             <div class="ProductFloatButton_wishButtonBox__236EH">
@@ -124,7 +115,7 @@ $(document).ready(function () {
                                     </span>
                                 </button>
                             </div>
-                            
+
                             <button rel="noreferrer noopener"
                                 class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA"
                                 type="button">
@@ -140,8 +131,8 @@ $(document).ready(function () {
                     <div class="StoreMakerInfoContainer_container__RjIvt">
                         <div class="StoreMakerInfoContainer_content__3nIZo">
                             <div class="StoreMakerInfoContainer_header__3F8ep">
-                                <a class="MakerInfoHeader_link__29O6y StoreMakerInfoContainer_makerLink__UDmAv"
-                                    href="/web/maker/detail/3588594?path=store_detail">
+                                <a class="MakerInfoHeader_link__29O6y StoreMakerInfoContainer_makerLink__UDmAv" style="cursor:default;"
+                                    href="#">
                                     <div
                                         class="Avatar_avatar__1d9Wt Avatar_xs__3q9gb MakerInfoHeader_avatar__1PMBy">
                                         <span class="Avatar_hasImage__2TKl6"
@@ -150,8 +141,8 @@ $(document).ready(function () {
                                     </div>
                                     <div class="MakerInfoHeader_texts__3ft0t">
                                         <span
-                                            class="MakerInfoHeader_makerName__2KFTA StoreMakerInfoContainer_makerName__2GZJn">올린스튜디오</span>
-                                        <span class="MakerInfoHeader_subInfo__12Ms6">2778명이 팔로우 중</span>
+                                            class="MakerInfoHeader_makerName__2KFTA StoreMakerInfoContainer_makerName__2GZJn">${dataDTO.memberNickname}</span>
+                                        <span class="MakerInfoHeader_subInfo__12Ms6">${dataDTO.memberIntroducing}</span>
                                     </div>
                                 </a>
                             </div>
@@ -160,38 +151,37 @@ $(document).ready(function () {
                                 <div
                                     class="SupporterCount_container__2vmwf MakerInfoStatusSection_status__1ILgm">
                                     <span class="SupporterCount_wrapper__3lJE7">
-                                        <img class="SupporterCount_icon__V_LqC"
-                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGZpbGw9IiMwMEM0QzQiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04IDhjLTEuNjUzLS4wMS0zLTEuMy0zLTMuMDQyQzUgMy4zNDMgNi4zNDcgMiA4IDJzMyAxLjM0MyAzIDIuOTU4QzExIDYuNjk5IDkuNjUzIDguMDEgOCA4ek0xMy4zMTIgMTRIMi42ODhDMi4yMTQgMTQgMiAxMy42OTggMiAxMy4yNzQgMiAxMi4wMjMgMy45MTcgOC43NSA4IDguNzVzNiAzLjI3MyA2IDQuNTI0YzAgLjQyNC0uMjE0LjcyNi0uNjg4LjcyNnoiLz4KICAgICAgICA8L2c+CiAgICAgICAgPHBhdGggZD0iTTAgMGgxNnYxNkgweiIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                            alt="">서포터 5,543명
+                                        <img class="Rating_icon__1gznE" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMTZ2MTZIMHoiLz4KICAgICAgICA8cGF0aCBkPSJNMiAyaDExLjY2N3YxMS42NjdIMnoiLz4KICAgICAgICA8cGF0aCBkPSJNNy44MzMgMTEuODQxIDUuMDU1IDEzLjU2YS43MjEuNzIxIDAgMCAxLS45OTgtLjI0NC43NDUuNzQ1IDAgMCAxLS4wODYtLjU1NGwuNzU1LTMuMjA1LTIuNDcyLTIuMTQzYS43NDEuNzQxIDAgMCAxLS4wOC0xLjAzNi43MjUuNzI1IDAgMCAxIC40OTQtLjI1NGwzLjI0NS0uMjY0IDEuMjUtMy4wNDJhLjcyMy43MjMgMCAwIDEgMS4zNCAwbDEuMjUgMy4wNDJMMTMgNi4xMjNhLjczOC43MzggMCAwIDEgLjQxNCAxLjI5TDEwLjk0IDkuNTU2bC43NTYgMy4yMDVhLjczNi43MzYgMCAwIDEtLjUzOC44ODYuNzIuNzIgMCAwIDEtLjU0Ny0uMDg5bC0yLjc3OC0xLjcxN3oiIGZpbGw9IiMwMEM0QzQiIGZpbGwtcnVsZT0ibm9uemVybyIvPgogICAgPC9nPgo8L3N2Zz4K" alt="">
+                                        포인트 | ${dataDTO.memberPoint}
                                     </span>
                                 </div>
                                 <div>
-                                    <button type="button"
-                                        class="Tooltip_button__2xpDd MakerInfoStatusSection_tooltip__28uHX"
-                                        title="펀딩·프리오더·스토어 합산" aria-describedby="Tooltip_2">
-                                        <span class="Tooltip_label__eKqLa">펀딩·프리오더·스토어 합산</span>
-                                        <span class="Tooltip_helpIconWrap__3bvP3">
-                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                class="withIcon_icon__3VTbq Tooltip_helpOutlineIcon__JkkNy"
-                                                aria-hidden="true">
-                                                <path fill="none" d="M0 0h40v40H0z"></path>
-                                                <path
-                                                    d="M20 39a19 19 0 1 1 19-19 19.06 19.06 0 0 1-19 19zm0-36a17 17 0 1 0 17 17A17 17 0 0 0 20 3z">
-                                                </path>
-                                                <path
-                                                    d="M24.34 10A5.75 5.75 0 0 0 20 8.33a5.7 5.7 0 0 0-6 6h2a3.7 3.7 0 0 1 4-4 3.7 3.7 0 0 1 4 4A4.29 4.29 0 0 1 22 18l-.7.6a6.51 6.51 0 0 0-2.3 5.7h2c0-1.9 0-2.6 1.7-4.3l.6-.5a6.28 6.28 0 0 0 2.7-5.2 5.73 5.73 0 0 0-1.66-4.3zM20 26.87a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 1 0 0-3.6z">
-                                                </path>
-                                            </svg>
-                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                class="withIcon_icon__3VTbq Tooltip_helpIcon__3jf9Q"
-                                                aria-hidden="true">
-                                                <path fill="none" d="M0 0h40v40H0z"></path>
-                                                <path
-                                                    d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm0 29.5a1.8 1.8 0 1 1 1.8-1.79 1.8 1.8 0 0 1-1.8 1.75zm6-16.13a6.28 6.28 0 0 1-2.7 5.2l-.6.5c-1.7 1.7-1.7 2.4-1.7 4.3h-2a6.51 6.51 0 0 1 2.3-5.7L22 18a4.29 4.29 0 0 0 2-3.7 3.7 3.7 0 0 0-4-4 3.7 3.7 0 0 0-4 4h-2a5.7 5.7 0 0 1 6-6 5.7 5.7 0 0 1 6 6z">
-                                                </path>
-                                            </svg>
-                                        </span>
-                                    </button>
+<!--                                    <button type="button"-->
+<!--                                        class="Tooltip_button__2xpDd MakerInfoStatusSection_tooltip__28uHX"-->
+<!--                                        title="펀딩·프리오더·스토어 합산" aria-describedby="Tooltip_2">-->
+<!--                                        <span class="Tooltip_label__eKqLa">펀딩·프리오더·스토어 합산</span>-->
+<!--                                        <span class="Tooltip_helpIconWrap__3bvP3">-->
+<!--                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"-->
+<!--                                                class="withIcon_icon__3VTbq Tooltip_helpOutlineIcon__JkkNy"-->
+<!--                                                aria-hidden="true">-->
+<!--                                                <path fill="none" d="M0 0h40v40H0z"></path>-->
+<!--                                                <path-->
+<!--                                                    d="M20 39a19 19 0 1 1 19-19 19.06 19.06 0 0 1-19 19zm0-36a17 17 0 1 0 17 17A17 17 0 0 0 20 3z">-->
+<!--                                                </path>-->
+<!--                                                <path-->
+<!--                                                    d="M24.34 10A5.75 5.75 0 0 0 20 8.33a5.7 5.7 0 0 0-6 6h2a3.7 3.7 0 0 1 4-4 3.7 3.7 0 0 1 4 4A4.29 4.29 0 0 1 22 18l-.7.6a6.51 6.51 0 0 0-2.3 5.7h2c0-1.9 0-2.6 1.7-4.3l.6-.5a6.28 6.28 0 0 0 2.7-5.2 5.73 5.73 0 0 0-1.66-4.3zM20 26.87a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 1 0 0-3.6z">-->
+<!--                                                </path>-->
+<!--                                            </svg>-->
+<!--                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"-->
+<!--                                                class="withIcon_icon__3VTbq Tooltip_helpIcon__3jf9Q"-->
+<!--                                                aria-hidden="true">-->
+<!--                                                <path fill="none" d="M0 0h40v40H0z"></path>-->
+<!--                                                <path-->
+<!--                                                    d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm0 29.5a1.8 1.8 0 1 1 1.8-1.79 1.8 1.8 0 0 1-1.8 1.75zm6-16.13a6.28 6.28 0 0 1-2.7 5.2l-.6.5c-1.7 1.7-1.7 2.4-1.7 4.3h-2a6.51 6.51 0 0 1 2.3-5.7L22 18a4.29 4.29 0 0 0 2-3.7 3.7 3.7 0 0 0-4-4 3.7 3.7 0 0 0-4 4h-2a5.7 5.7 0 0 1 6-6 5.7 5.7 0 0 1 6 6z">-->
+<!--                                                </path>-->
+<!--                                            </svg>-->
+<!--                                        </span>-->
+<!--                                    </button>-->
                                 </div>
                             </div>
                             <button
@@ -207,12 +197,12 @@ $(document).ready(function () {
                                 <table class="MakerInfoContactSection_table__Ced8h">
                                     <tbody>
                                         <tr>
-                                            <th>이메일</th>
-                                            <td>olindesigner@gmail.com</td>
+                                            <th>소속</th>
+                                            <td>${dataDTO.memberSchool}</td>
                                         </tr>
                                         <tr>
-                                            <th>문의전화</th>
-                                            <td>010-8416-3254</td>
+                                            <th>학과</th>
+                                            <td>${dataDTO.memberMajor}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -232,10 +222,8 @@ $(document).ready(function () {
                     </div>
                     <div class="DetailInfo_observer__1F3B3"></div>
                 </div>
-            
-            
+
         `
-    });
 
     $textContainer.append(text);
 

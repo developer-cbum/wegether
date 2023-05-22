@@ -5,6 +5,7 @@ import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.InquiryDTO;
 import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -16,7 +17,7 @@ import java.util.Optional;
 public interface DataMapper {
 
     //    자료 목록 조회
-    public List<DataDTO> selectAll(@Param("pagination") Pagination pagination);
+    public List<DataDTO> selectAll(@Param("dataPagination") DataPagination dataPagination, CategoryType categoryType);
 
 //    자료 목록 조회
     public List<DataDTO> selectAll(DataPagination dataPagination);

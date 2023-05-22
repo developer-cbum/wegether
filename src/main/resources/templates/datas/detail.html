@@ -19,7 +19,7 @@
 <header th:replace="~{/fix/header :: #header}"></header>
 	<main id="main-app">
 		<div class="MainWrapper_content__GZkTa">
-			<section>
+			<section th:object="${dataDTO}">
 				<div class="MainContainer_root__3gfdh">
 
 					<div id="detail_container" class="DetailHeader_container__3PGje">
@@ -27,12 +27,14 @@
 							<div class="StoreSlider_container__ntgSo">
 								<div class="StoreSlider_slickList__kf7h-">
 									<div class="slick-slider slick-initialized" dir="ltr">
-										<button type="button"
-											class="StoreSlider_slickArrow__DO_oi Stoimage_containerreSlider_slickPrev__35Vwr">Previous</button>
+<!--										<button type="button"-->
+<!--											class="StoreSlider_slickArrow__DO_oi Stoimage_containerreSlider_slickPrev__35Vwr" >Previous</button>-->
 										<div class="slick-list" style="height: 470px;">
 											<div id="image_container" class="slick-track"
-												style="width: 6886px; opacity: 1; transform: translate3d(-626px, 0px, 0px);">
+												style="width: auto; opacity: 1; border-radius: 16px; overflow: hidden;">
 
+
+												<!-- image 반복 -->
 <!--												<div data-index="0" class="slick-slide slick-active slick-current"-->
 <!--													tabindex="-1" aria-hidden="false"-->
 <!--													style="outline: none; width: 626px;">-->
@@ -46,13 +48,14 @@
 <!--												</div>-->
 
 
+
 											</div>
 										</div>
-										<button type="button"
-											class="StoreSlider_slickArrow__DO_oi StoreSlider_slickNext__1xnz1">Next</button>
+<!--										<button type="button"-->
+<!--											class="StoreSlider_slickArrow__DO_oi StoreSlider_slickNext__1xnz1">Next</button>-->
 									</div>
 								</div>
-								<span class="StoreSlider_slickIndex__1d6Eo">1/5</span>
+<!--								<span class="StoreSlider_slickIndex__1d6Eo">1/5</span>-->
 							</div>
 						</div>
 						<div id="text_container" class="DetailHeader_detailInfoArea__cSsVa">
@@ -383,7 +386,7 @@
 			</button>
 		</div>
 	</main>
-	<footer th:replace="~{/fix/footer :: #footer}"></footer>
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

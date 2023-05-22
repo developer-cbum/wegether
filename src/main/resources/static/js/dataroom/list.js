@@ -12,15 +12,15 @@ $(document).ready(function () {
                    href="/datas/detail?id=${data.id}">
                    <div class="CardThumbnail_thumbnailContainer__DwnpC" style="height: 269px;">
                    `
+
                         data.files.forEach(file => {
                             if(file.fileType == "REPRESENTATIVE"){
                                 text += `
                                 <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
-                                <div aria-hidden="true"
-                                    class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
-                                    style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
-                                 </div>
-                                     
+                                    <div aria-hidden="true"
+                                        class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                        style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
+                                     </div>
                                 </div>`;
                             }
                         })
@@ -109,14 +109,17 @@ $(document).ready(function () {
     });
 
 
-    // 아마도 카테고리 ?
-    $('.ImageTab_tab__3siCY').click(function () {
+    // 카테고리
+    $('.category_lists button').click(function () {
         // 클릭한 버튼 활성화
-        $(this).addClass('ImageTab_active__BGdXu')
-            .parent()
-            .siblings()
-            .find('.ImageTab_tab__3siCY')
-            .removeClass('ImageTab_active__BGdXu');
+        $(this).addClass('ImageTab_active__BGdXu').parent().siblings()
+            .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
+    });
+
+    $('.category_lists button').on("click", function (e) {
+        e.preventDefault();
+        let type = this.classList[0];
+            location.href = `/data/list?type=${type}`;
     });
 
 
