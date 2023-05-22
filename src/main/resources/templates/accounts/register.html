@@ -10,6 +10,7 @@
             type="text/css"
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
     />
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 
     <link rel="stylesheet" href="/css/account/regist/intro.css">
     <link rel="stylesheet" href="/css/common/common.css">
@@ -71,6 +72,7 @@
                             class="naver-button Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_naverButton__1rzZ_ SNSButtonList_spacer__38ac5"
                             type="button"
                     >
+                        <div id="naver_id_login" style="opacity: 0; height: 0px"></div>
                 <span
                 ><span class="Button_children__raEW4"
                 ><svg
@@ -723,7 +725,16 @@
     <!-- [E] Footer -->
 </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>-->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/js/modal/modal.js"></script>
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("yPLfiIWc1PIqc4_vQtH5", "http://localhost:10000/accounts/naver-login");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("green", 5, 40);
+    naver_id_login.setDomain("http://localhost:10000");
+    naver_id_login.setState(state);
+    naver_id_login.init_naver_id_login();
+</script>
 <script src="/js/account/regist/intro.js"></script>
 </html>
