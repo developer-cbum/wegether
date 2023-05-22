@@ -40,4 +40,9 @@ public class ProjectServiceImpl implements ProjectService {
     public void remove(Long id) {
         projectDAO.ProjectDelete(id);
     }
+
+    @Override
+    public int getTotal() {
+        return projectDAO.findCountOfProject();
+    }
 }
