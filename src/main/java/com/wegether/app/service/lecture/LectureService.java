@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface LectureService {
 
-    public void write(LectureDTO lectureDTO);
+    public void register(LectureDTO lectureDTO);
 
 
     //강연 게시글 목록
