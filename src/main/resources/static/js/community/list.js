@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     let page = 1;
+    // let count = 1; //한번만 실행할수있게하는 flag
     showList();
 
     $(window).scroll(function(){
@@ -10,47 +11,13 @@ $(document).ready(function() {
         }
     });
 
-    /*게시글 불러오기 ajax 함수*/
-    function next_load() {
-        $.ajax({
-            type: "POST",
-            data: { page: page },
-            url: "/community/list",
-            success: function(communities) {
-                if (communities) {
-                    console.log(communities);
-                    if (result.length == 0) {
-                        showWarnModal("마지막 이용후기입니다");
-                        return;
-                    }
-                    showList(communities);
-                    loading = false;    //실행 가능 상태로 변경
-                }
-            },
-            complete: function() {
-                $('.wrap-loading').addClass('display-none');
-            }, error: function(request, status, error) { // 오류가 발생했을 때 호출된다.
-                if (error === 'timeout') {
-                    showWarnModal("요청한 시간이 지났습니다.<br> 새로고침을 시도해주세요.");
-                }
-            }, timeout: 20000
-        });
-    }
-
-    $(window).scroll(function() {
-        console.log(Math.round($(window).scrollTop()));
-        console.log($(document).height() - $(window).height());
-        if (Math.round($(window).scrollTop()) >= $(document).height() - $(window).height()) {
-            if (!loading)    //실행 가능 상태라면?
-            {
-                page++;
-                loading = true; //실행 불가능 상태로 변경
-                next_load();
-                return;
-            }
+    $.ajax({
+        url: "/community/list?page=${page}",
+        success: function (communities) {
+            console.log("들어옴")
+            showList()
         }
-    });
-
+    })
 
 
     function showList() {
@@ -110,8 +77,6 @@ $(document).ready(function() {
 
                 })
                 $(".block_extended").html(text);
-
-                console.log($block)
     }
 })
 
