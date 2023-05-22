@@ -28,7 +28,7 @@ public class CommunityController {
 
     @GetMapping("list")
     public void list(CommunityPagination communityPagination, Model model) {
-        communityPagination.setTotal(communityPagination.getTotal());
+        communityPagination.setTotal(communityService.getTotal());
         communityPagination.progress();
         model.addAttribute("communities", communityService.getList(communityPagination));
     }

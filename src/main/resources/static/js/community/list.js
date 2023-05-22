@@ -12,10 +12,13 @@ $(document).ready(function() {
     });
 
     $.ajax({
-        url: "/community/list?page=${page}",
+        method: 'GET',
+        data: { page: page },
+        url: `/community/list?page=${page}`,
         success: function (communities) {
             console.log("들어옴")
-            showList()
+            showList();
+
         }
     })
 
