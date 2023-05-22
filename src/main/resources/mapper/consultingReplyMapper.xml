@@ -1,4 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.ConsultingReplyMapper">
+
+<!-- 일반 댓글   -->
+    <insert id="insertReply">
+        <selectKey keyProperty="id" order="BEFORE" resultType="long">
+            SELECT SEQ_REPLY.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_REPLY
+        (ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH)
+        VALUES(#{id}, #{replyContent}, #{id}, 0)
+    </insert>
+
+<!-- 대댓글-->
+    <insert id="insertReplyAgain">
+        INSERT INTO TBL_REPLY
+        (ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH)
+        VALUES(SEQ_REPLY.NEXTVAL, #{replyContent}, #{replyGroup}, 1)
+    </insert>
+
+<!--일반 댓글 조회-->
+    <select id="selectAll" resultType="consultReplyDTO">
+    SELECT M.MEMBER_NICKNAME, G.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, G.CONSULTING_ID, G.MEMBER_ID
+    FROM TBL_MEMBER M JOIN
+    (
+    SELECT ROWNUM W, R.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, R.CONSULTING_ID, R.MEMBER_ID
+    FROM TBL_CONSULTING C JOIN
+    (
+    SELECT R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.CONSULTING_ID, A.MEMBER_ID
+    FROM TBL_CONSULTING_REPLY A JOIN TBL_REPLY R
+    ON A.ID = R.ID
+    ORDER BY R.ID DESC
+    ) R
+       <![CDATA[
+    ON C.ID = R.CONSULTING_ID AND ROWNUM <= #{lecturePagination.page} * #{lecturePagination.rowCount}
+    ) G
+    ON M.ID = G.MEMBER_ID AND W > (#{lecturePagination.page} - 1) * #{lecturePagination.rowCount} AND REPLY_DEPTH = 0 AND G.CONSULTING_ID = #{consultingId}
+      ]]>
+    </select>
+
+    <!--일반댓글 총개수-->
+    <select id="selectCountOfReply" resultType="_int">
+        SELECT COUNT(R.ID)
+        FROM TBL_CONSULTING_REPLY A JOIN TBL_REPLY R
+        ON A.ID = R.ID AND A.CONSULTING_ID =#{consultingId}
+    </select>
+    <!--중간테이블 삽입-->
+    <insert id="insertMiddle">
+    INSERT INTO TBL_CONSULTING_REPLY
+    (ID, MEMBER_ID, CONSULTING_ID)
+    VALUES(#{id}, #{memberId}, #{consultingId})
+    </insert>
+
 </mapper>
