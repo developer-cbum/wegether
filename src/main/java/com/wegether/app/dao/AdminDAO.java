@@ -3,6 +3,7 @@ package com.wegether.app.dao;
 import com.wegether.app.domain.dto.AdminPagination;
 import com.wegether.app.domain.dto.DataAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
+import com.wegether.app.domain.dto.ProjectAdminDTO;
 import com.wegether.app.domain.vo.*;
 import com.wegether.app.mapper.AdminMapper;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,15 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 공지사항 목록
-    public List<NoticeVO> noticeFindAll(){
-        return adminMapper.noticeSelectAll();
+//    public List<NoticeVO> noticeFindAll(){
+//        return adminMapper.noticeSelectAll();
+//    };
+    public List<NoticeVO> noticeFindAll(AdminPagination adminPagination){
+        return adminMapper.noticeSelectAll(adminPagination);
     };
+
+    // 공지사항 총 갯수
+    public int FindCountOfNotice() { return adminMapper.selectCountOfNotice(); }
 
     // 공지사항 등록
     public void noticeSave(NoticeVO noticeVO){ adminMapper.noticeInsert(noticeVO); };
@@ -51,9 +58,15 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 프로젝트 목록
-    public List<ProjectVO> projectFindAll(){
-        return adminMapper.projectSelectAll();
+    public List<ProjectAdminDTO> projectFindAll(AdminPagination adminPagination){
+        return adminMapper.projectSelectAll(adminPagination);
     };
+//    public List<ProjectAdminDTO> projectFindAll(){
+//        return adminMapper.projectSelectAll();
+//    };
+
+    // 프로젝트 총 갯수
+    public int FindCountOfProject() { return adminMapper.selectCountOfProject(); }
 
     // 프로젝트 삭제
     public void projectDelete(Long id){ adminMapper.projectDelete(id); };
@@ -61,9 +74,15 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 문의사항 목록
-    public List<ProjectVO> inquiryFindAll(){
-        return adminMapper.inquirySelectAll();
+//    public List<InquiryAdminDTO> inquiryFindAll(){
+//        return adminMapper.inquirySelectAll();
+//    };
+    public List<InquiryAdminDTO> inquiryFindAll(AdminPagination adminPagination){
+        return adminMapper.inquirySelectAll(adminPagination);
     };
+
+    // 문의사항 총 갯수
+    public int FindCountOfInquiry() { return adminMapper.selectCountOfInquiry(); }
 
     // 문의사항 답변 등록
     public void answerSave(AnswerVO answerVO){
@@ -93,9 +112,16 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 회원 목록
-    public List<MemberVO> memberFindAll(){
-        return adminMapper.memberSelectAll();
+    public List<MemberVO> memberFindAll(AdminPagination adminPagination){
+        return adminMapper.memberSelectAll(adminPagination);
     };
+
+//    public List<MemberVO> memberFindAll(){
+//        return adminMapper.memberSelectAll();
+//    };
+
+    // 회원 총 인원 수
+    public int findCountOfMember() { return adminMapper.selectCountOfMember(); }
 
     // 회원 삭제
     public void memberDelete(Long id) { adminMapper.memberDelete(id); };
@@ -103,7 +129,14 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 강연 목록
-    public List<LectureVO> lectureFindAll() { return adminMapper.lectureSelectAll(); }
+    public List<LectureVO> lectureFindAll(AdminPagination adminPagination){
+        return adminMapper.lectureSelectAll(adminPagination);
+    };
+
+//    public List<LectureVO> lectureFindAll() { return adminMapper.lectureSelectAll(); }
+
+    // 강연 총 갯수
+    public int findCountOfLecture() { return adminMapper.selectCountOfLecture(); }
 
     // 강연 삭제
     public void lectureDelete(Long id) { adminMapper.lectureDelete(id); }

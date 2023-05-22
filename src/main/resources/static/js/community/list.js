@@ -1,7 +1,11 @@
 $(document).ready(function(){
+
+    let page = 1;
+
     const $block = $(".block_extended");
 
     console.log("들옴");
+
 
     let text = "";
     communities.forEach(community => {
@@ -33,7 +37,7 @@ $(document).ready(function(){
                                 src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" class="preview">`;
                                 }
                               })
-                              
+
            text +=      ` </a>
                      </div>
                  </div>

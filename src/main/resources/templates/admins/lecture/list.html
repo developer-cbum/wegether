@@ -9,19 +9,27 @@
         <link rel="stylesheet" href="/css/admin/admin_common.css" />
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
         <link rel="stylesheet" href="/css/admin/admin_member_list.css" />
+        <link rel="stylesheet" href="/css/admin/modal.css" />
+        <link rel="stylesheet" href="/css/admin/admin_board.css">
+        <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
+        <link rel="stylesheet" href="/css/admin/admin_common.css">
         <link rel="icon" href="/image/logo/favicon.png" />
     </head>
 
     <body>
         <div>
+            <!-- 모달 부분 -->
+            <div class="modal">
+                <div class="warn-modal">
+                    <div id="content-wrap"></div>
+                </div>
+            </div>
+
             <div class="info-title-box info-title-box-flex">
                 <div class="logo-box-layout">
                     <div class="logo-box">
                         <img src="/image/admin/wegether.svg" style="padding-top: 17px" />
                     </div>
-                    <!-- <div class="logo-title">
-                    <span>Jar</span>
-                </div> -->
                 </div>
                 <div>
                     <div class="select-name">
@@ -48,7 +56,7 @@
                                 <div class="delete-box">
                                     <button
                                         class="deleteButton delete-button"
-                                        onclick="deleteNotices(getSelectedNoticeIds())"
+                                        onclick="deleteLectures(getSelectedLectureIds())"
                                     >
                                         강연 삭제
                                     </button>
@@ -78,94 +86,41 @@
                                                 <th>강연 총 인원</th>
                                             </tr>
                                         </thead>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                    type="checkbox"
-                                                    class="memberCheckbox"
-                                                    name="check"
-                                                    value=""
-                                                />
-                                            </td>
-                                            <td>1</td>
-                                            <td>
-                                                <a href="">
-                                                    강연 제목 입니다
-                                                </a>
-                                                <!-- 디테일 컨트롤러 제작하고 연결  -->
-                                            </td>
-                                            <td class="member_type is_active">
-                                                5월 15일
-                                            </td>
-                                            <td>3시~4시</td>
-                                            <td>비대면</td>
-                                            <td>100명</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                    type="checkbox"
-                                                    class="memberCheckbox"
-                                                    name="check"
-                                                    value=""
-                                                />
-                                            </td>
-                                            <td>1</td>
-                                            <td class="member_type is_active">
-                                                강연 제목 입니다
-                                            </td>
-                                            <td>
-                                                <a href="">
-                                                    5월 15일
-                                                </a>
-                                                <!-- 디테일 컨트롤러 제작하고 연결  -->
-                                            </td>
-                                            <td>3시~4시</td>
-                                            <td>비대면</td>
-                                            <td>100명</td>
-                                        </tr>
+                                        <tbody>
+                                            <tr th:each="lectures : ${lectures}">
+                                                <td class="checkbox-line">
+                                                    <input
+                                                        type="checkbox"
+                                                        class="lectureCheckbox"
+                                                        name="check"
+                                                        th:value="${lectures.id}"/>
+                                                </td>
+                                                <td th:text="${lectures.id}"></td>
+                                                <td th:text="${lectures.lectureTitle}"></td>
+                                                <td th:text="${lectures.lectureDate}"></td>
+                                                <td th:text="${lectures.lectureTime}"></td>
+                                                <td th:text="${lectures.lectureLocation}"></td>
+                                                <td th:text="${lectures.lectureTotalPersonnel}"></td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
                         </section>
                         <!-- 폼태그 -->
 
-                        <!-- 페이지 버튼 -->
-<!--                        <div class="page-button-box-layout">-->
-<!--                            <div class="page-button-box">-->
-<!--                                &lt;!&ndash; 페이지 번호 &ndash;&gt;-->
-<!--                                <div class="">-->
-<!--                                    <div class="page-button-margin">-->
-<!--                                        <div>-->
-<!--                                            <img-->
-<!--                                                src="/image/admin/left_icon.png"-->
-<!--                                                class="left-button"-->
-<!--                                            />-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <th:block th:each="num : ${#numbers.sequence(pageDTO.startPage, pageDTO.endPage + 1)}">-->
-<!--                                    <a-->
-<!--                                        th:class="${(num == pageDTO.startPage) ? 'page-button-active page-button changePage' : 'page-button changePage'}"-->
-<!--                                        th:href="${num}"-->
-<!--                                    >-->
-<!--                                        <span class="page-button" th:text="${num}"></span>-->
-<!--                                    </a>-->
-<!--                                    <div style="width: 2px"></div>-->
-<!--                                </th:block>-->
-<!--                                <div class="">-->
-<!--                                    <div class="page-button-margin">-->
-<!--                                        <div>-->
-<!--                                            <img-->
-<!--                                                src="../../../../static/image/admin/right_icon.png"-->
-<!--                                                class="right-button"-->
-<!--                                            />-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <!-- 페이지 버튼 끝 -->
+                        <!-- 페이지 부분 -->
+                        <div id="paging-wrap">
+                            <a th:if="${adminPagination.prev}" th:href="${adminPagination.startPage - 1}" class="lecture-change-page paging paging-move">
+                                <img src="/image/admin/prev.png" width="15px"></a>
+                            <th:block th:each="page:${#numbers.sequence(adminPagination.startPage, adminPagination.endPage)}">
+                                <a th:if="${page eq adminPagination.page}" class="paging paging-checked" th:text="${page}"></a>
+                                <a th:unless="${page eq adminPagination.page}" th:href="${page}" class="lecture-change-page paging" th:text="${page}"></a>
+                            </th:block>
+                            <a th:if="${adminPagination.next}" th:href="${adminPagination.endPage + 1}" class="lecture-change-page paging paging-move">
+                                <img src="/image/admin/next.png" width="15px"></a>
+                            <div></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -174,76 +129,44 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/checkbox.js"></script>
     <script src="/js/admin/page.js"></script>
+    <script src="/js/admin/paging.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
+    <script src="/js/admin/modal.js"></script>
     <script>
-        const memberId = '${memberDTO.id}';
+        let lectures = [[${lectures}]];
+        console.log(lectures);
+    </script>
+    <script th:inline="javascript">
+        let text = "";
 
-        function getSelectedMemberIds() {
-            const memberIds = [];
-            $('.memberCheckbox:checked').each(function () {
-                memberIds.push($(this).val());
+        function getSelectedLectureIds() {
+            const lectureIds = [];
+            $(".lectureCheckbox:checked").each(function() {
+                lectureIds.push($(this).val());
             });
-            return memberIds;
+            return lectureIds;
         }
 
-        function deleteMembers(memberIds) {
+        function deleteLectures(lectureIds) {
             $.ajax({
-                url: '/admin/member/delete',
-                type: 'DELETE',
-                contentType: 'application/json',
-                data: JSON.stringify(memberIds),
-                traditional: true,
-                success: function () {
-                    location.reload();
+                url: "/admins/lecture/delete",
+                type: "POST",
+                // method: "DELETE",
+                // dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(lectureIds),
+                success: function() {
+                    console.log(lectureIds);
+                    showWarnModal("삭제에 성공 하였습니다.");
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
                 },
-                error: function () {
-                    alert('게시물 삭제에 실패했습니다.');
-                },
-            });
-        }
-
-        /* url에 있는 페이지 번호를 가져와서 css 수정하는 코드*/
-        $(document).ready(function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentPage = parseInt(urlParams.get('page'));
-
-            if (currentPage) {
-                $('.page-button').each(function (index, element) {
-                    if (parseInt($(element).text()) === currentPage) {
-                        $(element).addClass('page-button-active');
-                    } else {
-                        $(element).removeClass('page-button-active');
-                    }
-                });
-            }
-        });
-
-        $(document).ready(function () {
-            // 삭제 버튼 클릭 이벤트 핸들러
-            $('#deleteButton').on('click', function () {
-                const checkedItems = $('.memberCheckbox:checked');
-                const memberIds = [];
-                checkedItems.each(function () {
-                    memberIds.push($(this).val());
-                });
-
-                if (memberIds.length > 0) {
-                    if (confirm('선택한 게시물을 삭제하시겠습니까?')) {
-                        deleteSuggests(memberIds);
-                    }
-                } else {
-                    alert('삭제할 게시물을 선택해주세요.');
+                error: function() {
+                    showWarnModal("삭제에 실패 하였습니다.");
                 }
             });
-        });
-
-        //페이지 번호 링크로 가져오는 코드
-        let $pageForm = $("form[name='pageForm']");
-
-        $('a.changePage').on('click', function (e) {
-            e.preventDefault();
-            $pageForm.find("input[name='page']").val($(this).attr('href'));
-            $pageForm.submit();
-        });
+        }
     </script>
+
 </html>
