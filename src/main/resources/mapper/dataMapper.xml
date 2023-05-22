@@ -42,7 +42,7 @@
     </select>
 
     <!--  자료 등록  -->
-    <insert id="insert">
+    <insert id="insert" parameterType="dataDTO">
         <selectKey keyProperty="id" order="BEFORE" resultType="dataDTO">
             SELECT SEQ_DATA.NEXTVAL FROM DUAL
         </selectKey>

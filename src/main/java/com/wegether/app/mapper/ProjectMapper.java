@@ -37,7 +37,11 @@ public interface ProjectMapper {
 
 
 
+
 //    소영 마이페이지 추가
 
     public List<ProjectDTO> selectmyProject (Long memberId);
+
+    public int selectCountOfProject();
+
 }

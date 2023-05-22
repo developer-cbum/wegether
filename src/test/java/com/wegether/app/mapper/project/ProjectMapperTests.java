@@ -37,12 +37,12 @@ public class ProjectMapperTests {
         projectMapper.projectInsert(projectDTO);
     }
     //목록 테스트
-//    @Test
-//    public void projectSelectAllTest() {
-//        ProjectPagination projectPagination = new ProjectPagination(3);
-//        projectPagination.setPage(1);
-//        projectMapper.projectSelectAll(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
-//    }
+    @Test
+    public void projectSelectAllTest() {
+        ProjectPagination projectPagination = new ProjectPagination();
+        projectPagination.setPage(1);
+        projectMapper.projectSelectAll(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
+    }
 
     //상세 테스트
     @Test

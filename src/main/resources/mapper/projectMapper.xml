@@ -4,30 +4,35 @@
 
     <!--    <프로젝트 목록>-->
     <select id="projectSelectAll" resultType="projectDTO">
-        SELECT P.ID, P.MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL, PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT, PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
+        SELECT P.ID, P.MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
+        PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT,
+        PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
         FROM (
         SELECT ROWNUM R, P.ID, P.MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
-         PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT, PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
+        PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT,
+        PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
         FROM TBL_MEMBER M JOIN TBL_PROJECT P
         <![CDATA[
         ON M.ID = P.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
+        ORDER BY P.ID DESC
         ]]>
-        ORDER BY P.ID
-        DESC
-        <![CDATA[
-        ) P WHERE R > (#{page} -1) * #{rowCount}
-        ]]>
+        ) P WHERE R > (#{page} - 1) * #{rowCount}
     </select>
 
 
     <!-- 프로젝트 등록>-->
     <insert id="projectInsert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+            SELECT SEQ_PROJECT.NEXTVAL FROM DUAL
+        </selectKey>
     INSERT INTO TBL_PROJECT
     (ID, MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
     PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT, PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL)
-    VALUES(SEQ_PROJECT.NEXTVAL, #{memberId},#{projectTitle},#{projectIntroducing},#{projectMajor},#{projectSchool},
+    VALUES(#{id},#{memberId},#{projectTitle},#{projectIntroducing},#{projectMajor},#{projectSchool},
      SYSDATE,SYSDATE,#{projectEndDate},#{projectReadCount},#{projectNowPersonnel},#{projectTotalPersonnel})
-</insert>
+    </insert>
+
+
 
     <!--     <프로젝트 상세>-->
     <select id="select" resultType="ProjectDTO">
@@ -60,10 +65,14 @@
 
 
 
-
     <select id="selectmyProject" resultType="projectDTO">
     SELECT TO_CHAR(PROJECT_REGISTER_DATE, 'YYYYMMDDHH24MISS')|| id inum, PROJECT_TITLE, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR  info, TO_CHAR(PROJECT_UPDATE_DATE, 'YYYY/MM/DD') register, PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL now
     FROM TBL_PROJECT
     WHERE MEMBER_ID=#{memberId}
+
+    <select id="selectCountOfProject" resultType="_int">
+        SELECT COUNT(ID)
+        FROM TBL_PROJECT
+
     </select>
 </mapper>

@@ -320,10 +320,7 @@ body:not(.et-tb-has-header) #main-content .container {
   padding-right: 2em;
   padding-left: 0.7em;
 }
-.et_button_icon_visible .et_pb_button:after {
-  opacity: 1;
-  margin-left: 0;
-}
+
 .et_button_left .et_pb_button:hover:after {
   left: 0.15em;
 }
@@ -776,7 +773,6 @@ a.et_pb_more_button:after {
   font-size: 20px;
   font-weight: 500;
   padding: 0.3em 1em;
-  line-height: 1.7em !important;
   background-color: transparent;
   background-size: cover;
   background-position: 50%;
@@ -792,11 +788,7 @@ a.et_pb_more_button:after {
 .et_pb_button_inner {
   position: relative;
 }
-.et_pb_button:hover,
-.et_pb_module .et_pb_button:hover {
-  border: 2px solid transparent;
-  padding: 0.3em 2em 0.3em 0.7em;
-}
+
 .et_pb_button:hover {
   background-color: hsla(0, 0%, 100%, 0.2);
 }
@@ -804,36 +796,13 @@ a.et_pb_more_button:after {
 .et_pb_bg_layout_light .et_pb_button:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
-.et_pb_button:after,
-.et_pb_button:before {
-  font-size: 32px;
-  line-height: 1em;
-  content: '\35';
-  opacity: 0;
-  position: absolute;
-  margin-left: -1em;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  text-transform: none;
-  -webkit-font-feature-settings: 'kern' off;
-  font-feature-settings: 'kern' off;
-  font-variant: none;
-  font-style: normal;
-  font-weight: 400;
-  text-shadow: none;
-}
+
 .et_pb_button.et_hover_enabled:hover:after,
 .et_pb_button.et_pb_hovered:hover:after {
   -webkit-transition: none !important;
   transition: none !important;
 }
-.et_pb_button:before {
-  display: none;
-}
-.et_pb_button:hover:after {
-  opacity: 1;
-  margin-left: 0;
-}
+
 .et_pb_column_1_3 h1,
 .et_pb_column_1_4 h1,
 .et_pb_column_1_5 h1,

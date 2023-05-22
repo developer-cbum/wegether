@@ -27,7 +27,11 @@ public class DataController {
     private final DataService dataService;
     private final AccountService accountService;
 
+
     //    자료 목록
+
+//    자료 목록
+
     @GetMapping("list")
     public void goToDataList(DataPagination dataPagination, Model model){
         dataPagination.setTotal(dataService.getTotal());
@@ -35,13 +39,21 @@ public class DataController {
         model.addAttribute("datas", dataService.getList(dataPagination));
     }
 
+
     //    자료 상세
+
+//    자료 상세
+
     @GetMapping("detail")
     public void read(Long id, Model model){
         model.addAttribute("dataDTO", dataService.read(id));
     }
 
+
     //    자료 등록 - HttpSession session
+
+//    자료 등록 - HttpSession session
+
     @GetMapping("register")
     public void goToRegisterForm(DataVO dataVO, HttpSession session, Model model){
 
