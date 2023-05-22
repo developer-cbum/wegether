@@ -1,3 +1,4 @@
+
 $('.select-menu__control').on('click', function () {
   if (!$(this).hasClass('select-menu__control--menu-is-open')) {
     $(this).addClass('select-menu__control--menu-is-open');

@@ -29,6 +29,11 @@ public class ProjectDTO{
 
 
 
+
+
+    
+
+
 //    소영 추가
     private String info;
     private String register;
