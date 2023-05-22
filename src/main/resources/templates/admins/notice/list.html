@@ -83,7 +83,9 @@
                                                     th:value="${notices.id}"/>
                                         </td>
                                         <td th:text="${notices.id}"></td>
-                                        <td th:text="${notices.noticeTitle}"></td>
+                                        <td>
+                                            <a th:href="@{detail(id=${notices.id})}" th:text="${notices.noticeTitle}"></a>
+                                        </td>
                                         <td th:text="${notices.noticeRegisterDate}"></td>
                                     </tr>
                                 </table>

@@ -79,7 +79,9 @@
                                                         th:value="${inquiries.id}"/>
                                             </td>
                                             <td th:text="${inquiries.id}"></td>
-                                            <td th:text="${inquiries.inquiryTitle}"></td>
+                                            <td>
+                                                <a th:href="@{detail(id=${inquiries.id})}" th:text="${inquiries.inquiryTitle}"></a>
+                                            </td>
                                             <td th:text="${inquiries.memberNickname}"></td>
                                             <td th:text="${inquiries.inquiryRegisterDate}"></td>
                                             <td th:text="${inquiries.inquiryStatus ? '답변 완료' : '미답변'}"></td>
