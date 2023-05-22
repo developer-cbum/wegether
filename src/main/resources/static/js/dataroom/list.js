@@ -6,39 +6,25 @@ $(document).ready(function () {
     datas.forEach(data => {
         text += `
 
-
             <div role="presentation" class="CardTable_itemContainer__v9-cW"
                 style="width: calc((25% - 24px + 6px) - 0.01px); margin-left: 0px; margin-right: 12px; margin-bottom: 40px;">
                 <a class="StoreCard_item__1hRfz"
-                   href="#">
-                   <div class="CardThumbnail_thumbnailContainer__DwnpC">
+                   href="/datas/detail?id=${data.id}">
+                   <div class="CardThumbnail_thumbnailContainer__DwnpC" style="height: 269px;">
                    `
                         data.files.forEach(file => {
                             if(file.fileType == "REPRESENTATIVE"){
                                 text += `
-                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px);">
+                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
+                                <div aria-hidden="true"
+                                    class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                    style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
+                                 </div>
                                      
-                                     <div class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4" style="border-radius: 8px;">
-                                        <img src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" >
-                                     </div>
-                                </div>`;
-                            } else {
-                                text += `
-                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px);">
-                                     <div aria-hidden="true"
-                                        class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
-                                        style="min-height: 270px;  border-radius: 8px; background-image: url(../../image/data/no-image.png);">
-                                     </div>
                                 </div>`;
                             }
                         })
-// <!--                      <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K"-->
-// <!--                         style="padding-top: calc(100% - 0px);">-->
-// <!--                         <div aria-hidden="true"-->
-// <!--                            class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"-->
-// <!--                            style="background-image: url(&quot;https://cdn2.wadiz.kr/2021/09/01/a003835f-bbf7-4493-a4a1-ea0359fc9dab.jpg/wadiz/resize/1000/format/jpg/quality/85/&quot;); border-radius: 8px;">-->
-// <!--                         </div>-->
-// <!--                      </div>-->
+                        
         text += `
                    </div>
                    <div class="StoreCard_contentContainer__tQfaN">
