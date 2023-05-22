@@ -11,24 +11,17 @@ $(document).ready(function () {
                 style="width: calc((25% - 24px + 6px) - 0.01px); margin-left: 0px; margin-right: 12px; margin-bottom: 40px;">
                 <a class="StoreCard_item__1hRfz"
                    href="#">
-                   <div class="CardThumbnail_thumbnailContainer__DwnpC">
+                   <div class="CardThumbnail_thumbnailContainer__DwnpC" style="height: 269px;">
                    `
                         data.files.forEach(file => {
                             if(file.fileType == "REPRESENTATIVE"){
                                 text += `
-                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px);">
+                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
+                                <div aria-hidden="true"
+                                    class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                    style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
+                                 </div>
                                      
-                                     <div class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4" style="border-radius: 8px;">
-                                        <img src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" >
-                                     </div>
-                                </div>`;
-                            } else {
-                                text += `
-                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px);">
-                                     <div aria-hidden="true"
-                                        class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
-                                        style="min-height: 270px;  border-radius: 8px; background-image: url(../../image/data/no-image.png);">
-                                     </div>
                                 </div>`;
                             }
                         })

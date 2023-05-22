@@ -33,22 +33,22 @@ public class DataController {
         dataPagination.progress();
         model.addAttribute("datas", dataService.getList(dataPagination));
     }
+
+//    자료 등록 - HttpSession session
+//    @GetMapping("register")
+//        public void goToRegisterForm(DataVO dataVO, HttpSession session, Model model){
 //
-////    목록 조회
-//    @GetMapping("list")
-//    public void goToConsultingList(Pagination pagination, Model model){
-//        pagination.setTotal(dataService.getTotal());
-//        pagination.progress();
-//        model.addAttribute("consults", dataService.getList(pagination));
-//    }
+//        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
+//        model.addAttribute("nickName", nickName);
+//    };
 
-//    자료 등록
+    //    자료 등록 - session 없이
     @GetMapping("register")
-        public void goToRegisterForm(DataVO dataVO, HttpSession session, Model model){
+    public void goToRegisterForm(DataVO dataVO, Model model){
+        dataService.write(dataVO.getId(2));
 
-        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
-        model.addAttribute("nickName", nickName);
     };
+
 
 //    자료 등록 > 리스트 이동
     @PostMapping("register")
@@ -57,7 +57,7 @@ public class DataController {
         return new RedirectView("/data/list");
     }
 
-    @GetMapping(value = {"detail", "modify"})
+    @GetMapping(value = {"detail"})
     public void read(Long id, Model model){
         model.addAttribute("data", dataService.read(id));
     }
