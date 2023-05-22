@@ -43,7 +43,7 @@
                                 </div>
                                 <form
                                     class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
-                                    th:action="@{/community/write}" method="post" th:object="${communityDTO}">
+                                    th:action="@{/community/write}" method="post" th:object="${communityDTO}" enctype="multipart/form-data">
                                     <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
 
                                     <!-- 커뮤니티 큰 제목 -->
@@ -97,26 +97,16 @@
                                                     class="field Form_field__35I9T required ImageFormField_field__X1jTW StoryImageField_field__3O6yy"
                                                     style="padding-left: 0px"
                                                 >
-                                                    <div class="ImageFormField_buttonWrapper__su3pO">
-                                                        <label
-                                                            class="wz label ImageFileButton_label__3thB2 Label_label__3oH0h"
-                                                            ><button
-                                                                type="button"
-                                                                class="wz button gray ImageFileButton_button__3gAHD"
-                                                            >
-                                                                <i class="icon-camera-o" aria-hidden="true"></i>등록하기
-                                                            </button>
-                                                            <div class="wz input right ImageFileButton_input__1Dnch">
-                                                                <input
-                                                                    accept="image/JPG,image/JPEG,image/GIF,image/PNG"
-                                                                    name="uploadFile"
-                                                                    placeholder=""
-                                                                    type="file"
-                                                                    value=""
-                                                                /></div></label
-                                                        ><em class="helper error"></em
-                                                        ><em class="helper ImageFormField_helper__3XC5c"
-                                                            >2MB 이하의 JPG, JPEG, GIF, PNG 파일</em
+                                                    <div class="attach-wrap">
+                                                        <label for="upload1" class="attach">
+                                                            <img src="" class="thumbnail">
+                                                            <div class="x">
+                                                                <img src="/community/images/x.png">
+                                                            </div>
+                                                            <h6 class="plus">+</h6>
+                                                        </label>
+                                                        <input type="file" id="upload1" class="upload" style="display: none;">
+                                                     <em class="helper ImageFormField_helper__3XC5c">2MB 이하의 JPG, JPEG, GIF, PNG 파일</em
                                                         ><em class="helper ImageFormField_helper__3XC5c"
                                                             >해상도 630x400 픽셀 이상</em
                                                         >
@@ -183,6 +173,40 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
+
+    <script>
+        const $upload = $("input.upload");
+        const $thumbnail = $("label.attach img.thumbnail");
+
+        $upload.on("change", function(e){
+            let i = $upload.index($(this));
+            var reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = function(e){
+                let url = e.target.result;
+                if(url.includes('image')){
+                    $("label.attach").eq(i).find("h6").hide();
+                    $("div.x").eq(i).show();
+                    $thumbnail.eq(i).show();
+                    $thumbnail.eq(i).attr('src', url);
+                }else{
+                    showWarnModal("이미지 파일만 등록 가능합니다.");
+                }
+            }
+        });
+
+        $("div.x").on("click", function(e){
+            e.preventDefault();
+            let i = $("div.x").index($(this));
+            $upload.eq(i).val("");
+            $("label.attach").eq(i).find("h6").show();
+            $("div.x").eq(i).hide();
+            $thumbnail.eq(i).attr('src', "");
+            $thumbnail.eq(i).hide();
+        });
+
+
+    </script>
     <!-- 모달 부분 js -->
     <script>
         let modalCheck;
@@ -233,5 +257,6 @@
                 document.registerForm.submit();
             }, 2000);
         }
+
     </script>
 </html>
