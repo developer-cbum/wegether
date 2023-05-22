@@ -37,7 +37,7 @@ public class DataController {
 
 //    자료 상세
     @GetMapping("detail")
-    public void read(Long id, Model model){
+    public void read(@RequestParam Long id, Model model){
         model.addAttribute("dataDTO", dataService.read(id));
     }
 

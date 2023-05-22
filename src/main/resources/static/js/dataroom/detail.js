@@ -2,25 +2,41 @@ $(document).ready(function () {
 
     const $imageContainer = $("#image_container");
 
-    let image = "";
-    dataDTO.forEach(file => {
+    console.log(dataDTO);
 
-        image += `
-        
-               <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline: none; width: 626px;">
-                    <div>
-                        <div tabindex="-1" style="width: 100%; display: inline-block;">
-                            <div class="StoreSlider_slickBackgroundImage__1CH4Y" style="background-image: url(&quot;https://cdn2.wadiz.kr/2022/08/20/0d25c2d2-b102-4bde-a1be-bbd5b7ce92cb.jpg/wadiz/quality/80/&quot;);">
+    let image = "";
+    dataDTO.forEach(files => {
+        image +=
+
+            files.forEach(file => {
+                if(file.fileType == "REPRESENTATIVE") {
+                    image += `
+
+                        <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline: none; width: 626px;">
+                               <div>
+                                  <div tabindex="-1" style="width: 100%; display: inline-block;">
+                                    <div class="StoreSlider_slickBackgroundImage__1CH4Y" style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName});">
+                                     </div>
+                                  </div>
+                               </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+
+
+
+
+
+                        
+                   `;
+                }
+            })
+
             
-            
-        `
+
     });
 
     $imageContainer.append(image);
+
+
 
     const $textContainer = $("#text_container");
 
@@ -36,7 +52,7 @@ $(document).ready(function () {
                                 <a href="/web/wcampaign/search?category=292,316,sc019"
                                     class="ProjectSearchTags_category__3ofgG ProjectSearchTags_gaElement__1mZHZ"
                                     data-ga-category="스토어(상세)_카테고리" data-ga-action="클릭" data-ga-label="대학교">
-                                    <span aria-label="카테고리">서울대학교</span>
+                                    <span aria-label="카테고리">${data.dataSchool}</span>
                                     <svg viewBox="0 0 40 40" focusable="false" role="presentation"
                                         class="withIcon_icon__3VTbq" aria-hidden="true"
                                         style="width: 18px; height: 18px;">
@@ -51,22 +67,13 @@ $(document).ready(function () {
                                             <span class="Button_children__ilFun">
                                                 <div class="ProjectSearchTags_hashTag__2UMo_">
                                                     <span class="ProjectSearchTags_hash__IgbO9">#</span>
-                                                    <span>컴퓨터공학과</span>
+                                                    <span>${data.dataMajor}</span>
                                                 </div>
                                             </span>
                                         </span>
                                     </a>
                                 </div>
                             </div>
-<!--										<button-->
-<!--											class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA"-->
-<!--											type="button" style="width:100px; height:30px;">-->
-<!--											<span>-->
-<!--												<span class="Button_children__ilFun">-->
-<!--													<span>수정하기</span>-->
-<!--												</span>-->
-<!--											</span>-->
-<!--										</button>-->
                         </div>
                         <div class="DetailInfoHeader_titleInfo__2nx8Q">
                             <h3 class="DetailInfoHeader_title__i0kaY">[누적1억] 화투야 작품이야?! 손에 착착 감기는 장화투 [만월화투]
@@ -93,24 +100,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <div class="ProductSelectMenu_container__18idj">
-                        <div class="ProductSelect_container__1Xa66 ProductSelect_compensate__FfGdW">
-                            <div class="ProductSelect_title__3FqMO">
-                                <input class="ProductSelectMenu_defaultValue___MUYQ" type="text"
-                                    placeholder="상품이름">
-                                <div
-                                    class="ProductSelect_moreButton__2P_Sz ProductSelect_isOpenMoreInfo__201IV">
-                                    <svg viewBox="0 0 32 32" focusable="false" role="presentation"
-                                        class="withIcon_icon__3VTbq" aria-hidden="true">
-                                        <path
-                                            d="M16 9.6L26.4 20l-1.12 1.12L16 11.84l-9.28 9.28L5.6 20 16 9.6z">
-                                        </path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                    
                     <div class="ProductBuyInfo_container__1nPti undefined">
                         <div class="ProductFloatButton_container__2jWfi">
                             <div class="ProductFloatButton_wishButtonBox__236EH">
@@ -134,27 +124,7 @@ $(document).ready(function () {
                                     </span>
                                 </button>
                             </div>
-                            <!--
-                            <button aria-label="찜하기 버튼" aria-pressed="true" data-ga-category="스토어_상세"
-                                data-ga-action="찜하기_취소" data-ga-label=""
-                                class="Button_button__2FuOU ProductFloatButton_wishButton__2uCyk"
-                                type="button" style="display:none;">
-                                <span>
-                                    <span class="Button_children__ilFun">
-                                        <div>
-                                            <svg viewBox="0 0 32 32" focusable="false" role="presentation"
-                                                class="withIcon_icon__3VTbq" aria-hidden="true"
-                                                style="width: 24px; height: 24px;">
-                                                <path
-                                                    d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z">
-                                                </path>
-                                            </svg>
-                                            <span class="ProductFloatButton_count__1a-7B">1,668</span>
-                                        </div>
-                                    </span>
-                                </span>
-                            </button>
-                        -->
+                            
                             <button rel="noreferrer noopener"
                                 class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA"
                                 type="button">

@@ -9,10 +9,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>자료실 상세 | 위게더</title>
 	<link rel="stylesheet" href="/css/dataroom/detail.css" />
+	<link rel="stylesheet" href="/css/fix/header.css">
+	<link rel="stylesheet" href="/css/fix/footer.css">
 
 </head>
 
 <body class style="overflow: auto;">
+
+<header th:replace="~{/fix/header :: #header}"></header>
 	<main id="main-app">
 		<div class="MainWrapper_content__GZkTa">
 			<section>
@@ -24,7 +28,7 @@
 								<div class="StoreSlider_slickList__kf7h-">
 									<div class="slick-slider slick-initialized" dir="ltr">
 										<button type="button"
-											class="StoreSlider_slickArrow__DO_oi StoreSlider_slickPrev__35Vwr">Previous</button>
+											class="StoreSlider_slickArrow__DO_oi Stoimage_containerreSlider_slickPrev__35Vwr">Previous</button>
 										<div class="slick-list" style="height: 470px;">
 											<div id="image_container" class="slick-track"
 												style="width: 6886px; opacity: 1; transform: translate3d(-626px, 0px, 0px);">
@@ -51,7 +55,7 @@
 								<span class="StoreSlider_slickIndex__1d6Eo">1/5</span>
 							</div>
 						</div>
-						<div class="DetailHeader_detailInfoArea__cSsVa">
+						<div id="text_container" class="DetailHeader_detailInfoArea__cSsVa">
 
 							<!-- text 반복 -->
 
@@ -379,6 +383,7 @@
 			</button>
 		</div>
 	</main>
+	<footer th:replace="~{/fix/footer :: #footer}"></footer>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
