@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface LectureMapper {
@@ -18,5 +19,8 @@ public interface LectureMapper {
 
     //강연 총 개수
     public int selectCountOfLecture();
+
+    //강연 상세
+    public Optional<LectureDTO> select(Long id);
 
 }

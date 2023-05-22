@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -28,6 +29,11 @@ public class LectureDAO {
     //강연 총 개수
     public int findCountOfLecture(){
         return lectureMapper.selectCountOfLecture();
+    }
+
+    //강연 상세
+    public Optional<LectureDTO> find(Long id){
+        return lectureMapper.select(id);
     }
 
 

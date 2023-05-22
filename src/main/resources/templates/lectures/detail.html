@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>위게더 || 강연</title>
+
+    <link rel="stylesheet" href="/css/consult/all.css">
+    <link rel="stylesheet" href="/css/consult/class-detail.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+  </head>
+  <body>
+  <header th:replace="~{/fix/header :: #header}"></header>
+    <!-- //header -->
+    <!-- scrolltop 버튼 -->
+    <div id="container">
+      <!-- //school-container -->
+    </div>
+    <!-- //container -->
+  <footer th:replace="~{/fix/footer :: #footer}"></footer>
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script th:inline="javascript">
+    let lecture = [[${lecture}]];
+    console.log(lecture);
+  </script>
+<script src="/js/lecture/detail.js"></script>
+
+</html>
