@@ -5,9 +5,33 @@
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- 공지사항 목록 -->
+<!--    <select id="noticeSelectAll" resultType="noticeVO">-->
+<!--        SELECT ID, NOTICE_TITLE, NOTICE_REGISTER_DATE-->
+<!--        FROM TBL_NOTICE-->
+<!--    </select>-->
+
+    <!-- 공지사항 목록 페이징까지 -->
     <select id="noticeSelectAll" resultType="noticeVO">
-        SELECT ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGISTER_DATE
-        FROM TBL_NOTICE
+    SELECT F.ID, NOTICE_TITLE, NOTICE_REGISTER_DATE
+    FROM
+        (
+            SELECT ROWNUM R, ID, NOTICE_TITLE, NOTICE_REGISTER_DATE
+            FROM
+                    (
+                        SELECT ROWNUM C, ID, NOTICE_TITLE, NOTICE_REGISTER_DATE
+                        FROM TBL_NOTICE
+                        ORDER BY ID DESC
+                    )
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{rowCount}
+        )
+    F WHERE R > (#{page} - 1) * #{rowCount}
+    ]]>
+    </select>
+
+    <!-- 공지사항 총 갯수 -->
+    <select id="selectCountOfNotice" resultType="_int">
+        SELECT COUNT(ID) FROM TBL_NOTICE
     </select>
 
     <!-- 공지사항 등록 -->
@@ -44,17 +68,23 @@
 <!--        ON M.MEMBER_ID = D.MEMBER_ID-->
 <!--    </select>-->
 
-    <!-- 자료 목록 페이징 -->
+    <!-- 자료 목록 페이징까지 -->
     <select id="dataSelectAll" resultType="dataAdminDTO">
-    SELECT D.ID, D.DATA_TITLE, MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE
+    SELECT F.ID, DATA_TITLE, MEMBER_NICKNAME, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, DATA_REGISTER_DATE
     FROM
-    (
-            SELECT ROWNUM R, D.ID, D.DATA_TITLE, M.MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE
-            FROM TBL_MEMBER M INNER JOIN TBL_DATA D
-    <![CDATA[
-            ON M.MEMBER_ID = D.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
-            ORDER BY D.ID
-    ) D WHERE R > (#{page} - 1) * #{rowCount}
+        (
+            SELECT ROWNUM R, ID, DATA_TITLE, MEMBER_NICKNAME, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, DATA_REGISTER_DATE
+            FROM
+                    (
+                        SELECT ROWNUM C, D.ID, D.DATA_TITLE, M.MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE
+                        FROM TBL_MEMBER M INNER JOIN TBL_DATA D
+                        ON M.ID = D.MEMBER_ID
+                        ORDER BY D.ID DESC
+                    )
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{rowCount}
+        )
+    F WHERE R > (#{page} - 1) * #{rowCount}
     ]]>
     </select>
 
@@ -62,37 +92,85 @@
     <select id="selectCountOfData" resultType="_int">
         SELECT COUNT(ID) FROM TBL_DATA
     </select>
+
     <!-- 자료 삭제 -->
     <delete id="dataDelete">
-        DELETE FROM TBL_DATA WHERE ID = #{Id}
-    </delete>
-
-    <!-- 자료 선택 삭제(작업 필요) -->
-    <delete id="dataDeleteAll">
+        DELETE FROM TBL_DATA WHERE ID = #{id}
     </delete>
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- 프로젝트 목록 -->
+<!--    <select id="projectSelectAll" resultType="projectAdminDTO">-->
+<!--        SELECT P.ID, P.PROJECT_TITLE, M.MEMBER_NICKNAME, P.PROJECT_SCHOOL, P.PROJECT_MAJOR, P.PROJECT_END_DATE, P.PROJECT_REGISTER_DATE-->
+<!--        FROM TBL_MEMBER M INNER JOIN TBL_PROJECT P-->
+<!--        ON M.MEMBER_ID = P.MEMBER_ID-->
+<!--    </select>-->
+
+    <!-- 프로젝트 목록 페이징까지 -->
     <select id="projectSelectAll" resultType="projectAdminDTO">
-        SELECT P.ID, P.PROJECT_TITLE, M.MEMBER_NICKNAME, P.PROJECT_SCHOOL, P.PROJECT_MAJOR, P.PROJECT_END_DATE, P.PROJECT_REGISTER_DATE
-        FROM TBL_MEMBER M INNER JOIN TBL_PROJECT P
-        ON M.MEMBER_ID = P.MEMBER_ID
+    SELECT F.ID, PROJECT_TITLE, MEMBER_NICKNAME, PROJECT_SCHOOL, PROJECT_MAJOR, PROJECT_END_DATE, PROJECT_REGISTER_DATE
+    FROM
+        (
+            SELECT ROWNUM R, ID, PROJECT_TITLE, MEMBER_NICKNAME, PROJECT_SCHOOL, PROJECT_MAJOR, PROJECT_END_DATE, PROJECT_REGISTER_DATE
+            FROM
+                    (
+                        SELECT ROWNUM C, P.ID, P.PROJECT_TITLE, M.MEMBER_NICKNAME, P.PROJECT_SCHOOL, P.PROJECT_MAJOR, P.PROJECT_END_DATE, P.PROJECT_REGISTER_DATE
+                        FROM TBL_MEMBER M INNER JOIN TBL_PROJECT P
+                        ON M.ID = P.MEMBER_ID
+                        ORDER BY P.ID DESC
+                    )
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{rowCount}
+        )
+    F WHERE R > (#{page} - 1) * #{rowCount}
+    ]]>
+    </select>
+
+    <!-- 프로젝트 총 갯수 -->
+    <select id="selectCountOfProject" resultType="_int">
+        SELECT COUNT(ID) FROM TBL_PROJECT
     </select>
 
     <!-- 프로젝트 삭제 -->
     <delete id="projectDelete">
-        DELETE FROM TBL_PROJECT WHERE ID = #{Id}
+        DELETE FROM TBL_PROJECT WHERE ID = #{id}
     </delete>
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- 문의사항 목록 -->
+<!--    <select id="inquirySelectAll" resultType="inquiryAdminDTO">-->
+<!--        SELECT I.ID, M.MEMBER_NICKNAME, I.INQUIRY_TITLE, I.INQUIRY_REGISTER_DATE-->
+<!--        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M-->
+<!--        ON I.MEMBER_ID = M.MEMBER_ID-->
+<!--    </select>-->
+
+    <!-- 문의사항 목록 페이징까지 -->
     <select id="inquirySelectAll" resultType="inquiryAdminDTO">
-        SELECT I.ID, M.MEMBER_NICKNAME, I.INQUIRY_TITLE, I.INQUIRY_REGISTER_DATE
-        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M
-        ON I.MEMBER_ID = M.MEMBER_ID
+    SELECT F.ID, INQUIRY_TITLE, MEMBER_NICKNAME, INQUIRY_REGISTER_DATE, INQUIRY_STATUS
+    FROM
+        (
+            SELECT ROWNUM R, ID, INQUIRY_TITLE, MEMBER_NICKNAME, INQUIRY_REGISTER_DATE, INQUIRY_STATUS
+            FROM
+                    (
+                        SELECT ROWNUM C, I.ID, I.INQUIRY_TITLE, M.MEMBER_NICKNAME, I.INQUIRY_REGISTER_DATE, I.INQUIRY_STATUS
+                        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M
+                        ON I.MEMBER_ID = M.ID
+                        ORDER BY I.ID DESC
+                    )
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{rowCount}
+        )
+    F WHERE R > (#{page} - 1) * #{rowCount}
+    ]]>
     </select>
+
+    <!-- 문의사항 총 갯수 -->
+    <select id="selectCountOfInquiry" resultType="_int">
+        SELECT COUNT(ID) FROM TBL_INQUIRY
+    </select>
+
 
     <!-- 문의사항 답변 등록 -->
     <insert id="answerInsert">
@@ -124,39 +202,88 @@
 
     <!-- 문의사항 답변 삭제 -->
     <delete id="answerDelete">
-        DELETE FROM TBL_ANSWER WHERE ID = #{id}
+        DELETE FROM TBL_ANSWER WHERE ID = #{Id}
     </delete>
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- 회원 목록 -->
+<!--    <select id="memberSelectAll" resultType="memberVO">-->
+<!--        SELECT ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE-->
+<!--        FROM TBL_MEMBER-->
+<!--    </select>-->
+
+    <!-- 회원 목록 페이징까지 -->
     <select id="memberSelectAll" resultType="memberVO">
-        SELECT ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
-        FROM TBL_MEMBER
+    SELECT F.ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
+    FROM
+        (
+            SELECT ROWNUM R, ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
+            FROM
+                    (
+                        SELECT ROWNUM C, ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
+                        FROM TBL_MEMBER
+                        ORDER BY ID DESC
+                    )
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{rowCount}
+        )
+    F WHERE R > (#{page} - 1) * #{rowCount}
+    ]]>
     </select>
 
-    <!-- 회원 삭제 -->
-    <delete id="memberDelete">
-        DELETE FROM TBL_MEMBER WHERE ID = #{Id}
-    </delete>
+    <!-- 회원 총 인원 수 -->
+    <select id="selectCountOfMember" resultType="_int">
+        SELECT COUNT(ID) FROM TBL_MEMBER
+    </select>
 
-    <!-- 회원 선택 삭제(작업 필요) -->
-    <delete id="">
-    </delete>
+    <!-- 회원 정보 변경 -->
+    <update id="memberDelete">
+        UPDATE TBL_MEMBER
+        SET MEMBER_STATUS =
+            CASE
+                WHEN MEMBER_STATUS = 1 THEN 0
+                WHEN MEMBER_STATUS = 0 THEN 1
+                END
+        WHERE ID = #{id}
+    </update>
+
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- 강연 목록 -->
+<!--    <select id="lectureSelectAll" resultType="lectureVO">-->
+<!--        SELECT ID, LECTURE_TITLE, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL-->
+<!--        FROM TBL_LECTURE-->
+<!--    </select>-->
+
+    <!-- 강연 목록 페이징까지 -->
     <select id="lectureSelectAll" resultType="lectureVO">
-        SELECT ID, LECTURE_TITLE, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL
-        FROM TBL_LECTURE
+    SELECT F.ID, LECTURE_TITLE, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL
+    FROM
+        (
+            SELECT ROWNUM R, ID, LECTURE_TITLE, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL
+            FROM
+                    (
+                        SELECT ROWNUM C, ID, LECTURE_TITLE, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL
+                        FROM TBL_LECTURE
+                        ORDER BY ID DESC
+                    )
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{rowCount}
+        )
+    F WHERE R > (#{page} - 1) * #{rowCount}
+    ]]>
+    </select>
+
+    <!-- 강연 총 갯수 -->
+    <select id="selectCountOfLecture" resultType="_int">
+        SELECT COUNT(ID) FROM TBL_LECTURE
     </select>
 
     <!-- 강연 삭제 -->
     <delete id="lectureDelete">
         DELETE FROM TBL_LECTURE WHERE ID = #{Id}
     </delete>
-
-    <!-- 강연 선택 삭제(작업 필요) -->
 
 </mapper>

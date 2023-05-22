@@ -12,8 +12,9 @@ import org.springframework.stereotype.Component;
 public class InquiryAdminDTO {
     private Long id;
     private Long memberId;
-    private String InquiryTitle;
-    private String InquiryContent;
-    private String InquiryRegisterDate;
+    private String inquiryTitle;
+    private String inquiryContent;
+    private String inquiryRegisterDate;
     private String memberNickname;
+    private boolean inquiryStatus;
 }

@@ -65,18 +65,11 @@
                                                         <!-- 작성일 -->
                                                         <span class="published" th:text="${community.communityRegisterDate}"></span> |
                                                         <a>작성자: </a>
-                                                        <a th:text="*{memberNickname}"></a>
+                                                        <a th:text="${community.memberNickname}"></a>
                                                     </p>
                                                 </div>
-                                                <div class="et_pb_title_featured_container" th:each="file : ${community.files}">
-                                                    <span class="et_pb_image_wrap" th:if="${file.fileType} == 'REPRESENTATIVE' ">
-                                                        <img
-                                                            width="1280"
-                                                            height="750"
-                                                            src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}"
-                                                            sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) 1280px, 100vw"
-                                                            class="wp-image-364958"
-                                                        >
+                                                <div class="et_pb_title_featured_container">
+                                                    <span class="et_pb_image_wrap">
                                                     </span>
                                                 </div>
                                             </div>
@@ -890,4 +883,8 @@
             });
         });
     </script>
+    <script th:inline="javascript">
+        let files = [[${community.files}]]
+    </script>
+    <script src="/js/community/detail.js"></script>
 </html>

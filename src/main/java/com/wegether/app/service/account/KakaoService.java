@@ -113,6 +113,13 @@ public class KakaoService {
                 email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
             }
 
+            //프로필 링크가져오기 (썸네일사이즈)
+            boolean hasImage =element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("profile").getAsJsonObject().get("is_default_image").getAsBoolean();
+            if(!hasImage){
+                log.info(element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("profile").getAsJsonObject().get("thumbnail_image_url").getAsString());
+            }
+         
+
             log.info("id : " + id);
             log.info("email : " + email);
 
