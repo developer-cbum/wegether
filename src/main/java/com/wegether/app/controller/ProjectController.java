@@ -28,7 +28,7 @@ public class ProjectController {
     public void list(ProjectPagination projectPagination, Model model) {
         projectPagination.setTotal(projectService.getTotal());
         projectPagination.progress();
-        model.addAttribute("projects", projectService.getList(projectPagination));
+        model.addAttribute("project", projectService.getList(projectPagination));
     }
 
     @GetMapping("write")
