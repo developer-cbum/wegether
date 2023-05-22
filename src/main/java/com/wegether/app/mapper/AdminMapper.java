@@ -3,6 +3,7 @@ package com.wegether.app.mapper;
 import com.wegether.app.domain.dto.AdminPagination;
 import com.wegether.app.domain.dto.DataAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
+import com.wegether.app.domain.dto.ProjectAdminDTO;
 import com.wegether.app.domain.vo.*;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,7 +16,11 @@ public interface AdminMapper {
     /* --------------------------------------------------------------------------------- */
 
     // 공지사항 목록
-    public List<NoticeVO> noticeSelectAll();
+//    public List<NoticeVO> noticeSelectAll();
+    public List<NoticeVO> noticeSelectAll(AdminPagination adminPagination);
+
+    // 공지사항 총 갯수
+    public int selectCountOfNotice();
 
     // 공지사항 등록
     public void noticeInsert(NoticeVO noticeVO);
@@ -40,22 +45,26 @@ public interface AdminMapper {
     // 자료 삭제
     public void dataDelete(Long id);
 
-    // 자료 선택 삭제(작업 필요)
-
     /* --------------------------------------------------------------------------------- */
 
     // 프로젝트 목록
-    public List<ProjectVO> projectSelectAll();
+    public List<ProjectAdminDTO> projectSelectAll(AdminPagination adminPagination);
+//    public List<ProjectAdminDTO> projectSelectAll();
+
+    // 프로젝트 총 갯수
+    public int selectCountOfProject();
 
     // 프로젝트 삭제
     public void projectDelete(Long id);
 
-    // 자료 선택 삭제(작업 필요)
-    
     /* --------------------------------------------------------------------------------- */
 
     // 문의사항 목록
-    public List<ProjectVO> inquirySelectAll();
+//    public List<InquiryAdminDTO> inquirySelectAll();
+    public List<InquiryAdminDTO> inquirySelectAll(AdminPagination adminPagination);
+
+    // 문의사항 총 갯수
+    public int selectCountOfInquiry();
 
     // 문의사항 답변 등록
     public void answerInsert(AnswerVO answerVO);
@@ -75,17 +84,23 @@ public interface AdminMapper {
     /* --------------------------------------------------------------------------------- */
 
     // 회원 목록
-    public List<MemberVO> memberSelectAll();
+    public List<MemberVO> memberSelectAll(AdminPagination adminPagination);
+//    public List<MemberVO> memberSelectAll();
+
+    // 회원 총 인원 수
+    public int selectCountOfMember();
 
     // 회원 삭제
     public void memberDelete(Long id);
 
-    // 회원 선택 삭제(작업 필요)
-
     /* --------------------------------------------------------------------------------- */
 
     // 강연 목록
-    public List<LectureVO> lectureSelectAll();
+    public List<LectureVO> lectureSelectAll(AdminPagination adminPagination);
+//    public List<LectureVO> lectureSelectAll();
+
+    // 강연 총 갯수
+    public int selectCountOfLecture();
 
     // 강연 삭제
     public void lectureDelete(Long id);

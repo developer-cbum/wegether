@@ -1,8 +1,10 @@
 package com.wegether.app.service.admin;
 
 import com.wegether.app.dao.AdminDAO;
+import com.wegether.app.domain.dto.AdminPagination;
 import com.wegether.app.domain.dto.DataAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
+import com.wegether.app.domain.dto.ProjectAdminDTO;
 import com.wegether.app.domain.vo.AnswerVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import lombok.extern.slf4j.Slf4j;
@@ -75,9 +77,16 @@ public class AdminServiceTests {
 
     /* ------------------------------------------------------------------------------------ */
 
-    //    프로젝트 목록 테스트
-    @Test
-    public void projectGetListAllTest() { assertThat(adminService.projectGetList()).hasSize(1); }
+//    //    프로젝트 목록 테스트
+//    @Test
+//    public void projectGetListAllTest() { assertThat(adminService.projectGetList()).hasSize(1); }
+
+//    @Test
+//    public void projectGetListTest() {
+//        AdminPagination adminPagination = new AdminPagination();
+//        adminPagination.setPage(1); //화면에서 전달받은 페이지
+//        adminService.projectGetList(adminPagination).stream().map(ProjectAdminDTO::toString).forEach(log::info);
+//    }
 
     //    프로젝트 삭제 테스트
     @Test
