@@ -63,10 +63,10 @@ public class ProjectDAOTests {
         foundProject = projectDAO.findById(1L);
         foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("내가 돌아왔다"));
     }
-//    @Test
-//    public void deleteTest() {
-//        projectDAO.ProjectDelete(25L);
-//    }
+    @Test
+    public void deleteTest() {
+        projectDAO.ProjectDelete(25L);
+    }
 
 
 }
