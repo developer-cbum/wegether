@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../../static/css/mypage/my-page/mypage.css">
-    <link rel="stylesheet" href="../../../static/css/mypage/project/list.css">
+    <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/mypage/project/list.css">
     <title>프로젝트 목록 | 위게더</title>
   </head>
   <body>
@@ -75,14 +76,15 @@
                 >
                   진행완료
                 </div>
-
+              </div>
               </div>
             </div>
             <input name="filteringType" type="hidden" value="[object Object]" />
           </div>
         </div>
       </div>
-      <ul class="CardList_container__39oS4" style="width: calc(100% - 0px)">
+      <th:block th:each="project : ${project}">
+      <ul class="CardList_container__39oS4" style="width: calc(100% - 0px); padding-bottom: 20px">
         <li
           class="CardList_itemContainer__2c_vS"
           style="
@@ -94,8 +96,8 @@
         >
           <div role="link" class="PurchaseSummaryCard_item__3LlZ3">
             <dl class="PurchaseSummaryCard_etcArea__3Ummh">
-              <dd>230510-030046-0001</dd>
-              <dd>2023-05-10 03:02:19 참여</dd>
+              <dd> </dd>
+              <dd> </dd>
             </dl>
             <div class="PurchaseSummaryCard_content__21XLk">
               <div class="PurchaseSummaryCard_thumbnailArea__2BT7p" aria-hidden="true">
@@ -113,11 +115,11 @@
                 <dd
                   title="<컴퓨터 공학과> 사이트 개발 프로젝트"
                   class="PurchaseSummaryCard_title__uCiz5"
-                >
-                  &lt;컴퓨터 공학과&gt; 사이트 개발 프로젝트
+                > [[${project.projectTitle}]]
+
                 </dd>
                 <dd class="PurchaseSummaryCard_description__245z_">
-                  <span class="PurchaseSummaryCard_makerName__1n7dA">Spring Boot</span>
+                  <span class="PurchaseSummaryCard_makerName__1n7dA">info</span>
                 </dd>
               </dl>
             </div>
@@ -139,9 +141,10 @@
           </div>
         </li>
       </ul>
-      <div></div>
+      </th:block>
+
     </section>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="../../../static/js/mypage/project/list.js"></script>
+  <script src="/js/mypage/project/list.js"></script>
 </html>

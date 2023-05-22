@@ -41,4 +41,20 @@ public class ProjectDAO {
     public void ProjectDelete(Long id){
         projectMapper.ProjectDelete(id);
     }
+
+
+
+
+
+
+
+
+
+
+
+//    소영 마이페이지
+    public List<ProjectDTO> showmyProject(Long memberId){
+        return projectMapper.selectmyProject(memberId);
+    }
+
 }

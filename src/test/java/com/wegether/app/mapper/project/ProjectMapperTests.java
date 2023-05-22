@@ -76,4 +76,17 @@ public class ProjectMapperTests {
         public void projectDeleteTest() {
         Long projectId = 1L;
     }
+
+
+
+
+
+
+
+
+//    소영 테스트
+    @Test
+    public void selectmyProjectTest(){
+        assertThat(projectMapper.selectmyProject(1L)).hasSize(2);
+    }
 }

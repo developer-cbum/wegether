@@ -91,4 +91,10 @@ public class MypageController {
     public void goToConsulting(Long memberId, Model model) {
     model.addAttribute("consulting", mine.readMyConsulting(1L));
     }
+
+//    내 프로젝트
+    @GetMapping("/my-page/my-project-list")
+    public void goToProject(Long memberId, Model model){
+        model.addAttribute("project", mine.readMyProject(2L));
+    }
 }

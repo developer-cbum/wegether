@@ -9,7 +9,7 @@ import java.util.List;
 
 @Component
 @Data
-public class ProjectDTO {
+public class ProjectDTO{
     private Long id;
     private Long memberId;
     private String projectTitle;
@@ -23,4 +23,15 @@ public class ProjectDTO {
     private int projectNowPersonnel;
     private int projectTotalPersonnel;
 
+
+
+
+
+
+
+//    소영 추가
+    private String info;
+    private String register;
+    private String now;
+    private String inum;
 }

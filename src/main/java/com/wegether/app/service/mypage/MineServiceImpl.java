@@ -3,8 +3,10 @@ package com.wegether.app.service.mypage;
 import com.wegether.app.dao.ConsultingDAO;
 import com.wegether.app.dao.DataDAO;
 import com.wegether.app.dao.MemberDAO;
+import com.wegether.app.dao.ProjectDAO;
 import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.MemberDTO;
+import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.vo.ConsultingVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +22,8 @@ public class MineServiceImpl implements MypageService {
 
     private final MemberDAO memberDAO;
     private final DataDAO dataDAO;
-
+    private final ConsultingDAO consultingDAO;
+    private final ProjectDAO projectDAO;
 
     @Override
     public void mypage() {
@@ -42,9 +45,14 @@ public class MineServiceImpl implements MypageService {
 
 //    내 상담 조회
 
-    private final ConsultingDAO consultingDAO;
+
 
     public List<ConsultingVO> readMyConsulting(Long memberId){
         return consultingDAO.getmyconsult(memberId);
     }
+
+// 내 프로젝트 조회
+
+    public List<ProjectDTO> readMyProject(Long memberId){return projectDAO.showmyProject(memberId);}
+
 }
