@@ -23,8 +23,10 @@ import org.thymeleaf.model.IAttribute;
 public class ProjectController {
     private final ProjectService projectService;
 
-    @GetMapping("list")
+
+    @GetMapping("main")
     public void list(ProjectPagination projectPagination, Model model) {
+        projectPagination.setTotal(projectService.getTotal());
         projectPagination.progress();
         model.addAttribute("projects", projectService.getList(projectPagination));
     }
@@ -51,7 +53,7 @@ public class ProjectController {
         log.info(projectService.getProject(1L).toString());
     }
 
-    @PostMapping
+    @PostMapping("modify")
     public RedirectView modify(ProjectDTO projectDTO, RedirectAttributes redirectAttributes){
         log.info(projectDTO.toString());
         projectService.modify(projectDTO);

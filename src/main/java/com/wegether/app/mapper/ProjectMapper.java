@@ -29,5 +29,5 @@ public interface ProjectMapper {
     public void ProjectDelete(Long id);
 
 
-
+    public int selectCountOfProject();
 }
