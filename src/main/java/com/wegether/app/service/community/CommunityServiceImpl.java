@@ -7,6 +7,7 @@ import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.CommunityFileDTO;
 import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.CommunityVO;
 import com.wegether.app.domain.vo.FileVO;
@@ -55,16 +56,18 @@ public class CommunityServiceImpl implements CommunityService {
     @Transactional(rollbackFor = Exception.class)
     public void write(CommunityDTO communityDTO) {
         communityDAO.save(communityDTO);
-        communityDTO.getFiles().forEach(communityFileDTO -> {
-            communityFileDTO.setCommunityId(communityDTO.getId());
-            fileDAO.communitySave(communityFileDTO);
-        });
+        for(int i=0; i<communityDTO.getFiles().size(); i++){
+            communityDTO.getFiles().get(i).setCommunityId(communityDTO.getId());
+            communityDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            fileDAO.communitySave(communityDTO.getFiles().get(i));
+        }
         communityDTO.getFiles().forEach(communityFileDTO ->
         { CommunityFileVO communityFileVO = new CommunityFileVO();
-          communityFileVO.setId(communityFileDTO.getId());
-          communityFileVO.setCommunityId(communityFileDTO.getCommunityId());
-          communityFileDAO.save(communityFileVO);
+            communityFileVO.setId(communityFileDTO.getId());
+            communityFileVO.setCommunityId(communityFileDTO.getCommunityId());
+            communityFileDAO.save(communityFileVO);
         });
+
     }
 
 
@@ -74,10 +77,11 @@ public class CommunityServiceImpl implements CommunityService {
 
         communityDAO.setCommunityDTO(communityDTO);
 
-        communityDTO.getFiles().forEach(communityFileDTO -> {
-            communityFileDTO.setCommunityId(communityDTO.getId());
-            fileDAO.communitySave(communityFileDTO);
-        });
+        for(int i=0; i<communityDTO.getFiles().size(); i++){
+            communityDTO.getFiles().get(i).setCommunityId(communityDTO.getId());
+            communityDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            fileDAO.communitySave(communityDTO.getFiles().get(i));
+        }
         communityDTO.getFiles().forEach(communityFileDTO ->
         { CommunityFileVO communityFileVO = new CommunityFileVO();
             communityFileVO.setId(communityFileDTO.getId());
@@ -100,6 +104,11 @@ public class CommunityServiceImpl implements CommunityService {
 //        replyDAO.deleteAll(id);
         communityFileDAO.delete(id);
 
+    }
+
+    @Override
+    public int getTotal() {
+        return communityDAO.findCountOfCommunity();
     }
 
 }

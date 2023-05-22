@@ -5,6 +5,7 @@ import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.vo.CommunityVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,4 +22,6 @@ public interface CommunityMapper {
     public void update(CommunityDTO communityDTO);
 
     public void delete(Long id);
+
+    public int selectCountOfCommunity();
 }
