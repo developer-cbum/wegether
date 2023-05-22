@@ -1,15 +1,33 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
     let page = 1;
+    // let count = 1; //한번만 실행할수있게하는 flag
+    showList();
 
-    const $block = $(".block_extended");
+    $(window).scroll(function(){
+        if (Math.ceil(window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+            page++;
+            showList();
+        }
+    });
 
-    console.log("들옴");
+    $.ajax({
+        method: 'GET',
+        data: { page: page },
+        url: `/community/list?page=${page}`,
+        success: function (communities) {
+            console.log("들어옴")
+            showList();
+
+        }
+    })
 
 
-    let text = "";
-    communities.forEach(community => {
-        text += `
+    function showList() {
+                console.log("들옴");
+                let text = "";
+                communities.forEach(community => {
+                    text += `
            <article
                  class="et_pb_post et_pb_post_extra et_pb_text_align_left et-waypoint et_pb_animation_off el_dbe_block_extended image-top post-364941 post type-post status-publish format-standard has-post-thumbnail hentry category-planning-note category-platform-story tag-475 tag-478 tag-485 tag-517 tag-356 tag-363 et-animated"
              >
@@ -29,16 +47,15 @@ $(document).ready(function(){
                              target="_self"
                              class="entry-featured-image-url"
                              >`
-                                 community.files.forEach(file => {
-                                if(file.fileType == "REPRESENTATIVE"){
-                                text += `<img
+                    community.files.forEach(file => {
+                        if (file.fileType == "REPRESENTATIVE") {
+                            text += `<img
                                  width="1024"
                                  height="600"
                                 src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" class="preview">`;
-                                }
-                              })
-
-           text +=      ` </a>
+                        }
+                    })
+                    text += ` </a>
                      </div>
                  </div>
                  <div class="post-content">
@@ -61,13 +78,10 @@ $(document).ready(function(){
                  </div>
              </article>`
 
-
-    });
-
-    $block.html(text);
-
-    console.log($block)
-});
+                })
+                $(".block_extended").html(text);
+    }
+})
 
 // if($(".et-animated").Array.length){
 //     $(".ajax-pagination").show()

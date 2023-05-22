@@ -41,4 +41,8 @@ public class ProjectDAO {
     public void ProjectDelete(Long id){
         projectMapper.ProjectDelete(id);
     }
+
+    public int findCountOfProject(){
+        return projectMapper.selectCountOfProject();
+    }
 }

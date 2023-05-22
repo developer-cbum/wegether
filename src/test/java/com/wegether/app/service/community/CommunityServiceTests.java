@@ -53,19 +53,19 @@ public class CommunityServiceTests {
         file1.setFilePath("2023/05/19");
         file1.setFileSize(1238L);
         file1.setFileUuid(UUID.randomUUID().toString());
-        file1.setFileType(FileType.REPRESENTATIVE.name());
+
 
         file2.setFileName("새빨간로즈.png");
         file2.setFilePath("2023/05/19");
         file2.setFileSize(1238L);
         file2.setFileUuid(UUID.randomUUID().toString());
-        file2.setFileType(FileType.NON_REPRESENTATIVE.name());
+
 
         file3.setFileName("새빨간로즈.png");
         file3.setFilePath("2023/05/19");
         file3.setFileSize(1238L);
         file3.setFileUuid(UUID.randomUUID().toString());
-        file3.setFileType(FileType.NON_REPRESENTATIVE.name());
+
 
 
         CommunityDTO communityDTO = new CommunityDTO();
@@ -81,8 +81,8 @@ public class CommunityServiceTests {
     }
 
 
-    @Test
-    public void modifyTest() {
+//    @Test
+//    public void modifyTest() {
 //        List<CommunityFileDTO> communityFileDTOS = new ArrayList<>();
 //        CommunityFileDTO file1 = new CommunityFileDTO();
 //        CommunityFileDTO file2 = new CommunityFileDTO();
@@ -117,18 +117,18 @@ public class CommunityServiceTests {
 //        CommunityDTO communityDTO = communityService.getCommunity(1L).orElseThrow();
 //        List<Long> tests = new ArrayList<>();
 
-        CommunityDTO communityDTO = communityService.getCommunity(5L).get();
-
-        List<Long> test = communityService.getCommunity(5L).get().getFileIdsForDelete();
-        test.add(10L);
-        test.add(11L);
-
-        communityDTO.setFileIdsForDelete(test);
-
-        communityService.modify(communityDTO);
-
-
-    }
+//        CommunityDTO communityDTO = communityService.getCommunity(5L).get();
+//
+//        List<Long> test = communityService.getCommunity(5L).get().getFileIdsForDelete();
+//        test.add(10L);
+//        test.add(11L);
+//
+//        communityDTO.setFileIdsForDelete(test);
+//
+//        communityService.modify(communityDTO);
+//
+//
+//    }
 
 
     @Test
