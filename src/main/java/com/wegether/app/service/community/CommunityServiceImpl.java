@@ -72,6 +72,8 @@ public class CommunityServiceImpl implements CommunityService {
     @Transactional(rollbackFor = Exception.class)
     public void modify(CommunityDTO communityDTO) {
 
+        communityDAO.setCommunityDTO(communityDTO);
+
         communityDTO.getFiles().forEach(communityFileDTO -> {
             communityFileDTO.setCommunityId(communityDTO.getId());
             fileDAO.communitySave(communityFileDTO);
