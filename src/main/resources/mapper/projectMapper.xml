@@ -58,7 +58,8 @@
 
 
     <select id="selectCountOfProject" resultType="_int">
-        SELECT COUNT(ID)
-        FROM TBL_PROJECT
+        SELECT COUNT(P.ID)
+        FROM TBL_MEMBER M JOIN TBL_PROJECT P
+        ON M.ID = P.MEMBER_ID
     </select>
 </mapper>
