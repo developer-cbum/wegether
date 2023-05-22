@@ -21,11 +21,11 @@ public class LectureFileMapperTest {
     @Test
     public void insertTest() {
         LectureFileDTO lectureFileDTO = new LectureFileDTO();
-        lectureFileDTO.setFileName("icon4.png");
+        lectureFileDTO.setFileName("title.png");
         lectureFileDTO.setFilePath("2023/05/20");
         lectureFileDTO.setFileSize(999L);
         lectureFileDTO.setFileUuid(UUID.randomUUID().toString());
-        lectureFileDTO.setFileType(FileType.REPRESENTATIVE.name());
+        lectureFileDTO.setFileType(FileType.NON_REPRESENTATIVE.name());
         lectureFileMapper.insert(lectureFileDTO);
     }
 

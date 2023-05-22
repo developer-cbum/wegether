@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -42,5 +43,12 @@ public class LectureServiceImpl implements LectureService {
         //        게시글 하나씩 첨부파일 목록 담기
         lists.forEach(list -> list.setFiles(lectureFileDAO.lectureFindAll(list.getId())));
         return lists;
+    }
+
+    @Override
+    public Optional<LectureDTO> get(Long id) {
+        Optional<LectureDTO> lectureDTO = lectureDAO.find(id);
+        lectureDTO.get().setFiles(lectureFileDAO.lectureFindAll(lectureDTO.get().getId()));
+        return lectureDTO;
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/lectures/*")
@@ -24,5 +25,11 @@ public class LectureController {
         lecturePagination.progress(5,5);
         model.addAttribute("lists", lectureService.getList(lecturePagination));
         }
+
+     //상세
+    @GetMapping("detail")
+    public void goToDetail(@RequestParam Long id, Model model){
+        model.addAttribute("lecture",lectureService.get(id).get());
+    }
 }
 

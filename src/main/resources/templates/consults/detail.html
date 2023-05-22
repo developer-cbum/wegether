@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/common/common.css">
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/modal/modal.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
     <title>커뮤니티디테일</title>
     <!-- 와디즈 블로그 css 가져오기 -->
     <link
@@ -43,6 +45,7 @@
     /> -->
 </head>
 <body th:object="${consultDTO}" style="font-family: Pretendard;">
+<header th:replace="~{/fix/header :: #header}"></header>
 <div class="modal">
     <div class="warn-modal">
         <div id="content-wrap"></div>
@@ -905,6 +908,7 @@
         </div>
     </div>
 </div>
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/modal/modal.js"></script>
