@@ -10,9 +10,8 @@ lists.forEach(list => {
             text += `
             <span class="SchoolLectureListDesktop_background__2Kqf_ SchoolLectureListDesktop_visible__2lI79"
                 
-              ><img style="margin-left: 150px;
-    margin-top: 30px;
-    width: 100px;" src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" ></span><a href="/web/school/detail/1174"><div class="SchoolLectureListDesktop_lectureCon__BhKMl">`
+              ><img style="width=359px; height: 170px"
+    width: 100px;" src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" ></span><a href="/lectures/detail?id=${list.id}"><div class="SchoolLectureListDesktop_lectureCon__BhKMl">`
         }
     })
 
@@ -21,14 +20,15 @@ lists.forEach(list => {
                 <p class="SchoolLectureListDesktop_lectureTitle__2wTDN">
                   ${list.lectureTitle}
                 </p>
+                <p></p>
                 <p class="SchoolLectureListDesktop_lectureSub__3soFP">
-                  Wegether 강연
+                  <Wegether>
                 </p>
                 <p class="SchoolLectureListDesktop_lectureInfo__1dFY_">
-                  일시 : ${list.lectureDate} ${list.lectureTime} <br>장소 : ${list.lectureLocation} 
+                  일시 : ${list.lectureDate} <br> 강연 시간 : ${list.lectureTime} <br>장소 : ${list.lectureLocation} 
                 </p>
                 <p class="SchoolLectureListDesktop_lectureNum__oypsR">
-                  <em>Wegether Lecture</em> 모집 인원 ${list.lectureTotalPersonnel} 명
+                  <em>Wegether 강연중</em> 모집 인원 ${list.lectureTotalPersonnel} 명
                 </p>
               </div></a>
           </div>
