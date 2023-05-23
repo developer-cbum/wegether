@@ -4,33 +4,50 @@ $(document).ready(function () {
 
     projects.forEach(project => {
         text += `
+
             <div role="presentation" class="CardTable_itemContainer__v9-cW"
                 style="width: calc((25% - 24px + 6px) - 0.01px); margin-left: 0px; margin-right: 12px; margin-bottom: 40px;">
-                <a class="StoreCard_item__1hRfz" href="#">
-                    <div class="CardThumbnail_thumbnailContainer__DwnpC">
-                    </div>
-                </a>
-            </div>
-            <div class="StoreCard_contentContainer__tQfaN">
-                <div class="StoreCard_title__2hUM7">${project.projectTitle}</div>
-                <div class="StoreCard_subText__1G_sb">${project.memberNickname}</div>
-                <div class="StoreCard_footer__12twC">
-                    <div class="StoreCard_priceGroup__3T4UV">
-                        <div class="StoreCard_priceContainer__3-AjB">
-                            <span class="StoreCard_price__210Oz">${project.projectPrice}</span>
-                            <span>원</span>
-                        </div>
-                        <div class="StoreCardFooter_container__X5rH8">
-                            <div class="StoreCardFooter_upperFooter__kvjJa">
-                                <div class="ParticipantScore_container__JH3e_">
-                                    <div class="ParticipantScore_peopleIcon__22zg8"></div>
-                                    <span class="ParticipantScore_peopleCountText__1oHUl">${project.projectReadCount} 참여</span>
-                                </div>
+                <a class="StoreCard_item__1hRfz"
+                   href="/datas/detail?id=${project.id}">
+                   <div class="CardThumbnail_thumbnailContainer__DwnpC" style="height: 269px;">
+                   `
+             project.files.forEach(file => {
+            if(file.fileType == "REPRESENTATIVE"){
+                text += `
+                         <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
+                         <div aria-hidden="true"
+                                 class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                 style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                     
+                              </div>`;
+            }
+        })
+
+        text += `
+                   </div>
+                   <div class="StoreCard_contentContainer__tQfaN">
+                      <div class="StoreCard_title__2hUM7">${project.projectTitle}
+                      </div>
+                      <div class="StoreCard_subText__1G_sb">${project.memberNickname}</div>
+                      <div class="StoreCard_footer__12twC">
+                         <div class="StoreCard_priceGroup__3T4UV">
+                            <div class="StoreCard_priceContainer__3-AjB">
+                               <span class="StoreCard_price__210Oz">${project.projectPrice}</span>
+                               <span>원</span>
+                            </div>
+                            <div class="StoreCardFooter_container__X5rH8">
+                               <div class="StoreCardFooter_upperFooter__kvjJa">
+                                  <div class="ParticipantScore_container__JH3e_">
+                                     <div class="ParticipantScore_peopleIcon__22zg8"></div>
+                                     <span class="ParticipantScore_peopleCountText__1oHUl"> ${project.projectReadCount}
+                                        참여</span>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
                    <div class="CardSpinner_container__1cKRs">
                       <div class="CardSpinner_loader__2-LrZ" style="width: 32px; height: 32px;">
                          <svg viewBox="25 25 50 50" aria-label="Loading">

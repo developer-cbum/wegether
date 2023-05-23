@@ -35,5 +35,5 @@ public interface FileMapper {
 
     public void communityDeleteAll(Long communityId);
 
-
+    public void projectDelete(Long id);
 }

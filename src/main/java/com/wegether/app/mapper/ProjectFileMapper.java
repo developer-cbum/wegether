@@ -14,6 +14,6 @@ public interface ProjectFileMapper {
 
     public void insert(ProjectFileVO projectFileVO);
 
-    public void delete(Long id);
+//    public void projectdelete(Long id);
 
 }

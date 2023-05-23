@@ -2,6 +2,9 @@ package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.dto.ProjectPagination;
+import com.wegether.app.domain.vo.DataVO;
+import com.wegether.app.domain.vo.ProjectVO;
+import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.project.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import org.thymeleaf.model.IAttribute;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @Slf4j
@@ -22,6 +27,7 @@ import org.thymeleaf.model.IAttribute;
 @RequestMapping("/project/*")
 public class ProjectController {
     private final ProjectService projectService;
+    private final AccountService accountService;
 
 
     @GetMapping("main")
@@ -61,6 +67,12 @@ public class ProjectController {
         return new RedirectView("/project/detail");
     }
 
+    @GetMapping("register")
+    public void goToRegisterForm(ProjectVO projectVO, HttpSession session, Model model) {
+
+        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
+        model.addAttribute("nickName", nickName);
+    }
 }
 
 
