@@ -23,6 +23,7 @@ public class DataDTO {
     private String memberNickname;
     private String memberSchool;
     private String memberMajor;
+    private String memberPoint;
     private String memberIntroducing;
     private Long dataId;
 //    private Long WishDataId;

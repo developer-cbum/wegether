@@ -6,16 +6,15 @@
 
     <select id="selectAll" resultType="dataDTO">
         SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT,
-        D.MEMBER_ID, MEMBER_NICKNAME
+        D.MEMBER_ID, MEMBER_NICKNAME, MEMBER_POINT
         FROM
             (
-            SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE,
-            DATA_READ_COUNT,
-            D.MEMBER_ID, MEMBER_NICKNAME
+            SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT,
+            D.MEMBER_ID, MEMBER_NICKNAME, MEMBER_POINT
             FROM
             (
                 SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT,
-                D.MEMBER_ID, MEMBER_NICKNAME
+                D.MEMBER_ID, MEMBER_NICKNAME, MEMBER_POINT
                 FROM TBL_MEMBER M JOIN TBL_DATA D
                 ON M.ID = D.MEMBER_ID
                 <choose>
@@ -48,8 +47,9 @@
         <selectKey keyProperty="id" order="BEFORE" resultType="Long">
             SELECT SEQ_DATA.NEXTVAL FROM DUAL
         </selectKey>
-        INSERT INTO TBL_DATA(ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
-        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, 2L)
+        INSERT INTO TBL_DATA
+        (ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
+        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, #{memberId})
     </insert>
 
 

@@ -1,5 +1,6 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.type.CategoryType;
@@ -49,15 +50,30 @@ public class DataController {
 
 
 
-//    자료 등록 - HttpSession session
-
+//    자료 등록
     @GetMapping("register")
-    public void goToRegisterForm(DataVO dataVO, HttpSession session, Model model){
+    public void goToWriteForm(DataDTO dataDTO, Model model){
+        String memberName = accountService.getMemberById(2L).get().getMemberName();
+        model.addAttribute("memberName", memberName);
+    }
 
-//        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
-        String nickName = accountService.getMemberById(2L).get().getMemberNickname();
-        model.addAttribute("nickName", nickName);
-    };
+    //    자료 등록 - HttpSession session
+//    @GetMapping("register")
+//    public void goToRegisterForm(DataDTO dataDTO, HttpSession session, Model model){
+////        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
+////        String nickName = accountService.getMemberById(2L).get().getMemberNickname();
+//        model.addAttribute("nickName", nickName);
+//    };
+
+
+
+    @PostMapping("register")
+    public RedirectView register(DataDTO dataDTO) {
+        dataService.write(dataDTO);
+        return new RedirectView("/datas/list");
+    }
+
+
 
 
 
