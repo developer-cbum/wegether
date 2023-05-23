@@ -60,6 +60,8 @@
         <typeAlias type="com.wegether.app.domain.dto.InquiryDTO" alias="inquiryDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.MemberDTO" alias="memberDTO"/>
 
+        <typeAlias type="com.wegether.app.domain.dto.MainFileDTO" alias="mainFileDTO"/>
+
 
     </typeAliases>
 </configuration>

@@ -11,10 +11,12 @@ spring:
     hikari:
       driver-class-name: oracle.jdbc.OracleDriver
       jdbc-url: jdbc:oracle:thin:@//localhost:1521/XE
+
 #      username: hr
 #      password: hr
       username: wegether
       password: wegether
+
 
 
   #multipart
@@ -24,3 +26,4 @@ spring:
       max-request-size: 40MB
       max-file-size: 40MB
       file-size-threshold: 100MB
+
