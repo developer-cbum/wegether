@@ -3,15 +3,15 @@
 <mapper namespace="com.wegether.app.mapper.CardMapper">
     <insert id="insert">
         INSERT INTO TBL_CARD
-        (ID, MEMBER_ID, CARD_NUMBER, CARD_BIRTH_DATE, CARD_PASSWORD)
+        (ID, MEMBER_ID, CARD_NUMBER, CARD_EXPIRE_DATE, CARD_PASSWORD)
         VALUES(SEQ_CARD.NEXTVAL, #{memberId}, #{cardNumber}, #{cardBirthDate}, #{cardPassword})
 
     </insert>
 
-    <select id="selectAll" resultType="cardVO">
-        SELECT CARD_NUMBER, CARD_BIRTH_DATE
-        FROM TBL_CARD
-        WHERE MEMBER_ID = #{memberId}
+    <select id="selectAll" resultType="cardDTO">
+        SELECT CARD_NUMBER, CARD_EXPIRE_DATE, MEMBER_NAME
+        FROM TBL_MEMBER M JOIN TBL_CARD C
+        ON MEMBER_ID = #{memberId} AND M.ID = C.MEMBER_ID
         ORDER BY ID DESC
     </select>
 

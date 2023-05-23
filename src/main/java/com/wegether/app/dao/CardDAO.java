@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.CardDTO;
 import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.mapper.CardMapper;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class CardDAO {
     }
 
     //    카드 목록
-    public List<CardVO> list(Long memberId){
+    public List<CardDTO> list(Long memberId){
         return cardMapper.selectAll(memberId);
     }
 }

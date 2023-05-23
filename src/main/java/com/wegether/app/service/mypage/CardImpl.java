@@ -1,6 +1,7 @@
 package com.wegether.app.service.mypage;
 
 import com.wegether.app.dao.CardDAO;
+import com.wegether.app.domain.dto.CardDTO;
 import com.wegether.app.domain.vo.CardVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +30,7 @@ public class CardImpl implements MypageService {
 
 
     //    카드 목록
-    public List<CardVO> getList(Long memberId){
+    public List<CardDTO> getList(Long memberId){
         return cardDAO.list(memberId);
     }
 
