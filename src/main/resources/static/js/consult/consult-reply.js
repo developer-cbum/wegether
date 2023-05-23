@@ -138,6 +138,7 @@ function load(id) {
 $(document).on('click', '.remove-button', function () {
     console.log("들어옴");
     let id = $(this).attr("id");
+    let secondId = $(this).attr("class").split(' ')[1];
     $.ajax({
         url     : `/replies/remove/${id}`,
         type    : 'delete',
@@ -150,7 +151,7 @@ $(document).on('click', '.remove-button', function () {
             if(total == 0){
                 $('.no-reply').show();
             }
-            load(id);
+            load(secondId);
             showWarnModal("삭제되었습니다");
         }
 
@@ -254,9 +255,16 @@ function showList(result, replyResult, id) {
                     </div>
                 </div>`
                 if (id) {
-                    if (reply.id == id) {
-                        text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: block">`;
+                    console.log("------------------")
+                    console.log("아이디")
+                    console.log(id)
+                    console.log(reply)
+                    console.log(replyResult);
+                    if (reply.id == id || reply.replyGroup == id) {
+                        console.log("1들어옴");
+                        text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite ${reply.replyGroup}" style="display: block">`;
                     } else {
+                        console.log("2들어옴");
                         text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: none">`;
                     }
                 } else {
@@ -301,7 +309,7 @@ function showList(result, replyResult, id) {
                                        text+= ` <div class="PurchaseSummaryCard_detailText__2GWWi" style="display: flex">
                                                          <button>수정</button>
                                                          <span>&nbsp | &nbsp</span>
-                                                         <button id="${replyResult[i].id}" class="remove-button">삭제</button>
+                                                         <button id="${replyResult[i].id}" class="remove-button ${reply.id}">삭제</button>
                                                     </div>`
                                    }
                         text+=  `</div>
