@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.vo.WishProjectVO;
 import com.wegether.app.mapper.WishProjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class WishProjectDAO {
     }
 
     //  찜 조회
-    public List<WishProjectVO> showwish(Long memberId){
+    public List<ProjectDTO> showwish(Long memberId){
         return wishProjectMapper.selectAll(memberId);
     }
 

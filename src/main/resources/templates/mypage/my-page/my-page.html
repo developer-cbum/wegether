@@ -66,7 +66,7 @@
               <div class="MyWadizSupporterProfile_profileUser__a_r1P">
                 <button data-event="profile">
                   <b class="MyWadizSupporterProfile_userName__3hSE4"
-                    ><span aria-label="프로필 상세 보기"><span th:text="${main.memberName}">님</span></span
+                    ><span aria-label="프로필 상세 보기"><span th:text="${main.memberName}"></span><span>님</span></span
                     ><svg
                       viewBox="0 0 40 40"
                       focusable="false"
@@ -90,7 +90,7 @@
                   <li>스포츠∙모빌리티</li>
                 </ul>
               <div class="MyWadizSupporterProfile_setting__n8-M7">
-                <p class="MyWadizLoginMode_loginMode__2smkD"><span th:text="${main.memberLoginStatus}">으로 로그인 중</span></p>
+                <p class="MyWadizLoginMode_loginMode__2smkD">[[${main.memberLoginStatus}]]로 로그인</p>
                 <button
                   class="Button_button__1HNjI Button_md__2Tyci Button_circular__3BLWf Button_block__3-IpL"
                   type="button"
@@ -128,11 +128,10 @@
                                 </g></svg
                               ><span class="MyWadizSupporterAccumulate_name__1mWXC">포인트</span>
                             </dt>
-                            <dd class="MyWadizSupporterAccumulate_value__1oBSj">0 P</dd>
+                          <dd class="MyWadizSupporterAccumulate_value__1oBSj"><span th:text="${main.point}"></span>P</dd>
                           </dl></a
                         >
-                      </div>
-                    </div>
+                      </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                         .                    </div>
                     <div class="MyWadizSupporterProjectInfo_container__3MC9F">
                       <div class="MyWadizSupporterProjectInfo_project__3Vaun">
                         <div class="MyWadizSupporterProjectInfo_projectLink__2K77b">
@@ -260,7 +259,7 @@
                 <div>
                   <ul>
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a <!--th:href="@{/mypage/inquiry}"-->> <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
+                      <a th:href="@{/inquiry/inquiry-detail}"> <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><svg
                             viewBox="0 0 32 32"
                             focusable="false"
