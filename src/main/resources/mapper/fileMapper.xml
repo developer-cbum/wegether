@@ -58,4 +58,26 @@
 
 
 
+
+
+
+
+
+
+
+    <insert id="projectInsert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+            SELECT SEQ_FILE.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_FILE
+        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE)
+        VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{fileType})
+    </insert>
+
+
+    <select id="projectSelectAll" resultType="projectFileDTO">
+        SELECT PF.PROJECT_ID, F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE
+        FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F
+        WHERE P.ID = PF.PROJECT_ID AND PROJECT_ID = #{projectId} AND PF.ID = F.ID
+    </select>
 </mapper>

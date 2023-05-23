@@ -27,7 +27,6 @@ public class ProjectDTO{
 
 
 
-
 //    private List<ProjectFileDTO> files = new ArrayList<>();
 //    private List<Long> fileIdsForDelete = new ArrayList<>();
 
@@ -40,4 +39,8 @@ public class ProjectDTO{
     private String register;
     private String now;
     private String inum;
+
+    private List<ProjectFileDTO> files = new ArrayList<>();
+    private List<Long> fileIdsForDelete = new ArrayList<>();
+
 }
