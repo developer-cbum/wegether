@@ -8,23 +8,24 @@ $(document).ready(function() {
         if (Math.ceil(window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
             page++;
             showList();
+            console.log(page);
         }
     });
 
     $.ajax({
-        method: 'GET',
-        data: { page: page },
         url: `/community/list?page=${page}`,
-        success: function (communities) {
+        method: "get",
+        data: { page: page },
+        success: function (page) {
             console.log("들어옴")
+            console.log(page);
             showList();
-
         }
     })
 
 
     function showList() {
-                console.log("들옴");
+        console.log("들옴");
                 let text = "";
                 communities.forEach(community => {
                     text += `
