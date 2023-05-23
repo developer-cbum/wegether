@@ -22,6 +22,8 @@ public interface CommunityService {
 
     public void remove(Long id);
 
+    public int getTotal();
+
     default CommunityDTO toDTO(CommunityVO communityVO){
         CommunityDTO communityDTO = new CommunityDTO();
         communityDTO.setId(communityVO.getId());
