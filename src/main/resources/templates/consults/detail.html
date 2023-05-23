@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/modal/modal.css">
     <link rel="stylesheet" href="/css/consult/consult-detail.css"/>
 
-    <title>커뮤니티디테일</title>
+    <title>위게더 || 상담</title>
 
 </head>
 <body  style="font-family: Pretendard;">
@@ -142,8 +142,8 @@ text-align: right;">
                                                     <div class="CommunityCommentTitle_commentTitle__1Jbgx">
                                                         <div class="CommentTitle_container__3JkFA">
                                                             <p>
-                                                                답변<em class="CommentTitle_count__8olvZ"
-                                                            ><th:block th:text="${total}" class="total"></th:block></em
+                                                                답변<em class="CommentTitle_count__8olvZ total"
+                                                            ><th:block th:text="${total}"></th:block></em
                                                             >
                                                             </p>
                                                         </div>
@@ -302,7 +302,7 @@ text-align: right;">
                                                             </div
                                                             >
                                                         </label>
-                                                        <div class="SortingSelect_sortingSelect__2zf4r">
+                                                        <div class="SortingSelect_sortingSelect__2zf4r" style="display:none;">
                                                             전체
                                                             <svg
                                                                     viewBox="0 0 32 32"
@@ -768,17 +768,16 @@ text-align: right;">
 <!--                                                        </div>-->
                                                     </div>
                                                 </div>
-
+                                                    <th:block th:if="${total == 0}">
+                                                        <li>
+                                                            <div class="no-reply">
+                                                                현재 댓글이 없습니다. 댓글을 해보세요!
+                                                            </div>
+                                                        </li>
+                                                    </th:block>
                                                 <!-- 더보기 버튼 -->
-                                                <th:block  th:if="${total == 0}">
-                                                <li>
-                                                    <div>
-                                                        현재 댓글이 없습니다. 댓글을 해보세요!
-                                                    </div>
-                                                </li>
                                                 </th:block>
-                                                </th:block>
-                                                <div th:if="${total > 5}" class="CommunityCommentListContainer_moreButton__3RWMg">
+                                                <div class="CommunityCommentListContainer_moreButton__3RWMg more-container" style="display: none">
                                                     <button
                                                             class="Button_button__2FuOU Button_secondary__LNLsN Button_text__2-UCU Button_md__46Ai- more-button"
                                                             type="button"
