@@ -69,16 +69,7 @@ public class MineServiceImpl implements MypageService {
 
 
 
-//    내 상담 조회
 
-    @Transactional(rollbackFor = Exception.class)
-    public List<DataDTO> getList(DataPagination dataPagination) {
-    //        게시글 전체 목록
-    final List<DataDTO> datas = dataDAO.findAll(dataPagination);
-    //        게시글 하나씩 첨부파일 목록 담기
-    datas.forEach(data -> data.setFiles(fileDAO.dataFindAll(data.getId())));
-    return datas;
-}
 
 
     public List<ConsultingVO> readMyConsulting(Long memberId){

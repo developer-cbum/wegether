@@ -81,6 +81,8 @@ function showList(cards){
   });
 }
 
+$('.SimplePayCard_simplecard__2wYo7').append(text);
+
 /*퍼블리싱*/
 // confirm-button 버튼 요소 저장
 let $confirmButton = $('.confirm-button');
