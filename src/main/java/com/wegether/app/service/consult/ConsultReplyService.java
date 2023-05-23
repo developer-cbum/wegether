@@ -21,6 +21,15 @@ ConsultReplyService {
     //일반 댓글 총개수
     public int getTotal(Long consultingId);
 
+
+    // 대댓글 전체 조회
+    public List<ConsultReplyDTO> getListAgain(Long consultingId);
+
+
+    // 대댓글 전체 개수
+    public int getTotalAgain(Long consultingId, Long replyGroup);
+
+
     // 중간 테이블 삽입
     public void registerMiddle(Long id, Long memberId, Long consultingId);
 

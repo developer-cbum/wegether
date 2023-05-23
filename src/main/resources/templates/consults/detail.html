@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/css/modal/modal.css">
     <link rel="stylesheet" href="/css/consult/consult-detail.css"/>
 
-
     <title>커뮤니티디테일</title>
 
 </head>
@@ -144,7 +143,7 @@ text-align: right;">
                                                         <div class="CommentTitle_container__3JkFA">
                                                             <p>
                                                                 답변<em class="CommentTitle_count__8olvZ"
-                                                            ><th:block th:tex="${total}"></th:block> (전체갯수)</em
+                                                            ><th:block th:text="${total}" class="total"></th:block></em
                                                             >
                                                             </p>
                                                         </div>
@@ -322,10 +321,8 @@ text-align: right;">
                                                                     class="SortingSelect_select__21qNT"
                                                             >
                                                                 <option value="">전체</option>
-                                                                <option value="SUPPORT">응원</option>
-                                                                <option value="SUGGESTION">의견</option>
-                                                                <option value="REVIEW">체험 리뷰만</option>
-                                                                <option value="PHOTO_REVIEW">사진 체험 리뷰만</option>
+                                                                <option value="SUPPORT">최신순</option>
+                                                                <option value="SUGGESTION">인기순</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -773,9 +770,17 @@ text-align: right;">
                                                 </div>
 
                                                 <!-- 더보기 버튼 -->
-                                                <div class="CommunityCommentListContainer_moreButton__3RWMg">
+                                                <th:block  th:if="${total == 0}">
+                                                <li>
+                                                    <div>
+                                                        현재 댓글이 없습니다. 댓글을 해보세요!
+                                                    </div>
+                                                </li>
+                                                </th:block>
+                                                </th:block>
+                                                <div th:if="${total > 5}" class="CommunityCommentListContainer_moreButton__3RWMg">
                                                     <button
-                                                            class="Button_button__2FuOU Button_secondary__LNLsN Button_text__2-UCU Button_md__46Ai-"
+                                                            class="Button_button__2FuOU Button_secondary__LNLsN Button_text__2-UCU Button_md__46Ai- more-button"
                                                             type="button"
                                                     >
                                                         <span
@@ -815,7 +820,7 @@ text-align: right;">
     let consult = [[${consultDTO}]];
     let session = [[${session.id}]];
     let consultingId = [[${consultId}]];
-    console.log(consultingId);
+    let total = [[${total}]];
 
 
 

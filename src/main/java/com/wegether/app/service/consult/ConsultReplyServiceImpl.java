@@ -32,13 +32,28 @@ public class ConsultReplyServiceImpl implements ConsultReplyService {
         return consultingReplyDAO.findAll(consultingId, lecturePagination);
     }
 
+    //일반 댓글 총개수
+    @Override
+    public int getTotal(Long consultingId) {
+        return consultingReplyDAO.findCountOfReply(consultingId);
+    }
+
+    //대댓글 리스트
+    @Override
+    public List<ConsultReplyDTO> getListAgain(Long consultingId) {
+        return consultingReplyDAO.findAllAgain(consultingId);
+    }
+
+
+    //대댓글 총개수
+    @Override
+    public int getTotalAgain(Long consultingId, Long replyGroup) {
+        return getTotalAgain(consultingId, replyGroup);
+    }
+
     // 중간 테이블 삽입
     public void registerMiddle(Long id, Long memberId, Long consultingId){
         consultingReplyDAO.saveMiddle(id,memberId,consultingId);
     }
 
-    @Override
-    public int getTotal(Long consultingId) {
-        return consultingReplyDAO.findCountOfReply(consultingId);
-    }
 }
