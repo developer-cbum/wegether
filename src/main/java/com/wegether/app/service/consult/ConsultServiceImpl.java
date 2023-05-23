@@ -51,4 +51,6 @@ public class ConsultServiceImpl implements ConsultService {
     public void removeConsulting(Long id) {
         consultingDAO.deleteConsulting(id);
     }
+
+
 }

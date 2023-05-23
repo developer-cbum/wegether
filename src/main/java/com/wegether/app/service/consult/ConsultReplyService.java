@@ -5,6 +5,7 @@ import com.wegether.app.domain.dto.LecturePagination;
 import com.wegether.app.domain.dto.ReplyDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface
 ConsultReplyService {
@@ -32,5 +33,23 @@ ConsultReplyService {
 
     // 중간 테이블 삽입
     public void registerMiddle(Long id, Long memberId, Long consultingId);
+
+    //일반 댓글, 대댓글 삭제
+    public void removeReply(Long id);
+
+    //대댓글 전체삭제
+    public void removeReplyAgainAll(Long replyGroup);
+
+    //중간 테이블 삭제
+    public void removeMiddle(Long id);
+
+
+    // 원하는 댓글 조회
+    public Optional<ConsultReplyDTO> get(Long id);
+
+
+    //  원하는  대댓글 조회
+    public List<ConsultReplyDTO> getAgain(Long replyGroup);
+
 
 }

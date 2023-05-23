@@ -62,6 +62,33 @@ public class ConsultReplyController {
         return consultReplyService.getListAgain(consultingId);
     }
 
+    //댓글 삭제
+    @Transactional(rollbackFor = Exception.class)
+    @DeleteMapping("remove/{id}")
+    public void removeReply(@PathVariable Long id){
+
+        //일반 댓글일때
+        if(consultReplyService.get(id).get().getReplyDepth()== 0){
+            List<ConsultReplyDTO> replyAgains = consultReplyService.getAgain(id);
+            //그 댓글에 해당되는 중간테이블 삭제
+            replyAgains.stream().filter(consultReplyDTO -> consultReplyDTO.getReplyGroup()==id)
+                    .forEach(consultReplyDTO -> consultReplyService.removeMiddle(consultReplyDTO.getId()));
+        //댓글에 해당되는 대댓글 전체삭제
+        replyAgains.stream().filter(consultReplyDTO -> consultReplyDTO.getReplyGroup()==id)
+                .forEach(consultReplyDTO -> consultReplyService.removeReply(consultReplyDTO.getId()));
+            consultReplyService.removeReply(id);
+
+        } else{
+//            대댓글일때
+            consultReplyService.removeMiddle(id);
+            consultReplyService.removeReply(id);
+        }
+
+
+    }
+
+
+
 
 }
 

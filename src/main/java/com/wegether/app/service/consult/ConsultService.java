@@ -26,6 +26,9 @@ public interface ConsultService {
 
     // 상담 삭제
     public void removeConsulting(Long id);
+
+
+
 }
 
 

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface ConsultingReplyMapper {
@@ -33,5 +34,21 @@ public interface ConsultingReplyMapper {
 
     // 중간 테이블 삽입
     public void insertMiddle(Long id, Long memberId, Long consultingId);
+
+
+    //일반 댓글, 대댓글 삭제
+    public void deleteReply(Long id);
+
+    //대댓글 전체삭제
+    public void deleteReplyAgainAll(Long replyGroup);
+
+    //중간 테이블 삭제
+    public void deleteMiddle(Long id);
+
+    // 원하는 댓글 조회
+    public Optional<ConsultReplyDTO> select(Long id);
+
+    //  원하는  대댓글 조회
+    public List<ConsultReplyDTO> selectAgain(Long replyGroup);
 
 }

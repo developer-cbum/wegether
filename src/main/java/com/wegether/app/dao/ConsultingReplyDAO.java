@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -50,6 +51,31 @@ public class ConsultingReplyDAO {
     // 중간 테이블 삽입
     public void saveMiddle(Long id, Long memberId, Long consultingId){
         consultingReplyMapper.insertMiddle(id,memberId,consultingId);
+    }
+
+    //일반 댓글, 대댓글 삭제
+    public void deleteReply(Long id){
+        consultingReplyMapper.deleteReply(id);
+    }
+
+    //대댓글 전체삭제
+    public void deleteReplyAgainAll(Long replyGroup){
+        consultingReplyMapper.deleteReplyAgainAll(replyGroup);
+    }
+
+    //중간 테이블 삭제
+    public void deleteMiddle(Long id){
+        consultingReplyMapper.deleteMiddle(id);
+    }
+
+    // 원하는 댓글 조회
+    public Optional<ConsultReplyDTO> find(Long id){
+        return consultingReplyMapper.select(id);
+    }
+
+    //  원하는  대댓글 조회
+    public List<ConsultReplyDTO> findAgain(Long replyGroup){
+       return consultingReplyMapper.selectAgain(replyGroup);
     }
 
 

@@ -41,8 +41,10 @@ function registerReply() {
             "consultingId": consultingId
         }),
         contentType: "application/json; charset=UTF-8;",
-        success    : function (int) {
+        success    : function (total) {
             $('.reviewWrite').hide();
+                //댓글이 없습니다 숨기기
+            $('.no-reply').hide();
                 //    댓글 최신화
                 text=""
                 $(".total").text(`${total}`);
@@ -53,15 +55,63 @@ function registerReply() {
     })
 }
 
+//확인 버튼누를떄 대댓글등록
+$(document).on('click', '.register-again-reply', function () {
+
+    let $againReply = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyAgain-text-area');
+    let $replyGroup = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyGroup');
+    let $reviewWrite = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
+    let replyContent = $againReply.val();
+    let replyGroup = $replyGroup.val();
+
+    let id = $(this).attr("id");
+
+    if(session == null){
+        showWarnModal("로그인후 이용해주세요");
+        return;
+    }
+
+    if($againReply.val()==""){
+        showWarnModal("내용을 작성해주세요");
+        return;
+    }
+
+
+    $.ajax({
+        url        : '/replies/register-again',
+        type       : "post",
+        data       : JSON.stringify({
+            "replyContent": replyContent,
+            "consultingId": consultingId,
+            "replyGroup"  : replyGroup
+        }),
+        contentType: "application/json; charset=UTF-8;",
+        success    : function (total) {
+            $againReply.val("");
+            //    댓글 최신화
+            text=""
+            $div.html("");
+            page= 1;
+            $(".total").text(`${total}`);
+            // 대댓글써도 댓글폼 유지
+            load(id); //폼다시생성
+
+        }
+
+    });
+
+});
+
 //댓글 리스트
 
 
 /*댓글 불러오기 ajax 함수*/
-function load() {
+function load(id) {
     $.ajax({
         url     : `/replies/list/${consultingId}/${page}`,
         type    : 'get',
         success : function (result) {
+
             if(result.length == 0){
                 $('.more-button').hide();
             }
@@ -71,8 +121,8 @@ function load() {
                     url     : `/replies/again-list/${consultingId}`,
                     type    : 'get',
                     success : function (resultResult) {
-                            showList(result, resultResult);
 
+                        showList(result, resultResult, id);
                     }
                 });
             }
@@ -80,11 +130,56 @@ function load() {
     });
 }
 
+
+//댓글 삭제 삭제버튼
+$(document).on('click', '.remove-button', function () {
+    console.log("들어옴");
+    let id = $(this).attr("id");
+    $.ajax({
+        url     : `/replies/remove/${id}`,
+        type    : 'delete',
+        success : function () {
+            text=""
+            $div.html("");
+            page= 1;
+            $(".total").text(`${total}`);
+            load(id); //폼다시생성
+            showWarnModal("삭제되었습니다");
+        }
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+/*밑에 긴 함수들-------------------------------*/
+
 /*목록생성*/
-function showList(result, replyResult) {
+function showList(result, replyResult, id) {
+
+    //더보기 만들기
+        if(result.length >= 5){
+            console.log(result.length);
+            console.log(result);
+            $('.more-container').show();
+        }else {
+            $('.more-container').hide();
+        }
+
+
     result.forEach(reply => {
-        if(reply.replyDepth == 0){
-        text += `
+        if(reply.replyDepth == 0) {
+            text += `
         <div class="CommunityCommentItem_container__BOufe">
                 <div class="CommunityCommentItem_content__2N4Mb">
                     <div class="CommentUserWrapper_container__10Bt- CommunityCommentContent_container__25oHX" style="margin-bottom: 15px">
@@ -102,24 +197,29 @@ function showList(result, replyResult) {
                         </div>
                         <div class="CommentUserWrapper_main__2oHy1">
                             <div class="CommunityCommentContent_header__2y2W0">
-                                <div class="CommunityCommentContent_userInfo__2veqg CommentUserInfo_container__2G0cq">
-                                    <span class="CommentUserInfo_name__3WGGI">
-                                        <a href="/web/wmypage/myprofile/fundinglist/732152617">
-                                            <strong>${reply.memberNickname}</strong>
-                                        </a>
+                                    <div class="CommunityCommentContent_userInfo__2veqg CommentUserInfo_container__2G0cq">
+                                        <span class="CommentUserInfo_name__3WGGI">
+                                            <a href="/web/wmypage/myprofile/fundinglist/732152617">
+                                                <strong>${reply.memberNickname}</strong>
+                                            </a>
+                                        </span>
+                                        <span class="Badge_container__9G9PS Badge_visible__3LNXv CommentUserInfo_waffleBadge__2Oqhl">
+                                        </span>
+                                    <span class="CommentUserInfo_date__1ggwf">
+                                                ${elapsedTime(reply.replyRegisterDate)}
                                     </span>
-                                    <span class="Badge_container__9G9PS Badge_visible__3LNXv CommentUserInfo_waffleBadge__2Oqhl">
-                                    </span>
-                                <span class="CommentUserInfo_date__1ggwf">
-                                            ${elapsedTime(reply.replyRegisterDate)}
-                                </span>
-                                </div>
-                                <div class="CommunityCommentContent_moreWrap__3ans8">
-                                    <svg viewBox="0 0 40 40" focusable="false" role="presentation"  class="withIcon_icon__3VTbq" aria-hidden="true">
-                                        <path
-                                                d="M24.52 5A4.52 4.52 0 1 0 20 9.57 4.53 4.53 0 0 0 24.52 5zm0 30A4.52 4.52 0 1 0 20 39.48 4.53 4.53 0 0 0 24.52 35zm0-15A4.52 4.52 0 1 0 20 24.52 4.53 4.53 0 0 0 24.52 20z"
-                                        ></path>
-                                    </svg>
+                                    </div>
+                                <div class="CommunityCommentContent_moreWrap__3ans8">`
+            // 수정 삭제 버튼
+            if (reply.memberId == session) {
+                text += `<div class="PurchaseSummaryCard_detailText__2GWWi" style="display: flex">
+                                                         <button>수정</button>
+                                                         <span>&nbsp | &nbsp</span>
+                                                         <button id="${reply.id}" class="remove-button">삭제</button>
+                                                    </div>`
+            }
+
+            text += `        
                                 </div>
                             </div>
                             <div>
@@ -132,23 +232,34 @@ function showList(result, replyResult) {
                             <div class="CommunityCommentContent_bottom__-IKRP CommunityCommentContent_noReply__1c4Cz">
                                 <button id="btn" class="Button_button__2FuOU Button_secondary__LNLsN Button_sm__16X6h CommunityCommentContent_replyBtn__2T16c reviewReviewButton" type="button">
                                     <span><span class="Button_children__ilFun">답글 `
-                            for(let i = 0; i < replyResult.length; i++) {
-                                if (reply.id == replyResult[i].replyGroup && replyResult[i].replyDepth == 1) {
-                                    ++count;
-                                }
-                            }
-                                   text+=  `${count}`
-                                text+=` </span></span>
+            for (let i = 0; i < replyResult.length; i++) {
+                if (reply.id == replyResult[i].replyGroup && replyResult[i].replyDepth == 1) {
+                    ++count;
+                }
+            }
+            text += `${count}`
+            text += ` </span></span>
                                 </button>
                             </div>
                             <div class="CommunityCommentContent_utils__oo7sJ"
                             ></div>
                         </div>
                     </div>
-                </div>
-            <div class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: none"
-            >`
-            for(let i = 0; i < replyResult.length; i++) {
+                </div>`
+            if (id) {
+                if (reply.id == id) {
+                    text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: block">`;
+                } else if(reply.replyGroup == id) {
+                    text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: block">`;
+                } else{
+                    text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: none">`;
+                }
+
+            }  else {
+                text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: none">`;
+            }
+
+
                 if (reply.id == replyResult[i].replyGroup && replyResult[i].replyDepth == 1) { count=0;
                     text += `
                   <div class="CommunityCommentReplyContent_container__ImfPm"  >
@@ -164,18 +275,30 @@ function showList(result, replyResult) {
                         </a>
                     </div>
                     <divclass="CommentUserWrapper_main__2oHy1">
+                        <div style="display: flex">
                         <div class="CommentUserInfo_container__2G0cq">
-                            <span class="CommentUserInfo_name__3WGGI">
-                                <a href="/web/maker/detail/3701904">
-                                    <strong
-                                    >${replyResult[i].memberNickname}
-                                    </strong>
-                                </a>
-                            </span>
-                            <span
-                                class="Badge_container__9G9PS Badge_visible__3LNXv CommentUserInfo_waffleBadge__2Oqhl">
-                        </span>
-                        <span class="CommentUserInfo_date__1ggwf">${elapsedTime(replyResult[i].replyRegisterDate)}</span>
+                                    <span class="CommentUserInfo_name__3WGGI">
+                                            <a href="/web/maker/detail/3701904">
+                                                <strong
+                                                >${replyResult[i].memberNickname}
+                                                </strong>
+                                            </a>
+                                     </span>
+                                         <span
+                                            class="Badge_container__9G9PS Badge_visible__3LNXv CommentUserInfo_waffleBadge__2Oqhl">
+                                        </span>
+                                     <span class="CommentUserInfo_date__1ggwf">${elapsedTime(replyResult[i].replyRegisterDate)}</span>
+                            </div>
+                            <div>`
+                                   //수정버튼
+                                   if(replyResult[i].memberId == session){
+                                       text+= ` <div class="PurchaseSummaryCard_detailText__2GWWi" style="display: flex">
+                                                         <button>수정</button>
+                                                         <span>&nbsp | &nbsp</span>
+                                                         <button id="${replyResult[i].id}" class="remove-button">삭제</button>
+                                                    </div>`
+                                   }
+                        text+=  `</div>
                         </div>
                         <div>
                             <div class="CommentTextContent_container__3EM7N">
@@ -192,7 +315,6 @@ function showList(result, replyResult) {
            `
                 }
                 <!--      답글작성창-->
-            }
          text+=  `<!--답글작성-->
             <div class="CommunityCommentReplyListContainer_container__1waBy">
                      <div class="CommentReplyList_container__2phlF">
@@ -268,6 +390,8 @@ function showList(result, replyResult) {
             </div>
                 ` }
 
+
+
     });
 
     //답글
@@ -316,11 +440,6 @@ $(function () {
 });
 
 
-// reviewReviewButton 버튼 클릭 이벤트 처리
-//     $(document).on('click', '.reviewReviewButton', function(e) {
-//         console.log($(this).parent().siblings('.reviewReviewWrite'));
-//             $(this).parent().siblings('.reviewReviewWrite').show();
-//     });
 
 //답글 버튼눌렀을때
     $(document).on('click', '.reviewReviewButton', function () {
@@ -342,43 +461,7 @@ $(function () {
         reviewWriteCancle.val("");
     });
 
-    //확인 버튼누를떄 대댓글등록
-    $(document).on('click', '.register-again-reply', function () {
 
-        if(session == null){
-            showWarnModal("로그인후 이용해주세요");
-            return;
-        }
-
-        let $againReply = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyAgain-text-area');
-        let $replyGroup = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyGroup');
-        let $reviewWrite = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
-        let replyContent = $againReply.val();
-        let replyGroup = $replyGroup.val();
-
-        $.ajax({
-            url        : '/replies/register-again',
-            type       : "post",
-            data       : JSON.stringify({
-                "replyContent": replyContent,
-                "consultingId": consultingId,
-                "replyGroup"  : replyGroup
-            }),
-            contentType: "application/json; charset=UTF-8;",
-            success    : function (total) {
-                      $againReply.val("");
-                    //    댓글 최신화
-                    text=""
-                    $div.html("");
-                    page= 1;
-                    $(".total").text(`${total}`);
-                    // 대댓글써도 댓글폼 유지
-                    $reviewWrite.show();
-
-            }
-        });
-
-    });
 
     //더보기클릭
 $('.more-button').on("click", function () {
