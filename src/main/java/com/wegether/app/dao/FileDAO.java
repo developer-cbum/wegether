@@ -1,6 +1,7 @@
 package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.DataFileDTO;
+import com.wegether.app.domain.dto.ProjectFileDTO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.dto.CommunityFileDTO;
 import com.wegether.app.mapper.FileMapper;
@@ -45,4 +46,20 @@ public class FileDAO {
     public void communityDelete(Long id){ fileMapper.communityDelete(id);}
 
     public void communityDeleteAll(Long communityId) { fileMapper.communityDeleteAll(communityId);}
+
+
+
+
+    public List<ProjectFileDTO> projectFindAll(Long projectId) { return fileMapper.projectSelectAll(projectId); }
+
+    //        파일 추가
+    public void save(ProjectFileDTO projectFileDTO){
+        fileMapper.insert(projectFileDTO);
+    }
+
+    //       파일 삭제
+//    public void Projectdelete(Long id){
+//        fileMapper.projectdelete(id);
+//    }
+
 }
