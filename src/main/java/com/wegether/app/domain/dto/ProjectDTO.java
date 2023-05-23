@@ -28,7 +28,8 @@ public class ProjectDTO{
 
 
 
-
+//    private List<ProjectFileDTO> files = new ArrayList<>();
+//    private List<Long> fileIdsForDelete = new ArrayList<>();
 
 
     

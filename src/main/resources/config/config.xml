@@ -4,6 +4,7 @@
     <typeAliases>
         <typeAlias type="com.wegether.app.domain.vo.AnswerVO" alias="answerVO"/>
         <typeAlias type="com.wegether.app.domain.vo.CardVO" alias="cardVO"/>
+        <typeAlias type="com.wegether.app.domain.dto.CardDTO" alias="cardDTO"/>
         <typeAlias type="com.wegether.app.domain.vo.CommunityFileVO" alias="communityFileVO"/>
         <typeAlias type="com.wegether.app.domain.vo.CommunityReplyVO" alias="communityReplyVO"/>
         <typeAlias type="com.wegether.app.domain.vo.CommunityVO" alias="communityVO"/>

@@ -3,24 +3,22 @@ package com.wegether.app.controller;
 
 
 
+import com.wegether.app.domain.dto.CardDTO;
+import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.service.data.DataService;
-import com.wegether.app.service.mypage.CardImpl;
-import com.wegether.app.service.mypage.InquiryImpl;
-import com.wegether.app.service.mypage.MineServiceImpl;
-import com.wegether.app.service.mypage.MypageService;
+import com.wegether.app.service.mypage.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -44,8 +42,9 @@ public class MypageController {
 
     //    카드 리스트
     @GetMapping("/pay-card/pay-card")
+
     public void list(Long memberId, Model model) {
-        model.addAttribute("cards", card.getList(memberId));
+        model.addAttribute("cards", card.getList(1L));
     }
 
 /*    카드 등록 모달 화면
@@ -54,11 +53,12 @@ public class MypageController {
     public void goToWriteForm(CardVO cardVO){;}*/
 
     //    카드 등록 후 리스트
-    @PostMapping("register")
-    public RedirectView register(CardVO cardVO) {
-        card.register(cardVO);
-        return new RedirectView("/pay-card/pay-card");
-    }
+//    @PostMapping("register")
+//    @ResponseBody
+//    public RedirectView register(@RequestBody CardDTO cardDTO, CardVO CARD) {
+//        card.register(cardVO);
+//        return new RedirectView("/pay-card/pay-card");
+//    }
 
     //    카드 삭제
     @PostMapping("remove")
@@ -94,8 +94,28 @@ public class MypageController {
     }
 
 //    내 프로젝트
-    @GetMapping("/my-page/my-project-list")
-    public void goToProject(Long memberId, Model model){
-        model.addAttribute("projects", mine.readMyProject(2L));
+//    @GetMapping("/my-page/my-project-list")
+//    public void goToProject(Long memberId, Model model){
+//        model.addAttribute("projects", mine.readMyProject(2L));
+//    }
+
+//    프로젝트 찜
+    private final HeartImpl heart;
+
+//    @GetMapping("/heart-list/heart")
+//    public void goToHeart(Long memberId, Model model){
+//        model.addAttribute("projectH", heart.projectHeart(1L));
+//    }
+
+    @GetMapping("/heart-list/heart")
+    @ResponseBody
+    public List<ProjectDTO> goToHeart(Long memberId){
+
+        final List<ProjectDTO> hearts = heart.projectHeart(2L);
+        return hearts;
+
+        //model.addAttribute("projectH", heart.projectHeart(2L));
     }
+
+
 }

@@ -26,11 +26,11 @@ $(document).ready(function(){
                             aria-hidden="true"
                             class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
                > `
-        project.files.forEach(file => {
-            if(file.fileType == "REPRESENTATIVE"){
-                text += `<img src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" class="preview">`;
-            }
-        })
+        // project.files.forEach(file => {
+        //     if(file.fileType == "REPRESENTATIVE"){
+        //         text += `<img src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" class="preview">`;
+        //     }
+        // })
         text+=`
            
         </div>

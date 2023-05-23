@@ -46,14 +46,14 @@ public class MineServiceImpl implements MypageService {
     }
 
     //    내 프로젝트 조회
-    public List<ProjectDTO> readMyProject(Long memberId) {
-
-        final List<ProjectDTO> projects = projectDAO.showmyProject(memberId);
-        //        게시글 하나씩 첨부파일 목록 담기
-        projects.forEach(project -> project.setFiles(fileDAO.dataFindAll(project.getId())));
-        return datas;
-        return projectDAO.showmyProject(memberId);
-    }
+//    public List<ProjectDTO> readMyProject(Long memberId) {
+//
+//        final List<ProjectDTO> projects = projectDAO.showmyProject(memberId);
+//        //        게시글 하나씩 첨부파일 목록 담기
+//        projects.forEach(project -> project.setFiles(fileDAO.dataFindAll(project.getId())));
+//        return datas;
+//        return projectDAO.showmyProject(memberId);
+//    }
 
 
 
