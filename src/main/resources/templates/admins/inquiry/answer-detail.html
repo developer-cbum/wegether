@@ -58,21 +58,21 @@
                                     <div class="board_title">
                                         <span class="span-bold">제목 :</span>
                                         <!-- 제목 -->
-                                        <span th:text="${answerModifyBoards.inquiryTitle}"></span>
+                                        <span th:text="${answerBoards.inquiryTitle}"></span>
                                     </div>
                                     <div class="board_info board_writer">
                                         <span class="span-bold">작성자 :</span>
                                         <!-- 작성자 명 -->
-                                        <span th:text="${answerModifyBoards.memberNickname}"></span>
+                                        <span th:text="${answerBoards.memberNickname}"></span>
                                     </div>
                                     <div class="board_info board_register_date">
                                         <span class="span-bold">작성 날짜 :</span>
                                         <!-- 작성 날짜 -->
-                                        <span th:text="${answerModifyBoards.inquiryRegisterDate}"></span>
+                                        <span th:text="${answerBoards.inquiryRegisterDate}"></span>
                                     </div>
                                     <hr>
                                     <!-- 작성 내용 -->
-                                    <div class="board_content" th:text="${answerModifyBoards.inquiryContent}"></div>
+                                    <div class="board_content" th:text="${answerBoards.inquiryContent}"></div>
                                 </div>
                         </section>
                         <section class="board-info-box-layout">
@@ -85,18 +85,18 @@
                                         <span class="span-bold">작성 날짜 :</span>
 
                                         <!-- 등록 날짜 -->
-                                        <span th:text="${answerModifyBoards.answerRegisterDate}"></span>
+                                        <span th:text="${answerBoards.answerRegisterDate}"></span>
                                     </div>
-                                    <form th:action="@{/admins/inquiry/modify}" method="post" name="answerModifyForm">
-                                        <input type="hidden" name="id" th:value="${answerModifyBoards.id}">
+                                    <form action="">
+                                        <input type="hidden" name="inquiryId"}>
                                         <hr>
                                         <!-- 등록 내용 -->
-                                        <div>
-                                            <textarea th:field="${answerModifyBoards.answerContent}" class="board-content" name="answerContent"></textarea>
-                                        </div>
+                                        <div class="board_content" th:text="${answerBoards.answerContent}"></div>
                                         <hr>
                                         <div>
-                                            <button type="button" class="btn_done">수정</button>
+                                            <button type="button" class="btn_done" th:onclick="'location.href=\''+ @{modify(id=${answerBoards.id})} + '\''">
+                                                수정
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -111,12 +111,12 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
     <script>
-        let answerModifyBoards = [[${answerModifyBoards}]];
-        console.log(answerModifyBoards);
+        let answerBoards = [[${answerBoards}]];
+        console.log(answerBoards);
     </script>
     <script>
         $("button.btn_done").on("click", function(){
-            $(answerModifyForm).submit();
+            $(answerWriteForm).submit();
         });
     </script>
 

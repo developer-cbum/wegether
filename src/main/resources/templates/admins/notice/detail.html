@@ -39,7 +39,7 @@
                         <!-- 헤더 -->
                         <div class="prev-button-layout">
                             <div>
-                                <a href="">
+                                <a href="javascript:window.history.back();">
                                     <img src="/image/admin/prev_icon.png" class="prev-icon" />
                                 </a>
                                 <span class="prev-title">리스트로 돌아가기</span>
@@ -56,23 +56,18 @@
                                 <div class="info-table">
                                     <div class="info-member">
                                         <span class="span-bold">제목 :</span>
-                                        <!-- 제목  -->
-                                        <span text="">[공지] 공지 제목 </span>
+                                        <!-- 제목 -->
+                                        <span th:text="${noticeBoards.noticeTitle}"></span>
                                     </div>
                                     <div class="info-member">
                                         <span class="span-bold">작성 날짜 :</span>
-                                        <!-- 작성 날짜  -->
-                                        <span text="">
-                                            2023-04-24
-                                        </span>
+                                        <!-- 작성 날짜 -->
+                                        <span th:text="${noticeBoards.noticeRegisterDate}"></span>
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="info-table">
-                                    <div text="">
-                                        <!-- 게시판 내용 -->
-                                        게시판 내용
-                                    </div>
+                                    <div th:text="${noticeBoards.noticeContent}"></div>
                                 </div>
                             </div>
                         </section>
@@ -83,4 +78,8 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
+    <script>
+        let noticeBoards = [[${noticeBoards}]];
+        console.log(noticeBoards);
+    </script>
 </html>

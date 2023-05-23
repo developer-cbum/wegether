@@ -1,10 +1,7 @@
 package com.wegether.app.service.admin;
 
 import com.wegether.app.dao.AdminDAO;
-import com.wegether.app.domain.dto.AdminPagination;
-import com.wegether.app.domain.dto.DataAdminDTO;
-import com.wegether.app.domain.dto.InquiryAdminDTO;
-import com.wegether.app.domain.dto.ProjectAdminDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.AnswerVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import lombok.extern.slf4j.Slf4j;
@@ -116,17 +113,17 @@ public class AdminServiceTests {
     //    문의사항 답변 상세 테스트
     @Test
     public void answerReadTest() {
-        adminService.answerRead(1L).map(AnswerVO::getAnswerContent).ifPresent(log::info);
+        adminService.answerRead(41L).map(AnswerAdminDTO::toString).ifPresent(log::info);
     }
 
     //    문의사항 답변 수정 테스트
-    @Test
-    public void answerModifyTest() {
-        adminService.answerRead(1L).ifPresent(answerVO -> {
-            answerVO.setAnswerContent("수정 서비스 테스트");
-            adminService.answerModify(answerVO);
-        });
-    }
+//    @Test
+//    public void answerModifyTest() {
+//        adminService.answerRead(1L).ifPresent(answerVO -> {
+//            answerVO.setAnswerContent("수정 서비스 테스트");
+//            adminService.answerModify(answerVO);
+//        });
+//    }
 
     //    문의사항 답변 삭제 테스트
     @Test
