@@ -20,9 +20,9 @@ let clickCheck = false;
 // first_div.style.backgroundImage = `url(006.png)`;
 // last_div.style.backgroundImage = `url(banner.png)`;
 
-$image_divs.each((i, image_div) => {$(image_div).css("background-image", `url(../../static/image/index/00${i + 1}.jpeg)`)});
-$first_div.css("background-image", `url(../../static/image/index/00${$image_divs.length}.jpeg)`);
-$last_div.css("background-image", `url(../../static/image/index/001.jpeg)`);
+$image_divs.each((i, image_div) => {$(image_div).css("background-image", `url(  /image/index/00${i + 1}.jpeg)`)});
+$first_div.css("background-image", `url(/image/index/00${$image_divs.length}.jpeg)`);
+$last_div.css("background-image", `url(/image/index/001.jpeg)`);
 
 //인터벌 설정
 // 인터벌 실행 될 때마다 count 증가, 슬라이드배너 실행(changeBanner)
