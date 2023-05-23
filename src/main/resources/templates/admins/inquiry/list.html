@@ -19,6 +19,13 @@
 
     <body>
         <div>
+            <!-- 모달 부분 -->
+            <div class="modal">
+                <div class="warn-modal">
+                    <div id="content-wrap"></div>
+                </div>
+            </div>
+
             <div class="info-title-box info-title-box-flex">
                 <div class="logo-box-layout">
                     <div class="logo-box">
@@ -42,8 +49,7 @@
                             <div class="delete-box">
                                 <button
                                         class="deleteButton delete-button"
-                                        onclick="deleteInquiries(getSelectedInquiryIds())"
-                                >
+                                        onclick="deleteInquiries(getSelectedInquiryIds())">
                                     삭제하기
                                 </button>
                             </div>
@@ -79,10 +85,14 @@
                                                         th:value="${inquiries.id}"/>
                                             </td>
                                             <td th:text="${inquiries.id}"></td>
-                                            <td th:text="${inquiries.inquiryTitle}"></td>
-                                            <td th:text="${inquiries.memberNickname}"></td>
+                                            <td>
+                                                <a th:if="${!inquiries.inquiryStatus}" th:href="@{detail(id=${inquiries.id})}" th:text="${inquiries.inquiryTitle}"></a>
+                                                <a th:unless="${!inquiries.inquiryStatus}" th:href="@{answer-detail(id=${inquiries.id})}" th:text="${inquiries.inquiryTitle}"></a>
+                                            </td>
+                                            <td th:text="${inquiries.memberNickname}">
+                                            </td>
                                             <td th:text="${inquiries.inquiryRegisterDate}"></td>
-                                            <td th:text="${inquiries.inquiryStatus ? '답변 완료' : '미답변'}"></td>
+                                            <td th:text="${inquiries.inquiryStatus ? '답변 완료' : '미답변'}" th:style="${inquiries.inquiryStatus ? 'color:#0fa34c' : 'color:#ff0000'}"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -116,10 +126,6 @@
     <script src="/js/admin/modal.js"></script>
     <script src="/js/admin/paging.js"></script>
     <script src="/js/admin/page.js"></script>
-    <script>
-        // let notices = [[${notices}]];
-        // console.log(notices);
-    </script>
     <script th:inline="javascript">
         let text = "";
 
@@ -141,13 +147,13 @@
                 data: JSON.stringify(inquiryIds),
                 success: function () {
                     console.log(inquiryIds);
-                    showWarnModal("회원 상태를 변경하였습니다");
+                    showWarnModal("삭제에 성공 하였습니다.");
                     setTimeout(() => {
                         location.reload();
                     }, 1000);
                 },
                 error: function () {
-                    showWarnModal("회원 상태 변경을 실패 하였습니다.");
+                    showWarnModal("삭제에 실패 하였습니다.");
                 }
             });
         }

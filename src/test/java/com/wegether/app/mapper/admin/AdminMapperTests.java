@@ -1,5 +1,6 @@
 package com.wegether.app.mapper.admin;
 
+import com.wegether.app.domain.dto.AnswerAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
 import com.wegether.app.domain.dto.ProjectAdminDTO;
 import com.wegether.app.domain.vo.AnswerVO;
@@ -116,17 +117,23 @@ public class AdminMapperTests {
     //    문의사항 답변 상세 테스트
     @Test
     public void answerSelectTest() {
-        adminMapper.answerSelect(5L).map(AnswerVO::getAnswerContent).ifPresent(log::info);
+        adminMapper.answerSelect(41L).map(AnswerAdminDTO::toString).ifPresent(log::info);
+    }
+
+    //    문의사항 답변 여부 테스트
+    @Test
+    public void inquiryUpdateTest(){
+        adminMapper.inquiryUpdate(1533L);
     }
 
     //    문의사항 답변 수정 테스트
-    @Test
-    public void inquiryAnswerUpdateTest() {
-        adminMapper.answerSelect(1L).ifPresent(answerVO -> {
-            answerVO.setAnswerContent("문의 답변 수정 입니다");
-            adminMapper.answerUpdate(answerVO);
-        });
-    }
+//    @Test
+//    public void inquiryAnswerUpdateTest() {
+//        adminMapper.answerSelect(1L).ifPresent(answerVO -> {
+//            answerVO.setAnswerContent("문의 답변 수정 입니다");
+//            adminMapper.answerUpdate(answerVO);
+//        });
+//    }
 
     //    문의사항 답변 삭제 테스트
     @Test

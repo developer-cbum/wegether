@@ -1,10 +1,7 @@
 package com.wegether.app.service.admin;
 
 import com.wegether.app.dao.AdminDAO;
-import com.wegether.app.domain.dto.AdminPagination;
-import com.wegether.app.domain.dto.DataAdminDTO;
-import com.wegether.app.domain.dto.InquiryAdminDTO;
-import com.wegether.app.domain.dto.ProjectAdminDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +18,6 @@ public class AdminServiceImpl implements AdminService {
 
     // 공지사항 목록
     @Override
-//    public List<NoticeVO> noticeGetList() { return adminDAO.noticeFindAll(); }
     public List<NoticeVO> noticeGetList(AdminPagination adminPagination) {
         return adminDAO.noticeFindAll(adminPagination);
     }
@@ -50,7 +46,9 @@ public class AdminServiceImpl implements AdminService {
 
     // 자료 목록
     @Override
-    public List<DataAdminDTO> dataGetList(AdminPagination adminPagination) { return adminDAO.dataFindAll(adminPagination); }
+    public List<DataAdminDTO> dataGetList(AdminPagination adminPagination) {
+        return adminDAO.dataFindAll(adminPagination);
+    }
 
     // 자료 총 갯수
     @Override
@@ -66,8 +64,6 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<ProjectAdminDTO> projectGetList(AdminPagination adminPagination) {
         return adminDAO.projectFindAll(adminPagination);
-//    public List<ProjectAdminDTO> projectGetList() {
-//        return adminDAO.projectFindAll();
     }
 
     // 프로젝트 총 갯수
@@ -82,10 +78,6 @@ public class AdminServiceImpl implements AdminService {
 
     // 문의사항 목록
     @Override
-//    public List<InquiryAdminDTO> inquiryGetList() {
-//        return adminDAO.inquiryFindAll();
-//    }
-
     public List<InquiryAdminDTO> inquiryGetList(AdminPagination adminPagination) {
         return adminDAO.inquiryFindAll(adminPagination);
     }
@@ -94,28 +86,40 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int getInquiryTotal() { return adminDAO.FindCountOfInquiry(); }
 
-    // 문의사항 답변 등록
-    @Override
-    public void answerWrite(AnswerVO answerVO) {
-        adminDAO.answerSave(answerVO);
-    }
-
     // 문의사항 상세
     @Override
     public Optional<InquiryAdminDTO> inquiryRead(Long id) {
         return adminDAO.inquiryFindById(id);
     }
 
+    // 문의사항 답변 등록
+    @Override
+    public void answerWrite(AnswerVO answerVO) {
+        adminDAO.answerSave(answerVO);
+    }
+
+    // 문의사항 답변 여부
+    @Override
+    public void inquiryStatusChange(Long inquiryId) {
+        adminDAO.setInquiryStatus(inquiryId);
+    }
+
     // 문의사항 답변 상세
     @Override
-    public Optional<AnswerVO> answerRead(Long inquiryId) {
+    public Optional<AnswerAdminDTO> answerRead(Long inquiryId) {
         return adminDAO.answerFindById(inquiryId);
+    }
+
+    // 문의사항 수정 상세
+    @Override
+    public Optional<AnswerAdminDTO> answerModifyRead(Long id) {
+        return adminDAO.answerModifyFindById(id);
     }
 
     // 문의사항 답변 수정
     @Override
-    public void answerModify(AnswerVO answerVO) {
-        adminDAO.setAnswerVO(answerVO);
+    public void answerModify(AnswerAdminDTO answerAdminDTO) {
+        adminDAO.setAnswerVO(answerAdminDTO);
     }
 
     // 문의사항 답변 삭제
@@ -128,7 +132,6 @@ public class AdminServiceImpl implements AdminService {
 
     // 회원 목록
     @Override
-//    public List<MemberVO> memberGetList() { return adminDAO.memberFindAll(); }
     public List<MemberVO> memberGetList(AdminPagination adminPagination) {
         return adminDAO.memberFindAll(adminPagination);
     }
@@ -145,7 +148,6 @@ public class AdminServiceImpl implements AdminService {
 
     // 강연 목록
     @Override
-//    public List<LectureVO> lectureGetList() { return adminDAO.lectureFindAll(); }
     public List<LectureVO> lectureGetList(AdminPagination adminPagination) {
         return adminDAO.lectureFindAll(adminPagination);
     }
