@@ -15,8 +15,8 @@
         <![CDATA[
             ON M.ID = P.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
             ORDER BY P.ID DESC
-        ]]>
         ) P WHERE R > (#{page} - 1) * #{rowCount}
+        ]]>
     </select>
 
 

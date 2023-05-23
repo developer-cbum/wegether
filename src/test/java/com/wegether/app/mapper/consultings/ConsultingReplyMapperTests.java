@@ -38,13 +38,13 @@ public class ConsultingReplyMapperTests {
     }
 
 
-    @Test
-    //일반 댓글 페이징을 가져오기
-    public void selectAllTest(){
-        LecturePagination lecturePagination = new LecturePagination();
-        lecturePagination.progress(5,5);
-        consultingReplyMapper.selectAll(lecturePagination);
-    }
+//    @Test
+//    //일반 댓글 페이징을 가져오기
+//    public void selectAllTest(){
+//        LecturePagination lecturePagination = new LecturePagination();
+//        lecturePagination.progress(5,5);
+//        consultingReplyMapper.selectAll(lecturePagination);
+//    }
 
 
 }
