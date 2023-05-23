@@ -45,11 +45,13 @@ public class DataController {
         model.addAttribute("dataDTO", dataService.read(id).get());
     }
 
+
 //    자료 등록 - HttpSession session
     @GetMapping("register")
         public void goToRegisterForm(DataVO dataVO, HttpSession session, Model model){
 
-        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
+//        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
+        String nickName = accountService.getMemberById(2L).get().getMemberNickname();
         model.addAttribute("nickName", nickName);
     };
 
@@ -64,6 +66,8 @@ public class DataController {
         dataService.write(dataDTO);
         return new RedirectView("/data/list");
     }
+
+
 
 
 //    @PostMapping("modify")

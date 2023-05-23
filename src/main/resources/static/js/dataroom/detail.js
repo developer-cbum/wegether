@@ -115,11 +115,6 @@ $(document).ready(function () {
                                     </span>
                                 </button>
                             </div>
-<<<<<<< HEAD
-
-=======
-                            
->>>>>>> master
                             <button rel="noreferrer noopener"
                                 class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA"
                                 type="button">
@@ -158,34 +153,6 @@ $(document).ready(function () {
                                         <img class="Rating_icon__1gznE" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMTZ2MTZIMHoiLz4KICAgICAgICA8cGF0aCBkPSJNMiAyaDExLjY2N3YxMS42NjdIMnoiLz4KICAgICAgICA8cGF0aCBkPSJNNy44MzMgMTEuODQxIDUuMDU1IDEzLjU2YS43MjEuNzIxIDAgMCAxLS45OTgtLjI0NC43NDUuNzQ1IDAgMCAxLS4wODYtLjU1NGwuNzU1LTMuMjA1LTIuNDcyLTIuMTQzYS43NDEuNzQxIDAgMCAxLS4wOC0xLjAzNi43MjUuNzI1IDAgMCAxIC40OTQtLjI1NGwzLjI0NS0uMjY0IDEuMjUtMy4wNDJhLjcyMy43MjMgMCAwIDEgMS4zNCAwbDEuMjUgMy4wNDJMMTMgNi4xMjNhLjczOC43MzggMCAwIDEgLjQxNCAxLjI5TDEwLjk0IDkuNTU2bC43NTYgMy4yMDVhLjczNi43MzYgMCAwIDEtLjUzOC44ODYuNzIuNzIgMCAwIDEtLjU0Ny0uMDg5bC0yLjc3OC0xLjcxN3oiIGZpbGw9IiMwMEM0QzQiIGZpbGwtcnVsZT0ibm9uemVybyIvPgogICAgPC9nPgo8L3N2Zz4K" alt="">
                                         포인트 | ${dataDTO.memberPoint}
                                     </span>
-                                </div>
-                                <div>
-<!--                                    <button type="button"-->
-<!--                                        class="Tooltip_button__2xpDd MakerInfoStatusSection_tooltip__28uHX"-->
-<!--                                        title="펀딩·프리오더·스토어 합산" aria-describedby="Tooltip_2">-->
-<!--                                        <span class="Tooltip_label__eKqLa">펀딩·프리오더·스토어 합산</span>-->
-<!--                                        <span class="Tooltip_helpIconWrap__3bvP3">-->
-<!--                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"-->
-<!--                                                class="withIcon_icon__3VTbq Tooltip_helpOutlineIcon__JkkNy"-->
-<!--                                                aria-hidden="true">-->
-<!--                                                <path fill="none" d="M0 0h40v40H0z"></path>-->
-<!--                                                <path-->
-<!--                                                    d="M20 39a19 19 0 1 1 19-19 19.06 19.06 0 0 1-19 19zm0-36a17 17 0 1 0 17 17A17 17 0 0 0 20 3z">-->
-<!--                                                </path>-->
-<!--                                                <path-->
-<!--                                                    d="M24.34 10A5.75 5.75 0 0 0 20 8.33a5.7 5.7 0 0 0-6 6h2a3.7 3.7 0 0 1 4-4 3.7 3.7 0 0 1 4 4A4.29 4.29 0 0 1 22 18l-.7.6a6.51 6.51 0 0 0-2.3 5.7h2c0-1.9 0-2.6 1.7-4.3l.6-.5a6.28 6.28 0 0 0 2.7-5.2 5.73 5.73 0 0 0-1.66-4.3zM20 26.87a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 1 0 0-3.6z">-->
-<!--                                                </path>-->
-<!--                                            </svg>-->
-<!--                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"-->
-<!--                                                class="withIcon_icon__3VTbq Tooltip_helpIcon__3jf9Q"-->
-<!--                                                aria-hidden="true">-->
-<!--                                                <path fill="none" d="M0 0h40v40H0z"></path>-->
-<!--                                                <path-->
-<!--                                                    d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm0 29.5a1.8 1.8 0 1 1 1.8-1.79 1.8 1.8 0 0 1-1.8 1.75zm6-16.13a6.28 6.28 0 0 1-2.7 5.2l-.6.5c-1.7 1.7-1.7 2.4-1.7 4.3h-2a6.51 6.51 0 0 1 2.3-5.7L22 18a4.29 4.29 0 0 0 2-3.7 3.7 3.7 0 0 0-4-4 3.7 3.7 0 0 0-4 4h-2a5.7 5.7 0 0 1 6-6 5.7 5.7 0 0 1 6 6z">-->
-<!--                                                </path>-->
-<!--                                            </svg>-->
-<!--                                        </span>-->
-<!--                                    </button>-->
                                 </div>
                             </div>
                             <button
@@ -295,6 +262,19 @@ $(document).ready(function () {
         closeButton.hide();
     });
 
+
+
+    // 카테고리 이름 변경
+    $(".computer").text("컴퓨터공학과");
+    $(".design").text("디자인학과");
+    $(".sports").text("스포츠과학과");
+    $(".biology").text("생명과학과");
+    $(".chemistry").text("화학과");
+    $(".machine").text("기계공학과");
+    $(".engineering").text("전기공학과");
+    $(".math").text("수학과");
+    $(".media").text("미디어영상학과");
+    $(".applied_music").text("실용음악과");
 
 
 }); //E

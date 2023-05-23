@@ -17,7 +17,7 @@ import java.util.Optional;
 public interface DataMapper {
 
     //    자료 목록 조회
-    public List<DataDTO> selectAll(@Param("dataPagination") DataPagination dataPagination, CategoryType categoryType);
+    public List<DataDTO> selectAll( DataPagination dataPagination, CategoryType categoryType);
 
 //    자료 목록 조회
     public List<DataDTO> selectAll(DataPagination dataPagination);

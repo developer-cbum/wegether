@@ -78,9 +78,6 @@ $(document).ready(function () {
     $ul.append(text);
 
 
-
-
-
     //TOP btn
     var button = $(".FloatingTopButton_pageTop__2gqm9");
     button.hide();
@@ -116,10 +113,32 @@ $(document).ready(function () {
             .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
     });
 
+    let type = searchParam('type');
+    // let href = window.location.href
+    // $(".fAzCXd a").removeClass("eWDpEZ").addClass("ehJwom");
+
+        if (type == null) {
+            $(".all").addClass('ImageTab_active__BGdXu').parent().siblings()
+                .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
+        } else {
+            $("." + type).addClass('ImageTab_active__BGdXu').parent().siblings()
+                .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
+        }
+
+
+    function searchParam(key) {
+        return new URLSearchParams(location.search).get(key);
+    };
+
+
     $('.category_lists button').on("click", function (e) {
         e.preventDefault();
         let type = this.classList[0];
-            location.href = `/data/list?type=${type}`;
+            location.href = `/datas/list?type=${type}`;
+    });
+
+    $('.RecentView_container__1boAT').on("click", function () {
+        history.replaceState({}, null, location.pathname);
     });
 
 

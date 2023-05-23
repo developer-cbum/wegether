@@ -5,6 +5,7 @@ import com.wegether.app.dao.DataFileDAO;
 import com.wegether.app.dao.FileDAO;
 import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.type.CategoryType;
+import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -47,20 +48,39 @@ public class DataServiceImpl implements DataService {
 
 
 //    자료 등록 - 파일
+//    @Override
+//    @Transactional(rollbackFor = Exception.class)
+//    public void write(DataDTO dataDTO) {
+//        dataDAO.save(dataDTO);
+//        dataDTO.getFiles().forEach(file -> {
+//            file.setDataId(dataDTO.getId());
+//            fileDAO.save(file);
+//        });
+//        dataDTO.getFiles().forEach(dataFileDTO -> {
+//            DataFileVO dataFileVO = new DataFileVO();
+//            dataFileVO.setId(dataFileDTO.getId());
+//            dataFileVO.setDataId(dataFileDTO.getDataId());
+//            dataFileDAO.save(dataFileVO);
+//        });
+//    }
+
+//  자료 등록 테스트
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void write(DataDTO dataDTO) {
         dataDAO.save(dataDTO);
-        dataDTO.getFiles().forEach(file -> {
-            file.setDataId(dataDTO.getId());
-            fileDAO.save(file);
-        });
-        dataDTO.getFiles().forEach(dataFileDTO -> {
-            DataFileVO dataFileVO = new DataFileVO();
+        for(int i=0; i<dataDTO.getFiles().size(); i++){
+            dataDTO.getFiles().get(i).setDataId(dataDTO.getId());
+            dataDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            fileDAO.save(dataDTO.getFiles().get(i));
+        }
+        dataDTO.getFiles().forEach(dataFileDTO ->
+        { DataFileVO dataFileVO = new DataFileVO();
             dataFileVO.setId(dataFileDTO.getId());
             dataFileVO.setDataId(dataFileDTO.getDataId());
             dataFileDAO.save(dataFileVO);
         });
+
     }
 
 //    자료 조회 - 파일

@@ -1,5 +1,7 @@
 $(function () {
 
+    history.replaceState({}, null, location.pathname);
+
     <!-- 모달 부분 js -->
 
     let modalCheck;
