@@ -32,8 +32,4 @@ public class DataDTO {
 
 
 
-    private String info;
-
-    String order;
-
 }
