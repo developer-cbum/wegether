@@ -9,6 +9,7 @@ import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.service.data.DataService;
 import com.wegether.app.service.mypage.*;
+import com.wegether.app.service.project.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -94,10 +95,12 @@ public class MypageController {
     }
 
 //    내 프로젝트
-//    @GetMapping("/my-page/my-project-list")
-//    public void goToProject(Long memberId, Model model){
-//        model.addAttribute("projects", mine.readMyProject(2L));
-//    }
+    private final ProjectService projectService;
+
+    @GetMapping("/my-page/my-project-list")
+    public void goToProject(Long memberId, Model model){
+        model.addAttribute("projects",mine.readMyProject(2L));
+    }
 
 //    프로젝트 찜
     private final HeartImpl heart;
@@ -111,7 +114,8 @@ public class MypageController {
     @ResponseBody
     public List<ProjectDTO> goToHeart(Long memberId){
 
-        final List<ProjectDTO> hearts = heart.projectHeart(2L);
+        final List<ProjectDTO> hearts = heart.projectHeart(1L);
+        log.info(String.valueOf(hearts));
         return hearts;
 
         //model.addAttribute("projectH", heart.projectHeart(2L));

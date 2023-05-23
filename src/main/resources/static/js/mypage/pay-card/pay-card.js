@@ -2,7 +2,7 @@ let payCardService = ((function(){
   function getList(callback){
     $.ajax({
       url: "",
-      data: JSON.stringify({"cardNumber":cardNumber, }),
+      data: JSON.stringify({"cardNumber":cardNumber, "cardExpireDate":cardExpireDate, "memberName":memberName }),
       contentType: "application/json; charset=utf-8",
       success: function(cards){
         if(callback) {

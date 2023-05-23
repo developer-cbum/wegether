@@ -11,7 +11,7 @@ $(document).ready(function(){
             width: calc((100% - 0px) - 0.01px);
             margin-left: 0px;
             margin-right: 0px;
-            margin-bottom: 0px;
+            margin-bottom: 20px;
           "
           >
             <div role="link" class="PurchaseSummaryCard_item__3LlZ3">
@@ -40,9 +40,9 @@ $(document).ready(function(){
                 
                 <dl class="PurchaseSummaryCard_titleArea__3qDl4">
                   <dd
-                          title="<컴퓨터 공학과> 사이트 개발 프로젝트"
+                          title="${project.projectTitle}"
                           class="PurchaseSummaryCard_title__uCiz5"
-                  > ${project.projectTitle}
+                  >${project.projectTitle}
 
                   </dd>
                   <dd class="PurchaseSummaryCard_description__245z_">
