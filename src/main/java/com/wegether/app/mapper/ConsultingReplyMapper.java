@@ -53,6 +53,16 @@ public interface ConsultingReplyMapper {
     public Optional<ConsultReplyDTO> select(Long id);
 
     //  원하는  대댓글 조회
-    public List<ConsultReplyDTO> selectAgain();
+    public List<ConsultReplyDTO> selectAgain(Long replyGroup);
+
+
+    //그 게시글에 해당되는 모든 중간테이블 삭제
+    public void deleteMiddleAll(Long consultingId);
+
+
+//    그 해당 하는 게시글에 중간테이블 전체 조회
+    public List<ConsultingReplyVO> selectMiddleAll(Long consultingId);
+
+
 
 }

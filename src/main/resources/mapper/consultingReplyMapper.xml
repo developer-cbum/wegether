@@ -75,7 +75,6 @@
         ON A.ID = R.ID AND A.CONSULTING_ID =#{consultingId} AND REPLY_GROUP = #{replyGroup} AND = REPLY_DEPTH = 1
     </select>
 
-
     <!--중간테이블 삽입-->
     <insert id="insertMiddle">
     INSERT INTO TBL_CONSULTING_REPLY
@@ -114,11 +113,27 @@
         WHERE ID = #{id}
     </select>
 
-<!-- 원하는 대댓글 조회   -->
+<!-- 원하는 댓글포함 대댓글 조회  -->
     <select id="selectAgain" resultType="consultReplyDTO">
         SELECT ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH
         FROM TBL_REPLY
-        WHERE REPLY_DEPTH = 1
+        WHERE REPLY_GROUP = #{replyGroup} AND REPLY_DEPTH = 1
+    </select>
+
+
+<!--  컨설팅 게시글 삭제할때 모든 댓글 삭제  -->
+    <!--그 게시글에 해당되는 모든 중간테이블 삭제-->
+    <delete id="deleteMiddleAll">
+        DELETE FROM TBL_CONSULTING_REPLY
+        WHERE CONSULTING_ID =#{consultingId}
+    </delete>
+
+
+    <!--  그해당 하는 게시글에 중간테이블 전체 조회-->
+    <select id="selectMiddleAll" resultType="consultingReplyVO">
+        SELECT ID, MEMBER_ID, CONSULTING_ID
+        FROM TBL_CONSULTING_REPLY
+        WHERE CONSULTING_ID = #{consultingId}
     </select>
 
 
