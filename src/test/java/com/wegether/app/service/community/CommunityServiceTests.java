@@ -4,6 +4,7 @@ import com.wegether.app.dao.FileDAO;
 import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.CommunityFileDTO;
 import com.wegether.app.domain.dto.CommunityPagination;
+import com.wegether.app.domain.dto.CommunityReplyDTO;
 import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.CommunityVO;
@@ -29,10 +30,13 @@ public class CommunityServiceTests {
     @Autowired
     private FileDAO fileDAO;
 
+    @Autowired
+    private CommunityReplyService communityReplyService;
+
     @Test
     public void getListTest() {
         CommunityPagination communityPagination = new CommunityPagination();
-        communityPagination.progress();
+        communityPagination.progress(5, 10);
         communityService.getList(communityPagination).stream().map(CommunityDTO::toString).forEach(log::info);
     }
 
@@ -134,6 +138,21 @@ public class CommunityServiceTests {
     @Test
     public void removeTest() {
         communityService.remove(5L);
+    }
+
+    @Test
+    public void replyInsert(){
+        CommunityReplyDTO communityReplyDTO = new CommunityReplyDTO();
+        communityReplyDTO.setReplyContent("dd");
+        communityReplyService.register(communityReplyDTO);
+    }
+
+    @Test
+    public void depthInsert(){
+        CommunityReplyDTO communityReplyDTO = new CommunityReplyDTO();
+        communityReplyDTO.setReplyContent("ddd");
+        communityReplyDTO.setReplyGroup(5L);
+        communityReplyService.registerDepth(communityReplyDTO);
     }
 
 }

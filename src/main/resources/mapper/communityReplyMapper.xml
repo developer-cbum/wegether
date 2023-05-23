@@ -1,4 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.CommunityReplyMapper">
+    <!-- 일반 댓글   -->
+    <insert id="insert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="long">
+            SELECT SEQ_REPLY.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_REPLY
+        (ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH)
+        VALUES(#{id}, #{replyContent}, #{id}, 0)
+    </insert>
+
+    <!-- 대댓글-->
+    <insert id="insertDepth">
+        INSERT INTO TBL_REPLY
+        (ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH)
+        VALUES(SEQ_REPLY.NEXTVAL, #{replyContent}, #{replyGroup}, 1)
+    </insert>
+
+    <!--일반 댓글 조회-->
+    <select id="selectAll" resultType="communityReplyDTO">
+    SELECT M.MEMBER_NICKNAME, G.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, G.CONSULTING_ID, G.MEMBER_ID
+    FROM TBL_MEMBER M JOIN
+    (
+    SELECT ROWNUM W, R.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, R.CONSULTING_ID, R.MEMBER_ID
+    FROM TBL_COMMUNITY C JOIN
+    (
+    SELECT R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, CR.CONSULTING_ID, CR.MEMBER_ID
+    FROM TBL_COMMUNITY_REPLY CR JOIN TBL_REPLY R
+    ON CR.ID = R.ID
+    ORDER BY R.ID DESC
+    ) R
+       <![CDATA[
+    ON C.ID = R.CONSULTING_ID AND ROWNUM <= #{communityPagination.page} * #{communityPagination.rowCount}
+    ) G
+    ON M.ID = G.MEMBER_ID AND W > (#{communityPagination.page} - 1) * #{communityPagination.rowCount} AND REPLY_DEPTH = 0 AND G.COMMUNITY_ID = #{communityId}
+      ]]>
+    </select>
+
+    <!--일반댓글 총개수-->
+    <select id="selectCountOfReply" resultType="_int">
+        SELECT COUNT(R.ID)
+        FROM TBL_COMMUNITY_REPLY CR JOIN TBL_REPLY R
+        ON CR.ID = R.ID AND A.COMMUNITY_ID =#{communityId}
+    </select>
+    <!--중간테이블 삽입-->
+    <insert id="insertMiddle">
+    INSERT INTO TBL_CONSULTING_REPLY
+    (ID, MEMBER_ID, CONSULTING_ID)
+    VALUES(#{id}, #{memberId}, #{consultingId})
+    </insert>
+
+<!--    댓글 수정-->
+    <update id="update">
+        UPDATE TBL_REPLY
+        SET REPLY_CONTENT = #{replyContent}, REPLY_REGISTER_DATE = SYSDATE
+        WHERE ID = #{id} AND DEPTH = 0
+    </update>
+
+
+<!--    삭제-->
+    <delete id="delete">
+        DELETE FROM TBL_REPLY
+        WHERE ID = #{id} AND REPLY_DEPTH = 0
+    </delete>
+
+
+<!--    전체 삭제-->
+    <delete id="deleteAll">
+        DELETE FROM TBL_COMMUNITY_REPLY
+        WHERE COMMUNITY_ID = #{communityId}
+    </delete>
 </mapper>
