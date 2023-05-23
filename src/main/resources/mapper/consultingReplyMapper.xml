@@ -83,4 +83,43 @@
     VALUES(#{id}, #{memberId}, #{consultingId})
     </insert>
 
+    <!-- 일반 댓글 // 대댓글 삭제    -->
+    <delete id="deleteReply">
+        DELETE FROM TBL_REPLY
+        WHERE ID =#{id}
+    </delete>
+
+<!-- 대댓글 전체삭제-->
+    <delete id="deleteReplyAgainAll">
+        DELETE FROM TBL_REPLY
+        WHERE REPLY_GROUP =#{replyGroup}
+    </delete>
+
+<!-- 중간테이블 관련 삭제   -->
+    <delete id="deleteMiddle">
+        DELETE FROM TBL_CONSULTING_REPLY
+        WHERE ID =#{id}
+    </delete>
+<!--  중간테이블 조회-->
+    <select id="selectMiddle" resultType="consultingReplyVO">
+        SELECT ID, MEMBER_ID, CONSULTING_ID
+        FROM TBL_CONSULTING_REPLY
+        WHERE ID =#{id}
+    </select>
+
+<!--  원하는 댓글 조회-->
+    <select id="select" resultType="consultReplyDTO">
+        SELECT ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH
+        FROM TBL_REPLY
+        WHERE ID = #{id}
+    </select>
+
+<!-- 원하는 대댓글 조회   -->
+    <select id="selectAgain" resultType="consultReplyDTO">
+        SELECT ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH
+        FROM TBL_REPLY
+        WHERE REPLY_DEPTH = 1
+    </select>
+
+
 </mapper>

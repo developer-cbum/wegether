@@ -4,10 +4,12 @@ import com.wegether.app.dao.ConsultingReplyDAO;
 import com.wegether.app.domain.dto.ConsultReplyDTO;
 import com.wegether.app.domain.dto.LecturePagination;
 import com.wegether.app.domain.dto.ReplyDTO;
+import com.wegether.app.domain.vo.ConsultingReplyVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -55,5 +57,42 @@ public class ConsultReplyServiceImpl implements ConsultReplyService {
     public void registerMiddle(Long id, Long memberId, Long consultingId){
         consultingReplyDAO.saveMiddle(id,memberId,consultingId);
     }
+
+    //댓글 대댓글 삭제
+    @Override
+    public void removeReply(Long id) {
+        consultingReplyDAO.deleteReply(id);
+    }
+    // 대댓글 전체삭제
+    @Override
+    public void removeReplyAgainAll(Long replyGroup) {
+        consultingReplyDAO.deleteReplyAgainAll(replyGroup);
+    }
+
+//   원하는 중간 테이블 조회
+
+    @Override
+    public Optional<ConsultingReplyVO> getMiddle(Long id) {
+        return consultingReplyDAO.findMiddle(id);
+    }
+
+    // 중간테이블 삭제
+    @Override
+    public void removeMiddle(Long id) {
+        consultingReplyDAO.deleteMiddle(id);
+    }
+
+    //원하는 댓글 조회
+    @Override
+    public Optional<ConsultReplyDTO> get(Long id) {
+        return consultingReplyDAO.find(id);
+    }
+
+    //대댓글들 조회
+    @Override
+    public List<ConsultReplyDTO> getAgain() {
+       return consultingReplyDAO.findAgain();
+    }
+
 
 }
