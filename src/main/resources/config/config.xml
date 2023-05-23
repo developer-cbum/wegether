@@ -45,7 +45,7 @@
 
         <!--  05월 20일 김치윤 CommunityFileDTO 추가  -->
         <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityFileDTO"/>
-
+        <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityReplyDTO"/>
         <!--  5월 21일 박유미 Data   -->
         <typeAlias type="com.wegether.app.domain.dto.DataFileDTO" alias="dataFileDTO"/>
 
@@ -55,7 +55,7 @@
         <!-- 05월 22일 이종문 LectureDTO 추가   -->
         <typeAlias type="com.wegether.app.domain.dto.LectureDTO" alias="lectureDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.LectureFileDTO" alias="lectureFileDTO"/>
-
+        <typeAlias type="com.wegether.app.domain.dto.ConsultReplyDTO" alias="consultReplyDTO"/>
         <!--  문소영 inquiryDTO, memberDTO 추가-->
         <typeAlias type="com.wegether.app.domain.dto.InquiryDTO" alias="inquiryDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.MemberDTO" alias="memberDTO"/>

@@ -17,7 +17,7 @@ public class CommunityPagination {
 
     public void progress() {
         this.page = page == null ? 1 : page;
-        this.rowCount = 20;
+        this.rowCount = 50;
         this.pageCount = 5;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
