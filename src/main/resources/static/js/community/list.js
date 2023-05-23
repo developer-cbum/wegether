@@ -1,30 +1,54 @@
-$(document).ready(function() {
+
 
     let page = 1;
-    // let count = 1; //한번만 실행할수있게하는 flag
+    let count = 1; //한번만 실행할수있게하는 flag
+    let loading = false;
+    $(window).ready(next_load());
     showList();
 
     $(window).scroll(function(){
         if (Math.ceil(window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
             page++;
             showList();
-            console.log(page);
         }
     });
 
+    //게시글 불러오기
+    function next_load(){
     $.ajax({
-        url: `/community/list?page=${page}`,
-        method: "get",
+        type: "POST",
         data: { page: page },
-        success: function (page) {
-            console.log("들어옴")
-            console.log(page);
-            showList();
+        url: `/community/list?page=${page}`,
+        success: function (result) {
+            if (result) {
+                console.log(result);
+                if (result.length == 0) {
+                    $('.wrap-loading').addClass('display-none');
+                    showWarnModal("마지막 이용후기입니다");
+                    return;
+                }
+                showList(result);
+                loading = false;    //실행 가능 상태로 변경
+            }
+        }})}
+    //    스크롤 이벤트
+    $(window).scroll(function() {
+        console.log(Math.round($(window).scrollTop()));
+        console.log($(document).height() - $(window).height());
+        if (Math.round($(window).scrollTop()) >= $(document).height() - $(window).height()) {
+            if (!loading)    //실행 가능 상태라면?
+            {
+                page++;
+                loading = true; //실행 불가능 상태로 변경
+                next_load();
+                return;
+            }
         }
-    })
+    });
 
 
-    function showList() {
+    //목록 생성
+    function showList(result) {
         console.log("들옴");
                 let text = "";
                 communities.forEach(community => {
@@ -82,7 +106,6 @@ $(document).ready(function() {
                 })
                 $(".block_extended").html(text);
     }
-})
 
 // if($(".et-animated").Array.length){
 //     $(".ajax-pagination").show()
