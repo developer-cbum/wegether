@@ -4,7 +4,6 @@
 
 const $div = $(".reply-content");
 let page = 1;
-let flag =false;
 let count = 0;
 let text = "";
 $(window).ready(function (){
@@ -27,6 +26,7 @@ $('.reply-button').on("click", function () {
 
     //댓글 등록
     registerReply();
+    $(".total").text(`${total}`);
     $('.content-textarea').val("");
 
 })
@@ -34,18 +34,19 @@ $('.reply-button').on("click", function () {
 // 댓글 등록
 function registerReply() {
     $.ajax({
-        url        : '/replies/register',
-        type       : "post",
-        data       : JSON.stringify({
+        url  : '/replies/register',
+        type : "post",
+        data : JSON.stringify({
             "replyContent": $('#replyContent').val(),
             "consultingId": consultingId
         }),
         contentType: "application/json; charset=UTF-8;",
-        success    : function () {
+        success    : function (int) {
             $('.reviewWrite').hide();
                 //    댓글 최신화
-            text=""
-             page= 1;
+                text=""
+                $(".total").text(`${total}`);
+                page= 1;
                 $div.html("");
                 load()
         }
@@ -188,7 +189,7 @@ function showList(result, replyResult) {
                         ></div>
                     </div>
                 </div>
-            </div>`
+           `
                 }
                 <!--      답글작성창-->
             }
@@ -228,7 +229,7 @@ function showList(result, replyResult) {
                                                             text-align: right;
                                                             margin-top: 10px;
                                                         ">
-                                                        <button class="Button_button__2FuOU Button_primary__2mZni Button_md__46Ai- register-again-reply" type="button">
+                                                        <button id="${reply.id}" class="Button_button__2FuOU Button_primary__2mZni Button_md__46Ai- register-again-reply" type="button">
                                                             <span
                                                             ><span
                                                                     class="Button_children__ilFun"
@@ -263,7 +264,8 @@ function showList(result, replyResult) {
                 </div>
                 <hr class="Divider_divider__ToZaf Divider_horizontal__3W5eD Divider_lightBG__3bAAk Divider_spacing6__8L6D1 Divider_caption2__3b6Dr"
                 />
-            </div>\`
+            </div>
+            </div>
                 ` }
 
     });
@@ -342,6 +344,12 @@ $(function () {
 
     //확인 버튼누를떄 대댓글등록
     $(document).on('click', '.register-again-reply', function () {
+
+        if(session == null){
+            showWarnModal("로그인후 이용해주세요");
+            return;
+        }
+
         let $againReply = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyAgain-text-area');
         let $replyGroup = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyGroup');
         let $reviewWrite = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
@@ -357,14 +365,16 @@ $(function () {
                 "replyGroup"  : replyGroup
             }),
             contentType: "application/json; charset=UTF-8;",
-            success    : function () {
-                $againReply.val("");
+            success    : function (total) {
+                      $againReply.val("");
                     //    댓글 최신화
                     text=""
                     $div.html("");
                     page= 1;
-                    flag =true;
-                    load();
+                    $(".total").text(`${total}`);
+                    // 대댓글써도 댓글폼 유지
+                    $reviewWrite.show();
+
             }
         });
 
