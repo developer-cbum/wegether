@@ -56,8 +56,6 @@ public class MainController {
 
 
 
-
-
 //    1:1 문의
     private final InquiryService inquiryService;
 
