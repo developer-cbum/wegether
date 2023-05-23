@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleag.org">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -25,7 +25,7 @@
             href="https://static.wadiz.kr/studio/funding/static/css/6.eb91f874.chunk.css"
         />
     </head>
-    <body class="ReactModal__Body--open" aria-hidden="true">
+    <body class="ReactModal__Body--open" aria-hidden="true" th:object="${lectureDTO}">
         <div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
         <div id="root">
             <div id="AppLayout_Container" class="AppLayout_container__3zbzb">
@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form
+                                <form th:action="@{/lectures/register}" method="post"
                                     class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
                                     action=""
                                     name="registerForm"
@@ -79,6 +79,7 @@
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
                                                     <input
+                                                        th:field="*{lectureTitle}"
                                                         placeholder="제목을 입력해 주세요"
                                                         maxlength="40"
                                                         type="text"
@@ -102,7 +103,8 @@
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
                                                     <input
-                                                        placeholder="강연 날짜를 입력해 주세요"
+                                                            th:field="*{lectureDate}"
+                                                            placeholder="강연 날짜를 입력해 주세요"
                                                         maxlength="40"
                                                         type="text"
                                                         class="Input_input__2kAAL Input_md__3-eZ6"
@@ -125,6 +127,7 @@
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
                                                     <input
+                                                            th:field="*{lectureTime}"
                                                         placeholder="강연 시간을 입력해 주세요"
                                                         maxlength="40"
                                                         type="text"
@@ -148,6 +151,7 @@
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
                                                     <input
+                                                            th:field="*{lectureLocation}"
                                                         placeholder="강연 위치를 입력해 주세요"
                                                         maxlength="40"
                                                         type="text"
@@ -171,6 +175,7 @@
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
                                                     <input
+                                                            th:field="*{lectureTotalPersonnel}"
                                                         placeholder="강연 총 인원을 입력해 주세요"
                                                         maxlength="40"
                                                         type="text"
@@ -183,13 +188,6 @@
                                         </div>
                                     </section>
 
-                                    <!-- 강연 유,무료 -->
-                                    <section class="Section_container__3md8M" style="max-width: 630px">
-                                    </section>
-
-                                    <!-- 강연 가격 -->
-                                    <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
-                                    </section>
 
                                     <!-- 사진 등록 -->
                                     <section class="Section_container__3md8M" style="max-width: 630px">

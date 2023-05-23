@@ -25,5 +25,7 @@ public class CommunityDAO {
     public void setCommunityDTO(CommunityDTO communityDTO){communityMapper.update(communityDTO);}
 
     public void delete(Long id){communityMapper.delete(id);}
+
+    public int findCountOfCommunity() { return communityMapper.selectCountOfCommunity(); }
 }
 
