@@ -26,11 +26,12 @@ public class ConsultReplyController {
     //댓글등록
     @PostMapping("register")
     @Transactional(rollbackFor = Exception.class)
-    public void register(@RequestBody ConsultReplyDTO consultReplyDTO, Model model){
+    public int register(@RequestBody ConsultReplyDTO consultReplyDTO, Model model){
         log.info(consultReplyDTO.toString());
         consultReplyService.registerReply(consultReplyDTO);
         log.info(consultReplyDTO.getId().toString());
         consultReplyService.registerMiddle(consultReplyDTO.getId(), (Long)session.getAttribute("id"), consultReplyDTO.getConsultingId());
+        return consultReplyService.getTotal(consultReplyDTO.getConsultingId());
     }
 
     //댓글조회
@@ -46,12 +47,13 @@ public class ConsultReplyController {
     //대댓글 등록
     @PostMapping("register-again")
     @Transactional(rollbackFor = Exception.class)
-    public void registerAgain(@RequestBody ConsultReplyDTO consultReplyDTO){
+    public int registerAgain(@RequestBody ConsultReplyDTO consultReplyDTO){
         log.info("대댓글 컨트롤러");
         log.info(consultReplyDTO.toString());
         consultReplyService.registerReplyAgain(consultReplyDTO);
         log.info(consultReplyDTO.getId().toString());
         consultReplyService.registerMiddle(consultReplyDTO.getId(), (Long)session.getAttribute("id"), consultReplyDTO.getConsultingId());
+        return consultReplyService.getTotal(consultReplyDTO.getConsultingId());
     }
 
     //대댓글조회
