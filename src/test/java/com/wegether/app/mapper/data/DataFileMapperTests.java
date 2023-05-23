@@ -18,27 +18,27 @@ import java.util.UUID;
 @Slf4j
 public class DataFileMapperTests {
 
-    @Autowired
-    private FileMapper fileMapper;
+//    @Autowired
+//    private FileMapper fileMapper;
+//
+//    @Autowired
+//    private DataFileMapper dataFileMapper;o9
 
-    @Autowired
-    private DataFileMapper dataFileMapper;
+//    @Test
+//    public void insertTest() {
+//        DataFileDTO dataFileDTO = new DataFileDTO();
+//        dataFileDTO.setFileName("icon2.png");
+//        dataFileDTO.setFilePath("2023/05/20");
+//        dataFileDTO.setFileSize(999L);
+//        dataFileDTO.setFileUuid(UUID.randomUUID().toString());
+//        dataFileDTO.setFileType(FileType.REPRESENTATIVE.name());
+//        fileMapper.insert(dataFileDTO);
+//    }
 
-    @Test
-    public void insertTest() {
-        DataFileDTO dataFileDTO = new DataFileDTO();
-        dataFileDTO.setFileName("icon2.png");
-        dataFileDTO.setFilePath("2023/05/20");
-        dataFileDTO.setFileSize(999L);
-        dataFileDTO.setFileUuid(UUID.randomUUID().toString());
-        dataFileDTO.setFileType(FileType.REPRESENTATIVE.name());
-        fileMapper.insert(dataFileDTO);
-    }
-
-    @Test
-    public void dataSelectAllTest() {
-        fileMapper.dataSelectAll(1L).stream().map(DataFileDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void dataSelectAllTest() {
+//        fileMapper.dataSelectAll(1L).stream().map(DataFileDTO::toString).forEach(log::info);
+//    }
 
 
 

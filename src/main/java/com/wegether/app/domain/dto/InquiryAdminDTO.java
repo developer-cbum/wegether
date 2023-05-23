@@ -17,4 +17,5 @@ public class InquiryAdminDTO {
     private String inquiryRegisterDate;
     private String memberNickname;
     private boolean inquiryStatus;
+    private Long inquiryId;
 }

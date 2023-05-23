@@ -25,5 +25,6 @@ public class MemberDTO {
     private long fileId;
     private String memberLoginStatus;
     private String pointHistory;
+    private String point;
 
 }

@@ -1,10 +1,12 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.dto.ConsultReplyDTO;
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
 import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.service.account.AccountService;
+import com.wegether.app.service.consult.ConsultReplyService;
 import com.wegether.app.service.consult.ConsultService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,11 +26,12 @@ import javax.servlet.http.HttpSession;
 public class ConsultController {
 
     private final ConsultService consultService;
-
+    private final HttpSession session;
     private final AccountService accountService;
+    private final ConsultReplyService consultReplyService;
 
     @GetMapping("register")
-    public void goToRegisterForm(ConsultingVO consultingVO, HttpSession session, Model model){
+    public void goToRegisterForm(ConsultingVO consultingVO,  Model model){
        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
        model.addAttribute("nickName", nickName);
     };
@@ -48,13 +51,15 @@ public class ConsultController {
         }
 
     @GetMapping("detail")
-    public void goToConsultingDetail(@RequestParam Long id, Model model, HttpSession session){
+    public void goToConsultingDetail(@RequestParam Long id, ConsultReplyDTO consultReplyDTO, Model model){
         log.info(consultService.getConsulting(id).get().toString());
         model.addAttribute("consultDTO", consultService.getConsulting(id).get());
+        model.addAttribute("consultId", id);
+        model.addAttribute("total", consultReplyService.getTotal(id));
     }
 
     @GetMapping("modify")
-    public void goToConsultingModify(@RequestParam Long id, Model model, HttpSession session){
+    public void goToConsultingModify(@RequestParam Long id, Model model){
         log.info(consultService.getConsulting(id).get().toString());
         model.addAttribute("consultDTO", consultService.getConsulting(id).get());
         String nickName = accountService.getMemberById((Long)session.getAttribute("id")).get().getMemberNickname();

@@ -26,6 +26,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 
@@ -39,9 +40,16 @@ public class MainController {
 
     @GetMapping("main")
     public void goToListForm(Model model){
+//        List<MainDTO> projects = mainService.mainPGetList();
+//        List<MainDTO> datas = mainService.mainDGetList();
+//        List<MainDTO> communities = mainService.mainCGetList();
         model.addAttribute("projects", mainService.mainPGetList());
+        model.addAttribute("datas", mainService.mainDGetList());
+        model.addAttribute("datards", mainService.mainDRGetList());
+        model.addAttribute("communities", mainService.mainCGetList());
 
     }
+
 
 
 
@@ -61,6 +69,10 @@ public class MainController {
         return new RedirectView("");
     }
 }
+
+
+
+
 
 
 

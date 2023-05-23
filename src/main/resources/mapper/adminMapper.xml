@@ -4,13 +4,7 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <!-- 공지사항 목록 -->
-<!--    <select id="noticeSelectAll" resultType="noticeVO">-->
-<!--        SELECT ID, NOTICE_TITLE, NOTICE_REGISTER_DATE-->
-<!--        FROM TBL_NOTICE-->
-<!--    </select>-->
-
-    <!-- 공지사항 목록 페이징까지 -->
+    <!-- 공지사항 목록(페이징) -->
     <select id="noticeSelectAll" resultType="noticeVO">
     SELECT F.ID, NOTICE_TITLE, NOTICE_REGISTER_DATE
     FROM
@@ -61,14 +55,7 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <!-- 자료 목록 -->
-<!--    <select id="dataSelectAll" resultType="dataAdminDTO">-->
-<!--        SELECT D.ID, D.DATA_TITLE, M.MEMBER_NICKNAME, D.DATA_PRICE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_REGISTER_DATE-->
-<!--        FROM TBL_MEMBER M INNER JOIN TBL_DATA D-->
-<!--        ON M.MEMBER_ID = D.MEMBER_ID-->
-<!--    </select>-->
-
-    <!-- 자료 목록 페이징까지 -->
+    <!-- 자료 목록(페이징) -->
     <select id="dataSelectAll" resultType="dataAdminDTO">
     SELECT F.ID, DATA_TITLE, MEMBER_NICKNAME, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, DATA_REGISTER_DATE
     FROM
@@ -100,14 +87,7 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <!-- 프로젝트 목록 -->
-<!--    <select id="projectSelectAll" resultType="projectAdminDTO">-->
-<!--        SELECT P.ID, P.PROJECT_TITLE, M.MEMBER_NICKNAME, P.PROJECT_SCHOOL, P.PROJECT_MAJOR, P.PROJECT_END_DATE, P.PROJECT_REGISTER_DATE-->
-<!--        FROM TBL_MEMBER M INNER JOIN TBL_PROJECT P-->
-<!--        ON M.MEMBER_ID = P.MEMBER_ID-->
-<!--    </select>-->
-
-    <!-- 프로젝트 목록 페이징까지 -->
+    <!-- 프로젝트 목록(페이징) -->
     <select id="projectSelectAll" resultType="projectAdminDTO">
     SELECT F.ID, PROJECT_TITLE, MEMBER_NICKNAME, PROJECT_SCHOOL, PROJECT_MAJOR, PROJECT_END_DATE, PROJECT_REGISTER_DATE
     FROM
@@ -139,14 +119,7 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <!-- 문의사항 목록 -->
-<!--    <select id="inquirySelectAll" resultType="inquiryAdminDTO">-->
-<!--        SELECT I.ID, M.MEMBER_NICKNAME, I.INQUIRY_TITLE, I.INQUIRY_REGISTER_DATE-->
-<!--        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M-->
-<!--        ON I.MEMBER_ID = M.MEMBER_ID-->
-<!--    </select>-->
-
-    <!-- 문의사항 목록 페이징까지 -->
+    <!-- 문의사항 목록(페이징) -->
     <select id="inquirySelectAll" resultType="inquiryAdminDTO">
     SELECT F.ID, INQUIRY_TITLE, MEMBER_NICKNAME, INQUIRY_REGISTER_DATE, INQUIRY_STATUS
     FROM
@@ -171,6 +144,13 @@
         SELECT COUNT(ID) FROM TBL_INQUIRY
     </select>
 
+    <!-- 문의사항 상세 -->
+    <select id="inquirySelect" resultType="inquiryAdminDTO">
+        SELECT I.ID, M.MEMBER_NICKNAME, I.INQUIRY_TITLE, I.INQUIRY_CONTENT, I.INQUIRY_REGISTER_DATE
+        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M
+        ON I.MEMBER_ID = M.ID
+        WHERE I.ID = #{id}
+    </select>
 
     <!-- 문의사항 답변 등록 -->
     <insert id="answerInsert">
@@ -178,19 +158,25 @@
         VALUES(SEQ_ANSWER.NEXTVAL, #{inquiryId}, #{answerContent})
     </insert>
 
-    <!-- 문의사항 상세 -->
-    <select id="inquirySelect" resultType="inquiryAdminDTO">
-        SELECT I.ID, M.MEMBER_NICKNAME, I.INQUIRY_TITLE, I.INQUIRY_CONTENT, I.INQUIRY_REGISTER_DATE
-        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M
-        ON I.MEMBER_ID = M.MEMBER_ID
-        WHERE I.ID = #{id}
-    </select>
+    <!-- 문의사항 답변 여부 -->
+    <update id="inquiryUpdate">
+        UPDATE TBL_INQUIRY
+        SET INQUIRY_STATUS = 1
+        WHERE ID = #{inquiryId}
+    </update>
 
     <!-- 문의사항 답변 상세 -->
-    <select id="answerSelect" resultType="answerVO">
-        SELECT ID, INQUIRY_ID, ANSWER_CONTENT, ANSWER_REGISTER_DATE
-        FROM tbl_answer
-        WHERE INQUIRY_ID = #{inquiryId}
+    <select id="answerSelect" resultType="answerAdminDTO">
+        SELECT A.ID, I.INQUIRY_TITLE, M.MEMBER_NICKNAME, I.INQUIRY_REGISTER_DATE, I.INQUIRY_CONTENT, A.ANSWER_REGISTER_DATE, A.ANSWER_CONTENT
+        FROM TBL_MEMBER M, TBL_INQUIRY I, TBL_ANSWER A
+        WHERE M.ID = I.MEMBER_ID AND I.ID = A.INQUIRY_ID AND A.INQUIRY_ID = #{inquiryId}
+    </select>
+
+    <!-- 문의사항 수정 상세 -->
+    <select id="answerModifySelect" resultType="answerAdminDTO">
+        SELECT A.ID, I.INQUIRY_TITLE, M.MEMBER_NICKNAME, I.INQUIRY_REGISTER_DATE, I.INQUIRY_CONTENT, A.ANSWER_REGISTER_DATE, A.ANSWER_CONTENT
+        FROM TBL_MEMBER M, TBL_INQUIRY I, TBL_ANSWER A
+        WHERE M.ID = I.MEMBER_ID AND I.ID = A.INQUIRY_ID AND A.ID = #{id}
     </select>
 
     <!-- 문의사항 답변 수정 -->
@@ -202,18 +188,12 @@
 
     <!-- 문의사항 답변 삭제 -->
     <delete id="answerDelete">
-        DELETE FROM TBL_ANSWER WHERE ID = #{Id}
+        DELETE FROM TBL_INQUIRY WHERE ID = #{Id}
     </delete>
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <!-- 회원 목록 -->
-<!--    <select id="memberSelectAll" resultType="memberVO">-->
-<!--        SELECT ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE-->
-<!--        FROM TBL_MEMBER-->
-<!--    </select>-->
-
-    <!-- 회원 목록 페이징까지 -->
+    <!-- 회원 목록(페이징) -->
     <select id="memberSelectAll" resultType="memberVO">
     SELECT F.ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
     FROM
@@ -251,13 +231,7 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <!-- 강연 목록 -->
-<!--    <select id="lectureSelectAll" resultType="lectureVO">-->
-<!--        SELECT ID, LECTURE_TITLE, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL-->
-<!--        FROM TBL_LECTURE-->
-<!--    </select>-->
-
-    <!-- 강연 목록 페이징까지 -->
+    <!-- 강연 목록(페이징) -->
     <select id="lectureSelectAll" resultType="lectureVO">
     SELECT F.ID, LECTURE_TITLE, LECTURE_DATE, LECTURE_TIME, LECTURE_LOCATION, LECTURE_TOTAL_PERSONNEL
     FROM

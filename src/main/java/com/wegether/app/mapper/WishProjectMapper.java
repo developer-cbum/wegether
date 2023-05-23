@@ -1,5 +1,6 @@
 package com.wegether.app.mapper;
 
+import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.vo.WishProjectVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,5 +13,6 @@ public interface WishProjectMapper {
 //    찜삭제
     public void delete(Long id);
 //    찜 조회
-    public List<WishProjectVO> selectAll(Long memberId);
+    public List<ProjectDTO> selectAll(Long memberId);
+
 }

@@ -9,10 +9,11 @@
         VALUES(SEQ_PROJECT.NEXTVAL, #{memberId}, #{projectId})
     </insert>
 
-<!--    찜 조회-->
-    <select id="selectAll" resultType="wishProjectVO">
-      SELECT ID, MEMBER_ID, PROJECT_ID
-      FROM TBL_WISH_PROJECT
+<!--    프로젝트 찜 조회-->
+    <select id="selectAll" resultType="projectDTO">
+      SELECT  p.MEMBER_ID, p.PROJECT_TITLE, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL now
+      FROM TBL_PROJECT p, TBL_WISH_PROJECT w
+      WHERE p.ID =w.PROJECT_ID AND p.MEMBER_ID =#{memberId}
     </select>
 
 <!--    찜 취소-->
