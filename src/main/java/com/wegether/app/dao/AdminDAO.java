@@ -1,9 +1,6 @@
 package com.wegether.app.dao;
 
-import com.wegether.app.domain.dto.AdminPagination;
-import com.wegether.app.domain.dto.DataAdminDTO;
-import com.wegether.app.domain.dto.InquiryAdminDTO;
-import com.wegether.app.domain.dto.ProjectAdminDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.*;
 import com.wegether.app.mapper.AdminMapper;
 import lombok.RequiredArgsConstructor;
@@ -84,24 +81,28 @@ public class AdminDAO {
     // 문의사항 총 갯수
     public int FindCountOfInquiry() { return adminMapper.selectCountOfInquiry(); }
 
-    // 문의사항 답변 등록
-    public void answerSave(AnswerVO answerVO){
-        adminMapper.answerInsert(answerVO);
-    };
-
     // 문의사항 상세
-    public Optional<InquiryAdminDTO> inquiryFindById(Long id){
-        return adminMapper.inquirySelect(id);
-    };
+    public Optional<InquiryAdminDTO> inquiryFindById(Long id){ return adminMapper.inquirySelect(id); };
+
+    // 문의사항 답변 등록
+    public void answerSave(AnswerVO answerVO){ adminMapper.answerInsert(answerVO); };
+
+    // 문의사항 답변 여부
+    public void setInquiryStatus(Long inquiryId) { adminMapper.inquiryUpdate(inquiryId); }
 
     // 문의사항 답변 상세
-    public Optional<AnswerVO> answerFindById(Long inquiryId){
+    public Optional<AnswerAdminDTO> answerFindById(Long inquiryId){
         return adminMapper.answerSelect(inquiryId);
     };
 
+    // 문의사항 수정 상세
+    public Optional<AnswerAdminDTO> answerModifyFindById(Long id){
+        return adminMapper.answerModifySelect(id);
+    };
+
     // 문의사항 답변 수정
-    public void setAnswerVO(AnswerVO answerVO){
-        adminMapper.answerUpdate(answerVO);
+    public void setAnswerVO(AnswerAdminDTO answerAdminDTO){
+        adminMapper.answerUpdate(answerAdminDTO);
     };
 
     // 문의사항 답변 삭제
@@ -116,10 +117,6 @@ public class AdminDAO {
         return adminMapper.memberSelectAll(adminPagination);
     };
 
-//    public List<MemberVO> memberFindAll(){
-//        return adminMapper.memberSelectAll();
-//    };
-
     // 회원 총 인원 수
     public int findCountOfMember() { return adminMapper.selectCountOfMember(); }
 
@@ -132,8 +129,6 @@ public class AdminDAO {
     public List<LectureVO> lectureFindAll(AdminPagination adminPagination){
         return adminMapper.lectureSelectAll(adminPagination);
     };
-
-//    public List<LectureVO> lectureFindAll() { return adminMapper.lectureSelectAll(); }
 
     // 강연 총 갯수
     public int findCountOfLecture() { return adminMapper.selectCountOfLecture(); }

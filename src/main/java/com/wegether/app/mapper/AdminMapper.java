@@ -1,9 +1,6 @@
 package com.wegether.app.mapper;
 
-import com.wegether.app.domain.dto.AdminPagination;
-import com.wegether.app.domain.dto.DataAdminDTO;
-import com.wegether.app.domain.dto.InquiryAdminDTO;
-import com.wegether.app.domain.dto.ProjectAdminDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.*;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -66,17 +63,23 @@ public interface AdminMapper {
     // 문의사항 총 갯수
     public int selectCountOfInquiry();
 
-    // 문의사항 답변 등록
-    public void answerInsert(AnswerVO answerVO);
-
     // 문의사항 상세
     public Optional<InquiryAdminDTO> inquirySelect(Long id);
 
+    // 문의사항 답변 등록
+    public void answerInsert(AnswerVO answerVO);
+
+    // 문의사항 답변 여부
+    public void inquiryUpdate(Long inquiryId);
+
     // 문의사항 답변 상세
-    public Optional<AnswerVO> answerSelect(Long inquiryId);
+    public Optional<AnswerAdminDTO> answerSelect(Long inquiryId);
+
+    // 문의사항 수정 상세
+    public Optional<AnswerAdminDTO> answerModifySelect(Long id);
 
     // 문의사항 답변 수정
-    public void answerUpdate(AnswerVO answerVO);
+    public void answerUpdate(AnswerAdminDTO answerAdminDTO);
 
     // 문의사항 답변 삭제
     public void answerDelete(Long id);
@@ -85,7 +88,6 @@ public interface AdminMapper {
 
     // 회원 목록
     public List<MemberVO> memberSelectAll(AdminPagination adminPagination);
-//    public List<MemberVO> memberSelectAll();
 
     // 회원 총 인원 수
     public int selectCountOfMember();

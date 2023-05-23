@@ -1,9 +1,6 @@
 package com.wegether.app.service.admin;
 
-import com.wegether.app.domain.dto.AdminPagination;
-import com.wegether.app.domain.dto.DataAdminDTO;
-import com.wegether.app.domain.dto.InquiryAdminDTO;
-import com.wegether.app.domain.dto.ProjectAdminDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.*;
 
 import java.util.List;
@@ -65,17 +62,23 @@ public interface AdminService {
     // 문의사항 총 갯수
     public int getInquiryTotal();
 
-    // 문의사항 답변 등록
-    public void answerWrite(AnswerVO answerVO);
-
     // 문의사항 상세
     public Optional<InquiryAdminDTO> inquiryRead(Long id);
 
+    // 문의사항 답변 등록
+    public void answerWrite(AnswerVO answerVO);
+
+    // 문의사항 답변 여부
+    public void inquiryStatusChange(Long inquiryId);
+
     // 문의사항 답변 상세
-    public Optional<AnswerVO> answerRead(Long inquiryId);
+    public Optional<AnswerAdminDTO> answerRead(Long inquiryId);
+
+    // 문의사항 수정 상세
+    public Optional<AnswerAdminDTO> answerModifyRead(Long id);
 
     // 문의사항 답변 수정
-    public void answerModify(AnswerVO answerVO);
+    public void answerModify(AnswerAdminDTO answerAdminDTO);
 
     // 문의사항 답변 삭제
     public void answerRemove(Long id);

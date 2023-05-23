@@ -60,6 +60,8 @@
         <typeAlias type="com.wegether.app.domain.dto.InquiryDTO" alias="inquiryDTO"/>
         <typeAlias type="com.wegether.app.domain.dto.MemberDTO" alias="memberDTO"/>
 
+        <!-- 05월 23일 김인진 AnswerAdminDTO 추가 -->
+        <typeAlias type="com.wegether.app.domain.dto.AnswerAdminDTO" alias="answerAdminDTO"/>
 
     </typeAliases>
 </configuration>

@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Data
 @NoArgsConstructor
-public class InquiryAdminDTO {
+public class AnswerAdminDTO {
     private Long id;
-    private Long memberId;
     private String inquiryTitle;
-    private String inquiryContent;
-    private String inquiryRegisterDate;
     private String memberNickname;
-    private boolean inquiryStatus;
+    private String inquiryRegisterDate;
+    private String inquiryContent;
+    private String answerRegisterDate;
+    private String answerContent;
     private Long inquiryId;
 }

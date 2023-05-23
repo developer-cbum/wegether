@@ -1,6 +1,7 @@
 package com.wegether.app.dao.admin;
 
 import com.wegether.app.dao.AdminDAO;
+import com.wegether.app.domain.dto.AnswerAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
 import com.wegether.app.domain.vo.AnswerVO;
 import com.wegether.app.domain.vo.MemberVO;
@@ -105,17 +106,17 @@ public class adminDAOTests {
     //    문의사항 답변 상세 테스트
     @Test
     public void answerFindByIdTest() {
-        adminDAO.answerFindById(5L).map(AnswerVO::getAnswerContent).ifPresent(log::info);
+        adminDAO.answerFindById(41L).map(AnswerAdminDTO::toString).ifPresent(log::info);
     }
 
     //    문의사항 답변 수정 테스트
-    @Test
-    public void setAnswerVOTest() {
-        adminDAO.answerFindById(5L).ifPresent(answerVO -> {
-            answerVO.setAnswerContent("수정 다오 테스트");
-            adminDAO.setAnswerVO(answerVO);
-        });
-    }
+//    @Test
+//    public void setAnswerVOTest() {
+//        adminDAO.answerFindById(5L).ifPresent(answerVO -> {
+//            answerVO.setAnswerContent("수정 다오 테스트");
+//            adminDAO.setAnswerVO(answerVO);
+//        });
+//    }
 
     //    문의사항 답변 삭제 테스트
     @Test

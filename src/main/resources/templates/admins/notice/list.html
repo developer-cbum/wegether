@@ -15,103 +15,112 @@
     </head>
 
     <body>
-    <div>
-        <div class="info-title-box info-title-box-flex">
-            <div class="logo-box-layout">
-                <div class="logo-box">
-                    <img src="/image/admin/wegether.svg" style="padding-top: 17px"/>
+        <div>
+            <!-- 모달 부분 -->
+            <div class="modal">
+                <div class="warn-modal">
+                    <div id="content-wrap"></div>
                 </div>
             </div>
-            <div>
-                <div class="select-name">
-                    <span>공지사항 게시판 관리</span>
-                </div>
-            </div>
-        </div>
-        <div class="wrap">
-            <!-- 사이드 바 -->
-            <div th:replace="~{admins/side-bar :: sidebar}"></div>
 
-            <div class="container">
-                <div class="container-margin">
-                    <!-- 헤더 -->
-                    <div class="update-button-flex">
-                        <div class="delete-box-layout ">
-                            <div class="delete-box">
-                                <button class="register-button">
-                                    <a href="">공지사항 등록</a>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="delete-box-layout">
-                            <div class="delete-box">
-                                <button
-                                        class="deleteButton delete-button"
-                                        onclick="deleteNotices(getSelectedNoticeIds())"
-                                >
-                                    선택 게시물 삭제
-                                </button>
-                            </div>
-                        </div>
+            <div class="info-title-box info-title-box-flex">
+                <div class="logo-box-layout">
+                    <div class="logo-box">
+                        <img src="/image/admin/wegether.svg" style="padding-top: 17px"/>
                     </div>
-
-                    <!-- 내용 섹션 -->
-                    <section class="board-info-box-layout">
-                        <div class="board-info-box">
-                            <div class="board-info-title-box">
-                                <span>공지사항 목록</span>
-                            </div>
-
-                            <div class="info-table">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th class="checkbox-line">
-                                            <input type="checkbox" id="allSelect"/>
-                                        </th>
-                                        <th>No</th>
-                                        <th>공지사항 제목</th>
-                                        <th>등록일</th>
-                                    </tr>
-                                    </thead>
-                                    <tr th:each="notices : ${notices}">
-                                        <td class="checkbox-line">
-                                            <input
-                                                    type="checkbox"
-                                                    class="noticeCheckbox"
-                                                    name="check"
-                                                    th:value="${notices.id}"/>
-                                        </td>
-                                        <td th:text="${notices.id}"></td>
-                                        <td>
-                                            <a th:href="@{detail(id=${notices.id})}" th:text="${notices.noticeTitle}"></a>
-                                        </td>
-                                        <td th:text="${notices.noticeRegisterDate}"></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 페이지 부분 -->
-                    <div id="paging-wrap">
-                        <a th:if="${adminPagination.prev}" th:href="${adminPagination.startPage - 1}"
-                           class="notice-change-page paging paging-move">
-                            <img src="/image/admin/prev.png" width="15px"></a>
-                        <th:block th:each="page:${#numbers.sequence(adminPagination.startPage, adminPagination.endPage)}">
-                            <a th:if="${page eq adminPagination.page}" class="paging paging-checked" th:text="${page}"></a>
-                            <a th:unless="${page eq adminPagination.page}" th:href="${page}"
-                               class="notice-change-page paging" th:text="${page}"></a>
-                        </th:block>
-                        <a th:if="${adminPagination.next}" th:href="${adminPagination.endPage + 1}"
-                           class="notice-change-page paging paging-move">
-                            <img src="/image/admin/next.png" width="15px"></a>
-                        <div></div>
+                </div>
+                <div>
+                    <div class="select-name">
+                        <span>공지사항 게시판 관리</span>
                     </div>
                 </div>
             </div>
+            <div class="wrap">
+                <!-- 사이드 바 -->
+                <div th:replace="~{admins/side-bar :: sidebar}"></div>
+
+                <div class="container">
+                    <div class="container-margin">
+                        <!-- 헤더 -->
+                        <div class="update-button-flex">
+                            <div class="delete-box-layout ">
+                                <div class="delete-box">
+                                    <button class="register-button">
+                                        <a th:href="@{/admins/notice/write}">
+                                            공지사항 등록
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="delete-box-layout">
+                                <div class="delete-box">
+                                    <button
+                                            class="deleteButton delete-button"
+                                            onclick="deleteNotices(getSelectedNoticeIds())"
+                                    >
+                                        선택 게시물 삭제
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 내용 섹션 -->
+                        <section class="board-info-box-layout">
+                            <div class="board-info-box">
+                                <div class="board-info-title-box">
+                                    <span>공지사항 목록</span>
+                                </div>
+
+                                <div class="info-table">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th class="checkbox-line">
+                                                <input type="checkbox" id="allSelect"/>
+                                            </th>
+                                            <th>No</th>
+                                            <th>공지사항 제목</th>
+                                            <th>등록일</th>
+                                        </tr>
+                                        </thead>
+                                        <tr th:each="notices : ${notices}">
+                                            <td class="checkbox-line">
+                                                <input
+                                                        type="checkbox"
+                                                        class="noticeCheckbox"
+                                                        name="check"
+                                                        th:value="${notices.id}"/>
+                                            </td>
+                                            <td th:text="${notices.id}"></td>
+                                            <td>
+                                                <a th:href="@{detail(id=${notices.id})}" th:text="${notices.noticeTitle}"></a>
+                                            </td>
+                                            <td th:text="${notices.noticeRegisterDate}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 페이지 부분 -->
+                        <div id="paging-wrap">
+                            <a th:if="${adminPagination.prev}" th:href="${adminPagination.startPage - 1}"
+                               class="notice-change-page paging paging-move">
+                                <img src="/image/admin/prev.png" width="15px"></a>
+                            <th:block th:each="page:${#numbers.sequence(adminPagination.startPage, adminPagination.endPage)}">
+                                <a th:if="${page eq adminPagination.page}" class="paging paging-checked" th:text="${page}"></a>
+                                <a th:unless="${page eq adminPagination.page}" th:href="${page}"
+                                   class="notice-change-page paging" th:text="${page}"></a>
+                            </th:block>
+                            <a th:if="${adminPagination.next}" th:href="${adminPagination.endPage + 1}"
+                               class="notice-change-page paging paging-move">
+                                <img src="/image/admin/next.png" width="15px"></a>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/page.js"></script>
@@ -129,7 +138,7 @@
 
         function getSelectedNoticeIds() {
             const noticeIds = [];
-            $(".memberCheckbox:checked").each(function () {
+            $(".noticeCheckbox:checked").each(function () {
                 noticeIds.push($(this).val());
             });
             return noticeIds;
@@ -145,13 +154,13 @@
                 data: JSON.stringify(noticeIds),
                 success: function () {
                     console.log(noticeIds);
-                    showWarnModal("회원 상태를 변경하였습니다");
+                    showWarnModal("삭제에 성공 하였습니다.");
                     setTimeout(() => {
                         location.reload();
                     }, 1000);
                 },
                 error: function () {
-                    showWarnModal("회원 상태 변경을 실패 하였습니다.");
+                    showWarnModal("삭제에 실패 하였습니다.");
                 }
             });
         }

@@ -1,17 +1,22 @@
 package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.AdminPagination;
+import com.wegether.app.domain.dto.AnswerAdminDTO;
 import com.wegether.app.domain.dto.DataAdminDTO;
+import com.wegether.app.domain.dto.InquiryAdminDTO;
 import com.wegether.app.domain.vo.*;
 import com.wegether.app.service.admin.AdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -23,13 +28,9 @@ public class AdminController {
 
 /* -------------------------------------------------------- */
 
-//    공지사항 작성 이동
+    //    공지사항 작성 이동
     @GetMapping("notice/write")
     public void goToWriteForm(NoticeVO noticeVO){;}
-
-////    공지사항 목록 이동
-//    @GetMapping("notice/list")
-//    public void goToListForm(NoticeVO noticeVO){;}
 
     //    공지사항 목록 이동
     @GetMapping("notice/list")
@@ -39,24 +40,29 @@ public class AdminController {
         model.addAttribute("notices", adminService.noticeGetList(adminPagination));
     }
 
-//    공지사항 상세 이동
+    //    공지사항 상세
     @GetMapping("notice/detail")
-    public void goToDetailForm(NoticeVO noticeVO){;}
+    public void readNoticeDetail(Long id, Model model){
+        Optional<NoticeVO> readNoticeVO = adminService.noticeRead(id);
+        if(readNoticeVO.isPresent()) {
+            model.addAttribute("noticeBoards", readNoticeVO.get());
+        }
+    }
 
-//    공지사항 수정 이동
+    //    공지사항 수정 이동
     @GetMapping("notice/modify")
     public void goToModifyForm(NoticeVO noticeVO){;}
 
+    //    공지사항 삭제
+    @PostMapping("notice/delete")
+    @ResponseBody
+    public void noticeRemove(@RequestBody List<String> noticeIds) {
+        for (String noticeId : noticeIds) adminService.noticeRemove(Long.valueOf(noticeId));
+    }
+
 /* -------------------------------------------------------- */
 
-    //    문의사항 답변 작성 이동
-    @GetMapping("inquiry/answer")
-    public void goToWriteForm(InquiryVO inquiryVO){;}
-
     //    문의사항 목록 이동
-//    @GetMapping("inquiry/list")
-//    public void goToListForm(InquiryVO inquiryVO){;}
-
     @GetMapping("inquiry/list")
     public void inquiryList(Model model, AdminPagination adminPagination){
         adminPagination.setTotal(adminService.getInquiryTotal());
@@ -64,19 +70,69 @@ public class AdminController {
         model.addAttribute("inquiries", adminService.inquiryGetList(adminPagination));
     }
 
-    //    문의사항 상세 이동
+    //    문의사항 상세
     @GetMapping("inquiry/detail")
-    public void goToDetailForm(InquiryVO inquiryVO){;}
+    public void readInquiryDetail(Long id, Model model){
+        Optional<InquiryAdminDTO> readInquiryAdminDTO = adminService.inquiryRead(id);
+        if(readInquiryAdminDTO.isPresent()) {
+            model.addAttribute("inquiryBoards", readInquiryAdminDTO.get());
+        }
+    }
 
-    //    문의사항 수정 이동
+    //    문의사항 답변 등록 이동
+    @GetMapping("inquiry/write")
+    public void goToAnswerWriteForm(AnswerVO answerVO, Model model, Long id){
+        Optional<InquiryAdminDTO> readInquiryAdminDTO = adminService.inquiryRead(id);
+        if(readInquiryAdminDTO.isPresent()) {
+            model.addAttribute("inquiryBoards", readInquiryAdminDTO.get());
+        }
+    }
+
+
+    //    문의사항 답변 등록
+    @PostMapping("inquiry/write")
+    @Transactional(rollbackFor = Exception.class)
+    public RedirectView AnswerWrite(AnswerVO answerVO, @RequestParam("inquiryId") long id){
+            adminService.answerWrite(answerVO);
+            adminService.inquiryStatusChange(id);
+            return new RedirectView("/admins/inquiry/list");
+        }
+
+
+    //    문의사항 답변 상세 이동
+    @GetMapping("inquiry/answer-detail")
+    public void readAnswerDetail(Long id, Model model, AnswerAdminDTO answerAdminDTO){
+        Optional<AnswerAdminDTO> readAnswerAdminDTO = adminService.answerRead(id);
+        if(readAnswerAdminDTO.isPresent()) {
+          model.addAttribute("answerBoards", readAnswerAdminDTO.get());
+        };
+    }
+
+    //    문의사항 답변 수정 상세 이동
     @GetMapping("inquiry/modify")
-    public void goToModifyForm(InquiryVO inquiryVO){;}
+    public void goToAnswerModifyForm(AnswerAdminDTO answerAdminDTO, Model model, Long id){
+        Optional<AnswerAdminDTO> readAnswerAdminDTO = adminService.answerModifyRead(id);
+        if(readAnswerAdminDTO.isPresent()) {
+            model.addAttribute("answerModifyBoards", readAnswerAdminDTO.get());
+        }
+    }
+
+    //    문의사항 답변 수정
+    @PostMapping("inquiry/modify")
+    public RedirectView AnswerModify(AnswerAdminDTO answerAdminDTO){
+        adminService.answerModify(answerAdminDTO);
+        return new RedirectView("/admins/inquiry/list");
+    }
+
+    //    문의사항 삭제
+    @PostMapping("inquiry/delete")
+    @ResponseBody
+    public void answerRemove(@RequestBody List<String> dataIds) {
+        for (String dataId : dataIds) adminService.answerRemove(Long.valueOf(dataId));
+    }
+
 
 /* -------------------------------------------------------- */
-
-    //    자료 목록 이동
-//    @GetMapping("data/list")
-//    public void goToListForm(DataAdminDTO dataAdminDTO){;}
 
     //    자료 목록 이동
     @GetMapping("data/list")
@@ -89,15 +145,11 @@ public class AdminController {
     //    자료 삭제
     @PostMapping("data/delete")
     @ResponseBody
-    public void dataRemove(@RequestBody List<String> dataIds) {
-        for (String dataId : dataIds) adminService.dataRemove(Long.valueOf(dataId));
+    public void dataRemove(@RequestBody List<String> inquiryIds) {
+        for (String inquiryId : inquiryIds) adminService.dataRemove(Long.valueOf(inquiryId));
     }
 
 /* -------------------------------------------------------- */
-
-//    //    프로젝트 목록 이동
-//    @GetMapping("project/list")
-//    public void goToListForm(ProjectVO projectVO){;}
 
     //    프로젝트 목록 이동
     @GetMapping("project/list")
@@ -117,10 +169,6 @@ public class AdminController {
 /* -------------------------------------------------------- */
 
     //    강연 목록 이동
-//    @GetMapping("lecture/list")
-//    public void goToListForm(LectureVO lectureVO){;}
-
-    //    강연 목록 이동
     @GetMapping("lecture/list")
     public void lectureList(Model model, AdminPagination adminPagination){
         adminPagination.setTotal(adminService.getLectureTotal());
@@ -137,10 +185,6 @@ public class AdminController {
     
 
 /* -------------------------------------------------------- */
-
-    //    회원 목록 이동
-//    @GetMapping("member/list")
-//    public void goToListForm(MemberVO memberVO){;}
 
     //    회원 목록 이동
     @GetMapping("member/list")
