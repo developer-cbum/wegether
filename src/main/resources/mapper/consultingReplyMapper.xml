@@ -100,6 +100,12 @@
         DELETE FROM TBL_CONSULTING_REPLY
         WHERE ID =#{id}
     </delete>
+<!--  중간테이블 조회-->
+    <select id="selectMiddle" resultType="consultingReplyVO">
+        SELECT ID, MEMBER_ID, CONSULTING_ID
+        FROM TBL_CONSULTING_REPLY
+        WHERE ID =#{id}
+    </select>
 
 <!--  원하는 댓글 조회-->
     <select id="select" resultType="consultReplyDTO">
@@ -112,7 +118,7 @@
     <select id="selectAgain" resultType="consultReplyDTO">
         SELECT ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH
         FROM TBL_REPLY
-        WHERE REPLY_GROUP = #{REPLY_GROUP}
+        WHERE REPLY_DEPTH = 1
     </select>
 
 

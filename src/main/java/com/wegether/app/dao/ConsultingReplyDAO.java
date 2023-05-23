@@ -3,6 +3,7 @@ package com.wegether.app.dao;
 import com.wegether.app.domain.dto.ConsultReplyDTO;
 import com.wegether.app.domain.dto.LecturePagination;
 import com.wegether.app.domain.dto.ReplyDTO;
+import com.wegether.app.domain.vo.ConsultingReplyVO;
 import com.wegether.app.mapper.ConsultingReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -63,6 +64,11 @@ public class ConsultingReplyDAO {
         consultingReplyMapper.deleteReplyAgainAll(replyGroup);
     }
 
+    //중간 테이블 조회
+    public Optional<ConsultingReplyVO> findMiddle(Long id){
+        return consultingReplyMapper.selectMiddle(id);
+    }
+
     //중간 테이블 삭제
     public void deleteMiddle(Long id){
         consultingReplyMapper.deleteMiddle(id);
@@ -74,8 +80,8 @@ public class ConsultingReplyDAO {
     }
 
     //  원하는  대댓글 조회
-    public List<ConsultReplyDTO> findAgain(Long replyGroup){
-       return consultingReplyMapper.selectAgain(replyGroup);
+    public List<ConsultReplyDTO> findAgain(){
+       return consultingReplyMapper.selectAgain();
     }
 
 

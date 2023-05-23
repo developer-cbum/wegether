@@ -3,6 +3,7 @@ package com.wegether.app.service.consult;
 import com.wegether.app.domain.dto.ConsultReplyDTO;
 import com.wegether.app.domain.dto.LecturePagination;
 import com.wegether.app.domain.dto.ReplyDTO;
+import com.wegether.app.domain.vo.ConsultingReplyVO;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +50,9 @@ ConsultReplyService {
 
 
     //  원하는  대댓글 조회
-    public List<ConsultReplyDTO> getAgain(Long replyGroup);
+    public List<ConsultReplyDTO> getAgain();
 
+    //중간 테이블 조회
+    public Optional<ConsultingReplyVO> getMiddle(Long id);
 
 }

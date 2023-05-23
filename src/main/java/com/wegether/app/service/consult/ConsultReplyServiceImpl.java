@@ -4,6 +4,7 @@ import com.wegether.app.dao.ConsultingReplyDAO;
 import com.wegether.app.domain.dto.ConsultReplyDTO;
 import com.wegether.app.domain.dto.LecturePagination;
 import com.wegether.app.domain.dto.ReplyDTO;
+import com.wegether.app.domain.vo.ConsultingReplyVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -67,6 +68,14 @@ public class ConsultReplyServiceImpl implements ConsultReplyService {
     public void removeReplyAgainAll(Long replyGroup) {
         consultingReplyDAO.deleteReplyAgainAll(replyGroup);
     }
+
+//   원하는 중간 테이블 조회
+
+    @Override
+    public Optional<ConsultingReplyVO> getMiddle(Long id) {
+        return consultingReplyDAO.findMiddle(id);
+    }
+
     // 중간테이블 삭제
     @Override
     public void removeMiddle(Long id) {
@@ -81,7 +90,9 @@ public class ConsultReplyServiceImpl implements ConsultReplyService {
 
     //대댓글들 조회
     @Override
-    public List<ConsultReplyDTO> getAgain(Long replyGroup) {
-       return consultingReplyDAO.findAgain(replyGroup);
+    public List<ConsultReplyDTO> getAgain() {
+       return consultingReplyDAO.findAgain();
     }
+
+
 }

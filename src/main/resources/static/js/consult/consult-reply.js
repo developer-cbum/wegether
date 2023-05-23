@@ -87,6 +87,9 @@ $(document).on('click', '.register-again-reply', function () {
         }),
         contentType: "application/json; charset=UTF-8;",
         success    : function (total) {
+            if(total == 0){
+                $('.no-reply').show();
+            }
             $againReply.val("");
             //    댓글 최신화
             text=""
@@ -138,12 +141,16 @@ $(document).on('click', '.remove-button', function () {
     $.ajax({
         url     : `/replies/remove/${id}`,
         type    : 'delete',
-        success : function () {
+        success : function (total) {
+            console.log(total);
             text=""
             $div.html("");
             page= 1;
             $(".total").text(`${total}`);
-            load(id); //폼다시생성
+            if(total == 0){
+                $('.no-reply').show();
+            }
+            load(id);
             showWarnModal("삭제되었습니다");
         }
 
@@ -178,8 +185,8 @@ function showList(result, replyResult, id) {
 
 
     result.forEach(reply => {
-        if(reply.replyDepth == 0) {
-            text += `
+        if(reply.replyDepth == 0){
+        text += `
         <div class="CommunityCommentItem_container__BOufe">
                 <div class="CommunityCommentItem_content__2N4Mb">
                     <div class="CommentUserWrapper_container__10Bt- CommunityCommentContent_container__25oHX" style="margin-bottom: 15px">
@@ -210,16 +217,16 @@ function showList(result, replyResult, id) {
                                     </span>
                                     </div>
                                 <div class="CommunityCommentContent_moreWrap__3ans8">`
-            // 수정 삭제 버튼
-            if (reply.memberId == session) {
-                text += `<div class="PurchaseSummaryCard_detailText__2GWWi" style="display: flex">
+                                   // 수정 삭제 버튼
+                                   if(reply.memberId == session){
+                                       text+=     `<div class="PurchaseSummaryCard_detailText__2GWWi" style="display: flex">
                                                          <button>수정</button>
                                                          <span>&nbsp | &nbsp</span>
                                                          <button id="${reply.id}" class="remove-button">삭제</button>
                                                     </div>`
-            }
+                                   }
 
-            text += `        
+                         text+=     `        
                                 </div>
                             </div>
                             <div>
@@ -232,13 +239,13 @@ function showList(result, replyResult, id) {
                             <div class="CommunityCommentContent_bottom__-IKRP CommunityCommentContent_noReply__1c4Cz">
                                 <button id="btn" class="Button_button__2FuOU Button_secondary__LNLsN Button_sm__16X6h CommunityCommentContent_replyBtn__2T16c reviewReviewButton" type="button">
                                     <span><span class="Button_children__ilFun">답글 `
-            for (let i = 0; i < replyResult.length; i++) {
-                if (reply.id == replyResult[i].replyGroup && replyResult[i].replyDepth == 1) {
-                    ++count;
-                }
-            }
-            text += `${count}`
-            text += ` </span></span>
+                            for(let i = 0; i < replyResult.length; i++) {
+                                if (reply.id == replyResult[i].replyGroup && replyResult[i].replyDepth == 1) {
+                                    ++count;
+                                }
+                            }
+                                   text+=  `${count}`
+                                text+=` </span></span>
                                 </button>
                             </div>
                             <div class="CommunityCommentContent_utils__oo7sJ"
@@ -246,19 +253,18 @@ function showList(result, replyResult, id) {
                         </div>
                     </div>
                 </div>`
-            if (id) {
-                if (reply.id == id) {
-                    text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: block">`;
-                } else if(reply.replyGroup == id) {
-                    text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: block">`;
-                } else{
+                if (id) {
+                    if (reply.id == id) {
+                        text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: block">`;
+                    } else {
+                        text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: none">`;
+                    }
+                } else {
                     text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: none">`;
                 }
 
-            }  else {
-                text += `<div id="${reply.id}" class="CommunityCommentItem_replyContent__3UQ-7 reviewReviewWrite" style="display: none">`;
-            }
 
+            for(let i = 0; i < replyResult.length; i++) {
 
                 if (reply.id == replyResult[i].replyGroup && replyResult[i].replyDepth == 1) { count=0;
                     text += `
@@ -315,6 +321,7 @@ function showList(result, replyResult, id) {
            `
                 }
                 <!--      답글작성창-->
+            }
          text+=  `<!--답글작성-->
             <div class="CommunityCommentReplyListContainer_container__1waBy">
                      <div class="CommentReplyList_container__2phlF">
