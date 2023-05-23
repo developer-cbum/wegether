@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @Controller
@@ -29,10 +30,14 @@ public class CommunityController {
     private final CommunityReplyService communityReplyService;
 
     @GetMapping("list")
-    public void list(CommunityPagination communityPagination, Model model) {
+    public void list(){}
+
+    @PostMapping("list")
+    @ResponseBody
+    public List<CommunityDTO> list(@RequestBody CommunityPagination communityPagination, Model model) {
         communityPagination.setTotal(communityService.getTotal());
-        communityPagination.progress(5, 5);
-        model.addAttribute("communities", communityService.getList(communityPagination));
+        communityPagination.progress(1, 10);
+        return communityService.getList(communityPagination);
     }
 
     @GetMapping("write")
