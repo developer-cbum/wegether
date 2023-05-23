@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class ConsultingReplyVO {
     private Long id;
-    private Long replyId;
-    private Long ConsultingId;
     private Long memberId;
+    private Long consultingId;
 }
 

@@ -17,5 +17,7 @@ public class CommunityFileDTO {
     private String fileName;
     private Long fileSize;
     private String fileType;
+
+
 //    private List<CommunityFileVO> communityFiles = new ArrayList<>();
 }

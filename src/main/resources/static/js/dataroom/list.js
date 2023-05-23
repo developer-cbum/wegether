@@ -12,15 +12,15 @@ $(document).ready(function () {
                    href="/datas/detail?id=${data.id}">
                    <div class="CardThumbnail_thumbnailContainer__DwnpC" style="height: 269px;">
                    `
+
                         data.files.forEach(file => {
                             if(file.fileType == "REPRESENTATIVE"){
                                 text += `
                                 <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
-                                <div aria-hidden="true"
-                                    class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
-                                    style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
-                                 </div>
-                                     
+                                    <div aria-hidden="true"
+                                        class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                        style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
+                                     </div>
                                 </div>`;
                             }
                         })
@@ -78,9 +78,6 @@ $(document).ready(function () {
     $ul.append(text);
 
 
-
-
-
     //TOP btn
     var button = $(".FloatingTopButton_pageTop__2gqm9");
     button.hide();
@@ -109,14 +106,39 @@ $(document).ready(function () {
     });
 
 
-    // 아마도 카테고리 ?
-    $('.ImageTab_tab__3siCY').click(function () {
+    // 카테고리
+    $('.category_lists button').click(function () {
         // 클릭한 버튼 활성화
-        $(this).addClass('ImageTab_active__BGdXu')
-            .parent()
-            .siblings()
-            .find('.ImageTab_tab__3siCY')
-            .removeClass('ImageTab_active__BGdXu');
+        $(this).addClass('ImageTab_active__BGdXu').parent().siblings()
+            .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
+    });
+
+    let type = searchParam('type');
+    // let href = window.location.href
+    // $(".fAzCXd a").removeClass("eWDpEZ").addClass("ehJwom");
+
+        if (type == null) {
+            $(".all").addClass('ImageTab_active__BGdXu').parent().siblings()
+                .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
+        } else {
+            $("." + type).addClass('ImageTab_active__BGdXu').parent().siblings()
+                .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
+        }
+
+
+    function searchParam(key) {
+        return new URLSearchParams(location.search).get(key);
+    };
+
+
+    $('.category_lists button').on("click", function (e) {
+        e.preventDefault();
+        let type = this.classList[0];
+            location.href = `/datas/list?type=${type}`;
+    });
+
+    $('.RecentView_container__1boAT').on("click", function () {
+        history.replaceState({}, null, location.pathname);
     });
 
 

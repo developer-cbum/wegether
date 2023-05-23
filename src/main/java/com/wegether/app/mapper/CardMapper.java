@@ -1,5 +1,6 @@
 package com.wegether.app.mapper;
 
+import com.wegether.app.domain.dto.CardDTO;
 import com.wegether.app.domain.vo.CardVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,6 +16,6 @@ public interface CardMapper {
     public void delete(Long id);
 
 //    카드 목록
-    public List<CardVO> selectAll(Long memberId);
+    public List<CardDTO> selectAll(Long memberId);
 
 }

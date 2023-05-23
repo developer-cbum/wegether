@@ -87,7 +87,7 @@
                                                         th:value="${members.id}"/>
                                                 </td>
                                                 <td th:text="${members.id}"></td>
-                                                <td th:text="${members.memberStatus} ? '일반 회원' : '탈퇴 회원'"></td>
+                                                <td th:text="${members.memberStatus} ? '일반 회원' : '탈퇴 회원'" th:style="${members.memberStatus ? 'color:#0fa34c' : 'color:#ff0000'}"></td>
                                                 <td th:text="${members.memberName}"></td>
                                                 <td th:text="${members.memberNickname}"></td>
                                                 <td th:text="${members.memberPhoneNumber}"></td>
@@ -149,7 +149,7 @@
                 data: JSON.stringify(memberIds),
                 success: function() {
                     console.log(memberIds);
-                    showWarnModal("회원 상태를 변경하였습니다");
+                    showWarnModal("회원 상태를 변경하였습니다.");
                     setTimeout(() => {
                         location.reload();
                     }, 1000);

@@ -29,5 +29,19 @@ public interface ProjectMapper {
     public void ProjectDelete(Long id);
 
 
+
+
+
+
+
+
+
+
+
+//    소영 마이페이지 추가
+
+    public List<ProjectDTO> selectmyProject (Long memberId);
+
     public int selectCountOfProject();
+
 }
