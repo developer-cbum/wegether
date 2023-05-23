@@ -24,10 +24,8 @@ public class MainDAO {
         return mainMapper.mainDSelectAll();
     };
 
-    public List<MainDTO> mainCFindAll(){
-        return mainMapper.mainCSelectAll();
-    };
+    public List<MainDTO> mainCFindAll(){ return mainMapper.mainCSelectAll(); };
 
-
+    public List<MainDTO> mainDRFindAll(){ return mainMapper.mainDRSelectAll();};
 }
 
