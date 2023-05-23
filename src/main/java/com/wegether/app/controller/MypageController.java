@@ -55,7 +55,6 @@ public class MypageController {
 
     //    카드 등록 후 리스트
 //    @PostMapping("register")
-//    @ResponseBody
 //    public RedirectView register(@RequestBody CardDTO cardDTO, CardVO CARD) {
 //        card.register(cardVO);
 //        return new RedirectView("/pay-card/pay-card");
