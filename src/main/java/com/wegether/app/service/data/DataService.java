@@ -1,6 +1,7 @@
 package com.wegether.app.service.data;
 
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataFileVO;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.domain.vo.FileVO;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 public interface DataService {
     //    게시글 목록
-    public List<DataDTO> getList(DataPagination dataPagination);
+    public List<DataDTO> getList(DataPagination dataPagination, CategoryType categoryType);
 
     //    게시글 추가
     public void write(DataDTO dataDTO);

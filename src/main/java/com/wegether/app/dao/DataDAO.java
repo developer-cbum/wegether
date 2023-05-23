@@ -4,6 +4,7 @@ import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.mapper.DataMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ public class DataDAO {
     private final DataMapper dataMapper;
 
     //    자료 목록
-    public List<DataDTO> findAll(DataPagination dataPagination){
-        return dataMapper.selectAll(dataPagination);
+    public List<DataDTO> findAll(DataPagination dataPagination, CategoryType categoryType){
+        return dataMapper.selectAll(dataPagination, categoryType);
     }
 
     //    자료 추가

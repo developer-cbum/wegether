@@ -3,57 +3,59 @@
 <mapper namespace="com.wegether.app.mapper.DataMapper">
 
 <!--  자료 목록 조회  -->
-<!--    <select id="selectAll" resultType="dataDTO">-->
-<!--        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NICKNAME, MEMBER_INTRODUCING-->
-<!--        FROM-->
-<!--        (-->
-<!--        SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_INTRODUCING-->
-<!--        FROM TBL_MEMBER M JOIN TBL_DATA D-->
-<!--        <![CDATA[-->
-<!--            ON M.ID = D.MEMBER_ID AND ROWNUM <= #{pagination.page} * #{pagination.rowCount}-->
-<!--        ]]>-->
-<!--        ORDER BY-->
-<!--        <choose>-->
-<!--            <when test="order == 'popular'">-->
-<!--                DATA_READ_COUNT-->
-<!--            </when>-->
-<!--            <otherwise>-->
-<!--                D.ID-->
-<!--            </otherwise>-->
-<!--        </choose>-->
-<!--        DESC-->
-<!--        <![CDATA[-->
-<!--        ) D WHERE R > (#{pagination.page} - 1) * #{pagination.rowCount}-->
-<!--        ]]>-->
-<!--    </select>-->
-
 
     <select id="selectAll" resultType="dataDTO">
-    SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NICKNAME
-    FROM
-    (
-        SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NICKNAME
-        FROM TBL_MEMBER M JOIN TBL_DATA D
-         <![CDATA[
-        ON M.ID = D.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
-        ORDER BY D.ID DESC
-    ) D WHERE R > (#{page} - 1) * #{rowCount}
-         ]]>
+        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT,
+        D.MEMBER_ID, MEMBER_NICKNAME
+        FROM
+            (
+            SELECT ROWNUM R, D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE,
+            DATA_READ_COUNT,
+            D.MEMBER_ID, MEMBER_NICKNAME
+            FROM
+            (
+                SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT,
+                D.MEMBER_ID, MEMBER_NICKNAME
+                FROM TBL_MEMBER M JOIN TBL_DATA D
+                ON M.ID = D.MEMBER_ID
+                <choose>
+                    <when test="categoryType.type != 'all' and !categoryType.type.equals('') ">
+                        AND DATA_MAJOR = #{categoryType.type}
+                    </when>
+                </choose>
+                ORDER BY
+                <choose>
+                    <when test="categoryType.order == 'new'">
+                        DATA_REGISTER_DATE
+                    </when>
+                    <otherwise>
+                        DATA_READ_COUNT
+                    </otherwise>
+                </choose>
+                DESC
+            ) D
+            <![CDATA[
+                WHERE ROWNUM <= #{dataPagination.page} * #{dataPagination.rowCount}
+            ]]>
+
+        <![CDATA[
+        ) D WHERE R > (#{dataPagination.page} - 1) * #{dataPagination.rowCount}
+        ]]>
     </select>
 
     <!--  자료 등록  -->
-    <insert id="insert" parameterType="dataDTO">
-        <selectKey keyProperty="id" order="BEFORE" resultType="dataDTO">
+    <insert id="insert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
             SELECT SEQ_DATA.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_DATA(ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
-        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, #{memberId})
+        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, 2L)
     </insert>
 
 
     <!--  자료 상세 조회  -->
     <select id="select" resultType="dataDTO">
-        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING
+        SELECT D.ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_REGISTER_DATE, DATA_UPDATE_DATE, DATA_READ_COUNT, DATA_SCHOOL, DATA_MAJOR, D.MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING, MEMBER_POINT
         FROM TBL_DATA D JOIN TBL_MEMBER M
                         ON M.ID = D.MEMBER_ID AND D.ID = #{id}
 
