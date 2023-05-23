@@ -35,6 +35,18 @@ public class ConsultingReplyDAO {
         return consultingReplyMapper.selectCountOfReply(consultingId);
     }
 
+    // 대댓글 전체 조회
+    public List<ConsultReplyDTO> findAllAgain(Long consultingId){
+        return consultingReplyMapper.selectAllAgain(consultingId);
+    }
+
+    // 대댓글 전체 개수
+    public int findCountOfReplyAgain(Long consultingId, Long replyGroup){
+        return consultingReplyMapper.selectCountOfReplyAgain(consultingId, replyGroup);
+    }
+
+
+
     // 중간 테이블 삽입
     public void saveMiddle(Long id, Long memberId, Long consultingId){
         consultingReplyMapper.insertMiddle(id,memberId,consultingId);

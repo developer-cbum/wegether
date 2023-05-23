@@ -24,6 +24,12 @@ public interface ConsultingReplyMapper {
     //일반 댓글 총개수
     public int selectCountOfReply(Long consultingId);
 
+    // 대댓글 전체 조회
+    public List<ConsultReplyDTO> selectAllAgain(Long consultingId);
+
+    // 대댓글 전체 개수
+    public int selectCountOfReplyAgain(Long consultingId, Long replyGroup);
+
 
     // 중간 테이블 삽입
     public void insertMiddle(Long id, Long memberId, Long consultingId);
