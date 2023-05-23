@@ -109,6 +109,8 @@ public class MypageController {
 //        model.addAttribute("projectH", heart.projectHeart(1L));
 //    }
 
+//  프로젝트 찜
+
     @GetMapping("/heart-list/heart")
     @ResponseBody
     public List<ProjectDTO> goToHeart(Long memberId){
@@ -119,6 +121,11 @@ public class MypageController {
 
         //model.addAttribute("projectH", heart.projectHeart(2L));
     }
+
+
+
+
+
 
 
 }

@@ -23,6 +23,7 @@ $project.on("click", function () {
     $.ajax({
         url: "/heart-list/heart",
         success: function (hearts) {
+            let text=``;
             console.log("dd");
             hearts.forEach((heart, i) => {
                 text += `
@@ -119,7 +120,7 @@ $project.on("click", function () {
                 </button>
               </div>
             </li>
-                
+               
                
                 `
             })
@@ -129,6 +130,7 @@ $project.on("click", function () {
 
 
     });
+    $('.ProjectCardList_container__2Q0Js').append(text);
 
 
 })
