@@ -16,4 +16,6 @@ public interface MainMapper {
 
     public List<MainDTO> mainDSelectAll();
 
+    public List<MainDTO> mainDRSelectAll();
+
 }
