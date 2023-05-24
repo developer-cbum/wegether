@@ -17,8 +17,8 @@ $('.reply-button').on("click", function () {
 
     //댓글 등록
     registerReply();
-    $(".total").text(`${total}`);
-    $('.content-textarea').val("");
+    // $(".total").html(`${total}`);
+
 
 })
 
@@ -33,12 +33,13 @@ function registerReply() {
         }),
         contentType: "application/json; charset=UTF-8;",
         success    : function (int) {
+            $('#replyContent').val("");
             $('.reviewWrite').hide();
             //    댓글 최신화
             text=""
             $(".total").text(`${total}`);
             page= 1;
-            $div.text("");
+            $div.html("");
             load()
         }
     })
