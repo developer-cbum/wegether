@@ -23,8 +23,11 @@ public interface ConsultingReplyMapper {
     //일반 댓글 페이징처리 조회
     public List<ConsultReplyDTO> selectAll(@Param("consultingId") Long consultingId, @Param("lecturePagination") LecturePagination lecturePagination);
 
-    //일반 댓글 총개수
+    //댓글 총개수
     public int selectCountOfReply(Long consultingId);
+
+    //일반 댓글 총개수
+    public int selectCount(Long consultingId);
 
     // 대댓글 전체 조회
     public List<ConsultReplyDTO> selectAllAgain(Long consultingId);
@@ -53,6 +56,19 @@ public interface ConsultingReplyMapper {
     public Optional<ConsultReplyDTO> select(Long id);
 
     //  원하는  대댓글 조회
-    public List<ConsultReplyDTO> selectAgain();
+    public List<ConsultReplyDTO> selectAgain(Long replyGroup);
+
+
+    //그 게시글에 해당되는 모든 중간테이블 삭제
+    public void deleteMiddleAll(Long consultingId);
+
+
+//    그 해당 하는 게시글에 중간테이블 전체 조회
+    public List<ConsultingReplyVO> selectMiddleAll(Long consultingId);
+
+ //댓글 수정
+    public void update(ConsultReplyDTO consultReplyDTO);
+
+
 
 }

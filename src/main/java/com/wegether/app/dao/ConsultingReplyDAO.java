@@ -32,9 +32,14 @@ public class ConsultingReplyDAO {
        return consultingReplyMapper.selectAll(consultingId, lecturePagination);
     }
 
-    //일반 댓글 총개수
+    //댓글 총개수
     public int findCountOfReply(Long consultingId){
         return consultingReplyMapper.selectCountOfReply(consultingId);
+    }
+
+    //일반 댓글 총개수
+    public int findCount(Long consultingId){
+        return consultingReplyMapper.selectCount(consultingId);
     }
 
     // 대댓글 전체 조회
@@ -80,9 +85,27 @@ public class ConsultingReplyDAO {
     }
 
     //  원하는  대댓글 조회
-    public List<ConsultReplyDTO> findAgain(){
-       return consultingReplyMapper.selectAgain();
+    public List<ConsultReplyDTO> findAgain(Long replyGroup){
+       return consultingReplyMapper.selectAgain(replyGroup);
     }
+
+    //그 게시글에 해당되는 모든 중간테이블 삭제
+    public void deleteMiddleAll(Long consultingId){
+        consultingReplyMapper.deleteMiddleAll(consultingId);
+    }
+
+
+    //    그 해당 하는 게시글에 중간테이블 전체 조회
+    public List<ConsultingReplyVO> findMiddleAll(Long consultingId){
+       return consultingReplyMapper.selectMiddleAll(consultingId);
+    }
+
+    //댓글 수정
+    public void set(ConsultReplyDTO consultReplyDTO){
+        consultingReplyMapper.update(consultReplyDTO);
+    }
+
+
 
 
 }

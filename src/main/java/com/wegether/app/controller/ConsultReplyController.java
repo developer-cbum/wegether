@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.model.IModel;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,12 +27,15 @@ public class ConsultReplyController {
     //댓글등록
     @PostMapping("register")
     @Transactional(rollbackFor = Exception.class)
-    public int register(@RequestBody ConsultReplyDTO consultReplyDTO, Model model){
+    public List<Integer> register(@RequestBody ConsultReplyDTO consultReplyDTO, Model model){
         log.info(consultReplyDTO.toString());
         consultReplyService.registerReply(consultReplyDTO);
         log.info(consultReplyDTO.getId().toString());
         consultReplyService.registerMiddle(consultReplyDTO.getId(), (Long)session.getAttribute("id"), consultReplyDTO.getConsultingId());
-        return consultReplyService.getTotal(consultReplyDTO.getConsultingId());
+        List<Integer> totals = new ArrayList<>();
+        totals.add(0, consultReplyService.getTotal(consultReplyDTO.getConsultingId()));
+        totals.add(1, consultReplyService.getTotalReply(consultReplyDTO.getConsultingId()));
+        return totals;
     }
 
     //댓글조회
@@ -63,39 +67,55 @@ public class ConsultReplyController {
     }
 
     //댓글 삭제
-    @Transactional(rollbackFor = Exception.class)
     @DeleteMapping("remove/{id}")
-    public int removeReply(@PathVariable Long id){
-      Long num = consultReplyService.getMiddle(id).get().getConsultingId();
-        log.info("1들어옴");
+    @Transactional(rollbackFor = Exception.class)
+    public List<Integer> removeReply(@PathVariable Long id){
+        Long num = consultReplyService.getMiddle(id).get().getConsultingId();
+        List<Integer> totals = new ArrayList<>();
         //일반 댓글일때
         if(consultReplyService.get(id).get().getReplyDepth()== 0){
-            log.info("2들어옴");
             //대댓글 집합
-            List<ConsultReplyDTO> replyAgains = consultReplyService.getAgain();
+            List<ConsultReplyDTO> replyAgains = consultReplyService.getAgain(id);
             //그 댓글에 해당되는 중간테이블 삭제
-            log.info(replyAgains.toString());
-            if(replyAgains.size() > 1) {
-                log.info("1보다크면들어옴들어옴");
-                replyAgains.stream().filter(consultReplyDTO -> consultReplyDTO.getReplyGroup() == id)
+            if(replyAgains.size() > 0) {
+                //중간 테이블 대댓글 전체삭제
+                replyAgains.stream().filter(consultReplyDTO ->consultReplyDTO.getReplyGroup() == id)
                         .forEach(consultReplyDTO -> consultReplyService.removeMiddle(consultReplyDTO.getId()));
-                //댓글에 해당되는 대댓글 전체삭제
-                replyAgains.stream().filter(consultReplyDTO -> consultReplyDTO.getReplyGroup() == id)
+                //대댓글 모두삭제
+                replyAgains.stream().filter(consultReplyDTO -> consultReplyDTO.getReplyGroup() == id )
                         .forEach(consultReplyDTO -> consultReplyService.removeReply(consultReplyDTO.getId()));
+                //그리고 그냥 댓글삭제과 중간댓글삭제[
+                consultReplyService.removeMiddle(id);
+                consultReplyService.removeReply(id);
+
             } else{
                 log.info("3들어옴");
                 consultReplyService.removeMiddle(id);
+                consultReplyService.removeReply(id);
+                totals.add(0, consultReplyService.getTotal(num));
+                totals.add(1, consultReplyService.getTotalReply(num));
+                return totals;
             }
-            log.info("4들어옴");
-            consultReplyService.removeReply(id);
-            return consultReplyService.getTotal(num);
+
         } else{
 //            대댓글일때
+            log.info("들어옴");
             consultReplyService.removeMiddle(id);
             consultReplyService.removeReply(id);
-            return consultReplyService.getTotal(num);
+            totals.add(0, consultReplyService.getTotal(num));
+            totals.add(1, consultReplyService.getTotalReply(num));
+            return totals;
         }
+        totals.add(0, consultReplyService.getTotal(num));
+        totals.add(1, consultReplyService.getTotalReply(num));
+        return totals;
 
+    }
+
+    //댓글 수정
+    @PutMapping("modify")
+    public void modify(@RequestBody ConsultReplyDTO consultReplyDTO){
+        consultReplyService.modify(consultReplyDTO);
     }
 
 

@@ -34,10 +34,16 @@ public class ConsultReplyServiceImpl implements ConsultReplyService {
         return consultingReplyDAO.findAll(consultingId, lecturePagination);
     }
 
-    //일반 댓글 총개수
+    //댓글 총개수
     @Override
     public int getTotal(Long consultingId) {
         return consultingReplyDAO.findCountOfReply(consultingId);
+    }
+
+
+    @Override
+    public int getTotalReply(Long consultingId) {
+        return consultingReplyDAO.findCount(consultingId);
     }
 
     //대댓글 리스트
@@ -90,9 +96,26 @@ public class ConsultReplyServiceImpl implements ConsultReplyService {
 
     //대댓글들 조회
     @Override
-    public List<ConsultReplyDTO> getAgain() {
-       return consultingReplyDAO.findAgain();
+    public List<ConsultReplyDTO> getAgain(Long replyGroup) {
+       return consultingReplyDAO.findAgain(replyGroup);
+    }
+
+    //그 게시글에 해당되는 모든 중간테이블 삭제
+    @Override
+    public void removeMiddleAll(Long consultingId){
+        consultingReplyDAO.deleteMiddleAll(consultingId);
     }
 
 
+    //    그 해당 하는 게시글에 중간테이블 전체 조회
+    @Override
+    public List<ConsultingReplyVO> getMiddleAll(Long consultingId){
+        return consultingReplyDAO.findMiddleAll(consultingId);
+    }
+
+    //댓글수정
+    @Override
+    public void modify(ConsultReplyDTO consultReplyDTO) {
+        consultingReplyDAO.set(consultReplyDTO);
+    }
 }

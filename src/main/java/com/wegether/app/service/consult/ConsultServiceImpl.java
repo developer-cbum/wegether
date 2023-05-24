@@ -1,12 +1,16 @@
 package com.wegether.app.service.consult;
 
 import com.wegether.app.dao.ConsultingDAO;
+import com.wegether.app.dao.ConsultingReplyDAO;
+import com.wegether.app.domain.dto.ConsultReplyDTO;
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.Pagination;
 import com.wegether.app.domain.dto.Search;
+import com.wegether.app.domain.vo.ConsultingReplyVO;
 import com.wegether.app.domain.vo.ConsultingVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +20,7 @@ import java.util.Optional;
 public class ConsultServiceImpl implements ConsultService {
 
     private final ConsultingDAO consultingDAO;
+    private final ConsultingReplyDAO consultReplyDAO;
 
     //상담 등록
     @Override
@@ -48,7 +53,14 @@ public class ConsultServiceImpl implements ConsultService {
 
     // 상담 삭제
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void removeConsulting(Long id) {
+        List<ConsultingReplyVO> middleAlls = consultReplyDAO.findMiddleAll(id);
+        //중간테이블 전체삭제
+        consultReplyDAO.deleteMiddleAll(id);
+        //댓글 전체삭제
+       middleAlls.forEach(middleAll -> consultReplyDAO.deleteReply(middleAll.getId()));
+       //게시글삭제
         consultingDAO.deleteConsulting(id);
     }
 

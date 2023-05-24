@@ -5,6 +5,7 @@ import com.wegether.app.domain.dto.AnswerAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
 import com.wegether.app.domain.vo.AnswerVO;
 import com.wegether.app.domain.vo.MemberVO;
+import com.wegether.app.domain.vo.NoticeFileVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -30,6 +31,12 @@ public class adminDAOTests {
 //        assertThat(adminDAO.noticeFindAll()).hasSize(2);
 //    }
 
+    // 공지사항 목록(이미지) 테스트
+    @Test
+    public void noticeImageFindAllTest(){
+        adminDAO.noticeImageFindAll(1L).stream().map(noticeFileAdminDTO -> noticeFileAdminDTO.getFileName()).forEach(log::info);
+    }
+
     //    공지사항 등록 테스트
     @Test
     public void noticeSaveTest() {
@@ -37,6 +44,15 @@ public class adminDAOTests {
         noticeVO.setNoticeTitle("공지사항 테스트 제목");
         noticeVO.setNoticeContent("공지사항 테스트 내용");
         adminDAO.noticeSave(noticeVO);
+    }
+    
+    //    공지사항 이미지 등록(중간 테이블) 테스트
+    @Test
+    public void noticeImageMiddleSaveTest(){
+        NoticeFileVO noticeFileVO = new NoticeFileVO();
+        noticeFileVO.setId(5L);
+        noticeFileVO.setNoticeId(1L);
+        adminDAO.noticeImageMiddleSave(noticeFileVO);
     }
 
     //    공지사항 상세 테스트
