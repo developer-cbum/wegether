@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.WishProjectMapper">
 
+
 <!--    찜 하기-->
     <insert id="insert">
         INSERT INTO TBL_WISH_PROJECT
@@ -9,14 +10,32 @@
         VALUES(SEQ_PROJECT.NEXTVAL, #{memberId}, #{projectId})
     </insert>
 
-<!--    프로젝트 찜 조회-->
-    <select id="selectAll" resultType="projectDTO">
-      SELECT  p.MEMBER_ID, p.PROJECT_TITLE, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL now
-      FROM TBL_PROJECT p, TBL_WISH_PROJECT w
-      WHERE p.ID =w.PROJECT_ID AND p.MEMBER_ID =#{memberId}
+<!--    전체 찜 조회-->
+    <select id="selectHeartAll" resultType="heartDTO">
+        SELECT  w.MEMBER_ID num, p.PROJECT_TITLE title, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , TO_CHAR(PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL) sub, PROJECT_UPDATE_DATE line
+        FROM TBL_PROJECT p, TBL_WISH_PROJECT w
+        WHERE w.MEMBER_ID=#{memberId} AND p.ID =w.PROJECT_ID
+		UNION ALL
+      SELECT  W.MEMBER_ID num, D.DATA_TITLE title, DATA_SCHOOL || ' ' || DATA_MAJOR info , TO_CHAR(DATA_PRICE) sub, DATA_UPDATE_DATE line
+        FROM TBL_DATA D, TBL_WISH_DATA W
+        WHERE W.MEMBER_ID=#{memberId} AND D.ID =W.DATA_ID
+        ORDER BY line ASC
+
     </select>
 
-<!--    찜 취소-->
+
+
+
+
+
+<!--    프로젝트 찜 조회-->
+    <select id="selectAll" resultType="projectDTO">
+       SELECT  w.MEMBER_ID, p.PROJECT_TITLE, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL now
+        FROM TBL_PROJECT p, TBL_WISH_PROJECT w
+        WHERE w.MEMBER_ID=#{memberId} AND p.ID =w.PROJECT_ID;
+    </select>
+
+    <!--    찜 취소-->
     <delete id="delete">
        DELETE FROM TBL_WISH_PROJECT
        WHERE ID = #{id}

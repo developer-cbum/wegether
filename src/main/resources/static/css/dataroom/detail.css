@@ -3278,3 +3278,8 @@ button:not(:disabled) {
     display: inline-block;
     vertical-align: middle;
 }
+
+.inner-contents blockquote.type-default::before,
+.inner-contents blockquote.type-default::after{
+    display: none;
+}
