@@ -30,8 +30,26 @@
     ORDER BY C.COMMUNITY_REGISTER_DATE DESC
 </select>
 
+    <select id ="searchPSelectAll" resultType="MainDTO">
+    SELECT P.ID, P.PROJECT_TITLE, P.PROJECT_MAJOR, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH
+    FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F
+    WHERE P.ID = PF.PROJECT_ID AND PF.ID = F.ID
+    ORDER BY P.ID DESC
+    </select>
 
 
+<!--    <select id="selectCountOfProject" resultType="_int">-->
+<!--        SELECT COUNT(P.ID)-->
+<!--        FROM TBL_MEMBER M JOIN TBL_PROJECT P-->
+<!--        ON P.ID = P.MEMBER_ID-->
+<!--        <where>-->
+<!--            <if test="search.keyword != null">-->
+<!--                AND (PROJECT_TITLE LIKE '%'||#{search.keyword}||'%'-->
+<!--                OR PROJECT_MAJOR LIKE '%'||#{search.keyword}||'%')-->
+
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
 
 <!--    SELECT P.ID, P.PROJECT_TITLE, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH-->
 <!--    FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F-->

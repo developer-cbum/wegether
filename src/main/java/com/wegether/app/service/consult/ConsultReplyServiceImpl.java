@@ -34,10 +34,16 @@ public class ConsultReplyServiceImpl implements ConsultReplyService {
         return consultingReplyDAO.findAll(consultingId, lecturePagination);
     }
 
-    //일반 댓글 총개수
+    //댓글 총개수
     @Override
     public int getTotal(Long consultingId) {
         return consultingReplyDAO.findCountOfReply(consultingId);
+    }
+
+
+    @Override
+    public int getTotalReply(Long consultingId) {
+        return consultingReplyDAO.findCount(consultingId);
     }
 
     //대댓글 리스트

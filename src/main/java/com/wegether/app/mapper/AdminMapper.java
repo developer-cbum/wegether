@@ -3,6 +3,7 @@ package com.wegether.app.mapper;
 import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.*;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,17 +14,24 @@ public interface AdminMapper {
     /* --------------------------------------------------------------------------------- */
 
     // 공지사항 목록
-//    public List<NoticeVO> noticeSelectAll();
-    public List<NoticeVO> noticeSelectAll(AdminPagination adminPagination);
+    public List<NoticeAdminDTO> noticeSelectAll(@Param("adminPagination") AdminPagination adminPagination, @Param("search")Search search);
+
+    // 공지사항 목록(이미지)
+    public List<NoticeFileAdminDTO> noticeImageSelectAll(Long noticeId);
 
     // 공지사항 총 갯수
-    public int selectCountOfNotice();
+    public int selectCountOfNotice(@Param("search") Search search);
 
     // 공지사항 등록
     public void noticeInsert(NoticeVO noticeVO);
 
+    // 공지사항 이미지 등록
+
+    // 공지사항 이미지 등록(중간 테이블)
+    public void noticeImageMiddleInsert(NoticeFileVO noticeFileVO);
+
     // 공지사항 상세
-    public Optional<NoticeVO> noticeSelect(Long id);
+    public Optional<NoticeAdminDTO> noticeSelect(Long id);
 
     // 공지사항 수정
     public void noticeUpdate(NoticeVO noticeVO);
@@ -34,10 +42,10 @@ public interface AdminMapper {
     /* --------------------------------------------------------------------------------- */
 
     // 자료 목록
-    public List<DataAdminDTO> dataSelectAll(AdminPagination adminPagination);
+    public List<DataAdminDTO> dataSelectAll(@Param("adminPagination") AdminPagination adminPagination, @Param("search")Search search);
 
     // 자료 총 갯수
-    public int selectCountOfData();
+    public int selectCountOfData(@Param("search") Search search);
 
     // 자료 삭제
     public void dataDelete(Long id);
@@ -45,11 +53,10 @@ public interface AdminMapper {
     /* --------------------------------------------------------------------------------- */
 
     // 프로젝트 목록
-    public List<ProjectAdminDTO> projectSelectAll(AdminPagination adminPagination);
-//    public List<ProjectAdminDTO> projectSelectAll();
+    public List<ProjectAdminDTO> projectSelectAll(@Param("adminPagination") AdminPagination adminPagination, @Param("search")Search search);
 
     // 프로젝트 총 갯수
-    public int selectCountOfProject();
+    public int selectCountOfProject(@Param("search") Search search);
 
     // 프로젝트 삭제
     public void projectDelete(Long id);
@@ -57,11 +64,10 @@ public interface AdminMapper {
     /* --------------------------------------------------------------------------------- */
 
     // 문의사항 목록
-//    public List<InquiryAdminDTO> inquirySelectAll();
-    public List<InquiryAdminDTO> inquirySelectAll(AdminPagination adminPagination);
+    public List<InquiryAdminDTO> inquirySelectAll(@Param("adminPagination") AdminPagination adminPagination, @Param("search")Search search);
 
     // 문의사항 총 갯수
-    public int selectCountOfInquiry();
+    public int selectCountOfInquiry(@Param("search") Search search);
 
     // 문의사항 상세
     public Optional<InquiryAdminDTO> inquirySelect(Long id);
@@ -87,10 +93,10 @@ public interface AdminMapper {
     /* --------------------------------------------------------------------------------- */
 
     // 회원 목록
-    public List<MemberVO> memberSelectAll(AdminPagination adminPagination);
+    public List<MemberVO> memberSelectAll(@Param("adminPagination") AdminPagination adminPagination, @Param("search")Search search);
 
     // 회원 총 인원 수
-    public int selectCountOfMember();
+    public int selectCountOfMember(@Param("search") Search search);
 
     // 회원 삭제
     public void memberDelete(Long id);
@@ -98,11 +104,10 @@ public interface AdminMapper {
     /* --------------------------------------------------------------------------------- */
 
     // 강연 목록
-    public List<LectureVO> lectureSelectAll(AdminPagination adminPagination);
-//    public List<LectureVO> lectureSelectAll();
+    public List<LectureVO> lectureSelectAll(@Param("adminPagination") AdminPagination adminPagination, @Param("search")Search search);
 
     // 강연 총 갯수
-    public int selectCountOfLecture();
+    public int selectCountOfLecture(@Param("search") Search search);
 
     // 강연 삭제
     public void lectureDelete(Long id);

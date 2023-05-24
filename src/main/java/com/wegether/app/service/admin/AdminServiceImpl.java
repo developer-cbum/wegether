@@ -5,6 +5,7 @@ import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,21 +19,38 @@ public class AdminServiceImpl implements AdminService {
 
     // 공지사항 목록
     @Override
-    public List<NoticeVO> noticeGetList(AdminPagination adminPagination) {
-        return adminDAO.noticeFindAll(adminPagination);
+    public List<NoticeAdminDTO> noticeGetList(AdminPagination adminPagination, Search search) {
+        // 공지사항 전체 목록
+        final List<NoticeAdminDTO> notices = adminDAO.noticeFindAll(adminPagination, search);
+        // 공지사항 하나씩 첨부파일 목록 담기
+        notices.forEach(notice -> notice.setFiles(adminDAO.noticeImageFindAll(notice.getId())));
+        return notices;
+
     }
 
     // 공지사항 총 갯수
     @Override
-    public int getNoticeTotal() { return adminDAO.FindCountOfNotice(); }
+    public int getNoticeTotal(Search search) { return adminDAO.findCountOfNotice(search); }
 
     // 공지사항 등록
     @Override
     public void noticeWrite(NoticeVO noticeVO) { adminDAO.noticeSave(noticeVO); }
 
+    // 공지사항 이미지 등록
+
+    // 공지사항 이미지 등록(중간 테이블)
+    @Override
+    public void noticeImageMiddleWrite(NoticeFileVO noticeFileVO) { adminDAO.noticeImageMiddleSave(noticeFileVO); }
+
     // 공지사항 상세
     @Override
-    public Optional<NoticeVO> noticeRead(Long id) { return adminDAO.noticeFindById(id); }
+    public Optional<NoticeAdminDTO> noticeRead(Long id) {
+        final Optional<NoticeAdminDTO> foundNoticeDetail = adminDAO.noticeFindById(id);
+        if(foundNoticeDetail.isPresent()){
+            foundNoticeDetail.get().setFiles(adminDAO.noticeImageFindAll(foundNoticeDetail.get().getId()));
+        }
+        return foundNoticeDetail;
+    }
 
     // 공지사항 수정
     @Override
@@ -46,13 +64,13 @@ public class AdminServiceImpl implements AdminService {
 
     // 자료 목록
     @Override
-    public List<DataAdminDTO> dataGetList(AdminPagination adminPagination) {
-        return adminDAO.dataFindAll(adminPagination);
+    public List<DataAdminDTO> dataGetList(AdminPagination adminPagination, Search search) {
+        return adminDAO.dataFindAll(adminPagination, search);
     }
 
     // 자료 총 갯수
     @Override
-    public int getDataTotal() { return adminDAO.FindCountOfData(); }
+    public int getDataTotal(Search search) { return adminDAO.findCountOfData(search); }
 
     // 자료 삭제
     @Override
@@ -62,13 +80,13 @@ public class AdminServiceImpl implements AdminService {
 
     // 프로젝트 목록
     @Override
-    public List<ProjectAdminDTO> projectGetList(AdminPagination adminPagination) {
-        return adminDAO.projectFindAll(adminPagination);
+    public List<ProjectAdminDTO> projectGetList(AdminPagination adminPagination, Search search) {
+        return adminDAO.projectFindAll(adminPagination, search);
     }
 
     // 프로젝트 총 갯수
     @Override
-    public int getProjectTotal() { return adminDAO.FindCountOfProject(); }
+    public int getProjectTotal(Search search) { return adminDAO.findCountOfProject(search); }
 
     // 프로젝트 삭제
     @Override
@@ -78,13 +96,13 @@ public class AdminServiceImpl implements AdminService {
 
     // 문의사항 목록
     @Override
-    public List<InquiryAdminDTO> inquiryGetList(AdminPagination adminPagination) {
-        return adminDAO.inquiryFindAll(adminPagination);
+    public List<InquiryAdminDTO> inquiryGetList(AdminPagination adminPagination, Search search) {
+        return adminDAO.inquiryFindAll(adminPagination, search);
     }
 
     // 문의사항 총 갯수
     @Override
-    public int getInquiryTotal() { return adminDAO.FindCountOfInquiry(); }
+    public int getInquiryTotal(Search search) { return adminDAO.findCountOfInquiry(search); }
 
     // 문의사항 상세
     @Override
@@ -132,13 +150,13 @@ public class AdminServiceImpl implements AdminService {
 
     // 회원 목록
     @Override
-    public List<MemberVO> memberGetList(AdminPagination adminPagination) {
-        return adminDAO.memberFindAll(adminPagination);
+    public List<MemberVO> memberGetList(AdminPagination adminPagination, Search search) {
+        return adminDAO.memberFindAll(adminPagination, search);
     }
 
     // 회원 총 인원 수
     @Override
-    public int getMemberTotal() { return adminDAO.findCountOfMember(); }
+    public int getMemberTotal(Search search) { return adminDAO.findCountOfMember(search); }
 
     // 회원 삭제
     @Override
@@ -148,13 +166,13 @@ public class AdminServiceImpl implements AdminService {
 
     // 강연 목록
     @Override
-    public List<LectureVO> lectureGetList(AdminPagination adminPagination) {
-        return adminDAO.lectureFindAll(adminPagination);
+    public List<LectureVO> lectureGetList(AdminPagination adminPagination, Search search) {
+        return adminDAO.lectureFindAll(adminPagination, search);
     }
 
     // 강연 총 갯수
     @Override
-    public int getLectureTotal() { return adminDAO.findCountOfLecture(); }
+    public int getLectureTotal(Search search) { return adminDAO.findCountOfLecture(search); }
 
     // 강연 삭제
     @Override

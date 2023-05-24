@@ -20,9 +20,11 @@ ConsultReplyService {
     //일반 댓글 페이징처리 조회
     public List<ConsultReplyDTO> getList(Long consultingId, LecturePagination lecturePagination);
 
-    //일반 댓글 총개수
+    // 댓글 총개수
     public int getTotal(Long consultingId);
 
+    //일반 댓글 총개수
+    public int getTotalReply(Long consultingId);
 
     // 대댓글 전체 조회
     public List<ConsultReplyDTO> getListAgain(Long consultingId);

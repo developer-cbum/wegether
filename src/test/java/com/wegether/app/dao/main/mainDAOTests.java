@@ -37,6 +37,8 @@ public class mainDAOTests {
         assertThat(mainDAO.mainDFindAll()).hasSize(1);
     }
 
+    @Test
+    public void searchPFindAllTest() {assertThat(mainDAO.mainSPFindAll()).hasSize(5);}
 
 
 

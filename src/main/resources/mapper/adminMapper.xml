@@ -5,7 +5,7 @@
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- 공지사항 목록(페이징) -->
-    <select id="noticeSelectAll" resultType="noticeVO">
+    <select id="noticeSelectAll" resultType="noticeAdminDTO">
     SELECT F.ID, NOTICE_TITLE, NOTICE_REGISTER_DATE
     FROM
         (
@@ -17,15 +17,31 @@
                         ORDER BY ID DESC
                     )
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{rowCount}
+            WHERE ROWNUM <= #{adminPagination.page} * #{adminPagination.rowCount}
         )
-    F WHERE R > (#{page} - 1) * #{rowCount}
+    F WHERE R > (#{adminPagination.page} - 1) * #{adminPagination.rowCount}
     ]]>
+        <if test="search.keyword != null">
+            AND NOTICE_TITLE LIKE '%'||#{search.keyword}||'%'
+        </if>
+    </select>
+
+    <!-- 공지사항 목록(이미지) -->
+    <select id="noticeImageSelectAll" resultType="noticeFileAdminDTO">
+        SELECT F.ID, F.FILE_PATH, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_TYPE, N.NOTICE_ID
+        FROM TBL_FILE F INNER JOIN TBL_NOTICE_FILE N
+        ON F.ID = N.ID AND NOTICE_ID = #{noticeId}
+
     </select>
 
     <!-- 공지사항 총 갯수 -->
     <select id="selectCountOfNotice" resultType="_int">
         SELECT COUNT(ID) FROM TBL_NOTICE
+        <where>
+            <if test="search.keyword != null">
+                AND (NOTICE_TITLE LIKE '%'||#{search.keyword}||'%')
+            </if>
+        </where>
     </select>
 
     <!-- 공지사항 등록 -->
@@ -34,8 +50,19 @@
         VALUES(SEQ_NOTICE.NEXTVAL, #{noticeTitle}, #{noticeContent})
     </insert>
 
+    <!-- 공지사항 이미지 등록 -->
+    <insert id="noticeImageInsert">
+
+    </insert>
+
+    <!-- 공지사항 이미지 등록(중간 테이블) -->
+    <insert id="noticeImageMiddleInsert">
+        INSERT INTO TBL_NOTICE_FILE(ID, NOTICE_ID)
+        VALUES(#{id}, #{noticeId})
+    </insert>
+
     <!-- 공지사항 상세 -->
-    <select id="noticeSelect" resultType="noticeVO">
+    <select id="noticeSelect" resultType="NoticeAdminDTO">
         SELECT ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGISTER_DATE
         FROM TBL_NOTICE
         WHERE ID = #{id}
@@ -69,15 +96,23 @@
                         ORDER BY D.ID DESC
                     )
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{rowCount}
+            WHERE ROWNUM <= #{adminPagination.page} * #{adminPagination.rowCount}
         )
-    F WHERE R > (#{page} - 1) * #{rowCount}
+    F WHERE R > (#{adminPagination.page} - 1) * #{adminPagination.rowCount}
     ]]>
+        <if test="search.keyword != null">
+            AND DATA_TITLE LIKE '%'||#{search.keyword}||'%'
+        </if>
     </select>
 
     <!-- 자료 총 갯수 -->
     <select id="selectCountOfData" resultType="_int">
         SELECT COUNT(ID) FROM TBL_DATA
+        <where>
+            <if test="search.keyword != null">
+                AND (DATA_TITLE LIKE '%'||#{search.keyword}||'%')
+            </if>
+        </where>
     </select>
 
     <!-- 자료 삭제 -->
@@ -101,15 +136,23 @@
                         ORDER BY P.ID DESC
                     )
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{rowCount}
+            WHERE ROWNUM <= #{adminPagination.page} * #{adminPagination.rowCount}
         )
-    F WHERE R > (#{page} - 1) * #{rowCount}
+    F WHERE R > (#{adminPagination.page} - 1) * #{adminPagination.rowCount}
     ]]>
+        <if test="search.keyword != null">
+            AND PROJECT_TITLE LIKE '%'||#{search.keyword}||'%'
+        </if>
     </select>
 
     <!-- 프로젝트 총 갯수 -->
     <select id="selectCountOfProject" resultType="_int">
         SELECT COUNT(ID) FROM TBL_PROJECT
+        <where>
+            <if test="search.keyword != null">
+                AND (PROJECT_TITLE LIKE '%'||#{search.keyword}||'%')
+            </if>
+        </where>
     </select>
 
     <!-- 프로젝트 삭제 -->
@@ -121,27 +164,41 @@
 
     <!-- 문의사항 목록(페이징) -->
     <select id="inquirySelectAll" resultType="inquiryAdminDTO">
-    SELECT F.ID, INQUIRY_TITLE, MEMBER_NICKNAME, INQUIRY_REGISTER_DATE, INQUIRY_STATUS
+    SELECT F.ID, INQUIRY_TITLE, MEMBER_NAME, MEMBER_NICKNAME, INQUIRY_REGISTER_DATE, INQUIRY_STATUS
     FROM
         (
-            SELECT ROWNUM R, ID, INQUIRY_TITLE, MEMBER_NICKNAME, INQUIRY_REGISTER_DATE, INQUIRY_STATUS
+            SELECT ROWNUM R, ID, INQUIRY_TITLE, MEMBER_NAME, MEMBER_NICKNAME, INQUIRY_REGISTER_DATE, INQUIRY_STATUS
             FROM
                     (
-                        SELECT ROWNUM C, I.ID, I.INQUIRY_TITLE, M.MEMBER_NICKNAME, I.INQUIRY_REGISTER_DATE, I.INQUIRY_STATUS
+                        SELECT ROWNUM C, I.ID, I.INQUIRY_TITLE, M.MEMBER_NAME, M.MEMBER_NICKNAME, I.INQUIRY_REGISTER_DATE, I.INQUIRY_STATUS
                         FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M
                         ON I.MEMBER_ID = M.ID
                         ORDER BY I.ID DESC
                     )
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{rowCount}
+            WHERE ROWNUM <= #{adminPagination.page} * #{adminPagination.rowCount}
         )
-    F WHERE R > (#{page} - 1) * #{rowCount}
+    F WHERE R > (#{adminPagination.page} - 1) * #{adminPagination.rowCount}
     ]]>
+        <if test="search.keyword != null">
+            AND (INQUIRY_TITLE LIKE '%'||#{search.keyword}||'%'
+            OR MEMBER_NAME LIKE '%'||#{search.keyword}||'%'
+            OR MEMBER_NICKNAME LIKE '%'||#{search.keyword}||'%')
+        </if>
     </select>
 
     <!-- 문의사항 총 갯수 -->
     <select id="selectCountOfInquiry" resultType="_int">
-        SELECT COUNT(ID) FROM TBL_INQUIRY
+        SELECT COUNT(I.ID)
+        FROM TBL_INQUIRY I INNER JOIN TBL_MEMBER M
+        ON I.MEMBER_ID = M.ID
+        <where>
+            <if test="search.keyword != null">
+                AND (INQUIRY_TITLE LIKE '%'||#{search.keyword}||'%'
+                OR MEMBER_NAME LIKE '%'||#{search.keyword}||'%'
+                OR MEMBER_NICKNAME LIKE '%'||#{search.keyword}||'%')
+            </if>
+        </where>
     </select>
 
     <!-- 문의사항 상세 -->
@@ -195,26 +252,39 @@
 
     <!-- 회원 목록(페이징) -->
     <select id="memberSelectAll" resultType="memberVO">
-    SELECT F.ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
+    SELECT F.ID, MEMBER_STATUS, MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
     FROM
         (
-            SELECT ROWNUM R, ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
+            SELECT ROWNUM R, ID, MEMBER_STATUS, MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
             FROM
                     (
-                        SELECT ROWNUM C, ID, MEMBER_STATUS, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
+                        SELECT ROWNUM C, ID, MEMBER_STATUS, MEMBER_ID, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_REGISTER_DATE
                         FROM TBL_MEMBER
                         ORDER BY ID DESC
                     )
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{rowCount}
+            WHERE ROWNUM <= #{adminPagination.page} * #{adminPagination.rowCount}
         )
-    F WHERE R > (#{page} - 1) * #{rowCount}
+    F WHERE R > (#{adminPagination.page} - 1) * #{adminPagination.rowCount}
     ]]>
+        <if test="search.keyword != null">
+            AND (MEMBER_ID LIKE'%'||#{search.keyword}||'%'
+            OR MEMBER_NAME LIKE '%'||#{search.keyword}||'%'
+            OR MEMBER_NICKNAME LIKE '%'||#{search.keyword}||'%')
+        </if>
     </select>
 
     <!-- 회원 총 인원 수 -->
     <select id="selectCountOfMember" resultType="_int">
         SELECT COUNT(ID) FROM TBL_MEMBER
+        <where>
+            <if test="search.keyword != null">
+                AND (MEMBER_ID LIKE '%'||#{search.keyword}||'%'
+                OR MEMBER_NAME LIKE '%'||#{search.keyword}||'%'
+                OR MEMBER_NICKNAME LIKE '%'||#{search.keyword}||'%')
+
+            </if>
+        </where>
     </select>
 
     <!-- 회원 정보 변경 -->
@@ -244,15 +314,23 @@
                         ORDER BY ID DESC
                     )
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{rowCount}
+            WHERE ROWNUM <= #{adminPagination.page} * #{adminPagination.rowCount}
         )
-    F WHERE R > (#{page} - 1) * #{rowCount}
+    F WHERE R > (#{adminPagination.page} - 1) * #{adminPagination.rowCount}
     ]]>
+        <if test="search.keyword != null">
+            AND LECTURE_TITLE LIKE '%'||#{search.keyword}||'%'
+        </if>
     </select>
 
     <!-- 강연 총 갯수 -->
     <select id="selectCountOfLecture" resultType="_int">
         SELECT COUNT(ID) FROM TBL_LECTURE
+        <where>
+            <if test="search.keyword != null">
+                AND (LECTURE_TITLE LIKE '%'||#{search.keyword}||'%')
+            </if>
+        </where>
     </select>
 
     <!-- 강연 삭제 -->

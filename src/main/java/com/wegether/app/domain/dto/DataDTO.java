@@ -32,5 +32,6 @@ public class DataDTO {
     private List<Long> fileIdsForDelete = new ArrayList<>();
 
 
+    private String info;
 
 }

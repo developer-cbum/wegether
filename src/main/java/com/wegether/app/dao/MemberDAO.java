@@ -59,10 +59,16 @@ public class MemberDAO {
 
 
 
+
+
+
     //    소영 마이페이지 화면 띄우기
     public Optional<MemberDTO> showmypage(Long id){
         return memberMapper.selectmypage(id);
-    };
+    }
+
+
+    public Optional<MemberVO> showByPW(Long id){return memberMapper.selectByPW(id);}
 }
 
 

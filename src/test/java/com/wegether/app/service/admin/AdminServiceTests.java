@@ -3,6 +3,7 @@ package com.wegether.app.service.admin;
 import com.wegether.app.dao.AdminDAO;
 import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.AnswerVO;
+import com.wegether.app.domain.vo.NoticeFileVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
@@ -27,6 +28,12 @@ public class AdminServiceTests {
 //        assertThat(adminService.noticeGetList()).hasSize(2);
 //    };
 
+    // 공지사항 목록(이미지) 테스트
+//    @Test
+//    public void noticeImageGetListTest(){
+//        assertThat(adminService.noticeImageGetList(1L)).hasSize(1);
+//    }
+
     //    공지사항 등록 테스트
     @Test
     public void noticeWriteTest() {
@@ -34,6 +41,15 @@ public class AdminServiceTests {
         noticeVO.setNoticeTitle("공지사항 테스트 제목50");
         noticeVO.setNoticeContent("공지사항 테스트 내용50");
         adminService.noticeWrite(noticeVO);
+    }
+
+    //    공지사항 이미지 등록(중간 테이블) 테스트
+    @Test
+    public void noticeImageMiddleWrite() {
+        NoticeFileVO noticeFileVO = new NoticeFileVO();
+        noticeFileVO.setId(6L);
+        noticeFileVO.setNoticeId(1L);
+        adminService.noticeImageMiddleWrite(noticeFileVO);
     }
 
     //    공지사항 상세 테스트

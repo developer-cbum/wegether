@@ -17,21 +17,28 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 공지사항 목록
-//    public List<NoticeVO> noticeFindAll(){
-//        return adminMapper.noticeSelectAll();
-//    };
-    public List<NoticeVO> noticeFindAll(AdminPagination adminPagination){
-        return adminMapper.noticeSelectAll(adminPagination);
+    public List<NoticeAdminDTO> noticeFindAll(AdminPagination adminPagination, Search search){
+        return adminMapper.noticeSelectAll(adminPagination, search);
+    };
+
+    // 공지사항 목록(이미지)
+    public List<NoticeFileAdminDTO> noticeImageFindAll(Long noticeId){
+        return adminMapper.noticeImageSelectAll(noticeId);
     };
 
     // 공지사항 총 갯수
-    public int FindCountOfNotice() { return adminMapper.selectCountOfNotice(); }
+    public int findCountOfNotice(Search search) { return adminMapper.selectCountOfNotice(search); }
 
     // 공지사항 등록
     public void noticeSave(NoticeVO noticeVO){ adminMapper.noticeInsert(noticeVO); };
 
+    // 공지사항 이미지 등록
+
+    // 공지사항 이미지 등록(중간 테이블)
+    public void noticeImageMiddleSave(NoticeFileVO noticeFileVO) { adminMapper.noticeImageMiddleInsert(noticeFileVO);}
+
     // 공지사항 상세
-    public Optional<NoticeVO> noticeFindById(Long id){ return adminMapper.noticeSelect(id); };
+    public Optional<NoticeAdminDTO> noticeFindById(Long id){ return adminMapper.noticeSelect(id); };
 
     // 공지사항 수정
     public void setNoticeVO(NoticeVO noticeVO){ adminMapper.noticeUpdate(noticeVO); };
@@ -42,12 +49,12 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 자료 목록
-    public List<DataAdminDTO> dataFindAll(AdminPagination adminPagination){
-        return adminMapper.dataSelectAll(adminPagination);
+    public List<DataAdminDTO> dataFindAll(AdminPagination adminPagination, Search search){
+        return adminMapper.dataSelectAll(adminPagination, search);
     };
 
     // 자료 총 갯수
-    public int FindCountOfData() { return adminMapper.selectCountOfData(); }
+    public int findCountOfData(Search search) { return adminMapper.selectCountOfData(search); }
 
     // 자료 삭제
     public void dataDelete(Long id){ adminMapper.dataDelete(id); };
@@ -55,15 +62,12 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 프로젝트 목록
-    public List<ProjectAdminDTO> projectFindAll(AdminPagination adminPagination){
-        return adminMapper.projectSelectAll(adminPagination);
+    public List<ProjectAdminDTO> projectFindAll(AdminPagination adminPagination, Search search){
+        return adminMapper.projectSelectAll(adminPagination, search);
     };
-//    public List<ProjectAdminDTO> projectFindAll(){
-//        return adminMapper.projectSelectAll();
-//    };
 
     // 프로젝트 총 갯수
-    public int FindCountOfProject() { return adminMapper.selectCountOfProject(); }
+    public int findCountOfProject(Search search) { return adminMapper.selectCountOfProject(search); }
 
     // 프로젝트 삭제
     public void projectDelete(Long id){ adminMapper.projectDelete(id); };
@@ -71,15 +75,12 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 문의사항 목록
-//    public List<InquiryAdminDTO> inquiryFindAll(){
-//        return adminMapper.inquirySelectAll();
-//    };
-    public List<InquiryAdminDTO> inquiryFindAll(AdminPagination adminPagination){
-        return adminMapper.inquirySelectAll(adminPagination);
+    public List<InquiryAdminDTO> inquiryFindAll(AdminPagination adminPagination, Search search){
+        return adminMapper.inquirySelectAll(adminPagination, search);
     };
 
     // 문의사항 총 갯수
-    public int FindCountOfInquiry() { return adminMapper.selectCountOfInquiry(); }
+    public int findCountOfInquiry(Search search) { return adminMapper.selectCountOfInquiry(search); }
 
     // 문의사항 상세
     public Optional<InquiryAdminDTO> inquiryFindById(Long id){ return adminMapper.inquirySelect(id); };
@@ -113,12 +114,12 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 회원 목록
-    public List<MemberVO> memberFindAll(AdminPagination adminPagination){
-        return adminMapper.memberSelectAll(adminPagination);
+    public List<MemberVO> memberFindAll(AdminPagination adminPagination, Search search){
+        return adminMapper.memberSelectAll(adminPagination, search);
     };
 
     // 회원 총 인원 수
-    public int findCountOfMember() { return adminMapper.selectCountOfMember(); }
+    public int findCountOfMember(Search search) { return adminMapper.selectCountOfMember(search); }
 
     // 회원 삭제
     public void memberDelete(Long id) { adminMapper.memberDelete(id); };
@@ -126,12 +127,12 @@ public class AdminDAO {
     /* --------------------------------------------------------------------------------- */
 
     // 강연 목록
-    public List<LectureVO> lectureFindAll(AdminPagination adminPagination){
-        return adminMapper.lectureSelectAll(adminPagination);
+    public List<LectureVO> lectureFindAll(AdminPagination adminPagination, Search search){
+        return adminMapper.lectureSelectAll(adminPagination, search);
     };
 
     // 강연 총 갯수
-    public int findCountOfLecture() { return adminMapper.selectCountOfLecture(); }
+    public int findCountOfLecture(Search search) { return adminMapper.selectCountOfLecture(search); }
 
     // 강연 삭제
     public void lectureDelete(Long id) { adminMapper.lectureDelete(id); }

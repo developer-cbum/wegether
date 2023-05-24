@@ -4,14 +4,17 @@ import com.wegether.app.domain.dto.AnswerAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
 import com.wegether.app.domain.dto.ProjectAdminDTO;
 import com.wegether.app.domain.vo.AnswerVO;
+import com.wegether.app.domain.vo.NoticeFileVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import com.wegether.app.mapper.AdminMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.not;
 
 @SpringBootTest
 @Slf4j
@@ -28,6 +31,13 @@ public class AdminMapperTests {
 //        assertThat(adminMapper.noticeSelectAll()).hasSize(1);
 //    }
 
+    // 공지사항 목록(이미지) 테스트
+    @Test
+    public void noticeImageSelectAllTest(){
+        assertThat(adminMapper.noticeImageSelectAll(1L)).hasSize(1);
+    }
+
+
     //    공지사항 등록 테스트
     @Test
     public void noticeInsertTest() {
@@ -35,6 +45,16 @@ public class AdminMapperTests {
         noticeVO.setNoticeTitle("공지사항 테스트 제목");
         noticeVO.setNoticeContent("공지사항 테스트 내용");
         adminMapper.noticeInsert(noticeVO);
+    }
+
+    //    공지사항 이미지 등록(중간 테이블) 테스트
+    @Test
+    public void noticeImageMiddleInsertTest(){
+        NoticeFileVO noticeFileVO = new NoticeFileVO();
+        noticeFileVO.setId(4L);
+        noticeFileVO.setNoticeId(1L);
+        adminMapper.noticeImageMiddleInsert(noticeFileVO);
+
     }
 
     //    공지사항 상세 테스트
