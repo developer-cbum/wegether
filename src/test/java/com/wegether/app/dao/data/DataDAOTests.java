@@ -46,11 +46,6 @@ public class DataDAOTests {
 //@Test
 //    public void findAllTest(){
 
-@Test
-    public void findAllTest(){
-
-@Test
-    public void findAllTest(){
 
 @Test
     public void findAllTest(){
@@ -76,8 +71,6 @@ public class DataDAOTests {
 
 
 
-
-    }
 
 
 
