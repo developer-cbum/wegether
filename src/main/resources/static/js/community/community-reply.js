@@ -38,7 +38,7 @@ function registerReply() {
             text=""
             $(".total").text(`${total}`);
             page= 1;
-            $div.html("");
+            $div.text("");
             load()
         }
     })

@@ -3,7 +3,7 @@
 <mapper namespace="com.wegether.app.mapper.CommunityReplyMapper">
     <!-- 일반 댓글 등록 -->
     <insert id="insert">
-        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+        <selectKey keyProperty="id" order="BEFORE" resultType="long">
             SELECT SEQ_REPLY.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_REPLY

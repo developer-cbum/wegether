@@ -1,6 +1,8 @@
 package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.vo.CommunityReplyVO;
+import com.wegether.app.domain.vo.CommunityVO;
 import com.wegether.app.service.community.CommunityReplyService;
 import com.wegether.app.service.consult.ConsultReplyService;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +28,10 @@ public class CommunityReplyController {
 //    댓글 등록
 
     @PostMapping("register")
-    public void write(@RequestBody CommunityReplyDTO communityReplyDTO){
+    @Transactional(rollbackFor = Exception.class)
+    public int write(@RequestBody CommunityReplyDTO communityReplyDTO){
         communityReplyService.register(communityReplyDTO);
+        return communityReplyService.getTotal(communityReplyDTO.getCommunityId());
 }
 
     //댓글조회

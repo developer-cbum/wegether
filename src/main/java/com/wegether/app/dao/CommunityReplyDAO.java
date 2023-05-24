@@ -4,6 +4,7 @@ import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.dto.CommunityReplyDTO;
 import com.wegether.app.domain.dto.ConsultReplyDTO;
 import com.wegether.app.domain.dto.LecturePagination;
+import com.wegether.app.domain.vo.CommunityReplyVO;
 import com.wegether.app.mapper.CommunityReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -42,8 +43,8 @@ public class    CommunityReplyDAO {
     }
 
     // 중간 테이블 삽입
-    public void saveMiddle(Long id, Long memberId, Long communityId){
-        communityReplyMapper.insertMiddle(id, memberId, communityId);
+    public void saveMiddle(CommunityReplyVO communityReplyVO){
+        communityReplyMapper.insertMiddle(communityReplyVO);
     }
 
 //   댓글 수정

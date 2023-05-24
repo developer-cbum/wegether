@@ -2,6 +2,7 @@ package com.wegether.app.mapper;
 
 import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.dto.CommunityReplyDTO;
+import com.wegether.app.domain.vo.CommunityReplyVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,7 +26,7 @@ public interface CommunityReplyMapper {
 
 
     // 중간 테이블 삽입
-    public void insertMiddle(Long id, Long memberId, Long communityId);
+    public void insertMiddle(CommunityReplyVO communityReplyVO);
 
 //    댓글 수정
     public void update(CommunityReplyDTO communityReplyDTO);

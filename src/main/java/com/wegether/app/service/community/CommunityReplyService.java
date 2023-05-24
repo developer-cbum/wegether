@@ -26,6 +26,7 @@ public interface CommunityReplyService {
     //일반 댓글 총개수
     public int getTotal(Long communityId);
 
+//    public void registerMiddle(Long id, Long memberId, Long communityId);
 
     // 댓글 수정
     public void modify(CommunityReplyDTO communityReplyDTO);

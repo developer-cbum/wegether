@@ -3,6 +3,8 @@ package com.wegether.app.service.community;
 import com.wegether.app.dao.CommunityDAO;
 import com.wegether.app.dao.CommunityReplyDAO;
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.vo.CommunityReplyVO;
+import com.wegether.app.domain.vo.CommunityVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,11 @@ public class CommunityReplyServiceImpl implements CommunityReplyService{
     @Transactional(rollbackFor = Exception.class)
     public void register(CommunityReplyDTO communityReplyDTO) {
         communityReplyDAO.save(communityReplyDTO);
-//        CommunityReplyDTO replyForMiddleTbl = communityReplyDAO.saveMiddle(communityReplyDTO,);
+        CommunityReplyVO communityReplyVO = new CommunityReplyVO();
+        communityReplyVO.setId(communityReplyDTO.getId());
+        communityReplyVO.setMemberId(1L);
+        communityReplyVO.setCommunityId(communityReplyDTO.getCommunityId());
+        communityReplyDAO.saveMiddle(communityReplyVO);
     }
 
     @Override
@@ -49,6 +55,11 @@ public class CommunityReplyServiceImpl implements CommunityReplyService{
     public void modify(CommunityReplyDTO communityReplyDTO) {
         communityReplyDAO.setCommunityReplyDTO(communityReplyDTO);
     }
+
+//    @Override
+//    public void registerMiddle(Long id, Long memberId, Long communityId){
+//        communityReplyDAO.saveMiddle(id, memberId, communityId);
+//    }
 
     @Override
     public void remove(Long id) {
