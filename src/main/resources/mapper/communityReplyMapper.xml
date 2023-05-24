@@ -134,10 +134,10 @@
 <!--                             DELETE                                       -->
 
 
-<!--    삭제-->
+<!--    일반댓글, 대댓글 삭제  -->
     <delete id="delete">
         DELETE FROM TBL_REPLY
-        WHERE ID = #{id} AND REPLY_DEPTH = 0
+        WHERE ID = #{id}
     </delete>
 
 
@@ -145,5 +145,17 @@
     <delete id="deleteAll">
         DELETE FROM TBL_COMMUNITY_REPLY
         WHERE COMMUNITY_ID = #{communityId}
+    </delete>
+
+<!--    대댓글 전체 삭제 -->
+    <delete id="deleteReplyAgainAll">
+        DELETE FROM TBL_REPLY
+        WHERE REPLY_GROUP =#{replyGroup}
+    </delete>
+
+    <!-- 중간테이블 관련 삭제   -->
+    <delete id="deleteMiddle">
+        DELETE FROM TBL_CONSULTING_REPLY
+        WHERE ID =#{id}
     </delete>
 </mapper>

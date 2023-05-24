@@ -81,5 +81,8 @@
         <!-- 05월 24일 김인진 NoticeAdminDTO -->
         <typeAlias type="com.wegether.app.domain.dto.NoticeAdminDTO" alias="noticeAdminDTO"/>
 
+        <!--   5월 24일 김치윤 CommunityReplyVO     -->
+        <typeAlias type="com.wegether.app.domain.vo.CommunityReplyVO" alias="communityReplyVO"/>
+
     </typeAliases>
 </configuration>
