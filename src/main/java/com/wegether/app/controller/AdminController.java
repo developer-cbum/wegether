@@ -1,9 +1,6 @@
 package com.wegether.app.controller;
 
-import com.wegether.app.domain.dto.AdminPagination;
-import com.wegether.app.domain.dto.AnswerAdminDTO;
-import com.wegether.app.domain.dto.DataAdminDTO;
-import com.wegether.app.domain.dto.InquiryAdminDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.*;
 import com.wegether.app.service.admin.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -28,22 +25,30 @@ public class AdminController {
 
 /* -------------------------------------------------------- */
 
-    //    공지사항 작성 이동
+    //    공지사항 등록 이동
     @GetMapping("notice/write")
-    public void goToWriteForm(NoticeVO noticeVO){;}
+    public void goToNoticeWriteForm(NoticeVO noticeVO){;}
+
+    //    공지사항 작성
+    @PostMapping("notice/write")
+    @Transactional(rollbackFor = Exception.class)
+    public RedirectView noticeWrite(NoticeVO noticeVO){
+        adminService.noticeWrite(noticeVO);
+        return new RedirectView("/admins/notice/list");
+    }
 
     //    공지사항 목록 이동
     @GetMapping("notice/list")
-    public void noticeList(Model model, AdminPagination adminPagination){
-        adminPagination.setTotal(adminService.getNoticeTotal());
+    public void noticeList(Model model, AdminPagination adminPagination, Search search){
+        adminPagination.setTotal(adminService.getNoticeTotal(search));
         adminPagination.progress();
-        model.addAttribute("notices", adminService.noticeGetList(adminPagination));
+        model.addAttribute("notices", adminService.noticeGetList(adminPagination, search));
     }
 
     //    공지사항 상세
     @GetMapping("notice/detail")
     public void readNoticeDetail(Long id, Model model){
-        Optional<NoticeVO> readNoticeVO = adminService.noticeRead(id);
+        Optional<NoticeAdminDTO> readNoticeVO = adminService.noticeRead(id);
         if(readNoticeVO.isPresent()) {
             model.addAttribute("noticeBoards", readNoticeVO.get());
         }
@@ -51,7 +56,17 @@ public class AdminController {
 
     //    공지사항 수정 이동
     @GetMapping("notice/modify")
-    public void goToModifyForm(NoticeVO noticeVO){;}
+    public void goToModifyForm(NoticeVO noticeVO, Model model, Long id){
+        Optional<NoticeAdminDTO> readNoticeVO = adminService.noticeRead(id);
+        model.addAttribute("noticeBoards", readNoticeVO.get());
+    }
+
+    //    공지사항 수정
+    @PostMapping("notice/modify")
+    public RedirectView noticeModify(NoticeVO noticeVO){
+        adminService.noticeModify(noticeVO);
+        return new RedirectView("/admins/notice/list");
+    }
 
     //    공지사항 삭제
     @PostMapping("notice/delete")
@@ -64,10 +79,10 @@ public class AdminController {
 
     //    문의사항 목록 이동
     @GetMapping("inquiry/list")
-    public void inquiryList(Model model, AdminPagination adminPagination){
-        adminPagination.setTotal(adminService.getInquiryTotal());
+    public void inquiryList(Model model, AdminPagination adminPagination, Search search){
+        adminPagination.setTotal(adminService.getInquiryTotal(search));
         adminPagination.progress();
-        model.addAttribute("inquiries", adminService.inquiryGetList(adminPagination));
+        model.addAttribute("inquiries", adminService.inquiryGetList(adminPagination, search));
     }
 
     //    문의사항 상세
@@ -88,16 +103,14 @@ public class AdminController {
         }
     }
 
-
     //    문의사항 답변 등록
     @PostMapping("inquiry/write")
     @Transactional(rollbackFor = Exception.class)
-    public RedirectView AnswerWrite(AnswerVO answerVO, @RequestParam("inquiryId") long id){
+    public RedirectView answerWrite(AnswerVO answerVO, @RequestParam("inquiryId") long id){
             adminService.answerWrite(answerVO);
             adminService.inquiryStatusChange(id);
             return new RedirectView("/admins/inquiry/list");
         }
-
 
     //    문의사항 답변 상세 이동
     @GetMapping("inquiry/answer-detail")
@@ -119,7 +132,7 @@ public class AdminController {
 
     //    문의사항 답변 수정
     @PostMapping("inquiry/modify")
-    public RedirectView AnswerModify(AnswerAdminDTO answerAdminDTO){
+    public RedirectView answerModify(AnswerAdminDTO answerAdminDTO){
         adminService.answerModify(answerAdminDTO);
         return new RedirectView("/admins/inquiry/list");
     }
@@ -136,10 +149,10 @@ public class AdminController {
 
     //    자료 목록 이동
     @GetMapping("data/list")
-    public void dataList(Model model, AdminPagination adminPagination){
-        adminPagination.setTotal(adminService.getDataTotal());
+    public void dataList(Model model, AdminPagination adminPagination, Search search){
+        adminPagination.setTotal(adminService.getDataTotal(search));
         adminPagination.progress();
-        model.addAttribute("datas", adminService.dataGetList(adminPagination));
+        model.addAttribute("datas", adminService.dataGetList(adminPagination, search));
     }
 
     //    자료 삭제
@@ -153,10 +166,10 @@ public class AdminController {
 
     //    프로젝트 목록 이동
     @GetMapping("project/list")
-    public void projectList(Model model, AdminPagination adminPagination){
-        adminPagination.setTotal(adminService.getProjectTotal());
+    public void projectList(Model model, AdminPagination adminPagination, Search search){
+        adminPagination.setTotal(adminService.getProjectTotal(search));
         adminPagination.progress();
-        model.addAttribute("projects", adminService.projectGetList(adminPagination));
+        model.addAttribute("projects", adminService.projectGetList(adminPagination, search));
     }
 
     //    프로젝트 삭제
@@ -170,10 +183,10 @@ public class AdminController {
 
     //    강연 목록 이동
     @GetMapping("lecture/list")
-    public void lectureList(Model model, AdminPagination adminPagination){
-        adminPagination.setTotal(adminService.getLectureTotal());
+    public void lectureList(Model model, AdminPagination adminPagination, Search search){
+        adminPagination.setTotal(adminService.getLectureTotal(search));
         adminPagination.progress();
-        model.addAttribute("lectures", adminService.lectureGetList(adminPagination));
+        model.addAttribute("lectures", adminService.lectureGetList(adminPagination, search));
     }
 
     //    강연 삭제
@@ -188,10 +201,10 @@ public class AdminController {
 
     //    회원 목록 이동
     @GetMapping("member/list")
-    public void MemberList(Model model, AdminPagination adminPagination){
-        adminPagination.setTotal(adminService.getMemberTotal());
+    public void memberList(Model model, AdminPagination adminPagination, Search search){
+        adminPagination.setTotal(adminService.getMemberTotal(search));
         adminPagination.progress();
-        model.addAttribute("members", adminService.memberGetList(adminPagination));
+        model.addAttribute("members", adminService.memberGetList(adminPagination, search));
     }
 
     //    회원 상태 변경

@@ -71,5 +71,11 @@
 
         <typeAlias type="com.wegether.app.domain.dto.MainFileDTO" alias="mainFileDTO"/>
 
+        <!-- 05월 23일 김인진 NoticeFileAdminDTO -->
+        <typeAlias type="com.wegether.app.domain.dto.NoticeFileAdminDTO" alias="noticeFileAdminDTO"/>
+
+        <!-- 05월 24일 김인진 NoticeAdminDTO -->
+        <typeAlias type="com.wegether.app.domain.dto.NoticeAdminDTO" alias="noticeAdminDTO"/>
+
     </typeAliases>
 </configuration>
