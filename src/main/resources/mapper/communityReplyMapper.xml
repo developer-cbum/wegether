@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.CommunityReplyMapper">
+
+<!--                        CREATE                        -->
     <!-- 일반 댓글 등록 -->
     <insert id="insert">
         <selectKey keyProperty="id" order="BEFORE" resultType="long">
@@ -17,6 +19,17 @@
         (ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH)
         VALUES(SEQ_REPLY.NEXTVAL, #{replyContent}, #{replyGroup}, 1)
     </insert>
+
+    <!--중간테이블 삽입-->
+    <insert id="insertMiddle">
+    INSERT INTO TBL_COMMUNITY_REPLY
+    (ID, MEMBER_ID, COMMUNITY_ID)
+    VALUES(#{id}, #{memberId}, #{communityId})
+    </insert>
+
+    <!--                           SELECT                                 -->
+
+
 
     <!--일반 댓글 전체 조회-->
     <select id="selectAll" resultType="communityReplyDTO">
@@ -38,45 +51,87 @@
       ]]>
     </select>
 
+
     <!--대 댓글 조회-->
     <select id="selectAllAgain" resultType="communityReplyDTO">
-    SELECT M.MEMBER_NICKNAME, G.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, G.COMMUNITY_ID, G.MEMBER_ID
-    FROM TBL_MEMBER M JOIN
+        SELECT M.MEMBER_NICKNAME, G.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, G.COMMUNITY_ID, G.MEMBER_ID
+        FROM TBL_MEMBER M JOIN
         (
-            SELECT ROWNUM W, R.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, R.COMMUNITY_ID, R.MEMBER_ID
-            FROM TBL_COMMUNITY C JOIN
-                (
-                    SELECT R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.COMMUNITY_ID, A.MEMBER_ID
-                    FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
-                    ON A.ID = R.ID AND REPLY_DEPTH = 1  AND A.COMMUNITY_ID = #{communityId}
-                    ORDER BY R.ID DESC
-                ) R
-            ON C.ID = R.COMMUNITY_ID
+        SELECT ROWNUM W, R.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, R.COMMUNITY_ID, R.MEMBER_ID
+        FROM TBL_COMMUNITY C JOIN
+        (
+        SELECT R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.COMMUNITY_ID, A.MEMBER_ID
+        FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
+        ON A.ID = R.ID AND REPLY_DEPTH = 1  AND A.COMMUNITY_ID = #{communityId}
+        ORDER BY R.ID DESC
+        ) R
+        ON C.ID = R.COMMUNITY_ID
         ) G
-    ON M.ID = G.MEMBER_ID
+        ON M.ID = G.MEMBER_ID
     </select>
 
-    <!--일반댓글 총개수-->
+    <!--  중간테이블 조회 -->
+    <select id="selectMiddle" resultType="communityReplyVO">
+        SELECT ID, MEMBER_ID, COMMUNITY_ID
+        FROM TBL_COMMUNITY_REPLY
+        WHERE ID =#{id}
+    </select>
+
+    <!--  원하는 댓글 조회-->
+    <select id="select" resultType="communityReplyDTO">
+        SELECT ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH
+        FROM TBL_REPLY
+        WHERE ID = #{id}
+    </select>
+
+    <!-- 원하는 댓글포함 대댓글 조회  -->
+    <select id="selectAgain" resultType="communityReplyDTO">
+        SELECT ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH
+        FROM TBL_REPLY
+        WHERE REPLY_GROUP = #{replyGroup} AND REPLY_DEPTH = 1
+    </select>
+
+    <!--  그해당 하는 게시글에 중간테이블 전체 조회-->
+    <select id="selectMiddleAll" resultType="communityReplyVO">
+        SELECT ID, MEMBER_ID, COMMUNITY_ID
+        FROM TBL_COMMUNITY_REPLY
+        WHERE COMMUNITY_ID = #{communityId}
+    </select>
+
+    <!--일반댓글 대댓글 총개수-->
     <select id="selectCountOfReply" resultType="_int">
         SELECT COUNT(R.ID)
         FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
         ON A.ID = R.ID AND A.COMMUNITY_ID =#{communityId}
     </select>
 
+    <!--일반댓글 총개수-->
+    <select id="selectCount" resultType="_int">
+        SELECT COUNT(R.ID)
+        FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
+        ON A.ID = R.ID AND A.COMMUNITY_ID =#{communityId} AND R.REPLY_DEPTH = 0
+    </select>
 
-    <!--중간테이블 삽입-->
-    <insert id="insertMiddle">
-    INSERT INTO TBL_COMMUNITY_REPLY
-    (ID, MEMBER_ID, COMMUNITY_ID)
-    VALUES(#{id}, #{memberId}, #{communityId})
-    </insert>
+    <!--대댓글 총개수-->
+    <select id="selectCountOfReplyAgain" resultType="_int">
+        SELECT COUNT(R.ID)
+        FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
+        ON A.ID = R.ID AND A.COMMUNITY_ID =#{communityId} AND REPLY_GROUP = #{replyGroup} AND = REPLY_DEPTH = 1
+    </select>
 
-<!--    댓글 수정-->
+
+<!--                            UPDATE                                         -->
+
+
+<!--    댓글 수정    -->
     <update id="update">
         UPDATE TBL_REPLY
         SET REPLY_CONTENT = #{replyContent}, REPLY_REGISTER_DATE = SYSDATE
         WHERE ID = #{id} AND DEPTH = 0
     </update>
+
+
+<!--                             DELETE                                       -->
 
 
 <!--    삭제-->
@@ -86,7 +141,7 @@
     </delete>
 
 
-<!--    전체 삭제-->
+<!--    전체 삭제  -->
     <delete id="deleteAll">
         DELETE FROM TBL_COMMUNITY_REPLY
         WHERE COMMUNITY_ID = #{communityId}
