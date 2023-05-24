@@ -18,4 +18,5 @@ public interface MainMapper {
 
     public List<MainDTO> mainDRSelectAll();
 
+    public List<MainDTO> searchPSelectAll();
 }
