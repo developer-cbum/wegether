@@ -26,7 +26,9 @@ public class CommunityReplyMapperTests {
         CommunityReplyDTO communityReplyDTO = new CommunityReplyDTO();
         communityReplyDTO.setReplyContent("댓글이용");
         communityReplyMapper.insert(communityReplyDTO);
+        communityReplyDTO.getId();
     }
+
 
 
     // 대댓글 등록

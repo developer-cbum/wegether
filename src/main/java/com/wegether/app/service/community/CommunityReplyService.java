@@ -20,11 +20,13 @@ public interface CommunityReplyService {
     //일반 댓글 페이징처리 조회
     public List<CommunityReplyDTO> getList(Long communityId, CommunityPagination communityPagination);
 
+    // 대댓글 조회
+    public List<CommunityReplyDTO> getListAgain(Long communityId);
+
     //일반 댓글 총개수
     public int getTotal(Long communityId);
 
-    // 중간 테이블 삽입
-    public void registerMiddle(Long id, Long memberId, Long communityId);
+//    public void registerMiddle(Long id, Long memberId, Long communityId);
 
     // 댓글 수정
     public void modify(CommunityReplyDTO communityReplyDTO);
