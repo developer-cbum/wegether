@@ -1,17 +1,18 @@
 $(document).ready(function () {
 
-let dataPagination = 1;
-
-load("all");
-
-
+    let dataPagination = 1;
     const $ul = $("#list-container");
-
     let text = "";
 
+    load("all");
+
+    $(".all").click(function () {
+        load("all");
+    });
+
+
+
     function showList(datas) {
-
-
         datas.forEach(data => {
             text += `
 
@@ -87,9 +88,6 @@ load("all");
         $ul.append(text);
     }
 
-    //TOP btn
-    var button = $(".FloatingTopButton_pageTop__2gqm9");
-    button.hide();
 
 
     //TOP btn offset Show Hide
@@ -99,12 +97,6 @@ load("all");
         } else {
             button.fadeOut();
         }
-    });
-
-    // TOP 버튼 클릭시 페이지 위로 이동
-    button.click(function () {
-        $("html, body").animate({scrollTop: 0}, "slow");
-        return false;
     });
 
 
@@ -139,19 +131,22 @@ load("all");
         return new URLSearchParams(location.search).get(key);
     };
 
+    $('.RecentView_container__1boAT').on("click", function () {
+        history.replaceState({}, null, location.pathname);
+    });
+
     //
     // $('.category_lists button').on("click", function (e) {
     //     e.preventDefault();
     //     let type = this.classList[0];
     //     location.href = `/datas/list?type=${type}`;
     // });
-    $('.computer').on("click", function () {
-        load('computer');
+
+    $('.category_lists button').on("click", function () {
+        let type = $(this).attr('id');
+        load(type);
     })
 
-    $('.RecentView_container__1boAT').on("click", function () {
-        history.replaceState({}, null, location.pathname);
-    });
 
     function load(categoryType) {
         $.ajax({
@@ -164,5 +159,17 @@ load("all");
             }
         })
     }
+
+
+    //TOP btn
+    var button = $(".FloatingTopButton_pageTop__2gqm9");
+    button.hide();
+
+    // TOP 버튼 클릭시 페이지 위로 이동
+    button.click(function () {
+        $("html, body").animate({scrollTop: 0}, "slow");
+        return false;
+    });
+
 
 }); //E
