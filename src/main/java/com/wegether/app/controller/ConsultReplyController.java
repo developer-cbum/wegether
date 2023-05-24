@@ -62,6 +62,53 @@ public class ConsultReplyController {
         return consultReplyService.getListAgain(consultingId);
     }
 
+    //댓글 삭제
+    @DeleteMapping("remove/{id}")
+    @Transactional(rollbackFor = Exception.class)
+    public int removeReply(@PathVariable Long id){
+        Long num = consultReplyService.getMiddle(id).get().getConsultingId();
+        //일반 댓글일때
+        if(consultReplyService.get(id).get().getReplyDepth()== 0){
+            //대댓글 집합
+            List<ConsultReplyDTO> replyAgains = consultReplyService.getAgain(id);
+            //그 댓글에 해당되는 중간테이블 삭제
+            if(replyAgains.size() > 0) {
+                //중간 테이블 대댓글 전체삭제
+                replyAgains.stream().filter(consultReplyDTO ->consultReplyDTO.getReplyGroup() == id)
+                        .forEach(consultReplyDTO -> consultReplyService.removeMiddle(consultReplyDTO.getId()));
+                //대댓글 모두삭제
+                replyAgains.stream().filter(consultReplyDTO -> consultReplyDTO.getReplyGroup() == id )
+                        .forEach(consultReplyDTO -> consultReplyService.removeReply(consultReplyDTO.getId()));
+                //그리고 그냥 댓글삭제과 중간댓글삭제[
+                consultReplyService.removeMiddle(id);
+                consultReplyService.removeReply(id);
+
+            } else{
+                log.info("3들어옴");
+                consultReplyService.removeMiddle(id);
+                consultReplyService.removeReply(id);
+                return consultReplyService.getTotal(num);
+            }
+
+        } else{
+//            대댓글일때
+            log.info("들어옴");
+            consultReplyService.removeMiddle(id);
+            consultReplyService.removeReply(id);
+            return consultReplyService.getTotal(num);
+        }
+        return consultReplyService.getTotal(num);
+
+    }
+
+    //댓글 수정
+    @PutMapping("modify")
+    public void modify(@RequestBody ConsultReplyDTO consultReplyDTO){
+        consultReplyService.modify(consultReplyDTO);
+    }
+
+
+
 
 }
 
