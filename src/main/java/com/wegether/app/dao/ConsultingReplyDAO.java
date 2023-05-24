@@ -95,5 +95,10 @@ public class ConsultingReplyDAO {
        return consultingReplyMapper.selectMiddleAll(consultingId);
     }
 
+    //댓글 수정
+    public void set(ConsultReplyDTO consultReplyDTO){
+        consultingReplyMapper.update(consultReplyDTO);
+    }
+
 
 }

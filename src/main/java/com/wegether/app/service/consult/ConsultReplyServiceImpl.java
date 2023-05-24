@@ -107,5 +107,9 @@ public class ConsultReplyServiceImpl implements ConsultReplyService {
         return consultingReplyDAO.findMiddleAll(consultingId);
     }
 
-
+    //댓글수정
+    @Override
+    public void modify(ConsultReplyDTO consultReplyDTO) {
+        consultingReplyDAO.set(consultReplyDTO);
+    }
 }
