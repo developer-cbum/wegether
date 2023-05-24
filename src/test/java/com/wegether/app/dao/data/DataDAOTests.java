@@ -44,11 +44,6 @@ public class DataDAOTests {
 
 //    자료 목록
 
-@Test
-    public void findAllTest(){
-
-@Test
-    public void findAllTest(){
 
 @Test
     public void findAllTest(){
@@ -65,10 +60,7 @@ public class DataDAOTests {
 
 
 
-    
 
-
-    }
 
 
 

@@ -1,5 +1,6 @@
 package com.wegether.app.mapper.main;
 
+import com.wegether.app.domain.dto.MainDTO;
 import com.wegether.app.domain.dto.MainFileDTO;
 import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
@@ -60,6 +61,10 @@ public class MainMapperTests {
         mainFileMapper.mainCFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
     }
 
-    
-    
+    @Test
+    public void searchSPSelectAllTest(){
+        assertThat(mainMapper.searchPSelectAll()).hasSize(5);
+    }
+
+
     }

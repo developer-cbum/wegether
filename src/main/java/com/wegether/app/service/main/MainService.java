@@ -18,6 +18,7 @@ public interface MainService {
 
     public List<MainDTO> mainDRGetList();
 
+    public List<MainDTO> mainSPGetList();
 
 }
 
