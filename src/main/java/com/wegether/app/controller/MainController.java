@@ -51,7 +51,10 @@ public class MainController {
     }
 
 
-
+    @GetMapping("search-list")
+    public void goToSearch(Model model){
+        model.addAttribute("searches", mainService.mainSPGetList());
+    };
 
 
 

@@ -19,6 +19,7 @@ public class MainDTO {
     private String fileName;
     private Long fileSize;
     private String dataTitle;
+    private Long dataPrice;
     private String dataMajor;
     private Long dataReadCount;
     private String dataRegisterDate;
