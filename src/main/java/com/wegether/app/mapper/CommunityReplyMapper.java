@@ -17,6 +17,9 @@ public interface CommunityReplyMapper {
     //일반 댓글 페이징처리 조회
     public List<CommunityReplyDTO> selectAll(@Param("communityId") Long communityId, @Param("communityPagination") CommunityPagination communityPagination);
 
+//    대댓글 조회
+    public List<CommunityReplyDTO> selectAllAgain(Long communityId);
+
     //일반 댓글 총개수
     public int selectCountOfReply(Long communityId);
 

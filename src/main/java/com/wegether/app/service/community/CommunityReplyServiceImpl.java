@@ -4,7 +4,9 @@ import com.wegether.app.dao.CommunityDAO;
 import com.wegether.app.dao.CommunityReplyDAO;
 import com.wegether.app.domain.dto.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +18,10 @@ public class CommunityReplyServiceImpl implements CommunityReplyService{
     private final CommunityReplyDAO communityReplyDAO;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void register(CommunityReplyDTO communityReplyDTO) {
         communityReplyDAO.save(communityReplyDTO);
+//        CommunityReplyDTO replyForMiddleTbl = communityReplyDAO.saveMiddle(communityReplyDTO,);
     }
 
     @Override
@@ -31,14 +35,15 @@ public class CommunityReplyServiceImpl implements CommunityReplyService{
     }
 
     @Override
+    public List<CommunityReplyDTO> getListAgain(Long communityId) {
+        return communityReplyDAO.findAllAgain(communityId);
+    }
+
+    @Override
     public int getTotal(Long communityId) {
         return communityReplyDAO.findCountOfReply(communityId);
     }
 
-    @Override
-    public void registerMiddle(Long id, Long memberId, Long communityId) {
-        communityReplyDAO.saveMiddle(id, memberId, communityId);
-    }
 
     @Override
     public void modify(CommunityReplyDTO communityReplyDTO) {

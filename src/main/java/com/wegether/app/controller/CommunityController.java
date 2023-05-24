@@ -1,9 +1,6 @@
 package com.wegether.app.controller;
 
-import com.wegether.app.domain.dto.CommunityDTO;
-import com.wegether.app.domain.dto.CommunityPagination;
-import com.wegether.app.domain.dto.ConsultingDTO;
-import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.community.CommunityReplyService;
@@ -52,8 +49,10 @@ public class CommunityController {
     }
 
     @GetMapping(value = {"detail", "modify"})
-    public void detail(@RequestParam Long id, Model model){
+    public void detail(@RequestParam Long id, Model model, CommunityReplyDTO communityReplyDTO){
+        model.addAttribute("total", communityReplyService.getTotal(id));
         model.addAttribute("community", communityService.getCommunity(id).get());
+        log.info("===========" + communityReplyDTO);
     }
 
 

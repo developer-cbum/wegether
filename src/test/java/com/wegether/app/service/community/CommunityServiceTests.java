@@ -145,6 +145,16 @@ public class CommunityServiceTests {
         CommunityReplyDTO communityReplyDTO = new CommunityReplyDTO();
         communityReplyDTO.setReplyContent("dd");
         communityReplyService.register(communityReplyDTO);
+        log.info(communityReplyDTO.getId().toString());
+    }
+
+    @Test
+    public void middleReplyInsert(){
+        CommunityReplyDTO communityReplyDTO = new CommunityReplyDTO();
+        communityReplyDTO.setReplyContent("dd");
+        communityReplyDTO.setCommunityId(67L);
+        communityReplyDTO.setMemberId(1L);
+        communityReplyService.register(communityReplyDTO);
     }
 
     @Test

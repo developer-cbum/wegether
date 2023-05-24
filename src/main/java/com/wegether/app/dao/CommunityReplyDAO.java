@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class CommunityReplyDAO {
+public class    CommunityReplyDAO {
 
     private final CommunityReplyMapper communityReplyMapper;
 
@@ -29,6 +29,11 @@ public class CommunityReplyDAO {
     //일반 댓글 페이징처리 조회
     public List<CommunityReplyDTO> findAll(Long communityId, CommunityPagination communityPagination){
         return communityReplyMapper.selectAll(communityId, communityPagination);
+    }
+
+//    대댓글 조회
+    public List<CommunityReplyDTO> findAllAgain(Long communityId){
+        return communityReplyMapper.selectAllAgain(communityId);
     }
 
     //일반 댓글 총개수
