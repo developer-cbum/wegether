@@ -82,6 +82,8 @@
     VALUES(#{id}, #{memberId}, #{consultingId})
     </insert>
 
+<!-- //////////////////////여기서부턴 삭제   -->
+
     <!-- 일반 댓글 // 대댓글 삭제    -->
     <delete id="deleteReply">
         DELETE FROM TBL_REPLY
@@ -135,6 +137,16 @@
         FROM TBL_CONSULTING_REPLY
         WHERE CONSULTING_ID = #{consultingId}
     </select>
+
+    <!--////////////////여기서 부턴 댓글 수정-->
+<!-- 댓글 수정  -->
+    <update id="update">
+        UPDATE TBL_REPLY
+        SET REPLY_CONTENT = #{replyContent}, REPLY_UPDATE_DATE = SYSDATE
+        WHERE ID = #{id}
+    </update>
+
+
 
 
 </mapper>

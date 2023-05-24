@@ -63,10 +63,10 @@ public class ConsultReplyController {
     }
 
     //댓글 삭제
-    @Transactional(rollbackFor = Exception.class)
     @DeleteMapping("remove/{id}")
+    @Transactional(rollbackFor = Exception.class)
     public int removeReply(@PathVariable Long id){
-      Long num = consultReplyService.getMiddle(id).get().getConsultingId();
+        Long num = consultReplyService.getMiddle(id).get().getConsultingId();
         //일반 댓글일때
         if(consultReplyService.get(id).get().getReplyDepth()== 0){
             //대댓글 집합
@@ -99,6 +99,12 @@ public class ConsultReplyController {
         }
         return consultReplyService.getTotal(num);
 
+    }
+
+    //댓글 수정
+    @PutMapping("modify")
+    public void modify(@RequestBody ConsultReplyDTO consultReplyDTO){
+        consultReplyService.modify(consultReplyDTO);
     }
 
 

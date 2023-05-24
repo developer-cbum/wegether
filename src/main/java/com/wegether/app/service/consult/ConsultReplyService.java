@@ -62,5 +62,7 @@ ConsultReplyService {
     //    그 해당 하는 게시글에 중간테이블 전체 조회
     public List<ConsultingReplyVO> getMiddleAll(Long consultingId);
 
+    //댓글 수정
+    public void modify(ConsultReplyDTO consultReplyDTO);
 
 }
