@@ -44,17 +44,32 @@
 
                 <div class="container">
                     <div class="container-margin">
-                        <!-- 헤더 -->
-                        <div class="delete-box-layout">
-                            <div class="delete-box">
-                                <button
-                                        class="deleteButton delete-button"
-                                        onclick="deleteInquiries(getSelectedInquiryIds())">
-                                    삭제하기
-                                </button>
+                        <div style="display: flex; justify-content: space-between">
+                            <!-- 헤더 -->
+                            <div class="DesktopSearchApp_container__2VF9O">
+                                <form>
+                                    <div class="SearchController_container__35K5i">
+                                        <!-- 검색창 -->
+                                        <div class="SearchController_keyword__3FcFo">
+                                            <input class="search-input deleteButton delete-button" type="search" name="keyword" placeholder="제목, 이름 또는 닉네임을 입력하세요" style="width: 450px; padding: 11px;">
+                                        </div>
+                                        <!-- 검색 버튼 누르기 -->
+                                        <button type="submit"></button>
+                                    </div>
+                                </form>
+                                <!-- 검색창 눌렀을 때 나오는 메뉴 -->
+                            </div>
+
+                            <div class="delete-box-layout">
+                                <div class="delete-box">
+                                    <button
+                                            class="deleteButton delete-button"
+                                            onclick="deleteInquiries(getSelectedInquiryIds())">
+                                        삭제하기
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
                         <!-- 내용 섹션 -->
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
@@ -72,6 +87,7 @@
                                                 <th>No</th>
                                                 <th>문의 제목</th>
                                                 <th>작성자 명</th>
+                                                <th>작성자 닉네임</th>
                                                 <th>작성 날짜</th>
                                                 <th>답변 여부</th>
                                             </tr>
@@ -89,6 +105,7 @@
                                                 <a th:if="${!inquiries.inquiryStatus}" th:href="@{detail(id=${inquiries.id})}" th:text="${inquiries.inquiryTitle}"></a>
                                                 <a th:unless="${!inquiries.inquiryStatus}" th:href="@{answer-detail(id=${inquiries.id})}" th:text="${inquiries.inquiryTitle}"></a>
                                             </td>
+                                            <td th:text="${inquiries.memberName}">
                                             <td th:text="${inquiries.memberNickname}">
                                             </td>
                                             <td th:text="${inquiries.inquiryRegisterDate}"></td>

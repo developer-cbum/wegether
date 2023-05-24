@@ -7,6 +7,7 @@ import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.dto.CommunityReplyDTO;
 import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
+import com.wegether.app.domain.vo.CommunityReplyVO;
 import com.wegether.app.domain.vo.CommunityVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -144,6 +145,8 @@ public class CommunityServiceTests {
     public void replyInsert(){
         CommunityReplyDTO communityReplyDTO = new CommunityReplyDTO();
         communityReplyDTO.setReplyContent("dd");
+        communityReplyDTO.setCommunityId(67L);
+        communityReplyDTO.setMemberId(1L);
         communityReplyService.register(communityReplyDTO);
     }
 

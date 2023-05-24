@@ -23,7 +23,7 @@ public interface ProjectMapper {
     public Optional<ProjectDTO> select(Long id);
 
     // 프로젝트  수정
-    public void ProjectUpdate(ProjectDTO projectDTO);
+//    public void ProjectUpdate(ProjectDTO projectDTO);
 
     // 프로젝트 삭제
     public void ProjectDelete(Long id);

@@ -1,6 +1,6 @@
 package com.wegether.app.domain.dto;
 
-import com.wegether.app.domain.vo.ProjectVO;
+
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

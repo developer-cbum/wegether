@@ -1,7 +1,7 @@
 package com.wegether.app.service.project;
 
-import com.wegether.app.domain.dto.ProjectDTO;
-import com.wegether.app.domain.dto.ProjectPagination;
+import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.vo.ProjectVO;
 
 import java.util.List;
@@ -15,22 +15,18 @@ public interface ProjectService {
     // 프로젝트 등록
     public void write(ProjectDTO projectDTO);
 
-    // 프로젝트  상세
-    public Optional<ProjectDTO> getProject(Long id);
-
     // 프로젝트  수정
-    public void modify(ProjectDTO projectDTO);
-
-    // 프로젝트 삭제
-    public void remove(Long id);
+//    public void modify(ProjectDTO projectDTO);
+    //    게시글 조회
+    public Optional<ProjectDTO> read(Long id);
 
     public int getTotal();
 
 
 
-    default ProjectDTO toDTO(ProjectDTO projectVO) {
+    default ProjectDTO toDTO(ProjectVO projectVO) {
         ProjectDTO projectDTO = new ProjectDTO();
-        projectDTO.setId(projectVO.getId());
+        projectDTO.setId(projectDTO.getId());
         projectDTO.setMemberId(projectVO.getMemberId());
         projectDTO.setProjectTitle(projectVO.getProjectTitle());
         projectDTO.setProjectIntroducing(projectVO.getProjectIntroducing());
@@ -45,7 +41,15 @@ public interface ProjectService {
         return projectDTO;
     }
 
-
+    default ProjectFileDTO toDTO(FileVO fileVO){
+        ProjectFileDTO projectFileDTO = new ProjectFileDTO();
+        projectFileDTO.setId(fileVO.getId());
+        projectFileDTO.setFileName(fileVO.getFileName());
+        projectFileDTO.setFileUuid(fileVO.getFileUuid());
+        projectFileDTO.setFileSize(fileVO.getFileSize());
+        projectFileDTO.setFilePath(fileVO.getFilePath());
+        return projectFileDTO;
+    }
 }
 
 

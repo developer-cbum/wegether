@@ -1,9 +1,6 @@
 package com.wegether.app.controller;
 
-import com.wegether.app.domain.dto.CommunityDTO;
-import com.wegether.app.domain.dto.CommunityPagination;
-import com.wegether.app.domain.dto.ConsultingDTO;
-import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.community.CommunityReplyService;
@@ -17,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @Controller
@@ -29,10 +27,14 @@ public class CommunityController {
     private final CommunityReplyService communityReplyService;
 
     @GetMapping("list")
-    public void list(CommunityPagination communityPagination, Model model) {
+    public void list(){}
+
+    @PostMapping("list")
+    @ResponseBody
+    public List<CommunityDTO> list(@RequestBody CommunityPagination communityPagination, Model model) {
         communityPagination.setTotal(communityService.getTotal());
-        communityPagination.progress(5, 5);
-        model.addAttribute("communities", communityService.getList(communityPagination));
+        communityPagination.progress(1, 10);
+        return communityService.getList(communityPagination);
     }
 
     @GetMapping("write")
@@ -47,8 +49,10 @@ public class CommunityController {
     }
 
     @GetMapping(value = {"detail", "modify"})
-    public void detail(@RequestParam Long id, Model model){
+    public void detail(@RequestParam Long id, Model model, CommunityReplyDTO communityReplyDTO){
+        model.addAttribute("total", communityReplyService.getTotal(id));
         model.addAttribute("community", communityService.getCommunity(id).get());
+        log.info("===========" + communityReplyDTO);
     }
 
 

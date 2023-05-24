@@ -30,35 +30,41 @@
     ORDER BY C.COMMUNITY_REGISTER_DATE DESC
 </select>
 
+
+
+<!--    <select id ="searchPSelectAll" resultType="MainDTO">-->
+<!--            SELECT P.ID, P.PROJECT_TITLE, P.PROJECT_MAJOR, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH-->
+<!--            FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F-->
+<!--            WHERE P.ID = PF.PROJECT_ID AND PF.ID = F.ID-->
+<!--            ORDER BY P.ID DESC-->
+<!--    </select>-->
+
+    <!--프로젝트 전체 목록-->
     <select id ="searchPSelectAll" resultType="MainDTO">
-    SELECT P.ID, P.PROJECT_TITLE, P.PROJECT_MAJOR, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH
-    FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F
-    WHERE P.ID = PF.PROJECT_ID AND PF.ID = F.ID
-    ORDER BY P.ID DESC
+    SELECT F.ID, PROJECT_TITLE, PROJECT_MAJOR, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_PATH
+    FROM
+            (
+            SELECT ROWNUM R, ID, PROJECT_TITLE, PROJECT_MAJOR, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_PATH
+            FROM
+                (
+                    SELECT ROWNUM R, P.ID, P.PROJECT_TITLE, P.PROJECT_MAJOR, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH
+                    FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F
+                    WHERE P.ID = PF.PROJECT_ID AND PF.ID = F.ID
+                    ORDER BY P.ID DESC
+                 )
+            <![CDATA[
+                WHERE ROWNUM <= #{mainPagination.page} * #{mainPagination.rowCount}
+            )
+        F WHERE R > (#{mainPagination.page} - 1) * #{mainPagination.rowCount}
+        ]]>
     </select>
 
 
-<!--    <select id="selectCountOfProject" resultType="_int">-->
-<!--        SELECT COUNT(P.ID)-->
-<!--        FROM TBL_MEMBER M JOIN TBL_PROJECT P-->
-<!--        ON P.ID = P.MEMBER_ID-->
-<!--        <where>-->
-<!--            <if test="search.keyword != null">-->
-<!--                AND (PROJECT_TITLE LIKE '%'||#{search.keyword}||'%'-->
-<!--                OR PROJECT_MAJOR LIKE '%'||#{search.keyword}||'%')-->
+    <!--프로젝트 총 갯수-->
+    <select id="selectCountOfProject" resultType="_int">
+        SELECT COUNT(ID) FROM TBL_PROJECT
+    </select>
 
-<!--            </if>-->
-<!--        </where>-->
-<!--    </select>-->
 
-<!--    SELECT P.ID, P.PROJECT_TITLE, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH-->
-<!--    FROM TBL_PROJECT P, TBL_PROJECT_FILE PF, TBL_FILE F-->
-<!--    WHERE P.ID = PF.PROJECT_ID AND PF.ID = F.ID-->
-
-<!--    SELECT P.ID, P.PROJECT_TITLE, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH-->
-<!--    FROM TBL_PROJECT P-->
-<!--    JOIN TBL_PROJECT_FILE PF ON P.ID = PF.ID-->
-<!--    JOIN TBL_FILE F ON PF.ID = F.ID-->
-<!--    WHERE P.ID = #{projectId}-->
 
 </mapper>

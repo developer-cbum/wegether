@@ -11,17 +11,21 @@ public interface AdminService {
     /* --------------------------------------------------------------------------------- */
     
     // 공지사항 목록
-//    public List<NoticeVO> noticeGetList();
-    public List<NoticeVO> noticeGetList(AdminPagination adminPagination);
+    public List<NoticeAdminDTO> noticeGetList(AdminPagination adminPagination, Search search);
 
     // 공지사항 총 갯수
-    public int getNoticeTotal();
+    public int getNoticeTotal(Search search);
 
     // 공지사항 등록
     public void noticeWrite(NoticeVO noticeVO);
 
+    // 공지사항 이미지 등록
+
+    // 공지사항 이미지 등록(중간 테이블)
+    public void noticeImageMiddleWrite(NoticeFileVO noticeFileVO);
+
     // 공지사항 상세
-    public Optional<NoticeVO> noticeRead(Long id);
+    public Optional<NoticeAdminDTO> noticeRead(Long id);
 
     // 공지사항 수정
     public void noticeModify(NoticeVO noticeVO);
@@ -32,10 +36,10 @@ public interface AdminService {
     /* --------------------------------------------------------------------------------- */
 
     // 자료 목록
-    public List<DataAdminDTO> dataGetList(AdminPagination adminPagination);
+    public List<DataAdminDTO> dataGetList(AdminPagination adminPagination, Search search);
 
     // 자료 총 갯수
-    public int getDataTotal();
+    public int getDataTotal(Search search);
 
     // 자료 삭제
     public void dataRemove(Long id);
@@ -43,11 +47,11 @@ public interface AdminService {
     /* --------------------------------------------------------------------------------- */
 
     // 프로젝트 목록
-    public List<ProjectAdminDTO> projectGetList(AdminPagination adminPagination);
+    public List<ProjectAdminDTO> projectGetList(AdminPagination adminPagination, Search search);
 //    public List<ProjectAdminDTO> projectGetList();
 
     // 프로젝트 총 갯수
-    public int getProjectTotal();
+    public int getProjectTotal(Search search);
 
     // 프로젝트 삭제
     public void projectRemove(Long id);
@@ -56,11 +60,10 @@ public interface AdminService {
     /* --------------------------------------------------------------------------------- */
 
     // 문의사항 목록
-//    public List<InquiryAdminDTO> inquiryGetList();
-    public List<InquiryAdminDTO> inquiryGetList(AdminPagination adminPagination);
+    public List<InquiryAdminDTO> inquiryGetList(AdminPagination adminPagination, Search search);
 
     // 문의사항 총 갯수
-    public int getInquiryTotal();
+    public int getInquiryTotal(Search search);
 
     // 문의사항 상세
     public Optional<InquiryAdminDTO> inquiryRead(Long id);
@@ -86,11 +89,10 @@ public interface AdminService {
     /* --------------------------------------------------------------------------------- */
 
     // 회원 목록
-//    public List<MemberVO> memberGetList();
-    public List<MemberVO> memberGetList(AdminPagination adminPagination);
+    public List<MemberVO> memberGetList(AdminPagination adminPagination, Search search);
 
     // 회원 총 인원수
-    public int getMemberTotal();
+    public int getMemberTotal(Search search);
 
     // 회원 삭제
     public void memberRemove(Long id);
@@ -98,11 +100,10 @@ public interface AdminService {
     /* --------------------------------------------------------------------------------- */
 
     // 강연 목록
-//    public List<LectureVO> lectureGetList();
-    public List<LectureVO> lectureGetList(AdminPagination adminPagination);
+    public List<LectureVO> lectureGetList(AdminPagination adminPagination, Search search);
 
     // 강연 총 갯수
-    public int getLectureTotal();
+    public int getLectureTotal(Search search);
 
     // 강연 삭제
     public void lectureRemove(Long id);

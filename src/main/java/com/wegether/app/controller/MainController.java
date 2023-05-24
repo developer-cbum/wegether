@@ -1,6 +1,7 @@
 package com.wegether.app.controller;
 
 
+import com.wegether.app.domain.dto.MainPagination;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.service.inquiry.InquiryService;
 import lombok.RequiredArgsConstructor;
@@ -52,8 +53,8 @@ public class MainController {
 
 
     @GetMapping("search-list")
-    public void goToSearch(Model model){
-        model.addAttribute("searches", mainService.mainSPGetList());
+    public void goToSearch(Model model, MainPagination mainPagination){
+        model.addAttribute("searches", mainService.mainSPGetList(mainPagination));
     };
 
 
