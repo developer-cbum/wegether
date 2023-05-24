@@ -48,7 +48,7 @@
 
         <!--  05월 20일 김치윤 CommunityFileDTO 추가  -->
         <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityFileDTO"/>
-        <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityReplyDTO"/>
+        <typeAlias type="com.wegether.app.domain.dto.CommunityReplyDTO" alias="communityReplyDTO"/>
         <!--  5월 21일 박유미 Data   -->
         <typeAlias type="com.wegether.app.domain.dto.DataFileDTO" alias="dataFileDTO"/>
 

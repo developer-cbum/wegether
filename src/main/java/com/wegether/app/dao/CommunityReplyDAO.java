@@ -4,6 +4,7 @@ import com.wegether.app.domain.dto.CommunityPagination;
 import com.wegether.app.domain.dto.CommunityReplyDTO;
 import com.wegether.app.domain.dto.ConsultReplyDTO;
 import com.wegether.app.domain.dto.LecturePagination;
+import com.wegether.app.domain.vo.CommunityReplyVO;
 import com.wegether.app.mapper.CommunityReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class CommunityReplyDAO {
+public class    CommunityReplyDAO {
 
     private final CommunityReplyMapper communityReplyMapper;
 
@@ -31,14 +32,19 @@ public class CommunityReplyDAO {
         return communityReplyMapper.selectAll(communityId, communityPagination);
     }
 
+//    대댓글 조회
+    public List<CommunityReplyDTO> findAllAgain(Long communityId){
+        return communityReplyMapper.selectAllAgain(communityId);
+    }
+
     //일반 댓글 총개수
     public int findCountOfReply(Long communityId){
         return communityReplyMapper.selectCountOfReply(communityId);
     }
 
     // 중간 테이블 삽입
-    public void saveMiddle(Long id, Long memberId, Long communityId){
-        communityReplyMapper.insertMiddle(id, memberId, communityId);
+    public void saveMiddle(CommunityReplyVO communityReplyVO){
+        communityReplyMapper.insertMiddle(communityReplyVO);
     }
 
 //   댓글 수정
