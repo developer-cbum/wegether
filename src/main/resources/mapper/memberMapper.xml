@@ -78,6 +78,8 @@
 
 
 
+
+
 <!--    소영 마이페이지 화면 띄우기-->
     <select id="selectmypage" resultType="memberDTO">
     SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, NVL(P.POINT_HISTORY, '0') point

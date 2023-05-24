@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 //@SpringBootTest
@@ -83,6 +84,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 
+
+
+//    소영 테스트
+//    @Test
+//    public void selectmyProjectTest(){
+//        assertThat(projectMapper.selectmyProject(1L)).hasSize(2);
+//        List<ProjectDTO> project =projectMapper.selectmyProject(1L);
+//        log.info(String.valueOf(project));
+//    }
+//}
 //
 ////    소영 테스트
 //    @Test
