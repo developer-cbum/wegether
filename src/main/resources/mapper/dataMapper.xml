@@ -49,7 +49,7 @@
         </selectKey>
         INSERT INTO TBL_DATA
         (ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
-        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, #{memberId})
+        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, 2)
     </insert>
 
 

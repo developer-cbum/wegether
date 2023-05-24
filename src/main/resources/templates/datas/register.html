@@ -42,8 +42,10 @@
                                 </div>
                                 <form
                                     class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
-                                    th:action="@{/datas/write}" method="post" th:object="${dataDTO}" name="writeForm"
+                                    th:action="@{/datas/register}" method="post" th:object="${dataDTO}" name="writeForm"
                                 >
+                                    <input type="hidden" name="id" th:value="${memberId}">
+
                                     <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
 
                                     <!-- 자료 제목 -->
@@ -129,10 +131,8 @@
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
                                                     <input th:value="*{dataMajor}" type="hidden"
-                                                        placeholder="어떤 전공 자료인지 선택해 주세요"
-                                                        maxlength="40"
+                                                        placeholder="어떤 전공 자료인지 선택해 주세요" maxlength="40"
                                                         class="Input_input__2kAAL Input_md__3-eZ6"
-                                                        aria-invalid="false"
                                                         name="dataMajor" id="dataMajor" value=""
                                                     />
                                                     <div id="dataMajor-div" class=" Input_input__2kAAL Input_md__3-eZ6">어떤 전공 자료인지 선택해 주세요</div>
@@ -282,7 +282,10 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script th:inline="javascript">
-
+        let memberid = [[${memberId}]];
+        let dataMajor = [[${dataMajor}]];
+        console.log(memberid);
+        console.log(dataMajor);
     </script>
     <script src="/js/dataroom/register-basic.js"></script>
     <script src="/js/dataroom/register.js"></script>

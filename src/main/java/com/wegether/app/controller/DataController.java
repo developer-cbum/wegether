@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 
 @Controller
@@ -52,40 +53,32 @@ public class DataController {
 
 //    자료 등록
     @GetMapping("register")
-    public void goToWriteForm(DataDTO dataDTO, Model model){
-        String memberName = accountService.getMemberById(2L).get().getMemberName();
-        model.addAttribute("memberName", memberName);
+    public void goToWriteForm(DataDTO dataDTO, Model model){;
+//        String memberName = accountService.getMemberById(2L).get().getMemberName();
+//        Long memberId = dataService.write(dataDTO.getMemberId());
+//            model.addAttribute("memberId", dataDTO.getMemberId());
+
     }
 
     //    자료 등록 - HttpSession session
 //    @GetMapping("register")
 //    public void goToRegisterForm(DataDTO dataDTO, HttpSession session, Model model){
-////        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
-////        String nickName = accountService.getMemberById(2L).get().getMemberNickname();
-//        model.addAttribute("nickName", nickName);
+//        Long memberId = accountService.getMemberById((Long) session.getAttribute("id")).get().getId();
+////        Long memberId = accountService.getMemberById(2L).get().getId();
+//        model.addAttribute("memberId", memberId);
 //    };
 
 
-
+    //    자료 등록 > 리스트 이동
     @PostMapping("register")
     public RedirectView register(DataDTO dataDTO) {
+//        log.info(id.toString());
         dataService.write(dataDTO);
         return new RedirectView("/datas/list");
     }
 
 
 
-
-
-
-
-//    자료 등록 > 리스트 이동
-
-    @PostMapping("register")
-    public RedirectView write(DataDTO dataDTO){
-        dataService.write(dataDTO);
-        return new RedirectView("/data/list");
-    }
 
 
 

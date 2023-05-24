@@ -83,9 +83,12 @@ $(function () {
     let $majorDiv = $("#dataMajor-div");
 
     $(".select_category a").on("click", function(){
-        console.log('value:   '+$(this).val() + " text:   " + $(this).text());
+        // console.log('data:   '+$(this).data());
+        console.log('value:   '+$(this).data("value"));
+        console.log("text:   " + $(this).text());
 
-        $majorInput.val($(this).val());
+        $majorInput.val($(this).data("value"));
+        // dataMajor.val($(this).val());
         $majorDiv.text($(this).text()).css("color", "#212529");
         $(".select-menu__menu").hide();
     });
