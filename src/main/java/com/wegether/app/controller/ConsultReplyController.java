@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.model.IModel;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,12 +27,15 @@ public class ConsultReplyController {
     //댓글등록
     @PostMapping("register")
     @Transactional(rollbackFor = Exception.class)
-    public int register(@RequestBody ConsultReplyDTO consultReplyDTO, Model model){
+    public List<Integer> register(@RequestBody ConsultReplyDTO consultReplyDTO, Model model){
         log.info(consultReplyDTO.toString());
         consultReplyService.registerReply(consultReplyDTO);
         log.info(consultReplyDTO.getId().toString());
         consultReplyService.registerMiddle(consultReplyDTO.getId(), (Long)session.getAttribute("id"), consultReplyDTO.getConsultingId());
-        return consultReplyService.getTotal(consultReplyDTO.getConsultingId());
+        List<Integer> totals = new ArrayList<>();
+        totals.add(0, consultReplyService.getTotal(consultReplyDTO.getConsultingId()));
+        totals.add(1, consultReplyService.getTotalReply(consultReplyDTO.getConsultingId()));
+        return totals;
     }
 
     //댓글조회
@@ -65,8 +69,9 @@ public class ConsultReplyController {
     //댓글 삭제
     @DeleteMapping("remove/{id}")
     @Transactional(rollbackFor = Exception.class)
-    public int removeReply(@PathVariable Long id){
+    public List<Integer> removeReply(@PathVariable Long id){
         Long num = consultReplyService.getMiddle(id).get().getConsultingId();
+        List<Integer> totals = new ArrayList<>();
         //일반 댓글일때
         if(consultReplyService.get(id).get().getReplyDepth()== 0){
             //대댓글 집합
@@ -87,7 +92,9 @@ public class ConsultReplyController {
                 log.info("3들어옴");
                 consultReplyService.removeMiddle(id);
                 consultReplyService.removeReply(id);
-                return consultReplyService.getTotal(num);
+                totals.add(0, consultReplyService.getTotal(num));
+                totals.add(1, consultReplyService.getTotalReply(num));
+                return totals;
             }
 
         } else{
@@ -95,9 +102,13 @@ public class ConsultReplyController {
             log.info("들어옴");
             consultReplyService.removeMiddle(id);
             consultReplyService.removeReply(id);
-            return consultReplyService.getTotal(num);
+            totals.add(0, consultReplyService.getTotal(num));
+            totals.add(1, consultReplyService.getTotalReply(num));
+            return totals;
         }
-        return consultReplyService.getTotal(num);
+        totals.add(0, consultReplyService.getTotal(num));
+        totals.add(1, consultReplyService.getTotalReply(num));
+        return totals;
 
     }
 

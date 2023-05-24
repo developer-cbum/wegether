@@ -56,6 +56,7 @@ public class ConsultController {
         model.addAttribute("consultDTO", consultService.getConsulting(id).get());
         model.addAttribute("consultId", id);
         model.addAttribute("total", consultReplyService.getTotal(id));
+        model.addAttribute("basicReplyTotal", consultReplyService.getTotalReply(id));
     }
 
     @GetMapping("modify")

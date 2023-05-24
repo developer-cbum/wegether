@@ -32,9 +32,14 @@ public class ConsultingReplyDAO {
        return consultingReplyMapper.selectAll(consultingId, lecturePagination);
     }
 
-    //일반 댓글 총개수
+    //댓글 총개수
     public int findCountOfReply(Long consultingId){
         return consultingReplyMapper.selectCountOfReply(consultingId);
+    }
+
+    //일반 댓글 총개수
+    public int findCount(Long consultingId){
+        return consultingReplyMapper.selectCount(consultingId);
     }
 
     // 대댓글 전체 조회
@@ -99,6 +104,8 @@ public class ConsultingReplyDAO {
     public void set(ConsultReplyDTO consultReplyDTO){
         consultingReplyMapper.update(consultReplyDTO);
     }
+
+
 
 
 }
