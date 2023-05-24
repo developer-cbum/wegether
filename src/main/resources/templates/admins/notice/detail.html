@@ -51,7 +51,7 @@
                             <div class="board-info-box">
                                 <div class="board-info-title-box" style="position: relative">
                                     <span>공지사항 상세보기</span>
-                                    <a href="" class="btn_done">수정</a>
+                                    <a th:href="@{modify(id=${noticeBoards.id})}" class="btn_done">수정 하기</a>
                                 </div>
                                 <div class="info-table">
                                     <div class="info-member">
@@ -63,6 +63,12 @@
                                         <span class="span-bold">작성 날짜 :</span>
                                         <!-- 작성 날짜 -->
                                         <span th:text="${noticeBoards.noticeRegisterDate}"></span>
+                                    </div>
+                                    <div class="info-member">
+                                        <span class="span-bold">대표 이미지</span>
+                                        <br>
+                                        <!-- 대표 이미지 -->
+                                        <span class="notice-image"></span>
                                     </div>
                                 </div>
                                 <hr />
@@ -78,8 +84,11 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
-    <script>
+    <script th:inline="javascript">
         let noticeBoards = [[${noticeBoards}]];
         console.log(noticeBoards);
+        let files = [[${noticeBoards.files}]];
+        console.log(files);
     </script>
+    <script src="/js/admin/detail-image.js"></script>
 </html>

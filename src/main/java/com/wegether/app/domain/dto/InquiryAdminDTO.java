@@ -18,4 +18,5 @@ public class InquiryAdminDTO {
     private String memberNickname;
     private boolean inquiryStatus;
     private Long inquiryId;
+    private String memberName;
 }
