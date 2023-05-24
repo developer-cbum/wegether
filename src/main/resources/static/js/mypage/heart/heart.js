@@ -15,8 +15,6 @@ const $datali=$(".datali");
 const $elements=$(".ProjectCardList_container__2Q0Js");
 
 all()
-project()
-data()
 
 
 
@@ -139,7 +137,6 @@ function all(){
 
 function project(){
     $.ajax({
-        type:'post',
         url: "/mypage/heart-list/project",
         success: function (hearts) {
             console.log("들어옴");
@@ -376,6 +373,8 @@ $project.on("click", function () {
     $allofheart.hide();
     $datali.hide();
 
+    project()
+
     $all.css("border-color", "#f2f4f6");
     $all.css("background-color", "#f2f4f6");
     $project.css("border-color", "#8CE0FF");
@@ -389,8 +388,10 @@ $project.on("click", function () {
 
 $all.on("click", function () {
     $allofheart.show();
+
     $projectli.hide();
     $datali.hide();
+
 
     console.log("들어옴");
     // $elements.show();
@@ -407,6 +408,8 @@ $data.on("click", function () {
     $datali.show();
     $allofheart.hide();
     $projectli.hide();
+
+    data()
     // $elements.hide();
     $all.css("border-color", "#f2f4f6");
     $all.css("background-color", "#f2f4f6");
