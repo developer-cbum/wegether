@@ -4,6 +4,7 @@ $(document).ready(function(){
     let text = "";
 
     projects.forEach(project => {
+        console.log("들어옴")
         text += `
             <li
                   class="CardList_itemContainer__2c_vS"
@@ -17,7 +18,7 @@ $(document).ready(function(){
             <div role="link" class="PurchaseSummaryCard_item__3LlZ3">
               <dl class="PurchaseSummaryCard_etcArea__3Ummh">
                 <dd> </dd>
-                <dd> </dd>
+<!--                <dd> </dd>-->
               </dl>
               <div class="PurchaseSummaryCard_content__21XLk">
                 <div class="PurchaseSummaryCard_thumbnailArea__2BT7p" aria-hidden="true">
@@ -46,14 +47,14 @@ $(document).ready(function(){
 
                   </dd>
                   <dd class="PurchaseSummaryCard_description__245z_">
-                    <span class="PurchaseSummaryCard_makerName__1n7dA">info</span>
+                    <span class="PurchaseSummaryCard_makerName__1n7dA">${project.info}</span>
                   </dd>
                 </dl>
               </div>
               <div class="PurchaseSummaryCard_detailText__2GWWi" aria-hidden="true">
                 <button>수정</button>
                 <span>&nbsp | &nbsp</span>
-                <button>삭제</button>
+                <button class="delete">삭제</button>
               </div>
 
 
@@ -68,3 +69,10 @@ $(document).ready(function(){
 
 
 
+const $deleteB =$(".button delete");
+
+$deleteB.on("click", function(){
+
+
+
+});

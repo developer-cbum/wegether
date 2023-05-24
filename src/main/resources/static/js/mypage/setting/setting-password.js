@@ -1,3 +1,12 @@
+
+
+const $oldPasswordInput=$('#oldPassword');
+
+
+
+
+
+
 // form 태그
 const $form = $('#saveForm');
 
@@ -33,6 +42,30 @@ $input.on('focus', function () {
 // blur
 
 //첫번째
+
+
+$input.eq(0).on('blur', function() {
+
+  $.ajax({
+    url:"/check/setting-password",
+    success:function (data) {
+          if(data==$oldPasswordInput.val()){
+            $input.eq(0).css('border', '1px solid #e4e4e4');
+            $oldPassword.css('display', 'none');
+          }
+
+          else{
+            $input.eq(0).css('border', '1px solid rgb(208, 2, 27)');
+            $oldPassword.css('display', 'block');
+          }
+    }
+
+
+  })
+
+
+})
+
 $input.eq(0).on('blur', function () {
   if ($input.eq(0).val().length == 0) {
     $input.eq(0).css('border', '1px solid rgb(208, 2, 27)');
@@ -160,6 +193,11 @@ $button.on('click', function () {
     $oldPassword.css('color', 'rgb(208, 2, 27)');
     return;
   } else {
+
+
+
+
+
     $input.eq(0).css('border', '1px solid #e4e4e4');
     $oldPassword.css('display', 'none');
   }

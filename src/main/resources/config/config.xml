@@ -27,7 +27,7 @@
         <typeAlias type="com.wegether.app.domain.vo.PointVO" alias="pointVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ProjectFileVO" alias="projectFileVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectVO"/>
-        <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectDTO"/>
+        <typeAlias type="com.wegether.app.domain.dto.ProjectDTO" alias="projectDTO"/>
         <typeAlias type="com.wegether.app.domain.vo.ReplyVO" alias="replyVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishDataVO" alias="wishDataVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishProjectVO" alias="wishProjectVO"/>
@@ -71,5 +71,8 @@
 
         <typeAlias type="com.wegether.app.domain.dto.MainFileDTO" alias="mainFileDTO"/>
 
+
+<!--        문소영 0524 추가-->
+        <typeAlias type="com.wegether.app.domain.dto.HeartDTO" alias="heartDTO"/>
     </typeAliases>
 </configuration>
