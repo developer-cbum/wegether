@@ -11,7 +11,7 @@ lists.forEach(list => {
             <span class="SchoolLectureListDesktop_background__2Kqf_ SchoolLectureListDesktop_visible__2lI79"
                 
               ><img style="width=359px; height: 170px"
-    width: 100px;" src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" ></span><a href="/lectures/detail?id=${list.id}"><div class="SchoolLectureListDesktop_lectureCon__BhKMl">`
+    width: 100px;" src="/lecture-files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" ></span><a href="/lectures/detail?id=${list.id}"><div class="SchoolLectureListDesktop_lectureCon__BhKMl">`
         }
     })
 

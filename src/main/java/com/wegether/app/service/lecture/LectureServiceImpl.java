@@ -1,11 +1,15 @@
 package com.wegether.app.service.lecture;
 
+import com.wegether.app.dao.FileDAO;
 import com.wegether.app.dao.LectureDAO;
 import com.wegether.app.dao.LectureFileDAO;
 import com.wegether.app.dao.LectureMemberDAO;
 import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.type.FileType;
+import com.wegether.app.domain.vo.CommunityFileVO;
+import com.wegether.app.domain.vo.LectureFileVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,22 +17,33 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class LectureServiceImpl implements LectureService {
 
     private final LectureDAO lectureDAO;
     private final LectureFileDAO lectureFileDAO;
+    private final FileDAO fileDAO;
 
     //강연등록
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void register(LectureDTO lectureDTO) {
         lectureDAO.save(lectureDTO);
+//        위에는 file 테이블 등록
         for (int i = 0; i < lectureDTO.getFiles().size(); i++) {
-            lectureDTO.getFiles().get(i).setId(lectureDTO.getId());
+            lectureDTO.getFiles().get(i).setLectureId(lectureDTO.getId());
             lectureDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
             lectureFileDAO.save(lectureDTO.getFiles().get(i));
         }
+        log.info(lectureDTO.getFiles().toString());
+
+        lectureDTO.getFiles().forEach(lectureFileDTO ->
+        { LectureFileVO lectureFileVO = new LectureFileVO();
+            lectureFileVO.setId(lectureFileDTO.getId());
+            lectureFileVO.setLectureId(lectureFileDTO.getLectureId());
+            lectureFileDAO.saveMiddle(lectureFileVO);
+        });
     }
 
 
