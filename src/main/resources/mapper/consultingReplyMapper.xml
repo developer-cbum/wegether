@@ -43,12 +43,20 @@
     </select>
 
 
-    <!--일반댓글 총개수-->
+    <!--일반댓글 대댓글 총개수-->
     <select id="selectCountOfReply" resultType="_int">
         SELECT COUNT(R.ID)
         FROM TBL_CONSULTING_REPLY A JOIN TBL_REPLY R
         ON A.ID = R.ID AND A.CONSULTING_ID =#{consultingId}
     </select>
+
+    <!--일반댓글 총개수-->
+    <select id="selectCount" resultType="_int">
+        SELECT COUNT(R.ID)
+        FROM TBL_CONSULTING_REPLY A JOIN TBL_REPLY R
+        ON A.ID = R.ID AND A.CONSULTING_ID =#{consultingId} AND R.REPLY_DEPTH = 0
+    </select>
+
 
     <!--대 댓글 조회-->
     <select id="selectAllAgain" resultType="consultReplyDTO">
