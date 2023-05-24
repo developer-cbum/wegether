@@ -8,9 +8,15 @@ const $data=$(".data button");
 
 console.log("들어오나");
 
+const $allofheart=$(".allofheart");
+const $projectli=$(".projectli");
+const $datali=$(".datali");
+
 const $elements=$(".ProjectCardList_container__2Q0Js");
 
 all()
+project()
+data()
 
 
 
@@ -23,8 +29,8 @@ function all(){
             console.log("dd");
             hearts.forEach((heart, i) => {
                 text += `
-                
-                <li class="ProjectCardList_cardList__Eh497">
+               
+                <li class="ProjectCardList_cardList__Eh497 allofheart">
               <div class="ProjectCard_container__1jpWF App_projectCard__2z3D2">
                 <a
                   class="ProjectCard_card__EvFnb"
@@ -116,7 +122,7 @@ function all(){
                 </button>
               </div>
             </li>
-               
+              
                
                 `
             })
@@ -141,8 +147,8 @@ function project(){
             console.log("dd");
             hearts.forEach((heart, i) => {
                 text += `
-                
-                <li class="ProjectCardList_cardList__Eh497">
+               
+                <li class="ProjectCardList_cardList__Eh497 projectli">
               <div class="ProjectCard_container__1jpWF App_projectCard__2z3D2">
                 <a
                   class="ProjectCard_card__EvFnb"
@@ -179,7 +185,7 @@ function project(){
                     >
                       <div class="ProjectInfo_flexBox__1VtoL">
                         <em class="ProjectInfo_state__3kvLA"
-                          >${heart.title} <span class="ProjectInfo_unit__2GehO">원</span></em
+                          >${heart.projectTitle} <span class="ProjectInfo_unit__2GehO">원</span></em
                         >
                       </div>
                     </div>
@@ -259,8 +265,8 @@ function data(){
             console.log("dd");
             hearts.forEach((heart, i) => {
                 text += `
-                
-                <li class="ProjectCardList_cardList__Eh497">
+             
+                <li class="ProjectCardList_cardList__Eh497 projectli">
               <div class="ProjectCard_container__1jpWF App_projectCard__2z3D2">
                 <a
                   class="ProjectCard_card__EvFnb"
@@ -297,7 +303,7 @@ function data(){
                     >
                       <div class="ProjectInfo_flexBox__1VtoL">
                         <em class="ProjectInfo_state__3kvLA"
-                          >${heart.title} <span class="ProjectInfo_unit__2GehO">원</span></em
+                          >${heart.dataTitle} <span class="ProjectInfo_unit__2GehO">원</span></em
                         >
                       </div>
                     </div>
@@ -352,7 +358,7 @@ function data(){
                 </button>
               </div>
             </li>
-               
+             
                
                 `
             })
@@ -366,7 +372,9 @@ function data(){
 
 }
 $project.on("click", function () {
-    $elements.hide();
+    $projectli.show();
+    $allofheart.hide();
+    $datali.hide();
 
     $all.css("border-color", "#f2f4f6");
     $all.css("background-color", "#f2f4f6");
@@ -380,6 +388,10 @@ $project.on("click", function () {
 
 
 $all.on("click", function () {
+    $allofheart.show();
+    $projectli.hide();
+    $datali.hide();
+
     console.log("들어옴");
     // $elements.show();
     $all.css("border-color", "#8CE0FF");
@@ -392,6 +404,9 @@ $all.on("click", function () {
 });
 
 $data.on("click", function () {
+    $datali.show();
+    $allofheart.hide();
+    $projectli.hide();
     // $elements.hide();
     $all.css("border-color", "#f2f4f6");
     $all.css("background-color", "#f2f4f6");

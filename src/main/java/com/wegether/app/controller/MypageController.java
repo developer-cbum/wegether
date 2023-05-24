@@ -169,7 +169,7 @@ public class MypageController {
 
 
 
-    //프로젝트 삭제
+//    프로젝트 삭제
 //    @RequestMapping(value = "/remove", method = RequestMethod.GET)
 //    public RedirectView remove(Long id){
 //        projectService.remove(projectService.getProject()

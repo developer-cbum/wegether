@@ -54,7 +54,7 @@ $(document).ready(function(){
               <div class="PurchaseSummaryCard_detailText__2GWWi" aria-hidden="true">
                 <button>수정</button>
                 <span>&nbsp | &nbsp</span>
-                <button class="delete">삭제</button>
+                <button id="${project.id}" class="delete-button">삭제</button>
               </div>
 
 
@@ -69,10 +69,24 @@ $(document).ready(function(){
 
 
 
-const $deleteB =$(".button delete");
+$(document).on('click', '.delete-button', function () {
+    let id = $(this).attr("id");
+    $.ajax({
+        url     : `//remove/${id}`,
+        type    : 'delete',
+        success : function (totals) {
+            console.log(totals);
+            text=""
+            $div.html("");
+            page= 1;
+            $(".total").text(`${totals[0]}`);
+            if(totals[0] == 0){
+                $('.no-reply').show();
+            }
+            load(secondId, totals);
+            showWarnModal("삭제되었습니다");
+        }
 
-$deleteB.on("click", function(){
-
-
+    });
 
 });
