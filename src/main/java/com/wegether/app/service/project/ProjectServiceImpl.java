@@ -3,12 +3,12 @@ package com.wegether.app.service.project;
 import com.wegether.app.dao.FileDAO;
 import com.wegether.app.dao.ProjectDAO;
 import com.wegether.app.dao.ProjectFileDAO;
-import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.ProjectDTO;
+import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.vo.*;
 import com.wegether.app.domain.dto.ProjectPagination;
-import com.wegether.app.domain.vo.DataFileVO;
+import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.ProjectFileVO;
-import com.wegether.app.domain.vo.ProjectVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +22,8 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectDAO projectDAO;
     private final FileDAO fileDAO;
     private final ProjectFileDAO projectFileDAO;
+    private final FileVO fileVO;
+    private final ProjectFileDTO projectFileDTO;
 
 
 //    @Override
@@ -35,33 +37,32 @@ public class ProjectServiceImpl implements ProjectService {
 //    }
 
 
+//    @Override
+//    public Optional<ProjectDTO> getProject(Long id) {
+//        return projectDAO.findById(id);
+//    }
 
-    @Override
-    public Optional<ProjectDTO> getProject(Long id) {
-        return projectDAO.findById(id);
-    }
-
-    @Override
-    public void modify(ProjectDTO projectDTO) {
-        projectDAO.setProjectDTO(toDTO(projectDTO));
-    }
-
-    @Override
-    public void remove(Long id) {
-        projectDAO.ProjectDelete(id);
-    }
-
-    @Override
-    public int getTotal() {
-        return projectDAO.findCountOfProject();
-    }
+//    @Override
+//    public void modify(ProjectDTO projectDTO) {
+//        projectDAO.setProjectDTO(toDTO(projectDTO));
+//    }
+//
+//    @Override
+//    public void remove(Long id) {
+//        projectDAO.ProjectDelete(id);
+//    }
+//
+//    @Override
+//    public int getTotal() {
+//        return projectDAO.findCountOfProject();
+//    }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public List<ProjectDTO> getList(ProjectPagination projectPagination) {
-        final List<ProjectDTO> projects = projectDAO.projectFindAll(projectPagination);
-        projects.forEach(project -> project.setFiles(fileDAO.projectFindAll(project.getId())));
-        return projects;
+        final List<ProjectDTO> projectS = projectDAO.projectFindAll(projectPagination);
+        projectS.forEach(project -> project.setFiles(fileDAO.projectFindAll(project.getId())));
+        return projectS;
     }
 
     //    자료 등록 - 파일
@@ -69,26 +70,34 @@ public class ProjectServiceImpl implements ProjectService {
     @Transactional(rollbackFor = Exception.class)
     public void write(ProjectDTO projectDTO) {
         projectDAO.projectSave(projectDTO);
-        projectDTO.getFiles().forEach(file -> {
-            file.setProjectId(projectDTO.getId());
-            fileDAO.save(file);
-        });
-        projectDTO.getFiles().forEach(projectFileDTO -> {
-            ProjectFileVO projectFileVO = new ProjectFileVO();
+        for(int i=0; i<projectDTO.getFiles().size(); i++){
+            projectDTO.getFiles().get(i).setProjectId(projectDTO.getId());
+            projectDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            fileDAO.save(projectDTO.getFiles().get(i));
+        }
+        projectDTO.getFiles().forEach(projectFileDTO ->
+        { ProjectFileVO projectFileVO = new ProjectFileVO();
             projectFileVO.setId(projectFileDTO.getId());
             projectFileVO.setProjectId(projectFileDTO.getProjectId());
             projectFileDAO.save(projectFileVO);
         });
     }
 
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public Optional<ProjectDTO> read(Long id) {
-//        final Optional<ProjectDTO> foundProject = projectDAO.findById(id);
-//        if(foundProject.isPresent()){
-//            foundProject.get().setFiles(fileDAO.projectFindAll(foundProject.get().getId()));
-//        }
-//        return foundProject;
-//    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Optional<ProjectDTO> read(Long id) {
+        final Optional<ProjectDTO> foundProject = projectDAO.findById(id);
+        if (foundProject.isPresent()) {
+            foundProject.get().setFiles(fileDAO.projectFindAll(foundProject.get().getId()));
+        }
+        return foundProject;
+    }
+
+    @Override
+    public int getTotal() {
+        return projectDAO.findCountOfProject();
+    }
+
 
 }

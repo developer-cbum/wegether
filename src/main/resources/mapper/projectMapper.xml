@@ -35,7 +35,7 @@
 
 
     <!--     <프로젝트 상세>-->
-    <select id="select" resultType="ProjectDTO">
+    <select id="select" resultType="projectDTO">
         SELECT ID, MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
          PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT, PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
         FROM TBL_PROJECT
@@ -72,10 +72,6 @@
     </select>
 
     <select id="selectCountOfProject" resultType="_int">
-        SELECT COUNT(ID)
-        FROM TBL_PROJECT
-
-
         SELECT COUNT(P.ID)
         FROM TBL_MEMBER M JOIN TBL_PROJECT P
         ON M.ID = P.MEMBER_ID
