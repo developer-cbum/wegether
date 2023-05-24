@@ -43,7 +43,6 @@ public class DataDAOTests {
 
 
 //    자료 목록
-<<<<<<< HEAD
 @Test
     public void findAllTest(){
         DataPagination dataPagination = new DataPagination();
@@ -53,7 +52,6 @@ public class DataDAOTests {
 //        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
 
     }
-=======
 //@Test
 //    public void findAllTest(){
 //        DataPagination dataPagination = new DataPagination();
@@ -63,7 +61,6 @@ public class DataDAOTests {
 //        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
 //
 //    }
->>>>>>> master
 
     //총 개수
 //    @Test

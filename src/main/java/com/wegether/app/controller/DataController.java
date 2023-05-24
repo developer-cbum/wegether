@@ -11,10 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -32,7 +29,6 @@ public class DataController {
 
 
 //    자료 목록
-
     @GetMapping("list")
     public void goToDataList(DataPagination dataPagination, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order, Model model){
         dataPagination.setTotal(dataService.getTotal());
@@ -41,6 +37,24 @@ public class DataController {
         categoryType.setOrder(order);
         model.addAttribute("datas", dataService.getList(dataPagination, categoryType));
     }
+
+//    @GetMapping("list/{dataPagination}/{categoryType}")
+//    public void goToDataList(@PathVariable int page, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order){
+//        final DataPagination dataPagination = new DataPagination();
+//        dataPagination.setTotal(dataService.getTotal());
+//        dataPagination.progress();
+//        categoryType.setType(type);
+//        categoryType.setOrder(order);
+//        model.addAttribute("datas", dataService.getList(dataPagination, categoryType));
+//    }
+//
+//    @GetMapping("list/{postId}/{page}")
+//    public List<ReplyDTO> getList(@PathVariable int page, @PathVariable Long postId){
+//        final Pagination pagination = new Pagination();
+//        pagination.setPage(page);
+//        pagination.progress();
+//        return replyService.getList(postId, pagination);
+//    }
 
 
     //    자료 상세
@@ -53,12 +67,7 @@ public class DataController {
 
 //    자료 등록
     @GetMapping("register")
-    public void goToWriteForm(DataDTO dataDTO, Model model){;
-//        String memberName = accountService.getMemberById(2L).get().getMemberName();
-//        Long memberId = dataService.write(dataDTO.getMemberId());
-//            model.addAttribute("memberId", dataDTO.getMemberId());
-
-    }
+    public void goToWriteForm(DataDTO dataDTO, Model model){; }
 
     //    자료 등록 - HttpSession session
 //    @GetMapping("register")
@@ -72,7 +81,6 @@ public class DataController {
     //    자료 등록 > 리스트 이동
     @PostMapping("register")
     public RedirectView register(DataDTO dataDTO) {
-//        log.info(id.toString());
         dataService.write(dataDTO);
         return new RedirectView("/datas/list");
     }

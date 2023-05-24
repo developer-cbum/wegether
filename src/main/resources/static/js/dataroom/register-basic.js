@@ -1,5 +1,6 @@
 $(function () {
 
+    $(".ok-button").attr('disabled', true);
     history.replaceState({}, null, location.pathname);
 
     <!-- 모달 부분 js -->
@@ -12,7 +13,7 @@ $(function () {
         $('div.modal').css('display', 'flex').hide().fadeIn(500);
         setTimeout(function () {
             modalCheck = true;
-        }, 500);
+        }, 300);
     }
 
     $('div.modal').on('click', function () {
@@ -25,50 +26,96 @@ $(function () {
 
     <!-- 유효성 검사 -->
     <!-- 여기 부분 다른 곳 작업 끝나면 유효성 검사 추가 -->
+    let titleCheck = false;
+    let priceCheck = false;
+    let schoolCheck = false;
+    let majorCheck = false;
+    let contentCheck = false;
 
-    function check() {
+    $('#dataTitle').on('keyup', function () {
         // 자료 제목 유효성 검사
-        if (document.registerForm.dataTitle.value == '') {
+        if ($(this).val() == '') {
             showWarnModal('자료 제목을 입력해주세요');
-            document.registerForm.dataTitle.focus();
+            document.writeForm.dataTitle.focus();
+            titleCheck = false;
+            return;
+        } else {
+            titleCheck = true;
             return;
         }
+        flagCheck();
+    });
 
+    // 자료 가격
+    $('#dataPrice').on('input', function () {
+        let numericVal = $(this).val().replace(/[^0-9]/g, '');
+
+        $(this).val(numericVal);
+    });
+
+    $('#dataPrice').on('keyup', function () {
         // 자료 가격
-        if (document.registerForm.dataPrice.value == '') {
+        if ($(this).val() == '') {
             showWarnModal('자료 가격을 입력해주세요');
-            document.registerForm.dataPrice.focus();
+            document.writeForm.dataPrice.focus();
+            priceCheck = false;
+            return;
+        } else {
+            priceCheck = true;
             return;
         }
+        flagCheck();
+    });
 
+    $('#dataSchool').on('keyup', function () {
         // 자료 출처(학교)
-        if (document.registerForm.dataSchool.value == '') {
+        if ($(this).val() == '') {
             showWarnModal('자료 출처(학교)를 입력해주세요');
-            document.registerForm.dataSchool.focus();
+            document.writeForm.dataSchool.focus();
+            schoolCheck = false;
+            return;
+        } else {
+            schoolCheck = true;
             return;
         }
+        flagCheck();
+    });
 
+    $('#dataMajor').on('keyup', function () {
         // 자료 출처(전공)
-        if (document.registerForm.dataMajor.value == '') {
+        if ($(this).val() == '') {
             showWarnModal('자료 출처(전공)을 입력해주세요');
-            document.registerForm.dataMajor.focus();
+            document.writeForm.dataMajor.focus();
+            majorCheck = false;
             return;
         }
+        // else {
+        //     console.log("major pass");
+        //     majorCheck = true;
+        //     return;
+        // }
+        flagCheck();
+    });
 
+    $('#dataContent').on('keyup', function () {
+        console.log("들어는 옴");
         // 자료 내용 유효성 검사
-        if (document.registerForm.dataContent.value == '') {
+        if ($(this).val() == '') {
+            console.log("여기는 실패");
             showWarnModal('자료 내용을 입력해주세요');
-            document.registerForm.dataContent.focus();
+            document.writeForm.dataContent.focus();
+            contentCheck = false;
+            flagCheck();
+            return;
+        } else {
+            console.log("여기는 성공");
+            contentCheck = true;
+            console.log("자료내용 체크 : " + contentCheck);
+            flagCheck();
             return;
         }
-    }
-
-    // 저장완료 모달
-    // showWarnModal('등록이 완료되었습니다');
-    // setTimeout(function () {
-        // check();
-        // document.registerForm.submit();
-    // }, 2000);
+        flagCheck();
+    });
 
 
 
@@ -78,7 +125,7 @@ $(function () {
 
     });
 
-    // input 처럼 div 사용하기
+    // major div - input 처럼 사용하기
     let $majorInput = $("#dataMajor");
     let $majorDiv = $("#dataMajor-div");
 
@@ -91,23 +138,28 @@ $(function () {
         // dataMajor.val($(this).val());
         $majorDiv.text($(this).text()).css("color", "#212529");
         $(".select-menu__menu").hide();
+        majorCheck = true;
+        flagCheck();
     });
 
 
+    // flag check
+    function flagCheck() {
+
+        console.log("title" + titleCheck);
+        console.log("price" + priceCheck);
+        console.log("school" + schoolCheck);
+        console.log("major" + majorCheck);
+        console.log("content" + contentCheck);
+        if (titleCheck && priceCheck && schoolCheck && majorCheck && contentCheck) {
+            console.log('gogo');
+            $(".ok-button").attr('disabled', false);
+        } else {
+            $(".ok-button").attr('disabled', true);
+        }
+    }
 
 
-    // 카테고리 이름 변경
-    // $(function() {
-    // $(".computer a").text("컴퓨터공학과");
-    // $(".design a").text("디자인학과");
-    // $(".sports a").text("스포츠과학과");
-    // $(".biology a").text("생명과학과");
-    // $(".chemistry a").text("화학과");
-    // $(".machine a").text("기계공학과");
-    // $(".engineering a").text("전기공학과");
-    // $(".math a").text("수학과");
-    // $(".media a").text("미디어영상학과");
-    // $(".applied_music a").text("실용음악과");
-    // });
+
 
 }); //E

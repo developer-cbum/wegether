@@ -1,11 +1,34 @@
+
+
+<!-- 모달 부분 js -->
+
+let modalCheck;
+function showWarnModal(modalMessage) {
+    modalCheck = false;
+    $('div#content-wrap').html(modalMessage);
+    $('div.warn-modal').css('animation', 'popUp 0.5s');
+    $('div.modal').css('display', 'flex').hide().fadeIn(500);
+    setTimeout(function () {
+        modalCheck = true;
+    }, 500);
+}
+
+$('div.modal').on('click', function () {
+    if (modalCheck) {
+        $('div.warn-modal').css('animation', 'popDown 0.5s');
+        $('div.modal').fadeOut(500);
+    }
+});
+
+
+
 const $upload = $("input.upload");
 const $thumbnail = $("label.attach img.thumbnail");
 
 $("img.preview").each(function(i){
     if(!$(this).attr("src")){
         $(this).hide();
-    }
-});
+    }});
 
 let sizes = new Array();
 $upload.on("change", function(e){
@@ -77,8 +100,18 @@ $("button.ok-button").on("click", function(){
             <input type="hidden" name="files[${i}].fileName" value="${fileName}">
             <input type="hidden" name="files[${i}].fileSize" value="${fileSize}">
         `
+
+        // 저장완료 모달
+        showWarnModal('등록이 완료되었습니다');
+        setTimeout(function () {
+            check();
+            document.registerForm.submit();
+        }, 2000);
+
     });
     $(writeForm).append(text);
     console.log($(writeForm))
     $(writeForm).submit();
+
+
 });
