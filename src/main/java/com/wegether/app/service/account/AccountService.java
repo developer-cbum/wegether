@@ -27,6 +27,10 @@ public interface AccountService {
     //아이디 찾기 세션으로
     public Optional<MemberVO> getMemberById(Long id);
 
+
+//    비밀번호 찾기 세션으로
+
+    public Optional<MemberVO> getMemberByPw(Long id);
 }
 
 

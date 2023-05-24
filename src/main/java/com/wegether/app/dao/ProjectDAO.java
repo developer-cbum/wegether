@@ -20,7 +20,7 @@ public class ProjectDAO {
     // 프로젝트 목록
     public List<ProjectDTO> projectFindAll(ProjectPagination projectPagination){
         return projectMapper.projectSelectAll(projectPagination);
-    };
+    }
 
     // 프로젝트 등록
     public void projectSave(ProjectDTO projectDTO){
@@ -33,14 +33,15 @@ public class ProjectDAO {
     }
 
     // 프로젝트  수정
-    public void setProjectDTO(ProjectDTO projectDTO){
-        projectMapper.ProjectUpdate(projectDTO);
-    }
+//    public void setProjectDTO(ProjectDTO projectDTO){
+//        projectMapper.ProjectUpdate(projectDTO);
+//    }
+
 
     // 프로젝트 삭제
-    public void ProjectDelete(Long id){
-        projectMapper.ProjectDelete(id);
-    }
+//    public void ProjectDelete(Long id){
+//        projectMapper.ProjectDelete(id);
+//    }
 
 
 
@@ -62,5 +63,6 @@ public class ProjectDAO {
     public int findCountOfProject(){
         return projectMapper.selectCountOfProject();
     }
+
 
 }

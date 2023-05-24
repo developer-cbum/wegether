@@ -45,6 +45,21 @@ public class DataDAOTests {
 //    자료 목록
 //@Test
 //    public void findAllTest(){
+
+
+@Test
+    public void findAllTest(){
+
+
+        DataPagination dataPagination = new DataPagination();
+        dataPagination.setPage(1);
+        dataPagination.progress();
+        List<DataDTO> dataDTOS = dataDAO.findAll(dataPagination);
+        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
+
+
+    }
+
 //        DataPagination dataPagination = new DataPagination();
 //        dataPagination.setPage(1);
 //        dataPagination.progress();
@@ -53,12 +68,18 @@ public class DataDAOTests {
 //
 //    }
 
+
+
+
+
+
+
     //총 개수
-//    @Test
-//    public void selectCountOfDataTests(){
-//        int total = dataDAO.findCountOfData();
-//        log.info(String.valueOf(total));
-//    }
+    @Test
+    public void selectCountOfDataTests(){
+        int total = dataDAO.findCountOfData();
+        log.info(String.valueOf(total));
+    }
 
 
 }

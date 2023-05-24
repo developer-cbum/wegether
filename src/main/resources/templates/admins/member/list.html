@@ -43,18 +43,34 @@
 
                 <div class="container">
                     <div class="container-margin">
-                        <!-- 헤더 -->
-                        <div class="delete-box-layout">
-                            <div class="delete-box">
-                                <button
-                                    class="deleteButton delete-button"
-                                    onclick="deleteMembers(getSelectedMemberIds())"
-                                >
-                                    회원 상태 변경
-                                </button>
+                        <div style="display: flex; justify-content: space-between">
+                            <!-- 헤더 -->
+
+                            <div class="DesktopSearchApp_container__2VF9O">
+                                <form>
+                                    <div class="SearchController_container__35K5i">
+                                        <!-- 검색창 -->
+                                        <div class="SearchController_keyword__3FcFo">
+                                            <input class="search-input deleteButton delete-button" type="search" name="keyword" placeholder="아이디, 이름 또는 닉네임을 입력하세요" style="width: 450px; padding: 11px;">
+                                        </div>
+                                        <!-- 검색 버튼 누르기 -->
+                                        <button type="submit"></button>
+                                    </div>
+                                </form>
+                                <!-- 검색창 눌렀을 때 나오는 메뉴 -->
+                            </div>
+
+                            <div class="delete-box-layout">
+                                <div class="delete-box">
+                                    <button
+                                        class="deleteButton delete-button"
+                                        onclick="deleteMembers(getSelectedMemberIds())"
+                                    >
+                                        회원 상태 변경
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
                         <!-- 내용 섹션 -->
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
@@ -71,6 +87,7 @@
                                                 </th>
                                                 <th>No</th>
                                                 <th>회원상태</th>
+                                                <th>아이디</th>
                                                 <th>이름</th>
                                                 <th>닉네임</th>
                                                 <th>핸드폰 번호</th>
@@ -88,6 +105,7 @@
                                                 </td>
                                                 <td th:text="${members.id}"></td>
                                                 <td th:text="${members.memberStatus} ? '일반 회원' : '탈퇴 회원'" th:style="${members.memberStatus ? 'color:#0fa34c' : 'color:#ff0000'}"></td>
+                                                <td th:text="${members.memberId}"></td>
                                                 <td th:text="${members.memberName}"></td>
                                                 <td th:text="${members.memberNickname}"></td>
                                                 <td th:text="${members.memberPhoneNumber}"></td>

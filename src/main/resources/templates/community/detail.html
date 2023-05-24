@@ -218,9 +218,9 @@
                                                     <div class="CommunityCommentTitle_commentTitle__1Jbgx">
                                                         <div class="CommentTitle_container__3JkFA">
                                                             <p>
-                                                                커뮤니티 리뷰<em class="CommentTitle_count__8olvZ"
-                                                                    >27(전체갯수)</em
-                                                                >
+                                                                커뮤니티 리뷰<em class="CommentTitle_count__8olvZ total"
+                                                            ><th:block th:text="${total}"></th:block></em
+                                                            >
                                                             </p>
                                                         </div>
                                                         <p class="CommunityCommentTitle_explanation__XfmmD">
@@ -269,31 +269,35 @@
                                                                 class="CommunityCommentReplyWriteForm_writeForm__2YHmv"
                                                             >
                                                                 <form
+                                                                    id="reply" th:action="@{/community-replies/register}" method="post" th:object="${communityReplyDTO}"
                                                                     class="CommentForm_container__2bT5x CommentForm_fold__20KZS"
                                                                 >
+<!--                                                                    <input type="hidden" th:field="*{communityId}" th:value="${communityId}">-->
                                                                     <div class="CommentForm_textarea__yw5Av">
                                                                         <textarea
+                                                                            th:field="*{replyContent}"
                                                                             placeholder="내용을 입력해 주세요."
                                                                             maxlength="2000"
                                                                             rows="2"
                                                                             class="Textarea_textarea__2EtST"
                                                                         ></textarea
-                                                                        ><textarea
-                                                                            aria-hidden="true"
-                                                                            readonly=""
-                                                                            tabindex="-1"
-                                                                            class="Textarea_textarea__2EtST"
-                                                                            style="
-                                                                                visibility: hidden;
-                                                                                position: absolute;
-                                                                                overflow: hidden;
-                                                                                height: 0px;
-                                                                                top: 0px;
-                                                                                left: 0px;
-                                                                                transform: translateZ(0px);
-                                                                                pointer-events: none;
-                                                                            "
-                                                                        ></textarea>
+                                                                        >
+<!--                                                                        <textarea-->
+<!--                                                                            aria-hidden="true"-->
+<!--                                                                            readonly=""-->
+<!--                                                                            tabindex="-1"-->
+<!--                                                                            class="Textarea_textarea__2EtST"-->
+<!--                                                                            style="-->
+<!--                                                                                visibility: hidden;-->
+<!--                                                                                position: absolute;-->
+<!--                                                                                overflow: hidden;-->
+<!--                                                                                height: 0px;-->
+<!--                                                                                top: 0px;-->
+<!--                                                                                left: 0px;-->
+<!--                                                                                transform: translateZ(0px);-->
+<!--                                                                                pointer-events: none;-->
+<!--                                                                            "-->
+<!--                                                                        ></textarea>-->
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -301,8 +305,8 @@
                                                         <div style="display: flex; justify-content: flex-end">
                                                             <div style="text-align: right; margin-top: 10px">
                                                                 <button
-                                                                    class="Button_button__2FuOU Button_primary__2mZni Button_md__46Ai-"
-                                                                    type="button"
+                                                                    class="Button_button__2FuOU Button_primary__2mZni Button_md__46Ai- reply-button"
+                                                                    type="submit"
                                                                 >
                                                                     <span
                                                                         ><span class="Button_children__ilFun"
@@ -397,27 +401,35 @@
                                                     <hr
                                                         class="Divider_divider__ToZaf Divider_horizontal__3W5eD Divider_lightBG__3bAAk Divider_spacing5__C3W8V Divider_caption2__3b6Dr"
                                                     />
-                                                    <div>
+                                                    <div class="reply-content">
+
                                                     </div>
                                                 </div>
-
+                                                <th:block  th:if="${total == 0}">
+                                                    <li>
+                                                        <div>
+                                                            현재 댓글이 없습니다. 댓글을 작성해보세요!
+                                                        </div>
+                                                    </li>
+                                                </th:block>
                                                 <!-- 더보기 버튼 -->
-                                                <div class="CommunityCommentListContainer_moreButton__3RWMg">
+                                                </th:block>
+                                                <div th:if="${total > 15}" class="CommunityCommentListContainer_moreButton__3RWMg more-container">
                                                     <button
-                                                        class="Button_button__2FuOU Button_secondary__LNLsN Button_text__2-UCU Button_md__46Ai-"
-                                                        type="button"
+                                                            class="Button_button__2FuOU Button_secondary__LNLsN Button_text__2-UCU Button_md__46Ai- more-button"
+                                                            type="button"
                                                     >
                                                         <span
-                                                            ><span class="Button_children__ilFun"
-                                                                >더보기<svg
-                                                                    viewBox="0 0 40 40"
-                                                                    focusable="false"
-                                                                    role="presentation"
-                                                                    class="withIcon_icon__3VTbq CommunityCommentListContainer_icon__1TvFN"
-                                                                    aria-hidden="true"
-                                                                >
+                                                        ><span class="Button_children__ilFun"
+                                                        >더보기<svg
+                                                                viewBox="0 0 40 40"
+                                                                focusable="false"
+                                                                role="presentation"
+                                                                class="withIcon_icon__3VTbq CommunityCommentListContainer_icon__1TvFN"
+                                                                aria-hidden="true"
+                                                        >
                                                                     <path
-                                                                        d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"
+                                                                            d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"
                                                                     ></path></svg></span
                                                         ></span>
                                                     </button>
@@ -459,7 +471,11 @@
         });
     </script>
     <script th:inline="javascript">
+        let community = [[${community}]]
+        let communityId = [[${community.id}]]
         let files = [[${community.files}]]
+        let total = [[${total}]]
     </script>
     <script src="/js/community/detail.js"></script>
+    <script src="/js/community/community-reply.js"></script>
 </html>

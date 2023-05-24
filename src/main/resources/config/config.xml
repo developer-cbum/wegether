@@ -27,7 +27,7 @@
         <typeAlias type="com.wegether.app.domain.vo.PointVO" alias="pointVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ProjectFileVO" alias="projectFileVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectVO"/>
-        <typeAlias type="com.wegether.app.domain.vo.ProjectVO" alias="projectDTO"/>
+        <typeAlias type="com.wegether.app.domain.dto.ProjectDTO" alias="projectDTO"/>
         <typeAlias type="com.wegether.app.domain.vo.ReplyVO" alias="replyVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishDataVO" alias="wishDataVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishProjectVO" alias="wishProjectVO"/>
@@ -48,7 +48,7 @@
 
         <!--  05월 20일 김치윤 CommunityFileDTO 추가  -->
         <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityFileDTO"/>
-        <typeAlias type="com.wegether.app.domain.dto.CommunityFileDTO" alias="communityReplyDTO"/>
+        <typeAlias type="com.wegether.app.domain.dto.CommunityReplyDTO" alias="communityReplyDTO"/>
         <!--  5월 21일 박유미 Data   -->
         <typeAlias type="com.wegether.app.domain.dto.DataFileDTO" alias="dataFileDTO"/>
 
@@ -70,6 +70,16 @@
         <typeAlias type="com.wegether.app.domain.dto.ProjectFileDTO" alias="projectFileDTO"/>
 
         <typeAlias type="com.wegether.app.domain.dto.MainFileDTO" alias="mainFileDTO"/>
+
+
+
+<!--        문소영 0524 추가-->
+        <typeAlias type="com.wegether.app.domain.dto.HeartDTO" alias="heartDTO"/>
+        <!-- 05월 23일 김인진 NoticeFileAdminDTO -->
+        <typeAlias type="com.wegether.app.domain.dto.NoticeFileAdminDTO" alias="noticeFileAdminDTO"/>
+
+        <!-- 05월 24일 김인진 NoticeAdminDTO -->
+        <typeAlias type="com.wegether.app.domain.dto.NoticeAdminDTO" alias="noticeAdminDTO"/>
 
     </typeAliases>
 </configuration>
