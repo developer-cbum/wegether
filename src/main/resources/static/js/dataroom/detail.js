@@ -12,7 +12,6 @@ $(document).ready(function () {
 
     dataDTO.files.forEach(file => {
         if(file.fileType == "REPRESENTATIVE") {
-            console.log("file!!!!!!!!!!!!");
             image += `
 
                 <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline: none; width: 626px;">

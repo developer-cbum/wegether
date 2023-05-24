@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -28,26 +29,32 @@ public class DataController {
     private final AccountService accountService;
 
 
-//    자료 목록
-    @GetMapping("list")
-    public void goToDataList(DataPagination dataPagination, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order, Model model){
-        dataPagination.setTotal(dataService.getTotal());
-        dataPagination.progress();
-        categoryType.setType(type);
-        categoryType.setOrder(order);
-        model.addAttribute("datas", dataService.getList(dataPagination, categoryType));
-    }
-
-//    @GetMapping("list/{dataPagination}/{categoryType}")
-//    public void goToDataList(@PathVariable int page, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order){
-//        final DataPagination dataPagination = new DataPagination();
+//    자료 목록 - 기본
+//    @GetMapping("list")
+//    public void goToDataList(DataPagination dataPagination, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order, Model model){
 //        dataPagination.setTotal(dataService.getTotal());
 //        dataPagination.progress();
 //        categoryType.setType(type);
 //        categoryType.setOrder(order);
 //        model.addAttribute("datas", dataService.getList(dataPagination, categoryType));
 //    }
-//
+
+    @GetMapping("list")
+    public void goToList(){;}
+
+    //    자료 목록 - rest 시도 중 ..
+    @ResponseBody
+    @GetMapping("computer-list/{page}/{type}")
+    public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type){
+        final DataPagination dataPagination = new DataPagination();
+        dataPagination.setPage(page);
+        dataPagination.progress();
+        dataPagination.setTotal(dataService.getTotal());
+        dataPagination.progress();
+        CategoryType categoryType = new CategoryType();
+        categoryType.setType(type);
+       return dataService.getList(dataPagination, categoryType);
+    }
 //    @GetMapping("list/{postId}/{page}")
 //    public List<ReplyDTO> getList(@PathVariable int page, @PathVariable Long postId){
 //        final Pagination pagination = new Pagination();
