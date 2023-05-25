@@ -10,7 +10,7 @@ import java.util.List;
 public interface CardMapper {
 
 //    카드 등록
-    public void insert(CardVO cardVO);
+    public void insert(CardDTO cardDTO);
 
 //    카드 삭제
     public void delete(Long id);

@@ -24,8 +24,8 @@ public class CardImpl implements MypageService {
     }
 
     //    카드 등록
-    public void register(CardVO cardVO) {
-        cardDAO.save(cardVO);
+    public void register(CardDTO cardDTO) {
+        cardDAO.save(cardDTO);
     }
 
 

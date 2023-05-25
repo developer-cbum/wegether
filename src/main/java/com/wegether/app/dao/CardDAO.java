@@ -15,8 +15,8 @@ public class CardDAO {
     private final CardMapper cardMapper;
 
     //    카드 등록
-    public void save(CardVO cardVO){
-        cardMapper.insert(cardVO);
+    public void save(CardDTO cardDTO){
+        cardMapper.insert(cardDTO);
     }
 
     //    카드 삭제
