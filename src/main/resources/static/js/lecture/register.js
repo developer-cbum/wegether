@@ -1,3 +1,5 @@
+console.log("연동테스트");
+
 const $upload = $("input.upload");
 const $thumbnail = $("label.attach img.thumbnail");
 
@@ -9,19 +11,26 @@ $("img.preview").each(function(i){
 
 let sizes = new Array();
 $upload.on("change", function(e){
+    console.log("들어옴?");
     let i = $upload.index($(this));
     let files = $(this)[0].files;
     let name = files[0].name;
+    name = name.split(".")[0] + i + "." + name.split(".")[1];
+    console.log(name);
+
     let formData = new FormData();
 
     sizes.push(files[0].size);
 
     $(files).each((i, file) => {
-        formData.append("uploadFile", file);
+        console.log(file);
+        const renamedFile = new File([file], name, { type: file.type });
+        console.log(renamedFile.name);
+        formData.append("uploadFile", renamedFile);
     });
 
     $.ajax({
-        url: "/files/upload",
+        url: "/lecture-files/upload",
         type: "post",
         data: formData,
         contentType: false,
@@ -31,7 +40,6 @@ $upload.on("change", function(e){
             $("label.attach").eq(i).find("h6").hide();
             $("div.x").eq(i).show();
             $("img.thumbnail").eq(i).show();
-
             let now = new Date();
             let year = now.getFullYear();
             let month = now.getMonth() + 1;
@@ -40,11 +48,26 @@ $upload.on("change", function(e){
             month = month < 10 ? "0" + month : month;
             date = date < 10 ? "0" + date : date;
 
-            let fileName = year + "/" + month + "/" + date + "/t_" + uuids[0] + "_" + name;
-            $("img.thumbnail").eq(i).attr("src", `/files/display?fileName=${fileName}`);
+            let fileName = year + "/" + month + "/" + date + "/t_" +uuids[0] + "_" + name;
+            $("img.thumbnail").eq(i).attr("src", `/lecture-files/display?fileName=${fileName}`);
         }
     });
 
+    // console.log($(this).files[0]);
+
+    // var reader = new FileReader();
+    // reader.readAsDataURL(e.target.files[0]);
+    // reader.onload = function(e){
+    //     let url = e.target.result;
+    //     if(url.includes('image')){
+    //         $("label.attach").eq(i).find("h6").hide();
+    //         $("div.x").eq(i).show();
+    //         $thumbnail.eq(i).show();
+    //         $thumbnail.eq(i).attr('src', url);
+    //     }else{
+    //         showWarnModal("이미지 파일만 등록 가능합니다.");
+    //     }
+    // }
 });
 
 $("div.x").on("click", function(e){
@@ -76,7 +99,7 @@ $("button.ok-button").on("click", function(){
             <input type="hidden" name="files[${i}].fileSize" value="${fileSize}">
         `
     });
-    $(writeForm).append(text);
-    console.log($(writeForm))
-    $(writeForm).submit();
+    $(registerForm).append(text);
+    console.log($(registerForm))
+    $(registerForm).submit();
 });

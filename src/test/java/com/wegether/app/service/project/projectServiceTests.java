@@ -1,5 +1,6 @@
 package com.wegether.app.service.project;
 
+import com.wegether.app.dao.FileDAO;
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.dto.ProjectPagination;
 import lombok.extern.slf4j.Slf4j;
@@ -18,19 +19,31 @@ public class projectServiceTests {
     @Autowired
     private ProjectService projectService;
 
-    @Test
-    public void getListTest() {
-        ProjectPagination projectPagination = new ProjectPagination();
-        projectPagination.setPage(1);
-        projectService.getList(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
-    }
+    @Autowired
+    private FileDAO fileDAO;
+
+
+//    @Test
+//
+//    void getListTest() {
+//        ProjectPagination projectPagination = new ProjectPagination();
+//        projectPagination.setPage(1);
+//        projectService.getList(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
+//    }
+
 //    @Test
 //    public void findByIdTest() {
 //        projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
 //    }
 
+//    @Test
+//    void findByIdTest() {
+//        projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
+//    }
+
+
     @Test
-    public void writeTest(){
+    void writeTest(){
         ProjectDTO projectDTO = new ProjectDTO();
         projectDTO.setId(1L);
         projectDTO.setMemberId(1L);
@@ -47,6 +60,7 @@ public class projectServiceTests {
         projectService.write(projectDTO);
     }
 
+
 //    @Test
 //    public void modifyTest() {
 //        Optional<ProjectDTO> foundProject = projectService.getProject(20L);
@@ -59,6 +73,20 @@ public class projectServiceTests {
 //        } else {
 //        }
 //    }
+
+//    @Test
+//    void modifyTest() {
+//        Optional<ProjectDTO> foundProject = projectService.getProject(20L);
+//        if (foundProject.isPresent()) {
+//            ProjectDTO projectDTO = foundProject.get();
+//            projectDTO.setProjectTitle("제에목수정");
+//            projectService.modify(projectDTO);
+//            foundProject = projectService.getProject(20L);
+//            foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제에목수정"));
+//        } else {
+//        }
+//    }
+
 
 //    @Test
 //    public void removeTest() {

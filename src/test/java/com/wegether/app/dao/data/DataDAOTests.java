@@ -51,6 +51,7 @@ public class DataDAOTests {
 //        List<DataDTO> dataDTOS = dataDAO.findAll(dataPagination);
 //        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
 
+<<<<<<< HEAD
 //    }
 //@Test
 //    public void findAllTest(){
@@ -81,6 +82,9 @@ public class DataDAOTests {
 
 
 
+=======
+    }
+>>>>>>> master
 
 
     //총 개수
