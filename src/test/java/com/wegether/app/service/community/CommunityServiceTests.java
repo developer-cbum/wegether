@@ -138,7 +138,7 @@ public class CommunityServiceTests {
 
     @Test
     public void removeTest() {
-        communityService.remove(5L);
+        communityService.remove(68L);
     }
 
     @Test

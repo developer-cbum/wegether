@@ -449,9 +449,36 @@
                 </div>
             </div>
         </div>
+    <!-- 모달 부분 -->
+<!--    <div class="modal">-->
+<!--        <div class="warn-modal">-->
+<!--            <div id="content-wrap"></div>-->
+<!--        </div>-->
+<!--    </div>-->
     <footer th:replace="~{/fix/footer :: #footer}"></footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!--    모달 js    -->
+<!--    <script>-->
+<!--        let modalCheck;-->
+<!--        function showWarnModal(modalMessage) {-->
+<!--            modalCheck = false;-->
+<!--            $('div#content-wrap').html(modalMessage);-->
+<!--            $('div.warn-modal').css('animation', 'popUp 0.5s');-->
+<!--            $('div.modal').css('display', 'flex').hide().fadeIn(500);-->
+<!--            setTimeout(function () {-->
+<!--                modalCheck = true;-->
+<!--            }, 500);-->
+<!--        }-->
+
+<!--        $('div.modal').on('click', function () {-->
+<!--            if (modalCheck) {-->
+<!--                $('div.warn-modal').css('animation', 'popDown 0.5s');-->
+<!--                $('div.modal').fadeOut(500);-->
+<!--            }-->
+<!--        });-->
+
+<!--    </script>-->
     <script src="js/community/community-reply.js"></script>
     <script>
 
