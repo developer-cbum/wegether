@@ -24,9 +24,6 @@ public class ProjectDTO{
     private int projectTotalPersonnel;
 
 
-
-
-
 //    private List<ProjectFileDTO> files = new ArrayList<>();
 //    private List<Long> fileIdsForDelete = new ArrayList<>();
 

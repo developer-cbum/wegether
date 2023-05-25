@@ -9,10 +9,11 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class CardDTO {
     private Long id;
-    private String cardNumber;
-    private String cardBirthDate;
-    private String cardPassword;
-    private String cardRegisterDate;
     private Long memberId;
+    private String cardNumber;
+    private String cardExpireDate;
+    private String cardPassword;
+    private String memberBirthDate;
+    private String cardRegisterDate;
     private String memberName;
 }
