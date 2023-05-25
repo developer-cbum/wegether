@@ -48,10 +48,9 @@
                             }
                         })
 
-                        return;
-                    } else if ((memberVO.memberLoginStatus == 'WEGERTHER'
-                        || memberVO.memberLoginStatus == 'KAKAO')
-                    ) {
+                    }
+
+                    if (memberVO !=null && (memberVO.memberLoginStatus =='WEGETHER' || memberVO.memberLoginStatus=='KAKAO')){console.log("들어옴")
                         location.href = "/accounts/login?status=false";
                     }
                 }

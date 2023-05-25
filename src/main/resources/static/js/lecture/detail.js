@@ -12,12 +12,15 @@ let text ="";
           <div class="school-summary">
             <div class="school-img-con">
             `
-lecture.files.forEach(file => {
-    if (file.fileName == "title.jpg") {
+lecture.files.forEach((file) => {
+    let check = file.fileName.split(".")[0].slice(-1);
+        console.log(check);
+    if(check == 1){
         text += `
-          <img src="/files/display?fileName=${file.filePath}/${file.fileUuid}_${file.fileName}" height="390" width="540"/>
+          <img src="/lecture-files/display?fileName=${file.filePath}/${file.fileUuid}_${file.fileName}" height="390" width="540"/>
           `
     }
+
 })
     
   text+=`
@@ -60,9 +63,11 @@ lecture.files.forEach(file => {
 
 
             lecture.files.forEach(file => {
-    if (file.fileName == "content.png") {
+                let check = file.fileName.split(".")[0].slice(-1);
+    if (check == 2) {
+
         text += `
-          <img src="/files/display?fileName=${file.filePath}/${file.fileUuid}_${file.fileName}" style="
+          <img src="/lecture-files/display?fileName=${file.filePath}/${file.fileUuid}_${file.fileName}" style="
                   width: 800px;
                   display: block;
                   vertical-align: top;
