@@ -45,7 +45,6 @@ public class projectServiceTests {
     @Test
     void writeTest(){
         ProjectDTO projectDTO = new ProjectDTO();
-        projectDTO.setId(1L);
         projectDTO.setMemberId(1L);
         projectDTO.setProjectTitle("제목입니다");
         projectDTO.setProjectIntroducing("소개글입니다");

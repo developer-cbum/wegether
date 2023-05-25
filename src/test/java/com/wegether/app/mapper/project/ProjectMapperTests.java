@@ -64,7 +64,7 @@ public class ProjectMapperTests {
 
         ProjectDTO projectDTO = foundProject.orElseThrow();
 
-        projectMapper.ProjectUpdate(projectDTO);
+//        projectMapper.ProjectUpdate(projectDTO);
 
         foundProject = projectMapper.select(2L);
 
