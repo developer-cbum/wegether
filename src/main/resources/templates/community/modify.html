@@ -20,8 +20,11 @@
             type="text/css"
             href="https://static.wadiz.kr/studio/funding/static/css/6.eb91f874.chunk.css"
     />
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
 </head>
 <body>
+<header th:replace="~{/fix/header :: #header}"></header>
 <div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
 <div id="root">
     <div id="AppLayout_Container" class="AppLayout_container__3zbzb">
@@ -42,7 +45,7 @@
                             </div>
                         </div>
                         <form
-                                class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
+                                class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU writeForm"
                                 th:action="@{/community/modify}" method="post" th:object="${community}">
                             <input type="hidden" th:field="${community.id}" th:value="${community.id}">
                             <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
@@ -59,7 +62,7 @@
                                     <div class="TextField_textField__23rCe TextField_md__2zsQn">
                                         <label></label>
                                         <div class="TextField_field__1E9vt">
-                                            <input th:field="${community.communityTitle}" th:value="${community.communityTitle}" placeholder="제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
+                                            <input th:field="${community.communityTitle}" th:value="${community.communityTitle}" placeholder="제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6" id="title-area"/>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +80,7 @@
                                     <div class="TextField_textField__23rCe TextField_md__2zsQn">
                                         <label></label>
                                         <div class="TextField_field__1E9vt">
-                                            <input th:field="${community.communitySubtitle}" th:value="${community.communitySubtitle}" placeholder="소제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>
+                                            <input th:field="${community.communitySubtitle}" th:value="${community.communitySubtitle}" placeholder="소제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6" id="sub-title-area"/>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +163,7 @@
                                             <div class="wide column-2"></div>
                                             <div class="wide column-4">
                                                 <div class="wz input">
-                                                    <textarea th:field="${community.communityContent}" th:value="${community.communityContent}" placeholder="내용 입력"></textarea>
+                                                    <textarea th:field="${community.communityContent}" th:value="${community.communityContent}" placeholder="내용 입력" id="textarea"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -170,10 +173,9 @@
                             <div class="StoryEditorForComingWrapper_container__1cngW"></div>
                             <div class="FundingStoryContainer_btnWrapper__32tvJ">
                                 <button
-                                        class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_lg__3vRQD"
-                                        type="submit"
+                                        class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_lg__3vRQD ok-button"
+                                        type="button"
                                         style="width: 100%"
-                                        onclick="check()"
                                 >
                                     <span><span class="Button_children__q9VCZ">저장하기</span></span>
                                 </button>
@@ -195,6 +197,7 @@
         <div id="content-wrap"></div>
     </div>
 </div>
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
@@ -217,37 +220,29 @@
             $('div.modal').fadeOut(500);
         }
     });
-</script>
 
-<!-- 유효성 검사 -->
-<!-- 여기 부분 다른 곳 작업 끝나면 유효성 검사 추가 -->
-<script>
-    function check() {
-        // 제목 유효성 검사
-        if (document.registerForm.title.value == '') {
-            showWarnModal('제목을 입력해주세요');
-            document.registerForm.title.focus();
-            return;
+    $("#title-area").on('input', checkInput);
+    $("#sub-title-area").on('input', checkInput);
+    $("#textarea").on('input', checkInput);
+
+    /* 등록버튼 활성화 함수 */
+    function checkInput() {
+        if($("#title-area").val() && $("#sub-title-area").val() && $("#textarea").val()) {
+            console.log("활성화")
+            $('.ok-button').attr('disabled', false);
+        }else{
+            console.log("비활성화")
+            $('.ok-button').attr('disabled', 'disabled');
         }
 
-        // 소제목 유효성 검사
-        if (document.registerForm.subTitle.value == '') {
-            showWarnModal('소제목을 입력해주세요');
-            document.registerForm.subTitle.focus();
-            return;
-        }
+    }
 
-        // 내용 유효성 검사
-        if (document.registerForm.content.value == '') {
-            showWarnModal('내용을 입력해주세요');
-            document.registerForm.content.focus();
-            return;
-        }
+    $(".ok-button").on("click", function(){
         showWarnModal('저장이 완료되었습니다');
         setTimeout(function () {
-            document.registerForm.submit();
-        }, 2000);
-    }
+            $(".writeForm").submit();
+        }, 2500)
+    })
 </script>
 <script src="/js/community/list.js"></script>
 </html>

@@ -96,13 +96,17 @@ public class CommunityServiceImpl implements CommunityService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void remove(Long id) {
-        CommunityDTO communityDTO = communityDAO.findById(id).get();
-        fileDAO.communityFindAll(id).forEach(communityFileDTO ->
-                fileDAO.communityDelete(communityFileDTO.getId())
-        );
-        communityDAO.delete(id);
-//        replyDAO.deleteAll(id);
-        communityFileDAO.delete(id);
+        CommunityDTO communityDTO = new CommunityDTO();
+        communityDTO.getFiles().forEach(communityFileDTO -> {
+            communityFileDAO.delete(communityFileDTO.getCommunityId());
+        });
+//        CommunityDTO communityDTO = communityDAO.findById(id).get();
+//        fileDAO.communityFindAll(id).forEach(communityFileDTO ->
+//                fileDAO.communityDelete(communityFileDTO.getId())
+//        );
+//        communityDAO.delete(id);
+////        replyDAO.deleteAll(id);
+//        communityFileDAO.delete(id);
 
     }
 
