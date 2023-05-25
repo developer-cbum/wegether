@@ -11,6 +11,6 @@ public class LectureFileDTO {
     private String filePath;
     private String fileUuid;
     private String fileName;
-    private Long fileSize;
+    private Double fileSize;
     private String fileType;
 }
