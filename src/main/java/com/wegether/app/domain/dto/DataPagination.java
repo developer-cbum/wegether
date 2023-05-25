@@ -13,10 +13,10 @@ public class DataPagination {
     private boolean prev, next;
     private int total;
 
-    public void progress() {
+    public void progress(int pageCount) {
         this.page = page == null ? 1 : page;
         this.rowCount = 8;
-        this.pageCount = 5;
+        this.pageCount = pageCount;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
         this.startPage = endPage - pageCount + 1;

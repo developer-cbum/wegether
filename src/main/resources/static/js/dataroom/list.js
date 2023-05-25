@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    const $ul = $("#list-container");
+    const $list = $("#list-container");
     const $btnWrap = $(".searchMoreData");
     let page = 1;
     let order ="new";
@@ -81,10 +81,11 @@ $(document).ready(function () {
             `
         });
 
-        $ul.append(text);
+        $list.append(text);
     }
 
 
+    load("all");
 
 
 
@@ -110,24 +111,15 @@ $(document).ready(function () {
 
     $("#searchMoreData_btn").on("click", function(){
         // e.preventDefault();
-        // console.log(page);
         page++;
         load(page);
 
-        // if(page){
-        //
+        // if (page > total) {
+        //     showWarnModal('마지막 게시글입니다');
+        //     setTimeout(function () {
+        //         check();
+        //     }, 2000);
         // }
-    });
-
-
-
-
-    // category
-
-    load("all");
-
-    $(".all").click(function () {
-        load("all");
     });
 
 
@@ -135,6 +127,7 @@ $(document).ready(function () {
 
     $('.category_lists button').on("click", function () {
         // 클릭한 버튼 활성화
+        text="";
         $(this).addClass('ImageTab_active__BGdXu').parent().siblings()
             .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
 
@@ -164,20 +157,18 @@ $(document).ready(function () {
     //load ajax
     function load(categoryType) {
         $.ajax({
-            url: `/datas/${page}/${categoryType}/${order}`,
+            url: `/datas/list/${page}/${categoryType}/${order}`,
             contentType : "application/json; charset=UTF-8;",
             success:  function (datas) {
-                // text="";
-                $ul.html("");
+                text="";
+                $list.html("");
                 showList(datas);
+                console.log(datas);
                 console.log(page);
+                console.log(categoryType);
+                console.log(order);
 
-                // if (page > total) {
-                //     showWarnModal('마지막 게시글입니다');
-                //     setTimeout(function () {
-                //         check();
-                //     }, 2000);
-                // }
+
             }
         })
     }

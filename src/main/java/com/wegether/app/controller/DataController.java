@@ -44,13 +44,13 @@ public class DataController {
 
     //    자료 목록 - rest 시도 중 ..
     @ResponseBody
-    @GetMapping("{page}/{type}/{order}")
+    @GetMapping("list/{page}/{type}/{order}")
     public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type, @PathVariable String order){
-        final DataPagination dataPagination = new DataPagination();
+        DataPagination dataPagination = new DataPagination();
         CategoryType categoryType = new CategoryType();
-        dataPagination.setPage(page);
         dataPagination.setTotal(dataService.getTotal());
-        dataPagination.progress();
+        dataPagination.progress(8);
+        dataPagination.setPage(page);
         categoryType.setType(type);
         categoryType.setOrder(order);
        return dataService.getList(dataPagination, categoryType);
