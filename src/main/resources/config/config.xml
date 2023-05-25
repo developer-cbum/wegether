@@ -84,5 +84,8 @@
         <!--   5월 24일 김치윤 CommunityReplyVO     -->
         <typeAlias type="com.wegether.app.domain.vo.CommunityReplyVO" alias="communityReplyVO"/>
 
+
+<!--     5월 26일 추가   -->
+        <typeAlias type="com.wegether.app.domain.dto.ProfileMemberDTO" alias="profileMemberDTO"/>
     </typeAliases>
 </configuration>

@@ -17,4 +17,8 @@ public class ConsultReplyDTO {
     private Long memberId;
     private Long consultingId;
     private String memberNickname;
+    private Long fileId;
+    private String filePath;
+    private String fileUuid;
+    private String fileName;
 }
