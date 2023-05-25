@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/project/list.css">
+
+    <title>아이디 찾기 | 위게더</title>
+
+
+
+</head>
+<body>
+<header th:replace="~{/fix/header :: #header}"></header>
+<div id="page-container">
+    <!-- [S] Header -->
+    <!-- [E] Header -->
+
+    <!-- [S] Contents -->
+    <div id="wadizContainer">
+        <div id="mypageWrap" class="mypage">
+            <div class="myfunding-wrap">
+                <h2 class="mypage-top-title">만든 프로젝트</h2>
+
+                <div class="mypage-project bg">
+                    <div class="tab-list">
+                        <ul>
+                            <li class="active"><a href="/web/wmypage/myfunding/makinglist">전체</a></li>
+                            <li><a href="#">작성 중</a></li>
+                        </ul>
+                    </div>
+                    <div class="project-list">
+                        <div id="projectCardList" class="card-list pt50">
+                            <ul>
+                                <li class="reward">
+                                    <div class="visibility-control">
+                                        <button type="button" class="btn-more">
+                                            <i class="wadizicon wa-more-vert"></i>
+                                        </button>
+                                        <button type="button" class="btn-control" onclick="deletePrjt(214253)">
+                                            삭제
+                                        </button>
+                                    </div>
+
+
+                            <!-- empty -->
+                            <p id="emptyProjectText">
+                                만든 프로젝트가 없습니다.<br/>바로 신청해 보시겠어요?<br/><br/>
+                                <a href="/web/wsub/openfunding"
+                                ><strong>펀딩오픈 신청하기 <i class="wadizicon wa-chevron-right"></i></strong
+                                ></a>
+                            </p>
+                        </div>
+                        <!--  // .card-list -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [E] Contents -->
+
+    <!-- [S] Footer -->
+    <!-- [E] Footer -->
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/project/list.js"></script>
+</html>

@@ -43,18 +43,18 @@ public class DataController {
     public void goToList(){;}
 
     //    자료 목록 - rest 시도 중 ..
-    @ResponseBody
-    @GetMapping("computer-list/{page}/{type}")
-    public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type){
-        final DataPagination dataPagination = new DataPagination();
-        dataPagination.setPage(page);
-        dataPagination.progress();
-        dataPagination.setTotal(dataService.getTotal());
-        dataPagination.progress();
-        CategoryType categoryType = new CategoryType();
-        categoryType.setType(type);
-       return dataService.getList(dataPagination, categoryType);
-    }
+//    @ResponseBody
+//    @GetMapping("computer-list/{page}/{type}")
+//    public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type){
+//        final DataPagination dataPagination = new DataPagination();
+//        dataPagination.setPage(page);
+//        dataPagination.progress();
+//        dataPagination.setTotal(dataService.getTotal());
+//        dataPagination.progress();
+//        CategoryType categoryType = new CategoryType();
+//        categoryType.setType(type);
+//       return dataService.getList(dataPagination, categoryType);
+//    }
 //    @GetMapping("list/{postId}/{page}")
 //    public List<ReplyDTO> getList(@PathVariable int page, @PathVariable Long postId){
 //        final Pagination pagination = new Pagination();

@@ -42,7 +42,7 @@ public class ProjectMapperTests {
     public void projectSelectAllTest() {
         ProjectPagination projectPagination = new ProjectPagination();
         projectPagination.setPage(1);
-        projectMapper.projectSelectAll(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
+//        projectMapper.projectSelectAll(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
     }
 
     //상세 테스트

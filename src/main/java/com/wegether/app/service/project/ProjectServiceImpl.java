@@ -25,13 +25,16 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectFileDAO projectFileDAO;
 
 
+    // 프로젝트 목록
+    @Override
+    public List<ProjectDTO> getList(ProjectPagination projectPagination) {
+        return projectDAO.projectFindAll(projectPagination);
+    }
 
+    // 프로젝트 총 갯수
 
-//    @Override
-//    public List<ProjectDTO> getList(ProjectPagination projectPagination) {
-//        return projectDAO.projectFindAll(projectPagination);
-//    }
-//
+    public int getProjectTotal() { return projectDAO.findCountOfProject(); }
+
 //    @Override
 //    public void write(ProjectDTO projectDTO) {
 //        projectDAO.projectSave(projectDTO);
@@ -58,43 +61,43 @@ public class ProjectServiceImpl implements ProjectService {
 //        return projectDAO.findCountOfProject();
 //    }
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public List<ProjectDTO> getList(ProjectPagination projectPagination, CategoryType categoryType) {
-        final List<ProjectDTO> projectS = projectDAO.projectFindAll(projectPagination, categoryType);
-        projectS.forEach(project -> project.setFiles(fileDAO.projectFindAll(project.getId())));
-        return projectS;
-    }
+//    @Override
+//    @Transactional(rollbackFor = Exception.class)
+//    public List<ProjectDTO> getList(ProjectPagination projectPagination, CategoryType categoryType) {
+//        final List<ProjectDTO> projectS = projectDAO.projectFindAll(projectPagination, categoryType);
+//        projectS.forEach(project -> project.setFiles(fileDAO.projectFindAll(project.getId())));
+//        return projectS;
+//    }
 
-    //    자료 등록 - 파일
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void write(ProjectDTO projectDTO) {
-        projectDAO.projectSave(projectDTO);
-        for(int i=0; i<projectDTO.getFiles().size(); i++){
-            projectDTO.getFiles().get(i).setProjectId(projectDTO.getId());
-            projectDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
-            fileDAO.save(projectDTO.getFiles().get(i));
-        }
-        projectDTO.getFiles().forEach(projectFileDTO ->
-        { ProjectFileVO projectFileVO = new ProjectFileVO();
-            projectFileVO.setId(projectFileDTO.getId());
-            projectFileVO.setProjectId(projectFileDTO.getProjectId());
-            projectFileDAO.save(projectFileVO);
-        });
-    }
+//    //    자료 등록 - 파일
+//    @Override
+//    @Transactional(rollbackFor = Exception.class)
+//    public void write(ProjectDTO projectDTO) {
+//        projectDAO.projectSave(projectDTO);
+//        for(int i=0; i<projectDTO.getFiles().size(); i++){
+//            projectDTO.getFiles().get(i).setProjectId(projectDTO.getId());
+//            projectDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+//            fileDAO.save(projectDTO.getFiles().get(i));
+//        }
+//        projectDTO.getFiles().forEach(projectFileDTO ->
+//        { ProjectFileVO projectFileVO = new ProjectFileVO();
+//            projectFileVO.setId(projectFileDTO.getId());
+//            projectFileVO.setProjectId(projectFileDTO.getProjectId());
+//            projectFileDAO.save(projectFileVO);
+//        });
+//    }
 
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public Optional<ProjectDTO> read(Long id) {
-        final Optional<ProjectDTO> foundProject = projectDAO.findById(id);
-        if (foundProject.isPresent()) {
-            foundProject.get().setFiles(fileDAO.projectFindAll(foundProject.get().getId()));
-        }
-        return foundProject;
-    }
-
+//    @Override
+//    @Transactional(rollbackFor = Exception.class)
+//    public Optional<ProjectDTO> read(Long id) {
+//        final Optional<ProjectDTO> foundProject = projectDAO.findById(id);
+//        if (foundProject.isPresent()) {
+//            foundProject.get().setFiles(fileDAO.projectFindAll(foundProject.get().getId()));
+//        }
+//        return foundProject;
+//    }
+//
     @Override
     public int getTotal() {
         return projectDAO.findCountOfProject();
