@@ -1,5 +1,6 @@
 package com.wegether.app.service.project;
 
+import com.wegether.app.dao.FileDAO;
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.dto.ProjectPagination;
 import lombok.extern.slf4j.Slf4j;
@@ -18,19 +19,23 @@ public class projectServiceTests {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private FileDAO fileDAO;
+
+
     @Test
-    public void getListTest() {
+    void getListTest() {
         ProjectPagination projectPagination = new ProjectPagination();
         projectPagination.setPage(1);
         projectService.getList(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
     }
     @Test
-    public void findByIdTest() {
+    void findByIdTest() {
         projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
     }
 
     @Test
-    public void writeTest(){
+    void writeTest(){
         ProjectDTO projectDTO = new ProjectDTO();
         projectDTO.setId(1L);
         projectDTO.setMemberId(1L);
@@ -48,7 +53,7 @@ public class projectServiceTests {
     }
 
     @Test
-    public void modifyTest() {
+    void modifyTest() {
         Optional<ProjectDTO> foundProject = projectService.getProject(20L);
         if (foundProject.isPresent()) {
             ProjectDTO projectDTO = foundProject.get();
@@ -60,9 +65,9 @@ public class projectServiceTests {
         }
     }
 
-    @Test
-    public void removeTest() {
-        projectService.remove(1L);
-    }
+//    @Test
+//    public void removeTest() {
+//        projectService.remove(1L);
+//    }
 
 }

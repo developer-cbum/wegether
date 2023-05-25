@@ -2,6 +2,7 @@ package com.wegether.app.mapper;
 
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.dto.ProjectPagination;
+import com.wegether.app.domain.type.CategoryType;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface ProjectMapper {
 
 
     // 프로젝트 목록
-    public List<ProjectDTO> projectSelectAll(ProjectPagination projectPagination);
+    public List<ProjectDTO> projectSelectAll(ProjectPagination projectPagination, CategoryType categoryType);
 
     // 프로젝트 등록
     public void projectInsert(ProjectDTO projectDTO);

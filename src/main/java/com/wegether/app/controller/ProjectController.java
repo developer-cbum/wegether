@@ -3,6 +3,7 @@ package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.dto.ProjectPagination;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.ProjectVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.project.ProjectService;
@@ -17,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.bind.annotation.*;
 
-
-
+import java.util.List;
 
 
 @Controller
@@ -29,23 +29,32 @@ public class ProjectController {
     private final ProjectService projectService;
     private final AccountService accountService;
 
-
     @GetMapping("main")
-    public void list(ProjectPagination projectPagination, Model model) {
+    public void List(){}
+
+    @ResponseBody
+    @GetMapping("(computer-list/{page}/{type}")
+    public List<ProjectDTO> list(@PathVariable int page, @PathVariable String type){
+        final ProjectPagination projectPagination = new ProjectPagination();
+        projectPagination.setPage(page);
+        projectPagination.progress();
         projectPagination.setTotal(projectService.getTotal());
         projectPagination.progress();
-        model.addAttribute("project", projectService.getList(projectPagination));
+        CategoryType categoryType = new CategoryType();
+        categoryType.setType(type);
+        return projectService.getList(projectPagination, categoryType);
     }
 
+
+
     @GetMapping("write")
-    public void goToRegisterForm(ProjectDTO projectDTO, Model model) {
-        ;
-    }
+    public void goToRegisterForm(ProjectDTO projectDTO, Model model) {}
+
 
     @PostMapping("write")
     public RedirectView register(ProjectDTO projectDTO) {
         projectService.write(projectDTO);
-        return new RedirectView("/project/studio/write/baseinfo");
+        return new RedirectView("/project/write/baseinfo");
     }
 
 
