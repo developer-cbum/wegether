@@ -39,8 +39,11 @@
             type="text/css"
             href="https://static.wadiz.kr/main/css/reward-community.bb8838fc.chunk.css"
         />
+        <link rel="stylesheet" href="/css/fix/footer.css">
+        <link rel="stylesheet" href="/css/fix/header.css">
     </head>
     <body style="font-family: Pretendard;">
+    <header th:replace="~{/fix/header :: #header}"></header>
         <div id="page-container" style="overflow-y: hidden">
             <div id="et-boc" class="et-boc">
                 <div id="et-main-area">
@@ -78,13 +81,13 @@
                                 </div>
                                 <div class="et_pb_section et_pb_section_1_tb_body et_section_regular">
                                     <div class="et_pb_row et_pb_row_1_tb_body"
-                                         style="margin-left: 955px;">
+                                         style="margin-left: 398px;">
                                         <!-- 내용 부분 -->
                                         <div
                                             class="et_pb_column et_pb_column_4_4 et_pb_column_1_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
                                         >
-                                            <div class="et_pb_with_border et_pb_module et_pb_post_content et_pb_post_content_0_tb_body">
-                                                <th:block th:text="${community.communityContent}"></th:block>
+                                            <div class="et_pb_with_border et_pb_module et_pb_post_content et_pb_post_content_0_tb_body" style="text-align: center;">
+                                                <pre style="font-family: Pretendard,Apple SD Gothic Neo,Segoe UI,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,-apple-system,blinkmacsystemfont,sans-serif;"><th:block th:text="${community.communityContent}"></th:block></pre>
                                             </div>
                                             <div
                                                 class="et_pb_with_border et_pb_module et_pb_text et_pb_text_1_tb_body et_pb_text_align_left et_pb_bg_layout_light"
@@ -98,7 +101,7 @@
                                             class="et_pb_column et_pb_column_4_4 et_pb_column_2_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
                                         ></div>
                                     </div>
-                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px; margin-left: 572px;">
+                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px; margin-left: 59rem;">
                                         <div
                                             class="et_pb_column et_pb_column_1_2 et_pb_column_3_tb_body et_pb_css_mix_blend_mode_passthrough"
                                         >
@@ -446,8 +449,36 @@
                 </div>
             </div>
         </div>
+    <!-- 모달 부분 -->
+<!--    <div class="modal">-->
+<!--        <div class="warn-modal">-->
+<!--            <div id="content-wrap"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <footer th:replace="~{/fix/footer :: #footer}"></footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!--    모달 js    -->
+<!--    <script>-->
+<!--        let modalCheck;-->
+<!--        function showWarnModal(modalMessage) {-->
+<!--            modalCheck = false;-->
+<!--            $('div#content-wrap').html(modalMessage);-->
+<!--            $('div.warn-modal').css('animation', 'popUp 0.5s');-->
+<!--            $('div.modal').css('display', 'flex').hide().fadeIn(500);-->
+<!--            setTimeout(function () {-->
+<!--                modalCheck = true;-->
+<!--            }, 500);-->
+<!--        }-->
+
+<!--        $('div.modal').on('click', function () {-->
+<!--            if (modalCheck) {-->
+<!--                $('div.warn-modal').css('animation', 'popDown 0.5s');-->
+<!--                $('div.modal').fadeOut(500);-->
+<!--            }-->
+<!--        });-->
+
+<!--    </script>-->
     <script src="js/community/community-reply.js"></script>
     <script>
 
@@ -475,6 +506,7 @@
         let communityId = [[${community.id}]]
         let files = [[${community.files}]]
         let total = [[${total}]]
+        let basicTotal = [[${basicReplyTotal}]];
     </script>
     <script src="/js/community/detail.js"></script>
     <script src="/js/community/community-reply.js"></script>
