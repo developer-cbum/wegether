@@ -44,29 +44,23 @@ public class DataController {
 
     //    자료 목록 - rest 시도 중 ..
     @ResponseBody
-    @GetMapping("computer-list/{page}/{type}")
-    public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type){
+    @GetMapping("{page}/{type}/{order}")
+    public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type, @PathVariable String order){
         final DataPagination dataPagination = new DataPagination();
+        CategoryType categoryType = new CategoryType();
         dataPagination.setPage(page);
-        dataPagination.progress();
         dataPagination.setTotal(dataService.getTotal());
         dataPagination.progress();
-        CategoryType categoryType = new CategoryType();
         categoryType.setType(type);
+        categoryType.setOrder(order);
        return dataService.getList(dataPagination, categoryType);
     }
-//    @GetMapping("list/{postId}/{page}")
-//    public List<ReplyDTO> getList(@PathVariable int page, @PathVariable Long postId){
-//        final Pagination pagination = new Pagination();
-//        pagination.setPage(page);
-//        pagination.progress();
-//        return replyService.getList(postId, pagination);
-//    }
 
 
     //    자료 상세
     @GetMapping("detail")
-    public void read(@RequestParam Long id, Model model){
+    public void read(@RequestParam Long id, Model model, DataDTO dataDTO){
+        dataService.modifyViewCountUp(dataDTO.getId());
         model.addAttribute("dataDTO", dataService.read(id).get());
     }
 

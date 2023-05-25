@@ -42,7 +42,7 @@ public class FileController {
             uploadFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
             if(uploadFiles.get(i).getContentType().startsWith("image")){
                 FileOutputStream out = new FileOutputStream(new File(path, "t_" + uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
-                Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, 100, 100);
+                Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, 267, 267);
                 out.close();
             }
         }
