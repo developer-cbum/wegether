@@ -18,7 +18,7 @@ public class projectServiceTests {
     @Autowired
     private ProjectService projectService;
 
-    @Test
+//    @Test
 //    public void getListTest() {
 //        ProjectPagination projectPagination = new ProjectPagination();
 //        projectPagination.setPage(1);

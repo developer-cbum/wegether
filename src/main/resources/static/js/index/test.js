@@ -26,6 +26,7 @@ $(document).ready(function() {
 
     $(".preview").css({
         "width": "30%",
-        "height": "100px"
+        "height": "100px",
+        "margin-bottom": "50px"
     });
 });

@@ -31,7 +31,7 @@
             <div class="DesktopSearchResult_headContainer__1hnOM">
                 <div class="DesktopSearchResult_keyword__13uuG">00</div>
                 <h2>검색결과</h2>
-                <div class="DesktopSearchResult_number__kryRO">000</div>
+                <div class="DesktopSearchResult_number__kryRO"><br><th:block th:text="${mainPagination.total}"></th:block></div>
                 <div class="DesktopSearchResult_unit__24BC1">개</div>
             </div>
             <!-- 카테고리란 -->
@@ -92,7 +92,7 @@
             <div>
                 <div>
                     <div>
-                        <div id="project-search" style="display: flex; flex-wrap:wrap; justify-content: center; margin-left:150px">
+                        <div id="project-search" style="display: flex; flex-wrap:wrap; justify-content: center; margin-left:150px; margin-bottom:100px">
 
                         </div>
                     </div>
@@ -160,4 +160,5 @@
     console.log(mainPagination);
 </script>
 <script src="/js/index/test.js"></script>
+<script src="/js/index/pagingts.js"></script>
 </html>
