@@ -2,7 +2,9 @@ package com.wegether.app.dao;
 
 
 import com.wegether.app.domain.dto.MainDTO;
+import com.wegether.app.domain.dto.MainPagination;
 import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.Search;
 import com.wegether.app.domain.vo.NoticeVO;
 import com.wegether.app.mapper.MainMapper;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,17 @@ public class MainDAO {
 
     public List<MainDTO> mainDRFindAll(){ return mainMapper.mainDRSelectAll();};
 
-    public List<MainDTO> mainSPFindAll(){ return mainMapper.searchPSelectAll();};
+    // 프로젝트 전체 목록
+    public List<MainDTO> mainSPFindAll(MainPagination mainPagination){ return mainMapper.searchPSelectAll(mainPagination);};
+
+    // 프로젝트 총 갯수
+    public int findCountOfProject(){return mainMapper.selectCountOfProject(); }
+
+//    자료실 전체 목록
+    public List<MainDTO> mainSDFindAll(MainPagination mainPagination) { return mainMapper.searchDSelectAll(mainPagination);};
+
+//    자료실 총 갯수
+    public int findCountOfData(){return mainMapper.selectCountOfData();}
+
 }
 

@@ -2830,3 +2830,36 @@ body.fb_hidden {
     color: #00BBFF;
 }
 
+div#paging-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.pages {
+    padding: 30px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1rem;
+}
+
+a.paging {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+a.paging-checked {
+    color: #0c48dc;
+    font-weight: 700;
+}
+
+a.paging-move {
+    margin: 0px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
