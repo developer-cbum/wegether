@@ -24,6 +24,7 @@ public class projectServiceTests {
 
 
     @Test
+
     void getListTest() {
         ProjectPagination projectPagination = new ProjectPagination();
         projectPagination.setPage(1);
