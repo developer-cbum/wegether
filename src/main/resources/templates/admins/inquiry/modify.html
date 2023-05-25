@@ -10,11 +10,19 @@
     <link rel="stylesheet" href="/css/admin/admin_board.css">
     <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
     <link rel="stylesheet" href="/css/admin/admin_common.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
     <link rel="icon" href="/image/logo/favicon.png">
 
 </head>
 
     <body>
+        <!-- 모달 부분 -->
+        <div class="modal">
+            <div class="warn-modal">
+                <div id="content-wrap"></div>
+            </div>
+        </div>
+
         <div>
             <div class="info-title-box info-title-box-flex">
                 <div class="logo-box-layout">
@@ -92,7 +100,7 @@
                                         <hr>
                                         <!-- 등록 내용 -->
                                         <div>
-                                            <textarea th:field="${answerModifyBoards.answerContent}" class="board-content" name="answerContent"></textarea>
+                                            <textarea th:field="${answerModifyBoards.answerContent}" class="board-content" id="answerContent" name="answerContent"></textarea>
                                         </div>
                                         <hr>
                                         <div>
@@ -110,14 +118,27 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
+    <script src="/js/admin/modal.js"></script>
     <script>
         let answerModifyBoards = [[${answerModifyBoards}]];
         console.log(answerModifyBoards);
     </script>
     <script>
+
         $("button.btn_done").on("click", function(){
-            $(answerModifyForm).submit();
+
+            if($("#answerContent").val() == "") {
+                showWarnModal("답변 내용을 입력해주세요.");
+                $("#answerContent").focus();
+                return false;
+            };
+            showWarnModal("수정 되었습니다.");
+            setTimeout(function () {
+                $("#answerModifyForm").submit();
+            }, 1500);
         });
+
+
     </script>
 
 </html>

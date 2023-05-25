@@ -7,7 +7,7 @@ $(document).ready(function(){
         text += `
             <tr>
                 <td class="checkbox-line">
-                    <input type="checkbox" class="noticeCheckbox" name="check" value=${notice.id}/>
+                    <input type="checkbox" class="noticeCheckbox" name="check" value=${notice.id}>
                 </td>
                 <td>${notice.id}</td>
                 <td>

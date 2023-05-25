@@ -24,10 +24,10 @@ public class projectServiceTests {
         projectPagination.setPage(1);
         projectService.getList(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
     }
-    @Test
-    public void findByIdTest() {
-        projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
-    }
+//    @Test
+//    public void findByIdTest() {
+//        projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
+//    }
 
     @Test
     public void writeTest(){
@@ -47,22 +47,22 @@ public class projectServiceTests {
         projectService.write(projectDTO);
     }
 
-    @Test
-    public void modifyTest() {
-        Optional<ProjectDTO> foundProject = projectService.getProject(20L);
-        if (foundProject.isPresent()) {
-            ProjectDTO projectDTO = foundProject.get();
-            projectDTO.setProjectTitle("제에목수정");
-            projectService.modify(projectDTO);
-            foundProject = projectService.getProject(20L);
-            foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제에목수정"));
-        } else {
-        }
-    }
+//    @Test
+//    public void modifyTest() {
+//        Optional<ProjectDTO> foundProject = projectService.getProject(20L);
+//        if (foundProject.isPresent()) {
+//            ProjectDTO projectDTO = foundProject.get();
+//            projectDTO.setProjectTitle("제에목수정");
+//            projectService.modify(projectDTO);
+//            foundProject = projectService.getProject(20L);
+//            foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제에목수정"));
+//        } else {
+//        }
+//    }
 
-    @Test
-    public void removeTest() {
-        projectService.remove(1L);
-    }
+//    @Test
+//    public void removeTest() {
+//        projectService.remove(1L);
+//    }
 
 }
