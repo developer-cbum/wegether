@@ -2,6 +2,7 @@ package com.wegether.app.mapper;
 
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.MemberDTO;
+import com.wegether.app.domain.dto.ProfileMemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,7 +32,8 @@ public interface MemberMapper {
     //아이디 찾기 세션으로
     public Optional<MemberVO> selectById(Long id);
 
-
+//   프로필 포함 아이디 조회
+    public Optional<ProfileMemberDTO> selectIdAndProfile(Long id);
 
 
 
