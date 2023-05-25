@@ -1,19 +1,13 @@
 $(document).ready(function () {
 
-    let dataPagination = 1;
     const $ul = $("#list-container");
-    let text = "";
+    const $btnWrap = $(".searchMoreData");
+    let page = 1;
     let order ="new";
     let categoryType= "all";
 
-    load("all");
 
-    $(".all").click(function () {
-        load("all");
-    });
-
-
-
+    let text = "";
     function showList(datas) {
         datas.forEach(data => {
             text += `
@@ -28,12 +22,12 @@ $(document).ready(function () {
             data.files.forEach(file => {
                 if (file.fileType == "REPRESENTATIVE") {
                     text += `
-                                <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
-                                    <div aria-hidden="true"
-                                        class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
-                                        style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
-                                     </div>
-                                </div>`;
+                        <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
+                            <div aria-hidden="true"
+                                class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
+                             </div>
+                        </div>`;
                 }
             })
 
@@ -54,7 +48,7 @@ $(document).ready(function () {
                                   <div class="ParticipantScore_container__JH3e_">
                                      <div class="ParticipantScore_peopleIcon__22zg8"></div>
                                      <span class="ParticipantScore_peopleCountText__1oHUl"> ${data.dataReadCount}
-                                        참여</span>
+                                        조회</span>
                                   </div>
                                </div>
                             </div>
@@ -84,13 +78,115 @@ $(document).ready(function () {
                    </svg>
                 </button>
             </div>
-        `
+            `
         });
 
         $ul.append(text);
     }
 
 
+
+
+
+
+    //  page
+    let modalCheck;
+    function showWarnModal(modalMessage) {
+        modalCheck = false;
+        $('div#content-wrap').html(modalMessage);
+        $('div.warn-modal').css('animation', 'popUp 0.5s');
+        $('div.modal').css('display', 'flex').hide().fadeIn(500);
+        setTimeout(function () {
+            modalCheck = true;
+        }, 500);
+    }
+
+    $('div.modal').on('click', function () {
+        if (modalCheck) {
+            $('div.warn-modal').css('animation', 'popDown 0.5s');
+            $('div.modal').fadeOut(500);
+        }
+    });
+
+    $("#searchMoreData_btn").on("click", function(){
+        // e.preventDefault();
+        // console.log(page);
+        page++;
+        load(page);
+
+        // if(page){
+        //
+        // }
+    });
+
+
+
+
+    // category
+
+    load("all");
+
+    $(".all").click(function () {
+        load("all");
+    });
+
+
+
+
+    $('.category_lists button').on("click", function () {
+        // 클릭한 버튼 활성화
+        $(this).addClass('ImageTab_active__BGdXu').parent().siblings()
+            .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
+
+        categoryType = $(this).attr('id');
+        load(categoryType);
+    });
+
+
+
+
+    //  sort_list
+
+    $('.new').on("click", function () {
+        $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
+        order="new";
+        load(categoryType);
+    })
+
+    $('.trand').on("click", function () {
+        $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
+        order="trand";
+        load(categoryType);
+    })
+
+
+
+    //load ajax
+    function load(categoryType) {
+        $.ajax({
+            url: `/datas/${page}/${categoryType}/${order}`,
+            contentType : "application/json; charset=UTF-8;",
+            success:  function (datas) {
+                // text="";
+                $ul.html("");
+                showList(datas);
+                console.log(page);
+
+                // if (page > total) {
+                //     showWarnModal('마지막 게시글입니다');
+                //     setTimeout(function () {
+                //         check();
+                //     }, 2000);
+                // }
+            }
+        })
+    }
+
+
+
+    //TOP btn
+    var button = $(".FloatingTopButton_pageTop__2gqm9");
+    button.hide();
 
     //TOP btn offset Show Hide
     $(window).scroll(function () {
@@ -100,81 +196,6 @@ $(document).ready(function () {
             button.fadeOut();
         }
     });
-
-
-    //sort btns
-    $('.OrderSelectDesktop_sortItem__12TKi').click(function () {
-        //   클릭한 버튼 활성화
-        $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
-    });
-
-
-    // 카테고리
-    $('.category_lists button').click(function () {
-        // 클릭한 버튼 활성화
-        $(this).addClass('ImageTab_active__BGdXu').parent().siblings()
-            .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
-    });
-
-    let type = searchParam('type');
-    // let href = window.location.href
-    // $(".fAzCXd a").removeClass("eWDpEZ").addClass("ehJwom");
-
-        if (type == null) {
-            $(".all").addClass('ImageTab_active__BGdXu').parent().siblings()
-                .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
-        } else {
-            $("." + type).addClass('ImageTab_active__BGdXu').parent().siblings()
-                .find('.ImageTab_tab__3siCY').removeClass('ImageTab_active__BGdXu');
-        }
-
-
-    function searchParam(key) {
-        return new URLSearchParams(location.search).get(key);
-    };
-
-    $('.RecentView_container__1boAT').on("click", function () {
-        history.replaceState({}, null, location.pathname);
-    });
-
-
-    $('.category_lists button').on("click", function () {
-        categoryType = $(this).attr('id');
-        load(categoryType);
-    })
-
-    //버튼 효과주기
-    $('.new').on("click", function () {
-        $(this).removeClass('OrderSelectDesktop_active__YTP2K');
-        $(this).addClass('OrderSelectDesktop_active__YTP2K');
-        order="new";
-
-        load(categoryType);
-    })
-
-    $('.trand').on("click", function () {
-        $(this).addClass('OrderSelectDesktop_active__YTP2K');
-        order="trand";
-        load(categoryType);
-    })
-
-
-    function load(categoryType) {
-        $.ajax({
-            url: `/datas/computer-list/1/${categoryType}/${order}`,
-            contentType : "application/json; charset=UTF-8;",
-            success:  function (datas) {
-                text="";
-                $ul.html("");
-                showList(datas)
-            }
-        })
-    }
-
-
-    //TOP btn
-    var button = $(".FloatingTopButton_pageTop__2gqm9");
-    button.hide();
 
     // TOP 버튼 클릭시 페이지 위로 이동
     button.click(function () {

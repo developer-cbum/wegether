@@ -927,6 +927,21 @@ ul, li {
 /* category list */
 
 
+/* more btn */
+.searchMoreData {width: 100%;}
+.searchMoreData #searchMoreData_btn {
+    font-weight: 700;
+    width: 50%;
+    display: block;
+    padding: 15px 30px;
+    margin: 0 auto;
+    border-radius: 6px;
+    border: 1px solid #0ab2e7;
+    /* background-color: #0ab2e7; */
+    color: #0ab2e7;
+
+}
+
 
 
 

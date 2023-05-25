@@ -44,7 +44,7 @@ public class DataController {
 
     //    자료 목록 - rest 시도 중 ..
     @ResponseBody
-    @GetMapping("computer-list/{page}/{type}/{order}")
+    @GetMapping("{page}/{type}/{order}")
     public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type, @PathVariable String order){
         final DataPagination dataPagination = new DataPagination();
         CategoryType categoryType = new CategoryType();
@@ -55,13 +55,6 @@ public class DataController {
         categoryType.setOrder(order);
        return dataService.getList(dataPagination, categoryType);
     }
-//    @GetMapping("list/{postId}/{page}")
-//    public List<ReplyDTO> getList(@PathVariable int page, @PathVariable Long postId){
-//        final Pagination pagination = new Pagination();
-//        pagination.setPage(page);
-//        pagination.progress();
-//        return replyService.getList(postId, pagination);
-//    }
 
 
     //    자료 상세

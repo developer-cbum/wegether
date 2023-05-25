@@ -108,7 +108,6 @@ $("button.ok-button").on("click", function(){
 
     });
     $(writeForm).append(text);
-    console.log($(writeForm))
     $(writeForm).submit();
 
 
