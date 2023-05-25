@@ -91,7 +91,10 @@ $("button.ok-button").on("click", function(){
             <input type="hidden" name="files[${i}].fileSize" value="${fileSize}">
         `
     });
-    $(writeForm).append(text);
-    console.log($(writeForm))
-    $(writeForm).submit();
+    $(".writeForm").append(text);
+    $(".ok-button").on("click", function(){
+        showWarnModal('저장이 완료되었습니다');
+        setTimeout(function () {
+            $(".writeForm").submit();
+        }, 2500)})
 });

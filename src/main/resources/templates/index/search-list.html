@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko" class="scroll-top scroll-apex" xmlns:th="http://www.thymeleag.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <style>
-        .async-hide {
-            opacity: 0 !important
-        }
-    </style>   
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
@@ -27,7 +23,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
     <style id="ab-css-definitions-3-2-0">
     </style>
-    <link rel="stylesheet" href="../../static/css/index/search-list.css">
+    <link rel="stylesheet" href="/css/index/search-list.css">
 </head>
 <body>
     <div id="page-container">
@@ -48,10 +44,6 @@
                             data-ga-action="클릭" data-ga-label="펀딩">프로젝트</li>
                         <li class="SearchResultTabs_normalTab__2u9oM" tabindex="-1" data-ga-category="검색_결과_탭"
                             data-ga-action="클릭" data-ga-label="오픈예정">자료실</li>
-                        <li class="SearchResultTabs_normalTab__2u9oM" tabindex="-1" data-ga-category="검색_결과_탭"
-                            data-ga-action="클릭" data-ga-label="스토어">상담소</li>
-                        <li class="SearchResultTabs_normalTab__2u9oM" tabindex="-1" data-ga-category="검색_결과_탭"
-                            data-ga-action="클릭" data-ga-label="프리오더">커뮤니티</li>
                     </ul>
                 </div>
                 <!-- 검색결과가 있을 때 없을 때를 타임리프문으로 처리해주십시오 -->
@@ -59,6 +51,10 @@
                 <section class="EmptyResult_container__3omiy">
                     <h2>검색결과가 없어요</h2>
                     <h4>새로운 프로젝트를 발견해보세요</h4>
+
+
+
+
                     <div class="EmptyResult_tagContainer__ceRsP">
                         <div class="PopularTag_container__Lxt5N">
                             <div class="PopularTag_keyword__2-ryF" tabindex="-1">캠핑</div>
@@ -92,61 +88,46 @@
                         </div>
                     </div>
                 </section>
+
                 <!-- 검색결과 있을 때 -->
-                <div class="SearchResult_container__2t-zd">
-                    <div class="SearchResult_cardContainer__1hDo0">
-                        <div id="project-search">
-
-                        </div>
-
+                    <div>
                         <div>
-                            <a class="StoreCard_item__1V2Vz" href="https://www.wadiz.kr/web/store/detail/4049"
-                                data-ec-list="검색_결과_상품카드_스토어" data-ec-id="4049"
-                                data-ec-name="[와디즈 레이저 1위]10W 레이저 +블레이드+AI기능 M1 레이저각인기" data-ec-position="2"
-                                data-ec-category="테크·가전" data-ec-brand="시안인터내셔널" data-ec-contenttype="STORE"
-                                data-ec-price="2200000" data-gtm-vis-first-on-screen-11319722_2115="1916"
-                                data-gtm-vis-first-on-screen-11319722_2073="1919"
-                                data-gtm-vis-recent-on-screen-11319722_2115="20173"
-                                data-gtm-vis-total-visible-time-11319722_2115="2000"
-                                data-gtm-vis-recent-on-screen-11319722_2073="20173"
-                                data-gtm-vis-total-visible-time-11319722_2073="2000"
-                                data-gtm-vis-has-fired-11319722_2115="1" data-gtm-vis-has-fired-11319722_2073="1">
-                                <div class="StoreCard_thumbnailContainer__3bBBh"><img class="StoreCard_img__3XMsp"
-                                        alt="썸네일 이미지"
-                                        srcset="https://cdn2.wadiz.kr/2023/01/31/e02aa89b-3972-492b-b1fe-1640d7f92343.png/wadiz/resize/314/quality/85/ 1x, https://cdn2.wadiz.kr/2023/01/31/e02aa89b-3972-492b-b1fe-1640d7f92343.png/wadiz/resize/628/quality/85/ 2x"
-                                        src="https://cdn2.wadiz.kr/2023/01/31/e02aa89b-3972-492b-b1fe-1640d7f92343.png/wadiz/resize/314/quality/85/">
+                            <div>
+                                <div id="project-search" style="display: flex; flex-wrap:wrap; justify-content: center; margin-left:150px">
+
                                 </div>
-                                <div class="StoreCard_contentContainer__3Mm35">
-                                    <div class="StoreCard_title__3pIDs">[와디즈 레이저 1위]10W 레이저 +블레이드+AI기능 M1 레이저각인기</div>
-                                    <div class="StoreCard_subText__2xwNo">테크·가전 | 시안인터내셔널</div>
-                                    <div class="StoreCardSearchFooter_container__mrmr1">
-                                        <div class="StoreCardSearchFooter_upperFooter__2vxSN">
-                                            <div class="StoreCardSearchFooter_priceContainer__2qAqu"><span
-                                                    class="StoreCardSearchFooter_price__16gun">2,200,000</span><span>원</span>
-                                            </div>
-                                            <div class="RatingScore_container__AeQ_I RatingScore_smCard02__3cJAW">
-                                                <div class="RatingScore_icon__rIS_k"></div><span
-                                                    class="RatingScore_score__2a-SN">4.9</span>
-                                            </div>
-                                        </div>
-                                        <div class="StoreCardSearchFooter_bottomFooter__1NQ9S">
-                                            <div class="DeliveryBadge_container__3XB44"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-    <div class="DesktopSearchResult_buttonContainer__1jr2A" style="display: block;">
-        <button class="Button_button__2FuOU Button_tertiaryGrey__3jJV7 Button_md__46Ai- Button_block__1-g8w" type="button">
-            <span>
-                <span class="Button_children__ilFun">더보기 48/567</span>
-            </span>
-        </button>
-    </div>
+            </div>
+
+<!--    <div class="DesktopSearchResult_buttonContainer__1jr2A" style="display: block;">-->
+<!--        <button class="Button_button__2FuOU Button_tertiaryGrey__3jJV7 Button_md__46Ai- Button_block__1-g8w" type="button">-->
+<!--            <span>-->
+<!--                <span class="Button_children__ilFun">더보기 48/567</span>-->
+<!--            </span>-->
+<!--        </button>-->
+<!--    </div>-->
+
+            <!-- 페이지 부분 -->
+            <div id="paging-wrap">
+                <a th:if="${mainPagination.prev}" th:href="${mainPagination.startPage - 1}"
+                   class="notice-change-page paging paging-move">
+                    <img src="/image/admin/prev.png" width="15px"></a>
+                <th:block th:each="page:${#numbers.sequence(mainPagination.startPage, mainPagination.endPage)}">
+                    <a th:if="${page eq mainPagination.page}" class="paging paging-checked" th:text="${page}"></a>
+                    <a th:unless="${page eq mainPagination.page}" th:href="${page}"
+                       class="notice-change-page paging" th:text="${page}"></a>
+                </th:block>
+                <a th:if="${mainPagination.next}" th:href="${mainPagination.endPage + 1}"
+                   class="notice-change-page paging paging-move">
+                    <img src="/image/admin/next.png" width="15px"></a>
+                <div></div>
+            </div>
+
+
             </div>
             <div class="FloatingButtons_container__2E5Fl">
                 <button type="button"
@@ -176,7 +157,10 @@
 <script th:inline="javascript">
     let searches = [[${searches}]];
     console.log(searches);
+    let mainPagination = [[${mainPagination}]];
+    console.log(mainPagination);
 </script>
 <script src="/js/index/search.js"></script>
+<script src="/js/index/paging.js"></script>
 
 </html>

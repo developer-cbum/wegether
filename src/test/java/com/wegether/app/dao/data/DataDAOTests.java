@@ -69,16 +69,13 @@ public class DataDAOTests {
 
     }
 
+//@Test
+//    public void findAllTest(){
 //        DataPagination dataPagination = new DataPagination();
 //        dataPagination.setPage(1);
 //        dataPagination.progress();
 //        List<DataDTO> dataDTOS = dataDAO.findAll(dataPagination);
 //        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
-//
-//    }
-
-
-
 
 
 

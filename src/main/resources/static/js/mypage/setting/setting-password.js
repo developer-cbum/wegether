@@ -8,7 +8,7 @@ const $oldPasswordInput=$('#oldPassword');
 
 
 // form 태그
-const $form = $('#saveForm');
+const $form = $('#saveform');
 
 // input 비밀번호 태그들
 const $input = $('input[type=password]');
@@ -45,10 +45,12 @@ $input.on('focus', function () {
 
 
 $input.eq(0).on('blur', function() {
-
+    console.log("eq0들어옴")
   $.ajax({
-    url:"/check/setting-password",
+    url:"compare",
     success:function (data) {
+          console.log("ajax 들어옴")
+          console.log(data);
           if(data==$oldPasswordInput.val()){
             $input.eq(0).css('border', '1px solid #e4e4e4');
             $oldPassword.css('display', 'none');
@@ -178,6 +180,9 @@ $input.eq(2).on('keyup', function () {
 // 버튼 눌렀을 때 유효성 검사
 
 $button.on('click', function () {
+
+  console.log("버튼 클릭");
+
   // 비밀번호 정규식
   let num = $input.eq(1).val().search(/[0-9]/g);
   let eng = $input.eq(1).val().search(/[a-z]/gi);

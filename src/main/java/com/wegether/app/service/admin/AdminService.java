@@ -13,13 +13,20 @@ public interface AdminService {
     // 공지사항 목록
     public List<NoticeAdminDTO> noticeGetList(AdminPagination adminPagination, Search search);
 
+    // 공지사항 목록(이미지)
+    public List<NoticeFileAdminDTO> noticeImageGetList(Long noticeId);
+
     // 공지사항 총 갯수
     public int getNoticeTotal(Search search);
 
     // 공지사항 등록
-    public void noticeWrite(NoticeVO noticeVO);
+//    public void noticeWrite(NoticeVO noticeVO);
+
+    // 공지사항 등록(첨부파일)
+    public void noticeWrite(NoticeAdminDTO noticeAdminDTO);
 
     // 공지사항 이미지 등록
+    public void noticeImageWrite(NoticeFileAdminDTO noticeFileAdminDTO);
 
     // 공지사항 이미지 등록(중간 테이블)
     public void noticeImageMiddleWrite(NoticeFileVO noticeFileVO);

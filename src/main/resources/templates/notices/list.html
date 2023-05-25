@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지 사항</title>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/notice/notice-list.css">
+    <link rel="stylesheet" href="/css/admin/modal.css" />
+    <link rel="stylesheet" href="/css/admin/admin_board.css">
+    <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
+    <link rel="stylesheet" href="/css/admin/admin_common.css">
+</head>
+<body>
+<header th:replace="~{/fix/header :: #header}"></header>
+<div id="page-container">
+    <div class="board wzui">
+        <!-- 공지사항 상단부 -->
+        <div class="ui-header">
+            <h2 class="title">공지 사항</h2>
+        </div>
+        <div aria-hidden="true"></div>
+        <div class="ui-tabs"></div>
+        <!-- 공지사항 목록 -->
+        <div class="board-main">
+            <ul class="notice-list">
+            </ul>
+        </div>
+
+        <div class="board-footer">
+
+            <!-- 페이지 부분 -->
+            <div id="paging-wrap">
+                <a th:if="${adminPagination.prev}" th:href="${adminPagination.startPage - 1}" class="notice-list-change-page paging paging-move">
+                    <img src="/image/admin/prev.png" width="15px"></a>
+                <th:block th:each="page:${#numbers.sequence(adminPagination.startPage, adminPagination.endPage)}">
+                    <a th:if="${page eq adminPagination.page}" class="paging paging-checked" th:text="${page}"></a>
+                    <a th:unless="${page eq adminPagination.page}" th:href="${page}" class="notice-list-change-page paging" th:text="${page}"></a>
+                </th:block>
+                <a th:if="${adminPagination.next}" th:href="${adminPagination.endPage + 1}" class="notice-list-change-page paging paging-move">
+                    <img src="/image/admin/next.png" width="15px"></a>
+                <div></div>
+            </div>
+
+            <!-- 검색 부분-->
+            <div class="search">
+                <form id="news-board-search">
+                    <div class="field">
+                        <label class="text-hidden">검색창</label>
+                        <input name="keyword" class="search-form" type="search" placeholder="제목 또는 내용을 입력해주세요">
+                        <button class="btn-search dense" type="submit">검색</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div aria-hidden="true" style="position: relative; left: 0px; bottom: 48px; width: 100%;"></div>
+    </div>
+</div>
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let notices = [[${notices}]];
+    console.log(notices);
+</script>
+<script src="/js/admin/page.js"></script>
+<script src="/js/admin/paging.js"></script>
+<script src="/js/admin/modal.js"></script>
+<script src="/js/notice/list.js"></script>
+</html>

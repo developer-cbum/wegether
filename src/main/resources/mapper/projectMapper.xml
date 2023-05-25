@@ -7,15 +7,38 @@
         SELECT P.ID, P.MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
         PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT,
         PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
-        FROM (
-                SELECT ROWNUM R, P.ID, P.MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
-                PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT,
-                PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
+        FROM
+        (
+        SELECT ROWNUM R, P.ID, P.MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
+        PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT,
+        PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONNEL
+        FROM
+        (
+        SELECT P.ID, P.MEMBER_ID, PROJECT_TITLE, PROJECT_INTRODUCING, PROJECT_MAJOR, PROJECT_SCHOOL,
+        PROJECT_REGISTER_DATE, PROJECT_UPDATE_DATE, PROJECT_END_DATE, PROJECT_READ_COUNT,
+        PROJECT_NOW_PERSONNEL, PROJECT_TOTAL_PERSONEL
         FROM TBL_MEMBER M JOIN TBL_PROJECT P
+        ON M.ID = P.MEMBER_ID
+        AND PROJECT_MAJOR = #{categoryType.type}<choose>
+                 <when test="categoryType.type != 'all' and !categoryType.type.equals('') "></when>
+             </choose>
+        ORDER BY
+        <choose>
+            <when test="categoryType.order == 'new'">
+                PROJECT_REGISTER_DATE
+            </when>
+            <otherwise>
+                PROJECT_READ_COUNT
+            </otherwise>
+        </choose>
+        DESC
+        ) P
         <![CDATA[
-            ON M.ID = P.MEMBER_ID AND ROWNUM <= #{page} * #{rowCount}
-            ORDER BY P.ID DESC
-        ) P WHERE R > (#{page} - 1) * #{rowCount}
+       WHERE ROWNUM <= #{projectPagination.page} * #{projectPagination.rowCount}
+        ]]>
+
+        <![CDATA[
+        ) P WHERE R > (#{projectPagination.page} - 1) * #{projectPagination.rowCount}
         ]]>
     </select>
 
