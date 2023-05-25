@@ -23,9 +23,13 @@ public interface AdminMapper {
     public int selectCountOfNotice(@Param("search") Search search);
 
     // 공지사항 등록
-    public void noticeInsert(NoticeVO noticeVO);
+//    public void noticeInsert(NoticeVO noticeVO);
+
+    // 공지사항 등록(첨부파일)
+    public void noticeInsert(NoticeAdminDTO noticeAdminDTO);
 
     // 공지사항 이미지 등록
+    public void noticeImageInsert(NoticeFileAdminDTO noticeFileAdminDTO);
 
     // 공지사항 이미지 등록(중간 테이블)
     public void noticeImageMiddleInsert(NoticeFileVO noticeFileVO);

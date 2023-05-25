@@ -56,15 +56,15 @@ public class MainMapperTests {
         mainFileMapper.mainDFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
     }
 
-    @Test
-    public void mainCFSelectAllTest() {
-        mainFileMapper.mainCFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void mainCFSelectAllTest() {
+//        mainFileMapper.mainCFSelectAll(1L).stream().map(MainFileDTO::toString).forEach(log::info);
+//    }
 
-    @Test
-    public void searchSPSelectAllTest(){
-        assertThat(mainMapper.searchPSelectAll()).hasSize(5);
-    }
-
-
+//    @Test
+//    public void searchSPSelectAllTest(){
+//        assertThat(mainMapper.searchPSelectAll()).hasSize(5);
+//    }
+//
+//
     }

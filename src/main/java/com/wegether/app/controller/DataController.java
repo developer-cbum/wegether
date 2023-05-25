@@ -1,5 +1,6 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.type.CategoryType;
@@ -10,14 +11,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -29,16 +29,39 @@ public class DataController {
     private final AccountService accountService;
 
 
-//    자료 목록
+//    자료 목록 - 기본
+//    @GetMapping("list")
+//    public void goToDataList(DataPagination dataPagination, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order, Model model){
+//        dataPagination.setTotal(dataService.getTotal());
+//        dataPagination.progress();
+//        categoryType.setType(type);
+//        categoryType.setOrder(order);
+//        model.addAttribute("datas", dataService.getList(dataPagination, categoryType));
+//    }
 
     @GetMapping("list")
-    public void goToDataList(DataPagination dataPagination, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order, Model model){
+    public void goToList(){;}
+
+    //    자료 목록 - rest 시도 중 ..
+    @ResponseBody
+    @GetMapping("computer-list/{page}/{type}")
+    public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type){
+        final DataPagination dataPagination = new DataPagination();
+        dataPagination.setPage(page);
+        dataPagination.progress();
         dataPagination.setTotal(dataService.getTotal());
         dataPagination.progress();
+        CategoryType categoryType = new CategoryType();
         categoryType.setType(type);
-        categoryType.setOrder(order);
-        model.addAttribute("datas", dataService.getList(dataPagination, categoryType));
+       return dataService.getList(dataPagination, categoryType);
     }
+//    @GetMapping("list/{postId}/{page}")
+//    public List<ReplyDTO> getList(@PathVariable int page, @PathVariable Long postId){
+//        final Pagination pagination = new Pagination();
+//        pagination.setPage(page);
+//        pagination.progress();
+//        return replyService.getList(postId, pagination);
+//    }
 
 
     //    자료 상세
@@ -49,27 +72,28 @@ public class DataController {
 
 
 
-//    자료 등록 - HttpSession session
-
+//    자료 등록
     @GetMapping("register")
-    public void goToRegisterForm(DataVO dataVO, HttpSession session, Model model){
+    public void goToWriteForm(DataDTO dataDTO, Model model){; }
 
-//        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
-        String nickName = accountService.getMemberById(2L).get().getMemberNickname();
-        model.addAttribute("nickName", nickName);
-    };
+    //    자료 등록 - HttpSession session
+//    @GetMapping("register")
+//    public void goToRegisterForm(DataDTO dataDTO, HttpSession session, Model model){
+//        Long memberId = accountService.getMemberById((Long) session.getAttribute("id")).get().getId();
+////        Long memberId = accountService.getMemberById(2L).get().getId();
+//        model.addAttribute("memberId", memberId);
+//    };
 
 
-
-
-
-//    자료 등록 > 리스트 이동
-
+    //    자료 등록 > 리스트 이동
     @PostMapping("register")
-    public RedirectView write(DataDTO dataDTO){
+    public RedirectView register(DataDTO dataDTO) {
         dataService.write(dataDTO);
-        return new RedirectView("/data/list");
+        return new RedirectView("/datas/list");
     }
+
+
+
 
 
 

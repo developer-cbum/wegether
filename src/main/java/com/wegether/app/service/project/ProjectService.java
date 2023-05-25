@@ -1,6 +1,7 @@
 package com.wegether.app.service.project;
 
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.vo.ProjectVO;
 
@@ -10,7 +11,7 @@ import java.util.Optional;
 public interface ProjectService {
 
     // 프로젝트 목록
-    public List<ProjectDTO> getList(ProjectPagination projectPagination);
+    public List<ProjectDTO> getList(ProjectPagination projectPagination, CategoryType categoryType);
 
     // 프로젝트 등록
     public void write(ProjectDTO projectDTO);

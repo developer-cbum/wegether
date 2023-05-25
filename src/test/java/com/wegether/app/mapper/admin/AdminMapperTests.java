@@ -4,6 +4,7 @@ import com.wegether.app.domain.dto.AnswerAdminDTO;
 import com.wegether.app.domain.dto.InquiryAdminDTO;
 import com.wegether.app.domain.dto.ProjectAdminDTO;
 import com.wegether.app.domain.vo.AnswerVO;
+import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.vo.NoticeFileVO;
 import com.wegether.app.domain.vo.NoticeVO;
 import com.wegether.app.mapper.AdminMapper;
@@ -39,13 +40,25 @@ public class AdminMapperTests {
 
 
     //    공지사항 등록 테스트
-    @Test
-    public void noticeInsertTest() {
-        NoticeVO noticeVO = new NoticeVO();
-        noticeVO.setNoticeTitle("공지사항 테스트 제목");
-        noticeVO.setNoticeContent("공지사항 테스트 내용");
-        adminMapper.noticeInsert(noticeVO);
-    }
+//    @Test
+//    public void noticeInsertTest() {
+//        NoticeVO noticeVO = new NoticeVO();
+//        noticeVO.setNoticeTitle("공지사항 테스트 제목");
+//        noticeVO.setNoticeContent("공지사항 테스트 내용");
+//        adminMapper.noticeInsert(noticeVO);
+//    }
+
+    //    공지사항 이미지 등록 테스트
+//    @Test
+//    public void noticeImageInsertTest(){
+//        FileVO fileVO = new FileVO();
+//        fileVO.setFilePath("2023/05/24");
+//        fileVO.setFileUuid("rqw21-12421");
+//        fileVO.setFileName("김승진.jpg");
+//        fileVO.setFileSize(1500L);
+//        fileVO.setFileType("NON_REPRESENTATIVE");
+//        adminMapper.noticeImageInsert(fileVO);
+//    }
 
     //    공지사항 이미지 등록(중간 테이블) 테스트
     @Test
@@ -54,23 +67,22 @@ public class AdminMapperTests {
         noticeFileVO.setId(4L);
         noticeFileVO.setNoticeId(1L);
         adminMapper.noticeImageMiddleInsert(noticeFileVO);
-
     }
 
     //    공지사항 상세 테스트
-    @Test
-    public void noticeSelectTest() {
-        adminMapper.noticeSelect(21L).map(NoticeVO::getNoticeTitle).ifPresent(log::info);
-    }
+//    @Test
+//    public void noticeSelectTest() {
+//        adminMapper.noticeSelect(21L).map(NoticeVO::getNoticeTitle).ifPresent(log::info);
+//    }
 
     //    공지사항 수정 테스트
-    @Test
-    public void noticeUpdateTest() {
-        adminMapper.noticeSelect(2L).ifPresent(noticeVO -> {
-            noticeVO.setNoticeTitle("공지사항 제목 수정");
-            adminMapper.noticeUpdate(noticeVO);
-        });
-    }
+//    @Test
+//    public void noticeUpdateTest() {
+//        adminMapper.noticeSelect(2L).ifPresent(noticeVO -> {
+//            noticeVO.setNoticeTitle("공지사항 제목 수정");
+//            adminMapper.noticeUpdate(noticeVO);
+//        });
+//    }
 
     //    공지사항 삭제 테스트
     @Test

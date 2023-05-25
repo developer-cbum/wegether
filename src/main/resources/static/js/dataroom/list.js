@@ -1,10 +1,19 @@
 $(document).ready(function () {
 
+let dataPagination = 1;
+
+load("all");
+
+
     const $ul = $("#list-container");
 
     let text = "";
-    datas.forEach(data => {
-        text += `
+
+    function showList(datas) {
+
+
+        datas.forEach(data => {
+            text += `
 
             <div role="presentation" class="CardTable_itemContainer__v9-cW"
                 style="width: calc((25% - 24px + 6px) - 0.01px); margin-left: 0px; margin-right: 12px; margin-bottom: 40px;">
@@ -13,19 +22,19 @@ $(document).ready(function () {
                    <div class="CardThumbnail_thumbnailContainer__DwnpC" style="height: 269px;">
                    `
 
-                        data.files.forEach(file => {
-                            if(file.fileType == "REPRESENTATIVE"){
-                                text += `
+            data.files.forEach(file => {
+                if (file.fileType == "REPRESENTATIVE") {
+                    text += `
                                 <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
                                     <div aria-hidden="true"
                                         class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
                                         style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
                                      </div>
                                 </div>`;
-                            }
-                        })
-                        
-        text += `
+                }
+            })
+
+            text += `
                    </div>
                    <div class="StoreCard_contentContainer__tQfaN">
                       <div class="StoreCard_title__2hUM7">${data.dataTitle}
@@ -73,10 +82,10 @@ $(document).ready(function () {
                 </button>
             </div>
         `
-    });
+        });
 
-    $ul.append(text);
-
+        $ul.append(text);
+    }
 
     //TOP btn
     var button = $(".FloatingTopButton_pageTop__2gqm9");
@@ -130,17 +139,30 @@ $(document).ready(function () {
         return new URLSearchParams(location.search).get(key);
     };
 
-
-    $('.category_lists button').on("click", function (e) {
-        e.preventDefault();
-        let type = this.classList[0];
-            location.href = `/datas/list?type=${type}`;
-    });
+    //
+    // $('.category_lists button').on("click", function (e) {
+    //     e.preventDefault();
+    //     let type = this.classList[0];
+    //     location.href = `/datas/list?type=${type}`;
+    // });
+    $('.computer').on("click", function () {
+        load('computer');
+    })
 
     $('.RecentView_container__1boAT').on("click", function () {
         history.replaceState({}, null, location.pathname);
     });
 
-
+    function load(categoryType) {
+        $.ajax({
+            url: `/datas/computer-list/1/${categoryType}`,
+            contentType : "application/json; charset=UTF-8;",
+            success:  function (datas) {
+                text="";
+                $ul.html("");
+                showList(datas)
+            }
+        })
+    }
 
 }); //E

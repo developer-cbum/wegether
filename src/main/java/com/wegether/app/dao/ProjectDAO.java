@@ -2,6 +2,7 @@ package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.dto.ProjectPagination;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.ProjectVO;
 import com.wegether.app.mapper.ProjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ public class ProjectDAO {
 
 
     // 프로젝트 목록
-    public List<ProjectDTO> projectFindAll(ProjectPagination projectPagination){
-        return projectMapper.projectSelectAll(projectPagination);
+    public List<ProjectDTO> projectFindAll(ProjectPagination projectPagination, CategoryType categoryType){
+        return projectMapper.projectSelectAll(projectPagination, categoryType);
     }
 
     // 프로젝트 등록
