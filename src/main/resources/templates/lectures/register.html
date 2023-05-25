@@ -7,7 +7,7 @@
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,viewport-fit=cover"
         />
-        <link rel="stylesheet" href="/css/class-register.css" />
+        <link rel="stylesheet" href="/css/community/community-register.css"/>
         <link rel="stylesheet" href="/css/admin/class-register.css" />
         <link rel="stylesheet" href="/css/admin/community.css" />
         <link rel="stylesheet" href="/css/admin/admin_board.css">
@@ -24,8 +24,9 @@
             type="text/css"
             href="https://static.wadiz.kr/studio/funding/static/css/6.eb91f874.chunk.css"
         />
+
     </head>
-    <body class="ReactModal__Body--open" aria-hidden="true" th:object="${lectureDTO}">
+    <body class="ReactModal__Body--open" aria-hidden="true">
         <div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
         <div id="root">
             <div id="AppLayout_Container" class="AppLayout_container__3zbzb">
@@ -61,10 +62,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form th:action="@{/lectures/register}" method="post"
+                                <form th:action="@{/lectures/register}" th:object="${lectureDTO}" method="post" name="registerForm"
                                     class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
                                     action=""
-                                    name="registerForm"
                                 >
                                     <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
 
@@ -86,6 +86,7 @@
                                                         class="Input_input__2kAAL Input_md__3-eZ6"
                                                         aria-invalid="false"
                                                         name="lectureTitle"
+                                                        style="padding-left: 8px"
                                                     />
                                                 </div>
                                             </div>
@@ -110,6 +111,7 @@
                                                         class="Input_input__2kAAL Input_md__3-eZ6"
                                                         aria-invalid="false"
                                                         name="lectureDate"
+                                                            style="padding-left: 8px"
                                                     />
                                                 </div>
                                             </div>
@@ -134,6 +136,7 @@
                                                         class="Input_input__2kAAL Input_md__3-eZ6"
                                                         aria-invalid="false"
                                                         name="lectureTime"
+                                                            style="padding-left: 8px"
                                                     />
                                                 </div>
                                             </div>
@@ -156,8 +159,8 @@
                                                         maxlength="40"
                                                         type="text"
                                                         class="Input_input__2kAAL Input_md__3-eZ6"
-                                                        aria-invalid="false"
                                                         name="lectureLocation"
+                                                            style="padding-left: 8px"
                                                     />
                                                 </div>
                                             </div>
@@ -174,14 +177,14 @@
                                             <div class="TextField_textField__23rCe TextField_md__2zsQn">
                                                 <label></label>
                                                 <div class="TextField_field__1E9vt">
-                                                    <input
-                                                            th:field="*{lectureTotalPersonnel}"
+                                                    <input id="lectureTotalPersonnel"
                                                         placeholder="강연 총 인원을 입력해 주세요"
                                                         maxlength="40"
                                                         type="text"
                                                         class="Input_input__2kAAL Input_md__3-eZ6 personnel"
                                                         aria-invalid="false"
                                                         name="lectureTotalPersonnel"
+                                                           style="padding-left: 8px"
                                                     />
                                                 </div>
                                             </div>
@@ -204,35 +207,40 @@
                                                     class="field Form_field__35I9T required ImageFormField_field__X1jTW StoryImageField_field__3O6yy"
                                                     style="padding-left: 0px"
                                                 >
-                                                    <div class="ImageFormField_buttonWrapper__su3pO">
-                                                        <label
-                                                            class="wz label ImageFileButton_label__3thB2 Label_label__3oH0h"
-                                                            ><button
-                                                                type="button"
-                                                                class="wz button gray ImageFileButton_button__3gAHD"
-                                                            >
-                                                                <i class="icon-camera-o" aria-hidden="true"></i>등록하기
-                                                            </button>
-                                                            <div class="wz input right ImageFileButton_input__1Dnch">
-                                                                <input
-                                                                    accept="image/JPG,image/JPEG,image/GIF,image/PNG"
-                                                                    name="uploadFile"
-                                                                    placeholder=""
-                                                                    type="file"
-                                                                    value=""
-                                                                /></div></label
-                                                        ><em class="helper error"></em
-                                                        ><em class="helper ImageFormField_helper__3XC5c"
-                                                            >2MB 이하의 JPG, JPEG, GIF, PNG 파일</em
-                                                        ><em class="helper ImageFormField_helper__3XC5c"
-                                                            >해상도 630x400 픽셀 이상</em
-                                                        >
-                                                    </div>
+                                                    <div class="attach-wrap">
+                                                        <label for="upload1" class="attach">
+                                                            <img src="" class="thumbnail">
+                                                            <div class="x">
+                                                                <img src="/image/lecture/x.png">
+                                                            </div>
+                                                            <h6 class="plus">+</h6>
+                                                            <h6>대표 이미지</h6>
+                                                        </label>
+                                                        <label for="upload2" class="attach">
+                                                            <img src="" class="thumbnail">
+                                                            <div class="x">
+                                                                <img src="/image/lecture/x.png">
+                                                            </div>
+                                                            <h6 class="plus">+</h6>
+                                                            <h6>제목 사진</h6>
+                                                        </label>
+                                                        <label for="upload3" class="attach">
+                                                            <img src="" class="thumbnail">
+                                                            <div class="x">
+                                                                <img src="/image/lecture/x.png">
+                                                            </div>
+                                                            <h6 class="plus">+</h6>
+                                                            <h6>내용 사진</h6>
+                                                        </label>
+                                                        <input type="file" id="upload1" class="upload" style="display: none;">
+                                                        <input type="file" id="upload2" class="upload" style="display: none;">
+                                                        <input type="file" id="upload3" class="upload" style="display: none;">
                                                 </div>
+                                                    <strong>맞는 위치에 사진을 업로드 해주세요.</strong>
                                             </div>
                                         </div>
+                                        </div>
                                     </section>
-
                                     <!-- 강연 내용 -->
                                     <section class="Section_container__3md8M" style="max-width: 630px">
                                         <div class="Section_header__1qwS7">
@@ -260,7 +268,7 @@
                                     <div class="StoryEditorForComingWrapper_container__1cngW"></div>
                                     <div class="FundingStoryContainer_btnWrapper__32tvJ">
                                         <button
-                                            class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_lg__3vRQD"
+                                            class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_lg__3vRQD ok-button"
                                             type="button"
                                             style="width: 100%"
                                             onclick="check()"
@@ -373,6 +381,7 @@
             $(this).val(numericVal);
         });
 
-
+    console.log("들어옴?");
     </script>
+    <script src="/js/lecture/register.js"></script>
 </html>

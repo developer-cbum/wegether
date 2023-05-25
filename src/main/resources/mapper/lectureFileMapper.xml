@@ -14,9 +14,6 @@
 
     <!--중간테이블 인설트-->
     <insert id="insertMiddle">
-        <selectKey keyProperty="id" order="BEFORE" resultType="long">
-            SELECT SEQ_LECTURE_FILE.NEXTVAL FROM DUAL
-        </selectKey>
         INSERT INTO TBL_LECTURE_FILE
         (ID, LECTURE_ID)
         VALUES(#{id}, #{lectureId})
