@@ -85,6 +85,12 @@ public class DataController {
         dataService.write(dataDTO);
         return new RedirectView("/datas/list");
     }
+    
+//    자료 결제 페이지
+    @GetMapping("paymemt")
+    public void goToPayment(Long id){
+
+    }
 
 
 
