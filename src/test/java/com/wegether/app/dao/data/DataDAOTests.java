@@ -52,35 +52,6 @@ public class DataDAOTests {
 //        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
 
     }
-//@Test
-//    public void findAllTest(){
-
-
-@Test
-    public void findAllTest(){
-
-
-        DataPagination dataPagination = new DataPagination();
-        dataPagination.setPage(1);
-        dataPagination.progress();
-        List<DataDTO> dataDTOS = dataDAO.findAll(dataPagination);
-        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
-
-
-    }
-
-//        DataPagination dataPagination = new DataPagination();
-//        dataPagination.setPage(1);
-//        dataPagination.progress();
-//        List<DataDTO> dataDTOS = dataDAO.findAll(dataPagination);
-//        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
-//
-//    }
-
-
-
-
-
 
 
     //총 개수
