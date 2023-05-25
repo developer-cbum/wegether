@@ -77,6 +77,22 @@ public class MainServiceImpl implements MainService {
         mainDTOS.forEach(mainDTO -> mainDTO.setFiles(mainFileDAO.mainPFFindAll(mainDTO.getId())));
         return mainDTOS;
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<MainDTO> mainSDGetList(MainPagination mainPagination) {
+//        총 갯수 넣기
+        mainPagination.setTotal(mainDAO.findCountOfData());
+        mainPagination.progress();
+//        게시글 전체 목록
+        final List<MainDTO> mainDTOS = mainDAO.mainSDFindAll(mainPagination);
+//        게시글 하나씩 첨부파일 목록 담기
+        mainDTOS.forEach(mainDTO -> mainDTO.setFiles(mainFileDAO.mainDFFindAll(mainDTO.getId())));
+        return mainDTOS;
+    }
+
+
+
 }
 
 

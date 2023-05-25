@@ -55,8 +55,12 @@ public class MainController {
     @GetMapping("search-list")
     public void goToSearch(Model model, MainPagination mainPagination){
         model.addAttribute("searches", mainService.mainSPGetList(mainPagination));
-    };
+    }
 
+    @GetMapping("search-test")
+    public void goToList(Model model, MainPagination mainPagination){
+        model.addAttribute("searchtest", mainService.mainSDGetList(mainPagination));
+    }
 
 
 

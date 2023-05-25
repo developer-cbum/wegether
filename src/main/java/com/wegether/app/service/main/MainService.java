@@ -18,6 +18,8 @@ public interface MainService {
 
     public List<MainDTO> mainSPGetList(MainPagination mainPagination);
 
+    public List<MainDTO> mainSDGetList(MainPagination mainPagination);
+
 }
 
 

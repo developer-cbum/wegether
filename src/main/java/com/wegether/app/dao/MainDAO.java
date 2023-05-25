@@ -36,5 +36,11 @@ public class MainDAO {
     // 프로젝트 총 갯수
     public int findCountOfProject(){return mainMapper.selectCountOfProject(); }
 
+//    자료실 전체 목록
+    public List<MainDTO> mainSDFindAll(MainPagination mainPagination) { return mainMapper.searchDSelectAll(mainPagination);};
+
+//    자료실 총 갯수
+    public int findCountOfData(){return mainMapper.selectCountOfData();}
+
 }
 

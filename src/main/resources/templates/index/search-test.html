@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,viewport-fit=cover">
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-PH33MCR"></script>
+    <link rel="stylesheet" href="https://static.wadiz.kr/static/web/wui.css?c542abcf">
+    <link rel="stylesheet" href="https://static.wadiz.kr/static/web/css/vendor.5f64dbd5.chunk.css">
+    <link rel="stylesheet" href="https://static.wadiz.kr/static/web/common.css?6b20ab93">
+    <link rel="stylesheet" href="https://static.wadiz.kr/static/web/layout.css?97a6eedb">
+    <script type="text/javascript" src="https://static.wadiz.kr/static/web/polyfill.js?b0c96ec4"></script>
+    <script type="text/javascript" src="https://static.wadiz.kr/static/web/wui.js?d42e3af0"></script>
+    <script type="text/javascript" src="https://static.wadiz.kr/static/web/sentry.43eb656a.js"></script>
+    <script type="text/javascript" src="https://static.wadiz.kr/static/web/common.js?db524cda"></script>
+    <link rel="stylesheet" href="https://static.wadiz.kr/main/main.c1266dc7.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.wadiz.kr/resources/static/editor/4.0.15/froala_editor.pkgd.min.css?20221122">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.wadiz.kr/resources/static/editor/4.0.15/froala_custom.css?v=20221122">
+    <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
+    <style id="ab-css-definitions-3-2-0">
+    </style>
+    <link rel="stylesheet" href="/css/index/search-list.css">
+</head>
+<body>
+<div id="page-container">
+    <main id="main-app">
+        <div class="MainWrapper_content__GZkTa">
+            <div class="DesktopSearchResult_headContainer__1hnOM">
+                <div class="DesktopSearchResult_keyword__13uuG">00</div>
+                <h2>검색결과</h2>
+                <div class="DesktopSearchResult_number__kryRO">000</div>
+                <div class="DesktopSearchResult_unit__24BC1">개</div>
+            </div>
+            <!-- 카테고리란 -->
+            <div class="DesktopSearchResult_tabContainer__18T4j">
+                <ul class="SearchResultTabs_tabContainer__3rQre">
+                    <li class="SearchResultTabs_activeTab__1jn0j" tabindex="-1" data-ga-category="검색_결과_탭"
+                        data-ga-action="클릭" data-ga-label="전체">전체</li>
+                    <li class="SearchResultTabs_normalTab__2u9oM" tabindex="-1" data-ga-category="검색_결과_탭"
+                        data-ga-action="클릭" data-ga-label="펀딩">프로젝트</li>
+                    <li class="SearchResultTabs_normalTab__2u9oM" tabindex="-1" data-ga-category="검색_결과_탭"
+                        data-ga-action="클릭" data-ga-label="오픈예정">자료실</li>
+                </ul>
+            </div>
+            <!-- 검색결과가 있을 때 없을 때를 타임리프문으로 처리해주십시오 -->
+            <!-- 검색결과 없을 때 -->
+            <section class="EmptyResult_container__3omiy">
+                <h2>검색결과가 없어요</h2>
+                <h4>새로운 프로젝트를 발견해보세요</h4>
+
+
+
+
+                <div class="EmptyResult_tagContainer__ceRsP">
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">캠핑</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">가방</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">캐리어</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">텐트</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">안경</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">선풍기</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">우산</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">신발</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">보드게임</div>
+                    </div>
+                    <div class="PopularTag_container__Lxt5N">
+                        <div class="PopularTag_keyword__2-ryF" tabindex="-1">키보드</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 검색결과 있을 때 -->
+            <div>
+                <div>
+                    <div>
+                        <div id="project-search" style="display: flex; flex-wrap:wrap; justify-content: center; margin-left:150px">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>
+
+<!--    <div class="DesktopSearchResult_buttonContainer__1jr2A" style="display: block;">-->
+<!--        <button class="Button_button__2FuOU Button_tertiaryGrey__3jJV7 Button_md__46Ai- Button_block__1-g8w" type="button">-->
+<!--            <span>-->
+<!--                <span class="Button_children__ilFun">더보기 48/567</span>-->
+<!--            </span>-->
+<!--        </button>-->
+<!--    </div>-->
+
+<!-- 페이지 부분 -->
+<div id="paging-wrap">
+    <a th:if="${mainPagination.prev}" th:href="${mainPagination.startPage - 1}"
+       class="notice-change-page paging paging-move">
+        <img src="/image/admin/prev.png" width="15px"></a>
+    <th:block th:each="page:${#numbers.sequence(mainPagination.startPage, mainPagination.endPage)}">
+        <a th:if="${page eq mainPagination.page}" class="paging paging-checked" th:text="${page}"></a>
+        <a th:unless="${page eq mainPagination.page}" th:href="${page}"
+           class="notice-change-page paging" th:text="${page}"></a>
+    </th:block>
+    <a th:if="${mainPagination.next}" th:href="${mainPagination.endPage + 1}"
+       class="notice-change-page paging paging-move">
+        <img src="/image/admin/next.png" width="15px"></a>
+    <div></div>
+</div>
+
+
+</div>
+<div class="FloatingButtons_container__2E5Fl">
+    <button type="button"
+            class="FloatingTopButton_pageTop__2gqm9 FloatingTopButton_visible__2sh_N" title="위로 이동"><svg
+            viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq"
+            aria-hidden="true">
+        <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path>
+    </svg>
+    </button>
+    <button type="button" data-ga-category="공통_최근본_UI" data-ga-action="클릭"
+            data-ga-label="" class="RecentView_container__1boAT" aria-label="최근본" style="display: none;">
+        <div aria-hidden="true"
+             class="RecentView_thumbnail__1lnV0 CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4 CardThumbnail_noanimation__23cSf"
+             style="background-image: url(&quot;https://cdn.wadiz.kr/wwwwadiz/green001/2023/0417/20230417212955241_206217.png/wadiz/resize/200/format/jpg/quality/85/&quot;);">
+        </div>
+    </button>
+    <div class="ChannelTalk_container__fd848" style="display:none;"><button type="button" aria-label="채널톡 와디즈 고객센터 문의"></button>
+    </div>
+</div>
+</main>
+<form action="/web/waccount/wAccountLogin" id="returnForm" method="get" novalidate="novalidate">
+    <input type="hidden" id="returnURL" name="returnURL">
+</form>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script th:inline="javascript">
+    let searchtest = [[${searchtest}]];
+    console.log(searchtest);
+    let mainPagination = [[${mainPagination}]];
+    console.log(mainPagination);
+</script>
+<script src="/js/index/test.js"></script>
+</html>
