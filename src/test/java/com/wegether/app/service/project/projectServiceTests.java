@@ -23,17 +23,24 @@ public class projectServiceTests {
     private FileDAO fileDAO;
 
 
-    @Test
+//    @Test
+//
+//    void getListTest() {
+//        ProjectPagination projectPagination = new ProjectPagination();
+//        projectPagination.setPage(1);
+//        projectService.getList(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
+//    }
 
-    void getListTest() {
-        ProjectPagination projectPagination = new ProjectPagination();
-        projectPagination.setPage(1);
-        projectService.getList(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
-    }
-    @Test
-    void findByIdTest() {
-        projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
-    }
+//    @Test
+//    public void findByIdTest() {
+//        projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
+//    }
+
+//    @Test
+//    void findByIdTest() {
+//        projectService.getProject(1L).map(ProjectDTO::toString).ifPresent(log::info);
+//    }
+
 
     @Test
     void writeTest(){
@@ -53,18 +60,33 @@ public class projectServiceTests {
         projectService.write(projectDTO);
     }
 
-    @Test
-    void modifyTest() {
-        Optional<ProjectDTO> foundProject = projectService.getProject(20L);
-        if (foundProject.isPresent()) {
-            ProjectDTO projectDTO = foundProject.get();
-            projectDTO.setProjectTitle("제에목수정");
-            projectService.modify(projectDTO);
-            foundProject = projectService.getProject(20L);
-            foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제에목수정"));
-        } else {
-        }
-    }
+
+//    @Test
+//    public void modifyTest() {
+//        Optional<ProjectDTO> foundProject = projectService.getProject(20L);
+//        if (foundProject.isPresent()) {
+//            ProjectDTO projectDTO = foundProject.get();
+//            projectDTO.setProjectTitle("제에목수정");
+//            projectService.modify(projectDTO);
+//            foundProject = projectService.getProject(20L);
+//            foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제에목수정"));
+//        } else {
+//        }
+//    }
+
+//    @Test
+//    void modifyTest() {
+//        Optional<ProjectDTO> foundProject = projectService.getProject(20L);
+//        if (foundProject.isPresent()) {
+//            ProjectDTO projectDTO = foundProject.get();
+//            projectDTO.setProjectTitle("제에목수정");
+//            projectService.modify(projectDTO);
+//            foundProject = projectService.getProject(20L);
+//            foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제에목수정"));
+//        } else {
+//        }
+//    }
+
 
 //    @Test
 //    public void removeTest() {

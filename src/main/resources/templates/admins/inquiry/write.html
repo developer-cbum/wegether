@@ -11,11 +11,19 @@
     <link rel="stylesheet" href="/css/admin/admin_board.css">
     <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
     <link rel="stylesheet" href="/css/admin/admin_common.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
     <link rel="icon" href="/image/logo/favicon.png">
 
 </head>
 
 <body>
+    <!-- 모달 부분 -->
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
+
     <div>
         <div class="info-title-box info-title-box-flex">
             <div class="logo-box-layout">
@@ -85,7 +93,7 @@
                                     <input type="hidden" name="inquiryId" th:value="${inquiryBoards.id}">
                                     <hr>
                                     <div>
-                                        <textarea th:field="${answerVO.answerContent}" class="board-content" name="boardContent"></textarea>
+                                        <textarea th:field="${answerVO.answerContent}" class="board-content" id="boardContent" name="boardContent"></textarea>
                                     </div>
                                     <hr>
                                     <div>
@@ -103,13 +111,24 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/admin/sidemenu.js"></script>
+<script src="/js/admin/modal.js"></script>
 <script>
     let inquiryBoards = [[${inquiryBoards}]];
     console.log(inquiryBoards);
 </script>
 <script>
+
     $("button.btn_done").on("click", function(){
-        $(answerWriteForm).submit();
+
+        if($("#boardContent").val() == "") {
+            showWarnModal("답변 내용을 입력해주세요.");
+            $("#boardContent").focus();
+            return false;
+        };
+        showWarnModal("등록 되었습니다.");
+        setTimeout(function () {
+            $("#answerWriteForm").submit();
+            }, 1500);
     });
 </script>
 

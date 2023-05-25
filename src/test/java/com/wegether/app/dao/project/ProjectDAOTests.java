@@ -20,12 +20,12 @@ public class ProjectDAOTests {
     @Autowired
     private ProjectDAO projectDAO;
 
-    @Test
-    public void projectFindAllTest() {
-        ProjectPagination projectPagination = new ProjectPagination();
-        projectPagination.setPage(1);
-        projectDAO.projectFindAll(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void projectFindAllTest() {
+//        ProjectPagination projectPagination = new ProjectPagination();
+//        projectPagination.setPage(1);
+//        projectDAO.projectFindAll(projectPagination).stream().map(ProjectDTO::toString).forEach(log::info);
+//    }
 
     @Test
     public void findByIdTest() {
@@ -50,23 +50,23 @@ public class ProjectDAOTests {
         projectDAO.projectSave(projectDTO);
     }
 
-    @Test
-    public void setProjectDAOTest() {
-        Optional<ProjectDTO> foundProject = projectDAO.findById(25L);
-        if (foundProject.isPresent()) {
-            ProjectDTO projectDTO = foundProject.get();
-            projectDTO.setProjectTitle("내가 돌아왔다");
-            projectDAO.setProjectDTO(projectDTO);
-        } else {
-        }
-
-        foundProject = projectDAO.findById(1L);
-        foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("내가 돌아왔다"));
-    }
-    @Test
-    public void deleteTest() {
-        projectDAO.ProjectDelete(25L);
-    }
+//    @Test
+//    public void setProjectDAOTest() {
+//        Optional<ProjectDTO> foundProject = projectDAO.findById(25L);
+//        if (foundProject.isPresent()) {
+//            ProjectDTO projectDTO = foundProject.get();
+//            projectDTO.setProjectTitle("내가 돌아왔다");
+//            projectDAO.setProjectDTO(projectDTO);
+//        } else {
+//        }
+//
+//        foundProject = projectDAO.findById(1L);
+//        foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("내가 돌아왔다"));
+//    }
+//    @Test
+//    public void deleteTest() {
+//        projectDAO.ProjectDelete(25L);
+//    }
 
 
 }

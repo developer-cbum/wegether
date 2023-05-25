@@ -29,10 +29,14 @@ public class AdminDAO {
     // 공지사항 총 갯수
     public int findCountOfNotice(Search search) { return adminMapper.selectCountOfNotice(search); }
 
-    // 공지사항 등록
-    public void noticeSave(NoticeVO noticeVO){ adminMapper.noticeInsert(noticeVO); };
+//    // 공지사항 등록
+//    public void noticeSave(NoticeVO noticeVO){ adminMapper.noticeInsert(noticeVO); };
+
+    // 공지사항 등록(첨부파일)
+    public void noticeSave(NoticeAdminDTO noticeAdminDTO){ adminMapper.noticeInsert(noticeAdminDTO); };
 
     // 공지사항 이미지 등록
+    public void noticeImageSave(NoticeFileAdminDTO noticeFileAdminDTO) { adminMapper.noticeImageInsert(noticeFileAdminDTO);}
 
     // 공지사항 이미지 등록(중간 테이블)
     public void noticeImageMiddleSave(NoticeFileVO noticeFileVO) { adminMapper.noticeImageMiddleInsert(noticeFileVO);}

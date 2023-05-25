@@ -90,7 +90,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
-    <script>
+    <script th:inline="javascript">
         let inquiryBoards = [[${inquiryBoards}]];
         console.log(inquiryBoards);
     </script>

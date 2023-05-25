@@ -6,13 +6,13 @@
 
     <!-- 공지사항 목록(페이징) -->
     <select id="noticeSelectAll" resultType="noticeAdminDTO">
-    SELECT F.ID, NOTICE_TITLE, NOTICE_REGISTER_DATE
+    SELECT F.ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGISTER_DATE
     FROM
         (
-            SELECT ROWNUM R, ID, NOTICE_TITLE, NOTICE_REGISTER_DATE
+            SELECT ROWNUM R, ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGISTER_DATE
             FROM
                     (
-                        SELECT ROWNUM C, ID, NOTICE_TITLE, NOTICE_REGISTER_DATE
+                        SELECT ROWNUM C, ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGISTER_DATE
                         FROM TBL_NOTICE
                         ORDER BY ID DESC
                     )
@@ -22,7 +22,8 @@
     F WHERE R > (#{adminPagination.page} - 1) * #{adminPagination.rowCount}
     ]]>
         <if test="search.keyword != null">
-            AND NOTICE_TITLE LIKE '%'||#{search.keyword}||'%'
+            AND (NOTICE_TITLE LIKE '%'||#{search.keyword}||'%'
+            OR NOTICE_CONTENT LIKE '%'||#{search.keyword}||'%')
         </if>
     </select>
 
@@ -39,20 +40,29 @@
         SELECT COUNT(ID) FROM TBL_NOTICE
         <where>
             <if test="search.keyword != null">
-                AND (NOTICE_TITLE LIKE '%'||#{search.keyword}||'%')
+                AND (NOTICE_TITLE LIKE '%'||#{search.keyword}||'%'
+                OR NOTICE_CONTENT LIKE '%'||#{search.keyword}||'%')
             </if>
         </where>
     </select>
 
     <!-- 공지사항 등록 -->
     <insert id="noticeInsert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+            SELECT SEQ_NOTICE.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_NOTICE(ID, NOTICE_TITLE, NOTICE_CONTENT)
-        VALUES(SEQ_NOTICE.NEXTVAL, #{noticeTitle}, #{noticeContent})
+        VALUES(#{id}, #{noticeTitle}, #{noticeContent})
     </insert>
 
     <!-- 공지사항 이미지 등록 -->
     <insert id="noticeImageInsert">
-
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+            SELECT SEQ_FILE.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_FILE
+        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE)
+        VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{fileType})
     </insert>
 
     <!-- 공지사항 이미지 등록(중간 테이블) -->
@@ -60,7 +70,7 @@
         INSERT INTO TBL_NOTICE_FILE(ID, NOTICE_ID)
         VALUES(#{id}, #{noticeId})
     </insert>
-
+    
     <!-- 공지사항 상세 -->
     <select id="noticeSelect" resultType="NoticeAdminDTO">
         SELECT ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGISTER_DATE
