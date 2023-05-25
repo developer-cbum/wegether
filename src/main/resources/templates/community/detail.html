@@ -39,8 +39,11 @@
             type="text/css"
             href="https://static.wadiz.kr/main/css/reward-community.bb8838fc.chunk.css"
         />
+        <link rel="stylesheet" href="/css/fix/footer.css">
+        <link rel="stylesheet" href="/css/fix/header.css">
     </head>
     <body style="font-family: Pretendard;">
+    <header th:replace="~{/fix/header :: #header}"></header>
         <div id="page-container" style="overflow-y: hidden">
             <div id="et-boc" class="et-boc">
                 <div id="et-main-area">
@@ -446,6 +449,7 @@
                 </div>
             </div>
         </div>
+    <footer th:replace="~{/fix/footer :: #footer}"></footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="js/community/community-reply.js"></script>
