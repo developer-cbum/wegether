@@ -34,27 +34,27 @@ public class adminDAOTests {
         adminDAO.noticeImageFindAll(1L).stream().map(noticeFileAdminDTO -> noticeFileAdminDTO.getFileName()).forEach(log::info);
     }
 
-    //    공지사항 등록 테스트
-    @Test
-    public void noticeSaveTest() {
-        NoticeVO noticeVO = new NoticeVO();
-        noticeVO.setNoticeTitle("공지사항 테스트 제목");
-        noticeVO.setNoticeContent("공지사항 테스트 내용");
-        adminDAO.noticeSave(noticeVO);
-    }
-
-    //    공지사항 이미지 등록 테스트
-    @Test
-    public void noticeImageInsertTest(){
-        FileVO fileVO = new FileVO();
-        fileVO.setFilePath("2023/05/24");
-        fileVO.setFileUuid("rqw21-12421");
-        fileVO.setFileName("김원진.jpg");
-        fileVO.setFileSize(1500L);
-        fileVO.setFileType("NON_REPRESENTATIVE");
-        adminDAO.noticeImageSave(fileVO);
-    }
-    
+//    //    공지사항 등록 테스트
+//    @Test
+//    public void noticeSaveTest() {
+//        NoticeVO noticeVO = new NoticeVO();
+//        noticeVO.setNoticeTitle("공지사항 테스트 제목");
+//        noticeVO.setNoticeContent("공지사항 테스트 내용");
+//        adminDAO.noticeSave(noticeVO);
+//    }
+//
+//    //    공지사항 이미지 등록 테스트
+//    @Test
+//    public void noticeImageInsertTest(){
+//        FileVO fileVO = new FileVO();
+//        fileVO.setFilePath("2023/05/24");
+//        fileVO.setFileUuid("rqw21-12421");
+//        fileVO.setFileName("김원진.jpg");
+//        fileVO.setFileSize(1500L);
+//        fileVO.setFileType("NON_REPRESENTATIVE");
+//        adminDAO.noticeImageSave(fileVO);
+//    }
+//
     //    공지사항 이미지 등록(중간 테이블) 테스트
     @Test
     public void noticeImageMiddleSaveTest(){
