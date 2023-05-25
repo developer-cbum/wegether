@@ -24,11 +24,11 @@
                 </choose>
                 ORDER BY
                 <choose>
-                    <when test="categoryType.order == 'new'">
-                        DATA_REGISTER_DATE
+                    <when test="categoryType.order == 'trand'.toString()">
+                        DATA_READ_COUNT
                     </when>
                     <otherwise>
-                        DATA_READ_COUNT
+                         ID
                     </otherwise>
                 </choose>
                 DESC
@@ -60,6 +60,11 @@
                         ON M.ID = D.MEMBER_ID AND D.ID = #{id}
 
     </select>
+
+<!--    조회수 증가-->
+    <update id="updateCount">
+		UPDATE TBL_DATA SET DATA_READ_COUNT = DATA_READ_COUNT + 1 WHERE ID = #{id}
+	</update>
 
     <!--  자료 상세 조회 : wish  -->
 <!--    <select id="selectWish" resultType="_int">-->

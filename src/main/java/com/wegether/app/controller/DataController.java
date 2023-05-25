@@ -43,6 +43,7 @@ public class DataController {
     public void goToList(){;}
 
     //    자료 목록 - rest 시도 중 ..
+<<<<<<< HEAD
 //    @ResponseBody
 //    @GetMapping("computer-list/{page}/{type}")
 //    public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type){
@@ -62,11 +63,26 @@ public class DataController {
 //        pagination.progress();
 //        return replyService.getList(postId, pagination);
 //    }
+=======
+    @ResponseBody
+    @GetMapping("{page}/{type}/{order}")
+    public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type, @PathVariable String order){
+        final DataPagination dataPagination = new DataPagination();
+        CategoryType categoryType = new CategoryType();
+        dataPagination.setPage(page);
+        dataPagination.setTotal(dataService.getTotal());
+        dataPagination.progress();
+        categoryType.setType(type);
+        categoryType.setOrder(order);
+       return dataService.getList(dataPagination, categoryType);
+    }
+>>>>>>> master
 
 
     //    자료 상세
     @GetMapping("detail")
-    public void read(@RequestParam Long id, Model model){
+    public void read(@RequestParam Long id, Model model, DataDTO dataDTO){
+        dataService.modifyViewCountUp(dataDTO.getId());
         model.addAttribute("dataDTO", dataService.read(id).get());
     }
 

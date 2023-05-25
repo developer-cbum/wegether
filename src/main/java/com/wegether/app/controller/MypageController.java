@@ -43,22 +43,24 @@ public class MypageController {
 
         model.addAttribute("main", mine.loadMine(2L).get());
     }
-
+//===========================================================================================================================
 //    비밀번호 재설정
 
     private final AccountService accountService;
 
 //   비밀번호 재설정 form 으로 이동
     @GetMapping("/setting/setting-password")
-    public void goSettingPW(@RequestParam Long id, MemberVO memberVO, Model model){
-        model.addAttribute("id", id);
+    public void goSettingPW(MemberVO memberVO, Model model, HttpSession session){
 
+        model.addAttribute("member", accountService.getMemberById((Long) session.getAttribute("id")).get());
     }
-// 사용자가 입력한 비밀번호와 세션에 등록된 비밀번호 비교
 
-    @GetMapping("/check/setting-password")
+
+// 사용자가 입력한 비밀번호와 세션에 등록된 비밀번호 비교
+// 에이작스로 보낼 것
+    @GetMapping("/setting/compare")
     @ResponseBody
-    public String changePassword(MemberVO memberVO, HttpSession session){
+    public String goToChangePasswordForm(MemberVO memberVO, HttpSession session){
 
 
 //        그 아이디에 해당하는 세션에 등록된 비밀번호를 가져온다
@@ -75,58 +77,68 @@ public class MypageController {
     }
 //    비밀번호 재설정 완료
     @PostMapping("/setting/setting-password")
-    public RedirectView changePassword(@RequestBody Long id, MemberVO memberVO){
+    public RedirectView changePassword(MemberVO memberVO, HttpSession session){
         log.info(memberVO.getMemberPassword());
-        log.info(id.toString());
-        accountService.changePassword(Long.valueOf(id), memberVO.getMemberPassword());
-        return new RedirectView("/my-page/my-page");
+        accountService.changePassword((Long) session.getAttribute("id"), memberVO.getMemberPassword());
+        return new RedirectView("/mypage/my-page/my-page");
     }
 
-//    @PostMapping("setting/setting-password")
-//    @ResponseBody
-//    public Optional<MemberVO> changePassword(@RequestBody MemberVO memberVO, HttpSession session){
-//        log.info(memberVO.getMemberPassword());
-//
-//        log.info(session.getId());
-//
-//        session.setAttribute("pw", memberVO.getMemberPassword());
-////        그 아이디에 해당하는 세션에 등록된 비밀번호를 가져온다
-////        사용자가 입력한 비밀번호와 비교한다 > js
-////        비밀번호가 같으면 return /accounts/login
-//
-//        session.setAttribute("id", memberVO.getId());
-//
-////       세션에 있는 아이디로 비밀번호를 가져온다
-//        Optional<MemberVO> info = accountService.getMemberByPw((Long) session.getAttribute("id"));
-//        return info;
-//
-//
-//    }
+//===========================================================================================================================
+
+//    비밀번호 확인 페이지 이동
+
+    @GetMapping("/setting/check-password")
+    public void goCheckPW(MemberVO memberVO, Model model, HttpSession session){
+
+        model.addAttribute("member", accountService.getMemberById((Long) session.getAttribute("id")).get());
+    }
+
+    @GetMapping("/setting/comparePW")
+    @ResponseBody
+    public String goToCherkFor(MemberVO memberVO, HttpSession session){
+
+
+        Optional<MemberVO> info = accountService.getMemberById((Long) session.getAttribute("id"));
+
+        String dbPW=info.get().getMemberPassword();
+        return dbPW;
+
+    }
+
+//===========================================================================================================================
+//    기본 정보 설정 페이지 이동
+    @GetMapping("/setting/basic-setting")
+    public void goToBasicSetting(){;}
+
+//    기본 정보 설정
 
 
     //    서비스 : 간편결제
     private final CardImpl card;
 
     //    카드 리스트
-//    @GetMapping("/pay-card/pay-card")
-//    public void list(Long memberId, Model model) {
-//        model.addAttribute("cards", card.getList(1L));
-//    }
+    @GetMapping("/pay-card/list")
+    public String goToListForm(){
+        return "/mypage/pay-card/pay-card";
+    }
 
-/*    카드 등록 모달 화면
-    모달인데 매핑 ?*/
-/*    @GetMapping("/pay-card/pay-card")
-    public void goToWriteForm(CardVO cardVO){;}*/
+    @PostMapping("/pay-card/list")
+    @ResponseBody
+    public List<CardDTO> list(Long memberId, Model model, HttpSession session) {
+        return card.getList((Long) session.getAttribute("id"));
+    }
 
-    //    카드 등록 후 리스트
-//    @PostMapping("register")
-//    public RedirectView register(@RequestBody CardDTO cardDTO, CardVO CARD) {
-//        card.register(cardVO);
-//        return new RedirectView("/pay-card/pay-card");
-//    }
+
+
+//        카드 등록 후 리스트
+    @PostMapping("/pay-card/register")
+    @ResponseBody
+    public void register(@RequestBody CardDTO cardDTO) {
+        card.register(cardDTO);
+    }
 
     //    카드 삭제
-    @PostMapping("remove")
+    @PostMapping("/pay-card/remove")
     public RedirectView withdraw(Long id) {
         card.remove(id);
         return new RedirectView("/pay-card/pay-card");
@@ -216,13 +228,13 @@ public class MypageController {
 
 
 //프로젝트 찜 목록 화면에 전달
-    @GetMapping("/mypage/heart-list/project")
+    @GetMapping("/heart-list/project")
     @ResponseBody
-    public List<ProjectDTO> goToProjectHeart(Long memberId) {
+    public List<ProjectDTO> goToProjectHeart() {
 
-        final List<ProjectDTO> hearts = heart.projectHeart(2L);
-        log.info(String.valueOf(hearts));
-        return hearts;
+        final List<ProjectDTO> projects = heart.projectHeart(2L);
+        log.info(String.valueOf(projects));
+        return projects;
 
         //model.addAttribute("projectH", heart.projectHeart(2L));
     }
@@ -231,13 +243,13 @@ public class MypageController {
 
 
 //데이터 찜 목록 화면에 전달
-    @GetMapping("/mypage/heart-list/data")
+    @GetMapping("/heart-list/data")
     @ResponseBody
     public List<DataDTO> goToDataHeart(Long memberId) {
 
-        final List<DataDTO> hearts = heart.dataHeart(2L);
-        log.info(String.valueOf(hearts));
-        return hearts;
+        final List<DataDTO> datas = heart.dataHeart(2L);
+        log.info(String.valueOf(datas));
+        return datas;
 
         //model.addAttribute("projectH", heart.projectHeart(2L));
     }
