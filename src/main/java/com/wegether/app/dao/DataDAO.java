@@ -42,17 +42,10 @@ public class DataDAO {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
+//    결제 페이지
+    public Optional<DataDTO> findByIdDataPay(Long id){
+        return dataMapper.selectPay(id);
+    }
 
 
 

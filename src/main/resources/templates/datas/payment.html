@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" type="text/css"
-		href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
 	<link rel="stylesheet" href="/css/dataroom/payment.css" />
+	<link rel="stylesheet" href="/css/fix/header.css">
+	<link rel="stylesheet" href="/css/fix/footer.css">
 
 	<title>결제 | 위게더</title>
-	<link rel="stylesheet" href="../../static/css/dataroom/payment.css">
 </head>
 
 <body style="overflow: auto;" class>
+
+<header th:replace="~{/fix/header :: #header}"></header>
+
 	<div id="page-container">
 		<main id="page-container">
 			<div class="MainWrapper_content__GZkTa">
 				<div>
-					<div class="PaymentLayout_paymentLayoutContainer__3Ef47">
-						<div class="PaymentLayout_paymentContainer__2T2nr">
+					<div th:object="${dataDTO}" class="PaymentLayout_paymentLayoutContainer__3Ef47">
+						<div class=" PaymentLayout_paymentContainer__2T2nr">
 							<h2 class="PaymentLayout_pageTitle__2MXof">주문 및 결제</h2>
 							<div class="PaymentLayout_paymentNotice__1o_Hi">
 								<div color="basic"
@@ -34,7 +37,7 @@
 											</path>
 										</svg></span>
 									<div class="MessageBox_content__3Yza8">
-										<p class="MessageBox_title__12hBF">펀딩에 성공하여 상시 판매하는 스토어 상품입니다.</p>
+										<p class="MessageBox_title__12hBF">위게더 회원이 판매하는 자료 상품입니다.</p>
 										<div class="MessageBox_description__2Fyxq">
 											<ul>
 												<li>구매 즉시 결제가 진행됩니다.</li>
@@ -43,6 +46,10 @@
 									</div>
 								</div>
 							</div>
+
+
+						<!--				[S] 주문 정보				-->
+
 							<section class="StorePaymentSection_container__1SdwL">
 								<div class="StorePaymentSection_titleContainer__gkoqg">
 									<h3 class="StorePaymentSection_title__DLi4F">주문 정보</h3>
@@ -52,19 +59,23 @@
 									<div class="StorePaymentInformation_storePaymentInformation__nBaVr">
 										<div class="StorePaymentInformation_row__OF_TS">
 											<span class="StorePaymentInformation_label__3Pxe0">주문자명</span>
-											<span>익명의 서포터 777</span>
+											<span th:text="*{memberNickname}"></span>
 										</div>
 										<div class="StorePaymentInformation_row__OF_TS">
 											<span class="StorePaymentInformation_label__3Pxe0">휴대폰 번호</span>
-											<span>01082704443</span>
+											<span th:text="*{memberPhoneNumber}"></span>
 										</div>
 										<div class="StorePaymentInformation_row__OF_TS">
 											<span class="StorePaymentInformation_label__3Pxe0">이메일 주소</span>
-											<span>chosey415@gmail.com</span>
+											<span th:text="*{memberName}"></span>
 										</div>
 									</div>
 								</div>
 							</section>
+
+						<!--				[E] 주문 정보				-->
+
+
 							<form id="payment-submit">
 								<input type="hidden" name="deliveryTabIndex" value="0">
 								<input type="hidden" name="selectedShippingAddressIndex" value="0">
@@ -72,6 +83,10 @@
 								<input type="hidden" name="deliveryRegion.isIslandOrMountainous" value="false">
 								<input type="hidden" name="couponKey" value="">
 								<input type="hidden" name="isMobileCertification" value="false">
+
+
+							<!--				[S] 상품 정보				-->
+
 								<section class="StorePaymentSection_container__1SdwL">
 									<div class="StorePaymentSection_titleContainer__gkoqg">
 										<h3 class="StorePaymentSection_title__DLi4F">상품 정보</h3>
@@ -81,20 +96,24 @@
 										<div class="StorePaymentProductInfo_storePaymentProductInfoContainer__1nu6T">
 											<div class="StorePaymentProductInfo_productInfoContainer__3ulGA">
 												<div class="StorePaymentProductInfo_productInfoTextContainer__CId20">
-													<p class="StorePaymentProductInfo_productName__1TK1V">만월화투 스웨이드 파우치
-														(단품)</p>
-													<p class="StorePaymentProductInfo_productDescription__3-3a_">만월화투
-														스웨이드 파우치 x1</p>
+													<p class="StorePaymentProductInfo_productName__1TK1V" th:text="*{dataTitle}"></p>
+													<p class="StorePaymentProductInfo_productDescription__3-3a_" th:text="*{dataSchool}"></p>
 												</div>
 											</div>
 											<div class="StorePaymentProductInfo_priceInfo__35XLT">
-												<span class="StorePaymentProductInfo_qty__3MWOa">수량: 1개</span>
-												<span class="StorePaymentProductInfo_price__2pYbN">7,000원</span>
+												<span class="StorePaymentProductInfo_qty__3MWOa" th:text="*{dataMajor}"></span>
+												<span class="StorePaymentProductInfo_price__2pYbN" th:text="*{dataPrice}">원</span>
 											</div>
 											<div class="StorePaymentProductInfo_divider__2dEYa"></div>
 										</div>
 									</div>
 								</section>
+
+							<!--				[E] 상품 정보				-->
+
+
+							<!--				[S] 포인트 정보					-->
+
 								<section class="StorePaymentSection_container__1SdwL">
 									<div class="StorePaymentSection_titleContainer__gkoqg">
 										<h3 class="StorePaymentSection_title__DLi4F">포인트 할인</h3>
@@ -108,11 +127,19 @@
 												<div
 													class="select-menu__control select-menu__control--is-disabled css-1fhf3k1-control">
 													<div class="select-menu__value-container css-1hwfws3">
-														<div class="select-menu__placeholder css-1wa3eu0-placeholder">사용
-															가능한 포인트가 없습니다.</div>
-														<input id="react-select-2-input" readonly="" disabled=""
+
+
+														<!--포인트 없을 때-->
+<!--														<div class="select-menu__placeholder css-1wa3eu0-placeholder">사용 가능한 포인트가 없습니다.</div>-->
+<!--														<input id="react-select-2-input" readonly="" disabled=""-->
+<!--															tabindex="0" aria-autocomplete="list"-->
+<!--															class="css-62g3xt-dummyInput" value="">-->
+
+
+														<div class="select-menu__placeholder css-1wa3eu0-placeholder" th:text="*{pointTotal}"></div>
+														<input id="react-select-2-input"
 															tabindex="0" aria-autocomplete="list"
-															class="css-62g3xt-dummyInput" value="">
+															class="css-62g3xt-dummyInput" value="" th:field="*{pointTotal}">
 													</div>
 													<div class="select-menu__indicators css-1wy0on6">
 														<span class="select-menu__indicator-separator css-0"></span>
@@ -132,6 +159,12 @@
 										</div>
 									</div>
 								</section>
+
+							<!--				[E] 포인트 정보					-->
+
+
+							<!--				[S] 결제 수단				-->
+
 								<section class="StorePaymentSection_container__1SdwL">
 									<div class="StorePaymentSection_titleContainer__gkoqg">
 										<h3 class="StorePaymentSection_title__DLi4F">결제 수단</h3>
@@ -178,11 +211,19 @@
 										</div>
 									</div>
 								</section>
+
+							<!--				[E] 결제 수단				-->
 							</form>
+
+
 						</div>
 						<div class="PaymentLayout_floatingSectionContainer__2QCzS">
 							<div class="PaymentLayout_floatingSection__31pLD">
 								<section class="StorePaymentSection_container__1SdwL PaymentLayout_floating__3iHN0">
+
+
+								<!--				[S] 결제 금액					-->
+
 									<div class="StorePaymentSection_titleContainer__gkoqg">
 										<h3 class="StorePaymentSection_title__DLi4F">결제 금액</h3>
 									</div>
@@ -202,14 +243,14 @@
 												<dl class="">
 													<dt>상품 금액</dt>
 													<dd><span>
-															<em class="TitleValuePrice_money__1Tu-B">7,000</em>원</span>
+															<em class="TitleValuePrice_money__1Tu-B" th:text="*{dataPrice} - *{pointTotal}"></em>원</span>
 													</dd>
 												</dl>
 											</div>
 											<div class="TitleValuePrice_container__Hcpla">
 												<dl class="">
 													<dt>포인트 할인 금액</dt>
-													<dd><span>0 원</span></dd>
+													<dd><span><span th:text="*{pointTotal}"></span>원</span></dd>
 												</dl>
 											</div>
 
@@ -217,11 +258,15 @@
 												<hr class="TitleValuePrice_divide__2bMnX">
 												<dl class="TitleValuePrice_total__oJwm4">
 													<dt>최종 결제 금액</dt>
-													<dd><span><em class="">7,000 원</em></span></dd>
+													<dd><span><em class=""><span th:text="*{dataPrice}"></span> 원</em></span></dd>
 												</dl>
 											</div>
 										</div>
 									</div>
+
+								<!--				[E] 결제 금액					-->
+
+
 								</section>
 								<section class="StorePaymentSection_container__1SdwL PaymentLayout_floating__3iHN0">
 									<div
@@ -353,9 +398,14 @@
 			</div>
 		</main>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="/js/dataroom/payment.js"></script>
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	console.log(data);
+	console.log(datas);
+</script>
+<script src="/js/dataroom/payment.js"></script>
 
 
 </html>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    document.title = "자료 | " + dataDTO.dataTitle;
 
     const $imageContainer = $("#image_container");
     const $textContainer = $("#text_container");
@@ -113,10 +114,11 @@ $(document).ready(function () {
                                 </span>
                             </button>
                         </div>
-                        <a href="payment" style="width: 100%;">
+                        <a href="/datas/payment?id=${dataDTO.id}" style="width: 100%;">
                             <button rel="noreferrer noopener"
-                                class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA"
-                                type="button" >
+                                class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA">
+<!--                                type="button" -->
+                                
                                 <span>
                                     <span class="Button_children__ilFun">
                                         <span>구매하기</span>
@@ -202,7 +204,7 @@ $(document).ready(function () {
 
           <blockquote class="type-default">
                 <p>${dataDTO.dataContent}</p>
-            </blockquote>
+          </blockquote>
 
         `
 

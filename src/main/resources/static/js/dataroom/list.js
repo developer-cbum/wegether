@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     const $ul = $("#list-container");
     const $btnWrap = $(".searchMoreData");
     let page = 1;
