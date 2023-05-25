@@ -17,10 +17,10 @@ import java.util.Optional;
 public interface DataMapper {
 
     //    자료 목록 조회
-    public List<DataDTO> selectAll( DataPagination dataPagination, CategoryType categoryType);
+    public List<DataDTO> selectAll(@Param("dataPagination") DataPagination dataPagination, @Param("categoryType") CategoryType categoryType);
 
 //    자료 목록 조회
-    public List<DataDTO> selectAll(DataPagination dataPagination);
+//    public List<DataDTO> selectAll(@Param("dataPagination") DataPagination dataPagination);
 
 
     //    자료 추가
@@ -28,6 +28,8 @@ public interface DataMapper {
 
     //    자료 상세 조회
     public Optional<DataDTO> select(Long id);
+    //    조회수 증가
+    public void updateCount(Long id);
 
 
 

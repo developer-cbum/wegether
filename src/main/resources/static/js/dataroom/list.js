@@ -3,6 +3,8 @@ $(document).ready(function () {
     let dataPagination = 1;
     const $ul = $("#list-container");
     let text = "";
+    let order ="new";
+    let categoryType= "all";
 
     load("all");
 
@@ -135,22 +137,31 @@ $(document).ready(function () {
         history.replaceState({}, null, location.pathname);
     });
 
-    //
-    // $('.category_lists button').on("click", function (e) {
-    //     e.preventDefault();
-    //     let type = this.classList[0];
-    //     location.href = `/datas/list?type=${type}`;
-    // });
 
     $('.category_lists button').on("click", function () {
-        let type = $(this).attr('id');
-        load(type);
+        categoryType = $(this).attr('id');
+        load(categoryType);
+    })
+
+    //버튼 효과주기
+    $('.new').on("click", function () {
+        $(this).removeClass('OrderSelectDesktop_active__YTP2K');
+        $(this).addClass('OrderSelectDesktop_active__YTP2K');
+        order="new";
+
+        load(categoryType);
+    })
+
+    $('.trand').on("click", function () {
+        $(this).addClass('OrderSelectDesktop_active__YTP2K');
+        order="trand";
+        load(categoryType);
     })
 
 
     function load(categoryType) {
         $.ajax({
-            url: `/datas/computer-list/1/${categoryType}`,
+            url: `/datas/computer-list/1/${categoryType}/${order}`,
             contentType : "application/json; charset=UTF-8;",
             success:  function (datas) {
                 text="";
