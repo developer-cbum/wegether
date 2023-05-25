@@ -33,7 +33,6 @@ public class CommunityReplyController {
     public List<Integer> register(@RequestBody CommunityReplyDTO communityReplyDTO, Model model){
         log.info(communityReplyDTO.toString());
         communityReplyService.register(communityReplyDTO);
-        log.info(communityReplyDTO.getId().toString());
         CommunityReplyVO communityReplyVO = new CommunityReplyVO();
         communityReplyVO.setId(communityReplyDTO.getId());
         communityReplyVO.setMemberId(1L);
@@ -60,13 +59,15 @@ public class CommunityReplyController {
     @Transactional(rollbackFor = Exception.class)
     public int registerAgain(@RequestBody CommunityReplyDTO communityReplyDTO){
         log.info("대댓글 컨트롤러");
-        log.info(communityReplyDTO.toString());
         communityReplyService.registerDepth(communityReplyDTO);
-        log.info(communityReplyDTO.getId().toString());
+        log.info("==================" + communityReplyDTO.getId().toString());
         CommunityReplyVO communityReplyVO = new CommunityReplyVO();
+        log.info(communityReplyDTO.toString());
+        log.info(communityReplyDTO.getId().toString());
         communityReplyVO.setId(communityReplyDTO.getId());
         communityReplyVO.setCommunityId(communityReplyDTO.getCommunityId());
-        communityReplyVO.setMemberId(communityReplyDTO.getMemberId());
+        communityReplyVO.setMemberId(1L);
+        log.info("=================" + communityReplyVO.toString());
         communityReplyService.registerMiddle(communityReplyVO);
         return communityReplyService.getTotal(communityReplyDTO.getCommunityId());
     }

@@ -4,7 +4,10 @@ let count = 0;
 let text = "";
 $(window).ready(function (){
     page= 1;
-    load()
+    load();
+    if(basicTotal>5){
+        $('.more-container').show()
+    }
 });
 
 //버튼 이벤트
@@ -45,29 +48,220 @@ function registerReply() {
     })
 }
 
-function load() {
+//확인 버튼누를떄 대댓글등록
+$(document).on('click', '.register-again-reply', function () {
+
+    let $againReply = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyAgain-text-area');
+    let $replyGroup = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyGroup');
+    let $reviewWrite = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
+    let replyContent = $againReply.val();
+    let replyGroup = $replyGroup.val();
+
+    let id = $(this).attr("id");
+
+    // if(session == null){
+    //     showWarnModal("로그인후 이용해주세요");
+    //     return;
+    // }
+    //
+    // if($againReply.val()==""){
+    //     showWarnModal("내용을 작성해주세요");
+    //     return;
+    // }
+
+
+    $.ajax({
+        url        : '/community-replies/register-again',
+        type       : "post",
+        data       : JSON.stringify({
+            "replyContent": replyContent,
+            "communityId": communityId,
+            "replyGroup"  : replyGroup,
+        }),
+        contentType: "application/json; charset=UTF-8;",
+        success    : function (total) {
+            if(total == 0){
+                $('.no-reply').show();
+            }
+            $againReply.val("");
+            //    댓글 최신화
+            text=""
+            $div.html("");
+            page= 1;
+            $(".total").text(`${total}`);
+            // 대댓글써도 댓글폼 유지
+            load(id); //폼다시생성
+
+        }
+
+    });
+
+});
+
+/*댓글 불러오기 ajax 함수*/
+function load(id,totals) {
+
     $.ajax({
         url     : `/community-replies/list/${communityId}/${page}`,
         type    : 'get',
         success : function (result) {
-            if(result.length == 0){
-                $('.more-button').hide();
+            if(totals) {
+                if (totals[1] > 5) {
+                    if(result.length > 0){
+
+                        $('.more-container').show()
+                    }
+                } else {
+                    $('.more-container').hide()
+                }
             }
+
             if (result) {
                 console.log(result);
                 $.ajax({
                     url     : `/community-replies/again-list/${communityId}`,
                     type    : 'get',
                     success : function (resultResult) {
-                        console.log(resultResult)
-                        showList(result, resultResult);
-
+                        showList(result, resultResult, id);
+                        if(totals){
+                            if(totals[1] == $('.check').length){
+                                $('.more-container').hide();
+                            }
+                        }else{
+                            if(result.length < 5){
+                                $('.more-container').hide()
+                            }else{
+                                $('.more-container').show()
+                            }
+                        }
                     }
                 });
             }
         }
     });
 }
+
+//댓글 수정 버튼
+$(document).on('click', '.modify-button-reply', function () {
+    let id = $(this).attr("id");
+    //원래 댓글틀
+    let $replyForm = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reply-form');
+    //수정 내용 박스
+    let $modifyReplyText = $(this).closest('.CommunityCommentItem_container__BOufe').find('.modify-reply-text');
+    // 수정폼
+    let $reviewWriteModify = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewWrite-modify');
+    //확인버튼
+    let $modifyOkButton= $(this).closest('.CommunityCommentItem_container__BOufe').find('.modify-ok-button');
+    //취소 버튼
+    let $modifyButtonBack = $(this).closest('.CommunityCommentItem_container__BOufe').find('.modify-button-back');
+
+
+    //수정폼 보이게 & 원래폼 숨기기
+    $replyForm.hide();
+    $reviewWriteModify.show();
+
+    // 수정폼 숨기기
+    $modifyButtonBack.on("click", ()=>{$replyForm.show(); $reviewWriteModify.hide();})
+
+    //확인버튼 누르면 수정
+    $modifyOkButton.on("click",function () {
+        //수정된 내용
+        let replyContent = $modifyReplyText.val();
+        $.ajax({
+            url : "/community-replies/modify",
+            type: "put",
+            data: JSON.stringify({
+                replyContent :replyContent,
+                id : id
+            }),
+            contentType: "application/json; charset=UTF-8;",
+            success : function () {
+                text=""
+                $div.html("");
+                page= 1;
+                load();
+                showWarnModal("수정되었습니다")
+            }
+        })
+
+    })
+
+});
+
+// 대댓글 수정버튼
+$(document).on('click', '.reply-again-modify', function () {
+    //이건 댓글 아이디
+    let id = $(this).attr("id");
+    //이건 대댓글아이디
+    let secondId = $(this).attr("class").split(' ')[1];
+    //수정폼
+    let $replyAgainForm = $(this).closest('.CommunityCommentItem_container__BOufe').find(`#again${secondId}`);
+    //수정 내용 박스
+    let $againReplyModifyText = $(this).closest('.CommunityCommentItem_container__BOufe').find(`#text${secondId}`);
+    //원래 내용
+    let $originalAgainContainer = $(this).closest('.CommunityCommentItem_container__BOufe').find(`#original${secondId}`);
+    //확인버튼
+    let $againModifyOkButton= $(this).closest('.CommunityCommentItem_container__BOufe').find(`#ok${secondId}`);
+    //취소 버튼
+    let $againCancle = $(this).closest('.CommunityCommentItem_container__BOufe').find(`#cancle${secondId}`);
+
+    //수정누르면
+    $originalAgainContainer.hide();
+    $replyAgainForm.show();
+
+    // 수정누르고 취소 눌러서 폼 다시 원상복귀
+    $againCancle.on("click", ()=>{  $originalAgainContainer.show(); $replyAgainForm.hide();})
+
+    //확인버튼 누를시 변경
+//   대댓글 수정
+    //확인버튼 누르면 수정
+    $againModifyOkButton.on("click",function () {
+        let replyContent = $againReplyModifyText.val();
+        $.ajax({
+            url : "/community-replies/modify",
+            type: "put",
+            data: JSON.stringify({
+                replyContent: replyContent,
+                id          : secondId
+            }),
+            contentType: "application/json; charset=UTF-8;",
+            success: function () {
+                text=""
+                $div.html("");
+                page= 1;
+                load(id);
+                showWarnModal("수정되었습니다")
+            }
+        });
+
+    })
+
+
+});
+
+//댓글 삭제 삭제버튼
+$(document).on('click', '.remove-button', function () {
+    let id = $(this).attr("id");
+    let secondId = $(this).attr("class").split(' ')[1];
+    $.ajax({
+        url     : `/community-replies/remove/${id}`,
+        type    : 'delete',
+        success : function (totals) {
+            console.log(totals);
+            text=""
+            $div.html("");
+            page= 1;
+            $(".total").text(`${totals[0]}`);
+            if(totals[0] == 0){
+                $('.no-reply').show();
+            }
+            load(secondId, totals);
+            showWarnModal("삭제되었습니다");
+        }
+
+    });
+
+});
 
 
 function showList(result, replyResult, id) {
@@ -300,8 +494,8 @@ function showList(result, replyResult, id) {
                                                     maxlength="2000"
                                                     rows="2"
                                                     class="Textarea_textarea__2EtST"
-                                                    th:text="${replyResult[i].replyContent}"
-                                            ></textarea>
+                                                    
+                                            >${replyResult[i].replyContent}</textarea>
                                             <div style="
                                                     text-align: right;
                                                     margin-top: 10px;
@@ -455,3 +649,30 @@ function elapsedTime(date) {
     }
     return '방금 전';
 }
+
+//답글 버튼눌렀을때
+$(document).on('click', '.reviewReviewButton', function () {
+    let reviewWriteElement = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
+    let $replyGroup = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyGroup');
+    let replyGroup = $replyGroup.val();
+    $('.reviewReviewWrite').hide();
+    reviewWriteElement.show();
+
+
+
+});
+
+$(document).on('click', '.reviewReviewButtonBack', function () {
+    console.log("들어옴")
+    let reviewWriteCancle = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
+    console.log(reviewWriteCancle);
+    reviewWriteCancle.hide();
+    reviewWriteCancle.val("");
+});
+
+//더보기클릭
+$('.more-button').on("click", function () {
+    $div.html("");
+    page++;
+    load();
+})

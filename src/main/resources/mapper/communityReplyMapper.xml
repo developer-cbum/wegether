@@ -15,9 +15,12 @@
 
     <!-- 대댓글 등록 -->
     <insert id="insertDepth">
+        <selectKey keyProperty="id" order="BEFORE" resultType="long">
+            SELECT SEQ_REPLY.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_REPLY
         (ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH)
-        VALUES(SEQ_REPLY.NEXTVAL, #{replyContent}, #{replyGroup}, 1)
+        VALUES(#{id}, #{replyContent}, #{replyGroup}, 1)
     </insert>
 
     <!--중간테이블 삽입-->
@@ -127,7 +130,7 @@
     <update id="update">
         UPDATE TBL_REPLY
         SET REPLY_CONTENT = #{replyContent}, REPLY_REGISTER_DATE = SYSDATE
-        WHERE ID = #{id} AND DEPTH = 0
+        WHERE ID = #{id}
     </update>
 
 
@@ -155,7 +158,7 @@
 
     <!-- 중간테이블 관련 삭제   -->
     <delete id="deleteMiddle">
-        DELETE FROM TBL_CONSULTING_REPLY
+        DELETE FROM TBL_COMMUNITY_REPLY
         WHERE ID =#{id}
     </delete>
 </mapper>
