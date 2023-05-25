@@ -22,8 +22,8 @@ public class LectureFileDAO {
     }
 
     //파일 중간테이블추가
-    public void saveMiddle(Long fileId, Long lectureId){
-        lectureFileMapper.insertMiddle(fileId, lectureId);
+    public void saveMiddle(LectureFileVO lectureFileVO){
+        lectureFileMapper.insertMiddle(lectureFileVO);
     }
 
     //파일 DTO 모두 가져오기
