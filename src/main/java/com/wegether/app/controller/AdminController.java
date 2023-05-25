@@ -1,6 +1,7 @@
 package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.*;
 import com.wegether.app.service.admin.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -30,10 +31,29 @@ public class AdminController {
     public void goToNoticeWriteForm(NoticeVO noticeVO){;}
 
     //    공지사항 작성
+//    @PostMapping("notice/write")
+//    @Transactional(rollbackFor = Exception.class)
+//    public RedirectView noticeWrite(NoticeVO noticeVO){
+//        adminService.noticeWrite(noticeVO);
+//        return new RedirectView("/admins/notice/list");
+//    }
+
+    //    공지사항 작성(첨부파일)
     @PostMapping("notice/write")
     @Transactional(rollbackFor = Exception.class)
-    public RedirectView noticeWrite(NoticeVO noticeVO){
-        adminService.noticeWrite(noticeVO);
+    public RedirectView noticeWrite(NoticeAdminDTO noticeAdminDTO){
+        adminService.noticeWrite(noticeAdminDTO);
+        for(int i=0; i<noticeAdminDTO.getFiles().size(); i++) {
+            noticeAdminDTO.getFiles().get(i).setNoticeId(noticeAdminDTO.getId());
+            noticeAdminDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            adminService.noticeImageWrite(noticeAdminDTO.getFiles().get(i));
+        }
+        noticeAdminDTO.getFiles().forEach(noticeFileAdminDTO -> {
+            NoticeFileVO noticeFileVO = new NoticeFileVO();
+            noticeFileVO.setId(noticeFileAdminDTO.getId());
+            noticeFileVO.setNoticeId(noticeFileAdminDTO.getNoticeId());
+            adminService.noticeImageMiddleWrite(noticeFileVO);
+        });
         return new RedirectView("/admins/notice/list");
     }
 

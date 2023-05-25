@@ -5,6 +5,7 @@ import com.wegether.app.dao.ProjectDAO;
 import com.wegether.app.dao.ProjectFileDAO;
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.*;
 import com.wegether.app.domain.dto.ProjectPagination;
 import com.wegether.app.domain.type.FileType;
@@ -22,8 +23,8 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectDAO projectDAO;
     private final FileDAO fileDAO;
     private final ProjectFileDAO projectFileDAO;
-    private final FileVO fileVO;
-    private final ProjectFileDTO projectFileDTO;
+
+
 
 
 //    @Override
@@ -59,8 +60,8 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<ProjectDTO> getList(ProjectPagination projectPagination) {
-        final List<ProjectDTO> projectS = projectDAO.projectFindAll(projectPagination);
+    public List<ProjectDTO> getList(ProjectPagination projectPagination, CategoryType categoryType) {
+        final List<ProjectDTO> projectS = projectDAO.projectFindAll(projectPagination, categoryType);
         projectS.forEach(project -> project.setFiles(fileDAO.projectFindAll(project.getId())));
         return projectS;
     }

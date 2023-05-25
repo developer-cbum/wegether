@@ -25,7 +25,12 @@ public class AdminServiceImpl implements AdminService {
         // 공지사항 하나씩 첨부파일 목록 담기
         notices.forEach(notice -> notice.setFiles(adminDAO.noticeImageFindAll(notice.getId())));
         return notices;
+    }
 
+    // 공지사항 목록(이미지)
+    @Override
+    public List<NoticeFileAdminDTO> noticeImageGetList(Long noticeId) {
+        return adminDAO.noticeImageFindAll(noticeId);
     }
 
     // 공지사항 총 갯수
@@ -33,10 +38,16 @@ public class AdminServiceImpl implements AdminService {
     public int getNoticeTotal(Search search) { return adminDAO.findCountOfNotice(search); }
 
     // 공지사항 등록
+//    @Override
+//    public void noticeWrite(NoticeVO noticeVO) { adminDAO.noticeSave(noticeVO); }
+
+    // 공지사항 등록(첨부파일)
     @Override
-    public void noticeWrite(NoticeVO noticeVO) { adminDAO.noticeSave(noticeVO); }
+    public void noticeWrite(NoticeAdminDTO noticeAdminDTO) { adminDAO.noticeSave(noticeAdminDTO); }
 
     // 공지사항 이미지 등록
+    @Override
+    public void noticeImageWrite(NoticeFileAdminDTO noticeFileAdminDTO) { adminDAO.noticeImageSave(noticeFileAdminDTO); }
 
     // 공지사항 이미지 등록(중간 테이블)
     @Override

@@ -20,19 +20,18 @@ public class CommunityReplyServiceImpl implements CommunityReplyService{
     private final CommunityReplyDAO communityReplyDAO;
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public void register(CommunityReplyDTO communityReplyDTO) {
         communityReplyDAO.save(communityReplyDTO);
-        CommunityReplyVO communityReplyVO = new CommunityReplyVO();
-        communityReplyVO.setId(communityReplyDTO.getId());
-        communityReplyVO.setMemberId(1L);
-        communityReplyVO.setCommunityId(communityReplyDTO.getCommunityId());
-        communityReplyDAO.saveMiddle(communityReplyVO);
     }
 
     @Override
     public void registerDepth(CommunityReplyDTO communityReplyDTO) {
         communityReplyDAO.saveDepth(communityReplyDTO);
+    }
+
+    @Override
+    public void registerMiddle(CommunityReplyVO communityReplyVO) {
+        communityReplyDAO.saveMiddle(communityReplyVO);
     }
 
     @Override
@@ -46,20 +45,44 @@ public class CommunityReplyServiceImpl implements CommunityReplyService{
     }
 
     @Override
-    public int getTotal(Long communityId) {
-        return communityReplyDAO.findCountOfReply(communityId);
+    public Optional<CommunityReplyVO> getMiddle(Long id) {
+        return communityReplyDAO.findMiddle(id);
     }
 
+    @Override
+    public Optional<CommunityReplyDTO> getReply(Long id) {
+        return communityReplyDAO.find(id);
+    }
+
+    @Override
+    public List<CommunityReplyDTO> getAgain(Long replyGroup) {
+        return communityReplyDAO.findAgain(replyGroup);
+    }
+
+    @Override
+    public List<CommunityReplyVO> getMiddleList(Long communityId) {
+        return communityReplyDAO.findMiddleAll(communityId);
+    }
+
+    @Override
+    public int getTotalOfReply(Long id) {
+        return communityReplyDAO.findCountOfReply(id);
+    }
+
+    @Override
+    public int getTotal(Long communityId) {
+        return communityReplyDAO.findCount(communityId);
+    }
+
+    @Override
+    public int getTotalOfReplyAgain(Long id, Long replyGroup) {
+        return communityReplyDAO.findCountOfReplyAgain(id, replyGroup);
+    }
 
     @Override
     public void modify(CommunityReplyDTO communityReplyDTO) {
         communityReplyDAO.setCommunityReplyDTO(communityReplyDTO);
     }
-
-//    @Override
-//    public void registerMiddle(Long id, Long memberId, Long communityId){
-//        communityReplyDAO.saveMiddle(id, memberId, communityId);
-//    }
 
     @Override
     public void remove(Long id) {
@@ -68,6 +91,16 @@ public class CommunityReplyServiceImpl implements CommunityReplyService{
 
     @Override
     public void removeAll(Long communityId) {
-        communityReplyDAO.deleteAll(communityId);
+        communityReplyDAO.delete(communityId);
+    }
+
+    @Override
+    public void removeReplyAgain(Long replyGroup) {
+        communityReplyDAO.deleteReplyAgain(replyGroup);
+    }
+
+    @Override
+    public void removeMiddle(Long id) {
+        communityReplyDAO.deleteMiddle(id);
     }
 }

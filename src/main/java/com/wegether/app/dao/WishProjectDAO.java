@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.HeartDTO;
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.vo.WishProjectVO;
 import com.wegether.app.mapper.WishProjectMapper;
@@ -11,6 +12,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class WishProjectDAO {
+
     private final WishProjectMapper wishProjectMapper;
 
     //    찜하기
@@ -28,4 +30,8 @@ public class WishProjectDAO {
     }
 
 
+//    찜 전체 조회
+    public List<HeartDTO> showAllHearts(Long memberId){
+        return wishProjectMapper.selectHeartAll(memberId);
+    }
 }

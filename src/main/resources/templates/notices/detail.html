@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/notice/notice-detail.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/admin/admin_common.css">
+</head>
+<header th:replace="~{/fix/header :: #header}"></header>
+<body>
+    <div id="page-container">
+        <div class="newContainer">
+            <div id="wBoardWrap">
+                <div class="wboard-wrap">
+                    <div class="wboard-detail-content">
+                        <div class="article-top">
+                            <!-- 공지사항 제목 -->
+                            <p th:text="${noticeBoards.noticeTitle}" class="title" style="font-size: 20px; padding-top: 15px; padding-bottom: 15px;"></p>
+                            <div class="info">
+                                <span class="user-info">
+                                    위게더
+                                    <br>
+                                    <span th:text="${noticeBoards.noticeRegisterDate}">
+                                        2023.05.10
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 공지사항 내용 -->
+                        <div th:text="${noticeBoards.noticeContent}"></div>
+                        <div class="inner-contents">
+                            <!-- 내용 이미지 -->
+                            <span class="notice-detail-image"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wboard-detail-bottom">
+                    <div class="wboard-detail-btn-wrap">
+                        <a class="wz button" href="javascript:window.history.back();">목록으로 돌아가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="~{/fix/footer :: #footer}"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let noticeBoards = [[${noticeBoards}]];
+    console.log(noticeBoards);
+    let files = [[${noticeBoards.files}]];
+    console.log(files);
+</script>
+<script src="/js/notice/detail-image.js"></script>
+</html>

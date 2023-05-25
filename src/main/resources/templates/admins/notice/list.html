@@ -51,7 +51,7 @@
                                             <input class="search-input deleteButton delete-button" type="search" name="keyword" placeholder="제목을 입력하세요" style="width: 450px; padding: 11px;">
                                         </div>
                                         <!-- 검색 버튼 누르기 -->
-                                        <button type="submit"></button>
+                                        <button style="display: none" type="submit"></button>
                                     </div>
                                 </form>
                                 <!-- 검색창 눌렀을 때 나오는 메뉴 -->
@@ -100,25 +100,28 @@
                                         </tr>
                                         </thead>
                                         <tbody class="notice-list">
-<!--                                        <tr th:each="notices : ${notices}">-->
-<!--                                            <td class="checkbox-line">-->
-<!--                                                <input-->
-<!--                                                        type="checkbox"-->
-<!--                                                        class="noticeCheckbox"-->
-<!--                                                        name="check"-->
-<!--                                                        th:value="${notices.id}"/>-->
-<!--                                            </td>-->
-<!--                                            <td th:text="${notices.id}"></td>-->
-<!--                                            <td>-->
-<!--                                                <a th:href="@{detail(id=${notices.id})}" th:text="${notices.noticeTitle}"></a>-->
-<!--                                            </td>-->
-<!--                                            <td th:text="${notices.noticeRegisterDate}"></td>-->
-<!--                                            <td th:each="notices.files : ${notices.files}">-->
 
-<!--                                                <img th:src="@{files/display}">-->
+                                        <!-- 타임리프로 이미지 제외한 화면 그리기 -->
+                                        <!--<tr th:each="notices : ${notices}">
+                                            <td class="checkbox-line">
+                                                <input
+                                                        type="checkbox"
+                                                        class="noticeCheckbox"
+                                                        name="check"
+                                                        th:value="${notices.id}"/>
+                                            </td>
+                                            <td th:text="${notices.id}"></td>
+                                            <td>
+                                                <a th:href="@{detail(id=${notices.id})}" th:text="${notices.noticeTitle}"></a>
+                                            </td>
+                                            <td th:text="${notices.noticeRegisterDate}"></td>
+                                            <td th:each="notices.files : ${notices.files}">
 
-<!--                                            </td>-->
-<!--                                        </tr>-->
+                                                <img th:src="@{files/display}">
+
+                                            </td>
+                                        </tr>-->
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -177,13 +180,13 @@
                 contentType: "application/json",
                 data: JSON.stringify(noticeIds),
                 success: function () {
-                    console.log(noticeIds);
                     showWarnModal("삭제에 성공 하였습니다.");
                     setTimeout(() => {
                         location.reload();
                     }, 1000);
                 },
                 error: function () {
+                    console.log(noticeIds);
                     showWarnModal("삭제에 실패 하였습니다.");
                 }
             });
