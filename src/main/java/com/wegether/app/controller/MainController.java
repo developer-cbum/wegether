@@ -54,13 +54,21 @@ public class MainController {
 
     @GetMapping("search-list")
     public void goToSearch(Model model, MainPagination mainPagination){
+        mainPagination.setTotal(mainService.getTotal());
+        mainPagination.progress();
         model.addAttribute("searches", mainService.mainSPGetList(mainPagination));
+        model.addAttribute("searchtest", mainService.mainSDGetList(mainPagination));
+
     }
 
     @GetMapping("search-test")
     public void goToList(Model model, MainPagination mainPagination){
+        mainPagination.setTotal(mainService.getTotal());
+        mainPagination.progress();
         model.addAttribute("searchtest", mainService.mainSDGetList(mainPagination));
     }
+
+
 
 
 

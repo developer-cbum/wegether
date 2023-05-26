@@ -26,8 +26,11 @@
     <link rel="stylesheet" href="/css/index/search-list.css">
 </head>
 <body>
+<header th:replace="~{/fix/header :: #header}"></header>
     <div id="page-container">
         <main id="main-app">
+            <div id="header">
+            </div>
             <div class="MainWrapper_content__GZkTa">
                 <div class="DesktopSearchResult_headContainer__1hnOM">
                     <div class="DesktopSearchResult_keyword__13uuG">00</div>
@@ -38,12 +41,9 @@
                 <!-- 카테고리란 -->
                 <div class="DesktopSearchResult_tabContainer__18T4j">
                     <ul class="SearchResultTabs_tabContainer__3rQre">
-                        <li class="SearchResultTabs_activeTab__1jn0j" tabindex="-1" data-ga-category="검색_결과_탭"
-                            data-ga-action="클릭" data-ga-label="전체">전체</li>
-                        <li class="SearchResultTabs_normalTab__2u9oM" tabindex="-1" data-ga-category="검색_결과_탭"
-                            data-ga-action="클릭" data-ga-label="펀딩">프로젝트</li>
-                        <li class="SearchResultTabs_normalTab__2u9oM" tabindex="-1" data-ga-category="검색_결과_탭"
-                            data-ga-action="클릭" data-ga-label="오픈예정">자료실</li>
+                        <button id="all-btn" type="button">전체</button>
+                        <button id="project-btn" type="button">프로젝트</button>
+                        <button id="data-btn" type="button">자료실</button>
                     </ul>
                 </div>
                 <!-- 검색결과가 있을 때 없을 때를 타임리프문으로 처리해주십시오 -->
@@ -51,7 +51,6 @@
                 <section class="EmptyResult_container__3omiy">
                     <h2>검색결과가 없어요</h2>
                     <h4>새로운 프로젝트를 발견해보세요</h4>
-
 
 
 
@@ -94,22 +93,16 @@
                         <div>
                             <div>
                                 <div id="project-search" style="display: flex; flex-wrap:wrap; justify-content: center; margin-left:150px">
-
+                                </div>
+                                <div id="data-search" style="display: flex; flex-wrap:wrap; justify-content: center; margin-left:150px">
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-<!--    <div class="DesktopSearchResult_buttonContainer__1jr2A" style="display: block;">-->
-<!--        <button class="Button_button__2FuOU Button_tertiaryGrey__3jJV7 Button_md__46Ai- Button_block__1-g8w" type="button">-->
-<!--            <span>-->
-<!--                <span class="Button_children__ilFun">더보기 48/567</span>-->
-<!--            </span>-->
-<!--        </button>-->
-<!--    </div>-->
+
 
             <!-- 페이지 부분 -->
             <div id="paging-wrap">
@@ -157,10 +150,13 @@
 <script th:inline="javascript">
     let searches = [[${searches}]];
     console.log(searches);
+    let searchtest = [[${searchtest}]];
+    console.log(searchtest);
     let mainPagination = [[${mainPagination}]];
     console.log(mainPagination);
 </script>
 <script src="/js/index/search.js"></script>
+<script src="/js/index/test.js"></script>
 <script src="/js/index/paging.js"></script>
 
 </html>

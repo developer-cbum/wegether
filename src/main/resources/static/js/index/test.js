@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const $searchtest = $("#project-search");
+    const $searchtest = $("#data-search");
 
     let text = "";
     searchtest.forEach(searchtest => {

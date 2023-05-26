@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8" />
@@ -24,7 +24,7 @@
                     <div class="header-container">
                         <!-- 로고 -->
                         <h1 class="wadiz-logo">
-                            <a href="/web/main">
+                            <a th:href="@{/index/main}">
                                 <img class="fit-picture"
                                      src="/image/index/wegether.svg"
                                      alt="위게더 로고">
@@ -33,16 +33,16 @@
                         <!-- 메뉴 -->
                         <ul class="GNBDesktop_container__3X3Cg">
                             <li class="GNBDesktop_item__H8bay">
-                                <a class="GNBDesktop_link__1AP6q" href="/web/wreward/comingsoon"><span>프로젝트</span></a>
+                                <a class="GNBDesktop_link__1AP6q" th:href="@{/project/main}"><span>프로젝트</span></a>
                             </li>
                             <li class="GNBDesktop_item__H8bay">
-                                <a class="GNBDesktop_link__1AP6q" href="/web/wreward/main"><span>자료실</span></a>
+                                <a class="GNBDesktop_link__1AP6q" th:href="@{/datas/list}"><span>자료실</span></a>
                             </li>
                             <li class="GNBDesktop_item__H8bay">
-                                <a class="GNBDesktop_link__1AP6q" href="/web/preorder/main"><span>상담소</span></a>
+                                <a class="GNBDesktop_link__1AP6q" th:href="@{/consults/list}"><span>상담소</span></a>
                             </li>
                             <li class="GNBDesktop_item__H8bay">
-                                <a class="GNBDesktop_link__1AP6q" href="/web/store/main"><span>커뮤니티</span></a>
+                                <a class="GNBDesktop_link__1AP6q" th:href="@{/community/list}"><span>커뮤니티</span></a>
                             </li>
                             <li class="GNBDesktop_item__H8bay">
                                 <div>
@@ -240,14 +240,14 @@
                                     <div class="SearchController_container__35K5i">
                                         <div class="SearchTag_emptyTag__1Iu7r"></div>
                                         <!-- 검색창 -->
-                                        <div class="SearchController_keyword__3FcFo">
-                                            <input type="search" placeholder="새로운 일상이 필요하신가요?" value="" />
+                                    <div class="SearchController_keyword__3FcFo">
+                                        <form th:action="@{/index/search-list}" name="search-form">
+                                            <input type="search" autocomplete="off" placeholder="새로운 일상이 필요하신가요?" name="keyword" value="" />
                                             <option value=""></option>
                                             <option value=""></option>
                                             <option value=""></option>
-                                            <option value=""></option>
-                                            <option value=""></option>
-                                        </div>
+                                        </form>
+                                    </div>
                                         <!-- 검색 버튼 누르기 -->
                                         <button type="submit" class="SearchController_searchIcon__Zhy7F">
                                             <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq"
