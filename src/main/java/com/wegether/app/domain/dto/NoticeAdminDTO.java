@@ -17,4 +17,5 @@ public class NoticeAdminDTO {
     private String noticeRegisterDate;
     private String noticeUpdateDate;
     private List<NoticeFileAdminDTO> files = new ArrayList<>();
+    private List<Long> fileIdsForDelete = new ArrayList<>();
 }

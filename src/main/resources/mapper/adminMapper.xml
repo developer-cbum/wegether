@@ -32,6 +32,7 @@
         SELECT F.ID, F.FILE_PATH, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_TYPE, N.NOTICE_ID
         FROM TBL_FILE F INNER JOIN TBL_NOTICE_FILE N
         ON F.ID = N.ID AND NOTICE_ID = #{noticeId}
+        ORDER BY FILE_TYPE DESC
 
     </select>
 
@@ -88,6 +89,11 @@
     <!-- 공지사항 삭제 -->
     <delete id="noticeDelete">
         DELETE FROM TBL_NOTICE WHERE ID = #{id}
+    </delete>
+
+    <!-- 이미지 삭제 -->
+    <delete id="fileDelete">
+        DELETE FROM TBL_FILE WHERE ID = #{id}
     </delete>
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->

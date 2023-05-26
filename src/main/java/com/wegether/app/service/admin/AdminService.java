@@ -35,10 +35,13 @@ public interface AdminService {
     public Optional<NoticeAdminDTO> noticeRead(Long id);
 
     // 공지사항 수정
-    public void noticeModify(NoticeVO noticeVO);
+    public void noticeModify(NoticeAdminDTO noticeAdminDTO);
 
     // 공지사항 삭제
     public void noticeRemove(Long id);
+
+    // 파일 삭제
+    public void fileRemove(Long id);
 
     /* --------------------------------------------------------------------------------- */
 
