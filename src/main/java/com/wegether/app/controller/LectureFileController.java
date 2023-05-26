@@ -1,5 +1,6 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.dto.ThumbnailSize;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.core.io.FileSystemResource;
@@ -18,9 +19,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @Slf4j
@@ -31,18 +30,27 @@ public class LectureFileController {
     //    파일 업로드
     @PostMapping("upload")
     @ResponseBody
-    public List<String> upload(@RequestParam("uploadFile") List<MultipartFile> uploadFiles) throws IOException {
-
+    public List<String> upload(@RequestParam("uploadFile") List<MultipartFile> uploadFiles, @RequestParam("name") List<String> names) throws IOException {
+        Map<String, ThumbnailSize> sizeMap = new HashMap<>();
+        int[] widths = {359, 540, 800}, heights = {170, 390, 1260};
         String path = "C:/upload/" + getPath();
         List<String> uuids = new ArrayList<>();
         File file = new File(path);
+
+        for(int i=0; i<names.size(); i++){
+            sizeMap.put(names.get(i), new ThumbnailSize(widths[i], heights[i]));
+        }
+
+
         if(!file.exists()){file.mkdirs();}
         for (int i=0; i<uploadFiles.size(); i++){
+            sizeMap.get(names.get(i));
+            sizeMap.get(names.get(i));
             uuids.add(UUID.randomUUID().toString());
             uploadFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
             if(uploadFiles.get(i).getContentType().startsWith("image")){
                 FileOutputStream out = new FileOutputStream(new File(path, "t_"+ uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
-                Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, 247, 247);
+                Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, sizeMap.get(names.get(i)).getWidth(), sizeMap.get(names.get(i)).getHeigth());
                 out.close();
             }
         }
