@@ -20,6 +20,7 @@ public interface MainService {
 
     public List<MainDTO> mainSDGetList(MainPagination mainPagination);
 
+    public int getTotal();
 }
 
 

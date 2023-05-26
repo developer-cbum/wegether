@@ -19,6 +19,10 @@ public class projectServiceTests {
     @Autowired
     private ProjectService projectService;
 
+
+//    @Test
+//    public void getListTest() {
+
     @Autowired
     private FileDAO fileDAO;
 
