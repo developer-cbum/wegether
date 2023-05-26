@@ -62,9 +62,6 @@
 
 
 
-
-
-
     <insert id="projectInsert">
         <selectKey keyProperty="id" order="BEFORE" resultType="Long">
             SELECT SEQ_FILE.NEXTVAL FROM DUAL
