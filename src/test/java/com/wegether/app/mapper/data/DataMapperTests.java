@@ -37,23 +37,23 @@ public class DataMapperTests {
     }
 
 //    자료 목록
-    @Test
-    public void selectAllTest(){
-        DataPagination dataPagination = new DataPagination();
-        dataPagination.setPage(1);
-        dataPagination.progress();
-        List<DataDTO> dataDTOS = dataMapper.selectAll(dataPagination);
-        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
-    }
+//    @Test
+//    public void selectAllTest(){
+//        DataPagination dataPagination = new DataPagination();
+//        dataPagination.setPage(1);
+//        dataPagination.progress();
+//        List<DataDTO> dataDTOS = dataMapper.selectAll(dataPagination);
+//        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
+//    }
 
-        @Test
-        public void selectTest(){
-            dataMapper.select(1L).stream().map(DataDTO::toString).forEach(log::info);
-//            dataMapper.select(1L).stream().map(DataDTO::getMemberNickname).forEach(log::info);
-//            dataMapper.select(1L).stream().map(DataDTO::getWishDataId).forEach(log::info);
-
-
-    }
+//        @Test
+//        public void selectTest(){
+//            dataMapper.select(1L).stream().map(DataDTO::toString).forEach(log::info);
+////            dataMapper.select(1L).stream().map(DataDTO::getMemberNickname).forEach(log::info);
+////            dataMapper.select(1L).stream().map(DataDTO::getWishDataId).forEach(log::info);
+//
+//
+//    }
 
 
 

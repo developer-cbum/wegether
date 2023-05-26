@@ -27,8 +27,13 @@ public class ProjectServiceImpl implements ProjectService {
 
     // 프로젝트 목록
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public List<ProjectDTO> getList(ProjectPagination projectPagination) {
-        return projectDAO.projectFindAll(projectPagination);
+        //        게시글 전체 목록
+        final List<ProjectDTO> projects = projectDAO.projectFindAll(projectPagination);
+        //        게시글 하나씩 첨부파일 목록 담기
+        projects.forEach(project -> project.setFiles(fileDAO.projectFindAll(project.getId())));
+        return projects;
     }
 
     // 프로젝트 총 갯수

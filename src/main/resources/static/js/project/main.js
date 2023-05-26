@@ -10,6 +10,20 @@ $(document).ready(function () {
                         <a class="StoreCard_item__1hRfz"
                            href="/projects/detail?id=${project.id}">
                            <div class="CardThumbnail_thumbnailContainer__DwnpC" style="height: 269px;">
+                           `
+             project.files.forEach(file => {
+                     if (file.fileType == "REPRESENTATIVE") {
+                         text += `
+                        <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
+                            <div aria-hidden="true"
+                                class="CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4"
+                                style="background-image: url(/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}); border-radius: 8px;">
+                             </div>
+                        </div>`;
+                     }
+
+             })
+                    text += `
                            </div>
                            <div class="StoreCard_contentContainer__tQfaN">
                               <div class="StoreCard_title__2hUM7">${project.projectTitle}
@@ -17,10 +31,7 @@ $(document).ready(function () {
                               <div class="StoreCard_subText__1G_sb">${project.memberId}</div>
                               <div class="StoreCard_footer__12twC">
                                  <div class="StoreCard_priceGroup__3T4UV">
-                                    <div class="StoreCard_priceContainer__3-AjB">
-                                       <span class="StoreCard_price__210Oz">${project.projectPrice}</span>
-                                       <span>원</span>
-                                    </div>
+                               
                                     <div class="StoreCardFooter_container__X5rH8">
                                        <div class="StoreCardFooter_upperFooter__kvjJa">
                                           <div class="ParticipantScore_container__JH3e_">

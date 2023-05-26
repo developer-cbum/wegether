@@ -28,9 +28,9 @@ public interface ProjectMapper {
 
 
 
-//    // 프로젝트 등록
-//    public void projectInsert(ProjectDTO projectDTO);
-//
+    // 프로젝트 등록
+    public void projectInsert(ProjectDTO projectDTO);
+
 //    // 프로젝트  상세
 //    public Optional<ProjectDTO> select(Long id);
 //
@@ -54,4 +54,5 @@ public interface ProjectMapper {
 
     public List<ProjectDTO> selectmyProject (Long memberId);
 
+//    void insert(ProjectDTO projectDTO);
 }
