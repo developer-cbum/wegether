@@ -15,4 +15,8 @@ public class CommunityReplyDTO {
     private Long memberId;
     private Long communityId;
     private String memberNickname;
+    private Long fileId;
+    private String filePath;
+    private String fileUuid;
+    private String fileName;
 }

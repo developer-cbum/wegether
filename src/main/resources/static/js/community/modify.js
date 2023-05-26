@@ -142,7 +142,7 @@ $("button.ok-button").on("click", function(){
         let filePath = datas[0].split("=")[1].replace("/t", "");
         let fileUuid = datas[1];
         let fileName = datas[2];
-        let fileSize = sizes[i];
+        let fileSize = (parseInt(sizes[i])) ;
         console.log(sizes[i]);
 
         text += `
