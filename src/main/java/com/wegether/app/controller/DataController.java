@@ -108,7 +108,7 @@ public class DataController {
 //    자료 결제 페이지
     @GetMapping("payment")
     public void goToPayment(@RequestParam Long id, Model model, DataDTO dataDTO){;
-//        Optional<DataDTO> readDataPay = dataService.readDataPay(id);
+        Optional<DataDTO> readDataPay = dataService.readDataPay(id);
         model.addAttribute("dataDTO", dataService.readDataPay(id).get());
     }
 
