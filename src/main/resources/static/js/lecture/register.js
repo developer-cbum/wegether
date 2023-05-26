@@ -9,7 +9,7 @@ $("img.preview").each(function(i){
     }
 });
 
-let sizes = new Array();
+let sizes = new Array(4).fill(0);
 $upload.on("change", function(e){
     console.log("들어옴?");
     let i = $upload.index($(this));
@@ -20,13 +20,13 @@ $upload.on("change", function(e){
 
     let formData = new FormData();
 
-    sizes.push(files[0].size);
+    sizes[i] = (files[0].size / 1024).toFixed(2);
+    $('.file-size').eq(i).text(sizes[i] + "KB");
 
     $(files).each((i, file) => {
         console.log(file);
-        const renamedFile = new File([file], name, { type: file.type });
-        console.log(renamedFile.name);
-        formData.append("uploadFile", renamedFile);
+        formData.append("uploadFile", file, name);
+        console.log(formData);
     });
 
     $.ajax({
@@ -53,27 +53,14 @@ $upload.on("change", function(e){
         }
     });
 
-    // console.log($(this).files[0]);
 
-    // var reader = new FileReader();
-    // reader.readAsDataURL(e.target.files[0]);
-    // reader.onload = function(e){
-    //     let url = e.target.result;
-    //     if(url.includes('image')){
-    //         $("label.attach").eq(i).find("h6").hide();
-    //         $("div.x").eq(i).show();
-    //         $thumbnail.eq(i).show();
-    //         $thumbnail.eq(i).attr('src', url);
-    //     }else{
-    //         showWarnModal("이미지 파일만 등록 가능합니다.");
-    //     }
-    // }
 });
 
 $("div.x").on("click", function(e){
     e.preventDefault();
     let i = $("div.x").index($(this));
-    sizes = sizes.splice(i, 1);
+    sizes[i] =0;
+    $('.file-size').eq(i).text("");
     $upload.eq(i).val("");
     $("label.attach").eq(i).find("h6").show();
     $("div.x").eq(i).hide();
@@ -81,7 +68,77 @@ $("div.x").on("click", function(e){
     $thumbnail.eq(i).hide();
 });
 
+
+// 번호만 입력
+$('.personnel').on('input', function () {
+    let numericVal = $(this).val().replace(/[^0-9]/g, '');
+
+    if (numericVal.length > 11) {
+        numericVal = numericVal.substr(0, 11); // 최대 11자리까지만 유지
+    }
+
+    $(this).val(numericVal);
+});
+
+
 $("button.ok-button").on("click", function(){
+
+    // 강연 제목 유효성 검사
+    if (document.registerForm.lectureTitle.value == '') {
+        showWarnModal('강연 제목을 입력해주세요');
+        document.registerForm.lectureTitle.focus();
+        return;
+    }
+
+    // 강연 날짜 유효성 검사
+    if (document.registerForm.lectureDate.value == '') {
+        showWarnModal('강연 날짜를 입력해주세요');
+        document.registerForm.lectureDate.focus();
+        return;
+    }
+
+    // 강연 시간 유효성 검사
+    if (document.registerForm.lectureTime.value == '') {
+        showWarnModal('강연 시간을 입력해주세요');
+        document.registerForm.lectureTime.focus();
+        return;
+    }
+
+    // 강연 위치 유효성 검사
+    if (document.registerForm.lectureLocation.value == '') {
+        showWarnModal('강연 위치를 입력해주세요');
+        document.registerForm.lectureLocation.focus();
+        return;
+    }
+
+    // 강연 총 인원 유효성 검사
+    if (document.registerForm.lectureTotalPersonnel.value == '') {
+        showWarnModal('강연 총 인원을 입력해주세요');
+        document.registerForm.lectureTotalPersonnel.focus();
+        return;
+    }
+
+    // 강연 내용 유효성 검사
+    if (document.registerForm.lectureContent.value == '') {
+        showWarnModal('강연 내용을 입력해주세요');
+        document.registerForm.lectureContent.focus();
+        return;
+    }
+
+    //사진 있는 지 검사
+      if(!$thumbnail.eq(0).attr("src")){
+          showWarnModal("대표이미지를 등록해주세요.")
+          return;
+      }
+    if(!$thumbnail.eq(1).attr("src")){
+        showWarnModal("제목사진을 등록해주세요.")
+        return;
+    }
+    if(!$thumbnail.eq(2).attr("src")){
+        showWarnModal("내용사진을 등록해주세요.")
+        return;
+    }
+
     const imgs = $("img.thumbnail").filter((i, img) => $(img).attr("src"));
     let text = ``;
     imgs.each((i, img) => {
@@ -101,5 +158,20 @@ $("button.ok-button").on("click", function(){
     });
     $(registerForm).append(text);
     console.log($(registerForm))
-    $(registerForm).submit();
+
+    showWarnModal('저장이 완료되었습니다');
+    setTimeout(function () {
+        $(registerForm).submit();
+    }, 2000);
+
+
+
 });
+
+//업로드 클릭이벤트막기
+$upload.on("click", function (e) {
+    let i = $upload.index($(this));
+    if($thumbnail.eq(i).attr("src") != ""){
+        e.preventDefault();
+    }
+})
