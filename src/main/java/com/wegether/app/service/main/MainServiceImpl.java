@@ -69,8 +69,8 @@ public class MainServiceImpl implements MainService {
     @Transactional(rollbackFor = Exception.class)
     public List<MainDTO> mainSPGetList(MainPagination mainPagination) {
 //        총 갯수 넣기
-        mainPagination.setTotal(mainDAO.findCountOfProject());
-        mainPagination.progress();
+//        mainPagination.setTotal(mainDAO.findCountOfProject());
+//        mainPagination.progress();
 //        게시글 전체 목록
         final List<MainDTO> mainDTOS = mainDAO.mainSPFindAll(mainPagination);
 //        게시글 하나씩 첨부파일 목록 담기
