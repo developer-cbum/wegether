@@ -47,6 +47,8 @@
 
     let page = 1;
     let keyword = $("input[name=keyword]").val();
+    alert(keyword)
+    console.log(keyword)
     showList();
 
     $(window).scroll(function(){
@@ -63,8 +65,7 @@
             url: `/community/list`,
             type: `post`,
             data: JSON.stringify(
-                {"page": page,
-                "keyword": keyword}),
+                {page: page, keyword: keyword}),
             contentType: "application/json;charset=utf-8",
             success: function(communities){
                 let text = "";
