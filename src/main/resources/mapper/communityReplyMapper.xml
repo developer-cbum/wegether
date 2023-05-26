@@ -36,41 +36,51 @@
 
     <!--일반 댓글 전체 조회-->
     <select id="selectAll" resultType="communityReplyDTO">
-    SELECT M.MEMBER_NICKNAME, G.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, G.COMMUNITY_ID, G.MEMBER_ID
-    FROM TBL_MEMBER M JOIN
-    (
-    SELECT ROWNUM W, R.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, R.COMMUNITY_ID, R.MEMBER_ID
-    FROM TBL_COMMUNITY C JOIN
-    (
-    SELECT R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.COMMUNITY_ID, A.MEMBER_ID
-    FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
-    ON A.ID = R.ID AND REPLY_DEPTH = 0  AND A.COMMUNITY_ID = #{communityId}
-    ORDER BY R.ID DESC
-    ) R
-       <![CDATA[
-    ON C.ID = R.COMMUNITY_ID AND ROWNUM <= #{communityPagination.page} * #{communityPagination.rowCount}
-    ) G
-    ON M.ID = G.MEMBER_ID AND W > (#{communityPagination.page} - 1) * #{communityPagination.rowCount}
-      ]]>
+  SELECT MEMBER_NICKNAME, A.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.COMMUNITY_ID, A.MEMBER_ID, F.ID FILE_ID, FILE_PATH, FILE_UUID, FILE_NAME
+  FROM TBL_FILE F RIGHT OUTER JOIN
+  		(
+           		SELECT M.MEMBER_NICKNAME, G.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, G.COMMUNITY_ID, G.MEMBER_ID, M.FILE_ID
+			    FROM TBL_MEMBER M JOIN
+			    (
+			    SELECT ROWNUM W, R.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, R.COMMUNITY_ID, R.MEMBER_ID
+			    FROM TBL_COMMUNITY C JOIN
+			    (
+			    SELECT R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.COMMUNITY_ID, A.MEMBER_ID
+			    FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
+			    ON A.ID = R.ID AND REPLY_DEPTH = 0  AND A.COMMUNITY_ID = #{communityId}
+			    ORDER BY R.ID DESC
+			    ) R
+			       <![CDATA[
+			    ON C.ID = R.COMMUNITY_ID AND ROWNUM <= #{communityPagination.page} * #{communityPagination.rowCount}
+			    ) G
+			    ON M.ID = G.MEMBER_ID AND W > (#{communityPagination.page} - 1) * #{communityPagination.rowCount}
+			      ]]>
+		) A
+		ON F.ID = A.FILE_ID
     </select>
 
 
     <!--대 댓글 조회-->
     <select id="selectAllAgain" resultType="communityReplyDTO">
-        SELECT M.MEMBER_NICKNAME, G.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, G.COMMUNITY_ID, G.MEMBER_ID
-        FROM TBL_MEMBER M JOIN
-        (
-        SELECT ROWNUM W, R.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, R.COMMUNITY_ID, R.MEMBER_ID
-        FROM TBL_COMMUNITY C JOIN
-        (
-        SELECT R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.COMMUNITY_ID, A.MEMBER_ID
-        FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
-        ON A.ID = R.ID AND REPLY_DEPTH = 1  AND A.COMMUNITY_ID = #{communityId}
-        ORDER BY R.ID DESC
-        ) R
-        ON C.ID = R.COMMUNITY_ID
-        ) G
-        ON M.ID = G.MEMBER_ID
+        SELECT MEMBER_NICKNAME, A.ID, REPLY_CONTENT,REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.COMMUNITY_ID, A.MEMBER_ID, F.ID FILE_ID, FILE_PATH, FILE_UUID, FILE_NAME
+          FROM TBL_FILE F RIGHT OUTER JOIN
+            (
+                   SELECT M.MEMBER_NICKNAME, G.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, G.COMMUNITY_ID, G.MEMBER_ID, M.FILE_ID
+                    FROM TBL_MEMBER M JOIN
+                        (
+                            SELECT ROWNUM W, R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, R.COMMUNITY_ID, R.MEMBER_ID
+                            FROM TBL_COMMUNITY C JOIN
+                                (
+                                    SELECT R.ID, REPLY_CONTENT, REPLY_GROUP, REPLY_DEPTH, REPLY_REGISTER_DATE, A.COMMUNITY_ID, A.MEMBER_ID
+                                    FROM TBL_COMMUNITY_REPLY A JOIN TBL_REPLY R
+                                    ON A.ID = R.ID AND REPLY_DEPTH = 1  AND A.COMMUNITY_ID = #{communityId}
+                                    ORDER BY R.ID DESC
+                                ) R
+                            ON C.ID = R.COMMUNITY_ID
+                        ) G
+                    ON M.ID = G.MEMBER_ID
+             ) A
+            ON F.ID = A.FILE_ID
     </select>
 
     <!--  중간테이블 조회 -->

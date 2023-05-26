@@ -46,6 +46,7 @@
     // });
 
     let page = 1;
+    let keyword = $("input[name=keyword]").val();
     showList();
 
     $(window).scroll(function(){
@@ -61,7 +62,9 @@
         $.ajax({
             url: `/community/list`,
             type: `post`,
-            data: JSON.stringify({"page": page}),
+            data: JSON.stringify(
+                {"page": page,
+                "keyword": keyword}),
             contentType: "application/json;charset=utf-8",
             success: function(communities){
                 let text = "";
