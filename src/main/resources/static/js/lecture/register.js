@@ -23,6 +23,7 @@ $upload.on("change", function(e){
 
     $(files).each((i, file) => {
         formData.append("uploadFile", file);
+        formData.append("name", $(this).attr("id"));
     });
 
     $.ajax({

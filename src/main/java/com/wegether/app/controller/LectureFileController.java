@@ -30,27 +30,27 @@ public class LectureFileController {
     //    파일 업로드
     @PostMapping("upload")
     @ResponseBody
-    public List<String> upload(@RequestParam("uploadFile") List<MultipartFile> uploadFiles) throws IOException {
+    public List<String> upload(@RequestParam("uploadFile") List<MultipartFile> uploadFiles, @RequestParam("name") List<String> names) throws IOException {
         Map<String, ThumbnailSize> sizeMap = new HashMap<>();
-        int width = 0, height = 0;
+        int[] widths = {359, 540, 800}, heights = {170, 390, 1260};
         String path = "C:/upload/" + getPath();
         List<String> uuids = new ArrayList<>();
         File file = new File(path);
 
-        sizeMap.put("upload1", new ThumbnailSize(359, 179));
-        sizeMap.put("upload2", new ThumbnailSize(540, 390));
-        sizeMap.put("upload3", new ThumbnailSize(800, 1260));
+        for(int i=0; i<names.size(); i++){
+            sizeMap.put(names.get(i), new ThumbnailSize(widths[i], heights[i]));
+        }
 
 
         if(!file.exists()){file.mkdirs();}
         for (int i=0; i<uploadFiles.size(); i++){
-            width = sizeMap.get(uploadFiles.get(i).getName()).getWidth();
-            height = sizeMap.get(uploadFiles.get(i).getName()).getHeigth();
+            sizeMap.get(names.get(i));
+            sizeMap.get(names.get(i));
             uuids.add(UUID.randomUUID().toString());
             uploadFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
             if(uploadFiles.get(i).getContentType().startsWith("image")){
                 FileOutputStream out = new FileOutputStream(new File(path, "t_"+ uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
-                Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, width, height);
+                Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, sizeMap.get(names.get(i)).getWidth(), sizeMap.get(names.get(i)).getHeigth());
                 out.close();
             }
         }
