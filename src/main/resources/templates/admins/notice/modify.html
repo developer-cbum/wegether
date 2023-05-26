@@ -85,6 +85,7 @@
                                                 <h6 style="text-align: center">
                                                     대표 이미지<br>(썸네일 부분)
                                                 </h6>
+                                                <span class="file-size"></span>
                                             </label>
                                             <label for="upload2" class="attach">
                                                 <img src="" class="thumbnail">
@@ -95,12 +96,13 @@
                                                 <h6 style="text-align: center">
                                                     내용 이미지<br>(컨텐츠 부분)
                                                 </h6>
+                                                <span class="file-size"></span>
                                             </label>
                                         </div>
                                         <input type="file" id="upload1" class="upload" style="display: none;">
                                         <input type="file" id="upload2" class="upload" style="display: none;">
                                         <div>
-                                            <button class="btn_done" type="submit">수정 완료</button>
+                                            <button style="margin-top: 15px;" class="ok-button btn_done" type="button">수정 완료</button>
                                         </div>
                                     </form>
                                 </div>
@@ -112,9 +114,12 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="/js/admin/sidemenu.js"></script>
     <script th:inline="javascript">
         let noticeBoards = [[${noticeBoards}]];
         console.log(noticeBoards);
+        let files = [[${noticeBoards.files}]];
+        console.log(files);
     </script>
+    <script src="/js/admin/modify.js"></script>
+    <script src="/js/admin/modal.js"></script>
 </html>

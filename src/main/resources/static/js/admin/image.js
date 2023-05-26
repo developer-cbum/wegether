@@ -20,6 +20,10 @@ $upload.on("change", function (e) {
         formData.append("uploadFile", file);
     });
 
+    $(".attach").css({
+        "margin-right": "10px"
+    });
+
     $.ajax({
         url: "/files/upload",
         type: "post",

@@ -178,7 +178,9 @@
 
     let check = [[${login}]];
     let statusCheck =[[${status}]];
-    let LoginStatusCheck = [[${loginStatus}]];
+    let loginStatusCheck = [[${loginStatus}]];
+    let joinStatus = [[${join}]];
+
     //네이버는 js로 사용해서 적응이안되네용..
     let naverLoginStatus = new URLSearchParams(window.location.search);
 
@@ -200,8 +202,12 @@
         showWarnModal("<span>SNS 연동 설정</span><span>확인해주세요.</span>");
     }
 
-    if(LoginStatusCheck){
+    if(loginStatusCheck){
         showWarnModal("<span>SNS 연동 계정입니다</span><span>연동 로그인해주세요.</span>");
+    }
+
+    if(joinStatus){
+        showWarnModal("<span>회원가입을 축하드립니다</span><br><span>Welcome Event</span><br><span>2000 Point 적립</span>");
     }
 
 

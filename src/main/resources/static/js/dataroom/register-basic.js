@@ -38,10 +38,12 @@ $(function () {
             showWarnModal('자료 제목을 입력해주세요');
             document.writeForm.dataTitle.focus();
             titleCheck = false;
-            return;
+            flagCheck();
+            return false;
         } else {
             titleCheck = true;
-            return;
+            flagCheck();
+            return false;
         }
         flagCheck();
     });
@@ -59,10 +61,12 @@ $(function () {
             showWarnModal('자료 가격을 입력해주세요');
             document.writeForm.dataPrice.focus();
             priceCheck = false;
-            return;
+            flagCheck();
+            return false;
         } else {
             priceCheck = true;
-            return;
+            flagCheck();
+            return false;
         }
         flagCheck();
     });
@@ -73,10 +77,12 @@ $(function () {
             showWarnModal('자료 출처(학교)를 입력해주세요');
             document.writeForm.dataSchool.focus();
             schoolCheck = false;
-            return;
+            flagCheck();
+            return false;
         } else {
             schoolCheck = true;
-            return;
+            flagCheck();
+            return false;
         }
         flagCheck();
     });
@@ -87,7 +93,8 @@ $(function () {
             showWarnModal('자료 출처(전공)을 입력해주세요');
             document.writeForm.dataMajor.focus();
             majorCheck = false;
-            return;
+            flagCheck();
+            return false;
         }
         // else {
         //     console.log("major pass");
@@ -106,13 +113,13 @@ $(function () {
             document.writeForm.dataContent.focus();
             contentCheck = false;
             flagCheck();
-            return;
+            return false;
         } else {
             console.log("여기는 성공");
             contentCheck = true;
             console.log("자료내용 체크 : " + contentCheck);
             flagCheck();
-            return;
+            return false;
         }
         flagCheck();
     });

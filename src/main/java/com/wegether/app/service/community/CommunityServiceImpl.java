@@ -2,16 +2,16 @@ package com.wegether.app.service.community;
 
 import com.wegether.app.dao.CommunityDAO;
 import com.wegether.app.dao.CommunityFileDAO;
+import com.wegether.app.dao.CommunityReplyDAO;
 import com.wegether.app.dao.FileDAO;
-import com.wegether.app.domain.dto.CommunityDTO;
-import com.wegether.app.domain.dto.CommunityFileDTO;
-import com.wegether.app.domain.dto.CommunityPagination;
-import com.wegether.app.domain.dto.Pagination;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
+import com.wegether.app.domain.vo.CommunityReplyVO;
 import com.wegether.app.domain.vo.CommunityVO;
 import com.wegether.app.domain.vo.FileVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +22,13 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CommunityServiceImpl implements CommunityService {
 
     private final CommunityDAO communityDAO;
     private final CommunityFileDAO communityFileDAO;
     private final FileDAO fileDAO;
+    private final CommunityReplyDAO communityReplyDAO;
     private final CommunityFileVO communityFileVO;
     private final FileVO fileVO;
     private final CommunityFileDTO communityFileDTO;
@@ -96,18 +98,25 @@ public class CommunityServiceImpl implements CommunityService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void remove(Long id) {
-        CommunityDTO communityDTO = new CommunityDTO();
-        communityDTO.getFiles().forEach(communityFileDTO -> {
+        CommunityDTO communityDTO = communityDAO.findById(id).get();
+        List<CommunityFileDTO> files = fileDAO.communityFindAll(communityDTO.getId());
+//        log.info("==========" + files.toString());
+//        log.info("===================" + communityDTO.toString());
+        files.forEach(communityFileDTO -> {
+            log.info("======================" + communityFileDTO.toString());
             communityFileDAO.delete(communityFileDTO.getCommunityId());
+            log.info("===============" + communityFileDTO.toString());
+            fileDAO.communityDelete(communityFileDTO.getId());
         });
-//        CommunityDTO communityDTO = communityDAO.findById(id).get();
-//        fileDAO.communityFindAll(id).forEach(communityFileDTO ->
-//                fileDAO.communityDelete(communityFileDTO.getId())
-//        );
-//        communityDAO.delete(id);
-////        replyDAO.deleteAll(id);
-//        communityFileDAO.delete(id);
-
+        List<CommunityReplyVO> replies = communityReplyDAO.findMiddleAll(communityDTO.getId());
+        log.info("===================" + replies.toString());
+        replies.forEach(reply -> {
+            communityReplyDAO.deleteMiddle(reply.getId());
+            communityReplyDAO.delete(reply.getId());
+        });
+//        log.info("===================" + communityDTO.getFiles().toString());
+//        log.info("===================" + communityDTO.toString());
+        communityDAO.delete(communityDTO.getId());
     }
 
     @Override

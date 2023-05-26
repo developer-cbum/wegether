@@ -50,8 +50,6 @@ $upload.on("change", function(e){
         contentType: false,
         processData: false,
         success: function(uuids){
-            console.log("들어왔나")
-            // $("label.attach").eq(i).find("h6").hide();
             $(".file_upload_btn").hide();
             $("div.x").eq(i).show();
             $("img.thumbnail").eq(i).show();
@@ -110,7 +108,6 @@ $("button.ok-button").on("click", function(){
 
     });
     $(writeForm).append(text);
-    console.log($(writeForm))
     $(writeForm).submit();
 
 

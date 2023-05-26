@@ -17,7 +17,7 @@ public class ProjectFileDAO {
     //   file list
     public List<ProjectFileVO> findProjectFiles(Long projectId) {
         return projectFileMapper.selectAll(projectId);
-    };
+    }
 
     //    파일 조회
     public List<ProjectFileVO> findById(Long projectId){

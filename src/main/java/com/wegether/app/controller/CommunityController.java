@@ -50,6 +50,7 @@ public class CommunityController {
 
     @GetMapping(value = {"detail", "modify"})
     public void detail(@RequestParam Long id, Model model, CommunityReplyDTO communityReplyDTO){
+        model.addAttribute("memberVO", accountService.getIdAndProfile((1L)).get());
         model.addAttribute("total", communityReplyService.getTotal(id));
         model.addAttribute("community", communityService.getCommunity(id).get());
         log.info("===========" + communityReplyDTO);

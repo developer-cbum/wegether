@@ -1,5 +1,6 @@
 package com.wegether.app.service.account;
 
+import com.wegether.app.domain.dto.ProfileMemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 
 import java.util.Optional;
@@ -30,6 +31,10 @@ public interface AccountService {
 
 
 
+    public Optional<MemberVO> getMemberByPw(Long id);
+
+    //   프로필 포함 아이디 조회
+    public Optional<ProfileMemberDTO> getIdAndProfile(Long id);
 }
 
 

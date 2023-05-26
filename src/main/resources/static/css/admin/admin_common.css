@@ -147,8 +147,8 @@ div.x {
     display: none;
     color: rgb(255, 255, 255);
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 25px;
+    right: 40px;
     width: 24px;
     height: 24px;
     justify-content: center;
@@ -160,4 +160,9 @@ div.x {
 div.x img {
     width: 100%;
     filter: invert(0.9);
+}
+
+span.file-size {
+    position: absolute;
+    bottom: -25px;
 }
