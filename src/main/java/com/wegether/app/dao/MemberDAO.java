@@ -80,8 +80,8 @@ public class MemberDAO {
     }
 
 
-    public void setBasicSetting(MemberVO memberVO) {
-        memberMapper.updateBasicSet(memberVO);
+    public void setBasicSetting(MemberDTO memberDTO) {
+        memberMapper.updateBasicSet(memberDTO);
     }
 }
 

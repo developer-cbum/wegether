@@ -52,8 +52,8 @@ public class MineServiceImpl implements MypageService {
     }
 
 //    기본 설정 변경
-    public void modifyBasicSetting(MemberVO memberVO){
-        memberDAO.setBasicSetting(memberVO);
+    public void modifyBasicSetting(MemberDTO memberDTO){
+        memberDAO.setBasicSetting(memberDTO);
     }
 
     //    내 프로젝트 조회

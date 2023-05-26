@@ -1,10 +1,7 @@
 package com.wegether.app.controller;
 
 
-import com.wegether.app.domain.dto.CardDTO;
-import com.wegether.app.domain.dto.DataDTO;
-import com.wegether.app.domain.dto.HeartDTO;
-import com.wegether.app.domain.dto.ProjectDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.domain.vo.MemberVO;
@@ -107,14 +104,15 @@ public class MypageController {
     //===========================================================================================================================
 //    기본 정보 설정 페이지 이동
     @GetMapping("/setting/basic-setting")
-    public void goToBasicSetting(HttpSession session, Model model) {
+    public MemberDTO goToBasicSetting(HttpSession session, Model model, MemberDTO memberDTO) {
         model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
+        return memberDTO;
     }
 
 
     @PostMapping("/setting/basic")
-    public RedirectView basicSetting(HttpSession session, MemberVO memberVO){
-        mine.modifyBasicSetting(memberVO);
+    public RedirectView basicSetting(HttpSession session, MemberDTO memberDTO){
+        mine.modifyBasicSetting(memberDTO);
         return new RedirectView("/my-page/my-page");
 
     }
@@ -179,6 +177,25 @@ public class MypageController {
 
     //    1:1문의
     private final InquiryImpl inquiry;
+
+//    문의 등록
+
+    @GetMapping("/inquiry/inquiry-register")
+    public void goToRegister(InquiryVO inquiryVO, HttpSession session, Model model){
+        model.addAttribute("inquiry", accountService.getMemberById((Long)session.getAttribute("id")).get().getMemberId());
+    }
+
+    @PostMapping("write")
+    public RedirectView write(PostDTO postDTO){
+        postDTO.setMemberId((Long)session.getAttribute("id"));
+        postService.write(postDTO);
+        return new RedirectView("/post/list");
+    }
+
+//    @GetMapping("write")
+//    public void goToWriteForm(PostVO postVO, Model model){
+//        model.addAttribute("memberName", memberService.getMember((Long)session.getAttribute("id")).get().getMemberName());
+//    }
 
     //목록 조회
     @GetMapping("/inquiry/inquiry-detail")
@@ -282,6 +299,12 @@ public class MypageController {
         //model.addAttribute("projectH", heart.projectHeart(2L));
     }
 }
+
+
+//문의 등록
+
+
+
 
 
 //    찜 첫 화면

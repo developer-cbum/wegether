@@ -22,20 +22,20 @@
         <!-- account-wrap -->
         <div class="account-wrap">
             <h2>기본 정보 설정</h2>
-            <form id="saveForm">
+            <form id="saveform" th:action="@{/mypage/setting/basic}" method="post" th:object="${memberDTO}">
+                <input type="hidden" name="id" th:field="*{id}">
                 <div class="email-input-wrap">
 <!--                    <input type="text" name="nickName" class="input-text" maxlength="20" placeholder="닉네임" value="이종문"/>-->
-                    <input type="text" name="nickName" class="input-text disable hide" maxlength="20" placeholder="닉네임"
-                           value="이종문" disabled="" style="display: none"/>
+<!--                    <input type="text" name="nickName" class="input-text disable hide" maxlength="20" placeholder="닉네임"-->
+<!--                           value="이종문" disabled="" style="display: none"/>-->
                     <div class="input-btn-wrap">
                         <div class="input">
                             <input
                                     type="email"
-                                    id="userName"
-                                    name="userName"
                                     class="disable input-text"
                                     placeholder="닉네임"
-                                    th:value="${setting.memberNickname}"
+                                    th:text="${setting.memberNickname}"
+                                    th:field="*{memberNickname}"
                                     disabled=""
                             />
                         </div>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/consult/consult-register1.css">
-    <link rel="stylesheet" href="../../static/css/consult/consult-register2.css">
-    <link rel="stylesheet" href="../../static/css/consult/common.css">
+    <link rel="stylesheet" href="/static/css/consult/consult-register1.css">
+    <link rel="stylesheet" href="/static/css/consult/consult-register2.css">
+    <link rel="stylesheet" href="/static/css/consult/common.css">
 
 
   </head>
@@ -50,8 +51,7 @@
  
           </div>
           
-          <form class="ProjectTypeFormContainer_form__3kGVN">
-
+            <form class="ProjectTypeFormContainer_form__3kGVN" th:action="@{/inquiry/write}" method="post" name="writeForm" th:object="${inquiryVO}">
             <section
               class="Section_container__3md8M ClassificationField_container__3Jk9- spacing-5"
             >
@@ -71,7 +71,7 @@
                   >
                     <label></label>
                     <div class="TextField_field__1E9vt">
-                        <input class="Input_title Input_input__2kAAL Input_md__3-eZ6" placeholder="제목을 작성해주세요"/>
+                        <input th:field="*{inquiryTitle}" class="Input_title Input_input__2kAAL Input_md__3-eZ6" placeholder="제목을 작성해주세요"/>
                      
                     </div>
                   </div>
@@ -106,7 +106,7 @@
                   >
                     <label></label>
                     <div class="TextField_field__1E9vt">
-                        <textarea class="Input_input__2kAAL Input_md__3-eZ6" placeholder="문의 내용을 작성해주세요"></textarea>
+                        <textarea th:field="*{inquiryContent}" class="Input_input__2kAAL Input_md__3-eZ6" placeholder="문의 내용을 작성해주세요"></textarea>
                      
                     </div>
                   </div>
