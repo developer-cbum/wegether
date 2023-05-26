@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
@@ -33,7 +35,7 @@
                                     name="userName"
                                     class="disable input-text"
                                     placeholder="닉네임"
-                                    value="종문님"
+                                    th:value="${setting.memberNickname}"
                                     disabled=""
                             />
                         </div>
@@ -60,7 +62,7 @@
                 <div class="input-btn-wrap">
                     <div class="input">
                         <input id="mobileNumber" name="mobileNumber" type="tel" class="input-text" placeholder="휴대폰 번호"
-                               value="01040573327" readonly
+                               th:value="${setting.memberPhoneNumber}" readonly
                         />
                     </div>
                     <div id="mobileCheckBtn" class="mobileAuthBtn btn" style="display: none">

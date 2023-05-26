@@ -6,6 +6,7 @@ import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.dto.ProjectDTO;
 import com.wegether.app.domain.vo.ConsultingVO;
+import com.wegether.app.domain.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,11 @@ public class MineServiceImpl implements MypageService {
         return memberDAO.showmypage(id);
     }
 
+//    마이페이지 회원 탈퇴
+    public void changeAccount(Long id){
+        memberDAO.updateMemberS(id);
+    }
+
 
     //    내가 등록한 자료 조회
     public List<DataDTO> readMine(Long memberId) {
@@ -43,6 +49,11 @@ public class MineServiceImpl implements MypageService {
         //        게시글 하나씩 첨부파일 목록 담기
         datas.forEach(data -> data.setFiles(fileDAO.dataFindAll(data.getId())));
         return datas;
+    }
+
+//    기본 설정 변경
+    public void modifyBasicSetting(MemberVO memberVO){
+        memberDAO.setBasicSetting(memberVO);
     }
 
     //    내 프로젝트 조회

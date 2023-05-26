@@ -50,8 +50,5 @@ public class AccountServiceImpl implements AccountService {
         return memberDAO.findById(id);
     }
 
-    @Override
-    public Optional<MemberVO> getMemberByPw(Long id) {
-        return memberDAO.showByPW(id);
-    }
+
 }
