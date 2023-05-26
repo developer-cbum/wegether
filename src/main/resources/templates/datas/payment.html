@@ -63,7 +63,7 @@
 										</div>
 										<div class="StorePaymentInformation_row__OF_TS">
 											<span class="StorePaymentInformation_label__3Pxe0">휴대폰 번호</span>
-<!--											<span th:text="*{memberPhoneNumber}"></span>-->
+											<span th:text="*{memberPhoneNumber}"></span>
 										</div>
 										<div class="StorePaymentInformation_row__OF_TS">
 											<span class="StorePaymentInformation_label__3Pxe0">이메일 주소</span>
@@ -276,11 +276,10 @@
 									<div
 										class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
 										<div class="StorePaymentTerms_StorePaymentTerms__1PQlB">
-											<label
-												class="Checkbox_checkbox__KagcU Checkbox_lg__1DyUN Checkbox_labeled__2WxRV StorePaymentTerms_termsCheckbox__3gruT"
-												for="paymentRequiredTerms">
-												<input name="paymentRequiredTerms" type="checkbox"
-													class="Checkbox_input__Ge9vr">
+											<label class="Checkbox_checkbox__KagcU Checkbox_lg__1DyUN Checkbox_labeled__2WxRV StorePaymentTerms_termsCheckbox__3gruT">
+
+												<input id="checkAll" name="paymentRequiredTerms" type="checkbox" class="Checkbox_input__Ge9vr">
+
 												<span class="Checkbox_icon__1OUUf" aria-hidden="true">
 													<svg viewBox="0 0 16 2" focusable="false" role="presentation"
 														class="withIcon_icon__3VTbq Checkbox_removeIcon__7dzQx"
@@ -295,16 +294,18 @@
 														</path>
 													</svg>
 												</span>
+
 												<span class="Checkbox_content__3UZwe">
 													<span>결제 진행 필수 동의</span>
 												</span>
+
 											</label>
 											<div class="StorePaymentTerms_termsList__1ki8i">
 												<label for="serviceTerms" class="StorePaymentTerms_termsItem__CAG90">
 													<label for="serviceTerms"
 														class="Checkbox_checkbox__KagcU Checkbox_sm__2_Gjh StorePaymentTerms_smallCheckBox__YwfQ5">
 														<input name="serviceTerms" id="serviceTerms" type="checkbox"
-															class="Checkbox_input__Ge9vr">
+															class="checkBox Checkbox_input__Ge9vr">
 														<span class="Checkbox_icon__1OUUf" aria-hidden="true">
 															<svg viewBox="0 0 16 2" focusable="false"
 																role="presentation"
@@ -323,15 +324,15 @@
 														</span>
 														<span class="Checkbox_content__3UZwe"></span>
 													</label>
-													<span class="StorePaymentTerms_text__1tYhe">구매 조건, 결제 진행 및 결제 대행 서비스
-														동의 (필수)</span>
+													<span class="StorePaymentTerms_text__1tYhe">구매 조건, 결제 진행 및 결제 대행 서비스 동의 (필수)</span>
 												</label>
+
 												<label for="checkbox_privacyTerms"
 													class="StorePaymentTerms_termsItem__CAG90">
 													<label for="checkbox_privacyTerms"
 														class="Checkbox_checkbox__KagcU Checkbox_sm__2_Gjh StorePaymentTerms_smallCheckBox__YwfQ5">
 														<input name="privacyTerms" id="checkbox_privacyTerms"
-															type="checkbox" class="Checkbox_input__Ge9vr">
+															type="checkbox" class="checkBox Checkbox_input__Ge9vr">
 														<span class="Checkbox_icon__1OUUf" aria-hidden="true">
 															<svg viewBox="0 0 16 2" focusable="false"
 																role="presentation"
@@ -340,29 +341,18 @@
 																<path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
 															</svg>
 															<svg viewBox="0 0 48 48" focusable="false"
-																role="presentation"
-																class="withIcon_icon__3VTbq Checkbox_checkIcon__2qiC_"
-																aria-hidden="true">
-																<path
-																	d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z">
-																</path>
+																role="presentation" class="withIcon_icon__3VTbq Checkbox_checkIcon__2qiC_" aria-hidden="true">
+																<path d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"> </path>
 															</svg>
 														</span>
 														<span class="Checkbox_content__3UZwe"></span>
 													</label>
-													<span class="StorePaymentTerms_text__1tYhe">개인정보 제3자 제공 동의
-														(필수)</span>
-													<button
-														class="Button_button__2FuOU Button_text__2-UCU Button_sm__16X6h Button_iconOnly__F0Izx iconButton StorePaymentTerms_termsDetailButton__29smA"
-														type="button">
+													<span class="StorePaymentTerms_text__1tYhe">개인정보 제3자 제공 동의 (필수)</span>
+													<button class="Button_button__2FuOU Button_text__2-UCU Button_sm__16X6h Button_iconOnly__F0Izx iconButton StorePaymentTerms_termsDetailButton__29smA" type="button">
 														<span>
 															<span class="Button_children__ilFun">
-																<svg viewBox="0 0 40 40" focusable="false"
-																	role="presentation" class="withIcon_icon__3VTbq"
-																	aria-hidden="true">
-																	<path
-																		d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z">
-																	</path>
+																<svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq" aria-hidden="true">
+																	<path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"> </path>
 																</svg>
 															</span>
 														</span>
@@ -370,13 +360,15 @@
 												</label>
 											</div>
 										</div>
-										<button form="payment-submit"
-											class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_lg__1Dftp Button_block__1-g8w PaymentLayout_submitButton__1fQJ4"
-											type="submit">
+
+										<button id="payButton" type="button"
+												form="payment-submit"
+											class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_lg__1Dftp Button_block__1-g8w PaymentLayout_submitButton__1fQJ4">
 											<span>
 												<span class="Button_children__ilFun" th:text="*{dataPrice} - *{memberPoint}"></span><span>원 결제하기</span>
 											</span>
 										</button>
+
 									</div>
 								</section>
 							</div>
@@ -384,6 +376,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="FloatingButtons_container__2E5Fl">
 				<button type="button" class="FloatingTopButton_pageTop__2gqm9 FloatingTopButton_visible__2sh_N"
 					title="위로 이동">
@@ -402,13 +395,18 @@
 			</div>
 		</main>
 	</div>
+
 <footer th:replace="~{/fix/footer :: #footer}"></footer>
+
 </body>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.3.min.js" type="application/javascript"></script>
 <script  th:inline="javascript" >
 	let dataDTO = [[${dataDTO}]];
 	console.log(dataDTO);
 </script>
+<script src="/js/dataroom/bootPay.js"></script>
 <script src="/js/dataroom/payment.js"></script>
 
 

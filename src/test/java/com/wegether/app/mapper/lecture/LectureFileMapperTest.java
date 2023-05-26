@@ -23,7 +23,7 @@ public class LectureFileMapperTest {
         LectureFileDTO lectureFileDTO = new LectureFileDTO();
         lectureFileDTO.setFileName("title.png");
         lectureFileDTO.setFilePath("2023/05/20");
-        lectureFileDTO.setFileSize(999L);
+//        lectureFileDTO.setFileSize(999L);
         lectureFileDTO.setFileUuid(UUID.randomUUID().toString());
         lectureFileDTO.setFileType(FileType.NON_REPRESENTATIVE.name());
         lectureFileMapper.insert(lectureFileDTO);

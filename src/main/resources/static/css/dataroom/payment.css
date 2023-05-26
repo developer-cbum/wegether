@@ -1820,9 +1820,6 @@ button:not(:disabled), input:not(:disabled), input:not(:disabled) + label {
     box-sizing: border-box;
 }
 
-.Checkbox_checkbox__KagcU .Checkbox_input__Ge9vr + .Checkbox_icon__1OUUf .Checkbox_checkIcon__2qiC_, .Checkbox_checkbox__KagcU .Checkbox_input__Ge9vr + .Checkbox_icon__1OUUf .Checkbox_removeIcon__7dzQx {
-    opacity: 0;
-}
 
 .StorePaymentTerms_StorePaymentTerms__1PQlB .StorePaymentTerms_termsList__1ki8i .StorePaymentTerms_termsItem__CAG90 * {
     vertical-align: middle;
@@ -2354,3 +2351,19 @@ button:not(:disabled), input:not(:disabled), input:not(:disabled) + label {
     fill: #fff;
 }
 
+
+/* check */
+.Checkbox_checkbox__KagcU .Checkbox_input__Ge9vr:checked+.Checkbox_icon__1OUUf .Checkbox_checkIcon__2qiC_ {
+    opacity: 1;
+}
+
+.Checkbox_checkbox__KagcU .Checkbox_input__Ge9vr:checked+.Checkbox_icon__1OUUf, .Checkbox_checkbox__KagcU .Checkbox_input__Ge9vr:indeterminate+.Checkbox_icon__1OUUf {
+    border: solid 1px #0097D2;
+    background-color: #00BBFF;
+}
+
+#payButton:disabled,
+#payButton.disabled {
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0.45;
+}
