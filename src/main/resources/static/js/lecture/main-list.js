@@ -43,3 +43,11 @@ $("a.change-page").on("click", function(e){
     let page = $(this).attr("href");
     location.href = `/consults/list?page=${page}`
 });
+
+$('.my-consult-list').on("click", function () {
+    if(id ==null){
+        showWarnModal("로그인 후 이용해주세요")
+    }else{
+        location.href=`/mypage/my-page/my-consult-detail`;
+    }
+})

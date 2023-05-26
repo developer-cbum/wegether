@@ -8,15 +8,12 @@ const $data=$(".data button");
 
 console.log("들어오나");
 
-const $allofheart=$(".allofheart");
-const $projectli=$(".projectli");
-const $datali=$(".datali");
 
 const $elements=$(".ProjectCardList_container__2Q0Js");
 
 all()
 
-
+$elements.empty();
 
 function all(){
     $.ajax({
@@ -137,12 +134,12 @@ function all(){
 
 function project(){
     $.ajax({
-        url: "/mypage/heart-list/project",
-        success: function (hearts) {
-            console.log("들어옴");
+        url: "project",
+        success: function (projects) {
+            console.log("프로젝트 함수 들어옴");
             let text=``;
             console.log("dd");
-            hearts.forEach((heart, i) => {
+            projects.forEach((project, i) => {
                 text += `
                
                 <li class="ProjectCardList_cardList__Eh497 projectli">
@@ -182,7 +179,7 @@ function project(){
                     >
                       <div class="ProjectInfo_flexBox__1VtoL">
                         <em class="ProjectInfo_state__3kvLA"
-                          >${heart.projectTitle} <span class="ProjectInfo_unit__2GehO">원</span></em
+                          >${project.projectTitle} <span class="ProjectInfo_unit__2GehO">원</span></em
                         >
                       </div>
                     </div>
@@ -255,12 +252,12 @@ function project(){
 
 function data(){
     $.ajax({
-        url: "/mypage/heart-list/data",
-        success: function (hearts) {
+        url: "data",
+        success: function (datas) {
             console.log("들어옴");
             let text=``;
             console.log("dd");
-            hearts.forEach((heart, i) => {
+            datas.forEach((data, i) => {
                 text += `
              
                 <li class="ProjectCardList_cardList__Eh497 projectli">
@@ -292,7 +289,7 @@ function data(){
                         background-image: url('https://cdn2.wadiz.kr/2022/12/12/26263237-fb52-48af-8cbd-333502ab8fb9.jpg/wadiz/resize/400/format/jpg/quality/85/');
                       "
                     ></div>
-                    <em class="ProductTypeBadge_badge__1vQ-m ProjectCard_badge___LsIT">프로젝트</em>
+                    <em class="ProductTypeBadge_badge__1vQ-m ProjectCard_badge___LsIT">자료</em>
                   </div>
                   <div class="ProjectCard_infoBox__3ILIU">
                     <div
@@ -300,7 +297,7 @@ function data(){
                     >
                       <div class="ProjectInfo_flexBox__1VtoL">
                         <em class="ProjectInfo_state__3kvLA"
-                          >${heart.dataTitle} <span class="ProjectInfo_unit__2GehO">원</span></em
+                          >${data.dataTitle} <span class="ProjectInfo_unit__2GehO">원</span></em
                         >
                       </div>
                     </div>
@@ -369,10 +366,13 @@ function data(){
 
 }
 $project.on("click", function () {
-    $projectli.show();
-    $allofheart.hide();
-    $datali.hide();
+    // $projectli.show();
+    // $allofheart.hide();
+    // $datali.hide();
 
+    $elements.empty();
+
+    console.log("프로젝트 들어옴");
     project()
 
     $all.css("border-color", "#f2f4f6");
@@ -387,12 +387,14 @@ $project.on("click", function () {
 
 
 $all.on("click", function () {
-    $allofheart.show();
+    // $allofheart.show();
+    //
+    // $projectli.hide();
+    // $datali.hide();
 
-    $projectli.hide();
-    $datali.hide();
 
-
+    $elements.empty();
+    all()
     console.log("들어옴");
     // $elements.show();
     $all.css("border-color", "#8CE0FF");
@@ -405,9 +407,10 @@ $all.on("click", function () {
 });
 
 $data.on("click", function () {
-    $datali.show();
-    $allofheart.hide();
-    $projectli.hide();
+    // $datali.show();
+    // $allofheart.hide();
+    // $projectli.hide();
+    $elements.empty();
 
     data()
     // $elements.hide();

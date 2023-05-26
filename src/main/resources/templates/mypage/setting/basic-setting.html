@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://kit.fontawesome.com/f28d5f57bb.js" crossorigin="anonymous"></script>
     <script async="" src="//www.google-analytics.com/analytics.js"></script>
-    <link rel="stylesheet" href="../../../static/css/mypage/my-page/mypage.css">
-    <link rel="stylesheet" href="../../../static/css/mypage/setting/basic-setting.css">
-    <link rel="stylesheet" href="../../../static/css/mypage/setting/save-password-modal.css">
-    <link rel="stylesheet" href="../../../static/css/account/login/login.css">
+    <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/mypage/setting/basic-setting.css">
+    <link rel="stylesheet" href="/css/mypage/setting/save-password-modal.css">
+    <link rel="stylesheet" href="/css/account/login/login.css">
 
     <title>기본 설정 | 위게더</title>
 </head>
@@ -22,9 +22,9 @@
             <h2>기본 정보 설정</h2>
             <form id="saveForm">
                 <div class="email-input-wrap">
-                    <input type="text" name="nickName" class="input-text" maxlength="20" placeholder="닉네임" value="이종문"/>
-                    <input type="text" name="realName" class="input-text disable hide" maxlength="20" placeholder="이름"
-                           value="" disabled="" style="display: none"/>
+<!--                    <input type="text" name="nickName" class="input-text" maxlength="20" placeholder="닉네임" value="이종문"/>-->
+                    <input type="text" name="nickName" class="input-text disable hide" maxlength="20" placeholder="닉네임"
+                           value="이종문" disabled="" style="display: none"/>
                     <div class="input-btn-wrap">
                         <div class="input">
                             <input
@@ -32,8 +32,8 @@
                                     id="userName"
                                     name="userName"
                                     class="disable input-text"
-                                    placeholder="이메일 계정"
-                                    value="dal.semicolon@gmail.com"
+                                    placeholder="닉네임"
+                                    value="종문님"
                                     disabled=""
                             />
                         </div>
@@ -50,9 +50,9 @@
                         </div>
                     </div>
                 </div>
-                <p id="emailError" class="error-text emailMsg" style="display: none">이메일 형식이 올바르지 않습니다.</p>
-                <p id="emailJoinedError" class="error-text emailMsg" style="display: none">이미 회원가입된 계정입니다. 다른 이메일을
-                    입력해주세요.</p>
+<!--                <p id="emailError" class="error-text emailMsg" style="display: none">이메일 형식이 올바르지 않습니다.</p>-->
+<!--                <p id="emailJoinedError" class="error-text emailMsg" style="display: none">이미 회원가입된 계정입니다. 다른 이메일을-->
+<!--                    입력해주세요.</p>-->
                 <p id="emailDropOutError" class="error-text emailMsg" style="display: none">
                     90일 이내에 탈퇴한 이력이 있는 계정은 사용하실 수 없습니다. 다른 이메일을 입력해주세요.
                 </p>
@@ -164,5 +164,5 @@
 </section>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../../static/js/mypage/setting/basic-setting.js"></script>
+<script src="/js/mypage/setting/basic-setting.js"></script>
 </html>

@@ -1,6 +1,7 @@
 package com.wegether.app.service.account;
 
 import com.wegether.app.dao.MemberDAO;
+import com.wegether.app.domain.dto.ProfileMemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -53,5 +54,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Optional<MemberVO> getMemberByPw(Long id) {
         return memberDAO.showByPW(id);
+    }
+
+    @Override
+    public Optional<ProfileMemberDTO> getIdAndProfile(Long id) {
+        return memberDAO.findIdAndProfile(id);
     }
 }

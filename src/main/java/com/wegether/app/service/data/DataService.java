@@ -23,6 +23,9 @@ public interface DataService {
     //    게시글 전체 개수 조회
     public int getTotal();
 
+    //  게시글 조회수
+    public void modifyViewCountUp(Long id);
+
 
 
 
