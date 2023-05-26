@@ -65,11 +65,15 @@ public class AdminServiceImpl implements AdminService {
 
     // 공지사항 수정
     @Override
-    public void noticeModify(NoticeVO noticeVO) { adminDAO.setNoticeVO(noticeVO); }
+    public void noticeModify(NoticeAdminDTO noticeAdminDTO) { adminDAO.setNoticeVO(noticeAdminDTO); }
 
     // 공지사항 삭제
     @Override
     public void noticeRemove(Long id) { adminDAO.noticeDelete(id); }
+
+    // 파일 삭제
+    @Override
+    public void fileRemove(Long id) { adminDAO.fileDelete(id); }
 
     /* --------------------------------------------------------------------------------- */
 

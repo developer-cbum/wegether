@@ -1,10 +1,13 @@
 package com.wegether.app.service.account;
 
 import com.wegether.app.dao.MemberDAO;
+import com.wegether.app.dao.PointDAO;
+import com.wegether.app.domain.dto.ProfileMemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -14,6 +17,7 @@ import java.util.Optional;
 public class AccountServiceImpl implements AccountService {
 
     private final MemberDAO memberDAO;
+    private final PointDAO pointDAO;
 
     @Override
     public Optional<MemberVO> checkId(String memberId) {
@@ -21,8 +25,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void join(MemberVO memberVO) {
         memberDAO.save(memberVO);
+        Optional<MemberVO> byMemberId = memberDAO.findByMemberId(memberVO.getMemberId());
+        pointDAO.saveJoinPoint(byMemberId.get().getId());
     }
 
     @Override
@@ -50,8 +57,14 @@ public class AccountServiceImpl implements AccountService {
         return memberDAO.findById(id);
     }
 
+
     @Override
     public Optional<MemberVO> getMemberByPw(Long id) {
         return memberDAO.showByPW(id);
+    }
+
+    @Override
+    public Optional<ProfileMemberDTO> getIdAndProfile(Long id) {
+        return memberDAO.findIdAndProfile(id);
     }
 }

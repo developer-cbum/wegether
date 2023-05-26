@@ -180,7 +180,7 @@ $(document).ready(function () {
                 $list.html("");
                 $ul.html("");
                 showList(datas);
-                
+
                 console.log(datas);
                 console.log(page);
                 console.log(categoryType);

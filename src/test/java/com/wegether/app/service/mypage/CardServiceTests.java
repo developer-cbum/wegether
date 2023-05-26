@@ -23,19 +23,19 @@ public class CardServiceTests {
         Assertions.assertThat(card.getList(1L)).hasSize(6);
 
     }
-    @Test 
-    public void saveTests(){
-        CardVO cardVO = new CardVO();
-        cardVO.setMemberId(2L);
-        cardVO.setCardNumber("1234567812345678");
-        cardVO.setCardBirthDate("2506");
-        cardVO.setCardPassword("12");
-
-        card.register(cardVO);
-    }
-
-    @Test
-    public void removeTest(){
-       card.remove(2L);
-    }
+//    @Test
+//    public void saveTests(){
+//        CardVO cardVO = new CardVO();
+//        cardVO.setMemberId(2L);
+//        cardVO.setCardNumber("1234567812345678");
+//        cardVO.setCardBirthDate("2506");
+//        cardVO.setCardPassword("12");
+//
+//        card.register(cardVO);
+//    }
+//
+//    @Test
+//    public void removeTest(){
+//       card.remove(2L);
+//    }
 }

@@ -2662,3 +2662,9 @@ div.warn-modal {
 div#content-wrap span {
     display: block;
 }
+span.file-size {
+    position: absolute;
+    bottom: -20px;
+    font-weight: 900;
+}
+

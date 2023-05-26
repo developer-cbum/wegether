@@ -48,7 +48,14 @@
         WHERE ID = #{id}
     </select>
 
-
+<!--파일을 조인한 것 가져오기-->
+    <select id="selectIdAndProfile" resultType="profileMemberDTO">
+        	SELECT M.ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS,
+            F.ID FILE_ID, FILE_PATH, FILE_UUID, FILE_NAME
+            FROM TBL_FILE F RIGHT OUTER JOIN TBL_MEMBER M
+            ON F.ID = M.FILE_ID
+            WHERE M.ID = #{id}
+    </select>
 
 
 
@@ -82,10 +89,30 @@
 
 <!--    소영 마이페이지 화면 띄우기-->
     <select id="selectmypage" resultType="memberDTO">
-    SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, NVL(P.POINT_HISTORY, '0') point
+    SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, NVL(P.POINT_HISTORY, '0') point, M.MEMBER_NICKNAME, M.MEMBER_PHONE_NUMBER
     FROM TBL_MEMBER M LEFT JOIN TBL_POINT P ON M.ID =P.MEMBER_ID
     WHERE M.ID =#{id}
 
 
     </select>
+
+
+<!--    회원 탈퇴-->
+    <update id="updateMemberS">
+    UPDATE TBL_MEMBER
+    SET MEMBER_STATUS='0'
+    WHERE ID=#{id}
+    </update>
+
+<!--    마이페이지 기본 정보 설정-->
+
+    <update id="updateBasicSet">
+        UPDATE TBL_MEMBER
+        SET MEMBER_NICKNAME = #{memberNickname}, MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
+        WHERE ID=#{id};
+    </update>
+
+
+
+
 </mapper>

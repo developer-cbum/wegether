@@ -1,6 +1,7 @@
 package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.MemberDTO;
+import com.wegether.app.domain.dto.ProfileMemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -45,6 +46,11 @@ public class MemberDAO {
         return memberMapper.selectById(id);
     }
 
+    //   프로필 포함 아이디 조회
+    public Optional<ProfileMemberDTO> findIdAndProfile(Long id){
+        return memberMapper.selectIdAndProfile(id);
+    }
+
 
 
 
@@ -68,7 +74,15 @@ public class MemberDAO {
     }
 
 
-    public Optional<MemberVO> showByPW(Long id){return memberMapper.selectByPW(id);}
+
+    public void updateMemberS (Long id){
+        memberMapper.updateMemberS(id);
+    }
+
+
+    public void setBasicSetting(MemberVO memberVO) {
+        memberMapper.updateBasicSet(memberVO);
+    }
 }
 
 

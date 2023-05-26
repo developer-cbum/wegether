@@ -4,6 +4,7 @@ import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.mail.ChangePwSendMailService;
 import com.wegether.app.service.mail.RegisterMailService;
+import jdk.jshell.spi.ExecutionControl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
@@ -40,8 +41,9 @@ public class AccountController {
 
 // 회원가입 완료
     @PostMapping("register")
-    public RedirectView join(MemberVO memberVO){
+    public RedirectView join(MemberVO memberVO, RedirectAttributes redirectAttributes){
         accountService.join(memberVO);
+        redirectAttributes.addFlashAttribute("join", "true");
         return new RedirectView("/account/login");
     }
 
@@ -52,9 +54,10 @@ public class AccountController {
 
     @PostMapping("kakao-register")
     @Transactional(rollbackFor = Exception.class)
-    public RedirectView joinToKakao(MemberVO memberVO){
+    public RedirectView joinToKakao(MemberVO memberVO, RedirectAttributes redirectAttributes){
         accountService.join(memberVO);
         accountService.changeLoginStatusToKakao(memberVO.getMemberId());
+        redirectAttributes.addFlashAttribute("join", "true");
         return new RedirectView("/index/main");
     }
 
@@ -79,13 +82,20 @@ public class AccountController {
                 }
             }
 
+            //관리자 계정
+            if(foundMember.isPresent()) {
+                if (accountService.checkId(memberId).get().getMemberGrade().equals("ADMIN")) {
+                    session.setAttribute("id", foundMember.get());
+                    return new RedirectView("/admins/notice/list");
+                }
+            }
+
 
             // 일반 계정 로그인 성공
             if(foundMember.isPresent()){
                 session.setAttribute("id", foundMember.get());
                 return new RedirectView("/index/main");
             }
-
 
 
             // 아예 로그인 실패
@@ -168,13 +178,12 @@ public class AccountController {
         ;}
     @PostMapping("naver-join")
     @Transactional(rollbackFor = Exception.class)
-    public RedirectView naverJoin(MemberVO memberVO, HttpSession session){
-
+    public RedirectView naverJoin(MemberVO memberVO, HttpSession session,RedirectAttributes redirectAttributes){
         accountService.join(memberVO);
         accountService.changeLoginStatusToNaver(memberVO.getMemberId());
         Optional<MemberVO> JoinMemberVO = accountService.checkId(memberVO.getMemberId());
         session.setAttribute("id", JoinMemberVO.get().getId());
-        log.info(session.getAttribute("id").toString());
+        redirectAttributes.addFlashAttribute("join", "true");
         return new RedirectView("/index/main");
     }
 

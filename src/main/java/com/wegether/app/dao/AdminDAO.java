@@ -45,10 +45,13 @@ public class AdminDAO {
     public Optional<NoticeAdminDTO> noticeFindById(Long id){ return adminMapper.noticeSelect(id); };
 
     // 공지사항 수정
-    public void setNoticeVO(NoticeVO noticeVO){ adminMapper.noticeUpdate(noticeVO); };
+    public void setNoticeVO(NoticeAdminDTO noticeAdminDTO){ adminMapper.noticeUpdate(noticeAdminDTO); };
 
     // 공지사항 삭제
     public void noticeDelete(Long id){ adminMapper.noticeDelete(id); };
+
+    // 파일 삭제
+    public void fileDelete(Long id){ adminMapper.fileDelete(id); };
 
     /* --------------------------------------------------------------------------------- */
 

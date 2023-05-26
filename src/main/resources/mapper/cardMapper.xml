@@ -3,8 +3,8 @@
 <mapper namespace="com.wegether.app.mapper.CardMapper">
     <insert id="insert">
         INSERT INTO TBL_CARD
-        (ID, MEMBER_ID, CARD_NUMBER, CARD_EXPIRE_DATE, CARD_PASSWORD, MEMBER_BIRTH_DATE, CARD_REGISTER_DATE)
-        VALUES(SEQ_CARD.NEXTVAL, #{memberId}, #{cardNumber}, #{cardExpireDate}, #{cardPassword}, #{memberBirthDate}, #{cardRegisterDate})
+        (ID, MEMBER_ID, CARD_NUMBER, CARD_EXPIRE_DATE, CARD_PASSWORD, MEMBER_BIRTH_DATE)
+        VALUES(SEQ_CARD.NEXTVAL, #{memberId}, #{cardNumber}, #{cardExpireDate}, #{cardPassword}, #{memberBirthDate})
 
     </insert>
 
