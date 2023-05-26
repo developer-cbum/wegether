@@ -32,7 +32,7 @@
     <select id="selectAll" resultType="projectDTO">
        SELECT  w.MEMBER_ID, p.PROJECT_TITLE, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL now
         FROM TBL_PROJECT p, TBL_WISH_PROJECT w
-        WHERE w.MEMBER_ID=#{memberId} AND p.ID =w.PROJECT_ID;
+        WHERE w.MEMBER_ID=#{memberId} AND p.ID =w.PROJECT_ID
     </select>
 
     <!--    찜 취소-->

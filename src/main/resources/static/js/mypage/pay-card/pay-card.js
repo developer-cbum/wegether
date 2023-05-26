@@ -1,29 +1,54 @@
 let payCardService = ((function(){
+
   function getList(callback){
+    console.log("getlist 들어옴")
     $.ajax({
-      url: "",
-      data: JSON.stringify({"cardNumber":cardNumber, "cardExpireDate":cardExpireDate, "memberName":memberName }),
+      url: `/mypage/pay-card/list`,
+      type: `post`,
+      success: function(cards){
+        if(callback){
+          console.log("getList 에이작스 들어옴");
+          callback(cards);
+        }
+      }
+    });
+  }
+
+  function register(card, callback){
+    console.log("등록 들어옴");
+    let cardNumber = card.cardNumber;
+    let cardExpireDate = card.cardExpireDate;
+    let cardPassword = card.cardPassword;
+    let cardRegisterDate = card.cardRegisterDate;
+    $.ajax({
+      url: "/mypage/pay-card/register",
+      type:'post',
+      data: JSON.stringify({memberId: memberId, cardNumber: cardNumber, cardExpireDate: cardExpireDate, cardRegisterDate: cardRegisterDate, cardPassword: cardPassword}),
       contentType: "application/json; charset=utf-8",
       success: function(cards){
         if(callback) {
+          console.log("등록 ajax 들어옴");
           callback(cards);
         }
       }
     });
 
   }
-  return {getList: getList};
+  return {getList: getList, register: register};
 
 })());
 
 payCardService.getList(showList);
 
 function showList(cards){
+  console.log("showlist 들어옴");
+  console.log(cards);
   cards.forEach(card => {
-    let number1 = card.cardNumber.substring(0, 3);
-    let number2 = card.cardNumber.substring(4, 7);
-    let number3 = card.cardNumber.substring(8, 11);
-    let number4 = card.cardNumber.substring(12, 15);
+    console.log(card.cardNumber);
+    let number1 = card.cardNumber.substring(0, 4);
+    let number2 = card.cardNumber.substring(4, 8);
+    let number3 = card.cardNumber.substring(8, 12);
+    let number4 = card.cardNumber.substring(12, 16);
     //SimplePayCard_simplecard__2wYo7 객체에 text append
     let text = `   <div class="SimplePayCard_unregisted__2uiqp">
                         <div class="checkout">
@@ -77,11 +102,15 @@ function showList(cards){
                         </div>
                         <br/><br/>
                       </div>
-                      `;
-  });
+                      `
+
+
+  $('.SimplePayCard_noInfo__pdX40').append(text);
+
+
+});
 }
 
-$('.SimplePayCard_simplecard__2wYo7').append(text);
 
 /*퍼블리싱*/
 // confirm-button 버튼 요소 저장
@@ -97,11 +126,11 @@ let count = 0;
 let color = ['red', 'blue', 'yellow', 'black', 'pink', 'brown', 'green'];
 
 $('.SimplePayCard_addCard__2eagF').on('click', function () {
-  $('.ReactModalPortal').css('display', 'block');
+  $('.ReactModalPortal').show();
 });
 
 $('.SimplePayInfoFormNavBar_closeButton__MzCd0').on('click', function () {
-  $('.ReactModalPortal').css('display', 'none');
+  $('.ReactModalPortal').hide();
   $('.check').val('');
   $confirmButton.attr('disabled', true);
   $confirmButton.css('opacity', '0.49');
@@ -237,5 +266,24 @@ if ($confirmButton.attr('disabled') !== undefined) {
     $confirmButton.attr('disabled', true);
     $confirmButton.css('opacity', '0.49');
     $confirmButton.css('cursor', 'default');
+  });
+
+  /*카드 등록 Button_children__ilFun*/
+  $(".confirm-button").on("click", function(){
+    let card = new Object();
+    card.cardNumber = "";
+    for(let i = 0; i < 4; i ++){
+      card.cardNumber += $(".card-number").eq(i).val();
+    }
+    console.log(card.cardNumber);
+    card.cardExpireDate = $("input[name='cardExpireDate']").val();
+    console.log(card.cardExpireDate);
+    card.cardPassword = $("input[name='cardPassword']").val();
+    card.cardRegisterDate = $("input[name='cardRegisterDate']").val();
+
+    payCardService.register(card, function(){
+      $('.ProjectCardList_container__2Q0Js').html("");
+      payCardService.getList(showList);
+    })
   });
 }

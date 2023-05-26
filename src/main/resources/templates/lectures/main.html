@@ -32,8 +32,7 @@
 
     <div class="schoolMakerOpenArea">
       <section class="MakerAcademy_container__2dhnm">
-        <a class="my-consult-list"
-          th:href="@{/my-page/my-consult-detail}"
+        <a class="my-consult-list" href="#"
           ><span class="schoolMakerOpenfundingBox MakerAcademy_box__K7zyT"
             ><span class="MakerAcademy_btnPlay__18eNI"><span class="font-blind">play</span></span
             ><span class="schoolMakerOpenfundingBoxImages MakerAcademy_images__3NLjp"></span></span
@@ -125,6 +124,7 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script th:inline="javascript">
     let lists = [[${lists}]];
+    let id = [[${session.id}]];
     console.log(lists);
   </script>
   <script src="/js/lecture/main-list.js"></script>

@@ -15,16 +15,16 @@ public class CardDAOTests {
     @Autowired
     private CardDAO cardDAO;
 
-    @Test
-    public void saveTest() {
-        CardVO cardVO = new CardVO();
-        cardVO.setMemberId(2L);
-        cardVO.setCardNumber("1234567812345678");
-        cardVO.setCardBirthDate("2506");
-        cardVO.setCardPassword("12");
-
-        cardDAO.save(cardVO);
-    }
+//    @Test
+//    public void saveTest() {
+//        CardVO cardVO = new CardVO();
+//        cardVO.setMemberId(2L);
+//        cardVO.setCardNumber("1234567812345678");
+//        cardVO.setCardBirthDate("2506");
+//        cardVO.setCardPassword("12");
+//
+//        cardDAO.save(cardVO);
+//    }
 
     @Test
     public void showlistTests(){

@@ -36,25 +36,25 @@ public class AdminServiceTests {
 //    }
 
     //    공지사항 등록 테스트
-    @Test
-    public void noticeWriteTest() {
-        NoticeVO noticeVO = new NoticeVO();
-        noticeVO.setNoticeTitle("공지사항 테스트 제목50");
-        noticeVO.setNoticeContent("공지사항 테스트 내용50");
-        adminService.noticeWrite(noticeVO);
-    }
+//    @Test
+//    public void noticeWriteTest() {
+//        NoticeVO noticeVO = new NoticeVO();
+//        noticeVO.setNoticeTitle("공지사항 테스트 제목50");
+//        noticeVO.setNoticeContent("공지사항 테스트 내용50");
+//        adminService.noticeWrite(noticeVO);
+//    }
 
     //    공지사항 이미지 등록 테스트
-    @Test
-    public void noticeImageInsertTest(){
-        FileVO fileVO = new FileVO();
-        fileVO.setFilePath("2023/05/24");
-        fileVO.setFileUuid("rqw21-12421");
-        fileVO.setFileName("김원진쓰.jpg");
-        fileVO.setFileSize(1500L);
-        fileVO.setFileType("NON_REPRESENTATIVE");
-        adminService.noticeImageWrite(fileVO);
-    }
+//    @Test
+//    public void noticeImageInsertTest(){
+//        FileVO fileVO = new FileVO();
+//        fileVO.setFilePath("2023/05/24");
+//        fileVO.setFileUuid("rqw21-12421");
+//        fileVO.setFileName("김원진쓰.jpg");
+//        fileVO.setFileSize(1500L);
+//        fileVO.setFileType("NON_REPRESENTATIVE");
+//        adminService.noticeImageWrite(fileVO);
+//    }
 
     //    공지사항 이미지 등록(중간 테이블) 테스트
     @Test

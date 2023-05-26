@@ -47,12 +47,16 @@ public class ConsultController {
     public void goToConsultingList(Pagination pagination, Search search, Model model){
         pagination.setTotal(consultService.getTotal(search));
         pagination.progress();
+        log.info(consultService.getList(pagination,search).toString());
         model.addAttribute("consults", consultService.getList(pagination, search));
         }
 
     @GetMapping("detail")
-    public void goToConsultingDetail(@RequestParam Long id, ConsultReplyDTO consultReplyDTO, Model model){
-        log.info(consultService.getConsulting(id).get().toString());
+    public void goToConsultingDetail(@RequestParam Long id, ConsultReplyDTO consultReplyDTO, Pagination pagination, Search search, Model model){
+//        프로필 정보가진 아이디 보내기
+        if(session.getAttribute("id") != null){
+            model.addAttribute("memberVO", accountService.getIdAndProfile((Long)session.getAttribute("id")).get());
+        }
         model.addAttribute("consultDTO", consultService.getConsulting(id).get());
         model.addAttribute("consultId", id);
         model.addAttribute("total", consultReplyService.getTotal(id));

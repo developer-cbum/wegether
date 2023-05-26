@@ -23,12 +23,6 @@ public class DataServiceImpl implements DataService {
     private final DataFileDAO dataFileDAO;
 
 
-//  자료 목록
-//    @Override
-//    public List<DataDTO> getList(Pagination pagination) {
-//        return dataDAO.findAll(pagination);
-//    }
-
 //    자료 목록 - 파일
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -39,13 +33,6 @@ public class DataServiceImpl implements DataService {
         datas.forEach(data -> data.setFiles(fileDAO.dataFindAll(data.getId())));
         return datas;
     }
-
-
-//  자료 등록
-//    @Override
-//    public void write(DataDTO dataDTO) {
-//        dataDAO.save(dataDTO);
-//    }
 
 
 //    자료 등록 - 파일
@@ -65,7 +52,7 @@ public class DataServiceImpl implements DataService {
 //        });
 //    }
 
-//  자료 등록 테스트
+//  자료 등록 - 파일까지
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void write(DataDTO dataDTO) {
@@ -94,6 +81,16 @@ public class DataServiceImpl implements DataService {
         }
         return foundData;
     }
+
+
+//    자료 조회수 up~
+    @Override
+    public void modifyViewCountUp(Long id) {
+        dataDAO.viewCountUp(id);
+    }
+
+
+
 
 
 //    자료 수정할 때 파일 추가삭제
@@ -127,6 +124,8 @@ public class DataServiceImpl implements DataService {
     public int getTotal() {
         return dataDAO.findCountOfData();
     }
+
+
 
 //    @Override
 //    public DataDTO toDTO(DataVO dataVO) {

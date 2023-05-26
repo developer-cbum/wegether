@@ -17,7 +17,7 @@ public class ProjectPagination {
 
     public void progress() {
         this.page = page == null ? 1 : page;
-        this.rowCount = 10;
+        this.rowCount = 8;
         this.pageCount = 5;
         this.total = total;
         this.endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
