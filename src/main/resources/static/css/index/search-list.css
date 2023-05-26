@@ -2863,3 +2863,59 @@ a.paging-move {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+#data-btn{
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    display: block;
+    position: relative;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 9px 8px;
+    height: 18px;
+    box-sizing: content-box;
+    font-weight: 500;
+    background-color: #f2f4f6;
+    color: #495057;
+}
+
+#project-btn{
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    display: block;
+    position: relative;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 9px 8px;
+    height: 18px;
+    box-sizing: content-box;
+    font-weight: 500;
+    background-color: #f2f4f6;
+    color: #495057;
+}
+
+#all-btn{
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    display: block;
+    position: relative;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 9px 8px;
+    height: 18px;
+    box-sizing: content-box;
+    font-weight: 500;
+    transition: background-color .5s ease-in-out;
+    background-color: #e7f9f9;
+    color: #00c4c4;
+    background-color: #e7f9f9;
+    color: #00BBFF;
+}

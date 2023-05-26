@@ -24,7 +24,7 @@ public class ProjectMapperTests {
     @Test
     public void insertTest() {
         ProjectDTO projectDTO = new ProjectDTO();
-        projectDTO.setMemberId(22L);
+        projectDTO.setMemberId(4L);
         projectDTO.setProjectTitle("테스트 제목");
         projectDTO.setProjectIntroducing("테스트 소개");
         projectDTO.setProjectMajor("컴퓨터 공학과");
@@ -69,8 +69,17 @@ public class ProjectMapperTests {
 
 //        foundProject = projectMapper.select(2L);
 
+
 //        foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제목수정"));
 //    }
+
+//        projectMapper.ProjectUpdate(projectDTO);
+
+//        foundProject = projectMapper.select(2L);
+//
+//        foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제목수정"));
+//    }
+
 
 
     //프로젝트 삭제 테스트

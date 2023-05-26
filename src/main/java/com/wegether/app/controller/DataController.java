@@ -65,13 +65,13 @@ public class DataController {
 //    }
 
     @ResponseBody
-    @GetMapping("{page}/{type}/{order}")
+    @GetMapping("list/{page}/{type}/{order}")
     public List<DataDTO> goToDataList(@PathVariable int page, @PathVariable String type, @PathVariable String order){
-        final DataPagination dataPagination = new DataPagination();
+        DataPagination dataPagination = new DataPagination();
         CategoryType categoryType = new CategoryType();
-        dataPagination.setPage(page);
         dataPagination.setTotal(dataService.getTotal());
-        dataPagination.progress();
+        dataPagination.progress(8);
+        dataPagination.setPage(page);
         categoryType.setType(type);
         categoryType.setOrder(order);
        return dataService.getList(dataPagination, categoryType);
@@ -86,8 +86,6 @@ public class DataController {
         model.addAttribute("dataDTO", dataService.read(id).get());
     }
 
-
-
 //    자료 등록
     @GetMapping("register")
     public void goToWriteForm(DataDTO dataDTO, Model model){; }
@@ -100,13 +98,21 @@ public class DataController {
 //        model.addAttribute("memberId", memberId);
 //    };
 
-
     //    자료 등록 > 리스트 이동
     @PostMapping("register")
     public RedirectView register(DataDTO dataDTO) {
         dataService.write(dataDTO);
         return new RedirectView("/datas/list");
     }
+    
+//    자료 결제 페이지
+    @GetMapping("payment")
+    public void goToPayment(@RequestParam Long id, Model model, DataDTO dataDTO){;
+//        Optional<DataDTO> readDataPay = dataService.readDataPay(id);
+        model.addAttribute("dataDTO", dataService.readDataPay(id).get());
+    }
+
+
 
 
 
