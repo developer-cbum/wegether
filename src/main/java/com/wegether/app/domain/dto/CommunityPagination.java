@@ -14,6 +14,7 @@ public class CommunityPagination {
     private int realEnd;
     private boolean prev, next;
     private int total;
+    private String keyword;
 
     public void progress(int pageCount, int rowCount) {
         this.page = page == null ? 1 : page;
