@@ -24,7 +24,7 @@ public class ProjectMapperTests {
     @Test
     public void insertTest() {
         ProjectDTO projectDTO = new ProjectDTO();
-        projectDTO.setMemberId(22L);
+        projectDTO.setMemberId(4L);
         projectDTO.setProjectTitle("테스트 제목");
         projectDTO.setProjectIntroducing("테스트 소개");
         projectDTO.setProjectMajor("컴퓨터 공학과");
