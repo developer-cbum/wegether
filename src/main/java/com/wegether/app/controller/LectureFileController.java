@@ -1,5 +1,6 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.dto.ThumbnailSize;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.core.io.FileSystemResource;
@@ -18,9 +19,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @Slf4j
@@ -32,17 +31,26 @@ public class LectureFileController {
     @PostMapping("upload")
     @ResponseBody
     public List<String> upload(@RequestParam("uploadFile") List<MultipartFile> uploadFiles) throws IOException {
-
+        Map<String, ThumbnailSize> sizeMap = new HashMap<>();
+        int width = 0, height = 0;
         String path = "C:/upload/" + getPath();
         List<String> uuids = new ArrayList<>();
         File file = new File(path);
+
+        sizeMap.put("upload1", new ThumbnailSize(359, 179));
+        sizeMap.put("upload2", new ThumbnailSize(540, 390));
+        sizeMap.put("upload3", new ThumbnailSize(800, 1260));
+
+
         if(!file.exists()){file.mkdirs();}
         for (int i=0; i<uploadFiles.size(); i++){
+            width = sizeMap.get(uploadFiles.get(i).getName()).getWidth();
+            height = sizeMap.get(uploadFiles.get(i).getName()).getHeigth();
             uuids.add(UUID.randomUUID().toString());
             uploadFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
             if(uploadFiles.get(i).getContentType().startsWith("image")){
                 FileOutputStream out = new FileOutputStream(new File(path, "t_"+ uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
-                Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, 247, 247);
+                Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, width, height);
                 out.close();
             }
         }
