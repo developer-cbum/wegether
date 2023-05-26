@@ -1,4 +1,23 @@
-const $selectOption = $('#selectDropOutReason option');
+// const $selectOption = $('#selectDropOutReason option');
+//
+// console.log("js파일 들어옴");
+//
+// if ($('#dropConfirm').prop("checked", true)){
+//   console.log('들어옴');
+//   $('#btnDropOut').prop('disable', 'none');
+// }
+
+$('#btnDropOut').on('click', function () {
+  console.log("탈퇴 버튼 들어옴");
+  $("#saveform").submit();
+
+})
+
+// if ($('#dropConfirm').prop("checked", false)){
+//   console.log('들어옴');
+//   $('#btnDropOut').attr("disabled", true);
+// }
+
 
 $selectOption.each((i, el) => {
   $(this)
@@ -30,14 +49,20 @@ $('#alertify-o-ok').on('click', function () {
   $('#alertify-o').css('display', 'none');
 });
 
-if ($('#selectDropOutReason option:selected') && $('#dropConfirm').prop('checked')) {
-  console.log('들어옴');
-  $('#btnDropOut').prop('disable', 'none');
-}
+// if ($('#selectDropOutReason option:selected') && $('#dropConfirm').prop('checked')) {
+//   console.log('들어옴');
+//   $('#btnDropOut').prop('disable', 'none');
+// }
 
-$('#verify-confirm').on('click', function () {
-  if ($('#code').val().length == 6 && $("#dropConfirm").prop("checked")) {
-    console.log('들어옴');
-    $('#btnDropOut').attr('disabled', false);
-  }
-});
+
+// if ($('#dropConfirm').prop('checked')) {
+//   console.log('들어옴');
+//   $('#btnDropOut').attr('disabled', false);
+// }
+
+// $('#verify-confirm').on('click', function () {
+//   if ($('#code').val().length == 6 && $("#dropConfirm").prop("checked")) {
+//     console.log('들어옴');
+//     $('#btnDropOut').attr('disabled', false);
+//   }
+// });

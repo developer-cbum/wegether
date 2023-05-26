@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원 탈퇴 | 위게더</title>
     <script src="https://kit.fontawesome.com/f28d5f57bb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../../static/css/mypage/my-page/mypage.css">
-    <link rel="stylesheet" href="../../../static/css/mypage/setting/save-password-modal.css">
-    <link rel="stylesheet" href="../../../static/css/mypage/setting/member-secession.css">
+    <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/mypage/setting/save-password-modal.css">
+    <link rel="stylesheet" href="/css/mypage/setting/member-secession.css">
   </head>
   <body>
     <main class="account-drop wzui">
       <div class="wrap">
         <h1>회원 탈퇴</h1>
         <p>
-          <strong>이종문</strong>님, 위게더를 이용하시는데 혹시 아래와 같은 불편함이 있으셨으면,
+          <strong th:text="${withdraw.memberName}"></strong>님, 위게더를 이용하시는데 혹시 아래와 같은 불편함이 있으셨으면,
           아래 방법을 한번 이용해보세요.
         </p>
         <div class="message-box">
@@ -86,59 +87,62 @@
             ></label
           >
         </p>
-        <h2>본인 확인<br />(구현하기 힘들면 그냥 삭제문구 작성하는걸로 해도 될꺼같음)</h2>
-        <p>안전한 탈퇴를 위해 본인 인증 절차를 진행합니다. 본인확인하기 버튼을 클릭해주세요.</p>
-        <div id="verify-step1" class="verify-box">
-          <input type="button" value="본인 확인하기" class="wz button primary" id="verify-next" />
-        </div>
-        <div id="verify-step2" class="verify-box" style="display: none">
-          <div class="wz input action user-verify" style="padding-right: 0">
-            <input type="text" name="respon" value="010-****-*327" readonly="readonly" />
-            <input type="hidden" name="pfKey" id="pfKey" />
-            <button type="button" class="wz button" id="verify-retry">재전송</button>
-          </div>
-          <div class="user-verify-confirm">
-            <form name="verify-code-confirm" style="padding-right: 0" onsubmit="">
-              <div class="wz input action verify-code">
-                <input
-                  type="number"
-                  name="code"
-                  id="code"
-                  placeholder="인증번호 입력"
-                  maxlength="6"
-                />
-                <button type="button" class="wz button gray" id="verify-confirm">인증 확인</button>
-              </div>
-            </form>
-            <em id="verify-error" style="display: block"
-              >인증번호를 잘못 입력하셨습니다. 다시 입력해 주세요.</em
-            >
-          </div>
-        </div>
+<!--        <h2>본인 확인<br />(구현하기 힘들면 그냥 삭제문구 작성하는걸로 해도 될꺼같음)</h2>-->
+<!--        <p>안전한 탈퇴를 위해 본인 인증 절차를 진행합니다. 본인확인하기 버튼을 클릭해주세요.</p>-->
+<!--        <div id="verify-step1" class="verify-box">-->
+<!--          <input type="button" value="본인 확인하기" class="wz button primary" id="verify-next" />-->
+<!--        </div>-->
+<!--        <div id="verify-step2" class="verify-box" style="display: none">-->
+<!--          <div class="wz input action user-verify" style="padding-right: 0">-->
+<!--            <input type="text" name="respon" value="010-****-*327" readonly="readonly" />-->
+<!--            <input type="hidden" name="pfKey" id="pfKey" />-->
+<!--            <button type="button" class="wz button" id="verify-retry">재전송</button>-->
+<!--          </div>-->
+<!--          <div class="user-verify-confirm">-->
+<!--            <form name="verify-code-confirm" style="padding-right: 0" onsubmit="">-->
+<!--              <div class="wz input action verify-code">-->
+<!--                <input-->
+<!--                  type="number"-->
+<!--                  name="code"-->
+<!--                  id="code"-->
+<!--                  placeholder="인증번호 입력"-->
+<!--                  maxlength="6"-->
+<!--                />-->
+<!--                <button type="button" class="wz button gray" id="verify-confirm">인증 확인</button>-->
+<!--              </div>-->
+<!--            </form>-->
+<!--            <em id="verify-error" style="display: block"-->
+<!--              >인증번호를 잘못 입력하셨습니다. 다시 입력해 주세요.</em-->
+<!--            >-->
+<!--          </div>-->
+<!--        </div>-->
         <hr />
+        <form id="saveform" th:action="@{/mypage/withdrawMember}" method="post">
         <div class="drop-button">
           <input
             type="button"
             value="회원 탈퇴"
             class="wz button red"
-            disabled="disabled"
+
             id="btnDropOut"
           />
         </div>
+        </form>
       </div>
+
     </main>
-    <div id="alertify-o-cover" class="alertify-o-cover" style="display: none"></div>
-    <section id="alertify-o" class="alertify-o alertify-o-alert" style="display: none">
-      <article class="alertify-o-inner">
-        <p class="alertify-o-message" style="font-size: 15px; padding-top: 2px">
-          인증번호가 전송되었습니다.
-        </p>
-        <nav class="alertify-o-buttons">
-          <button class="alertify-o-button alertify-o-button-ok" id="alertify-o-ok">확인</button>
-        </nav>
-      </article>
-    </section>
+<!--    <div id="alertify-o-cover" class="alertify-o-cover" style="display: none"></div>-->
+<!--    <section id="alertify-o" class="alertify-o alertify-o-alert" style="display: none">-->
+<!--      <article class="alertify-o-inner">-->
+<!--        <p class="alertify-o-message" style="font-size: 15px; padding-top: 2px">-->
+<!--          인증번호가 전송되었습니다.-->
+<!--        </p>-->
+<!--        <nav class="alertify-o-buttons">-->
+<!--          <button class="alertify-o-button alertify-o-button-ok" id="alertify-o-ok">확인</button>-->
+<!--        </nav>-->
+<!--      </article>-->
+<!--    </section>-->
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="../../../static/js/mypage/setting/member-secession.js"></script>
+  <script src="/js/mypage/setting/member-secession.js"></script>
 </html>

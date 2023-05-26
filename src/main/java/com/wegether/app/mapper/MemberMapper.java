@@ -47,7 +47,10 @@ public interface MemberMapper {
 //    소영 마이페이지 화면 띄우기
     public Optional<MemberDTO> selectmypage(Long id);
     
-//    소영 비밀번호 재설정
-    public Optional<MemberVO> selectByPW(Long id);
+// 소영 마이페이지 회원 탈퇴
+    public void updateMemberS(Long id);
+
+// 소영 마이페이지 기본 정보 수정
+    public void updateBasicSet(MemberVO memberVO);
 
 }

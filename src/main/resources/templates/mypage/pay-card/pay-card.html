@@ -18,7 +18,7 @@
       <div class="MyRewardContainer_column__1d06O">
         <div class="SimplePayInfo_simplePayInfo__ejCel" id="registCardInfo">
           <h3 class="SimplePayInfo_title__1a9F1">간편결제 정보</h3>
-          <div class="SimplePayCard_simplecard__2wYo7 SimplePayCard_info__3rLl3 SimplePayCard_noInfo__pdX40">
+          <div class="mycards SimplePayCard_simplecard__2wYo7 SimplePayCard_info__3rLl3 SimplePayCard_noInfo__pdX40">
             
             <div class="SimplePayCard_addCard__2eagF">
               <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon__3VTbq SimplePayCard_addIcon__2DOov" aria-hidden="true">
@@ -102,7 +102,6 @@
                         type="number"
                         class="card-number Input_input__3VoZt check Input_sm__3KLFX Input_error__ADOWg num1"
                         maxlength="4"
-                        value=""
                         oninput="maxLengthCheck(this)"
                       />
                     </div>
@@ -112,7 +111,6 @@
                         type="password"
                         maxlength="4"
                         class="card-number Input_input__3VoZt check Input_sm__3KLFX Input_error__ADOWg num2"
-                        value=""
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                       />
                     </div>
@@ -123,7 +121,6 @@
                         maxlength="4"
                         type="password"
                         class="card-number Input_input__3VoZt check Input_sm__3KLFX Input_error__ADOWg num3"
-                        value=""
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                       />
                     </div>
@@ -134,7 +131,6 @@
                         type="number"
                         maxlength="4"
                         class="card-number Input_input__3VoZt check Input_sm__3KLFX Input_error__ADOWg num4"
-                        value=""
                         oninput="maxLengthCheck(this)"
                       />
                     </div>
@@ -149,7 +145,6 @@
                               name="cardExpireDate"
                         type="text"
                         class="Input_input__3VoZt check Input_sm__3KLFX ExpirationDateFormGroup_input__1n6vh ExpirationDateFormGroup_placeholder__2aquN date-input"
-                        value=""
                         placeholder="MM/YY"
                         maxlength="4"
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></label
@@ -162,12 +157,11 @@
                     <label class="PasswordFormGroup_label__1JzCX">카드 비밀번호</label>
                     <div class="VirtualKeyboardInput_contents__18HD2">
                       <input
-                        class="check VirtualKeyboardInput_inputWrapper__L5drA PasswordFormGroup_inputBox__28zsV PasswordFormGroup_inModal__NgVG2 error VirtualKeyboardInput_inModal__1TVjx"
+                        class="cardpassword11 check VirtualKeyboardInput_inputWrapper__L5drA PasswordFormGroup_inputBox__28zsV PasswordFormGroup_inModal__NgVG2 error VirtualKeyboardInput_inModal__1TVjx card-expireDate"
                         type="password"
                         name="cardPassword"
                         placeholder="앞 2자리"
                         maxlength="2"
-                        value=""
                       />
                       <div class="VirtualKeyboardInput_value__2wNsj"></div>
                     </div>
@@ -180,12 +174,12 @@
                     <input
                       id="payment-info-form-birthday"
                       pattern="[0-9]*"
-                      name="cardRegisterDate"
+                      name="memberBirthDate"
                       type="number"
                       maxlength="6"
                       oninput="maxLengthCheck(this)"
-                      class="check Input_input__3VoZt Input_sm__3KLFX Input_error__ADOWg"
-                      value="" /></label
+                      class="cardbirthday11 check Input_input__3VoZt Input_sm__3KLFX Input_error__ADOWg"
+                       /></label
                   ><em class="BirthDayFormGroup_inputHelper__fyARf BirthDayFormGroup_error__tTy7v"></em>
                 </div>
                 <input type="hidden" name="isValidForm" value="false" />

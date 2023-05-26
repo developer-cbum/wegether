@@ -74,7 +74,15 @@ public class MemberDAO {
     }
 
 
-    public Optional<MemberVO> showByPW(Long id){return memberMapper.selectByPW(id);}
+
+    public void updateMemberS (Long id){
+        memberMapper.updateMemberS(id);
+    }
+
+
+    public void setBasicSetting(MemberVO memberVO) {
+        memberMapper.updateBasicSet(memberVO);
+    }
 }
 
 
