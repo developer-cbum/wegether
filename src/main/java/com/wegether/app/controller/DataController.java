@@ -56,15 +56,12 @@ public class DataController {
        return dataService.getList(dataPagination, categoryType);
     }
 
-
     //    자료 상세
     @GetMapping("detail")
     public void read(@RequestParam Long id, Model model, DataDTO dataDTO){
         dataService.modifyViewCountUp(dataDTO.getId());
         model.addAttribute("dataDTO", dataService.read(id).get());
     }
-
-
 
 //    자료 등록
     @GetMapping("register")
@@ -78,13 +75,21 @@ public class DataController {
 //        model.addAttribute("memberId", memberId);
 //    };
 
-
     //    자료 등록 > 리스트 이동
     @PostMapping("register")
     public RedirectView register(DataDTO dataDTO) {
         dataService.write(dataDTO);
         return new RedirectView("/datas/list");
     }
+    
+//    자료 결제 페이지
+    @GetMapping("payment")
+    public void goToPayment(@RequestParam Long id, Model model, DataDTO dataDTO){;
+//        Optional<DataDTO> readDataPay = dataService.readDataPay(id);
+        model.addAttribute("dataDTO", dataService.readDataPay(id).get());
+    }
+
+
 
 
 

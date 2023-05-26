@@ -7,11 +7,13 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>자료실 상세 | 위게더</title>
+
 	<link rel="stylesheet" href="/css/dataroom/detail.css" />
 	<link rel="stylesheet" href="/css/fix/header.css">
 	<link rel="stylesheet" href="/css/fix/footer.css">
 
+<!--	<title>자료실 상세 | 위게더</title>-->
+	<title></title>
 </head>
 
 <body class style="overflow: auto;">
@@ -387,8 +389,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
-	let dataDTO = [[${dataDTO}]]
-	console.log(dataDTO);
+	let dataDTO = [[${dataDTO}]];
 </script>
 <script src="/js/dataroom/detail.js"></script>
 </html>

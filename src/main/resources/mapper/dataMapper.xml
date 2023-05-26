@@ -81,6 +81,19 @@
     </select>
 
 
+    <!--  결제 페이지  -->
+<!--  data / member / point / card / pay  -->
+    <select id="selectPay" resultType="dataDTO">
+        SELECT D.ID, M.ID, M.MEMBER_NAME, M.MEMBER_PHONE_NUMBER, M.MEMBER_ID, D.DATA_TITLE, D.DATA_SCHOOL, D.DATA_MAJOR, T.POINT_TOTAL, D.DATA_PRICE
+            FROM TBL_MEMBER M JOIN TBL_PAY P
+            ON M.ID = P.MEMBER_ID JOIN TBL_DATA D
+            ON M.ID = D.MEMBER_ID JOIN TBL_POINT T
+            ON M.ID = T.MEMBER_ID JOIN TBL_CARD C
+            ON M.ID = C.MEMBER_ID
+        AND D.ID = #{id} AND M.ID = 2
+    </select>
+
+
 
 
 <!--    소영 마이페이지에서 내가 구매한 자료, 내가 등록한 자료 조회-->

@@ -25,6 +25,8 @@ public class DataDTO {
     private String memberMajor;
     private String memberPoint;
     private String memberIntroducing;
+    private String memberPhoneNumber;
+    private String pointTotal;
     private Long dataId;
 //    private Long WishDataId;
 //    private List<FileVO> files = new ArrayList<>();

@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     const $list = $("#list-container");
+    const $ul = $("#list-container");
     const $btnWrap = $(".searchMoreData");
+
     let page = 1;
     let order ="new";
     let categoryType= "all";
@@ -112,7 +114,7 @@ $(document).ready(function () {
     $("#searchMoreData_btn").on("click", function(){
         // e.preventDefault();
         page++;
-        load(page);
+        load(categoryType);
 
         // if (page > total) {
         //     showWarnModal('마지막 게시글입니다');
@@ -125,7 +127,16 @@ $(document).ready(function () {
 
 
 
+    // category
+
+    load("all");
+
+
+
+
     $('.category_lists button').on("click", function () {
+        text=""
+        page =1;
         // 클릭한 버튼 활성화
         text="";
         $(this).addClass('ImageTab_active__BGdXu').parent().siblings()
@@ -142,12 +153,16 @@ $(document).ready(function () {
 
     $('.new').on("click", function () {
         $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
+        page = 1;
+        text="";
         order="new";
         load(categoryType);
     })
 
     $('.trand').on("click", function () {
         $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
+        text="";
+        page = 1;
         order="trand";
         load(categoryType);
     })
@@ -156,13 +171,16 @@ $(document).ready(function () {
 
     //load ajax
     function load(categoryType) {
+        console.log(categoryType)
         $.ajax({
             url: `/datas/list/${page}/${categoryType}/${order}`,
             contentType : "application/json; charset=UTF-8;",
             success:  function (datas) {
                 text="";
                 $list.html("");
+                $ul.html("");
                 showList(datas);
+                
                 console.log(datas);
                 console.log(page);
                 console.log(categoryType);
