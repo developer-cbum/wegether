@@ -10,10 +10,17 @@
     <link rel="stylesheet" href="/css/index/main.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/modal/modal.css">
 </head>
 
 <body>
 <header th:replace="~{/fix/header :: #header}"></header>
+<!--       모달추가-->
+            <div class="modal">
+                <div class="warn-modal">
+                    <div id="content-wrap"></div>
+                </div>
+            </div>
     <div id="page-container">
         <main id="main-app">
             <div id="header">
@@ -213,4 +220,22 @@
 <script src="/js/index/data.js"></script>
 <script src="/js/index/community.js"></script>
 <script src="/js/index/datards.js"></script>
+
+
+
+
+
+
+<!--이종문 메인추가-->
+<script src="/js/modal/modal.js"></script>
+<script th:inline="javascript">
+    let joinStatus = [[${join}]];
+
+    if(joinStatus){
+        showWarnModal("<span>회원가입을 축하드립니다</span><br><span>Welcome Event</span><br><span>2000 Point 적립</span>");
+    }
+
+
+</script>
+
 </html>
