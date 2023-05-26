@@ -76,15 +76,41 @@ public class AdminController {
 
     //    공지사항 수정 이동
     @GetMapping("notice/modify")
-    public void goToModifyForm(NoticeVO noticeVO, Model model, Long id){
-        Optional<NoticeAdminDTO> readNoticeVO = adminService.noticeRead(id);
-        model.addAttribute("noticeBoards", readNoticeVO.get());
+    public void goToModifyForm(NoticeAdminDTO NoticeAdminDTO, Model model, Long id){
+        Optional<NoticeAdminDTO> readNoticeDTO = adminService.noticeRead(id);
+        if(readNoticeDTO.isPresent()){
+            model.addAttribute("noticeBoards", readNoticeDTO.get());
+        }
+
     }
 
     //    공지사항 수정
     @PostMapping("notice/modify")
-    public RedirectView noticeModify(NoticeVO noticeVO){
-        adminService.noticeModify(noticeVO);
+    @Transactional(rollbackFor = Exception.class)
+    public RedirectView noticeModify(NoticeAdminDTO noticeAdminDTO){
+        adminService.noticeModify(noticeAdminDTO);
+
+//        파일 추가
+        for(int i=0; i<noticeAdminDTO.getFiles().size(); i++) {
+            noticeAdminDTO.getFiles().get(i).setNoticeId(noticeAdminDTO.getId());
+            noticeAdminDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            adminService.noticeImageWrite(noticeAdminDTO.getFiles().get(i));
+        }
+        noticeAdminDTO.getFiles().forEach(noticeFileAdminDTO -> {
+            NoticeFileVO noticeFileVO = new NoticeFileVO();
+            noticeFileVO.setId(noticeFileAdminDTO.getId());
+            noticeFileVO.setNoticeId(noticeFileAdminDTO.getNoticeId());
+            adminService.noticeImageMiddleWrite(noticeFileVO);
+        });
+
+//        noticeAdminDTO.getFiles().forEach(file -> {
+//            file.setNoticeId(noticeAdminDTO.getId());
+//            adminService.noticeImageWrite(file);
+//        });
+
+//        파일 삭제
+        noticeAdminDTO.getFileIdsForDelete().forEach(adminService::fileRemove);
+
         return new RedirectView("/admins/notice/list");
     }
 

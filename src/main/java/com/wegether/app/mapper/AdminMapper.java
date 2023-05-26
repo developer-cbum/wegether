@@ -38,10 +38,13 @@ public interface AdminMapper {
     public Optional<NoticeAdminDTO> noticeSelect(Long id);
 
     // 공지사항 수정
-    public void noticeUpdate(NoticeVO noticeVO);
+    public void noticeUpdate(NoticeAdminDTO noticeAdminDTO);
 
     // 공지사항 삭제
     public void noticeDelete(Long id);
+
+    // 파일 삭제
+    public void fileDelete(Long id);
 
     /* --------------------------------------------------------------------------------- */
 
