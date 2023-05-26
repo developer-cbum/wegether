@@ -58,11 +58,13 @@ public class CommunityServiceImpl implements CommunityService {
     @Transactional(rollbackFor = Exception.class)
     public void write(CommunityDTO communityDTO) {
         communityDAO.save(communityDTO);
-        for(int i=0; i<communityDTO.getFiles().size(); i++){
-            communityDTO.getFiles().get(i).setCommunityId(communityDTO.getId());
-            communityDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
-            fileDAO.communitySave(communityDTO.getFiles().get(i));
-        }
+        communityDTO.getFiles().forEach(file -> {
+            if(file.getFileType() == null) {
+                file.setFileType(FileType.NON_REPRESENTATIVE.name());
+            }
+            file.setCommunityId(communityDTO.getId());
+            fileDAO.communitySave(file);
+        });
         communityDTO.getFiles().forEach(communityFileDTO ->
         { CommunityFileVO communityFileVO = new CommunityFileVO();
             communityFileVO.setId(communityFileDTO.getId());
@@ -123,8 +125,8 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
-    public int getTotal() {
-        return communityDAO.findCountOfCommunity();
+    public int getTotal(CommunityPagination communityPagination) {
+        return communityDAO.findCountOfCommunity(communityPagination);
     }
 
 }

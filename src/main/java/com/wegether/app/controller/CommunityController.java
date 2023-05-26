@@ -32,8 +32,10 @@ public class CommunityController {
     @PostMapping("list")
     @ResponseBody
     public List<CommunityDTO> list(@RequestBody CommunityPagination communityPagination, Model model) {
-        log.info(communityPagination.getKeyword());
-        communityPagination.setTotal(communityService.getTotal());
+        log.info(communityPagination.toString());
+        communityPagination.setPage(communityPagination.getPage());
+        communityPagination.setKeyword(communityPagination.getKeyword());
+        communityPagination.setTotal(communityService.getTotal(communityPagination));
         communityPagination.progress(1, 10);
         return communityService.getList(communityPagination);
     }
