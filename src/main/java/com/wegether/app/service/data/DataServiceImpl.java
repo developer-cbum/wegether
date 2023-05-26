@@ -19,7 +19,6 @@ import java.util.Optional;
 public class DataServiceImpl implements DataService {
     private final DataDAO dataDAO;
     private final FileDAO fileDAO;
-
     private final DataFileDAO dataFileDAO;
 
 
@@ -33,24 +32,6 @@ public class DataServiceImpl implements DataService {
         datas.forEach(data -> data.setFiles(fileDAO.dataFindAll(data.getId())));
         return datas;
     }
-
-
-//    자료 등록 - 파일
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public void write(DataDTO dataDTO) {
-//        dataDAO.save(dataDTO);
-//        dataDTO.getFiles().forEach(file -> {
-//            file.setDataId(dataDTO.getId());
-//            fileDAO.save(file);
-//        });
-//        dataDTO.getFiles().forEach(dataFileDTO -> {
-//            DataFileVO dataFileVO = new DataFileVO();
-//            dataFileVO.setId(dataFileDTO.getId());
-//            dataFileVO.setDataId(dataFileDTO.getDataId());
-//            dataFileDAO.save(dataFileVO);
-//        });
-//    }
 
 //  자료 등록 - 파일까지
     @Override
@@ -83,11 +64,32 @@ public class DataServiceImpl implements DataService {
     }
 
 
-//    자료 조회수 up~
+//    자료 조회수 증가
     @Override
     public void modifyViewCountUp(Long id) {
         dataDAO.viewCountUp(id);
     }
+
+//    자료 개수
+    @Override
+    public int getTotal() {
+        return dataDAO.findCountOfData();
+
+    }
+
+//    자료 결제 페이지
+    @Override
+    public Optional<DataDTO> readDataPay(Long id) {
+        final Optional<DataDTO> foundMember = dataDAO.findById(id);
+        if(foundMember.isPresent()){
+            foundMember.get().setMemberId(2L);
+        }
+        return foundMember;
+
+//        return dataDAO.findByIdDataPay(id);
+    }
+
+
 
 
 
@@ -118,17 +120,10 @@ public class DataServiceImpl implements DataService {
 //        fileDAO.deleteAll(id);
 //    }
 
-//    getTotal
-
-    @Override
-    public int getTotal() {
-        return dataDAO.findCountOfData();
-    }
 
 
 
-//    @Override
-//    public DataDTO toDTO(DataVO dataVO) {
-//        return null;
-//    }
+
+
+
 }

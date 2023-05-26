@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleag.org">
-<!--<html lang="en">-->
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>자료실 목록 | 위게더</title>
+
 	<link rel="stylesheet" href="/css/dataroom/list.css" />
 	<link rel="stylesheet" href="/css/fix/header.css">
 	<link rel="stylesheet" href="/css/fix/footer.css">
+	<title>자료실 목록 | 위게더</title>
 </head>
 
 <body style="overflow:auto;">
@@ -219,15 +219,6 @@
 							<button id="searchMoreData_btn" type="button" >더보기</buton>
 						</div>
 
-<!--						<div id="paging-wrap">-->
-<!--							<a th:if="${pagination.prev}" th:href="${pagination.startPage - 1}" class="change-page paging paging-move"><img src="/images/prev.png" width="15px"></a>-->
-<!--							<th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">-->
-<!--								<a th:if="${page eq pagination.page}" class="paging paging-checked" th:text="${page}"></a>-->
-<!--								<a th:unless="${page eq pagination.page}" th:href="${page}" class="change-page paging" th:text="${page}"></a>-->
-<!--							</th:block>-->
-<!--							<a th:if="${pagination.next}" th:href="${pagination.endPage + 1}" class="change-page paging paging-move"><img src="/images/next.png" width="15px"></a>-->
-<!--						</div>-->
-
 
 
 					</div>
@@ -268,11 +259,18 @@
 
 	</div>
 </body>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 16b0c8e78b6be1e1436a110197c751a581d98612
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
-	// dataPagination = [[${dataPagination}]];
+	// let datas = [[${datas}]];
 </script>
 <script src="/js/dataroom/list.js"></script>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 16b0c8e78b6be1e1436a110197c751a581d98612
 </html>

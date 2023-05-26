@@ -19,10 +19,6 @@ public interface DataMapper {
     //    자료 목록 조회
     public List<DataDTO> selectAll(@Param("dataPagination") DataPagination dataPagination, @Param("categoryType") CategoryType categoryType);
 
-//    자료 목록 조회
-//    public List<DataDTO> selectAll(@Param("dataPagination") DataPagination dataPagination);
-
-
     //    자료 추가
     public void insert(DataDTO dataDTO);
 
@@ -31,7 +27,8 @@ public interface DataMapper {
     //    조회수 증가
     public void updateCount(Long id);
 
-
+//    결제 페이지
+    public Optional<DataDTO> selectPay(Long id);
 
 
 

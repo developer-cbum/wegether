@@ -26,6 +26,9 @@ public interface DataService {
     //  게시글 조회수
     public void modifyViewCountUp(Long id);
 
+    //  결제 페이지
+    public Optional<DataDTO> readDataPay(Long id);
+
 
 
 
