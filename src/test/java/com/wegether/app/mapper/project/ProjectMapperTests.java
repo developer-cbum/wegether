@@ -69,8 +69,17 @@ public class ProjectMapperTests {
 
 //        foundProject = projectMapper.select(2L);
 
+
 //        foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제목수정"));
 //    }
+
+//        projectMapper.ProjectUpdate(projectDTO);
+
+//        foundProject = projectMapper.select(2L);
+//
+//        foundProject.ifPresent(project -> assertThat(project.getProjectTitle()).isEqualTo("제목수정"));
+//    }
+
 
 
     //프로젝트 삭제 테스트

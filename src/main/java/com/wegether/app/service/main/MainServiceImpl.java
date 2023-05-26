@@ -69,8 +69,8 @@ public class MainServiceImpl implements MainService {
     @Transactional(rollbackFor = Exception.class)
     public List<MainDTO> mainSPGetList(MainPagination mainPagination) {
 //        총 갯수 넣기
-        mainPagination.setTotal(mainDAO.findCountOfProject());
-        mainPagination.progress();
+//        mainPagination.setTotal(mainDAO.findCountOfProject());
+//        mainPagination.progress();
 //        게시글 전체 목록
         final List<MainDTO> mainDTOS = mainDAO.mainSPFindAll(mainPagination);
 //        게시글 하나씩 첨부파일 목록 담기
@@ -82,14 +82,17 @@ public class MainServiceImpl implements MainService {
     @Transactional(rollbackFor = Exception.class)
     public List<MainDTO> mainSDGetList(MainPagination mainPagination) {
 //        총 갯수 넣기
-        mainPagination.setTotal(mainDAO.findCountOfData());
-        mainPagination.progress();
+//        mainPagination.setTotal(mainDAO.findCountOfData());
+//        mainPagination.progress();
 //        게시글 전체 목록
         final List<MainDTO> mainDTOS = mainDAO.mainSDFindAll(mainPagination);
 //        게시글 하나씩 첨부파일 목록 담기
         mainDTOS.forEach(mainDTO -> mainDTO.setFiles(mainFileDAO.mainDFFindAll(mainDTO.getId())));
         return mainDTOS;
     }
+
+    @Override
+     public int getTotal(){return mainDAO.findCountOfData();}
 
 
 
