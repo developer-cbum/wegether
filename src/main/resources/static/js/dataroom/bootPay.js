@@ -70,6 +70,7 @@ $(function () {
                 }
             }).done(function (data) {
                 // 결제가 모두 완료되었을 때 호출되는 함수입니다.
+                 $("#payment-submit").submit();
                 alert("결제가 완료되었습니다.");
                 console.log(data);
             }).ready(function (data) {

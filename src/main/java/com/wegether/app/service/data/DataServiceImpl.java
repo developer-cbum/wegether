@@ -3,6 +3,7 @@ package com.wegether.app.service.data;
 import com.wegether.app.dao.DataDAO;
 import com.wegether.app.dao.DataFileDAO;
 import com.wegether.app.dao.FileDAO;
+import com.wegether.app.dao.PayDAO;
 import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.type.FileType;
@@ -20,6 +21,7 @@ public class DataServiceImpl implements DataService {
     private final DataDAO dataDAO;
     private final FileDAO fileDAO;
     private final DataFileDAO dataFileDAO;
+    private final PayDAO payDAO;
 
 
 //    자료 목록 - 파일
@@ -33,7 +35,7 @@ public class DataServiceImpl implements DataService {
         return datas;
     }
 
-//  자료 등록 - 파일까지
+//   자료 등록 - 파일까지
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void write(DataDTO dataDTO) {
@@ -63,7 +65,6 @@ public class DataServiceImpl implements DataService {
         return foundData;
     }
 
-
 //    자료 조회수 증가
     @Override
     public void modifyViewCountUp(Long id) {
@@ -74,7 +75,6 @@ public class DataServiceImpl implements DataService {
     @Override
     public int getTotal() {
         return dataDAO.findCountOfData();
-
     }
 
 //    자료 결제 페이지
@@ -85,55 +85,32 @@ public class DataServiceImpl implements DataService {
             foundMember.get().setMemberId(2L);
         }
         return foundMember;
+    }
 
+
+//      결제 완료 - insert pay
+    @Override
+    public void completePay(Long memberId, Long dataId) {
+        payDAO.savePay(memberId, dataId);
     }
 
 
 
 
 
-
-
-//    자료 수정할 때 파일 추가삭제
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public void modify(DataDTO dataDTO) {
-//        dataDAO.setDataDTO(dataDTO);
-
-//        추가
-//        dataDTO.getFiles().forEach(file -> {
-//            file.setDataId(dataDTO.getId());
-//            fileDAO.save(file);
-//        });
-
-//        삭제
-//        dataDTO.getFileIdsForDelete().forEach(fileDAO::delete);
-//    }
-
-
-//    자료 삭제
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public void remove(Long id) {
-//        dataDAO.delete(id);
-//        fileDAO.deleteAll(id);
-//    }
-
 //    찜하기
-
     @Override
     public void doWish(Long memberId, Long dataId) {
         dataDAO.saveWish(memberId, dataId);
     }
 
 //    찜하기 취소
-
-
     @Override
     public void doNotWish(Long memberId, Long dataId) {
         dataDAO.deleteWish(memberId, dataId);
     }
 
+//    찜하기 검사
     @Override
     public Long getWishId(Long memberId, Long dataId) {
         return dataDAO.findWishId(memberId, dataId);

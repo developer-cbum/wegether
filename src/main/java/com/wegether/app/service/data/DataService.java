@@ -29,21 +29,19 @@ public interface DataService {
     //  결제 페이지
     public Optional<DataDTO> readDataPay(Long id);
 
+    //  결제 완료 - insert pay
+    public void completePay(Long memberId, Long dataId);
+
 
     //    찜하기
     public void doWish(Long memberId, Long dataId);
+
     //    찜하기 취소
     public void doNotWish(Long memberId, Long dataId);
 
     //    내가 찜한 자료 검사
     public Long getWishId(Long memberId, Long dataId);
 
-
-        //    게시글 수정
-//    public void modify(DataDTO dataDTO);
-
-    //    게시글 삭제
-//    public void remove(Long id);
 
     default DataDTO toDTO(DataVO dataVO){
         DataDTO dataDTO = new DataDTO();
@@ -55,7 +53,7 @@ public interface DataService {
         dataDTO.setDataMajor(dataVO.getDataMajor());
         dataDTO.setDataReadCount(dataVO.getDataReadCount());
         dataDTO.setDataRegisterDate(dataVO.getDataRegisterDate());
-        dataVO.setDataUpdateDate(dataVO.getDataUpdateDate());
+        dataDTO.setDataUpdateDate(dataVO.getDataUpdateDate());
         dataDTO.setMemberId(dataVO.getMemberId());
 
         return dataDTO;

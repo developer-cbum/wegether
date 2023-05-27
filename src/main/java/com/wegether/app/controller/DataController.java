@@ -58,7 +58,6 @@ public class DataController {
     }
 
 
-
     //    자료 상세
     @GetMapping("detail")
     public void read(@RequestParam Long id, Model model, DataDTO dataDTO){
@@ -93,6 +92,15 @@ public class DataController {
         log.info(readDataPay.get().toString());
     }
 
+//      결제 완료 - insert pay
+    @GetMapping("payment")
+    public RedirectView completePay(Long dataId) {
+        Long id = (Long) httpSession.getAttribute("id");
+        dataService.completePay(id, dataId);
+        return new RedirectView("/datas/payment-complete");
+    }
+
+
 //    찜하기
     @GetMapping("do-wish")
     @ResponseBody
@@ -123,18 +131,7 @@ public class DataController {
 
 
 
-//    @PostMapping("modify")
-//    public RedirectView modify(DataDTO dataDTO, RedirectAttributes redirectAttributes){
-//        dataService.modify(dataDTO);
-//        redirectAttributes.addAttribute("id", dataDTO.getId());
-//        return new RedirectView("/data/detail");
-//    }
-//
-//    @PostMapping("remove")
-//    public RedirectView remove(Long id){
-//        dataService.remove(id);
-//        return new RedirectView("/data/list");
-//    }
+
 
 }
 
