@@ -95,7 +95,10 @@ public class DataDAOTests {
 //        dataDTOS.stream().map(dataDTO -> dataDTO.toString()).forEach(log::info);
 //
 
-
+    @Test
+    public void selectCountOfDataTests(){
+        log.info(dataDAO.findByIdDataPay(67L).toString());
+    }
 
 
 
