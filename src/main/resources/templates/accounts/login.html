@@ -41,6 +41,8 @@
                 <h2 class="wz text display2">로그인</h2>
                 <form name="frm_login" id="frm_login" th:action="@{/accounts/login}" method="post" class="wz form"
                       th:object="${memberVO}">
+                    <input type="hidden" name="list" th:value="${param.list}">
+                    <input type="hidden" name="id" th:value="${param.id}">
                     <div class="field">
                         <div class="wz input">
                             <input
