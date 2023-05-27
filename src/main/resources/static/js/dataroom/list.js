@@ -90,8 +90,6 @@ $(document).ready(function () {
     load("all");
 
 
-
-
     //  page
     let modalCheck;
     function showWarnModal(modalMessage) {
@@ -112,19 +110,9 @@ $(document).ready(function () {
     });
 
     $("#searchMoreData_btn").on("click", function(){
-        // e.preventDefault();
         page++;
         load(categoryType);
-
-        // if (page > total) {
-        //     showWarnModal('마지막 게시글입니다');
-        //     setTimeout(function () {
-        //         check();
-        //     }, 2000);
-        // }
     });
-
-
 
 
     // category
@@ -132,10 +120,8 @@ $(document).ready(function () {
     load("all");
 
 
-
-
     $('.category_lists button').on("click", function () {
-        text=""
+        text="";
         page =1;
         // 클릭한 버튼 활성화
         text="";

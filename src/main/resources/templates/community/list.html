@@ -29,8 +29,11 @@
             href="https://blog.wadiz.kr/wp-content/et-cache/1/2/11670/et-core-unified-tb-17239-tb-17457-deferred-11670.min.css?ver=1683677778"
             onload="this.onload=null;this.rel='stylesheet';"
         />
+        <link rel="stylesheet" href="/css/fix/footer.css">
+        <link rel="stylesheet" href="/css/fix/header.css">
     </head>
     <body>
+    <header th:replace="~{/fix/header :: #header}"></header>
         <div id="page-container" style="overflow-y: hidden">
             <div id="et-boc" class="et-boc">
                 <div id="et-main-area">
@@ -64,7 +67,7 @@
                                                                                 <input class="search-input" type="search" name="keyword" placeholder="제목 또는 내용을 입력하세요" style="padding: 11px;">
                                                                             </div>
                                                                             <!-- 검색 버튼 누르기 -->
-                                                                            <button type="submit" class="SearchController_searchIcon__Zhy7F" style="display: none">
+                                                                            <button type="button" class="SearchController_searchIcon__Zhy7F search-button">
                                                                                 <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq"
                                                                                      aria-hidden="true" style="width: 24px; height: 24px">
                                                                                     <path fill="none" d="M0 0h40v40H0z"></path>
@@ -128,6 +131,7 @@
                 </div>
             </div>
         </div>
+    <footer th:replace="~{/fix/footer :: #footer}"></footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script th:inline="javascript">

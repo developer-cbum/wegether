@@ -23,5 +23,5 @@ public interface CommunityMapper {
 
     public void delete(Long id);
 
-    public int selectCountOfCommunity();
+    public int selectCountOfCommunity(CommunityPagination communityPagination);
 }

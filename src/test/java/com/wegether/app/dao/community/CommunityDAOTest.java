@@ -43,6 +43,7 @@ public class CommunityDAOTest {
         communityDAO.save(communityDTO);
     }
 
+
     @Test
     public void setCommunityDAOTest() {
         Optional<CommunityDTO> foundCommunity = communityDAO.findById(30L);
