@@ -56,44 +56,20 @@ public class MineServiceImpl implements MypageService {
         memberDAO.setBasicSetting(id, memberNickname, memberPhoneNumber);
     }
 
-    //    내 프로젝트 조회
-//    public List<ProjectDTO> readMyProject(Long memberId) {
-//
-//        final List<ProjectDTO> projects = projectDAO.showmyProject(memberId);
-//        //        게시글 하나씩 첨부파일 목록 담기
-//        projects.forEach(project -> project.setFiles(fileDAO.dataFindAll(project.getId())));
-//        return datas;
-//        return projectDAO.showmyProject(memberId);
-//    }
 
 
-
-//
-//    @Transactional(rollbackFor = Exception.class)
-//    public List<DataDTO> getList(Long memberId) {
-//        //        게시글 전체 목록
-//        final List<DataDTO> datas = dataDAO.findAll(dataPagination);
-//        //        게시글 하나씩 첨부파일 목록 담기
-//        datas.forEach(data -> data.setFiles(fileDAO.dataFindAll(data.getId())));
-//        return datas;
-//    }
-
-
-
-
-
-
+//상담
     public List<ConsultingVO> readMyConsulting(Long memberId){
         return consultingDAO.getmyconsult(memberId);
     }
 
-// 내 프로젝트 조회
+    // 내 프로젝트 조회
 
-    //    내가 프로젝트 조회
+    //    내 프로젝트 조회
     public List<ProjectDTO> readMyProject(Long memberId) {
         final List<ProjectDTO> projects = projectDAO.showmyProject(memberId);
         //        게시글 하나씩 첨부파일 목록 담기
-//        projects.forEach(project -> project.setFiles(fileDAO.dataFindAll(project.getId())));
+        projects.forEach(project -> project.setFiles(fileDAO.projectFindAll(project.getId())));
         return projects;
     }
 //    public List<ProjectDTO> readMyProject(Long memberId){return projectDAO.showmyProject(memberId);}

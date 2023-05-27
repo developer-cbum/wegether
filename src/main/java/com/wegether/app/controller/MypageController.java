@@ -227,8 +227,9 @@ public class MypageController {
 
     // 첫화면 페이지 이동
     @GetMapping("/my-page/my-project-list")
-    public void goToProject(Long memberId, Model model) {
-        model.addAttribute("projects", mine.readMyProject(2L));
+    public void goToProject(HttpSession session, Model model) {
+        session.getAttribute("id");
+        model.addAttribute("projects", mine.readMyProject((Long) session.getAttribute("id")));
     }
 
 
@@ -297,6 +298,7 @@ public class MypageController {
         final List<DataDTO> datas = heart.dataHeart(2L);
         log.info(String.valueOf(datas));
         return datas;
+
 
         //model.addAttribute("projectH", heart.projectHeart(2L));
     }
