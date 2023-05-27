@@ -42,36 +42,36 @@ public class ProjectController {
     
 
 //    @ResponseBody
-//    @GetMapping("(computer-list/{page}/{type}")
-//    public List<ProjectDTO> list(@PathVariable int page, @PathVariable String type){
+//    @GetMapping("main")
+//    public List<ProjectDTO> list(){
 //        final ProjectPagination projectPagination = new ProjectPagination();
-//        projectPagination.setPage(page);
 //        projectPagination.progress();
-//        projectPagination.setTotal(projectService.getTotal());
-//        projectPagination.progress();
-//        CategoryType categoryType = new CategoryType();
-//        categoryType.setType(type);
-//        return projectService.getList(projectPagination, categoryType);
+//        projectPagination.setTotal(projectService.getProjectTotal());
+//        return projectService.getList(projectPagination);
 //    }
 
 
 
-//    @GetMapping("write")
-//    public void goToRegisterForm(ProjectDTO projectDTO, Model model) {}
-//
-//
-//    @PostMapping("write")
-//    public RedirectView register(ProjectDTO projectDTO) {
-//        projectService.write(projectDTO);
-//        return new RedirectView("/project/baseinfo");
-//    }
-//
-//
-//
-//    @GetMapping("detail")
-//    public void read(@RequestParam Long id, Model model){
-//        model.addAttribute("project", projectService.read(id).get());
-//    }
+    @GetMapping("write")
+    public void goToRegisterForm(ProjectDTO projectDTO, Model model) {;}
+
+
+    @PostMapping("write")
+    public RedirectView register(ProjectDTO projectDTO) {
+        projectService.write(projectDTO);
+        return new RedirectView("/project/list");
+    }
+
+    @GetMapping("detail")
+    public void read(@RequestParam Long id, Model model, ProjectDTO projectDTO){
+        model.addAttribute("projectDTO", projectService.read(id).get());
+    }
+
+
+
+
+
+
 
 //    @GetMapping("modify")
 //    public void goToProjectModify(@RequestParam Long id, Model model){

@@ -17,7 +17,7 @@ $(document).ready(function(){
            `
     });
 
-    $img_span.html(text);
+    $img_span.append(text);
 
     console.log($div)
 });

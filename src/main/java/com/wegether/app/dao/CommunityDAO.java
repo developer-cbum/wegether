@@ -26,6 +26,6 @@ public class CommunityDAO {
 
     public void delete(Long id){communityMapper.delete(id);}
 
-    public int findCountOfCommunity() { return communityMapper.selectCountOfCommunity(); }
+    public int findCountOfCommunity(CommunityPagination communityPagination) { return communityMapper.selectCountOfCommunity(communityPagination); }
 }
 

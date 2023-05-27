@@ -27,15 +27,15 @@ public class ProjectDAO {
     public int findCountOfProject() { return projectMapper.selectCountOfProject(); }
 
 
-//    // 프로젝트 등록
-//    public void projectSave(ProjectDTO projectDTO){
-//        projectMapper.projectInsert(projectDTO);
-//    }
+       // 프로젝트 등록
+    public void projectSave(ProjectDTO projectDTO){
+        projectMapper.projectInsert(projectDTO);
+    }
 //
 //    // 프로젝트  상세
-//    public Optional<ProjectDTO> findById(Long id){
-//        return projectMapper.select(id);
-//    }
+    public Optional<ProjectDTO> findById(Long id){
+        return projectMapper.select(id);
+    }
 
     // 프로젝트  수정
 //    public void setProjectDTO(ProjectDTO projectDTO){
