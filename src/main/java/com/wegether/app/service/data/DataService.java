@@ -5,6 +5,7 @@ import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataFileVO;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.domain.vo.FileVO;
+import com.wegether.app.domain.vo.PayVO;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +31,10 @@ public interface DataService {
     public Optional<DataDTO> readDataPay(Long id);
 
     //  결제 완료 - insert pay
-    public void completePay(Long memberId, Long dataId);
+    public void completePay(PayVO payVO);
+
+    //  결제 완료 - member point
+    public void modifyPoint(Long memberId, Long payPointUse);
 
 
     //    찜하기

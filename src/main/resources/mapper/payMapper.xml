@@ -5,11 +5,18 @@
     <!--  결제 pay insert  -->
     <insert id="insertPay">
         INSERT INTO TBL_PAY
-        (ID, MEMBER_ID, DATA_ID, PAY_TOTAL_PRICE, PAY_POINT_USE)
-        VALUES(SEQ_PAY.NEXTVAL, #{memberid}, #{dataId}, pay_total_price, payPointUse)
+        (ID, MEMBER_ID, DATA_ID, PAY_POINT_USE)
+        VALUES(SEQ_PAY.NEXTVAL, #{memberId}, #{id}, #{payPointUse})
     </insert>
 
-
     <!--  결제 point insert  -->
+
+
     <!--  결제 member update  -->
+    <update id="updateMemberPoint">
+        UPDATE TBL_MEMBER
+        SET MEMBER_POINT = MEMBER_POINT - #{payPointUse}
+        WHERE ID = #{memberId}
+    </update>
+
 </mapper>

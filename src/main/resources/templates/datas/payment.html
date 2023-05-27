@@ -18,383 +18,383 @@
 
 <header th:replace="~{/fix/header :: #header}"></header>
 
-	<div >
-		<main id="page-container">
-			<div class="MainWrapper_content__GZkTa">
-				<div>
-					<div th:object="${dataDTO}" class="PaymentLayout_paymentLayoutContainer__3Ef47">
-						<div class=" PaymentLayout_paymentContainer__2T2nr">
-							<h2 class="PaymentLayout_pageTitle__2MXof">주문 및 결제</h2>
-							<div class="PaymentLayout_paymentNotice__1o_Hi">
-								<div color="basic"
-									class="MessageBox_messageBox__2WX5N MessageBox_basic__1zukz MessageBox_vertical__2ODEW StorePaymentNotice_storePaymentNotice__1bIo9">
-									<span>
-										<svg viewBox="0 0 40 40" focusable="false" role="presentation"
-											class="withIcon_icon__3VTbq MessageBox_icon__1NYKB" aria-hidden="true">
-											<path fill="none" d="M0 0h40v40H0z"></path>
-											<path
-												d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm1 28.6h-2v-13h2zm-1-15.84A1.8 1.8 0 1 1 21.8 12a1.8 1.8 0 0 1-1.8 1.76z">
-											</path>
-										</svg></span>
-									<div class="MessageBox_content__3Yza8">
-										<p class="MessageBox_title__12hBF">위게더 회원이 판매하는 자료 상품입니다.</p>
-										<div class="MessageBox_description__2Fyxq">
-											<ul>
-												<li>구매 즉시 결제가 진행됩니다.</li>
-											</ul>
-										</div>
+<div >
+	<main id="page-container">
+		<div class="MainWrapper_content__GZkTa">
+			<div>
+				<div th:object="${dataDTO}" class="PaymentLayout_paymentLayoutContainer__3Ef47">
+					<div class=" PaymentLayout_paymentContainer__2T2nr">
+						<h2 class="PaymentLayout_pageTitle__2MXof">주문 및 결제</h2>
+						<div class="PaymentLayout_paymentNotice__1o_Hi">
+							<div color="basic"
+								 class="MessageBox_messageBox__2WX5N MessageBox_basic__1zukz MessageBox_vertical__2ODEW StorePaymentNotice_storePaymentNotice__1bIo9">
+                           <span>
+                              <svg viewBox="0 0 40 40" focusable="false" role="presentation"
+								   class="withIcon_icon__3VTbq MessageBox_icon__1NYKB" aria-hidden="true">
+                                 <path fill="none" d="M0 0h40v40H0z"></path>
+                                 <path
+										 d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm1 28.6h-2v-13h2zm-1-15.84A1.8 1.8 0 1 1 21.8 12a1.8 1.8 0 0 1-1.8 1.76z">
+                                 </path>
+                              </svg></span>
+								<div class="MessageBox_content__3Yza8">
+									<p class="MessageBox_title__12hBF">위게더 회원이 판매하는 자료 상품입니다.</p>
+									<div class="MessageBox_description__2Fyxq">
+										<ul>
+											<li>구매 즉시 결제가 진행됩니다.</li>
+										</ul>
 									</div>
 								</div>
 							</div>
+						</div>
 
 
-						<!--				[S] 주문 정보				-->
+						<!--            [S] 주문 정보            -->
+
+						<section class="StorePaymentSection_container__1SdwL">
+							<div class="StorePaymentSection_titleContainer__gkoqg">
+								<h3 class="StorePaymentSection_title__DLi4F">주문 정보</h3>
+							</div>
+							<div
+									class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
+								<div class="StorePaymentInformation_storePaymentInformation__nBaVr">
+									<div class="StorePaymentInformation_row__OF_TS">
+										<span class="StorePaymentInformation_label__3Pxe0">주문자명</span>
+										<span th:text="*{memberNickname}"></span>
+									</div>
+									<div class="StorePaymentInformation_row__OF_TS">
+										<span class="StorePaymentInformation_label__3Pxe0">휴대폰 번호</span>
+										<span th:text="*{memberPhoneNumber}"></span>
+									</div>
+									<div class="StorePaymentInformation_row__OF_TS">
+										<span class="StorePaymentInformation_label__3Pxe0">이메일 주소</span>
+										<span th:text="*{memberEmail}"></span>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<!--            [E] 주문 정보            -->
+
+
+						<form th:action="@{/datas/payment}" method="post" name="payment-submit" id="payment-submit">
+							<input type="hidden" name="id" th:field="*{id}" >
+							<input type="hidden" name="memberId" th:field="*{memberId}" >
+							<!--                        <input type="hidden" name="deliveryRegion.isJeju" value="false">-->
+							<!--                        <input type="hidden" name="deliveryRegion.isIslandOrMountainous" value="false">-->
+							<!--                        <input type="hidden" name="couponKey" value="">-->
+							<!--                        <input type="hidden" name="isMobileCertification" value="false">-->
+
+
+							<!--            [S] 상품 정보            -->
 
 							<section class="StorePaymentSection_container__1SdwL">
 								<div class="StorePaymentSection_titleContainer__gkoqg">
-									<h3 class="StorePaymentSection_title__DLi4F">주문 정보</h3>
+									<h3 class="StorePaymentSection_title__DLi4F">상품 정보</h3>
 								</div>
 								<div
 										class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
-									<div class="StorePaymentInformation_storePaymentInformation__nBaVr">
-										<div class="StorePaymentInformation_row__OF_TS">
-											<span class="StorePaymentInformation_label__3Pxe0">주문자명</span>
-											<span th:text="*{memberNickname}"></span>
+									<div class="StorePaymentProductInfo_storePaymentProductInfoContainer__1nu6T">
+										<div class="StorePaymentProductInfo_productInfoContainer__3ulGA">
+											<div class="StorePaymentProductInfo_productInfoTextContainer__CId20">
+												<p th:text="*{dataTitle}" class="StorePaymentProductInfo_productName__1TK1V" ></p>
+												<p th:text="*{dataSchool}" class="StorePaymentProductInfo_productDescription__3-3a_" ></p>
+											</div>
 										</div>
-										<div class="StorePaymentInformation_row__OF_TS">
-											<span class="StorePaymentInformation_label__3Pxe0">휴대폰 번호</span>
-											<span th:text="*{memberPhoneNumber}"></span>
+										<div class="StorePaymentProductInfo_priceInfo__35XLT">
+											<span th:text="*{dataMajor}" class="StorePaymentProductInfo_qty__3MWOa" ></span>
+											<span th:text="*{dataPrice}" class="StorePaymentProductInfo_price__2pYbN" ><span>원</span></span>
+
 										</div>
-										<div class="StorePaymentInformation_row__OF_TS">
-											<span class="StorePaymentInformation_label__3Pxe0">이메일 주소</span>
-											<span th:text="*{memberEmail}"></span>
-										</div>
+										<div class="StorePaymentProductInfo_divider__2dEYa"></div>
 									</div>
 								</div>
 							</section>
 
-						<!--				[E] 주문 정보				-->
+							<!--            [E] 상품 정보            -->
 
 
-							<form th:action="@{/datas/payment}" id="payment-submit" name="payment-submit">
-<!--								<input type="hidden" name="deliveryTabIndex" value="0">-->
-<!--								<input type="hidden" name="selectedShippingAddressIndex" value="0">-->
-<!--								<input type="hidden" name="deliveryRegion.isJeju" value="false">-->
-<!--								<input type="hidden" name="deliveryRegion.isIslandOrMountainous" value="false">-->
-<!--								<input type="hidden" name="couponKey" value="">-->
-<!--								<input type="hidden" name="isMobileCertification" value="false">-->
+							<!--            [S] 포인트 정보               -->
 
-
-							<!--				[S] 상품 정보				-->
-
-								<section class="StorePaymentSection_container__1SdwL">
-									<div class="StorePaymentSection_titleContainer__gkoqg">
-										<h3 class="StorePaymentSection_title__DLi4F">상품 정보</h3>
-									</div>
-									<div
-											class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
-										<div class="StorePaymentProductInfo_storePaymentProductInfoContainer__1nu6T">
-											<div class="StorePaymentProductInfo_productInfoContainer__3ulGA">
-												<div class="StorePaymentProductInfo_productInfoTextContainer__CId20">
-													<p th:text="*{dataTitle}" class="StorePaymentProductInfo_productName__1TK1V" ></p>
-													<p th:text="*{dataSchool}" class="StorePaymentProductInfo_productDescription__3-3a_" ></p>
-												</div>
-											</div>
-											<div class="StorePaymentProductInfo_priceInfo__35XLT">
-												<span th:text="*{dataMajor}" class="StorePaymentProductInfo_qty__3MWOa" ></span>
-												<span th:text="*{dataPrice}" class="StorePaymentProductInfo_price__2pYbN" ><span>원</span></span>
-
-											</div>
-											<div class="StorePaymentProductInfo_divider__2dEYa"></div>
-										</div>
-									</div>
-								</section>
-
-							<!--				[E] 상품 정보				-->
-
-
-							<!--				[S] 포인트 정보					-->
-
-								<section class="StorePaymentSection_container__1SdwL">
-									<div class="StorePaymentSection_titleContainer__gkoqg">
-										<h3 class="StorePaymentSection_title__DLi4F">포인트 할인</h3>
-									</div>
-									<div
-											class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
-										<input type="text" th:field="*{memberPoint}">
-
-										<!--포인트 없을 때-->
-<!--										<div class="select-menu medium">-->
-<!--											<div class="select-menu&#45;&#45;is-disabled css-14jk2my-container">-->
-<!--                                    		<span aria-live="polite" aria-atomic="false"-->
-<!--										  		aria-relevant="additions text" class="css-7pg0cj-a11yText"></span>-->
-<!--												<div-->
-<!--														class="select-menu__control select-menu__control&#45;&#45;is-disabled css-1fhf3k1-control">-->
-<!--													<div class="select-menu__value-container css-1hwfws3">-->
-<!--														  <div class="select-menu__placeholder css-1wa3eu0-placeholder">사용 가능한 포인트가 없습니다.</div>-->
-<!--														  <input id="react-selectdn-2-input" readonly="" disabled=""-->
-<!--															 tabindex="0" aria-autocomplete="list" class="css-62g3xt-dummyInput" value="">-->
-<!--													</div>-->
-<!--													<div class="select-menu__indicators css-1wy0on6">-->
-<!--														<span class="select-menu__indicator-separator css-0"></span>-->
-<!--														<div class="select-menu__indicator select-menu__dropdown-indicator css-tlfecz-indicatorContainer"-->
-<!--															 aria-hidden="true">-->
-<!--															<svg viewBox="0 0 32 32" focusable="false"-->
-<!--																 role="presentation" class="withIcon_icon__3VTbq"-->
-<!--																 aria-hidden="true">-->
-<!--																<path-->
-<!--																		d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z">-->
-<!--																</path>-->
-<!--															</svg>-->
-<!--														</div>-->
-<!--													</div>-->
-<!--												</div>-->
-<!--											</div>-->
-<!--										</div>-->
-									</div>
-								</section>
-
-							<!--				[E] 포인트 정보					-->
-
-
-							<!--				[S] 결제 수단				-->
-
-								<section class="StorePaymentSection_container__1SdwL">
-									<div class="StorePaymentSection_titleContainer__gkoqg">
-										<h3 class="StorePaymentSection_title__DLi4F">결제 수단</h3>
-									</div>
-									<div
-											class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
-										<div class="StorePaymentChooseMode_storePaymentChooseMode__2yXk6">
-											<ul>
-												<li>
-													<label
-															class="StorePaymentNicePay_storePaymentNicePay__1Yb59 StorePaymentNicePay_checked__14ngZ StorePaymentNicePay_single__3-vFW"
-															for="nicePay">
-														<div class="StorePaymentNicePay_title__1Ppay">
-															<svg viewBox="0 0 48 48" focusable="false"
-																 role="presentation"
-																 class="withIcon_icon__3VTbq StorePaymentNicePay_checkIcon__3gaNh"
-																 aria-hidden="true">
-																<path
-																		d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z">
-																</path>
-															</svg>
-															<label for="nicePay"
-																   class="Radio_radio__qgo5c Radio_lg__3pVSs StorePaymentNicePay_radio__2Zx3M">
-																<input type="radio" id="nicePay" name="paymentMode"
-																	   value="nicePay">
-																<span class="Radio_icon__TTjQX"></span>
-																<span class="Radio_label__3ufjh"></span>
-															</label>
-															<svg viewBox="0 0 32 32" focusable="false"
-																 role="presentation" class="withIcon_icon__3VTbq"
-																 aria-hidden="true">
-																<path
-																		d="M1.6 6.4v19.2h28.8V6.4zM28.8 8v1.6H3.2V8zM3.2 24V12.8h25.6V24z">
-																</path>
-																<path d="M16 15.2H4.8v1.6H16v-1.6z"></path>
-															</svg>
-															<span>신용/체크카드 결제</span>
-														</div>
-														<p class="StorePaymentNicePay_notification__D1ZcP">* 할부 결제의 경우 신용/체크카드 결제를 선택하세요.</p>
-													</label>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</section>
-
-							<!--				[E] 결제 수단				-->
-							</form>
-
-
-						</div>
-						<div class="PaymentLayout_floatingSectionContainer__2QCzS">
-							<div class="PaymentLayout_floatingSection__31pLD">
-								<section class="StorePaymentSection_container__1SdwL PaymentLayout_floating__3iHN0">
-
-
-								<!--				[S] 결제 금액					-->
-
-									<div class="StorePaymentSection_titleContainer__gkoqg">
-										<h3 class="StorePaymentSection_title__DLi4F">결제 금액</h3>
-									</div>
-									<div class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
-										<div class="DefaultPrice_container__1gf10">
-											<div class="DefaultPrice_title__3iw65">
-												<label
-														class="Radio_radio__qgo5c Radio_md__1hsD9 DefaultPrice_radioButton__1nTXN">
-													<input type="radio" name="price" readonly="" value="DEFAULT"
-														   checked="">
-													<span class="Radio_icon__TTjQX"></span>
-													<span class="Radio_label__3ufjh"></span>
-												</label>일반 금액
-											</div>
-											<div class="TitleValuePrice_container__Hcpla">
-												<dl class="">
-													<dt>상품 금액</dt>
-													<dd>
-														<span>
-                                             				<em class="TitleValuePrice_money__1Tu-B" th:text="*{dataPrice}"></em>원
-														</span>
-													</dd>
-												</dl>
-											</div>
-											<div class="TitleValuePrice_container__Hcpla">
-												<dl class="">
-													<dt>포인트 할인 금액</dt>
-													<dd>
-														<span>
-															<span th:text="*{memberPoint}"></span>원
-														</span>
-													</dd>
-												</dl>
-											</div>
-
-											<div class="TitleValuePrice_container__Hcpla">
-												<hr class="TitleValuePrice_divide__2bMnX">
-												<dl class="TitleValuePrice_total__oJwm4">
-													<dt>최종 결제 금액</dt>
-													<dd>
-														<span>
-															<em class="">
-																<span th:text="*{dataPrice} - *{memberPoint}"></span> 원
-															</em>
-														</span>
-													</dd>
-												</dl>
-											</div>
-										</div>
-									</div>
-
-								<!--				[E] 결제 금액					-->
-
-
-								</section>
-								<section class="StorePaymentSection_container__1SdwL PaymentLayout_floating__3iHN0">
-									<div
+							<section class="StorePaymentSection_container__1SdwL">
+								<div class="StorePaymentSection_titleContainer__gkoqg">
+									<h3 class="StorePaymentSection_title__DLi4F">포인트 할인</h3>
+								</div>
+								<div
 										class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
-										<div class="StorePaymentTerms_StorePaymentTerms__1PQlB">
-											<label class="Checkbox_checkbox__KagcU Checkbox_lg__1DyUN Checkbox_labeled__2WxRV StorePaymentTerms_termsCheckbox__3gruT">
+									<input type="text" th:value="${payVO.payPointUse}" name="payPointUse"/>
 
-												<input id="checkAll" name="paymentRequiredTerms" type="checkbox" class="Checkbox_input__Ge9vr">
+									<!--포인트 없을 때-->
+									<!--                              <div class="select-menu medium">-->
+									<!--                                 <div class="select-menu&#45;&#45;is-disabled css-14jk2my-container">-->
+									<!--                                          <span aria-live="polite" aria-atomic="false"-->
+									<!--                                      aria-relevant="additions text" class="css-7pg0cj-a11yText"></span>-->
+									<!--                                    <div-->
+									<!--                                          class="select-menu__control select-menu__control&#45;&#45;is-disabled css-1fhf3k1-control">-->
+									<!--                                       <div class="select-menu__value-container css-1hwfws3">-->
+									<!--                                            <div class="select-menu__placeholder css-1wa3eu0-placeholder">사용 가능한 포인트가 없습니다.</div>-->
+									<!--                                            <input id="react-selectdn-2-input" readonly="" disabled=""-->
+									<!--                                              tabindex="0" aria-autocomplete="list" class="css-62g3xt-dummyInput" value="">-->
+									<!--                                       </div>-->
+									<!--                                       <div class="select-menu__indicators css-1wy0on6">-->
+									<!--                                          <span class="select-menu__indicator-separator css-0"></span>-->
+									<!--                                          <div class="select-menu__indicator select-menu__dropdown-indicator css-tlfecz-indicatorContainer"-->
+									<!--                                              aria-hidden="true">-->
+									<!--                                             <svg viewBox="0 0 32 32" focusable="false"-->
+									<!--                                                 role="presentation" class="withIcon_icon__3VTbq"-->
+									<!--                                                 aria-hidden="true">-->
+									<!--                                                <path-->
+									<!--                                                      d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z">-->
+									<!--                                                </path>-->
+									<!--                                             </svg>-->
+									<!--                                          </div>-->
+									<!--                                       </div>-->
+									<!--                                    </div>-->
+									<!--                                 </div>-->
+									<!--                              </div>-->
+								</div>
+							</section>
 
-												<span class="Checkbox_icon__1OUUf" aria-hidden="true">
-													<svg viewBox="0 0 16 2" focusable="false" role="presentation"
-														class="withIcon_icon__3VTbq Checkbox_removeIcon__7dzQx"
-														aria-hidden="true">
-														<path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
-													</svg>
-													<svg viewBox="0 0 48 48" focusable="false" role="presentation"
-														class="withIcon_icon__3VTbq Checkbox_checkIcon__2qiC_"
-														aria-hidden="true">
-														<path
-															d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z">
-														</path>
-													</svg>
-												</span>
+							<!--            [E] 포인트 정보               -->
 
-												<span class="Checkbox_content__3UZwe">
-													<span>결제 진행 필수 동의</span>
-												</span>
 
-											</label>
-											<div class="StorePaymentTerms_termsList__1ki8i">
-												<label for="serviceTerms" class="StorePaymentTerms_termsItem__CAG90">
-													<label for="serviceTerms"
-														class="Checkbox_checkbox__KagcU Checkbox_sm__2_Gjh StorePaymentTerms_smallCheckBox__YwfQ5">
-														<input name="serviceTerms" id="serviceTerms" type="checkbox"
-															class="checkBox Checkbox_input__Ge9vr">
-														<span class="Checkbox_icon__1OUUf" aria-hidden="true">
-															<svg viewBox="0 0 16 2" focusable="false"
-																role="presentation"
-																class="withIcon_icon__3VTbq Checkbox_removeIcon__7dzQx"
-																aria-hidden="true">
-																<path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
-															</svg>
-															<svg viewBox="0 0 48 48" focusable="false"
-																role="presentation"
-																class="withIcon_icon__3VTbq Checkbox_checkIcon__2qiC_"
-																aria-hidden="true">
-																<path
+							<!--            [S] 결제 수단            -->
+
+							<section class="StorePaymentSection_container__1SdwL">
+								<div class="StorePaymentSection_titleContainer__gkoqg">
+									<h3 class="StorePaymentSection_title__DLi4F">결제 수단</h3>
+								</div>
+								<div
+										class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
+									<div class="StorePaymentChooseMode_storePaymentChooseMode__2yXk6">
+										<ul>
+											<li>
+												<label
+														class="StorePaymentNicePay_storePaymentNicePay__1Yb59 StorePaymentNicePay_checked__14ngZ StorePaymentNicePay_single__3-vFW"
+														for="nicePay">
+													<div class="StorePaymentNicePay_title__1Ppay">
+														<svg viewBox="0 0 48 48" focusable="false"
+															 role="presentation"
+															 class="withIcon_icon__3VTbq StorePaymentNicePay_checkIcon__3gaNh"
+															 aria-hidden="true">
+															<path
 																	d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z">
-																</path>
-															</svg>
-														</span>
-														<span class="Checkbox_content__3UZwe"></span>
-													</label>
-													<span class="StorePaymentTerms_text__1tYhe">구매 조건, 결제 진행 및 결제 대행 서비스 동의 (필수)</span>
+															</path>
+														</svg>
+														<label for="nicePay"
+															   class="Radio_radio__qgo5c Radio_lg__3pVSs StorePaymentNicePay_radio__2Zx3M">
+															<input type="radio" id="nicePay" name="paymentMode"
+																   value="nicePay">
+															<span class="Radio_icon__TTjQX"></span>
+															<span class="Radio_label__3ufjh"></span>
+														</label>
+														<svg viewBox="0 0 32 32" focusable="false"
+															 role="presentation" class="withIcon_icon__3VTbq"
+															 aria-hidden="true">
+															<path
+																	d="M1.6 6.4v19.2h28.8V6.4zM28.8 8v1.6H3.2V8zM3.2 24V12.8h25.6V24z">
+															</path>
+															<path d="M16 15.2H4.8v1.6H16v-1.6z"></path>
+														</svg>
+														<span>신용/체크카드 결제</span>
+													</div>
+													<p class="StorePaymentNicePay_notification__D1ZcP">* 할부 결제의 경우 신용/체크카드 결제를 선택하세요.</p>
 												</label>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</section>
 
-												<label for="checkbox_privacyTerms"
-													class="StorePaymentTerms_termsItem__CAG90">
-													<label for="checkbox_privacyTerms"
-														class="Checkbox_checkbox__KagcU Checkbox_sm__2_Gjh StorePaymentTerms_smallCheckBox__YwfQ5">
-														<input name="privacyTerms" id="checkbox_privacyTerms"
-															type="checkbox" class="checkBox Checkbox_input__Ge9vr">
-														<span class="Checkbox_icon__1OUUf" aria-hidden="true">
-															<svg viewBox="0 0 16 2" focusable="false"
-																role="presentation"
-																class="withIcon_icon__3VTbq Checkbox_removeIcon__7dzQx"
-																aria-hidden="true">
-																<path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
-															</svg>
-															<svg viewBox="0 0 48 48" focusable="false"
-																role="presentation" class="withIcon_icon__3VTbq Checkbox_checkIcon__2qiC_" aria-hidden="true">
-																<path d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"> </path>
-															</svg>
-														</span>
-														<span class="Checkbox_content__3UZwe"></span>
-													</label>
-													<span class="StorePaymentTerms_text__1tYhe">개인정보 제3자 제공 동의 (필수)</span>
-													<button class="Button_button__2FuOU Button_text__2-UCU Button_sm__16X6h Button_iconOnly__F0Izx iconButton StorePaymentTerms_termsDetailButton__29smA" type="button">
-														<span>
-															<span class="Button_children__ilFun">
-																<svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq" aria-hidden="true">
-																	<path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"> </path>
-																</svg>
-															</span>
-														</span>
-													</button>
-												</label>
-											</div>
+							<!--            [E] 결제 수단            -->
+
+
+					</div>
+					<div class="PaymentLayout_floatingSectionContainer__2QCzS">
+						<div class="PaymentLayout_floatingSection__31pLD">
+							<section class="StorePaymentSection_container__1SdwL PaymentLayout_floating__3iHN0">
+
+
+								<!--            [S] 결제 금액               -->
+
+								<div class="StorePaymentSection_titleContainer__gkoqg">
+									<h3 class="StorePaymentSection_title__DLi4F">결제 금액</h3>
+								</div>
+								<div class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
+									<div class="DefaultPrice_container__1gf10">
+										<div class="DefaultPrice_title__3iw65">
+											<label
+													class="Radio_radio__qgo5c Radio_md__1hsD9 DefaultPrice_radioButton__1nTXN">
+												<input type="radio" name="price" readonly="" value="DEFAULT"
+													   checked="">
+												<span class="Radio_icon__TTjQX"></span>
+												<span class="Radio_label__3ufjh"></span>
+											</label>일반 금액
+										</div>
+										<div class="TitleValuePrice_container__Hcpla">
+											<dl class="">
+												<dt>상품 금액</dt>
+												<dd>
+                                          <span>
+                                                         <em class="TitleValuePrice_money__1Tu-B" th:text="*{dataPrice}"></em>원
+                                          </span>
+												</dd>
+											</dl>
+										</div>
+										<div class="TitleValuePrice_container__Hcpla">
+											<dl class="">
+												<dt>포인트 할인 금액</dt>
+												<dd>
+                                          <span>
+                                             <span th:text="*{memberPoint}"></span>원
+                                          </span>
+												</dd>
+											</dl>
 										</div>
 
-										<button id="payButton" type="button"
-												form="payment-submit"
-											class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_lg__1Dftp Button_block__1-g8w PaymentLayout_submitButton__1fQJ4">
-											<span>
-												<span class="Button_children__ilFun" th:text="*{dataPrice} - *{memberPoint}"></span><span>원 결제하기</span>
-											</span>
-										</button>
-
+										<div class="TitleValuePrice_container__Hcpla">
+											<hr class="TitleValuePrice_divide__2bMnX">
+											<dl class="TitleValuePrice_total__oJwm4">
+												<dt>최종 결제 금액</dt>
+												<dd>
+                                          <span>
+                                             <em class="">
+                                                <span th:text="*{dataPrice} - *{memberPoint}"></span> 원
+                                             </em>
+                                          </span>
+												</dd>
+											</dl>
+										</div>
 									</div>
-								</section>
-							</div>
+								</div>
+
+								<!--            [E] 결제 금액               -->
+
+
+							</section>
+							<section class="StorePaymentSection_container__1SdwL PaymentLayout_floating__3iHN0">
+								<div
+										class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
+									<div class="StorePaymentTerms_StorePaymentTerms__1PQlB">
+										<label class="Checkbox_checkbox__KagcU Checkbox_lg__1DyUN Checkbox_labeled__2WxRV StorePaymentTerms_termsCheckbox__3gruT">
+
+											<input id="checkAll" name="paymentRequiredTerms" type="checkbox" class="Checkbox_input__Ge9vr">
+
+											<span class="Checkbox_icon__1OUUf" aria-hidden="true">
+                                       <svg viewBox="0 0 16 2" focusable="false" role="presentation"
+											class="withIcon_icon__3VTbq Checkbox_removeIcon__7dzQx"
+											aria-hidden="true">
+                                          <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
+                                       </svg>
+                                       <svg viewBox="0 0 48 48" focusable="false" role="presentation"
+											class="withIcon_icon__3VTbq Checkbox_checkIcon__2qiC_"
+											aria-hidden="true">
+                                          <path
+												  d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z">
+                                          </path>
+                                       </svg>
+                                    </span>
+
+											<span class="Checkbox_content__3UZwe">
+                                       <span>결제 진행 필수 동의</span>
+                                    </span>
+
+										</label>
+										<div class="StorePaymentTerms_termsList__1ki8i">
+											<label for="serviceTerms" class="StorePaymentTerms_termsItem__CAG90">
+												<label for="serviceTerms"
+													   class="Checkbox_checkbox__KagcU Checkbox_sm__2_Gjh StorePaymentTerms_smallCheckBox__YwfQ5">
+													<input name="serviceTerms" id="serviceTerms" type="checkbox"
+														   class="checkBox Checkbox_input__Ge9vr">
+													<span class="Checkbox_icon__1OUUf" aria-hidden="true">
+                                             <svg viewBox="0 0 16 2" focusable="false"
+												  role="presentation"
+												  class="withIcon_icon__3VTbq Checkbox_removeIcon__7dzQx"
+												  aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
+                                             </svg>
+                                             <svg viewBox="0 0 48 48" focusable="false"
+												  role="presentation"
+												  class="withIcon_icon__3VTbq Checkbox_checkIcon__2qiC_"
+												  aria-hidden="true">
+                                                <path
+														d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z">
+                                                </path>
+                                             </svg>
+                                          </span>
+													<span class="Checkbox_content__3UZwe"></span>
+												</label>
+												<span class="StorePaymentTerms_text__1tYhe">구매 조건, 결제 진행 및 결제 대행 서비스 동의 (필수)</span>
+											</label>
+
+											<label for="checkbox_privacyTerms"
+												   class="StorePaymentTerms_termsItem__CAG90">
+												<label for="checkbox_privacyTerms"
+													   class="Checkbox_checkbox__KagcU Checkbox_sm__2_Gjh StorePaymentTerms_smallCheckBox__YwfQ5">
+													<input name="privacyTerms" id="checkbox_privacyTerms"
+														   type="checkbox" class="checkBox Checkbox_input__Ge9vr">
+													<span class="Checkbox_icon__1OUUf" aria-hidden="true">
+                                             <svg viewBox="0 0 16 2" focusable="false"
+												  role="presentation"
+												  class="withIcon_icon__3VTbq Checkbox_removeIcon__7dzQx"
+												  aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
+                                             </svg>
+                                             <svg viewBox="0 0 48 48" focusable="false"
+												  role="presentation" class="withIcon_icon__3VTbq Checkbox_checkIcon__2qiC_" aria-hidden="true">
+                                                <path d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"> </path>
+                                             </svg>
+                                          </span>
+													<span class="Checkbox_content__3UZwe"></span>
+												</label>
+												<span class="StorePaymentTerms_text__1tYhe">개인정보 제3자 제공 동의 (필수)</span>
+												<button class="Button_button__2FuOU Button_text__2-UCU Button_sm__16X6h Button_iconOnly__F0Izx iconButton StorePaymentTerms_termsDetailButton__29smA" type="button">
+                                          <span>
+                                             <span class="Button_children__ilFun">
+                                                <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq" aria-hidden="true">
+                                                   <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"> </path>
+                                                </svg>
+                                             </span>
+                                          </span>
+												</button>
+											</label>
+										</div>
+									</div>
+
+									<button id="payButton" type="button"
+											form="payment-submit"
+											class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_lg__1Dftp Button_block__1-g8w PaymentLayout_submitButton__1fQJ4">
+                                 <span>
+                                    <span class="Button_children__ilFun" th:text="*{dataPrice} - *{memberPoint}"></span><span>원 결제하기</span>
+                                 </span>
+									</button>
+
+								</div>
+							</section>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		</form>
 
-			<div class="FloatingButtons_container__2E5Fl">
-				<button type="button" class="FloatingTopButton_pageTop__2gqm9 FloatingTopButton_visible__2sh_N"
+		<div class="FloatingButtons_container__2E5Fl">
+			<button type="button" class="FloatingTopButton_pageTop__2gqm9 FloatingTopButton_visible__2sh_N"
 					title="위로 이동">
-					<svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq"
-						aria-hidden="true">
-						<path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path>
-					</svg>
-				</button>
-				<button type="button" data-ga-category="공통_최근본_UI" data-ga-action="클릭" data-ga-label=""
+				<svg viewBox="0 0 40 40" focusable="false" role="presentation" class="withIcon_icon__3VTbq"
+					 aria-hidden="true">
+					<path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path>
+				</svg>
+			</button>
+			<button type="button" data-ga-category="공통_최근본_UI" data-ga-action="클릭" data-ga-label=""
 					class="RecentView_container__1boAT" aria-label="최근본" style="display: none;">
-					<div aria-hidden="true"
-						class="RecentView_thumbnail__1lnV0 CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4 CardThumbnail_noanimation__23cSf"
-						style="background-image: url(&quot;https://cdn2.wadiz.kr/2022/12/13/b1c973d0-aae9-4778-9751-71c3f2953a13.jpg/wadiz/resize/400/format/jpg/quality/85/&quot;);">
-					</div>
-				</button>
-			</div>
-		</main>
-	</div>
+				<div aria-hidden="true"
+					 class="RecentView_thumbnail__1lnV0 CardThumbnail_thumbnail__3bDBJ CardThumbnail_visible__343f4 CardThumbnail_noanimation__23cSf"
+					 style="background-image: url(&quot;https://cdn2.wadiz.kr/2022/12/13/b1c973d0-aae9-4778-9751-71c3f2953a13.jpg/wadiz/resize/400/format/jpg/quality/85/&quot;);">
+				</div>
+			</button>
+		</div>
+	</main>
+</div>
 
 <footer th:replace="~{/fix/footer :: #footer}"></footer>
 
@@ -404,6 +404,7 @@
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.3.min.js" type="application/javascript"></script>
 <script  th:inline="javascript" >
 	let dataDTO = [[${dataDTO}]];
+	let payVO = [[${payVO}]];
 	console.log(dataDTO);
 </script>
 <script src="/js/dataroom/bootPay.js"></script>

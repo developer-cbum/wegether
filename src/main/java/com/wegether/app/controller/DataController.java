@@ -5,14 +5,16 @@ import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataVO;
+import com.wegether.app.domain.vo.PayVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.data.DataService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
@@ -86,19 +88,31 @@ public class DataController {
     
 //    자료 결제 페이지
     @GetMapping("payment")
-    public void goToPayment(@RequestParam Long id, Model model){;
+    public void goToPayment(@RequestParam Long id,  Model model, PayVO payVO){
         Optional<DataDTO> readDataPay = dataService.readDataPay(id);
+//        if(readDataPay.isPresent()) {
+//            model.addAttribute("dataDTO", readDataPay.get());
+//        }
+
         model.addAttribute("dataDTO", dataService.readDataPay(id).get());
         log.info(readDataPay.get().toString());
     }
 
-//      결제 완료 - insert pay
-    @GetMapping("payment")
-    public RedirectView completePay(Long dataId) {
-        Long id = (Long) httpSession.getAttribute("id");
-        dataService.completePay(id, dataId);
-        return new RedirectView("/datas/payment-complete");
+//      결제 완료 - insert pay + member point
+    @PostMapping("payment")
+    @Transactional(rollbackFor = Exception.class)
+    public RedirectView completePay(PayVO payVO, @RequestParam Long memberId, @RequestParam Long payPointUse) {
+//        payVO.setMemberId((Long) httpSession.getAttribute("id"));
+//        model.addAttribute("payVO", dataService.completePay(payVO)) ;
+        dataService.completePay(payVO);
+        dataService.modifyPoint(memberId, payPointUse);
+        return new RedirectView("/datas/list");
+
     }
+
+
+
+
 
 
 //    찜하기

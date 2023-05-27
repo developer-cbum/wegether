@@ -90,15 +90,17 @@ public class DataServiceImpl implements DataService {
 
 //      결제 완료 - insert pay
     @Override
-    public void completePay(Long memberId, Long dataId) {
-        payDAO.savePay(memberId, dataId);
+    public void completePay(PayVO payVO) {
+        payDAO.savePay(payVO);
     }
 
+//      결제 완료 - member point
+    @Override
+    public void modifyPoint(Long memberId, Long payPointUse) {
+        payDAO.updatePoint(memberId, payPointUse);
+    }
 
-
-
-
-//    찜하기
+    //    찜하기
     @Override
     public void doWish(Long memberId, Long dataId) {
         dataDAO.saveWish(memberId, dataId);
