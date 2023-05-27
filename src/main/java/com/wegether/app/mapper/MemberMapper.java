@@ -1,6 +1,5 @@
 package com.wegether.app.mapper;
 
-import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.dto.ProfileMemberDTO;
 import com.wegether.app.domain.vo.MemberVO;
@@ -45,7 +44,7 @@ public interface MemberMapper {
 
 
 //    소영 마이페이지 화면 띄우기
-    public Optional<MemberDTO> selectmypage(Long id);
+    public <Optional> java.util.Optional<MemberDTO> selectmypage(Long id);
     
 // 소영 마이페이지 회원 탈퇴
     public void updateMemberS(Long id);
@@ -55,4 +54,7 @@ public interface MemberMapper {
 
 // 마이페이지 연동 update문
     public void updateConnection(Long memberId);
+
+//    마이페이지 사진 가져오기
+    public MemberDTO selectMyPageImage(Long id);
 }

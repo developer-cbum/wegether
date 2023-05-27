@@ -33,8 +33,15 @@ public class MineServiceImpl implements MypageService {
 
 
 //    마이페이지 메인
-    public Optional<MemberDTO> loadMine(Long id){
-        return memberDAO.showmypage(id);
+    public MemberDTO loadMine(Long id){
+
+        final MemberDTO data = memberDAO.showmypage(id);
+        data.setFileId(memberDAO.showMyPageProfile(id).getFileId());
+        data.setFilePath(memberDAO.showMyPageProfile(id).getFilePath());
+        data.setFileUuid(memberDAO.showMyPageProfile(id).getFileUuid());
+        data.setFileName(memberDAO.showMyPageProfile(id).getFileName());
+
+        return data;
     }
 
 //    마이페이지 회원 탈퇴
@@ -73,5 +80,6 @@ public class MineServiceImpl implements MypageService {
         return projects;
     }
 //    public List<ProjectDTO> readMyProject(Long memberId){return projectDAO.showmyProject(memberId);}
+
 
 }

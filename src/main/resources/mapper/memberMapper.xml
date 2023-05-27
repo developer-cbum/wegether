@@ -90,7 +90,8 @@
 
 <!--    소영 마이페이지 화면 띄우기-->
     <select id="selectmypage" resultType="memberDTO">
-    SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, M.MEMBER_POINT point, M.MEMBER_NICKNAME, M.MEMBER_PHONE_NUMBER
+--     SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, M.MEMBER_POINT point, M.MEMBER_NICKNAME, M.MEMBER_PHONE_NUMBER
+    SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, M.MEMBER_POINT, M.MEMBER_NICKNAME, M.MEMBER_PHONE_NUMBER
     FROM TBL_MEMBER M LEFT JOIN TBL_POINT P ON M.ID =P.MEMBER_ID
     WHERE M.ID =#{id}
 
@@ -112,6 +113,31 @@
         SET MEMBER_NICKNAME = #{memberNickname}, MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
         WHERE ID=#{id}
     </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 마이페이지 사진 가져오기 -->
+    <select id="selectMyPageImage" resultType="MemberDTO">
+        SELECT F.FILE_PATH, F.FILE_UUID, F.FILE_NAME
+        FROM TBL_MEMBER M JOIN TBL_FILE F
+        ON M.FILE_ID = F.ID AND M.ID = #{id}
+    </select>
+
+
+
 
 
 
