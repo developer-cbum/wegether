@@ -119,10 +119,23 @@ public class DataServiceImpl implements DataService {
 //        fileDAO.deleteAll(id);
 //    }
 
+//    찜하기
+
+    @Override
+    public void doWish(Long memberId, Long dataId) {
+        dataDAO.saveWish(memberId, dataId);
+    }
+
+//    찜하기 취소
 
 
+    @Override
+    public void doNotWish(Long memberId, Long dataId) {
+        dataDAO.deleteWish(memberId, dataId);
+    }
 
-
-
-
+    @Override
+    public Long getWishId(Long memberId, Long dataId) {
+        return dataDAO.findWishId(memberId, dataId);
+    }
 }

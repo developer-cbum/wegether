@@ -27,6 +27,7 @@ import java.util.Optional;
 public class DataController {
     private final DataService dataService;
     private final AccountService accountService;
+    private final HttpSession httpSession;
 
 
 //    자료 목록 - 기본
@@ -92,7 +93,29 @@ public class DataController {
         log.info(readDataPay.get().toString());
     }
 
+//    찜하기
+    @GetMapping("do-wish")
+    @ResponseBody
+    public void doWish(Long dataId){
+        Long id = (Long) httpSession.getAttribute("id");
+        dataService.doWish(id, dataId);
+    }
 
+//    찜하기 취소
+    @GetMapping("do-not-wish")
+    @ResponseBody
+    public void doNotWish(Long dataId){
+        Long id = (Long) httpSession.getAttribute("id");
+        dataService.doNotWish(id, dataId);
+    }
+
+//    찜 검사
+    @GetMapping("wish")
+    @ResponseBody
+    public boolean checkMyWish(Long dataId){
+        Long id = (Long) httpSession.getAttribute("id");
+        return dataService.getWishId(id, dataId) != null;
+    }
 
 
 

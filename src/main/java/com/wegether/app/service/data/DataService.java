@@ -30,9 +30,13 @@ public interface DataService {
     public Optional<DataDTO> readDataPay(Long id);
 
 
+    //    찜하기
+    public void doWish(Long memberId, Long dataId);
+    //    찜하기 취소
+    public void doNotWish(Long memberId, Long dataId);
 
-
-
+    //    내가 찜한 자료 검사
+    public Long getWishId(Long memberId, Long dataId);
 
 
         //    게시글 수정

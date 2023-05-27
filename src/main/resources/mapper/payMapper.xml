@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wegether.app.mapper.PayMapper">
+
+    <!--  결제 pay insert  -->
+    <insert id="insertPay">
+        INSERT INTO TBL_PAY
+        (ID, MEMBER_ID, DATA_ID, PAY_TOTAL_PRICE, PAY_POINT_USE)
+        VALUES(SEQ_PAY.NEXTVAL, #{memberid}, #{dataId}, pay_total_price, payPointUse)
+    </insert>
+
+
+    <!--  결제 point insert  -->
+    <!--  결제 member update  -->
 </mapper>
