@@ -154,11 +154,11 @@ text-align: right;">
                                                     <div>
                                                         <div>
                                                             <button
-                                                                    class="Button_button__2FuOU Button_secondary__LNLsN Button_contained__2SIAT Button_lg__1Dftp gray CommunityCommentWriteButton_button__3bPl4 write-button"
+                                                                    class="Button_button__2FuOU Button_secondary__LNLsN Button_contained__2SIAT Button_lg__1Dftp gray CommunityCommentWriteButton_button__3bPl4 reviewButton"
                                                                     type="button"
                                                             >
                                                                 <span
-                                                                ><span class="Button_children__ilFun reviewButton"
+                                                                ><span class="Button_children__ilFun"
                                                                 >댓글 쓰기</span
                                                                 ></span
                                                                 >
@@ -847,6 +847,7 @@ text-align: right;">
     let consult = [[${consultDTO}]];
     let session = [[${session.id}]];
     let consultingId = [[${consultId}]];
+    console.log(consultingId);
     let total = [[${total}]];
     let basicTotal = [[${basicReplyTotal}]];
     let member;

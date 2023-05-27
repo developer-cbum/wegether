@@ -3,6 +3,7 @@ package com.wegether.app.mapper;
 import com.wegether.app.domain.dto.ConsultingDTO;
 import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.dto.ProfileMemberDTO;
+import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -45,7 +46,7 @@ public interface MemberMapper {
 
 
 //    소영 마이페이지 화면 띄우기
-    public Optional<MemberDTO> selectmypage(Long id);
+    public MemberDTO selectmypage(Long id);
     
 // 소영 마이페이지 회원 탈퇴
     public void updateMemberS(Long id);
@@ -53,4 +54,7 @@ public interface MemberMapper {
 // 소영 마이페이지 기본 정보 수정
     public void updateBasicSet(MemberDTO memberDTO);
 
+
+//    마이페이지 사진 가져오기
+    public MemberDTO selectMyPageImage(Long id);
 }

@@ -2,6 +2,7 @@ package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.dto.ProfileMemberDTO;
+import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -69,7 +70,7 @@ public class MemberDAO {
 
 
     //    소영 마이페이지 화면 띄우기
-    public Optional<MemberDTO> showmypage(Long id){
+    public MemberDTO showmypage(Long id){
         return memberMapper.selectmypage(id);
     }
 
@@ -82,6 +83,19 @@ public class MemberDAO {
 
     public void setBasicSetting(MemberDTO memberDTO) {
         memberMapper.updateBasicSet(memberDTO);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // 마이페이지 사진 가져오기
+    public MemberDTO showMyPageProfile(Long id) {
+        return  memberMapper.selectMyPageImage(id);
     }
 }
 

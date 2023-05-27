@@ -37,7 +37,7 @@ public class MypageController {
     @GetMapping("/my-page/my-page")
     public void main(Long id, Model model) {
 
-        model.addAttribute("main", mine.loadMine(2L).get());
+        model.addAttribute("main", mine.loadMine(5L));
     }
 //===========================================================================================================================
 //    비밀번호 재설정
@@ -103,11 +103,18 @@ public class MypageController {
 
     //===========================================================================================================================
 //    기본 정보 설정 페이지 이동
+
     @GetMapping("/setting/basic-setting")
     public MemberDTO goToBasicSetting(HttpSession session, Model model, MemberDTO memberDTO) {
         model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
         return memberDTO;
     }
+
+//    @GetMapping("/setting/basic-setting")
+//    public void goToBasicSetting(HttpSession session, Model model) {
+//        model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
+//    }
+
 
 
     @PostMapping("/setting/basic")
@@ -121,13 +128,13 @@ public class MypageController {
 //===========================================================================================================================
 
     //    회원 탈퇴
-    @GetMapping("/setting/member-secession")
-    public void goToWithdrawal(HttpSession session, Model model) {
-
-        model.addAttribute("withdraw", mine.loadMine((Long) session.getAttribute("id")).get());
-
-
-    }
+//    @GetMapping("/setting/member-secession")
+//    public void goToWithdrawal(HttpSession session, Model model) {
+//
+//        model.addAttribute("withdraw", mine.loadMine((Long) session.getAttribute("id")).get());
+//
+//
+//    }
 
 //    회원 탈퇴 완료
 
@@ -307,7 +314,7 @@ public class MypageController {
 
 
 
-//    찜 첫 화면
+//    찜 첫 화면git 
 //    @GetMapping("/heart-list/heart")
 //    public void goToHeart
 //
