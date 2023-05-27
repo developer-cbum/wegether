@@ -26,5 +26,10 @@ public class MemberDTO {
     private String memberLoginStatus;
     private String pointHistory;
     private String point;
+    private String filePath;
+    private String fileUuid;
+    private String fileName;
+    private Long fileSize;
+    private String fileType;
 
 }
