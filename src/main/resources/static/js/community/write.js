@@ -7,14 +7,14 @@ $("img.preview").each(function(i){
     }
 });
 
-let sizes = new Array();
+let sizes = new Array(4).fill(0);
 $upload.on("change", function(e){
     let i = $upload.index($(this));
     let files = $(this)[0].files;
     let name = files[0].name;
     let formData = new FormData();
 
-    sizes.push(files[0].size);
+    sizes[i] = files[0].size;
 
     $(files).each((i, file) => {
         formData.append("uploadFile", file);
@@ -27,7 +27,6 @@ $upload.on("change", function(e){
         contentType: false,
         processData: false,
         success: function(uuids){
-            console.log("들어왔나")
             $("label.attach").eq(i).find("h6").hide();
             $("div.x").eq(i).show();
             $("img.thumbnail").eq(i).show();
@@ -74,27 +73,34 @@ $("div.x").on("click", function(e){
 });
 
 $("button.ok-button").on("click", function(){
-    const imgs = $("img.thumbnail").filter((i, img) => $(img).attr("src"));
     let text = ``;
-    imgs.each((i, img) => {
+    let count = 0;
+    $("img.thumbnail").each((i, img) => {
         let fullPath = $(img).attr("src");
+        if(!fullPath) {return;}
+
         let datas = fullPath.split("_");
         let filePath = datas[0].split("=")[1].replace("/t", "");
         let fileUuid = datas[1];
         let fileName = datas[2];
+        let fileType = $(img).hasClass("representative");
         let fileSize = sizes[i];
 
         text += `
-            <input type="hidden" name="files[${i}].filePath" value="${filePath}">
-            <input type="hidden" name="files[${i}].fileUuid" value="${fileUuid}">
-            <input type="hidden" name="files[${i}].fileName" value="${fileName}">
-            <input type="hidden" name="files[${i}].fileSize" value="${fileSize}">
+            <input type="hidden" name="files[${count}].filePath" value="${filePath}">
+            <input type="hidden" name="files[${count}].fileUuid" value="${fileUuid}">
+            <input type="hidden" name="files[${count}].fileName" value="${fileName}">
+            <input type="hidden" name="files[${count}].fileSize" value="${fileSize}">
         `
+        if(fileType){
+            text += `<input type="hidden" name="files[${count}].fileType" value="REPRESENTATIVE">`;
+        }
+        count++;
     });
-    $(".writeForm").append(text);
+    $(writeForm).append(text);
     $(".ok-button").on("click", function(){
         showWarnModal('저장이 완료되었습니다');
         setTimeout(function () {
-            $(".writeForm").submit();
+            $(writeForm).submit();
         }, 2500)})
 });

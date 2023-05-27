@@ -23,16 +23,13 @@ public interface ProjectMapper {
     public int selectCountOfProject();
 
 
-
-
-
-
-
     // 프로젝트 등록
     public void projectInsert(ProjectDTO projectDTO);
 
+
+
 //    // 프로젝트  상세
-//    public Optional<ProjectDTO> select(Long id);
+    public Optional<ProjectDTO> select(Long id);
 //
 //    // 프로젝트  수정
 ////    public void ProjectUpdate(ProjectDTO projectDTO);

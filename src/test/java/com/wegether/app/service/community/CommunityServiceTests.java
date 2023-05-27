@@ -9,6 +9,7 @@ import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.CommunityFileVO;
 import com.wegether.app.domain.vo.CommunityReplyVO;
 import com.wegether.app.domain.vo.CommunityVO;
+import com.wegether.app.service.data.DataService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class CommunityServiceTests {
 
     @Autowired
     private CommunityService communityService;
+    @Autowired
+    private DataService dataService;
 
     @Autowired
     private FileDAO fileDAO;
@@ -44,6 +47,11 @@ public class CommunityServiceTests {
     @Test
     public void findByIdTest(){
         communityService.getCommunity(1L).map(CommunityDTO::toString).ifPresent(log::info);
+    }
+
+    @Test
+    public void readDataPay(){
+        log.info(dataService.readDataPay(67L).toString());
     }
 
     @Test
