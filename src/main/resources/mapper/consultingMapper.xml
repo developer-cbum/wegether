@@ -139,7 +139,7 @@
 
 
     <select id="selectmyconsult" resultType="consultingVO">
-        SELECT CONSULTING_TITLE  FROM TBL_CONSULTING
+        SELECT ID, CONSULTING_TITLE  FROM TBL_CONSULTING
         WHERE MEMBER_ID =#{memberId}
 
     </select>
