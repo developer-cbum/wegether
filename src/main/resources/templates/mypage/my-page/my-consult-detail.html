@@ -26,7 +26,7 @@
           <div class="RewardFaqList_faqList__1FDhJ">
             <div>
               <th:block th:each="consulting : ${consulting}">
-              <div class="RewardFaqItem_faqItem__2qbzt">
+              <div class="RewardFaqItem_faqItem__2qbzt" th:onclick="|location.href='@{/consults/detail(id=${consulting.id})}'|">
                 <div class="RewardFaqItem_title__2ryy1">
                   <span th:text="${consulting.consultingTitle}"></span>
                   <svg
@@ -63,15 +63,6 @@
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script>
-    const $lists = $('.RewardFaqItem_faqItem__2qbzt ');
 
-    $lists.on('click', function () {
-      if ($(this).hasClass('active')) {
-        $(this).removeClass('active');
-      } else {
-        $(this).addClass('active');
-      }
-    });
-  </script>
+
 </html>

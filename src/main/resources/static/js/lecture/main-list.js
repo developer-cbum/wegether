@@ -44,9 +44,13 @@ $("a.change-page").on("click", function(e){
     location.href = `/consults/list?page=${page}`
 });
 
-$('.my-consult-list').on("click", function () {
+$('.my-consult-list').on("click", function (e) {
+    e.preventDefault();
     if(id ==null){
         showWarnModal("로그인 후 이용해주세요")
+        $('.modal').on("click", function () {
+            location.href=`/accounts/login?list=3`;
+        })
     }else{
         location.href=`/mypage/my-page/my-consult-detail`;
     }

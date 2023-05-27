@@ -147,8 +147,8 @@ div.x {
     display: none;
     color: rgb(255, 255, 255);
     position: absolute;
-    top: 25px;
-    right: 40px;
+    top: -15px;
+    right: 0px;
     width: 24px;
     height: 24px;
     justify-content: center;
