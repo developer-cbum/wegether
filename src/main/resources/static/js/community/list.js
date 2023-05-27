@@ -5,6 +5,19 @@
     console.log(keyword)
     showList();
 
+    // // 등록하기폼으로 이동하기 버튼
+    // $(".register-move-button").on("click", function () {
+    //     if (session == null) {
+    //         showWarnModal("<span>로그인 후</span><span>이용해주세요.</span>");
+    //         $('.modal').on("click", () => {
+    //             location.href = '/accounts/login?list=false';
+    //         })
+    //     } else {
+    //
+    //         location.href = '/community/write';
+    //     }
+    // })
+
 
     $('.search-button').on("click", function () {
         keyword = $(".search-input").val();
@@ -13,6 +26,7 @@
     })
     $(window).scroll(function(){
         if (Math.ceil(window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+            if(page >= ${communityPagination.total}){}
             page++;
             console.log(page);
             showList();

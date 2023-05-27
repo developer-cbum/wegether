@@ -532,12 +532,17 @@
         });
     </script>
     <script th:inline="javascript">
+        let session = [[${session.id}]];
         let community = [[${community}]]
         let communityId = [[${community.id}]]
         let files = [[${community.files}]]
         let total = [[${total}]]
         let basicTotal = [[${basicReplyTotal}]];
-        let member = [[${memberVO}]]
+        let member;
+        if(session != null){
+            member = [[${memberVO}]];
+            console.log(member);
+        }
     </script>
     <script src="/js/community/detail.js"></script>
     <script src="/js/community/community-reply.js"></script>

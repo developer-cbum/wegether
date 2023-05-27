@@ -318,7 +318,7 @@ function showList(result, replyResult, id) {
                                     </div>
                                 <div class="CommunityCommentContent_moreWrap__3ans8">`
             // 수정 삭제 버튼
-            if(reply.memberId == 1){
+            if(reply.memberId == session){
                 text+=     `<div class="PurchaseSummaryCard_detailText__2GWWi" style="display: flex">
                                                          <button id="${reply.id}" class="modify-button-reply">수정</button>
                                                          <span>&nbsp | &nbsp</span>
@@ -482,7 +482,7 @@ function showList(result, replyResult, id) {
                             </div>
                             <div>`
                     //수정버튼
-                    if(replyResult[i].memberId == 1){
+                    if(replyResult[i].memberId == session){
                         text+= ` <div class="PurchaseSummaryCard_detailText__2GWWi" style="display: flex">
                                                          <button id="${reply.id}" class="reply-again-modify ${replyResult[i].id}">수정</button>
                                                          <span>&nbsp | &nbsp</span>
