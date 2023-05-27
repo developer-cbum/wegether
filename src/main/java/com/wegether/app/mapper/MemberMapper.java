@@ -51,6 +51,8 @@ public interface MemberMapper {
     public void updateMemberS(Long id);
 
 // 소영 마이페이지 기본 정보 수정
-    public void updateBasicSet(MemberDTO memberDTO);
+    public void updateBasicSet(Long id, String memberNickname, String memberPhoneNumber);
 
+// 마이페이지 연동 update문
+    public void updateConnection(Long memberId);
 }

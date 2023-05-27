@@ -80,9 +80,15 @@ public class MemberDAO {
     }
 
 
-    public void setBasicSetting(MemberDTO memberDTO) {
-        memberMapper.updateBasicSet(memberDTO);
+    public void setBasicSetting(Long id, String memberNickname, String memberPhoneNumber) {
+        memberMapper.updateBasicSet(id, memberNickname, memberPhoneNumber);
     }
+
+    public void linkConnection(Long memberId){
+        memberMapper.updateConnection(memberId);
+    }
+
+
 }
 
 

@@ -9,4 +9,10 @@
     )
     </insert>
 
+    <select id="selectPoint" resultType="pointDTO">
+    SELECT M.MEMBER_NAME, M.MEMBER_POINT, P.POINT_HISTORY , P.POINT_CATEGORY , P.DATA_ID , D.DATA_TITLE, D.DATA_SCHOOL , D.DATA_MAJOR
+    FROM TBL_MEMBER M JOIN TBL_POINT P ON M.ID=P.MEMBER_ID
+    LEFT OUTER JOIN TBL_DATA D
+    ON P.DATA_ID =D.ID WHERE P.MEMBER_ID =#{memberId}
+    </select>
 </mapper>

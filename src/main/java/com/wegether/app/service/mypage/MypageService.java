@@ -5,7 +5,6 @@ import com.wegether.app.domain.vo.InquiryVO;
 
 public interface MypageService {
 
-
     public void mypage();
 }
 

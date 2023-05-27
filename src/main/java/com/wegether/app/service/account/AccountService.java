@@ -22,7 +22,7 @@ public interface AccountService {
     //카카오 로그인 상태 업데이트
     public void changeLoginStatusToKakao(String memberId);
 
-    //카카오 로그인 상태 업데이트
+    //네이버 로그인 상태 업데이트
     public void changeLoginStatusToNaver(String memberId);
 
     //아이디 찾기 세션으로

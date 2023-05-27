@@ -87,9 +87,10 @@
 
 
 
+
 <!--    소영 마이페이지 화면 띄우기-->
     <select id="selectmypage" resultType="memberDTO">
-    SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, NVL(P.POINT_HISTORY, '0') point, M.MEMBER_NICKNAME, M.MEMBER_PHONE_NUMBER
+    SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, M.MEMBER_POINT point, M.MEMBER_NICKNAME, M.MEMBER_PHONE_NUMBER
     FROM TBL_MEMBER M LEFT JOIN TBL_POINT P ON M.ID =P.MEMBER_ID
     WHERE M.ID =#{id}
 
@@ -109,8 +110,10 @@
     <update id="updateBasicSet">
         UPDATE TBL_MEMBER
         SET MEMBER_NICKNAME = #{memberNickname}, MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
-        WHERE ID=#{id};
+        WHERE ID=#{id}
     </update>
+
+
 
 
 

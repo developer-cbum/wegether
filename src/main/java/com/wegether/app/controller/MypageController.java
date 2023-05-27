@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.text.html.Option;
 import java.lang.reflect.Member;
 import java.util.List;
 import java.util.Optional;
@@ -104,16 +105,17 @@ public class MypageController {
     //===========================================================================================================================
 //    기본 정보 설정 페이지 이동
     @GetMapping("/setting/basic-setting")
-    public MemberDTO goToBasicSetting(HttpSession session, Model model, MemberDTO memberDTO) {
+    public void goToBasicSetting(HttpSession session, Model model) {
         model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
-        return memberDTO;
     }
-
 
     @PostMapping("/setting/basic")
     public RedirectView basicSetting(HttpSession session, MemberDTO memberDTO){
-        mine.modifyBasicSetting(memberDTO);
-        return new RedirectView("/my-page/my-page");
+        mine.modifyBasicSetting((Long)session.getAttribute("id"), memberDTO.getMemberNickname(), memberDTO.getMemberPhoneNumber());
+        log.info(memberDTO.getMemberNickname());
+        log.info(memberDTO.getMemberPhoneNumber());
+
+        return new RedirectView("/mypage/my-page/my-page");
 
     }
 
@@ -185,12 +187,12 @@ public class MypageController {
         model.addAttribute("inquiry", accountService.getMemberById((Long)session.getAttribute("id")).get().getMemberId());
     }
 
-    @PostMapping("write")
-    public RedirectView write(PostDTO postDTO){
-        postDTO.setMemberId((Long)session.getAttribute("id"));
-        postService.write(postDTO);
-        return new RedirectView("/post/list");
-    }
+//    @PostMapping("write")
+//    public RedirectView write(HttpSession session, InquiryDTO inquiryDTO){
+//        inquiryDTO.setMemberId((Long)session.getAttribute("id"));
+//        inquiry.write(pos);
+//        return new RedirectView("/post/list");
+//    }
 
 //    @GetMapping("write")
 //    public void goToWriteForm(PostVO postVO, Model model){
@@ -298,6 +300,30 @@ public class MypageController {
 
         //model.addAttribute("projectH", heart.projectHeart(2L));
     }
+
+    //===========================================================================================================================
+
+
+//      포인트 내역
+
+    private final PointImpl pointImpl;
+
+    @GetMapping("/point/point")
+    public List<PointDTO> goToPoint(HttpSession session, Long memberId, Model model){
+        final List<PointDTO> points=pointImpl.getPoints((Long) session.getAttribute("id"));
+        return points;
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

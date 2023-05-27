@@ -1,5 +1,6 @@
 package com.wegether.app.controller;
 
+import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.account.KakaoService;
 import lombok.RequiredArgsConstructor;
@@ -31,15 +32,19 @@ public class KakaoController {
         HashMap<String, Object> kakaoInfo = kakaoService.getKakaoInfo(token);
 
 
-    //애초에 카카오 로그인 할때 그 아이디가 있을때 중복이고 그 계정이 카카오 연동이 아닐떄
+        //애초에 카카오 로그인 할때 그 아이디가 있을때 중복이고 그 계정이 카카오 연동이 아닐떄
 
-        //카카오 계정 로그인 할떄 이미 아이디가 일반 회원이나 네이버가로 가입되어있을경우
-        if(accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()){
-            if(!accountService.checkId(kakaoInfo.get("memberId").toString()).get().getMemberLoginStatus().equals("KAKAO")){
-                redirectAttributes.addFlashAttribute("status", "false");
-                return new RedirectView("/accounts/login");
-            }
+        //카카오 계정 로그인 할떄 이미 아이디가 일반 회원이나 네이버로 가입되어있을경우
+        if (accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()) {
+            Optional<MemberVO> foundMember = accountService.checkId(kakaoInfo.get("memberId").toString());
+            foundMember.ifPresent(member -> {
+                if (member.getMemberLoginStatus().equals("WEGETHER")) {
+//                회원의 계정을 카카오 계정으로 변경(연동)
+                    accountService.changeLoginStatusToKakao((String) session.getAttribute("id"));
+                }
+            });
         }
+
 
 
 //    카카오 로그인 한적 없을때
