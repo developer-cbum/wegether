@@ -22,7 +22,7 @@ public interface CommunityService {
 
     public void remove(Long id);
 
-    public int getTotal();
+    public int getTotal(CommunityPagination communityPagination);
 
     default CommunityDTO toDTO(CommunityVO communityVO){
         CommunityDTO communityDTO = new CommunityDTO();

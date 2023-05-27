@@ -17,14 +17,16 @@ public interface ProjectService {
     public int getProjectTotal();
 
 //    // 프로젝트 등록
-//    public void write(ProjectDTO projectDTO);
+    public void write(ProjectDTO projectDTO);
 //
 //    // 프로젝트  수정
 ////    public void modify(ProjectDTO projectDTO);
-//    //    게시글 조회
-//    public Optional<ProjectDTO> read(Long id);
+   //    게시글 조회
+    public Optional<ProjectDTO> read(Long id);
 
-    public int getTotal();
+
+
+//    public int getTotal();
 
 }
 

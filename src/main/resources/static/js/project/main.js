@@ -8,11 +8,11 @@ $(document).ready(function () {
                     <div role="presentation" class="CardTable_itemContainer__v9-cW"
                         style="width: calc((25% - 24px + 6px) - 0.01px); margin-left: 0px; margin-right: 12px; margin-bottom: 40px;">
                         <a class="StoreCard_item__1hRfz"
-                           href="/projects/detail?id=${project.id}">
+                           href="/project/detail?id=${project.id}">
                            <div class="CardThumbnail_thumbnailContainer__DwnpC" style="height: 269px;">
                            `
              project.files.forEach(file => {
-                     if (file.fileType == "REPRESENTATIVE") {
+                     if (file.fileType === "REPRESENTATIVE") {
                          text += `
                         <div class="CardThumbnail_thumbnailPlaceholder__1Yv8K" style="padding-top: calc(100% - 0px); background-color: #f7f7f7; min-width: auto; min-height: auto;">
                             <div aria-hidden="true"
