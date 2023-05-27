@@ -2,6 +2,9 @@ const $div = $(".reply-content");
 let page = 1;
 let count = 0;
 let text = "";
+
+
+
 $(window).ready(function (){
     page= 1;
     load();
@@ -368,7 +371,7 @@ function showList(result, replyResult, id) {
             }else {
                 text+= `  <!--  수정폼 프로필사진 있-->
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url(/lecture-files/display?fileName=${reply.filePath}/${reply.fileUuid}_${reply.fileName});
+                                                url(/files/display?fileName=${reply.filePath}/${reply.fileUuid}_${reply.fileName});
                                                     border: 1px solid rgb(221, 226, 230);">
                     
                                             </span>`
@@ -452,7 +455,7 @@ function showList(result, replyResult, id) {
                         text+=     `<div class="Avatar_avatar__1d9Wt" style="width: 40px; height: 40px">
                                     <span class="Avatar_hasImage__2TKl6" style="
                                 background-image:
-                                  url(/lecture-files/display?fileName=${replyResult[i].filePath}/${replyResult[i].fileUuid}_${replyResult[i].fileName});
+                                  url(/files/display?fileName=${replyResult[i].filePath}/${replyResult[i].fileUuid}_${replyResult[i].fileName});
                                 border: 1px solid;
                                 rgb(221, 226, 230);
                                 color: black;
@@ -531,7 +534,7 @@ function showList(result, replyResult, id) {
                         } else {
                             text += `  <!--  수정폼 프로필사진 있-->
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url(/lecture-files/display?fileName=${member.filePath}/${member.fileUuid}_${member.fileName});
+                                                url(/files/display?fileName=${member.filePath}/${member.fileUuid}_${member.fileName});
                                                     border: 1px solid rgb(221, 226, 230);">
                     
                                             </span>`
@@ -622,7 +625,7 @@ function showList(result, replyResult, id) {
                 } else {
                     text += `  <!--  수정폼 프로필사진 있-->
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url(/lecture-files/display?fileName=${member.filePath}/${member.fileUuid}_${member.fileName});
+                                                url(/files/display?fileName=${member.filePath}/${member.fileUuid}_${member.fileName});
                                                     border: 1px solid rgb(221, 226, 230);">
                     
                                             </span>`
@@ -699,8 +702,16 @@ function showList(result, replyResult, id) {
     console.log($('.check').length);
 
 
-    //답글
+
     $div.append(text);
+    $(".total").html(total);
+    if ($('.check').length == 0){
+        $(".no-comment").show()
+    }else{$(".no-comment").hide()}
+    //
+    // if($('.check').length > 5){
+    //     $(".more-container").show()
+    // }else {$(".more-container").hide()}
 }
 
 function elapsedTime(date) {

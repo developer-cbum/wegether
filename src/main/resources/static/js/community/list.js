@@ -6,8 +6,6 @@
     showList();
 
 
-
-
     $('.search-button').on("click", function () {
         keyword = $(".search-input").val();
         console.log(keyword)
