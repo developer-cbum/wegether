@@ -80,13 +80,12 @@ public class DataServiceImpl implements DataService {
 //    자료 결제 페이지
     @Override
     public Optional<DataDTO> readDataPay(Long id) {
-        final Optional<DataDTO> foundMember = dataDAO.findById(id);
+        final Optional<DataDTO> foundMember = dataDAO.findByIdDataPay(id);
         if(foundMember.isPresent()){
             foundMember.get().setMemberId(2L);
         }
         return foundMember;
 
-//        return dataDAO.findByIdDataPay(id);
     }
 
 
