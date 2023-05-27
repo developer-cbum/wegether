@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" href="../../static/css/community/community-detail.css" />
         <title>커뮤니티디테일</title>
         <!-- 와디즈 블로그 css 가져오기 -->
         <link
@@ -41,6 +40,8 @@
         />
         <link rel="stylesheet" href="/css/fix/footer.css">
         <link rel="stylesheet" href="/css/fix/header.css">
+        <link rel="stylesheet" href="/css/modal/modal.css">
+        <link rel="stylesheet" href="/css/community/community-detail.css">
     </head>
     <body style="font-family: Pretendard;">
     <header th:replace="~{/fix/header :: #header}"></header>
@@ -80,8 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="et_pb_section et_pb_section_1_tb_body et_section_regular">
-                                    <div class="et_pb_row et_pb_row_1_tb_body"
-                                         style="margin-left: 398px;">
+                                    <div class="et_pb_row et_pb_row_1_tb_body">
                                         <!-- 내용 부분 -->
                                         <div
                                             class="et_pb_column et_pb_column_4_4 et_pb_column_1_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
@@ -101,7 +101,7 @@
                                             class="et_pb_column et_pb_column_4_4 et_pb_column_2_tb_body et_pb_css_mix_blend_mode_passthrough et-last-child"
                                         ></div>
                                     </div>
-                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px; margin-left: 59rem;">
+                                    <div class="et_pb_row et_pb_row_3_tb_body" style="padding-bottom: 0px; margin-right: 25rem;">
                                         <div
                                             class="et_pb_column et_pb_column_1_2 et_pb_column_3_tb_body et_pb_css_mix_blend_mode_passthrough"
                                         >
@@ -192,13 +192,13 @@
                                                     class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
                                                     href="/community/list"
                                                     style="border: solid 1px;">목록</a>
-                                                <a      th:href="@{/community/modify(id=${community.id})}"
-                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light"
-                                                        style="border: solid 1px;">수정</a>
+                                                <a      href="#"
+                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light modify-button"
+                                                        style="border: solid 1px; display:none;">수정</a>
                                                 <a
-                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light deletebtn"
-                                                        th:href="@{/community/remove(id=${community.id})}"
-                                                        style="border: solid 1px;">삭제</a>
+                                                        class="et_pb_button et_pb_button_0_tb_body et_pb_bg_layout_light deletebtn remove-button"
+                                                        href="#"
+                                                        style="border: solid 1px;  display:none;">삭제</a>
                                             </div>
                                         </div>
                                     </div>
@@ -480,36 +480,37 @@
             </div>
         </div>
     <!-- 모달 부분 -->
-<!--    <div class="modal">-->
-<!--        <div class="warn-modal">-->
-<!--            <div id="content-wrap"></div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
     <footer th:replace="~{/fix/footer :: #footer}"></footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <!--    모달 js    -->
-<!--    <script>-->
-<!--        let modalCheck;-->
-<!--        function showWarnModal(modalMessage) {-->
-<!--            modalCheck = false;-->
-<!--            $('div#content-wrap').html(modalMessage);-->
-<!--            $('div.warn-modal').css('animation', 'popUp 0.5s');-->
-<!--            $('div.modal').css('display', 'flex').hide().fadeIn(500);-->
-<!--            setTimeout(function () {-->
-<!--                modalCheck = true;-->
-<!--            }, 500);-->
-<!--        }-->
+    <script>
+        let modalCheck;
+        function showWarnModal(modalMessage) {
+            modalCheck = false;
+            $('div#content-wrap').html(modalMessage);
+            $('div.warn-modal').css('animation', 'popUp 0.5s');
+            $('div.modal').css('display', 'flex').hide().fadeIn(500);
+            setTimeout(function () {
+                modalCheck = true;
+            }, 500);
+        }
 
-<!--        $('div.modal').on('click', function () {-->
-<!--            if (modalCheck) {-->
-<!--                $('div.warn-modal').css('animation', 'popDown 0.5s');-->
-<!--                $('div.modal').fadeOut(500);-->
-<!--            }-->
-<!--        });-->
+        $('div.modal').on('click', function () {
+            if (modalCheck) {
+                $('div.warn-modal').css('animation', 'popDown 0.5s');
+                $('div.modal').fadeOut(500);
+            }
+        });
 
-<!--    </script>-->
+    </script>
     <script src="js/community/community-reply.js"></script>
+    <script src="js/modal/modal.js"></script>
     <script>
 
         $(function () {
@@ -543,6 +544,26 @@
             member = [[${memberVO}]];
             console.log(member);
         }
+
+        if (session != null && community.memberId == session) {
+            $('.remove-button').css("display", "inline-block");
+            $('.remove-button').on("click", function (e) {
+                e.preventDefault();
+                showWarnModal("<span>삭제되었습니다.<span>")
+                $('.modal').on("click", function () {
+                    location.href = `/community/remove?id=${community.id}`
+                })
+            })
+        }
+
+        if (session != null && community.memberId == session) {
+            $('.modify-button').css("display", "inline-block");
+            $('.modify-button').on("click", function (e) {
+                e.preventDefault();
+                location.href = `/community/modify?id=${community.id}`
+            })
+        }
+
     </script>
     <script src="/js/community/detail.js"></script>
     <script src="/js/community/community-reply.js"></script>
