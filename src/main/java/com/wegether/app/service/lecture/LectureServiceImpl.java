@@ -33,7 +33,7 @@ public class LectureServiceImpl implements LectureService {
 //        위에는 file 테이블 등록
         for (int i = 0; i < lectureDTO.getFiles().size(); i++) {
             lectureDTO.getFiles().get(i).setLectureId(lectureDTO.getId());
-            lectureDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            lectureDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : i == 1 ? FileType.NON_REPRESENTATIVE.name() : FileType.CONTENT_REPRESENTATIVE.name());
             lectureFileDAO.save(lectureDTO.getFiles().get(i));
         }
         log.info(lectureDTO.getFiles().toString());
