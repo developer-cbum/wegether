@@ -14,5 +14,6 @@ public class ConsultingVO {
     private String consultingContent;
     private String consultingCategory;
     private String consultingRegisterDate;
+    private String consultingUpdateDate;
 }
 
