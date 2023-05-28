@@ -27,4 +27,5 @@ public class MemberVO {
     private String fileUuid;
     private String fileName;
     private Long fileSize;
+    private String snsProfile;
 }
