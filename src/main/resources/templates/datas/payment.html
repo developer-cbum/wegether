@@ -260,7 +260,7 @@
                                           <span>
                                              <em class="total_price">
 <!--                                                <span th:text="*{dataPrice}"></span> 원-->
-                                                <span ></span> 원
+                                                <span class="total Button_children__ilFun" th:text="*{dataPrice}"></span> 원
                                              </em>
                                           </span>
 												</dd>
@@ -365,8 +365,8 @@
 									<button id="payButton" type="button"
 											form="payment-submit"
 											class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_lg__1Dftp Button_block__1-g8w PaymentLayout_submitButton__1fQJ4">
-                                 <span>
-                                    <span class="Button_children__ilFun" th:text="*{dataPrice} - *{memberPoint}"></span><span>원 결제하기</span>
+                                 <span class="total_price">
+                                    <span class="total Button_children__ilFun" th:text="*{dataPrice}"></span><span>원 결제하기</span>
                                  </span>
 									</button>
 

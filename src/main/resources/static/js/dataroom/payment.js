@@ -74,7 +74,7 @@ $(function () {
 
         // 최종 금액 (자료금액 - 포인트)
         $(".pointUse span").text(usePoint);
-        $(".total_price span").text(dataPrice - usePoint);
+        $(".total_price .total").text(dataPrice - usePoint);
 
     });
 

@@ -10,6 +10,11 @@
     </insert>
 
     <!--  결제 point insert  -->
+<!--    <insert id="insertPoint">-->
+<!--        INSERT INTO TBL_POINT-->
+<!--        (ID, MEMBER_ID, DATA_ID, POINT_HISTORY, POINT_CATEGORY)-->
+<!--        VALUES(SEQ_POINT.NEXTVAL)-->
+<!--    </insert>-->
 
 
     <!--  결제 member update  -->

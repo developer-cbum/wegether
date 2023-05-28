@@ -10,8 +10,7 @@ $(function () {
            console.log("------------버튼 클릭-------------");
            console.log(dataDTO);
              BootPay.request({
-                 // price: `${data.memberPoint}` == 'true' ? `${datas.memberPoint*count+3000}` : `${productId.productPrice*count}`,
-                 price: `${dataDTO.dataPrice} - ${payVO.payPointUse}`,
+                 price: `${dataDTO.dataPrice}` - `${payVO.payPointUse}`,
                  application_id: "64711afd922c3400236cddb9",
                  name: `${dataDTO.dataTitle}`,
                  phone: `${dataDTO.memberPhoneNumber}`,
@@ -24,7 +23,7 @@ $(function () {
                          item_name: `${dataDTO.dataTitle}`,
                          qty: 1,
                          unique: `${dataDTO.id}`,
-                         price:  `${dataDTO.dataPrice} - ${payVO.payPointUse}`,
+                         price:  `${dataDTO.dataPrice}` - `${payVO.payPointUse}`,
                      }
                  ],
                  user_info: {
