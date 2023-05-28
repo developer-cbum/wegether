@@ -22,6 +22,9 @@ public class MemberVO {
     private String memberSchool;
     private String memberMajor;
     private String memberIntroducing;
-    private long fileId;
     private String memberLoginStatus;
+    private String filePath;
+    private String fileUuid;
+    private String fileName;
+    private Long fileSize;
 }
