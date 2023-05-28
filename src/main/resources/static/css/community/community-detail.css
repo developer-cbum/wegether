@@ -3797,3 +3797,12 @@ body.uiwebview .section_has_divider {
         width: 100% !important;
     }
 }
+
+.CommentForm_container__2bT5x.CommentForm_fold__20KZS .CommentForm_textarea__yw5Av > textarea {
+    padding: 8px 12px 0;
+    height: 100px !important;
+}
+
+.CommentForm_container__2bT5x.CommentForm_fold__20KZS {
+    height: 105px;
+}

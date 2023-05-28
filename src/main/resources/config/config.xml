@@ -13,7 +13,6 @@
         <typeAlias type="com.wegether.app.domain.vo.ConsultingReplyVO" alias="consultingReplyVO"/>
         <typeAlias type="com.wegether.app.domain.vo.ConsultingVO" alias="consultingVO"/>
         <typeAlias type="com.wegether.app.domain.vo.DataFileVO" alias="dataFileVO"/>
-        <typeAlias type="com.wegether.app.domain.vo.DataPayVO" alias="dataPayVO"/>
         <typeAlias type="com.wegether.app.domain.vo.DataVO" alias="dataVO"/>
         <typeAlias type="com.wegether.app.domain.dto.DataDTO" alias="dataDTO"/>
         <typeAlias type="com.wegether.app.domain.vo.FileVO" alias="fileVO"/>

@@ -5,14 +5,16 @@ import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataVO;
+import com.wegether.app.domain.vo.PayVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.data.DataService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
@@ -27,6 +29,7 @@ import java.util.Optional;
 public class DataController {
     private final DataService dataService;
     private final AccountService accountService;
+    private final HttpSession httpSession;
 
 
 //    자료 목록 - 기본
@@ -57,7 +60,6 @@ public class DataController {
     }
 
 
-
     //    자료 상세
     @GetMapping("detail")
     public void read(@RequestParam Long id, Model model, DataDTO dataDTO){
@@ -86,10 +88,55 @@ public class DataController {
     
 //    자료 결제 페이지
     @GetMapping("payment")
-    public void goToPayment(@RequestParam Long id, Model model){;
+    public void goToPayment(@RequestParam Long id,  Model model, PayVO payVO){
         Optional<DataDTO> readDataPay = dataService.readDataPay(id);
+//        if(readDataPay.isPresent()) {
+//            model.addAttribute("dataDTO", readDataPay.get());
+//        }
+
         model.addAttribute("dataDTO", dataService.readDataPay(id).get());
         log.info(readDataPay.get().toString());
+    }
+
+//      결제 완료 - insert pay + member point
+    @PostMapping("payment")
+    @Transactional(rollbackFor = Exception.class)
+    public RedirectView completePay(PayVO payVO, @RequestParam Long memberId, @RequestParam Long payPointUse) {
+//        payVO.setMemberId((Long) httpSession.getAttribute("id"));
+//        model.addAttribute("payVO", dataService.completePay(payVO)) ;
+        dataService.completePay(payVO);
+        dataService.modifyPoint(memberId, payPointUse);
+        return new RedirectView("/datas/list");
+
+    }
+
+
+
+
+
+
+//    찜하기
+    @GetMapping("do-wish")
+    @ResponseBody
+    public void doWish(Long dataId){
+        Long id = (Long) httpSession.getAttribute("id");
+        dataService.doWish(id, dataId);
+    }
+
+//    찜하기 취소
+    @GetMapping("do-not-wish")
+    @ResponseBody
+    public void doNotWish(Long dataId){
+        Long id = (Long) httpSession.getAttribute("id");
+        dataService.doNotWish(id, dataId);
+    }
+
+//    찜 검사
+    @GetMapping("wish")
+    @ResponseBody
+    public boolean checkMyWish(Long dataId){
+        Long id = (Long) httpSession.getAttribute("id");
+        return dataService.getWishId(id, dataId) != null;
     }
 
 
@@ -99,19 +146,6 @@ public class DataController {
 
 
 
-
-//    @PostMapping("modify")
-//    public RedirectView modify(DataDTO dataDTO, RedirectAttributes redirectAttributes){
-//        dataService.modify(dataDTO);
-//        redirectAttributes.addAttribute("id", dataDTO.getId());
-//        return new RedirectView("/data/detail");
-//    }
-//
-//    @PostMapping("remove")
-//    public RedirectView remove(Long id){
-//        dataService.remove(id);
-//        return new RedirectView("/data/list");
-//    }
 
 }
 
