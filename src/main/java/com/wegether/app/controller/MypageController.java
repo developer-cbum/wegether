@@ -1,10 +1,7 @@
 package com.wegether.app.controller;
 
 
-import com.wegether.app.domain.dto.CardDTO;
-import com.wegether.app.domain.dto.DataDTO;
-import com.wegether.app.domain.dto.HeartDTO;
-import com.wegether.app.domain.dto.ProjectDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.CardVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import com.wegether.app.domain.vo.MemberVO;
@@ -40,7 +37,7 @@ public class MypageController {
     @GetMapping("/my-page/my-page")
     public void main(Long id, Model model) {
 
-        model.addAttribute("main", mine.loadMine(2L).get());
+        model.addAttribute("main", mine.loadMine(5L));
     }
 //===========================================================================================================================
 //    비밀번호 재설정
@@ -106,10 +103,10 @@ public class MypageController {
 
     //===========================================================================================================================
 //    기본 정보 설정 페이지 이동
-    @GetMapping("/setting/basic-setting")
-    public void goToBasicSetting(HttpSession session, Model model) {
-        model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
-    }
+//    @GetMapping("/setting/basic-setting")
+//    public void goToBasicSetting(HttpSession session, Model model) {
+//        model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
+//    }
 
 
     @PostMapping("/setting/basic")
@@ -123,13 +120,13 @@ public class MypageController {
 //===========================================================================================================================
 
     //    회원 탈퇴
-    @GetMapping("/setting/member-secession")
-    public void goToWithdrawal(HttpSession session, Model model) {
-
-        model.addAttribute("withdraw", mine.loadMine((Long) session.getAttribute("id")).get());
-
-
-    }
+//    @GetMapping("/setting/member-secession")
+//    public void goToWithdrawal(HttpSession session, Model model) {
+//
+//        model.addAttribute("withdraw", mine.loadMine((Long) session.getAttribute("id")).get());
+//
+//
+//    }
 
 //    회원 탈퇴 완료
 

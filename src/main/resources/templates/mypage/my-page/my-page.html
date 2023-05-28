@@ -128,7 +128,7 @@
                                 </g></svg
                               ><span class="MyWadizSupporterAccumulate_name__1mWXC">포인트</span>
                             </dt>
-                          <dd class="MyWadizSupporterAccumulate_value__1oBSj"><span th:text="${main.point}"></span>P</dd>
+                          <dd class="MyWadizSupporterAccumulate_value__1oBSj"><span th:text="${main.memberPoint}"></span>P</dd>
                           </dl></a
                         >
                       </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                         .                    </div>
@@ -348,5 +348,9 @@
     </section>
 
   </body>
+  <script th:inline="javascript">
+    let main = [[${main}]];
+    console.log(main);
+  </script>
 
 </html>
