@@ -10,9 +10,8 @@ import org.springframework.stereotype.Component;
 public class PointVO {
     private Long id;
     private Long memberId;
+    private Long dataId;
     private Long pointHistory;
     private String pointCategory;
-    private String pointRegisterDate;
-    private Long dataId;
-
+    private String pointRecordDate;
 }

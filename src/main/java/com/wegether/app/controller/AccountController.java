@@ -70,7 +70,6 @@ public class AccountController {
         public RedirectView login(String memberId, String memberPassword, String list, String id, HttpSession session, RedirectAttributes redirectAttributes){
             Optional<Long> foundMember = accountService.login(memberId, memberPassword);
 
-
             //카카오나 네이버 계정으로 일반로그인했을 때
             if(foundMember.isPresent()) {
                 if (accountService.checkId(memberId).get().getMemberLoginStatus().equals("KAKAO") ||

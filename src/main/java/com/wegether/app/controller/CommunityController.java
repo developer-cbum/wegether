@@ -25,6 +25,7 @@ public class CommunityController {
     private final CommunityService communityService;
     private final AccountService accountService;
     private final CommunityReplyService communityReplyService;
+    private final HttpSession session;
 
     @GetMapping("list")
     public void list(){}
@@ -36,7 +37,8 @@ public class CommunityController {
         communityPagination.setPage(communityPagination.getPage());
         communityPagination.setKeyword(communityPagination.getKeyword());
         communityPagination.setTotal(communityService.getTotal(communityPagination));
-        communityPagination.progress(1, 10);
+        communityPagination.progress(1, 9);
+        log.info("======리스트 출력부=======" + communityService.getList(communityPagination).toString());
         return communityService.getList(communityPagination);
     }
 
@@ -46,13 +48,17 @@ public class CommunityController {
     }
 
     @PostMapping("write")
-    public RedirectView register(CommunityDTO communityDTO) {
+    public RedirectView register(CommunityDTO communityDTO, HttpSession session) {
+        communityDTO.setMemberId((Long) session.getAttribute("id"));
         communityService.write(communityDTO);
         return new RedirectView("/community/list");
     }
 
     @GetMapping(value = {"detail", "modify"})
     public void detail(@RequestParam Long id, Model model, CommunityReplyDTO communityReplyDTO){
+        if(session.getAttribute("id") != null){
+            model.addAttribute("memberVO", accountService.getIdAndProfile((Long)session.getAttribute("id")).get());
+        }
         model.addAttribute("memberVO", accountService.getIdAndProfile((1L)).get());
         model.addAttribute("total", communityReplyService.getTotal(id));
         model.addAttribute("community", communityService.getCommunity(id).get());

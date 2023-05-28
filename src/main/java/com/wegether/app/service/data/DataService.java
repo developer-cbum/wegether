@@ -5,6 +5,7 @@ import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataFileVO;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.domain.vo.FileVO;
+import com.wegether.app.domain.vo.PayVO;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,12 +38,22 @@ public interface DataService {
 
     public void dataImageMiddleWrite(DataFileVO dataFileVO);
 
+    //  결제 완료 - insert pay
+    public void completePay(PayVO payVO);
 
-        //    게시글 수정
-//    public void modify(DataDTO dataDTO);
+    //  결제 완료 - member point
+    public void modifyPoint(Long memberId, Long payPointUse);
 
-    //    게시글 삭제
-//    public void remove(Long id);
+
+    //    찜하기
+    public void doWish(Long memberId, Long dataId);
+
+    //    찜하기 취소
+    public void doNotWish(Long memberId, Long dataId);
+
+    //    내가 찜한 자료 검사
+    public Long getWishId(Long memberId, Long dataId);
+
 
     default DataDTO toDTO(DataVO dataVO){
         DataDTO dataDTO = new DataDTO();
@@ -54,7 +65,7 @@ public interface DataService {
         dataDTO.setDataMajor(dataVO.getDataMajor());
         dataDTO.setDataReadCount(dataVO.getDataReadCount());
         dataDTO.setDataRegisterDate(dataVO.getDataRegisterDate());
-        dataVO.setDataUpdateDate(dataVO.getDataUpdateDate());
+        dataDTO.setDataUpdateDate(dataVO.getDataUpdateDate());
         dataDTO.setMemberId(dataVO.getMemberId());
 
         return dataDTO;

@@ -9,9 +9,14 @@ let count = 0;
 let text = "";
 $(window).ready(function (){
     page= 1;
-    load();
+    sendTotal = [total,basicTotal]
+    load(0,sendTotal);
     if(basicTotal>5){
+        console.log("들어옴0");
         $('.more-container').show()
+    }else{
+        console.log("들어옴2")
+        $('.more-container').hide();
     }
 });
 
@@ -489,9 +494,9 @@ function showList(result, replyResult, id) {
                   <div class="CommunityCommentReplyContent_container__ImfPm" style="margin-left: 32px" >
                 <div id="original${replyResult[i].id}" class="CommentUserWrapper_container__10Bt- original-again-container">
                     <div class="CommentUserWrapper_avatar__1MYTO">
-                        <a href="/web/maker/detail/3701904">`
+                        <a href="#">`
 
-                           if(replyResult[i].fileId == null){
+                           if(replyResult[i].fileName == null){
                                 text+= `<div class="Avatar_avatar__1d9Wt" style="width: 40px; height: 40px">
                                     <span class="Avatar_hasImage__2TKl6" style="
                                 background-image:
@@ -518,7 +523,7 @@ function showList(result, replyResult, id) {
                         <div style="display: flex">
                         <div class="CommentUserInfo_container__2G0cq">
                                     <span class="CommentUserInfo_name__3WGGI">
-                                            <a href="/web/maker/detail/3701904">
+                                            <a href="#">
                                                 <strong
                                                 >${replyResult[i].memberNickname}
                                                 </strong>

@@ -37,7 +37,7 @@
 
 
 
-    <!-- 공지사항 이미지 등록 -->
+    <!-- 데이터 이미지 insert -->
     <insert id="dataImageInsert">
         <selectKey keyProperty="id" order="BEFORE" resultType="Long">
             SELECT SEQ_FILE.NEXTVAL FROM DUAL

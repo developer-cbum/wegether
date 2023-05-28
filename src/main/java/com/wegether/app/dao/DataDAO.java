@@ -1,6 +1,8 @@
 package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.*;
+import com.wegether.app.domain.dto.DataDTO;
+import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.mapper.DataMapper;
@@ -45,10 +47,26 @@ public class DataDAO {
         return dataMapper.selectPay(id);
     }
 
+
 // 자료 수정
     public void setData(DataDTO dataDTO){
         dataMapper.updateData(dataDTO);
     }
+    //    찜하기
+    public void saveWish(Long memberId, Long dataId){
+        dataMapper.insertWish(memberId, dataId);
+    }
+    //    찜하기 취소
+    public void deleteWish(Long memberId, Long dataId){
+        dataMapper.deleteWish(memberId, dataId);
+    }
+    //    내가 찜한 자료 검사
+    public Long findWishId(Long memberId, Long dataId){
+        return dataMapper.selectWish(memberId, dataId);
+    }
+
+
+
 
 
 

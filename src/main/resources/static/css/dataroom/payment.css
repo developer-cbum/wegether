@@ -2367,3 +2367,63 @@ button:not(:disabled), input:not(:disabled), input:not(:disabled) + label {
     color: rgba(255, 255, 255, 0.7);
     opacity: 0.45;
 }
+
+/* input */
+#payPointUse {
+    height: 48px;
+    min-height: 48px;
+    display: block;
+    transition-property: border-color,background-color,color;
+    transition-duration: .15s;
+    outline: none;
+    border: 1px solid #dde2e6;
+    border-radius: 3px;
+    background-color: #fff;
+    padding-right: 16px;
+    padding-left: 16px;
+    width: 100%;
+    height: auto;
+    color: #212529;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+
+}
+#payPointUse:active {
+    border-color: #868e96;
+}
+#payPointUse:hover {
+    border-color: #0ab2e7;
+}
+
+/* modal */
+
+div.modal {
+    display: none;
+    position: fixed;
+    flex-direction: column;
+    inset: 0px;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #8586898a;
+}
+
+div.warn-modal {
+    box-sizing: border-box;
+    position: unset;
+    width: 288px;
+    margin: 20vh 0px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(33 35 41 / 12%) 0px 2px 12px;
+    border-radius: 8px;
+}
+
+div.warn-modal { padding: 24px; }
+
+div#content-wrap span { display: block;}

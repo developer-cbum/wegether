@@ -10,104 +10,141 @@
     <link rel="stylesheet" href="/css/fix/footer.css">
 
     <title>프로젝트 스튜디오 | 위게더</title>
-
+    <link href="https://static.wadiz.kr/studio/funding/static/css/5.6aa6dee4.chunk.css" rel="stylesheet" />
+    <link href="https://static.wadiz.kr/studio/funding/static/css/main.2b8a3946.chunk.css" rel="stylesheet" />
+    <link
+            rel="stylesheet" type="text/css"
+            href="https://static.wadiz.kr/studio/funding/static/css/6.eb91f874.chunk.css"
+    />
 
 
 </head>
 <body class="ReactModal__Body--open">
 <header th:replace="~{/fix/header :: #header}"></header>
 <div id="root">
-                <div class="Page_content__1d0Vb">
-                    <section class="Section_container__3md8M spacing-9">
-                        <div style="max-width: 630px">
-                            <div class="Section_header__1qwS7 spacing-4">
-                                <h2 class="Section_title__ikPIm Section_isRequired__F8rij">프로젝트 제목</h2>
-                                <div class="Section_guide__2xeJO"></div>
-                            </div>
-                            <div class="Section_content__3OkLZ">
-                                <div class="TextField_textField__23rCe TextField_md__2zsQn">
-                                    <label></label>
-                                    <div class="TextField_field__1E9vt">
-                                        <input
-                                                placeholder="제목을 입력해 주세요"
-                                                maxlength="40"
-                                                type="text"
-                                                class="Input_input__2kAAL Input_md__3-eZ6"
-                                                aria-invalid="false"
-                                                value=""
-                                        />
-                                    </div>
-                                    <em class="HelperMessage_helperMessage__1qZPy">40자 남음</em>
-                                </div>
-                            </div>
+    <div class="Page_content__1d0Vb">
+        <form
+                class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
+                th:action="@{/project/write}" method="post" th:object="${projectDTO}" name="writeForm"
+        >
+        <section class="Section_container__3md8M spacing-9">
+            <div style="max-width: 630px">
+                <div class="Section_header__1qwS7 spacing-4">
+                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">프로젝트 제목</h2>
+                    <div class="Section_guide__2xeJO"></div>
+                </div>
+                <div class="Section_content__3OkLZ">
+                    <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                        <label></label>
+                        <div class="TextField_field__1E9vt">
+                            <input
+                                    th:field="*{projectTitle}"
+                                    placeholder="제목을 입력해 주세요"
+                                    maxlength="40"
+                                    type="text"
+                                    class="Input_input__2kAAL Input_md__3-eZ6"
+                                    aria-invalid="false"
+                                    value=""
+                            />
                         </div>
-                    </section>
+                        <em class="HelperMessage_helperMessage__1qZPy">40자 남음</em>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- [S] member -->
-                    <section class="Section_container__3md8M spacing-9">
-                        <div style="max-width: 630px">
-                            <div class="Section_header__1qwS7 spacing-4">
-                                <h2 class="Section_title__ikPIm Section_isRequired__F8rij">프로젝트 인원 수</h2>
-                                <div class="Section_guide__2xeJO"></div>
-                            </div>
-                            <div class="Section_content__3OkLZ">
-                                <div class="TextField_textField__23rCe TextField_md__2zsQn">
-                                    <label></label>
-                                    <div class="TextField_field__1E9vt">
-                                        <input
-                                                placeholder="프로젝트에 필요한 인원 수를 입력해 주세요"
-                                                maxlength="40"
-                                                type="text"
-                                                class="Input_input__2kAAL Input_md__3-eZ6"
-                                                aria-invalid="false"
-                                                value=""
-                                        />
-                                    </div>
-                                    <em class="HelperMessage_helperMessage__1qZPy"></em>
-                                </div>
-                            </div>
+        <!-- [S] member -->
+        <section class="Section_container__3md8M spacing-9">
+            <div style="max-width: 630px">
+                <div class="Section_header__1qwS7 spacing-4">
+                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">프로젝트 인원 수</h2>
+                    <div class="Section_guide__2xeJO"></div>
+                </div>
+                <div class="Section_content__3OkLZ">
+                    <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                        <label></label>
+                        <div class="TextField_field__1E9vt">
+                            <input
+                                    th:field="*{projectReadCount}"
+                                    placeholder="프로젝트에 필요한 인원 수를 입력해 주세요"
+                                    maxlength="40"
+                                    type="text"
+                                    class="Input_input__2kAAL Input_md__3-eZ6"
+                                    aria-invalid="false"
+                                    value=""
+                            />
                         </div>
-                        <div class="Section_guideMessage__3XqrM">
-                            <h4>함께할 프로젝트 인원 모으기</h4>
-                            <p>설정한 프로젝트 인원 수가 채워지면 자동으로 프로젝트 신청이 마감돼요.</p>
-                            <p>함께 하고싶은 인원만큼 설정해주세요.</p>
+                        <em class="HelperMessage_helperMessage__1qZPy"></em>
+                    </div>
+                </div>
+            </div>
+            <div class="Section_guideMessage__3XqrM">
+                <h4>함께할 프로젝트 인원 모으기</h4>
+                <p>설정한 프로젝트 인원 수가 채워지면 자동으로 프로젝트 신청이 마감돼요.</p>
+                <p>함께 하고싶은 인원만큼 설정해주세요.</p>
+            </div>
+        </section>
+        <!-- [E] member -->
+            <section class="Section_container__3md8M spacing-9">
+                <div style="max-width: 630px">
+                    <div class="Section_header__1qwS7 spacing-4">
+                        <h2 class="Section_title__ikPIm Section_isRequired__F8rij">학교</h2>
+                        <div class="Section_guide__2xeJO"></div>
+                    </div>
+                    <div class="Section_content__3OkLZ">
+                        <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                            <label></label>
+                            <div class="TextField_field__1E9vt">
+                                <input
+                                        th:field="*{projectSchool}"
+                                        placeholder="학교를 입력해 주세요"
+                                        maxlength="40"
+                                        type="text"
+                                        class="Input_input__2kAAL Input_md__3-eZ6"
+                                        aria-invalid="false"
+                                        value=""
+                                />
+                            </div>
+                            <em class="HelperMessage_helperMessage__1qZPy"></em>
                         </div>
-                    </section>
-                    <!-- [E] member -->
+                    </div>
+                </div>
+            </section>
+        <!-- [S] project desc -->
+        <section class="Section_container__3md8M spacing-9">
+            <div class="Introduction_container__IWGM7">
+                <div class="Section_header__1qwS7 spacing-4">
+                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">프로젝트 소개</h2>
+                    <div class="Section_guide__2xeJO"></div>
+                </div>
 
-                    <!-- [S] project desc -->
-                    <section class="Section_container__3md8M spacing-9">
-                        <div class="Introduction_container__IWGM7">
-                            <div class="Section_header__1qwS7 spacing-4">
-                                <h2 class="Section_title__ikPIm Section_isRequired__F8rij">프로젝트 소개</h2>
-                                <div class="Section_guide__2xeJO"></div>
-                            </div>
+                <div class="Section_description__10Uwo">
+                    준비하고 계신 프로젝트의 매력을 작성해 주세요.<br/>함께하는 위게더 서포터에게만
+                    제공하는 혜택을 작성해 주세요.
+                </div>
 
-                            <div class="Section_description__10Uwo">
-                                준비하고 계신 프로젝트의 매력을 작성해 주세요.<br/>함께하는 위게더 서포터에게만
-                                제공하는 혜택을 작성해 주세요.
-                            </div>
-
-                            <div class="Introduction_box__2MDXY">
-                                <div class="TextField_textField__23rCe TextField_sm__lHdDB Introduction_campaignFeature__2omWC">
+                <div class="Introduction_box__2MDXY">
+                    <div class="TextField_textField__23rCe TextField_sm__lHdDB Introduction_campaignFeature__2omWC">
                                   <textarea
-                                  placeholder="(특별구성)
+                                          th:field="*{projectIntroducing}"
+                                          placeholder="(특별구성)
                                    위게더에서 ‘00프로젝트’를 함께할 구성원을 찾아요.
                                  00명과 함께 프로젝트를 진행해요.
                                   (단독 프로젝트)
                                   오직 위게더에서만 ‘OO프로젝트를’을 만나볼 수 있어요.
                                         (한정 인원)
                                       00.00.00일까지만 인원 모집합니다."
-                                       maxlength="500"
-                                        rows="2"
-                                     class="Textarea_textarea__2swOj Textarea_sm__L3hnj"
-                                    ></textarea>
-                                    <textarea
-                                            aria-hidden="true"
-                                            readonly=""
-                                            tabindex="-1"
-                                            class="Textarea_textarea__2swOj Textarea_sm__L3hnj"
-                                            style="
+                                          maxlength="500"
+                                          rows="2"
+                                          class="Textarea_textarea__2swOj Textarea_sm__L3hnj"
+                                  ></textarea>
+                        <textarea
+                                th:field="*{projectIntroducing}"
+                                aria-hidden="true"
+                                readonly=""
+                                tabindex="-1"
+                                class="Textarea_textarea__2swOj Textarea_sm__L3hnj"
+                                style="
                                           visibility: hidden;
                                              position: absolute;
                                             overflow: hidden;
@@ -117,118 +154,149 @@
                                             transform: translateZ(0px);
                                             pointer-events: none;
                                               "
-                                    ></textarea>
-                                </div>
-                                <em class="HelperMessage_helperMessage__1qZPy">500자 남음</em>
-                            </div>
-                        </div>
-
-                        <div class="Section_guideMessage__3XqrM">
-                            <h4>함께할 프로젝트 소개하기</h4>
-                            <p>프로젝트의 소개를 해주세요.</p>
-                            <p>소개는 제목에 적지 못한 설명글을 작성하면 좋아요.</p>
-                        </div>
-                    </section>
-                    <!-- [E] project desc -->
-                    <section class="Section_container__3md8M" style="max-width: 630px">
-                        <div class="Section_header__1qwS7">
-                            <h2 class="Section_title__ikPIm Section_isRequired__F8rij">썸네일 등록</h2>
-                            <div class="Section_guide__2xeJO"></div>
-                        </div>
-                        <div class="Section_description__10Uwo">자료 대표 사진을 등록해 주세요.</div>
-                        <div class="Section_content__3OkLZ">
-                            <div class="StoryVideoOrImageField_container__1lnfV">
-                                <div class="field Form_field__35I9T required ImageFormField_field__X1jTW StoryImageField_field__3O6yy"
-                                     style="padding-left: 0px">
-                                    <div class="attach-wrap ImageFormField_buttonWrapper__su3pO">
-                                        <label for="upload1" class="attach wz label ImageFileButton_label__3thB2 Label_label__3oH0h">
-                                            <button type="button" class="file_upload_btn wz button gray ImageFileButton_button__3gAHD">
-                                                <i class="icon-camera-o" aria-hidden="true"></i>
-                                                등록하기
-                                            </button>
-                                            <div class="wz input right ImageFileButton_input__1Dnch">
-                                                <img src="" class="thumbnail">
-                                                <div class="x">
-                                                    <img src="/image/project/x.png" >
-                                                </div>
-                                            </div>
-                                        </label>
-                                        <input type="file" id="upload1" class="upload" style="display: none;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
-                        <div class="Section_header__1qwS7 spacing-4">
-                            <h2 class="Section_title__ikPIm Section_isRequired__F8rij">
-                                학과선택
-                            </h2>
-                            <div class="Section_guide__2xeJO"></div>
-                        </div>
-                        <div class="Section_content__3OkLZ">
-                            <div class="TextField_textField__23rCe TextField_md__2zsQn">
-                                <label></label>
-                                <div class="TextField_field__1E9vt">
-                                    <input th:value="*{projectMajor}" type="hidden"
-                                           placeholder="어떤 학과인지 선택해 주세요" maxlength="40"
-                                           class="Input_input__2kAAL Input_md__3-eZ6"
-                                           name="projectMajor" id="dataMajor" value=""
-                                    />
-                                    <div id="projectMajor-div" class=" Input_input__2kAAL Input_md__3-eZ6">어떤 학과인지 선택해 주세요</div>
-                                    <!-- [S] category list -->
-                                    <div class="select-menu__menu css-1gwc4zc-menu select_category_wrap" style="display: none;">
-                                        <ul class="select_category_lists">
-                                            <li class="computer select_category">
-                                                <a href="#" project-value="computer" class="" >컴퓨터공학과</a>
-                                            </li>
-                                            <li class="design select_category">
-                                                <a href="#" project-value="design" class="" >디자인학과</a>
-                                            </li>
-                                            <li class="sports select_category">
-                                                <a href="#" project-value="sports" class="" >스포츠과학과</a>
-                                            </li>
-                                            <li class="biology select_category">
-                                                <a href="#" project-value="biology" class="" >생명과학과</a>
-                                            </li>
-                                            <li class="chemistry select_category">
-                                                <a href="#" project-value="chemistry" class="" >화학과</a>
-                                            </li>
-                                            <li class="machine select_category">
-                                                <a href="#" project-value="machine" class="" >기계공학과</a>
-                                            </li>
-                                            <li class="engineering select_category">
-                                                <a href="#" project-value="engineering" class="" >전기공학과</a>
-                                            </li>
-                                            <li class="math select_category">
-                                                <a href="#" project-value="math" class="" >수학과</a>
-                                            </li>
-                                            <li class="media select_category">
-                                                <a href="#" project-value="media" class="" >미디어영상학과</a>
-                                            </li>
-                                            <li class="applied_music select_category">
-                                                <a href="#" project-value="applied_music" class="" >실용음악과</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <button class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_xl__2x3J_"
-                            type="button"
-                            style="width: 420px; max-width: 100%">
-                        <span class="Button_children__q9VCZ">저장하기</span>
-                    </button>
+                        ></textarea>
+                    </div>
+                    <em class="HelperMessage_helperMessage__1qZPy">500자 남음</em>
                 </div>
-        </div>
-    <footer th:replace="~{/fix/footer :: #footer}"></footer>
+            </div>
+
+            <div class="Section_guideMessage__3XqrM">
+                <h4>함께할 프로젝트 소개하기</h4>
+                <p>프로젝트의 소개를 해주세요.</p>
+                <p>소개는 제목에 적지 못한 설명글을 작성하면 좋아요.</p>
+            </div>
+        </section>
+
+
+        <!-- [E] project desc -->
+            <section class="Section_container__3md8M" style="max-width: 630px">
+                <div class="Section_header__1qwS7">
+                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">썸네일 등록</h2>
+                    <div class="Section_guide__2xeJO"></div>
+                </div>
+                <div class="Section_description__10Uwo">자료 대표 사진을 등록해 주세요.</div>
+                <div class="Section_content__3OkLZ">
+                    <div class="StoryVideoOrImageField_container__1lnfV">
+                        <div class="field Form_field__35I9T required ImageFormField_field__X1jTW StoryImageField_field__3O6yy"
+                             style="padding-left: 0px">
+                            <div class="attach-wrap ImageFormField_buttonWrapper__su3pO">
+                                <label for="upload1" class="attach wz label ImageFileButton_label__3thB2 Label_label__3oH0h">
+                                    <button type="button" class="file_upload_btn wz button gray ImageFileButton_button__3gAHD">
+                                        <i class="icon-camera-o" aria-hidden="true"></i>
+                                        등록하기
+                                    </button>
+                                    <div class="wz input right ImageFileButton_input__1Dnch">
+                                        <img src="" class="thumbnail">
+                                        <div class="x">
+                                            <img src="/image/proeject/x.png">
+                                        </div>
+
+                                        <h6></h6>
+                                    </div>
+                                </label>
+                                <input type="file" id="upload1" class="upload" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="Section_container__3md8M spacing-9">
+                <div style="max-width: 630px">
+                    <div class="Section_header__1qwS7">
+                        <h2 class="Section_title__ikPIm Section_isRequired__F8rij">프로젝트 종료일</h2>
+                        <div class="Section_guide__2xeJO"></div>
+                    </div>
+                    <div class="Section_description__10Uwo">
+                        프로젝트 심사부터 리워드 제작 기간 등 전체 일정을 고려해 설정해 주세요.
+                    </div>
+                    <div class="Section_content__3OkLZ">
+                        <div>
+                            <div color="basic" class="MessageBox_messageBox__3acWS MessageBox_basic__2vbop spacing-3">
+                        <span><svg
+                                viewBox="0 0 40 40"
+                                focusable="false"
+                                role="presentation"
+                                class="withIcon_icon__1Oal1 MessageBox_icon__31KWI MessageBox_withoutTitle__2S2r8"
+                                aria-hidden="true">
+                            <path fill="none" d="M0 0h40v40H0z"></path>
+                            <path d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm1 28.6h-2v-13h2zm-1-15.84A1.8 1.8 0 1 1 21.8 12a1.8 1.8 0 0 1-1.8 1.76z"></path></svg></span>
+                            </div>
+                            <div
+                                    color="danger"
+                                    class="MessageBox_messageBox__3acWS MessageBox_danger__2ZmKO MessageBox_vertical__1mezf spacing-5">
+                        <span><svg
+                                viewBox="0 0 40 40"
+                                focusable="false"
+                                role="presentation"
+                                class="withIcon_icon__1Oal1 MessageBox_icon__31KWI MessageBox_withoutTitle__2S2r8"
+                                aria-hidden="true">
+                            <path fill="none" d="M0 0h40v40H0z"></path>
+                            </svg></span>
+                            </div>
+                            <div class="DateField_container__2FQ6X">
+                                <div class="ant-picker css-57nriz date-picker" style="width: 100%">
+                                    <div class="ant-picker-input">
+                                        <input
+                                                th:field="*{projectEndDate}"
+                                                maxlength="40"
+                                                placeholder="예시) 2023-05-14"
+                                                title=""
+                                                type="text"
+                                                class="Input_input__2kAAL Input_md__3-eZ6"
+                                                aria-invalid="false"
+                                                value=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="Section_container__3md8M spacing-9">
+                <div style="max-width: 630px">
+                    <div class="Section_header__1qwS7 spacing-4">
+                        <h2 class="Section_title__ikPIm Section_isRequired__F8rij">전공</h2>
+                        <div class="Section_guide__2xeJO"></div>
+                    </div>
+                    <div class="Section_content__3OkLZ">
+                        <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                            <label></label>
+                            <div class="TextField_field__1E9vt">
+                                <input
+                                        th:field="*{projectMajor}"
+                                        placeholder="전공을 입력해 주세요"
+                                        maxlength="40"
+                                        type="text"
+                                        class="Input_input__2kAAL Input_md__3-eZ6"
+                                        aria-invalid="false"
+                                        value=""
+                                />
+                            </div>
+                            <em class="HelperMessage_helperMessage__1qZPy"></em>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="StoryEditorForComingWrapper_container__1cngW"></div>
+        <button class="Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_xl__2x3J_"
+                type="submit"
+                style="width: 420px; max-width: 100%"
+                onclick="check()">
+            <span><span class="Button_children__q9VCZ">등록하기</span></span>
+        </button>
+        </form>
+    </div>
+</div>
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
-    let projects = [[${project}]];
-    let page = [[${projectPagination.page}]]
-    console.log(projects);
+    let memberid = [[${memberId}]];
+    let projectMajor = [[${projectMajor}]];
+    console.log(memberid);
+    console.log(projectMajor);
 </script>
 <script src="/js/project/write.js"></script>
+<script src="/js/project/write-basic.js"></script>
 </body>
 </html>
