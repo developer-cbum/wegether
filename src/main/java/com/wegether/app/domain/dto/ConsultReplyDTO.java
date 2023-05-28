@@ -22,4 +22,5 @@ public class ConsultReplyDTO {
     private String fileUuid;
     private String fileName;
     private String memberLoginStatus;
+    private String snsProfile;
 }
