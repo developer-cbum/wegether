@@ -59,9 +59,9 @@ public class CommunityController {
         if(session.getAttribute("id") != null){
             model.addAttribute("memberVO", accountService.getIdAndProfile((Long)session.getAttribute("id")).get());
         }
-        model.addAttribute("memberVO", accountService.getIdAndProfile((1L)).get());
         model.addAttribute("total", communityReplyService.getTotal(id));
         model.addAttribute("community", communityService.getCommunity(id).get());
+        model.addAttribute("basicReplyTotal", communityReplyService.getTotal(id));
         log.info("===========" + communityReplyDTO);
     }
 

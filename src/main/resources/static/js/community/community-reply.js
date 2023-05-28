@@ -1,17 +1,29 @@
+/*댓글*/
+
+console.log(member);
+// 일단 댓글 등록버튼
+
 const $div = $(".reply-content");
 let page = 1;
 let count = 0;
 let text = "";
-
-
-
 $(window).ready(function (){
     page= 1;
-    load();
+    sendTotal = [total,basicTotal]
+    load(0,sendTotal);
     if(basicTotal>5){
+        console.log("들어옴0");
         $('.more-container').show()
+    }else{
+        console.log("들어옴2")
+        $('.more-container').hide();
     }
 });
+
+// textarea 값 넣기
+$('.content-textarea').on("input", function () {
+    $('.consult-content').val(`${$.trim($(this).val())}`)
+})
 
 //버튼 이벤트
 
@@ -26,13 +38,12 @@ $('.reply-button').on("click", function () {
     $(".total").text(`${total}`);
     $('.content-textarea').val("");
 
-
 })
 
 // 댓글 등록
 function registerReply() {
     $.ajax({
-        url  : '/community-replies/register',
+        url  : '/replies/register',
         type : "post",
         data : JSON.stringify({
             "replyContent": $('#replyContent').val(),
@@ -40,11 +51,12 @@ function registerReply() {
         }),
         contentType: "application/json; charset=UTF-8;",
         success    : function (totals) {
-            $('#replyContent').val("");
             $('.reviewWrite').hide();
+            //댓글이 없습니다 숨기기
+            $('.no-reply').hide();
             //    댓글 최신화
             text=""
-            $(".total").text(`${total}`);
+            $(".total").text(`${totals[0]}`);
             page= 1;
             $div.html("");
             load(0,totals)
@@ -63,24 +75,27 @@ $(document).on('click', '.register-again-reply', function () {
 
     let id = $(this).attr("id");
 
-    // if(session == null){
-    //     showWarnModal("로그인후 이용해주세요");
-    //     return;
-    // }
-    //
-    // if($againReply.val()==""){
-    //     showWarnModal("내용을 작성해주세요");
-    //     return;
-    // }
+    if(session == null){
+        showWarnModal("로그인후 이용해주세요");
+        $('.modal').on("click", function () {
+            location.href = `/accounts/login`;
+        })
+        return;
+    }
+
+    if($againReply.val()==""){
+        showWarnModal("내용을 작성해주세요");
+        return;
+    }
 
 
     $.ajax({
-        url        : '/community-replies/register-again',
+        url        : '/replies/register-again',
         type       : "post",
         data       : JSON.stringify({
             "replyContent": replyContent,
             "communityId": communityId,
-            "replyGroup"  : replyGroup,
+            "replyGroup"  : replyGroup
         }),
         contentType: "application/json; charset=UTF-8;",
         success    : function (total) {
@@ -102,11 +117,14 @@ $(document).on('click', '.register-again-reply', function () {
 
 });
 
+//댓글 리스트
+
+
 /*댓글 불러오기 ajax 함수*/
 function load(id,totals) {
 
     $.ajax({
-        url     : `/community-replies/list/${communityId}/${page}`,
+        url     : `/replies/list/${communityId}/${page}`,
         type    : 'get',
         success : function (result) {
             if(totals) {
@@ -123,7 +141,7 @@ function load(id,totals) {
             if (result) {
                 console.log(result);
                 $.ajax({
-                    url     : `/community-replies/again-list/${communityId}`,
+                    url     : `/replies/again-list/${communityId}`,
                     type    : 'get',
                     success : function (resultResult) {
                         showList(result, resultResult, id);
@@ -145,6 +163,9 @@ function load(id,totals) {
     });
 }
 
+
+
+
 //댓글 수정 버튼
 $(document).on('click', '.modify-button-reply', function () {
     let id = $(this).attr("id");
@@ -159,9 +180,17 @@ $(document).on('click', '.modify-button-reply', function () {
     //취소 버튼
     let $modifyButtonBack = $(this).closest('.CommunityCommentItem_container__BOufe').find('.modify-button-back');
 
+    // 댓글 수정 누른상태면 댓글창 내려온 창숨기기
+    $('.reviewWrite').hide();
 
     //수정폼 보이게 & 원래폼 숨기기
+    //전체 원래 댓글
+    $('.reply-form').show();
+    //원래 댓글
     $replyForm.hide();
+    // 전체 다른 수정폼
+    $('.reviewWrite-modify').hide();
+    //수정폼
     $reviewWriteModify.show();
 
     // 수정폼 숨기기
@@ -172,7 +201,7 @@ $(document).on('click', '.modify-button-reply', function () {
         //수정된 내용
         let replyContent = $modifyReplyText.val();
         $.ajax({
-            url : "/community-replies/modify",
+            url : "/replies/modify",
             type: "put",
             data: JSON.stringify({
                 replyContent :replyContent,
@@ -209,8 +238,18 @@ $(document).on('click', '.reply-again-modify', function () {
     //취소 버튼
     let $againCancle = $(this).closest('.CommunityCommentItem_container__BOufe').find(`#cancle${secondId}`);
 
+    //댓글 작성중이면 눌렀을 떄 다시 숨기기
+    $('.reviewWrite').hide()
+
+
     //수정누르면
+    //전체 원래 댓글
+    $('.original-again-container').show();
+    //원래 댓글
     $originalAgainContainer.hide();
+    // 전체 다른 수정폼
+    $('.again-form').hide();
+    //수정폼
     $replyAgainForm.show();
 
     // 수정누르고 취소 눌러서 폼 다시 원상복귀
@@ -222,7 +261,7 @@ $(document).on('click', '.reply-again-modify', function () {
     $againModifyOkButton.on("click",function () {
         let replyContent = $againReplyModifyText.val();
         $.ajax({
-            url : "/community-replies/modify",
+            url : "/replies/modify",
             type: "put",
             data: JSON.stringify({
                 replyContent: replyContent,
@@ -243,12 +282,13 @@ $(document).on('click', '.reply-again-modify', function () {
 
 });
 
+
 //댓글 삭제 삭제버튼
 $(document).on('click', '.remove-button', function () {
     let id = $(this).attr("id");
     let secondId = $(this).attr("class").split(' ')[1];
     $.ajax({
-        url     : `/community-replies/remove/${id}`,
+        url     : `/replies/remove/${id}`,
         type    : 'delete',
         success : function (totals) {
             console.log(totals);
@@ -268,6 +308,19 @@ $(document).on('click', '.remove-button', function () {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+/*밑에 긴 함수들-------------------------------*/
+
+/*목록생성*/
 function showList(result, replyResult, id) {
 
 
@@ -441,9 +494,9 @@ function showList(result, replyResult, id) {
                   <div class="CommunityCommentReplyContent_container__ImfPm" style="margin-left: 32px" >
                 <div id="original${replyResult[i].id}" class="CommentUserWrapper_container__10Bt- original-again-container">
                     <div class="CommentUserWrapper_avatar__1MYTO">
-                        <a href="/web/maker/detail/3701904">`
+                        <a href="#">`
 
-                    if(replyResult[i].fileId == null){
+                    if(replyResult[i].fileName == null){
                         text+= `<div class="Avatar_avatar__1d9Wt" style="width: 40px; height: 40px">
                                     <span class="Avatar_hasImage__2TKl6" style="
                                 background-image:
@@ -470,7 +523,7 @@ function showList(result, replyResult, id) {
                         <div style="display: flex">
                         <div class="CommentUserInfo_container__2G0cq">
                                     <span class="CommentUserInfo_name__3WGGI">
-                                            <a href="/web/maker/detail/3701904">
+                                            <a href="#">
                                                 <strong
                                                 >${replyResult[i].memberNickname}
                                                 </strong>
@@ -553,8 +606,8 @@ function showList(result, replyResult, id) {
                                                     maxlength="2000"
                                                     rows="2"
                                                     class="Textarea_textarea__2EtST"
-                                                    
-                                            >${replyResult[i].replyContent}</textarea>
+                                                    th:text="${replyResult[i].replyContent}"
+                                            ></textarea>
                                             <div style="
                                                     text-align: right;
                                                     margin-top: 10px;
@@ -703,18 +756,11 @@ function showList(result, replyResult, id) {
     console.log($('.check').length);
 
 
-
+    //답글
     $div.append(text);
-    // $(".total").text(total);
-    if ($('.check').length == 0){
-        $(".no-comment").show()
-    }else{$(".no-comment").hide()}
-    //
-    // if($('.check').length > 5){
-    //     $(".more-container").show()
-    // }else {$(".more-container").hide()}
 }
 
+//방금전
 function elapsedTime(date) {
     const start = new Date(date);
     const end = new Date();
@@ -739,11 +785,46 @@ function elapsedTime(date) {
     return '방금 전';
 }
 
+
+$(function () {
+    <!-- 리뷰 버튼, 답글 버튼 관련 -->
+    $('.reviewButton').on('click', function () {
+        if (session == null) {
+            showWarnModal("로그인 후 이용해주세요");
+            $('.modal').on("click", function () {
+                location.href = `/accounts/login?list=2&id=${communityId}`;
+            })
+            return
+        }
+
+        $('.reviewWrite').show();
+
+        //   다른 원래 댓글만보이게하기기
+        $('.reviewReviewWrite').hide();
+        $('.reviewWrite-modify').hide();
+        $('.reply-form').show();
+
+    });
+
+    $('.reviewButtonBack').on('click', function () {
+        $('.reviewWrite').hide();
+    });
+});
+
+
+
 //답글 버튼눌렀을때
 $(document).on('click', '.reviewReviewButton', function () {
     let reviewWriteElement = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
     let $replyGroup = $(this).closest('.CommunityCommentItem_container__BOufe').find('.replyGroup');
     let replyGroup = $replyGroup.val();
+
+    //댓글 작성창 숨기기
+    $('.reviewWrite').hide();
+
+    //댓글 수정중이면 원래대로 대돌리고 답글 창띄우기
+    $('.reply-form').show();
+    $('.reviewWrite-modify').hide();
     $('.reviewReviewWrite').hide();
     reviewWriteElement.show();
 
@@ -758,6 +839,10 @@ $(document).on('click', '.reviewReviewButtonBack', function () {
     reviewWriteCancle.hide();
     reviewWriteCancle.val("");
 });
+
+
+
+
 
 //더보기클릭
 $('.more-button').on("click", function () {
