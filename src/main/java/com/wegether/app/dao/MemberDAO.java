@@ -37,10 +37,10 @@ public class MemberDAO {
     }
 
     //카카오 로그인 상태 업데이트
-    public void setLoginStatusToKakao(String memberId){memberMapper.updateLoginStatusToKakao(memberId);}
+    public void setLoginStatusToKakao(String memberId, String fileName){memberMapper.updateLoginStatusToKakao(memberId, fileName);}
 
     //네이버 로그인 상태 업데이트
-    public void setLoginStatusToNaver(String memberId){memberMapper.updateLoginStatusToNaver(memberId);}
+    public void setLoginStatusToNaver(String memberId, String fileName){memberMapper.updateLoginStatusToNaver(memberId, fileName);}
 
     // 세션값으로 회원정보찾기
     public Optional<MemberVO> findById(Long id){
