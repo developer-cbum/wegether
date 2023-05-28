@@ -48,12 +48,15 @@ public class KakaoController {
             log.info(kakaoInfo.get("memberId").toString());
             redirectAttributes.addFlashAttribute("memberId", kakaoInfo.get("memberId").toString());
             redirectAttributes.addFlashAttribute("memberPassword", kakaoInfo.get("memberPassword").toString());
+            redirectAttributes.addFlashAttribute("profile", kakaoInfo.get("profile").toString());
             return new RedirectView("/accounts/kakao-register");
         }
 
 //        카카오 로그인해서 db에 계정이 있을때
         Optional<Long> foundNumber = accountService.login(kakaoInfo.get("memberId").toString(), kakaoInfo.get("memberPassword").toString());
         if(foundNumber.isPresent()){
+            log.info(kakaoInfo.get("profile").toString());
+            accountService.changeLoginStatusToKakao(kakaoInfo.get("memberId").toString(), kakaoInfo.get("profile").toString());
             session.setAttribute("id", foundNumber.get());
         }
 

@@ -204,7 +204,7 @@ text-align: right;">
                                                                     ></span></div
                                                                 >
 <!--                                                        프로필이 있을때-->
-                                                                <div th:if="${memberVO != null && memberVO.fileName != null}"
+                                                                <div th:if="${memberVO != null && memberVO.filePath != null}"
                                                                      class="Avatar_avatar__1d9Wt"
                                                                      style="width: 36px; height: 36px"
                                                                 >
@@ -216,6 +216,20 @@ text-align: right;">
                                                                            ' "
                                                                     ></span></div
                                                                 >
+
+                                                                <div th:if="${memberVO != null && memberVO.fileName != null}"
+                                                                     class="Avatar_avatar__1d9Wt"
+                                                                     style="width: 36px; height: 36px"
+                                                                >
+                                                                    <span
+                                                                            class="Avatar_hasImage__2TKl6 hi"
+                                                                            th:style="'
+                                                                            background-image: url(' + ${memberVO.fileName} + ');
+                                                                            border: 1px solid rgb(221, 226 , 230);
+                                                                           ' "
+                                                                    ></span></div
+                                                                >
+
 <!--                                                                -->
                                                             </a>
                                                         </div>
