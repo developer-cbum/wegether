@@ -37,7 +37,8 @@ public class CommunityController {
         communityPagination.setPage(communityPagination.getPage());
         communityPagination.setKeyword(communityPagination.getKeyword());
         communityPagination.setTotal(communityService.getTotal(communityPagination));
-        communityPagination.progress(1, 15);
+        communityPagination.progress(1, 9);
+        log.info("======리스트 출력부=======" + communityService.getList(communityPagination).toString());
         return communityService.getList(communityPagination);
     }
 

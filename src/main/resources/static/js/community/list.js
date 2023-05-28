@@ -23,23 +23,20 @@ $registerButton.on("click", function () {
 $('.search-button').on("click", function () {
     keyword = $(".search-input").val();
     console.log(keyword)
+    $(".block_extended").html("");
     showList();
 })
+
+
 $(window).scroll(function(){
     if (Math.ceil(window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-        if($(".comment-wrap").length == 0){
-            showWarnModal("더이상 게시글이 없습니다.")
-            page--;
-            console.log(page);
-            showList();
-            return;
-        }
         page++;
         console.log(page);
         showList();
     }
 });
 
+console.log(Math.ceil(window.innerHeight + window.scrollY))
 console.log(page);
 
 
@@ -52,7 +49,6 @@ function showList(){
         contentType: "application/json;charset=utf-8",
         success: function(communities){
             let text = "";
-            $(".block_extended").html("");
             communities.forEach(community => {
                 text += `
            <article
@@ -110,3 +106,4 @@ function showList(){
         }
     })
 }
+

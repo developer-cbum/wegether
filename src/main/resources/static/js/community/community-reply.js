@@ -23,7 +23,8 @@ $('.reply-button').on("click", function () {
 
     //댓글 등록
     registerReply();
-    // $(".total").html(`${total}`);
+    $(".total").text(`${total}`);
+    $('.content-textarea').val("");
 
 
 })
@@ -38,7 +39,7 @@ function registerReply() {
             "communityId": communityId
         }),
         contentType: "application/json; charset=UTF-8;",
-        success    : function (int) {
+        success    : function (totals) {
             $('#replyContent').val("");
             $('.reviewWrite').hide();
             //    댓글 최신화
@@ -46,7 +47,7 @@ function registerReply() {
             $(".total").text(`${total}`);
             page= 1;
             $div.html("");
-            load()
+            load(0,totals)
         }
     })
 }
@@ -704,7 +705,7 @@ function showList(result, replyResult, id) {
 
 
     $div.append(text);
-    $(".total").html(total);
+    // $(".total").text(total);
     if ($('.check').length == 0){
         $(".no-comment").show()
     }else{$(".no-comment").hide()}
