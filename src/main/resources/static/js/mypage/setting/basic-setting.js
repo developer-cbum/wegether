@@ -100,9 +100,9 @@ $('#alertify-o-ok').on('click', function () {
 });
 
 
-// $('.kakao-button').on("click",function () {
-//   console.log("카카오 버튼 들어옴");
-//
-//   location.href="https://kauth.kakao.com/oauth/authorize?client_" +
-//       "id=4d189f87999895c1fba5bb291861d41d&redirect_uri=http://localhost:10000/login&response_type=code";
-// })
+$('.kakao-button').on("click",function () {
+  console.log("카카오 버튼 들어옴");
+
+  location.href="https://kauth.kakao.com/oauth/authorize?client_" +
+      "id=4d189f87999895c1fba5bb291861d41d&redirect_uri=http://localhost:10000/login&response_type=code";
+})

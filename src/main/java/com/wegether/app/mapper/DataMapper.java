@@ -56,5 +56,7 @@ public interface DataMapper {
     //    내가 등록한 자료 조회
     public List<DataDTO> selectmydata(Long memberId);
 
+    // 자료 수정
+    public void updateData (DataDTO dataDTO);
 
 }

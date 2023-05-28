@@ -86,10 +86,11 @@
                     ></span
                     ></button
                     >
+                    <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=yPLfiIWc1PIqc4_vQtH5&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Faccounts%2Fnaver-login&amp;state=ec590b74-1b80-4d2f-8d1f-479e00d36538" id="naver_id_login_anchor">
+
                     <button
                             class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_naverButton__1rzZ_ SNSButtonList_spacer__38ac5"
                             type="button"
-                    >
                     <span
                     ><span class="Button_children__raEW4"
                     ><svg
@@ -106,7 +107,7 @@
                     ></span
                     >
                     </button>
-
+                    </a>
                 </div>
                 <!--  <div class="social-account-wrap">
                     <ul>
@@ -154,6 +155,14 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/mypage/setting/basic-setting.js"></script>
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("yPLfiIWc1PIqc4_vQtH5", "http://localhost:10000/accounts/naver-login");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("green", 5, 40);
+    naver_id_login.setDomain("http://localhost:10000");
+    naver_id_login.setState(state);
+    naver_id_login.init_naver_id_login();
+</script>
 <script th:inline="javascript">
     let setting = [[${setting}]];
     // let Id=[[${memberId}]];

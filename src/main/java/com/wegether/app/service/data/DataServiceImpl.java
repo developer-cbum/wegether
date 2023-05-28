@@ -88,10 +88,24 @@ public class DataServiceImpl implements DataService {
 
     }
 
+    @Override
+    public void modify(DataDTO dataDTO) {
+        dataDAO.setData(dataDTO);
+    }
 
 
+    @Override
+    public void dataImageWrite (DataFileDTO dataFileDTO) {
+        dataFileDAO.dataImageSave(dataFileDTO);
+    }
 
-
+    public void dataImageMiddleWrite(DataFileVO dataFileVO) {
+        dataFileDAO.save(dataFileVO);
+    }
+    // 파일 삭제
+    public void fileRemove(Long id){
+        dataFileDAO.delete(id);
+    };
 
 
 //    자료 수정할 때 파일 추가삭제

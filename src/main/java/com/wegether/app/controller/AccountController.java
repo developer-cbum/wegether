@@ -44,7 +44,7 @@ public class AccountController {
     public RedirectView join(MemberVO memberVO, RedirectAttributes redirectAttributes){
         accountService.join(memberVO);
         redirectAttributes.addFlashAttribute("join", "true");
-        return new RedirectView("/account/login");
+        return new RedirectView("/accounts/login");
     }
 
     // 카카오 회원가입
@@ -209,7 +209,9 @@ public class AccountController {
            session.setAttribute("id", memberVO.getId());
         }else if(memberVO.getMemberLoginStatus().equals("WEGETHER")){
 //            회원의 계정을 네이버 계정으로 변경(연동)
-            accountService.changeLoginStatusToNaver((String) session.getAttribute("id"));
+            Long id = (Long) session.getAttribute("id");
+            log.info("=====id: {}", id);
+            accountService.changeLoginStatusToNaver(String.valueOf(id));
         }
     }
 

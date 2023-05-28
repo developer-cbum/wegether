@@ -69,4 +69,10 @@ public class AccountServiceImpl implements AccountService {
     public Optional<ProfileMemberDTO> getIdAndProfile(Long id) {
         return memberDAO.findIdAndProfile(id);
     }
+
+    @Override
+    public void setProfile(MemberVO memberVO) {
+        memberDAO.setProfile(memberVO);
+    }
 }
+

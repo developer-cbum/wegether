@@ -35,7 +35,8 @@ public interface MemberMapper {
     public Optional<ProfileMemberDTO> selectIdAndProfile(Long id);
 
 
-
+// 마이페이지 프로필 설정
+    public void updateProfile(MemberVO memberVO);
 
 
 

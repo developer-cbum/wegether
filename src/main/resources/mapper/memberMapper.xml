@@ -31,7 +31,7 @@
     <update id="updateLoginStatusToKakao">
          UPDATE TBL_MEMBER
         SET MEMBER_LOGIN_STATUS = 'KAKAO'
-        WHERE MEMBER_ID = #{memberId}
+        WHERE ID = #{memberId}
     </update>
 
     <!--   네이버로 로그인 상태 업데이트-->
@@ -57,7 +57,12 @@
             WHERE M.ID = #{id}
     </select>
 
-
+<!--    마이페이지 프로필-->
+    <update id="insertProfile">
+        UPDATE TBL_MEMBER
+        SET MEMBER_SCHOOL=#{memberSchool}, MEMBER_MAJOR=#{memberMajor}, MEMBER_INTRODUCING=#{memberIntroducing}, FILE_ID=#{fileId}, FILE_PATH=#{filePath}, FILE_UUID=#{fileUuid}, FILE_NAME=#{fileName}, FILE_SIZE=#{fileSize}
+        WHERE MEMBER_ID=#{memberId};
+    </update>
 
 
 

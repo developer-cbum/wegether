@@ -20,6 +20,7 @@
 <!--        VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{dataId}, #{fileType})-->
 <!--    </insert>-->
 
+<!--    중간 테이블 인서트-->
     <insert id="insert">
         INSERT INTO TBL_DATA_FILE
         (ID, DATA_ID)
@@ -33,4 +34,18 @@
     <delete id="deleteAll">
         DELETE FROM TBL_FILE WHERE DATA_ID = #{dataId}
     </delete>
+
+
+
+    <!-- 공지사항 이미지 등록 -->
+    <insert id="dataImageInsert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+            SELECT SEQ_FILE.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_FILE
+        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE)
+        VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{fileType})
+    </insert>
+
+
 </mapper>

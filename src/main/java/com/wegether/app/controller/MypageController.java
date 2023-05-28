@@ -2,9 +2,8 @@ package com.wegether.app.controller;
 
 
 import com.wegether.app.domain.dto.*;
-import com.wegether.app.domain.vo.CardVO;
-import com.wegether.app.domain.vo.InquiryVO;
-import com.wegether.app.domain.vo.MemberVO;
+import com.wegether.app.domain.type.FileType;
+import com.wegether.app.domain.vo.*;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.data.DataService;
 import com.wegether.app.service.mypage.*;
@@ -14,8 +13,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
@@ -31,6 +32,8 @@ import java.util.Optional;
 
 public class MypageController {
 
+    private final HttpSession session;
+
 
     //    마이페이지 메인
     private final MineServiceImpl mine;
@@ -38,7 +41,7 @@ public class MypageController {
     @GetMapping("/my-page/my-page")
     public void main(Long id, Model model) {
 
-        model.addAttribute("main", mine.loadMine(5L));
+        model.addAttribute("main", mine.loadMine(3L).get());
     }
 //===========================================================================================================================
 //    비밀번호 재설정
@@ -105,21 +108,20 @@ public class MypageController {
     //===========================================================================================================================
 //    기본 정보 설정 페이지 이동
 
-//    @GetMapping("/setting/basic-setting")
-//    public void goToBasicSetting(HttpSession session, Model model) {
-//        model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
-//    }
+    @GetMapping("/setting/basic-setting")
+    public void goToBasicSetting(HttpSession session, Model model) {
+        model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
+    }
 
 //    @GetMapping("/setting/basic-setting")
 //    public void goToBasicSetting(HttpSession session, Model model) {
 //        model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
 //    }
-
 
 
     @PostMapping("/setting/basic")
-    public RedirectView basicSetting(HttpSession session, MemberDTO memberDTO){
-        mine.modifyBasicSetting((Long)session.getAttribute("id"), memberDTO.getMemberNickname(), memberDTO.getMemberPhoneNumber());
+    public RedirectView basicSetting(HttpSession session, MemberDTO memberDTO) {
+        mine.modifyBasicSetting((Long) session.getAttribute("id"), memberDTO.getMemberNickname(), memberDTO.getMemberPhoneNumber());
         log.info(memberDTO.getMemberNickname());
         log.info(memberDTO.getMemberPhoneNumber());
 
@@ -142,17 +144,17 @@ public class MypageController {
 //    회원 탈퇴 완료
 
     @PostMapping("withdrawMember")
-    public RedirectView goToMain(HttpSession session){
+    public RedirectView goToMain(HttpSession session) {
 
-      mine.changeAccount((Long) session.getAttribute("id"));
-      session.invalidate();
+        mine.changeAccount((Long) session.getAttribute("id"));
+        session.invalidate();
 
-      return new RedirectView("/index/main");
+        return new RedirectView("/index/main");
 
     }
 
 
-//===========================================================================================================================
+    //===========================================================================================================================
     //    서비스 : 간편결제
     private final CardImpl card;
 
@@ -191,8 +193,8 @@ public class MypageController {
 //    문의 등록
 
     @GetMapping("/inquiry/inquiry-register")
-    public void goToRegister(InquiryVO inquiryVO, HttpSession session, Model model){
-        model.addAttribute("inquiry", accountService.getMemberById((Long)session.getAttribute("id")).get().getMemberId());
+    public void goToRegister(InquiryVO inquiryVO, HttpSession session, Model model) {
+        model.addAttribute("inquiry", accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberId());
     }
 
 //    @PostMapping("write")
@@ -219,9 +221,42 @@ public class MypageController {
 
 
     @GetMapping("/my-page/my-data-list")
-    public void goToData(Long memberId, Model model) {
-        model.addAttribute("datas", mine.readMine(1L));
+    public void goToData(HttpSession session, Long id, Model model) {
+        model.addAttribute("datas", mine.readMine((Long) session.getAttribute("id")));
     }
+
+
+    //    내 자료 수정
+    @GetMapping("/datas/modify")
+    public void goToDataModify(Long id, Model model) {
+        model.addAttribute("dataDTO", dataService.read(id).get());
+    }
+
+    @PostMapping("/datas/modify")
+    @Transactional(rollbackFor = Exception.class)
+    public RedirectView modify(DataDTO dataDTO, RedirectAttributes redirectAttributes) {
+        dataService.modify(dataDTO);
+//        파일 추가
+
+        for (int i = 0; i < dataDTO.getFiles().size(); i++) {
+            dataDTO.getFiles().get(i).setDataId(dataDTO.getId());
+            dataDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            dataService.dataImageWrite(dataDTO.getFiles().get(i));
+        }
+        dataDTO.getFiles().forEach(dataFileDTO -> {
+                    DataFileVO dataFileVO = new DataFileVO();
+                    dataFileVO.setId(dataFileDTO.getId());
+                    dataFileVO.setDataId(dataFileDTO.getDataId());
+                    dataService.dataImageMiddleWrite(dataFileVO);
+                }
+        );
+        //        파일 삭제
+        dataDTO.getFileIdsForDelete().forEach(dataService::fileRemove);
+        redirectAttributes.addAttribute("id", dataDTO.getId());
+        return new RedirectView("/datas/detail");
+    }
+
+
 
     //    내 상담
     @GetMapping("/my-page/my-consult-detail")
@@ -324,8 +359,23 @@ public class MypageController {
         return points;
     }
 
+//    프로필 사진 수정
+//    mypage/setting/set-profile
+    @GetMapping("/setting/set-profile")
+    public void goToSetProfileForm(MemberVO memberVO){
+        memberVO.setId((Long)session.getAttribute("id"));
+
+    }
+
+    @PostMapping("/setting/set-profile")
+    public void setProfile(MemberVO memberVO){
+        Long id = (Long)session.getAttribute("id");
+        memberVO.setId(id);
+
+        accountService.setProfile(memberVO);
 
 
+    }
 
 
 

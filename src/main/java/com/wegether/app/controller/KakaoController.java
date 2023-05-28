@@ -40,7 +40,9 @@ public class KakaoController {
             foundMember.ifPresent(member -> {
                 if (member.getMemberLoginStatus().equals("WEGETHER")) {
 //                회원의 계정을 카카오 계정으로 변경(연동)
-                    accountService.changeLoginStatusToKakao((String) session.getAttribute("id"));
+                    Long id = (Long) session.getAttribute("id");
+                    log.info("=====id: {}", id);
+                    accountService.changeLoginStatusToKakao(String.valueOf(id));
                 }
             });
         }

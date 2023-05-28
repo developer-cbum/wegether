@@ -1,17 +1,17 @@
 package com.wegether.app.service.mypage;
 
 import com.wegether.app.dao.*;
-import com.wegether.app.domain.dto.DataDTO;
-import com.wegether.app.domain.dto.DataPagination;
-import com.wegether.app.domain.dto.MemberDTO;
-import com.wegether.app.domain.dto.ProjectDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.ConsultingVO;
+import com.wegether.app.domain.vo.DataFileVO;
 import com.wegether.app.domain.vo.MemberVO;
+import com.wegether.app.domain.vo.NoticeFileVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +25,7 @@ public class MineServiceImpl implements MypageService {
     private final ConsultingDAO consultingDAO;
     private final ProjectDAO projectDAO;
     private final FileDAO fileDAO;
+    private final DataFileDAO dataFileDAO;
 
     @Override
     public void mypage() {
@@ -33,14 +34,14 @@ public class MineServiceImpl implements MypageService {
 
 
 //    마이페이지 메인
-    public MemberDTO loadMine(Long id){
-
-        final MemberDTO data = memberDAO.showmypage(id);
-        data.setFileId(memberDAO.showMyPageProfile(id).getFileId());
-        data.setFilePath(memberDAO.showMyPageProfile(id).getFilePath());
-        data.setFileUuid(memberDAO.showMyPageProfile(id).getFileUuid());
-        data.setFileName(memberDAO.showMyPageProfile(id).getFileName());
-
+    public Optional<MemberDTO> loadMine(Long id){
+//
+        final Optional<MemberDTO> data = memberDAO.showmypage(id);
+//        data.setFileId(memberDAO.showMyPageProfile(id).getFileId());
+//        data.setFilePath(memberDAO.showMyPageProfile(id).getFilePath());
+//        data.setFileUuid(memberDAO.showMyPageProfile(id).getFileUuid());
+//        data.setFileName(memberDAO.showMyPageProfile(id).getFileName());
+//
         return data;
     }
 
@@ -58,7 +59,10 @@ public class MineServiceImpl implements MypageService {
         return datas;
     }
 
-//    기본 설정 변경
+
+
+
+    //    기본 설정 변경
     public void modifyBasicSetting(Long id, String memberNickname, String memberPhoneNumber){
         memberDAO.setBasicSetting(id, memberNickname, memberPhoneNumber);
     }
