@@ -44,7 +44,7 @@ public class AccountController {
     public RedirectView join(MemberVO memberVO, RedirectAttributes redirectAttributes){
         accountService.join(memberVO);
         redirectAttributes.addFlashAttribute("join", "true");
-        return new RedirectView("/account/login");
+        return new RedirectView("/accounts/login");
     }
 
     // 카카오 회원가입
@@ -69,7 +69,6 @@ public class AccountController {
         @PostMapping("login")
         public RedirectView login(String memberId, String memberPassword, String list, String id, HttpSession session, RedirectAttributes redirectAttributes){
             Optional<Long> foundMember = accountService.login(memberId, memberPassword);
-
 
             //카카오나 네이버 계정으로 일반로그인했을 때
             if(foundMember.isPresent()) {
