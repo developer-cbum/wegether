@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/project/main.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/modal/modal.css">
     <title>프로젝트 | 위게더</title>
 
 
@@ -229,8 +230,6 @@
                         </svg>
                     </button>
                 </div>
-
-
             <!-- 페이지 부분 -->
             <div id="paging-wrap">
                 <a th:if="${projectPagination.prev}" th:href="${projectPagination.startPage - 1}" class="proejct-change-page paging paging-move">
@@ -243,22 +242,42 @@
                     <img src="/image/admin/next.png" width="15px"></a>
                 <div></div>
             </div>
-
     </main>
-            <footer th:replace="~{/fix/footer :: #footer}"></footer>
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
 </div>
-
+            <footer th:replace="~{/fix/footer :: #footer}"></footer>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
     let projects = [[${projects}]];
     console.log(projects);
     let projectPagination = [[${projectPagination}]];
     console.log(projectPagination);
-    let session = [[${session.id}]]
+    let session = [[${session.id}]];
 </script>
+<script>
+    let modalCheck;
+    function showWarnModal(modalMessage){
+        modalCheck = false;
+        $("div#content-wrap").html(modalMessage)
+        $("div.warn-modal").css("animation", "popUp 0.5s");
+        $("div.modal").css("display", "flex").hide().fadeIn(500);
+        setTimeout(function(){modalCheck = true;}, 500);
+    }
+
+    $("div.modal").on("click", function(){
+        if(modalCheck){
+            $("div.warn-modal").css("animation", "popDown 0.5s");
+            $("div.modal").fadeOut(500);
+        }
+    });
+</script>
+
 <script src="/js/project/main.js"></script>
 <script>
-
     $("a.proejct-change-page").on("click", function(e){
         e.preventDefault();
         let page = $(this).attr("href");

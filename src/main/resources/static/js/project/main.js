@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     const $listContainer = $("#list-container");
+    let $recentViewContainer = $('.RecentView_container__1boAT');
 
     let text = "";
     projects.forEach(project => {
@@ -129,10 +130,6 @@ $(document).ready(function () {
         load('computer');
     })
 
-    $('.RecentView_container__1boAT').on("click", function () {
-        history.replaceState({}, null, location.pathname);
-    });
-
     function load(categoryType) {
         $.ajax({
             url: `/projects/computer-list/1/${categoryType}`,
@@ -146,7 +143,7 @@ $(document).ready(function () {
     }
 
 // 등록하기폼으로 이동하기 버튼
-    $(".RecentView_container__1boAT").on("click", function () {
+     $recentViewContainer.on("click", function () {
         if (session == null) {
             showWarnModal("<span>로그인 후</span><span>이용해주세요.</span>");
             $('.modal').on("click", () => {
