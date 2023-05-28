@@ -33,12 +33,12 @@
                         $('#memberId').val(memberId);
                         $('#memberName').val(nickname);
                         $('#memberPassword').val(id);
-                        $('#fileName').val(profileImage);
+                        $('#snsProfile').val(profileImage);
                         $('#naver-form').submit();
                     } else if (memberVO != null && memberVO.memberLoginStatus == 'NAVER') {
                         // alert("들어옴")
                        //네이버 로그인 세션담기
-                        memberVO.fileName = profileImage;
+                        memberVO.snsProfile = profileImage;
                         $.ajax({
                             url: "naver-login",
                             type: "POST",
@@ -63,7 +63,7 @@
         <input type="hidden" id="memberId" name="memberId">
         <input type="hidden" id="memberName" name="memberName" >
         <input type="hidden" id="memberPassword" name="memberPassword">
-        <input type="hidden" id="fileName" name="fileName">
+        <input type="hidden" id="snsProfile" name="snsProfile">
     </form>
     </body>
 </html>

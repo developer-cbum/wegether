@@ -54,10 +54,11 @@ public class AccountController {
 
     @PostMapping("kakao-register")
     @Transactional(rollbackFor = Exception.class)
-    public RedirectView joinToKakao(MemberVO memberVO, RedirectAttributes redirectAttributes){
+    public RedirectView joinToKakao(MemberVO memberVO, RedirectAttributes redirectAttributes, HttpSession session){
         accountService.join(memberVO);
-        accountService.changeLoginStatusToKakao(memberVO.getMemberId(), memberVO.getFileName());
+        accountService.changeLoginStatusToKakao(memberVO.getMemberId(), memberVO.getSnsProfile());
         redirectAttributes.addFlashAttribute("join", "true");
+        session.setAttribute("id", accountService.checkId(memberVO.getMemberId()).get().getId());
         return new RedirectView("/index/main");
     }
 
@@ -183,17 +184,17 @@ public class AccountController {
     public void naverLogin(){;}
 
     @PostMapping("naver-register")
-    public void naverRegister(String memberId, String memberName, String memberPassword, String fileName, Model model){
+    public void naverRegister(String memberId, String memberName, String memberPassword, String snsProfile, Model model){
         model.addAttribute("memberId", memberId);
         model.addAttribute("memberName", memberName);
         model.addAttribute("memberPassword", memberPassword);
-        model.addAttribute("fileName", fileName);
+        model.addAttribute("snsProfile", snsProfile);
         ;}
     @PostMapping("naver-join")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView naverJoin(MemberVO memberVO, HttpSession session,RedirectAttributes redirectAttributes){
         accountService.join(memberVO);
-        accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getFileName());
+        accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getSnsProfile());
         Optional<MemberVO> JoinMemberVO = accountService.checkId(memberVO.getMemberId());
         session.setAttribute("id", JoinMemberVO.get().getId());
         redirectAttributes.addFlashAttribute("join", "true");
@@ -206,8 +207,7 @@ public class AccountController {
     public void naverlogin(@RequestBody MemberVO memberVO, HttpSession session){
         if(memberVO.getMemberLoginStatus().equals("NAVER") &&
                 accountService.getMemberById(memberVO.getId()).get() != null){
-                accountService.changeLoginStatusToNaver(accountService.getMemberById(memberVO.getId()).get().getMemberId()
-                        , memberVO.getFileName());
+                accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getSnsProfile());
            session.setAttribute("id", memberVO.getId());
         }
     }

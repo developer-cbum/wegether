@@ -338,7 +338,7 @@ function showList(result, replyResult, id) {
                                      console.log("들어옴33");
                                       text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${reply.fileName}');
+                                                url('${reply.snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -438,7 +438,7 @@ function showList(result, replyResult, id) {
                 console.log("들어옴33");
                 text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${reply.fileName}');
+                                                url('${reply.snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -543,7 +543,7 @@ function showList(result, replyResult, id) {
                         console.log("들어옴33");
                         text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${replyResult[i].fileName}');
+                                                url('${replyResult[i].snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -646,7 +646,7 @@ function showList(result, replyResult, id) {
                                                         console.log("들어옴33");
                                                         text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${member.fileName}');
+                                                url('${member.snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -760,7 +760,7 @@ function showList(result, replyResult, id) {
                                                             console.log("들어옴33");
                                                             text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${member.fileName}');
+                                                url('${member.snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
