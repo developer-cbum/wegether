@@ -9,19 +9,20 @@
         VALUES(SEQ_PAY.NEXTVAL, #{memberId}, #{id}, #{payPointUse})
     </insert>
 
-    <!--  결제 point insert  -->
-<!--    <insert id="insertPoint">-->
-<!--        INSERT INTO TBL_POINT-->
-<!--        (ID, MEMBER_ID, DATA_ID, POINT_HISTORY, POINT_CATEGORY)-->
-<!--        VALUES(SEQ_POINT.NEXTVAL)-->
-<!--    </insert>-->
-
-
     <!--  결제 member update  -->
     <update id="updateMemberPoint">
         UPDATE TBL_MEMBER
         SET MEMBER_POINT = MEMBER_POINT - #{payPointUse}
         WHERE ID = #{memberId}
     </update>
+
+    <!--  결제 point insert  -->
+    <!--  사용, 적립 같이 되어야하고, 사용은 선택, 적립은 무조건  -->
+    <insert id="insertPoint">
+        INSERT INTO TBL_POINT
+        (ID, MEMBER_ID, DATA_ID, POINT_HISTORY, POINT_CATEGORY)
+        VALUES(SEQ_POINT.NEXTVAL, #{memberId}, #{dataId}, pointHistory, pointCategory)
+    </insert>
+
 
 </mapper>

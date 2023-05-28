@@ -2,10 +2,7 @@ package com.wegether.app.service.data;
 
 import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.type.CategoryType;
-import com.wegether.app.domain.vo.DataFileVO;
-import com.wegether.app.domain.vo.DataVO;
-import com.wegether.app.domain.vo.FileVO;
-import com.wegether.app.domain.vo.PayVO;
+import com.wegether.app.domain.vo.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,11 +27,16 @@ public interface DataService {
     //  결제 페이지
     public Optional<DataDTO> readDataPay(Long id);
 
+
     //  결제 완료 - insert pay
     public void completePay(PayVO payVO);
 
     //  결제 완료 - member point
     public void modifyPoint(Long memberId, Long payPointUse);
+
+    //  결제 완료 insert point
+//    사용, 적립 같이 되어야하고, 사용은 선택, 적립은 무조건
+    public void getPoint(PointVO pointVO);
 
 
     //    찜하기
@@ -74,7 +76,7 @@ public interface DataService {
     }
 
 
-}
+}   //E
 
 
 

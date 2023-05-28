@@ -7,10 +7,11 @@ $(function () {
    $('#payButton').on(
          "click",
        function() {
+             let pointUse = $(payPointUse).val();
            console.log("------------버튼 클릭-------------");
            console.log(dataDTO);
              BootPay.request({
-                 price: `${dataDTO.dataPrice}` - `${payVO.payPointUse}`,
+                 price: `${dataDTO.dataPrice- pointUse}`,
                  application_id: "64711afd922c3400236cddb9",
                  name: `${dataDTO.dataTitle}`,
                  phone: `${dataDTO.memberPhoneNumber}`,
@@ -23,7 +24,7 @@ $(function () {
                          item_name: `${dataDTO.dataTitle}`,
                          qty: 1,
                          unique: `${dataDTO.id}`,
-                         price:  `${dataDTO.dataPrice}` - `${payVO.payPointUse}`,
+                         price:  `${dataDTO.dataPrice - pointUse}`,
                      }
                  ],
                  user_info: {

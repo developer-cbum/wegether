@@ -47,7 +47,7 @@
         </selectKey>
         INSERT INTO TBL_DATA
         (ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
-        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, 2)
+        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, #{memberId})
     </insert>
 
     <!--  자료 상세 조회  -->
@@ -79,7 +79,7 @@
             FROM TBL_MEMBER M JOIN TBL_DATA D
             ON M.ID = D.MEMBER_ID JOIN TBL_POINT T
             ON M.ID = T.MEMBER_ID
-        AND D.ID = #{id} AND M.ID = 2
+        AND D.ID = #{id} AND M.ID = #{memberId}
     </select>
 
     <!--찜하기-->
@@ -110,11 +110,7 @@
     </select>
 
 
-
     <!--    소영 마이페이지-내가 업로드한 자료-->
-<!--    </select>-->
-
-<!--    자료 삭제-->
 
 
 </mapper>
