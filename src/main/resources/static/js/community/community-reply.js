@@ -43,7 +43,7 @@ $('.reply-button').on("click", function () {
 // 댓글 등록
 function registerReply() {
     $.ajax({
-        url  : '/replies/register',
+        url  : '/community-replies/register',
         type : "post",
         data : JSON.stringify({
             "replyContent": $('#replyContent').val(),
@@ -90,7 +90,7 @@ $(document).on('click', '.register-again-reply', function () {
 
 
     $.ajax({
-        url        : '/replies/register-again',
+        url        : '/community-replies/register-again',
         type       : "post",
         data       : JSON.stringify({
             "replyContent": replyContent,
@@ -124,7 +124,7 @@ $(document).on('click', '.register-again-reply', function () {
 function load(id,totals) {
 
     $.ajax({
-        url     : `/replies/list/${communityId}/${page}`,
+        url     : `/community-replies/list/${communityId}/${page}`,
         type    : 'get',
         success : function (result) {
             if(totals) {
@@ -141,7 +141,7 @@ function load(id,totals) {
             if (result) {
                 console.log(result);
                 $.ajax({
-                    url     : `/replies/again-list/${communityId}`,
+                    url     : `/community-replies/again-list/${communityId}`,
                     type    : 'get',
                     success : function (resultResult) {
                         showList(result, resultResult, id);
@@ -201,7 +201,7 @@ $(document).on('click', '.modify-button-reply', function () {
         //수정된 내용
         let replyContent = $modifyReplyText.val();
         $.ajax({
-            url : "/replies/modify",
+            url : "/community-replies/modify",
             type: "put",
             data: JSON.stringify({
                 replyContent :replyContent,
@@ -261,7 +261,7 @@ $(document).on('click', '.reply-again-modify', function () {
     $againModifyOkButton.on("click",function () {
         let replyContent = $againReplyModifyText.val();
         $.ajax({
-            url : "/replies/modify",
+            url : "/community-replies/modify",
             type: "put",
             data: JSON.stringify({
                 replyContent: replyContent,
@@ -288,7 +288,7 @@ $(document).on('click', '.remove-button', function () {
     let id = $(this).attr("id");
     let secondId = $(this).attr("class").split(' ')[1];
     $.ajax({
-        url     : `/replies/remove/${id}`,
+        url     : `/community-replies/remove/${id}`,
         type    : 'delete',
         success : function (totals) {
             console.log(totals);
@@ -606,8 +606,8 @@ function showList(result, replyResult, id) {
                                                     maxlength="2000"
                                                     rows="2"
                                                     class="Textarea_textarea__2EtST"
-                                                    th:text="${replyResult[i].replyContent}"
-                                            ></textarea>
+                                                    
+                                            >${replyResult[i].replyContent}</textarea>
                                             <div style="
                                                     text-align: right;
                                                     margin-top: 10px;
@@ -758,6 +758,10 @@ function showList(result, replyResult, id) {
 
     //답글
     $div.append(text);
+    if($(".check").length > 0){
+        $(".no-comment").hide()
+    }else{$(".no-comment").show()}
+    $("#replyContent").val("");
 }
 
 //방금전
@@ -792,7 +796,7 @@ $(function () {
         if (session == null) {
             showWarnModal("로그인 후 이용해주세요");
             $('.modal').on("click", function () {
-                location.href = `/accounts/login?list=2&id=${communityId}`;
+                location.href = `/accounts/login`;
             })
             return
         }
