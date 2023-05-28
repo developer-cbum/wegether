@@ -20,10 +20,10 @@ public interface AccountService {
     public void changePassword(Long id, String memberPassword);
 
     //카카오 로그인 상태 업데이트
-    public void changeLoginStatusToKakao(String memberId);
+    public void changeLoginStatusToKakao(String memberId, String fileName);
 
     //카카오 로그인 상태 업데이트
-    public void changeLoginStatusToNaver(String memberId);
+    public void changeLoginStatusToNaver(String memberId, String fileName);
 
     //아이디 찾기 세션으로
     public Optional<MemberVO> getMemberById(Long id);

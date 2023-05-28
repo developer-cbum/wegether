@@ -17,7 +17,7 @@
             let id = naver_id_login.getProfileData('id');
 
             //프로필 사진 링크로가져옴
-            // let profileImage = naver_id_login.getProfileData('profile_image');
+            let profileImage = naver_id_login.getProfileData('profile_image');
 
             //프로필사진가져옴
             // alert(profileImage);
@@ -26,17 +26,19 @@
                 url: "check-id",
                 type: "POST",
                 data: {
-                    memberId: memberId,
+                    memberId: memberId
                 },
                 success: function (memberVO) {
                     if (memberVO == null) {
                         $('#memberId').val(memberId);
                         $('#memberName').val(nickname);
                         $('#memberPassword').val(id);
+                        $('#fileName').val(profileImage);
                         $('#naver-form').submit();
                     } else if (memberVO != null && memberVO.memberLoginStatus == 'NAVER') {
                         // alert("들어옴")
                        //네이버 로그인 세션담기
+                        memberVO.fileName = profileImage;
                         $.ajax({
                             url: "naver-login",
                             type: "POST",
@@ -61,6 +63,7 @@
         <input type="hidden" id="memberId" name="memberId">
         <input type="hidden" id="memberName" name="memberName" >
         <input type="hidden" id="memberPassword" name="memberPassword">
+        <input type="hidden" id="fileName" name="fileName">
     </form>
     </body>
 </html>
