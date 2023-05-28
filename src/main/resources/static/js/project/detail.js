@@ -41,7 +41,7 @@ $(document).ready(function () {
                             <a href="#" style="cursor:default;"
                                 class="ProjectSearchTags_category__3ofgG ProjectSearchTags_gaElement__1mZHZ"
                                 data-ga-category="스토어(상세)_카테고리" data-ga-action="클릭" data-ga-label="대학교">
-                                <span aria-label="카테고리">${dataDTO.dataSchool}</span>
+                                <span aria-label="카테고리">${projectDTO.projectSchool}</span>
                                 <svg viewBox="0 0 40 40" focusable="false" role="presentation"
                                     class="withIcon_icon__3VTbq" aria-hidden="true"
                                     style="width: 18px; height: 18px;">
@@ -56,7 +56,7 @@ $(document).ready(function () {
                                         <span class="Button_children__ilFun">
                                             <div class="ProjectSearchTags_hashTag__2UMo_">
                                                 <span class="ProjectSearchTags_hash__IgbO9">#</span>
-                                                <span>${dataDTO.dataMajor}</span>
+                                                <span>${projectDTO.projectMajor}</span>
                                             </div>
                                         </span>
                                     </span>
@@ -65,15 +65,10 @@ $(document).ready(function () {
                         </div>
                     </div>
                     <div class="DetailInfoHeader_titleInfo__2nx8Q">
-                        <h3 class="DetailInfoHeader_title__i0kaY">${dataDTO.dataTitle}
+                        <h3 class="DetailInfoHeader_title__i0kaY">${projectDTO.projectTitle}
                         </h3>
                     </div>
-                    <div class="DetailInfoHeader_buyInfo__160ZZ">
-                        <em class="DetailInfoHeader_price__2PVzf">
-                            <span>${dataDTO.dataPrice}</span>
-                            <span class="DetailInfoHeader_unit__2s2Vz">원</span>
-                        </em>
-                    </div>
+              
                     <div
                         class="PopBanner_container__1N2VG PopBanner_isClose__2QjOM PopBanner_floating__qMuE3">
                         <div class="PopBanner_header__1Vi-y">
@@ -118,7 +113,7 @@ $(document).ready(function () {
                             type="button">
                             <span>
                                 <span class="Button_children__ilFun">
-                                    <span>구매하기</span>
+                                    <span>참여하기</span>
                                 </span>
                             </span>
                         </button>
@@ -138,8 +133,8 @@ $(document).ready(function () {
                                 </div>
                                 <div class="MakerInfoHeader_texts__3ft0t">
                                     <span
-                                        class="MakerInfoHeader_makerName__2KFTA StoreMakerInfoContainer_makerName__2GZJn">${dataDTO.memberNickname}</span>
-                                    <span class="MakerInfoHeader_subInfo__12Ms6">${dataDTO.memberIntroducing}</span>
+                                        class="MakerInfoHeader_makerName__2KFTA StoreMakerInfoContainer_makerName__2GZJn">${projectDTO.memberId}</span>
+                                    <span class="MakerInfoHeader_subInfo__12Ms6">${projectDTO.memberIntroducing}</span>
                                 </div>
                             </a>
                         </div>
@@ -149,7 +144,7 @@ $(document).ready(function () {
                                 class="SupporterCount_container__2vmwf MakerInfoStatusSection_status__1ILgm">
                                 <span class="SupporterCount_wrapper__3lJE7">
                                     <img class="Rating_icon__1gznE" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMTZ2MTZIMHoiLz4KICAgICAgICA8cGF0aCBkPSJNMiAyaDExLjY2N3YxMS42NjdIMnoiLz4KICAgICAgICA8cGF0aCBkPSJNNy44MzMgMTEuODQxIDUuMDU1IDEzLjU2YS43MjEuNzIxIDAgMCAxLS45OTgtLjI0NC43NDUuNzQ1IDAgMCAxLS4wODYtLjU1NGwuNzU1LTMuMjA1LTIuNDcyLTIuMTQzYS43NDEuNzQxIDAgMCAxLS4wOC0xLjAzNi43MjUuNzI1IDAgMCAxIC40OTQtLjI1NGwzLjI0NS0uMjY0IDEuMjUtMy4wNDJhLjcyMy43MjMgMCAwIDEgMS4zNCAwbDEuMjUgMy4wNDJMMTMgNi4xMjNhLjczOC43MzggMCAwIDEgLjQxNCAxLjI5TDEwLjk0IDkuNTU2bC43NTYgMy4yMDVhLjczNi43MzYgMCAwIDEtLjUzOC44ODYuNzIuNzIgMCAwIDEtLjU0Ny0uMDg5bC0yLjc3OC0xLjcxN3oiIGZpbGw9IiMwMEM0QzQiIGZpbGwtcnVsZT0ibm9uemVybyIvPgogICAgPC9nPgo8L3N2Zz4K" alt="">
-                                    포인트 | ${dataDTO.memberPoint}
+                                    포인트 | ${projectDTO.memberPoint}
                                 </span>
                             </div>
                         </div>
@@ -167,11 +162,11 @@ $(document).ready(function () {
                                 <tbody>
                                     <tr>
                                         <th>소속</th>
-                                        <td>${dataDTO.memberSchool}</td>
+                                        <td>${projectDTO.projectSchool}</td>
                                     </tr>
                                     <tr>
                                         <th>학과</th>
-                                        <td>${dataDTO.memberMajor}</td>
+                                        <td>${projectDTO.projectMajor}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -199,7 +194,7 @@ $(document).ready(function () {
     content += `
 
           <blockquote class="type-default">
-                <p>${dataDTO.dataContent}</p>
+                <p>${projectDTO.projectContent}</p>
             </blockquote>
 
         `
