@@ -73,6 +73,7 @@ lecture.files.forEach((file) => {
                   border: none;
                   cursor: pointer;
                 "/>
+                <br><h3>${lecture.lectureContent}</h3>
           `
     }
 })
