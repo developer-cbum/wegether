@@ -119,9 +119,9 @@
 								<div class="StorePaymentSection_titleContainer__gkoqg">
 									<h3 class="StorePaymentSection_title__DLi4F">포인트 할인</h3>
 								</div>
-								<div
-										class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM">
-									<input type="text" th:value="${payVO.payPointUse}" name="payPointUse"/>
+								<div class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM" style="position: relative;">
+									<input type="text" th:value="${payVO.payPointUse}" name="payPointUse" id="payPointUse"/>
+									<div class="select-menu__placeholder css-1wa3eu0-placeholder">사용 가능한 포인트 : <span th:text="*{memberPoint}"></span></div>
 
 									<!--포인트 없을 때-->
 									<!--                              <div class="select-menu medium">-->
@@ -235,17 +235,18 @@
 												<dt>상품 금액</dt>
 												<dd>
                                           <span>
-                                                         <em class="TitleValuePrice_money__1Tu-B" th:text="*{dataPrice}"></em>원
+											  <em class="TitleValuePrice_money__1Tu-B" th:text="*{dataPrice}"></em>원
                                           </span>
 												</dd>
 											</dl>
 										</div>
 										<div class="TitleValuePrice_container__Hcpla">
-											<dl class="">
+											<dl >
 												<dt>포인트 할인 금액</dt>
 												<dd>
-                                          <span>
-                                             <span th:text="*{memberPoint}"></span>원
+                                          <span class="pointUse">
+<!--                                             <span th:text="${payVO.payPointUse}"></span>원-->
+                                             <span ></span>원
                                           </span>
 												</dd>
 											</dl>
@@ -257,8 +258,9 @@
 												<dt>최종 결제 금액</dt>
 												<dd>
                                           <span>
-                                             <em class="">
-                                                <span th:text="*{dataPrice} - *{memberPoint}"></span> 원
+                                             <em class="total_price">
+<!--                                                <span th:text="*{dataPrice}"></span> 원-->
+                                                <span ></span> 원
                                              </em>
                                           </span>
 												</dd>
@@ -397,6 +399,12 @@
 </div>
 
 <footer th:replace="~{/fix/footer :: #footer}"></footer>
+
+<div class="modal">
+	<div class="warn-modal">
+		<div id="content-wrap"></div>
+	</div>
+</div>
 
 </body>
 
