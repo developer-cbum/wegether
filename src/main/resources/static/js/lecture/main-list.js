@@ -28,7 +28,7 @@ lists.forEach(list => {
                   일시 : ${list.lectureDate} <br> 강연 시간 : ${list.lectureTime} <br>장소 : ${list.lectureLocation} 
                 </p>
                 <p class="SchoolLectureListDesktop_lectureNum__oypsR">
-                  <em>Wegether 강연중</em> 모집 인원 ${list.lectureTotalPersonnel} 명
+                  <em>Wegether 강연</em> 모집 인원 ${list.lectureTotalPersonnel} 명
                 </p>
               </div></a>
           </div>

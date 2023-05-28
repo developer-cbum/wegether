@@ -181,6 +181,10 @@ $(document).on('click', '.modify-button-reply', function () {
     // 댓글 수정 누른상태면 댓글창 내려온 창숨기기
     $('.reviewWrite').hide();
 
+    $('.reviewReviewWrite').hide();
+    $('.again-form').hide();
+    $('.original-again-container').show();
+
     //수정폼 보이게 & 원래폼 숨기기
     //전체 원래 댓글
     $('.reply-form').show();
@@ -908,6 +912,9 @@ $(function () {
             return
         }
 
+        $('.again-form').hide();
+        $('.original-again-container').show();
+
         $('.reviewWrite').show();
 
     //   다른 원래 댓글만보이게하기기
@@ -947,6 +954,10 @@ $(function () {
         console.log("들어옴")
         let reviewWriteCancle = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
         console.log(reviewWriteCancle);
+
+        $('.again-form').hide();
+        $('.original-again-container').show();
+
         reviewWriteCancle.hide();
         reviewWriteCancle.val("");
     });
