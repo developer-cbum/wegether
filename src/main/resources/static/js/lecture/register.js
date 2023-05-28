@@ -18,8 +18,8 @@ $upload.on("change", function(e){
 
     let formData = new FormData();
 
-    sizes[i] = (files[0].size / 1024).toFixed(2);
-    $('.file-size').eq(i).text(sizes[i] + "KB");
+    sizes[i] = files[0].size;
+    $('.file-size').eq(i).text((files[0].size / 1024).toFixed(2) + "KB");
 
     $(files).each((i, file) => {
         formData.append("uploadFile", file);

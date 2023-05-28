@@ -181,6 +181,10 @@ $(document).on('click', '.modify-button-reply', function () {
     // 댓글 수정 누른상태면 댓글창 내려온 창숨기기
     $('.reviewWrite').hide();
 
+    $('.reviewReviewWrite').hide();
+    $('.again-form').hide();
+    $('.original-again-container').show();
+
     //수정폼 보이게 & 원래폼 숨기기
     //전체 원래 댓글
     $('.reply-form').show();
@@ -338,7 +342,7 @@ function showList(result, replyResult, id) {
                                      console.log("들어옴33");
                                       text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${reply.fileName}');
+                                                url('${reply.snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -438,7 +442,7 @@ function showList(result, replyResult, id) {
                 console.log("들어옴33");
                 text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${reply.fileName}');
+                                                url('${reply.snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -543,7 +547,7 @@ function showList(result, replyResult, id) {
                         console.log("들어옴33");
                         text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${replyResult[i].fileName}');
+                                                url('${replyResult[i].snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -646,7 +650,7 @@ function showList(result, replyResult, id) {
                                                         console.log("들어옴33");
                                                         text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${member.fileName}');
+                                                url('${member.snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -760,7 +764,7 @@ function showList(result, replyResult, id) {
                                                             console.log("들어옴33");
                                                             text+= `
                                                 <span class = "Avatar_hasImage__2TKl6" style = "background-image:
-                                                url('${member.fileName}');
+                                                url('${member.snsProfile}');
                                                     border: 1px solid rgb(221, 226, 230);
                                                         width: 35px;
                                                         border-radius: 50%;
@@ -908,6 +912,9 @@ $(function () {
             return
         }
 
+        $('.again-form').hide();
+        $('.original-again-container').show();
+
         $('.reviewWrite').show();
 
     //   다른 원래 댓글만보이게하기기
@@ -947,6 +954,10 @@ $(function () {
         console.log("들어옴")
         let reviewWriteCancle = $(this).closest('.CommunityCommentItem_container__BOufe').find('.reviewReviewWrite');
         console.log(reviewWriteCancle);
+
+        $('.again-form').hide();
+        $('.original-again-container').show();
+
         reviewWriteCancle.hide();
         reviewWriteCancle.val("");
     });

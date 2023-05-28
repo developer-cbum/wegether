@@ -43,13 +43,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void changeLoginStatusToKakao(String memberId, String fileName) {
-        memberDAO.setLoginStatusToKakao(memberId, fileName);
+    public void changeLoginStatusToKakao(String memberId, String snsProfile) {
+        memberDAO.setLoginStatusToKakao(memberId, snsProfile);
     }
 
     @Override
-    public void changeLoginStatusToNaver(String memberId, String fileName) {
-        memberDAO.setLoginStatusToNaver(memberId, fileName);
+    public void changeLoginStatusToNaver(String memberId, String snsProfile) {
+        memberDAO.setLoginStatusToNaver(memberId, snsProfile);
     }
 
     @Override
