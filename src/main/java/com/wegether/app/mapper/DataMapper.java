@@ -29,6 +29,15 @@ public interface DataMapper {
 
 //    결제 페이지
     public Optional<DataDTO> selectPay(Long id);
+    
+//    찜하기
+    public void insertWish(Long memberId, Long dataId);
+//    찜하기 취소
+    public void deleteWish(Long memberId, Long dataId);
+
+//    내가 찜한 자료 검사
+    public Long selectWish(Long memberId, Long dataId);
+
 
 
 

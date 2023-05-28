@@ -288,7 +288,61 @@ $(document).ready(function () {
     $(".media").text("미디어영상학과");
     $(".applied_music").text("실용음악과");
 
+    let dataService = (function(){
+        function checkMyWish(callback){
+            $.ajax({
+                url: `/datas/wish?dataId=${dataId}`,
+                success: function(check){
+                    if(callback){
+                        callback(check);
+                    }
+                }
+            })
+        }
 
+        function doWish(callback){
+            $.ajax({
+                url: `/datas/do-like?dataId=${dataId}`,
+                success: function(){
+                    if(callback){
+                        callback();
+                    }
+                }
+            });
+        }
+
+        function doNotWish(callback){
+            $.ajax({
+                url: `/datas/do-not-like?dataId=${dataId}`,
+                success: function(){
+                    if(callback){
+                        callback();
+                    }
+                }
+            });
+        }
+
+        return {doWish: doWish, doNotWish: doNotWish, checkMyWish, checkMyWish}
+    })();
+
+    function doWish(){
+    //    스타일 변경(찜한 걸로)
+    }
+
+    function doNotWish(){
+    //    스타일 변경(찜 취소한걸로)
+    }
+
+    /*찜하기*/
+    $textContainer.on("click", "#wishlist-btn", function(){
+        dataService.checkMyWish(function(check){
+            if(check){
+                dataService.doWish(doWish);
+            }else{
+                dataService.doNotWish(doNotWish);
+            }
+        });
+    });
 }); //E
 
 
