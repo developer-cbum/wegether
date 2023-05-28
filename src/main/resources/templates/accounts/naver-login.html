@@ -49,10 +49,11 @@
                                 location.href="/index/main";
                             }
                         })
-
+                    } else {
+                        location.href = "/index/main?sns=true";
                     }
 
-                    if (memberVO !=null && (memberVO.memberLoginStatus =='WEGETHER' || memberVO.memberLoginStatus=='KAKAO')){console.log("들어옴")
+                    if (memberVO !=null && (memberVO.memberLoginStatus =='WEGETHER' || memberVO.memberLoginStatus=='KAKAO')){
                         location.href = "/accounts/login?status=false";
                     }
                 }
