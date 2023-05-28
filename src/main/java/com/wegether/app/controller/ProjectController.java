@@ -37,7 +37,7 @@ public class ProjectController {
 
     @PostMapping("write")
     public RedirectView register(ProjectDTO projectDTO) {
-        projectDTO.setMemberId(22L);
+        projectDTO.setMemberId(4L);
         log.info(projectDTO.toString());
         projectService.write(projectDTO);
         return new RedirectView("/project/list");
