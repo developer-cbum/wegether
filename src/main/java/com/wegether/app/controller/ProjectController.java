@@ -31,15 +31,31 @@ public class ProjectController {
     private final ProjectService projectService;
 
 
+    @GetMapping("write")
+    public void goToRegisterForm(ProjectDTO projectDTO, Model model) {;}
+
+
+    @PostMapping("write")
+    public RedirectView register(ProjectDTO projectDTO) {
+        projectDTO.setMemberId(22L);
+        log.info(projectDTO.toString());
+        projectService.write(projectDTO);
+        return new RedirectView("/project/list");
+    }
 
     // 프로젝트 목록
-    @GetMapping("main")
-    public void list(Model model, ProjectPagination projectPagination){
+    @GetMapping(value = {"main", "list"})
+    public List<ProjectDTO> list(Model model, ProjectPagination projectPagination){
+        log.info(projectPagination.toString());
         projectPagination.setTotal(projectService.getProjectTotal());
         projectPagination.progress();
         model.addAttribute("projects", projectService.getList(projectPagination));
+        return projectService.getList(projectPagination);
+        
     }
     
+
+
 
 //    @ResponseBody
 //    @GetMapping("main")
@@ -52,15 +68,17 @@ public class ProjectController {
 
 
 
-    @GetMapping("write")
-    public void goToRegisterForm(ProjectDTO projectDTO, Model model) {;}
-
-
-    @PostMapping("write")
-    public RedirectView register(ProjectDTO projectDTO) {
-        projectService.write(projectDTO);
-        return new RedirectView("/project/list");
-    }
+//    @GetMapping("write")
+//    public void goToRegisterForm(ProjectDTO projectDTO, Model model) {;}
+//
+//
+//    @PostMapping("write")
+//    public RedirectView register(ProjectDTO projectDTO) {
+//        projectDTO.setMemberId((22L);
+//        log.info(projectDTO.toString());
+//        projectService.write(projectDTO);
+//        return new RedirectView("/project/list");
+//    }
 
     @GetMapping("detail")
     public void read(@RequestParam Long id, Model model, ProjectDTO projectDTO){

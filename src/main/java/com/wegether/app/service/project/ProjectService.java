@@ -2,6 +2,7 @@ package com.wegether.app.service.project;
 
 import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.type.CategoryType;
+import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.vo.ProjectVO;
 
@@ -27,6 +28,32 @@ public interface ProjectService {
 
 
 //    public int getTotal();
+
+
+
+//    default ProjectDTO toDTO(ProjectVO projectVO){
+//        ProjectDTO projectDTO = new ProjectDTO();
+//        projectDTO.setId(projectDTO.getId());
+//        projectDTO.setProjectTitle(projectVO.getProjectTitle());
+//        projectDTO.setProjectIntroducing(projectVO.getProjectIntroducing());
+//        projectDTO.setProjectSchool(projectVO.getProjectSchool());
+//        projectDTO.setProjectMajor(projectVO.getProjectMajor());
+//        projectDTO.setProjectReadCount(projectVO.getProjectReadCount());
+//        projectDTO.setProjectRegisterDate(projectVO.getProjectRegisterDate());
+//        projectVO.setProjectUpdateDate(projectVO.getProjectUpdateDate());
+//
+//        return projectDTO;
+//    }
+//
+//    default  ProjectFileDTO toDTO(FileVO fileVO){
+//        ProjectFileDTO projectFileDTO = new ProjectFileDTO();
+//        projectFileDTO.setId(fileVO.getId());
+//        projectFileDTO.setFileName(fileVO.getFileName());
+//        projectFileDTO.setFileUuid(fileVO.getFileUuid());
+//        projectFileDTO.setFileSize(fileVO.getFileSize());
+//        projectFileDTO.setFilePath(fileVO.getFilePath());
+//        return projectFileDTO;
+//    }
 
 }
 
