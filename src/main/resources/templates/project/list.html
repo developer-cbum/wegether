@@ -37,47 +37,40 @@
 </head>
 <body>
 <header th:replace="~{/fix/header :: #header}"></header>
-<body>
-<div id="page-container" style="overflow-y: hidden">
-    <div id="et-boc" class="et-boc">
-        <div id="et-main-area">
-            <div id="main-content">
-                <article id="post-11670" class="post-11670 page type-page status-publish hentry">
-                    <div class="entry-content">
-                        <div class="et-l et-l--post">
-                            <div class="et_builder_inner_content et_pb_gutters3">
-                                <div class="et_pb_section et_pb_section_2 et_section_regular">
-                                    <div class="et_pb_row et_pb_row_1 et_pb_gutters2">
-                                        <div class="et_pb_column et_pb_column_4_4 et_pb_column_2 et_pb_css_mix_blend_mode_passthrough et-last-child"
-                                                style="padding-top: 80px">
-                                            <div class="et_pb_module et_pb_text et_pb_text_2 et_pb_text_align_left et_pb_bg_layout_light">
-                                                <div class="et_pb_text_inner" style="display: flex; justify-content: space-between">
-                                                    <h2><strong>프로젝트</strong></h2>
-                                                    <button class="Button_button__2FuOU Button_secondary__LNLsN Button_contained__2SIAT Button_lg__1Dftp gray CommunityCommentWriteButton_button__3bPl4" type="button">
-                                                                <span><span class="Button_children__ilFun reviewButton"><a href="/project/write">프로젝트 등록</a></span></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="et_pb_with_border et_pb_module et_pb_blog_extras et_pb_blog_extras_0">
-                                                <div class="et_pb_module_inner">
-                                                    <div class="et_pb_posts et_pb_bg_layout_light" data-scroll-top-animation="ajax_load_more,numbered_pagination,filterable_categories">
-                                                        <div class="el-dbe-blog-extra block_extended">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<div id="page-container">
+    <main id="main-app">
+        <div class="MainWrapper_content__GZkTa">
+            <div class="Main_rootContainer__vlVi7">
+                <div></div>
+                <div class="CategoryTab_container__1XTA0 undefined Main_tab__3q3R0" style="top: 0px;">
+                    <div class="TabsMobile_tabRoot__1KBCT">
+                        <div class="TabsMobile_tabsWrapper__3zP94">
+                            <ul class="TabsMobile_tabs__39ewt TabsMobile_hideScrollbar__3v5I5">
+
+                <div class="Main_cardListContainer__1P_Ai">
+                    <div id="list-container" class="CardTable_container__1H8Vc" style="width: calc(100% - 0px); ">
+
+                    </div>
+                    <div style="height: 1px;"></div>
+                </div>
+
+            <div style="height: 160px;"></div>
+                            </ul>
                         </div>
                     </div>
-                </article>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
-</body>
+
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+let projects = [[${projects}]];
+console.log(projects);
+</script>
 <script src="/js/project/list.js"></script>
+
+</body>
 </html>
