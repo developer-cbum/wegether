@@ -31,6 +31,7 @@
         />
         <link rel="stylesheet" href="/css/fix/footer.css">
         <link rel="stylesheet" href="/css/fix/header.css">
+        <link rel="stylesheet" href="/css/modal/modal.css">
     </head>
     <body>
     <header th:replace="~{/fix/header :: #header}"></header>
@@ -80,29 +81,17 @@
                                                                     <!-- 검색창 눌렀을 때 나오는 메뉴 -->
                                                                 </div>
                                                                 <button style="
-                margin-top: 8px;
-                height: 40px;
-                margin-right: 389px;
-                background: #00BBFF;
-                color: white;
-                border: 1px;
-                border-radius: 6px;
-                padding: 13px;
-                " class="register-move-button"> 등록하기
+                                                                    margin-top: 8px;
+                                                                    height: 40px;
+                                                                    margin-right: 389px;
+                                                                    background: #00BBFF;
+                                                                    color: white;
+                                                                    border: 1px;
+                                                                    border-radius: 6px;
+                                                                    padding: 13px;
+                                                                    " class="register-move-button"> 커뮤니티 등록
                                                                 </button>
                                                             </div>
-                                                            <button
-                                                                class="Button_button__2FuOU Button_secondary__LNLsN Button_contained__2SIAT Button_lg__1Dftp gray CommunityCommentWriteButton_button__3bPl4"
-                                                                type="button"
-                                                            >
-                                                                <span
-                                                                    ><span class="Button_children__ilFun reviewButton"
-                                                                        ><a href="/community/write"
-                                                                            >커뮤니티 등록</a
-                                                                        ></span
-                                                                    ></span
-                                                                >
-                                                            </button>
                                                         </div>
                                                     </div>
                                                     <div
@@ -131,11 +120,20 @@
                 </div>
             </div>
         </div>
+    <!-- 모달 부분 -->
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
     <footer th:replace="~{/fix/footer :: #footer}"></footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
     <script th:inline="javascript">
+        let session = [[${session.id}]];
         let communities = [[${communities}]]
     </script>
-    <script src="/js/community/list.js"></script>
+    <script src="/js/modal/modal.js"></script>
+        <script src="/js/community/list.js"></script>
 </html>
