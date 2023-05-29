@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="/css/dataroom/detail.css" />
+	<link rel="stylesheet" href="/css/modal.css" />
 	<link rel="stylesheet" href="/css/fix/header.css">
 	<link rel="stylesheet" href="/css/fix/footer.css">
 
@@ -20,8 +21,16 @@
 
 <header th:replace="~{/fix/header :: #header}"></header>
 	<main id="main-app">
+		<!-- 모달 부분 -->
+		<div class="modal">
+			<div class="warn-modal">
+				<div id="content-wrap"></div>
+			</div>
+		</div>
+
 		<div class="MainWrapper_content__GZkTa">
 			<section th:object="${dataDTO}">
+				<input type="hidden">
 				<div class="MainContainer_root__3gfdh">
 
 					<div id="detail_container" class="DetailHeader_container__3PGje">
@@ -324,6 +333,9 @@
 <script th:inline="javascript">
 	let dataDTO = [[${dataDTO}]];
 	let dataId = [[${dataDTO.id}]];
+	let id = [[${session.id}]];
 </script>
+
+<script src="/js/modal.js"></script>
 <script src="/js/dataroom/detail.js"></script>
 </html>

@@ -32,6 +32,7 @@ public class DataDAO {
     public Optional<DataDTO> findById(Long id){
         return dataMapper.select(id);
     }
+
     //    조회수 증가
     public void viewCountUp(Long id) {dataMapper.updateCount(id);}
 

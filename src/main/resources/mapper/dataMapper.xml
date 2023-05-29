@@ -47,7 +47,7 @@
         </selectKey>
         INSERT INTO TBL_DATA
         (ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_SCHOOL, DATA_MAJOR, MEMBER_ID)
-        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, 2)
+        VALUES(#{id}, #{dataTitle}, #{dataContent}, #{dataPrice}, #{dataSchool}, #{dataMajor}, #{memberId})
     </insert>
 
     <!--  자료 상세 조회  -->
@@ -72,20 +72,14 @@
     </select>
 
     <!--  결제 페이지  -->
-<!--  data / member / point / pay  -->
+    <!--  data / member / point / pay  -->
     <select id="selectPay" resultType="dataDTO">
-        SELECT D.ID, M.ID AS "MEMBER_ID", M.MEMBER_NAME, M.MEMBER_PHONE_NUMBER, M.MEMBER_ID AS "MEMBER_EMAIL",
-            M.MEMBER_POINT, D.DATA_TITLE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_PRICE, M.MEMBER_NIC KNAME, P.PAY_REGISTER_DATE
-            FROM TBL_MEMBER M JOIN TBL_PAY P
-            ON M.ID = P.MEMBER_ID JOIN TBL_DATA D
-=======
         SELECT D.ID, M.ID MEMBER_ID, M.MEMBER_NAME, M.MEMBER_PHONE_NUMBER, M.MEMBER_ID MEMBER_EMAIL,
             M.MEMBER_POINT, D.DATA_TITLE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_PRICE, M.MEMBER_NICKNAME
             FROM TBL_MEMBER M JOIN TBL_DATA D
->>>>>>> master
             ON M.ID = D.MEMBER_ID JOIN TBL_POINT T
             ON M.ID = T.MEMBER_ID
-        AND D.ID = #{id} AND M.ID = 2
+        AND D.ID = #{id} AND M.ID = #{memberId}
     </select>
 
     <!--찜하기-->
@@ -116,8 +110,8 @@
     </select>
 
 
-
     <!--    소영 마이페이지-내가 업로드한 자료-->
+
 
 <!--    자료 수정-->
     <update id="updateData">
