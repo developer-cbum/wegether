@@ -24,10 +24,10 @@ public interface MainMapper {
     public int selectCountOfProject(Search search);
 
 //    자료실 목록
-    public List<MainDTO> searchDSelectAll(@Param("mainDataPagination") MainDataPagination mainDataPagination, @Param("search") Search search);
-
-//    자료실 총 갯수
-    public int selectCountOfData(Search search);
+//    public List<MainDTO> searchDSelectAll(@Param("mainDataPagination") MainDataPagination mainDataPagination, @Param("search") Search search);
+//
+////    자료실 총 갯수
+//    public int selectCountOfData(Search search);
 
 
 

@@ -32,22 +32,22 @@
             </div>
             <div class="MainWrapper_content__GZkTa">
                 <div class="DesktopSearchResult_headContainer__1hnOM">
-                    <div class="DesktopSearchResult_keyword__13uuG">${search.keyword}</div>
-                    <h2>검색결과</h2>
+                    <div class="DesktopSearchResult_keyword__13uuG" th:text = "${search.keyword}"></div>
+                    <h2><small>검색결과</small></h2>
 <!--                    <div class="DesktopSearchResult_number__kryRO"><br><th:block th:text="${mainPagination.total}"></th:block></div>-->
-                    <div class="DesktopSearchResult_unit__24BC1">개</div>
+<!--                    <div class="DesktopSearchResult_unit__24BC1">개</div>-->
                 </div>
                 <!-- 카테고리란 -->
                 <div class="DesktopSearchResult_tabContainer__18T4j">
                     <ul class="SearchResultTabs_tabContainer__3rQre">
-                        <button id="all-btn" type="button">전체</button>
-                        <button id="project-btn" type="button">프로젝트</button>
-                        <button id="data-btn" type="button">자료실</button>
+                        <button id="all-btn" type="button">프로젝트</button>
+<!--                        <button id="project-btn" type="button">프로젝트</button>-->
+<!--                        <button id="data-btn" type="button">자료실</button>-->
                     </ul>
                 </div>
                 <!-- 검색결과가 있을 때 없을 때를 타임리프문으로 처리해주십시오 -->
                 <!-- 검색결과 없을 때 -->
-                <section class="EmptyResult_container__3omiy">
+<!--                <section class="EmptyResult_container__3omiy">-->
 <!--                    <h2>검색결과가 없어요</h2>-->
 <!--                    <h4>새로운 프로젝트를 발견해보세요</h4>-->
 
@@ -85,7 +85,7 @@
 <!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">실용음</div>-->
 <!--                        </div>-->
 <!--                    </div>-->
-                </section>
+<!--                </section>-->
 
                 <!-- 검색결과 있을 때 -->
                     <div>
@@ -100,24 +100,27 @@
                     </div>
                 </div>
             </div>
+<div style="height:200px">
 
+
+</div>
 
 
 <!--             페이지 부분-->
-            <div id="paging-wrap">
-                <a th:if="${mainProjectPagination.prev}" th:href="${mainProjectPagination.startPage - 1}"
-                   class="notice-change-page paging paging-move">
-                    <img src="/image/admin/prev.png" width="15px"></a>
-                <th:block th:each="page:${#numbers.sequence(mainProjectPagination.startPage, mainProjectPagination.endPage)}">
-                    <a th:if="${page eq mainProjectPagination.page}" class="paging paging-checked" th:text="${page}"></a>
-                    <a th:unless="${page eq mainProjectPagination.page}" th:href="${page}"
-                       class="notice-change-page paging" th:text="${page}"></a>
-                </th:block>
-                <a th:if="${mainProjectPagination.next}" th:href="${mainProjectPagination.endPage + 1}"
-                   class="notice-change-page paging paging-move">
-                    <img src="/image/admin/next.png" width="15px"></a>
-                <div></div>
-            </div>
+<!--            <div id="paging-wrap">-->
+<!--                <a th:if="${mainProjectPagination.prev}" th:href="${mainProjectPagination.startPage - 1}"-->
+<!--                   class="notice-change-page paging paging-move">-->
+<!--                    <img src="/image/admin/prev.png" width="15px"></a>-->
+<!--                <th:block th:each="page:${#numbers.sequence(mainProjectPagination.startPage, mainProjectPagination.endPage)}">-->
+<!--                    <a th:if="${page eq mainProjectPagination.page}" class="paging paging-checked" th:text="${page}"></a>-->
+<!--                    <a th:unless="${page eq mainProjectPagination.page}" th:href="${page}"-->
+<!--                       class="notice-change-page paging" th:text="${page}"></a>-->
+<!--                </th:block>-->
+<!--                <a th:if="${mainProjectPagination.next}" th:href="${mainProjectPagination.endPage + 1}"-->
+<!--                   class="notice-change-page paging paging-move">-->
+<!--                    <img src="/image/admin/next.png" width="15px"></a>-->
+<!--                <div></div>-->
+<!--            </div>-->
 
 
             </div>

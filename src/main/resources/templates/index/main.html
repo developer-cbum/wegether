@@ -16,13 +16,14 @@
 <body>
 <header th:replace="~{/fix/header :: #header}"></header>
 <!--       모달추가-->
+
+    <div id="page-container">
+        <main id="main-app">
             <div class="modal">
                 <div class="warn-modal">
                     <div id="content-wrap"></div>
                 </div>
             </div>
-    <div id="page-container">
-        <main id="main-app">
             <div id="header">
             </div>
             <div class="desktop">
@@ -188,16 +189,17 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="/js/index/banner.js"></script>
 <script th:inline="javascript">
     let projects = [[${projects}]];
-    console.log(projects);
+    // console.log(projects);
     let datas = [[${datas}]]
-    console.log(datas);
+    // console.log(datas);
     let communities = [[${communities}]]
-    console.log(communities);
+    // console.log(communities);
     let datards = [[${datards}]]
-    console.log();
+    // console.log();
+    let session = [[${session.id}]];
+    console.log(session);
 </script>
 <!--<script>-->
 <!--     $(function () {-->
@@ -209,6 +211,8 @@
 <script src="/js/index/data.js"></script>
 <script src="/js/index/community.js"></script>
 <script src="/js/index/datards.js"></script>
+<script src="/js/fix/footer.js"></script>
+<script src="/js/index/banner.js"></script>
 
 
 <!--이종문 메인추가-->

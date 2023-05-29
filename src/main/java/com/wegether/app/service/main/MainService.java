@@ -16,11 +16,11 @@ public interface MainService {
 
     public List<MainDTO> mainSPGetList(MainProjectPagination mainProjectPagination, Search search);
 
-    public List<MainDTO> mainSDGetList(MainDataPagination maindataPagination, Search search);
+//    public List<MainDTO> mainSDGetList(MainDataPagination maindataPagination, Search search);
 
     public int getProjectTotal(Search search);
 
-    public int getDataTotal(Search search);
+//    public int getDataTotal(Search search);
 }
 
 
