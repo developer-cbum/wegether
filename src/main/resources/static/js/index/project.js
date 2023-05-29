@@ -12,7 +12,7 @@ $(document).ready(function() {
         <div class="RecommendFundingWrap_card___LnVO">
             <div>
                     <a class="CardType_projectCard__3xhjb CardType_projectCardB__3N8ks"
-                    href="/web/campaign/detail/204506?_refer_section_st=PersonalCurator_0"
+                    href="/project/detail?id=${project.id}"
                     data-ec-list="홈_추천_펀딩" data-ec-id="204506"
                     data-ec-name="저스펙으로 대기업/공기업 취업 성공하는 방법" data-ec-position="0"
                     data-ec-category="출판" data-ec-brand="마이준"

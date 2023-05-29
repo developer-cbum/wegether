@@ -53,10 +53,13 @@
                     ORDER BY P.ID DESC
                  )
             <![CDATA[
-                WHERE ROWNUM <= #{mainPagination.page} * #{mainPagination.rowCount}
+                WHERE ROWNUM <= #{mainProjectPagination.page} * #{mainProjectPagination.rowCount}
             )
-        F WHERE R > (#{mainPagination.page} - 1) * #{mainPagination.rowCount}
+        F WHERE R > (#{mainProjectPagination.page} - 1) * #{mainProjectPagination.rowCount}
         ]]>
+        <if test="search.keyword != null">
+            AND PROJECT_TITLE LIKE '%'||#{search.keyword}||'%'
+        </if>
     </select>
 
 
@@ -80,10 +83,13 @@
                     ORDER BY D.ID DESC
                  )
             <![CDATA[
-                WHERE ROWNUM <= #{mainPagination.page} * #{mainPagination.rowCount}
+                WHERE ROWNUM <= #{mainDataPagination.page} * #{mainDataPagination.rowCount}
             )
-        F WHERE R > (#{mainPagination.page} - 1) * #{mainPagination.rowCount}
+        F WHERE R > (#{mainDataPagination.page} - 1) * #{mainDataPagination.rowCount}
         ]]>
+    <if test="search.keyword != null">
+        AND DATA_TITLE LIKE '%'||#{search.keyword}||'%'
+    </if>
 </select>
 
 <!--자료실 총 갯수-->

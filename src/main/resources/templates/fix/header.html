@@ -39,214 +39,25 @@
                                 <a class="GNBDesktop_link__1AP6q" th:href="@{/datas/list}"><span>자료실</span></a>
                             </li>
                             <li class="GNBDesktop_item__H8bay">
-                                <a class="GNBDesktop_link__1AP6q" th:href="@{/consults/list}"><span>상담소</span></a>
+                                <a class="GNBDesktop_link__1AP6q" th:href="@{/lectures/main}"><span>강연&상담</span></a>
                             </li>
                             <li class="GNBDesktop_item__H8bay">
                                 <a class="GNBDesktop_link__1AP6q" th:href="@{/community/list}"><span>커뮤니티</span></a>
                             </li>
                             <li class="GNBDesktop_item__H8bay">
-                                <div>
-                                    <button class="GNBDesktop_link__1AP6q GNBDesktop_more__39gyV" style="padding-bottom: 11.5px">
-                                        더보기
-                                        <svg viewBox="0 0 40 40" focusable="false" role="presentation"
-                                             class="withIcon_icon__3VTbq GNBDesktop_icon__ZX6B_" aria-hidden="true">
-                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                        </svg>
-                                    </button>
-                                    <!-- 더보기 열었을때 -->
-                                    <div
-                                            class="MoreMenuDesktop_container__1I6Al MoreMenuDesktop_container__1I6Al MoreMenuDesktop_isOpened__17yOy"
-                                            role="navigation" style="display: none">
-                                        <div class="MoreMenuDesktop_innerContainer__xecjO">
-                                            <div class="MoreMenuDesktop_bannerContainer__2XDgI">
-                                                <div class="MoreMenuBanner_container__320Tc" style="background-color: rgb(255, 248, 231)">
-                                                    <div class="MoreMenuBanner_inner__18xuA">
-                                                        <div class="MoreMenuBanner_icon__pjjkW">
-                                                            <svg viewBox="0 0 23 20" fill="none" focusable="false" role="presentation"
-                                                                 class="withIcon_icon__3VTbq" aria-hidden="true">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                      d="M1.7 1.7h19.6v16.6H1.7V1.7zM.5 19.5V.5h22v19H.5zm3.5-7h15v-1.2H4v1.2zm8 3H4v-1.2h8v1.2zM7.5 7.05a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0z">
-                                                                </path>
-                                                            </svg>
-                                                        </div>
-                                                        <div class="MoreMenuBanner_label__1i2Cx">?</div>
-                                                    </div>
-                                                </div>
-                                                <a href="http://makercenter.wadiz.kr/" target="_blank" rel="noreferer noopener"
-                                                   class="MoreMenuBanner_container__320Tc" style="background-color: rgb(233, 236, 239)">
-                                                    <div class="MoreMenuBanner_inner__18xuA">
-                                                        <div class="MoreMenuBanner_icon__pjjkW">
-                                                            <svg viewBox="0 0 18 18" fill="none" focusable="false" role="presentation"
-                                                                 class="withIcon_icon__3VTbq" aria-hidden="true">
-                                                                <path
-                                                                        d="M0 0v18h18V0H0zm17.02 17.02H.98V3.91h16.04v13.11zm0-14.09H.98V.98h16.04v1.95z">
-                                                                </path>
-                                                                <path
-                                                                        d="M6.82 12.64c.31.31.5.67.5.94v2.19h3.36v-2.19c0-.26.19-.63.49-.94.58-.58.9-1.35.9-2.18 0-.83-.32-1.59-.9-2.18-1.2-1.2-3.15-1.2-4.35 0-.58.58-.9 1.35-.9 2.18 0 .83.32 1.59.9 2.17v.01zm2.88 2.14H8.3v-.49h1.4v.49zm-2.18-5.8c.82-.82 2.15-.82 2.96 0 .4.4.61.92.61 1.48 0 .56-.22 1.09-.62 1.48-.21.21-.65.73-.76 1.36H8.27c-.1-.61-.5-1.1-.76-1.36-.4-.4-.61-.92-.61-1.48 0-.56.22-1.09.61-1.48h.01zM14.37 10.03H13v.98h1.37v-.98zM5.01 10.03H3.64v.98h1.37v-.98zM12.672 6.407l-.97.97.694.692.969-.968-.693-.694zM9.49 5.12h-.98v1.37h.98V5.12zM5.326 6.413l-.693.693.968.969.693-.693-.968-.97z">
-                                                                </path>
-                                                            </svg>
-                                                        </div>
-                                                        <div class="MoreMenuBanner_label__1i2Cx">?</div>
-                                                    </div>
-                                                </a>
-                                                <div class="MoreMenuBanner_container__320Tc" style="background-color: rgb(239, 243, 253)">
-                                                    <div class="MoreMenuBanner_inner__18xuA">
-                                                        <div class="MoreMenuBanner_icon__pjjkW">
-                                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                 class="withIcon_icon__3VTbq" aria-hidden="true">
-                                                                <path fill="none" d="M0 0h40v40H0z"></path>
-                                                                <path
-                                                                        d="M38 24.64l-.01-16.26-15.6.01v2.4l11.74-.01L21.37 24.4l-6.53-6.75-12.9 13.2 1.72 1.67 11.17-11.43 6.57 6.79 14.19-15.15.01 11.91H38z">
-                                                                </path>
-                                                            </svg>
-                                                        </div>
-                                                        <div class="MoreMenuBanner_label__1i2Cx">?</div>
-                                                    </div>
-                                                </div>
-                                                <div class="MoreMenuBanner_container__320Tc" style="background-color: rgb(230, 246, 255)">
-                                                    <div class="MoreMenuBanner_inner__18xuA">
-                                                        <div class="MoreMenuBanner_icon__pjjkW">
-                                                            <svg viewBox="0 0 24 24" focusable="false" role="presentation"
-                                                                 class="withIcon_icon__3VTbq" aria-hidden="true">
-                                                                <path
-                                                                        d="M14.559 13.587a3.972 3.972 0 0 1 6.747 2.931 3.792 3.792 0 0 1-.768 2.28l2.808 2.736-.84.858-2.82-2.748a4.014 4.014 0 0 1-2.352.756 3.972 3.972 0 0 1-2.775-6.813zM20.562 2.64v7.926h-1.2V3.84H8.838v17.628h-1.2V9.708H1.674v11.76h-1.2V8.508h7.164V2.64h12.924zm-1.294 11.798a2.772 2.772 0 0 0-4.7 2.08 2.724 2.724 0 0 0 2.766 2.682 2.772 2.772 0 0 0 1.934-4.762zm-13.4.256v1.2H3.492v-1.2h2.376zm0-3.12v1.2H3.492v-1.2h2.376zm7.95-2.52v1.2h-2.652v-1.2h2.652zm3.12-3.12v1.2h-5.772v-1.2h5.772z">
-                                                                </path>
-                                                            </svg>
-                                                        </div>
-                                                        <div class="MoreMenuBanner_label__1i2Cx">?</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="MenuList_container__3ofD- MoreMenuDesktop_moreMenuList__11cPX">
-                                                <h4 class="MenuList_label__qSsts">프로젝트</h4>
-                                                <ul>
-                                                    <li>
-                                                        <a href="/web/wsub/openfunding" class="MenuListItem_button__8-ecU">?학과<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/web/wsub/openfunding" class="MenuListItem_button__8-ecU">A학과<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/web/wsub/openfunding" class="MenuListItem_button__8-ecU">A학과<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/web/wsub/openfunding" class="MenuListItem_button__8-ecU">A학과<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/web/wsub/openfunding" class="MenuListItem_button__8-ecU">A학과<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/web/wsub/openfunding" class="MenuListItem_button__8-ecU">A학과<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/web/wsub/openfunding" class="MenuListItem_button__8-ecU">A학과<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/web/wsub/openfunding" class="MenuListItem_button__8-ecU">A학과<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="MenuList_container__3ofD- MoreMenuDesktop_moreMenuList__11cPX">
-                                                <h4 class="MenuList_label__qSsts">상담소</h4>
-                                                <ul>
-                                                    <li>
-                                                        <a href="https://good-wave.wadiz.kr/" class="MenuListItem_button__8-ecU">강연<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://good-wave.wadiz.kr/" class="MenuListItem_button__8-ecU">실습<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="MenuList_container__3ofD- MoreMenuDesktop_moreMenuList__11cPX">
-                                                <h4 class="MenuList_label__qSsts">바로가기</h4>
-                                                <ul>
-                                                    <li>
-                                                        <a href="/web/wboard/newsBoardList" class="MenuListItem_button__8-ecU">위게더 스토리<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/web/wboard/newsBoardList" class="MenuListItem_button__8-ecU">공지사항<svg
-                                                                viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                                            <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                                        </svg></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                            class="Backdrop_backDrop__3v5kD Backdrop_dimmed__23l4b Backdrop_active__3XGHx GNBDesktop_backdrop__3h5Cq"
-                                            style="display: none"></div>
-                                </div>
+                                <a class="GNBDesktop_link__1AP6q" th:href="@{/notices/list}"><span>공지사항</span></a>
                             </li>
                         </ul>
                         <!-- 검색, 로그인/회원가입, 프로젝트 만들기 -->
                         <div class="web-header-utils">
                             <!-- 검색 -->
                             <div class="DesktopSearchApp_container__2VF9O">
-                                <form>
+                                <form th:action="@{/index/search-list?keyword=${keyword}}">
                                     <div class="SearchController_container__35K5i">
                                         <div class="SearchTag_emptyTag__1Iu7r"></div>
                                         <!-- 검색창 -->
                                     <div class="SearchController_keyword__3FcFo">
-                                        <form th:action="@{/index/search-list}" name="search-form">
-                                            <input type="search" autocomplete="off" placeholder="새로운 일상이 필요하신가요?" name="keyword" value="" />
-                                            <option value=""></option>
-                                            <option value=""></option>
-                                            <option value=""></option>
-                                        </form>
+                                            <input type="search" class="search" id="keyword" autocomplete="off" name="keyword" />
                                     </div>
                                         <!-- 검색 버튼 누르기 -->
                                         <button type="submit" class="SearchController_searchIcon__Zhy7F">
@@ -264,90 +75,32 @@
                             </div>
                             <!-- 로그인/회원가입과 알림/마이페이지는 로그인 여부에 따라 타임리프로 처리해주세요 -->
                             <!-- 로그인/회원가입 -->
-                            <div class="HeaderDesktop_user__3zGmM" style="display: none;">
+
+                            <div th:if="${session.id == null}" class="HeaderDesktop_user__3zGmM">
                                 <div class="HeaderDesktop_user__3zGmM">
                                     <div class="User_container__bqVd2">
-                                        <button type="button" class="User_btnSign__1URTs">로그인</button>
-                                        <button data-event="iam.signup" class="User_btnSign__1URTs">
-                                            회원가입
-                                        </button>
+                                        <button type="button" class="User_btnSign__1URTs"
+                                                th:onclick="|location.href='@{/accounts/login}'|">로그인</button>
+                                        <button data-event="iam.signup" class="User_btnSign__1URTs"
+                                                th:onclick="|location.href='@{/accounts/register}'|">회원가입</button>
                                     </div>
                                 </div>
                             </div>
                             <!-- 알림 -->
-                            <div class="HeaderDesktop_notificationContainer__1iRey">
-                                <div>
-                                    <div class="NotificationButton_container__2nhhV"><button
-                                            class="NotificationButton_btnNotification__2fRCj NotificationButton_showBadge__2Ijpe"
-                                            aria-label="알림"><svg viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                                 class="withIcon_icon__3VTbq withIcon_inline__1lwwX" aria-hidden="true">
-                                        <path fill="none" d="M0 0h40v40H0z"></path>
-                                        <path
-                                                d="M36.78 32l-.89-1.56a16.92 16.92 0 0 1-2.18-8.68v-7.12A12.78 12.78 0 0 0 30 5.54a13.86 13.86 0 0 0-9.91-4 14.05 14.05 0 0 0-9.95 4 12.74 12.74 0 0 0-3.76 9.1v7.14a16.92 16.92 0 0 1-2.18 8.68L3.22 32h10.91a5.58 5.58 0 0 0 .2 2.8 5.75 5.75 0 0 0 4.44 3.86 5.52 5.52 0 0 0 1 .09 5.79 5.79 0 0 0 3.71-1.36 5.7 5.7 0 0 0 2-4.38 4.88 4.88 0 0 0-.11-1zM8.37 21.78v-7.14A10.66 10.66 0 0 1 11.52 7 11.81 11.81 0 0 1 20 3.66 11.92 11.92 0 0 1 28.48 7a10.65 10.65 0 0 1 3.14 7.62v7.14a19.52 19.52 0 0 0 1.67 8.16H6.71a19.52 19.52 0 0 0 1.66-8.14zM23.42 33a3.64 3.64 0 0 1-7.11 1.13 3.41 3.41 0 0 1 0-2.14h7a3.18 3.18 0 0 1 .11 1.01z">
-                                        </path>
-                                    </svg>
-                                        <div class="NotificationButton_badge__2qXaM"></div>
-                                    </button></div>
-                                    <div class="NotificationPopover_container__3nC48 NotificationContainer_active__E29z7"
-                                         style="display: none;">
-                                        <div class="NotificationPopover_content__7-LLx">
-                                            <div class="NotificationList_container__NsGVu"><span
-                                                    class="NotificationList_titleLabel__2sjLv">알림</span>
-                                                <div class="NotificationList_listContainer__1bWY1"><button type="button"
-                                                                                                           class="NotificationListItem_listItem__1jcZ0"><img
-                                                        src="https://cdn3.wadiz.kr/inbox/SYSTEM.png"
-                                                        class="NotificationListItem_typeIcon__H1_cJ">
-                                                    <div class="NotificationListItem_info__1prWn">
-                                                        <div class="NotificationListItem_typeLine__Hzj7b">
-                                                            <div class="NotificationListItem_type__3ROt0">
-                                                                <p>와디즈알림</p>
-                                                            </div>
-                                                            <div class="NotificationListItem_time__1-UA5">6일 전</div>
-                                                        </div>
-                                                        <p class="NotificationListItem_title__1gq8W">리워드 프로젝트를 시작했습니다!</p>
-                                                    </div>
-                                                </button><button type="button" class="NotificationListItem_listItem__1jcZ0"><img
-                                                        src="https://cdn3.wadiz.kr/inbox/RWD_MAKER.png"
-                                                        class="NotificationListItem_typeIcon__H1_cJ">
-                                                    <div class="NotificationListItem_info__1prWn">
-                                                        <div class="NotificationListItem_typeLine__Hzj7b">
-                                                            <div class="NotificationListItem_type__3ROt0">
-                                                                <p>메이커알림·펀딩/프리오더</p>
-                                                            </div>
-                                                            <div class="NotificationListItem_time__1-UA5">6일 전</div>
-                                                        </div>
-                                                        <p class="NotificationListItem_title__1gq8W"><strong>[16억 아렌시아] 한국을 뒤흔든 화제의 떡솝, 역대 1위
-                                                            인생클렌저</strong> 프로젝트에
-                                                            새소식이 등록되었습니다.</p>
-                                                    </div>
-                                                </button></div><button rel="noreferrer noopener"
-                                                                       class="Button_button__2FuOU Button_tertiaryGrey__3jJV7 Button_contained__2SIAT Button_md__46Ai- Button_block__1-g8w NotificationList_btnLink__3BUqf"
-                                                                       type="button"><span><span class="Button_children__ilFun">
-                                <div class="NotificationList_buttonText__1DnDG"><span>알림 전체보기</span><svg
-                                        viewBox="0 0 40 40" focusable="false" role="presentation"
-                                        class="withIcon_icon__3VTbq" aria-hidden="true" style="width: 16px; height: 16px;">
-                                    <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
-                                  </svg>
-                                </div>
-                              </span>
-                                                </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <!-- 마이페이지 -->
-                            <div class="HeaderDesktop_user__3zGmM">
-                                <div class="User_container__bqVd2"><button type="button" class="User_btnAvatar__2Mui-"
-                                                                           aria-label="마이 와디즈">
+                            <div th:unless="${session.id == null}" class="HeaderDesktop_user__3zGmM">
+                                <div class="User_container__bqVd2">
+                                    <button type="button" class="User_btnAvatar__2Mui-" aria-label="마이 와디즈"
+                                            th:onclick="|location.href='@{/project/write}'|">
                                     <div>
                                         <div class="Avatar_avatar__1d9Wt" style="width: 32px; height: 32px;"><span
                                                 class="Avatar_hasImage__2TKl6"
                                                 style="background-image: url(https://www.wadiz.kr/wwwwadiz/green001/sns_profile_pics/20230508164212034_64467953.jpg), url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYzl1cmF3eHIyYSIgZD0iTTAgMGg4MHY4MEgweiIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8Zz4KICAgICAgICAgICAgPG1hc2sgaWQ9IjZ2emt3OXN5NWIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYzl1cmF3eHIyYSIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04MCA0MGMwIDIyLjA5Mi0xNy45MDkgNDAtNDAgNDBTMCA2Mi4wOTIgMCA0MCAxNy45MDkgMCA0MCAwczQwIDE3LjkwOCA0MCA0MCIgZmlsbD0iI0U5RUNFRiIgbWFzaz0idXJsKCM2dnprdzlzeTViKSIvPgogICAgICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJtMjIuMzA1IDI2LjkxNC4yMyAyLjEyMWMtLjAxLjI5LjA0OS41NTkuMTgxLjgwNy4wODUuMjYxLjIyOC40ODUuNDMzLjY3Ni4xOS4yMDMuNDEzLjM0OC42NzQuNDMyLjI0OS4xMzIuNTE5LjE5MS44MDYuMThsLjU1Ny0uMDc1Yy4zNTUtLjA5OS42NjMtLjI3OS45MjQtLjUzN2wuMzI4LS40MjVjLjE5LS4zMjYuMjg1LS42OC4yODctMS4wNTgtLjA3OC0uNzA2LS4xNTQtMS40MTUtLjIzLTIuMTIxLjAxLS4yOS0uMDUtLjU1OS0uMTgtLjgwN2ExLjU3IDEuNTcgMCAwIDAtLjQzNC0uNjc1IDEuNTUzIDEuNTUzIDAgMCAwLS42NzQtLjQzMyAxLjU4NCAxLjU4NCAwIDAgMC0uODA3LS4xOGMtLjE4NS4wMjYtLjM3Mi4wNS0uNTU3LjA3NWEyLjA4MyAyLjA4MyAwIDAgMC0uOTI1LjUzOGwtLjMyNi40MjRjLS4xOS4zMjctLjI4NS42NzktLjI4NyAxLjA1OE01My44ODIgMjcuMzI4djIuNTIyYzAgLjUzOC4yMzMgMS4xMDIuNjEzIDEuNDgyLjE5LjIwMy40MTQuMzQ4LjY3NC40MzMuMjUuMTMuNTE4LjE5LjgwNy4xOC41NDItLjAyNCAxLjEwNC0uMjAyIDEuNDgxLS42MTMuMzc2LS40MS42MTQtLjkxNC42MTQtMS40ODJ2LTIuNTIyYzAtLjUzNi0uMjM0LTEuMS0uNjE0LTEuNDhhMS41NzYgMS41NzYgMCAwIDAtLjY3NC0uNDM0IDEuNTczIDEuNTczIDAgMCAwLS44MDctLjE4Yy0uNTQyLjAyNC0xLjEwNC4yMDItMS40ODEuNjE0LS4zNzYuNDA5LS42MTMuOTEzLS42MTMgMS40OE0zNi4yOTcgMjUuOTQ1Yy0uNzQzIDQuMzM1LTEuNDg0IDguNjczLTIuMjI1IDEzLjAxLS4xODQgMS4wNzUuMjg1IDIuMzA3IDEuNDYzIDIuNTc2IDEuMDE0LjIzIDIuMzc4LS4zMDkgMi41NzYtMS40NjJsMi4yMjUtMTMuMDExYy4xODQtMS4wNzUtLjI4NS0yLjMwOC0xLjQ2My0yLjU3Ny0xLjAxNS0uMjMtMi4zOC4zMDgtMi41NzYgMS40NjRNNDUuMTU4IDUwLjM4NmMtLjE2LS4zMy0uMTAxLS40NzctLjA0NS0uODA2LS4xMTEuMTc1LS4xMjUuMjAxLS4wNDIuMDc3YS4zNy4zNyAwIDAgMSAuMjAzLS4xNzhjLS4yMi4xMTctLjIzNS4xMzgtLjA0Ny4wNjRhMy40MyAzLjQzIDAgMCAxLS4zOTMuMTE2Yy0uMDgyLjAyLS42NTkuMS0uMjY1LjA1Ny0xLjExNS4xMjQtMi4yNC4xOS0zLjM2LjI4NWwtNi44NzcuNTc3Yy0xLjA4OS4wOTItMi4xNDguODk3LTIuMDk1IDIuMDk0LjA0OCAxLjA1Ni45MjYgMi4xOTIgMi4wOTUgMi4wOTNsOC44NC0uNzRjMS40NS0uMTIzIDMuMDQxLS4xMyA0LjI4Ny0uOTggMS42LTEuMDkzIDIuMTYzLTMuMDI4IDEuMzE2LTQuNzcyLS40OC0uOTktMS45NjYtMS4zMzMtMi44NjYtLjc1Mi0xLjAxMy42NTQtMS4yNjMgMS44MDctLjc1IDIuODY1IiBmaWxsPSIjQ0REM0Q4Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=); border: 1px solid rgb(221, 226, 230);"></span>
                                         </div>
                                     </div>
-                                </button></div>
+                                </button>
+                                </div>
                             </div>
                             <!-- '프로젝트 만들기' -->
                             <div class="web-header-funding-open funding-open">
@@ -728,4 +481,9 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/fix/header.js"></script>
+<script>
+    let valueById = $('input[name=keyword]').val();
+    console.log(valueById);
+    let id = [[${session.id}]];
+</script>
 </html>

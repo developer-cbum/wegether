@@ -78,21 +78,7 @@
                                         </div>
 
                                     <!-- 추천 더보기 -->
-                                    <div class="RecommendFundingWrap_showMoreRecommendWrapOuter__3dGiS">
-                                        <button data-event="web.main.recommendation.more"
-                                            class="Button_button__2FuOU Button_secondary__LNLsN Button_startIcon__3p6wN RecommendFundingWrap_googleTaggedButton__2mK7y"
-                                            type="button">
-                                            <span><svg viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                    class="withIcon_icon__3VTbq Button_icon__t6yp6" aria-hidden="true">
-                                                    <path
-                                                        d="M35 16V7l-3.5 3.5A15 15 0 1 0 34.4 24h-2.1a13 13 0 1 1-2.2-12.1L26 16z">
-                                                    </path>
-                                                </svg><span class="Button_children__ilFun"><span
-                                                        class="RecommendFundingWrap_fontHighlight__2LEw7">AI </span>추천
-                                                    더보기<span class="RecommendFundingWrap_pageNum__1yoDT"><span
-                                                            class="RecommendFundingWrap_fontHighlight__2LEw7">1</span>/3</span></span></span>
-                                        </button>
-                                    </div>
+
                                 </section>
                                 <!-- 실시간 랭킹 -->
                                 <section
@@ -175,11 +161,14 @@
                             class="RecommendationDesktop_innerGroup__as4jB RecommendationDesktop_staticBanner__2pqG8 Main_innerWrap__7-_Vm">
                             <section>
                                 <a class="FundingOpenStaticBanner_container__12jOH" data-ga-category="홈_최하단배너" data-ga-action="클릭"
-                                    data-ga-label="프로젝트 오픈하기" href="/web/wsub/openfunding">
+                                    data-ga-label="프로젝트 오픈하기"  th:onclick="|location.href='@{/project/write}'|" >
                                     <h4 class="FundingOpenStaticBanner_title__2SGnU">위게더에서 프로젝트 오픈하기</h4>
                                     <p class="FundingOpenStaticBanner_desc__34zp5">다른 학교 대학생들과 지식을 공유하고 협업해보세요</p>
                                     <button class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_lg__1Dftp"
-                                        type="button"><span><span class="Button_children__ilFun">바로가기&nbsp;<svg viewBox="0 0 40 40" focusable="false"
+                                           type="button">
+                                        <span>
+                                            <span class="Button_children__ilFun">바로가기&nbsp;
+                                                <svg viewBox="0 0 40 40" focusable="false"
                                                     role="presentation" class="withIcon_icon__3VTbq" aria-hidden="true">
                                                     <path d="M6 21h24.2L19.6 31.6 21 33l13-13L21 7l-1.4 1.4L30.2 19H6v2z">
                                                     </path>
@@ -220,10 +209,6 @@
 <script src="/js/index/data.js"></script>
 <script src="/js/index/community.js"></script>
 <script src="/js/index/datards.js"></script>
-
-
-
-
 
 
 <!--이종문 메인추가-->

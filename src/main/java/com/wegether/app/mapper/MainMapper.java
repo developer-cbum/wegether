@@ -1,10 +1,6 @@
 package com.wegether.app.mapper;
 
-import com.wegether.app.domain.dto.AdminPagination;
-import com.wegether.app.domain.dto.MainDTO;
-import com.wegether.app.domain.dto.MainPagination;
-import com.wegether.app.domain.dto.Pagination;
-import com.wegether.app.domain.vo.NoticeVO;
+import com.wegether.app.domain.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,16 +18,16 @@ public interface MainMapper {
     public List<MainDTO> mainDRSelectAll();
 
     // 프로젝트 목록
-    public List<MainDTO> searchPSelectAll(@Param("mainPagination") MainPagination mainPagination);
+    public List<MainDTO> searchPSelectAll(@Param("mainProjectPagination") MainProjectPagination mainProjectPagination, @Param("search") Search search);
 
     // 프로젝트 총 갯수
-    public int selectCountOfProject();
+    public int selectCountOfProject(Search search);
 
 //    자료실 목록
-    public List<MainDTO> searchDSelectAll(@Param("mainPagination") MainPagination mainPagination);
+    public List<MainDTO> searchDSelectAll(@Param("mainDataPagination") MainDataPagination mainDataPagination, @Param("search") Search search);
 
 //    자료실 총 갯수
-    public int selectCountOfData();
+    public int selectCountOfData(Search search);
 
 
 
