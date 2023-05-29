@@ -110,8 +110,11 @@ $("button.ok-button").on("click", function(){
         }, 2000);
 
     });
-    $(writeForm).append(text);
-    $(writeForm).submit();
+    $('.modal').on("click", ()=>{
+        $(writeForm).append(text);
+        $(writeForm).submit();
+
+    });
 
 
 });
