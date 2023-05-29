@@ -31,6 +31,7 @@ $("img.preview").each(function(i){
     }});
 
 let sizes = new Array();
+
 $upload.on("change", function(e){
     let i = $upload.index($(this));
     let files = $(this)[0].files;

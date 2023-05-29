@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -29,6 +30,8 @@ import java.util.List;
 @RequestMapping("/project/*")
 public class ProjectController {
     private final ProjectService projectService;
+    private final HttpSession session;
+    private final AccountService accountService;
 
 
     @GetMapping("write")
@@ -36,8 +39,8 @@ public class ProjectController {
 
 
     @PostMapping("write")
-    public RedirectView register(ProjectDTO projectDTO) {
-        projectDTO.setMemberId(22L);
+    public RedirectView register(ProjectDTO projectDTO, HttpSession session) {
+        projectDTO.setMemberId((Long) session.getAttribute("id"));
         log.info(projectDTO.toString());
         projectService.write(projectDTO);
         return new RedirectView("/project/list");

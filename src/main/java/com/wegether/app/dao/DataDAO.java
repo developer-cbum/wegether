@@ -1,10 +1,12 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.type.CategoryType;
 import com.wegether.app.domain.vo.DataVO;
 import com.wegether.app.mapper.DataMapper;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +32,7 @@ public class DataDAO {
     public Optional<DataDTO> findById(Long id){
         return dataMapper.select(id);
     }
+
     //    조회수 증가
     public void viewCountUp(Long id) {dataMapper.updateCount(id);}
 
@@ -45,6 +48,11 @@ public class DataDAO {
         return dataMapper.selectPay(id);
     }
 
+
+// 자료 수정
+    public void setData(DataDTO dataDTO){
+        dataMapper.updateData(dataDTO);
+    }
     //    찜하기
     public void saveWish(Long memberId, Long dataId){
         dataMapper.insertWish(memberId, dataId);
@@ -57,6 +65,7 @@ public class DataDAO {
     public Long findWishId(Long memberId, Long dataId){
         return dataMapper.selectWish(memberId, dataId);
     }
+
 
 
 

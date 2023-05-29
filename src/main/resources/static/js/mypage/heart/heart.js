@@ -54,7 +54,7 @@ function all(){
                         background-image: url('https://cdn2.wadiz.kr/2022/12/12/26263237-fb52-48af-8cbd-333502ab8fb9.jpg/wadiz/resize/400/format/jpg/quality/85/');
                       "
                     ></div>
-                    <em class="ProductTypeBadge_badge__1vQ-m ProjectCard_badge___LsIT">프로젝트</em>
+                    <em class="ProductTypeBadge_badge__1vQ-m ProjectCard_badge___LsIT">${heart.name}</em>
                   </div>
                   <div class="ProjectCard_infoBox__3ILIU">
                     <div
@@ -62,19 +62,19 @@ function all(){
                     >
                       <div class="ProjectInfo_flexBox__1VtoL">
                         <em class="ProjectInfo_state__3kvLA"
-                          >${heart.title} <span class="ProjectInfo_unit__2GehO">원</span></em
+                          >${heart.title} <span class="ProjectInfo_unit__2GehO"></span></em
                         >
                       </div>
                     </div>
                     <strong class="ProjectCard_title__3ZLcD"
-                      >5개동시 고속충전가능 쿨린MAX 50000mAh보조배터리</strong
+                      >${heart.contents}</strong
                     >
                     <dl class="ProjectCard_subInfo__nidZs">
                       <dt class="ProjectCard_fontBlind__2JaYu">카테고리</dt>
-                      <dd class="ProjectCard_subInfoText__-pKhs">테크·가전</dd>
-                      <dt class="ProjectCard_fontBlind__2JaYu">메이커</dt>
+                      <dd class="ProjectCard_subInfoText__-pKhs">${heart.info}</dd>
+                      <dt class="ProjectCard_fontBlind__2JaYu"></dt>
                       <dd class="ProjectCard_subInfoText__-pKhs ProjectCard_ellipsis1__3fNOy">
-                        와디즈 주식회사
+                        ${heart.sub}
                       </dd>
                     </dl>
                   </div>
@@ -94,27 +94,27 @@ function all(){
                         </g>
                       </svg>
                     </div></div></a
-                ><button
-                  type="button"
-                  class="WishButton_button__1ZqbG WishButton_interaction__2FCel"
-                  aria-label="찜하기 버튼"
-                  aria-pressed="true"
-                  data-ga-category="공통_상품카드_스토어"
-                  data-ga-action="찜하기_취소"
-                  data-ga-label=""
-                >
-                  <svg
-                    viewBox="0 0 32 32"
-                    focusable="false"
-                    role="presentation"
-                    class="withIcon_icon__3VTbq"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                    ></path>
-                  </svg>
-                </button>
+<!--                ><button-->
+<!--                  type="button"-->
+<!--                  class="WishButton_button__1ZqbG WishButton_interaction__2FCel"-->
+<!--                  aria-label="찜하기 버튼"-->
+<!--                  aria-pressed="true"-->
+<!--                  data-ga-category="공통_상품카드_스토어"-->
+<!--                  data-ga-action="찜하기_취소"-->
+<!--                  data-ga-label=""-->
+<!--                >-->
+<!--                  <svg-->
+<!--                    viewBox="0 0 32 32"-->
+<!--                    focusable="false"-->
+<!--                    role="presentation"-->
+<!--                    class="withIcon_icon__3VTbq"-->
+<!--                    aria-hidden="true"-->
+<!--                  >-->
+<!--                    <path-->
+<!--                      d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"-->
+<!--                    ></path>-->
+<!--                  </svg>-->
+<!--                </button>-->
               </div>
             </li>
               
@@ -179,19 +179,19 @@ function project(){
                     >
                       <div class="ProjectInfo_flexBox__1VtoL">
                         <em class="ProjectInfo_state__3kvLA"
-                          >${project.projectTitle} <span class="ProjectInfo_unit__2GehO">원</span></em
+                          >${project.projectTitle} <span class="ProjectInfo_unit__2GehO"></span></em
                         >
                       </div>
                     </div>
                     <strong class="ProjectCard_title__3ZLcD"
-                      >5개동시 고속충전가능 쿨린MAX 50000mAh보조배터리</strong
+                      >${project.contents} </strong
                     >
                     <dl class="ProjectCard_subInfo__nidZs">
                       <dt class="ProjectCard_fontBlind__2JaYu">카테고리</dt>
-                      <dd class="ProjectCard_subInfoText__-pKhs">테크·가전</dd>
+                      <dd class="ProjectCard_subInfoText__-pKhs"> ${project.info}</dd>
                       <dt class="ProjectCard_fontBlind__2JaYu">메이커</dt>
                       <dd class="ProjectCard_subInfoText__-pKhs ProjectCard_ellipsis1__3fNOy">
-                        와디즈 주식회사
+                       ${project.sub}
                       </dd>
                     </dl>
                   </div>
@@ -211,27 +211,27 @@ function project(){
                         </g>
                       </svg>
                     </div></div></a
-                ><button
-                  type="button"
-                  class="WishButton_button__1ZqbG WishButton_interaction__2FCel"
-                  aria-label="찜하기 버튼"
-                  aria-pressed="true"
-                  data-ga-category="공통_상품카드_스토어"
-                  data-ga-action="찜하기_취소"
-                  data-ga-label=""
-                >
-                  <svg
-                    viewBox="0 0 32 32"
-                    focusable="false"
-                    role="presentation"
-                    class="withIcon_icon__3VTbq"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                    ></path>
-                  </svg>
-                </button>
+<!--                ><button-->
+<!--                  type="button"-->
+<!--                  class="WishButton_button__1ZqbG WishButton_interaction__2FCel"-->
+<!--                  aria-label="찜하기 버튼"-->
+<!--                  aria-pressed="true"-->
+<!--                  data-ga-category="공통_상품카드_스토어"-->
+<!--                  data-ga-action="찜하기_취소"-->
+<!--                  data-ga-label=""-->
+<!--                >-->
+<!--                  <svg-->
+<!--                    viewBox="0 0 32 32"-->
+<!--                    focusable="false"-->
+<!--                    role="presentation"-->
+<!--                    class="withIcon_icon__3VTbq"-->
+<!--                    aria-hidden="true"-->
+<!--                  >-->
+<!--                    <path-->
+<!--                      d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"-->
+<!--                    ></path>-->
+<!--                  </svg>-->
+<!--                </button>-->
               </div>
             </li>
                
@@ -269,7 +269,7 @@ function data(){
                   data-ec-name="5개동시 고속충전가능 쿨린MAX 50000mAh보조배터리"
                   data-ec-brand="와디즈 주식회사"
                   data-ec-category="테크·가전"
-                  data-ec-list="찜하기_상품카드_스토어"
+                  data-ec-list="찜하기_상품카드_스토어"5개동시 고속충전가능 쿨린MAX 50000mAh보조배터리
                   data-ec-position="0"
                   data-ec-price="54900"
                   data-ec-contenttype="STORE"
@@ -297,19 +297,19 @@ function data(){
                     >
                       <div class="ProjectInfo_flexBox__1VtoL">
                         <em class="ProjectInfo_state__3kvLA"
-                          >${data.dataTitle} <span class="ProjectInfo_unit__2GehO">원</span></em
+                          >${data.dataTitle} <span class="ProjectInfo_unit__2GehO"></span></em
                         >
                       </div>
                     </div>
                     <strong class="ProjectCard_title__3ZLcD"
-                      >5개동시 고속충전가능 쿨린MAX 50000mAh보조배터리</strong
+                      >${data.contents}</strong
                     >
                     <dl class="ProjectCard_subInfo__nidZs">
                       <dt class="ProjectCard_fontBlind__2JaYu">카테고리</dt>
-                      <dd class="ProjectCard_subInfoText__-pKhs">테크·가전</dd>
+                      <dd class="ProjectCard_subInfoText__-pKhs">${data.info}</dd>
                       <dt class="ProjectCard_fontBlind__2JaYu">메이커</dt>
                       <dd class="ProjectCard_subInfoText__-pKhs ProjectCard_ellipsis1__3fNOy">
-                        와디즈 주식회사
+                       ${data.price}
                       </dd>
                     </dl>
                   </div>
@@ -329,27 +329,27 @@ function data(){
                         </g>
                       </svg>
                     </div></div></a
-                ><button
-                  type="button"
-                  class="WishButton_button__1ZqbG WishButton_interaction__2FCel"
-                  aria-label="찜하기 버튼"
-                  aria-pressed="true"
-                  data-ga-category="공통_상품카드_스토어"
-                  data-ga-action="찜하기_취소"
-                  data-ga-label=""
-                >
-                  <svg
-                    viewBox="0 0 32 32"
-                    focusable="false"
-                    role="presentation"
-                    class="withIcon_icon__3VTbq"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                    ></path>
-                  </svg>
-                </button>
+<!--                ><button-->
+<!--                  type="button"-->
+<!--                  class="WishButton_button__1ZqbG WishButton_interaction__2FCel"-->
+<!--                  aria-label="찜하기 버튼"-->
+<!--                  aria-pressed="true"-->
+<!--                  data-ga-category="공통_상품카드_스토어"-->
+<!--                  data-ga-action="찜하기_취소"-->
+<!--                  data-ga-label=""-->
+<!--                >-->
+<!--                  <svg-->
+<!--                    viewBox="0 0 32 32"-->
+<!--                    focusable="false"-->
+<!--                    role="presentation"-->
+<!--                    class="withIcon_icon__3VTbq"-->
+<!--                    aria-hidden="true"-->
+<!--                  >-->
+<!--                    <path-->
+<!--                      d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"-->
+<!--                    ></path>-->
+<!--                  </svg>-->
+<!--                </button>-->
               </div>
             </li>
              
