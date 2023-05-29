@@ -45,7 +45,7 @@ public interface MemberMapper {
 
 
 //    소영 마이페이지 화면 띄우기
-    public <Optional> java.util.Optional<MemberDTO> selectmypage(Long id);
+    public Optional<MemberDTO> selectmypage(Long id);
     
 // 소영 마이페이지 회원 탈퇴
     public void updateMemberS(Long id);

@@ -52,6 +52,8 @@
                                 location.href="/index/main";
                             }
                         })
+                    } else if(session == null && memberVO !=null && (memberVO.memberLoginStatus =='WEGETHER' || memberVO.memberLoginStatus=='KAKAO')){
+                        location.href = "/accounts/login?status=false";
                     } else {
                         // alert("들어옴")
                         //네이버 로그인 세션담기
@@ -65,10 +67,6 @@
                                 location.href = "/index/main?sns=true";
                             }
                         })
-                    }
-
-                    if (session == null && memberVO !=null && (memberVO.memberLoginStatus =='WEGETHER' || memberVO.memberLoginStatus=='KAKAO')){
-                        location.href = "/accounts/login?status=false";
                     }
                 }
             });
