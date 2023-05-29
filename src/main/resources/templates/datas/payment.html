@@ -13,7 +13,10 @@
 
 	<title>결제 | 위게더</title>
 </head>
-
+<script th:inline="javascript">
+	let ad = [[${dataDTO}]];
+	console.log(ad);
+</script>
 <body style="overflow: auto;" class>
 
 <header th:replace="~{/fix/header :: #header}"></header>
@@ -59,15 +62,15 @@
 								<div class="StorePaymentInformation_storePaymentInformation__nBaVr">
 									<div class="StorePaymentInformation_row__OF_TS">
 										<span class="StorePaymentInformation_label__3Pxe0">주문자명</span>
-										<span th:text="*{memberNickname}"></span>
+										<span th:text="${memberId.memberNickname}"></span>
 									</div>
 									<div class="StorePaymentInformation_row__OF_TS">
 										<span class="StorePaymentInformation_label__3Pxe0">휴대폰 번호</span>
-										<span th:text="*{memberPhoneNumber}"></span>
+										<span th:text="${memberId.memberPhoneNumber}"></span>
 									</div>
 									<div class="StorePaymentInformation_row__OF_TS">
 										<span class="StorePaymentInformation_label__3Pxe0">이메일 주소</span>
-										<span th:text="*{memberEmail}"></span>
+										<span th:text="${memberId.memberId}"></span>
 									</div>
 								</div>
 							</div>
@@ -77,8 +80,9 @@
 
 
 						<form th:action="@{/datas/payment}" method="post" name="payment-submit" id="payment-submit">
-							<input type="hidden" name="dataId" th:field="*{id}" >
-							<input type="hidden" name="memberId" th:field="*{memberId}" >
+							<input type="hidden" name="dataId" th:value="*{id}" >
+							<input type="hidden" name="memberId" th:value="${memberId.id}" >
+							<input type="hidden" name="pointHistory" th:value="${dataDTO.dataPrice * 0.1}" >
 							<!--                        <input type="hidden" name="deliveryRegion.isJeju" value="false">-->
 							<!--                        <input type="hidden" name="deliveryRegion.isIslandOrMountainous" value="false">-->
 							<!--                        <input type="hidden" name="couponKey" value="">-->
@@ -121,7 +125,7 @@
 								</div>
 								<div class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM" style="position: relative;">
 									<input type="text" th:value="0" name="payPointUse" id="payPointUse"/>
-									<div class="select-menu__placeholder css-1wa3eu0-placeholder">사용 가능한 포인트 : <span th:text="*{memberPoint}"></span></div>
+									<div class="select-menu__placeholder css-1wa3eu0-placeholder">사용 가능한 포인트 : <span th:text="${memberId.memberPoint}"></span></div>
 
 									<!--포인트 없을 때-->
 									<!--                              <div class="select-menu medium">-->
@@ -415,6 +419,8 @@
 	let payVO = [[${payVO}]];
 	console.log(dataDTO);
 </script>
+
+<script src="/js/modal.js"></script>
 <script src="/js/dataroom/bootPay.js"></script>
 <script src="/js/dataroom/payment.js"></script>
 

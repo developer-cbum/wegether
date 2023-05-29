@@ -21,7 +21,7 @@
     <insert id="insertPoint">
         INSERT INTO TBL_POINT
         (ID, MEMBER_ID, DATA_ID, POINT_HISTORY, POINT_CATEGORY)
-        VALUES(SEQ_POINT.NEXTVAL, #{memberId}, #{dataId}, pointHistory, pointCategory)
+        VALUES(SEQ_POINT.NEXTVAL, #{memberId}, #{dataId}, #{pointHistory}, '적립')
     </insert>
 
 

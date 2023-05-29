@@ -4,9 +4,7 @@ import com.wegether.app.domain.dto.CommunityDTO;
 import com.wegether.app.domain.dto.DataDTO;
 import com.wegether.app.domain.dto.DataPagination;
 import com.wegether.app.domain.type.CategoryType;
-import com.wegether.app.domain.vo.DataVO;
-import com.wegether.app.domain.vo.PayVO;
-import com.wegether.app.domain.vo.PointVO;
+import com.wegether.app.domain.vo.*;
 import com.wegether.app.domain.vo.PointVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.data.DataService;
@@ -75,7 +73,7 @@ public class DataController {
 
     //    자료 등록 - HttpSession session
     @GetMapping("register")
-    public void goToRegisterForm(HttpSession session, Model model){
+    public void goToRegisterForm(HttpSession session, Model model, DataDTO dataDTO){
         Long memberId = accountService.getMemberById((Long) session.getAttribute("id")).get().getId();
 //        Long memberId = (Long)httpSession.getAttribute("id");
         model.addAttribute("memberId", memberId);
@@ -92,14 +90,17 @@ public class DataController {
     
 //    자료 결제 페이지
     @GetMapping("payment")
-    public void goToPayment(Long id, Model model, PayVO payVO, HttpSession session){
-        Optional<DataDTO> readDataPay = dataService.readDataPay(id);
-//        Long memberId = (Long)httpSession.getAttribute("id");
-//        model.addAttribute("dataDTO", dataService.readDataPay(id).get());
+    public void goToPayment(@RequestParam Long dataId, Model model, PayVO payVO, HttpSession session, DataDTO dataDTO){
+        DataDTO readDataPay = dataService.readDataPay(dataId).get();
+        Long memberId = (Long)httpSession.getAttribute("id");
+        MemberVO member = accountService.getMemberById(memberId).get();
 
-        Long memberId = accountService.getMemberById((Long) session.getAttribute("id")).get().getId();
-        model.addAttribute("dataDTO", dataService.readDataPay(memberId).get());
-        log.info(readDataPay.get().toString());
+
+        model.addAttribute("dataDTO", readDataPay);
+        model.addAttribute("memberId", member);
+
+
+
     }
 
 //      결제 완료 - insert pay + update memberPoint + insert point

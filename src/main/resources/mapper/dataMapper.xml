@@ -79,7 +79,7 @@
             FROM TBL_MEMBER M JOIN TBL_DATA D
             ON M.ID = D.MEMBER_ID JOIN TBL_POINT T
             ON M.ID = T.MEMBER_ID
-        AND D.ID = #{id} AND M.ID = #{memberId}
+        AND D.ID = #{id}
     </select>
 
     <!--찜하기-->
