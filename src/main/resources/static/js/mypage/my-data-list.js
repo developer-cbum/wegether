@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    const $ul = $("ul");
+    // $('.GNBDesktop_container__3X3Cg').hide();
+    const $ul = $(".CardList_container__39oS4");
 
     let text = "";
 

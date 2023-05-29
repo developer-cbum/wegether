@@ -1,3 +1,5 @@
+let text="";
+
 let payCardService = ((function () {
 
     function getList(callback) {
@@ -44,6 +46,7 @@ let payCardService = ((function () {
             }),
             contentType: "application/json; charset=utf-8",
             success: function (cards) {
+                console.log(cards);
                 if (callback) {
                     console.log("등록 ajax 들어옴");
                     callback(cards);
@@ -60,6 +63,39 @@ let payCardService = ((function () {
 payCardService.getList(showList);
 
 function showList(cards) {
+        text="";
+
+          text+=`  <div class="SimplePayCard_addCard__2eagF">
+                    <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon__3VTbq SimplePayCard_addIcon__2DOov" aria-hidden="true">
+                    <path d="M30.4 15.2H16.8V1.6h-1.6v13.6H1.6v1.6h13.6v13.6h1.6V16.8h13.6v-1.6z"></path></svg
+                ><span class="SimplePayCard_title__PpPWZ">간편 결제 카드 등록</span
+                ><span class="SimplePayCard_description__IFa0t">카드 등록하고, 빠르게 결제 예약하세요!</span>
+                </div>
+                <div class="SimplePayCard_notice__3PRPU">
+                    <i class="icon error-o"></i><em>와디즈에서 카드번호를 저장하지 않습니다!</em>
+                <p>카드사에서 제공하는 암호화된 정보만을 저장하기 때문에 안심하셔도 됩니다.</p>
+                </div>
+                <div class="SimplePayCard_registed__2yAC4">
+                    <div class="SimplePayCard_creditCard__2nvHf">
+                    <span class="SimplePayCard_cardName__1no5L">카드</span
+                    ><button type="button" class="SimplePayCard_editButton__Q120P">
+                    <svg
+                viewBox="0 0 40 40"
+                focusable="false"
+                role="presentation"
+            class="withIcon_icon__3VTbq SimplePayCard_deleteIcon__1tC7k"
+                aria-hidden="true"
+                    >
+                    <path d="M36.67 5.31H3.33v2h2.82v31.88h27.7V7.31h2.82zm-4.82 31.88H8.15V7.31h23.7zM15 .81h10v2H15z"></path>
+                    <path d="M14.75 15.18h2v15h-2zm8.5 0h2v15h-2z"></path></svg
+                >삭제
+                </button>
+                <div class="SimplePayCard_cardNumber__3fnJ-"></div>
+                    <span class="SimplePayCard_createdAt__Alwbk">간편 결제 등록일<span>YYYY. MM. DD</span></span>
+                </div>
+                <div class="SimplePayCard_notice__3PRPU"><em>할부는 직접 입력으로만 이용 가능합니다.</em></div>
+                </div>  `
+
     console.log("showlist 들어옴");
     console.log(cards);
     cards.forEach(card => {
@@ -69,7 +105,8 @@ function showList(cards) {
         let number3 = card.cardNumber.substring(8, 12);
         let number4 = card.cardNumber.substring(12, 16);
         //SimplePayCard_simplecard__2wYo7 객체에 text append
-        let text = `   <div class="SimplePayCard_unregisted__2uiqp">
+        text += ` 
+   <div class="SimplePayCard_unregisted__2uiqp">
                         <div class="checkout">
                           <div class="credit-card-box">
                             <div class="flip">
@@ -149,7 +186,7 @@ function showList(cards) {
                       `
 
 
-        $('.SimplePayCard_noInfo__pdX40').append(text);
+        $('.SimplePayCard_noInfo__pdX40').html(text);
 
 
     });
@@ -169,7 +206,7 @@ let count = 0;
 // 색상 배열에 담기
 let color = ['red', 'blue', 'yellow', 'black', 'pink', 'brown', 'green'];
 
-$('.SimplePayCard_addCard__2eagF').on('click', function () {
+$(document).on('click', '.SimplePayCard_addCard__2eagF', function () {
     $('.ReactModalPortal').show();
 });
 
@@ -305,7 +342,7 @@ if ($confirmButton.attr('disabled') !== undefined) {
                <div class="card-num">${$('.num1').val()}-${$('.num2').val()}-${$('.num3').val()}-${$('.num4').val()}</div>
                       <div class="card-password" style="display: none">${$('.cardpassword11').val()} </div>
                            <div class="member-birthday" style="display: none">${$('.cardbirthday11').val()}  </div>
-                           <div class="member-name" style="display: none">${card.memberName} </div>
+                           <div class="member-name" style="display: none"></div>
                            
             </div>
             <div class="card-expiration-date">
