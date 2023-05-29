@@ -245,41 +245,19 @@ $(document).ready(function () {
         buttonCount.text(count.toLocaleString());
     });
 
-//   판매자 정보 더보기 버튼
-    var moreButton = $(".StoreMakerInfoContainer_accordionButton__3rhUd:contains('더보기')");
-    var closeButton = $(".StoreMakerInfoContainer_accordionButton__3rhUd:contains('닫기')");
-    var contactSection = $('.StoreMakerInfoContainer_contactSection__3MZnT');
 
-    contactSection.hide();
-    closeButton.hide();
 
-    moreButton.click(function () {
-        contactSection.show();
-        moreButton.hide();
-        closeButton.show();
+
+    /*찜하기*/
+    $textContainer.on("click", "#wishlist-btn", function(){
+        dataService.checkMyWish(function(check){
+            if(check){
+                dataService.doWish(doWish);
+            }else{
+                dataService.doNotWish(doNotWish);
+            }
+        });
     });
-
-    closeButton.click(function () {
-        contactSection.hide();
-        moreButton.show();
-        closeButton.hide();
-    });
-
-
-
-    // 카테고리 이름 변경
-    $(".computer").text("컴퓨터공학과");
-    $(".design").text("디자인학과");
-    $(".sports").text("스포츠과학과");
-    $(".biology").text("생명과학과");
-    $(".chemistry").text("화학과");
-    $(".machine").text("기계공학과");
-    $(".engineering").text("전기공학과");
-    $(".math").text("수학과");
-    $(".media").text("미디어영상학과");
-    $(".applied_music").text("실용음악과");
-
-
 }); //E
 
 

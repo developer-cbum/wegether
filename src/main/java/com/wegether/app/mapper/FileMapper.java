@@ -15,7 +15,7 @@ public interface FileMapper {
     public void insert(DataFileDTO fileVO);
 
 //    05-22 이기철 추가
-    public void insert(ProjectFileDTO fileVO);
+    public void projectInsert(ProjectFileDTO projectFileDTO);
 
     //    자료 파일 조회
 //    public FileVO select(Long id);

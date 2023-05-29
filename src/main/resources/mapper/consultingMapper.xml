@@ -58,7 +58,7 @@
 <!-- 수정   -->
     <update id="updateConsulting">
         UPDATE TBL_CONSULTING
-        SET CONSULTING_TITLE = #{consultingTitle}, CONSULTING_CONTENT = #{consultingContent}, CONSULTING_CATEGORY = #{consultingCategory}
+        SET CONSULTING_TITLE = #{consultingTitle}, CONSULTING_CONTENT = #{consultingContent}, CONSULTING_CATEGORY = #{consultingCategory}, CONSULTING_UPDATE_DATE = SYSDATE
         WHERE ID=#{id}
     </update>
 
