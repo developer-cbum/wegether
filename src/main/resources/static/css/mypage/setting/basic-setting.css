@@ -108,7 +108,7 @@
 }
 
 .input-btn-wrap .input {
-  width: 70%;
+  width: 100%;
 }
 
 .input-btn-wrap .btn {
@@ -261,6 +261,7 @@ i.icon.kakao::before,
 }
 
 .sns-text-wrap {
+  margin-top: 33px;
   margin-bottom: 10px !important;
 }
 

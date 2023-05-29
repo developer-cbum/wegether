@@ -9,9 +9,13 @@
     <title>찜 목록 | 위게더</title>
     <link rel="stylesheet" href="/css/mypage/heart-list/heart.css">
     <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+
   </head>
   <body>
-    <section>
+  <header th:replace="~{/fix/header :: #header}"></header>
+  <section>
       <div class="App_titleBox__GffUu"><h2 class="App_title__2iUXo">찜하기</h2></div>
       <div class="App_filterBox__1vsSG">
         <div class="FilterTab_container__2g8IL App_filterTab__xeYLJ">
@@ -236,6 +240,8 @@
         </div>
       </div>
     </section>
+  <footer th:replace="~{/fix/footer :: #footer}"></footer>
+
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script th:inline="javascript">

@@ -134,7 +134,7 @@ public class MypageController {
         log.info(memberDTO.getMemberNickname());
         log.info(memberDTO.getMemberPhoneNumber());
 
-        return new RedirectView("/mypage/my-page/my-page");
+        return new RedirectView("/mypage/main");
 
     }
 
@@ -142,13 +142,11 @@ public class MypageController {
 //===========================================================================================================================
 
     //    회원 탈퇴
-//    @GetMapping("/setting/member-secession")
-//    public void goToWithdrawal(HttpSession session, Model model) {
-//
-//        model.addAttribute("withdraw", mine.loadMine((Long) session.getAttribute("id")).get());
-//
-//
-//    }
+    @GetMapping("/setting/member-secession")
+    public void goToWithdrawal(HttpSession session, Model model) {
+        model.addAttribute("withdraw", mine.loadMine((Long) session.getAttribute("id")).get());
+
+    }
 
 //    회원 탈퇴 완료
 
@@ -280,8 +278,11 @@ public class MypageController {
 
     //    내 상담
     @GetMapping("/my-page/my-consult-detail")
-    public void goToConsulting(Long memberId, Model model) {
-        model.addAttribute("consulting", mine.readMyConsulting(1L));
+    public void goToConsulting(Model model) {
+        Long id = (Long)session.getAttribute("id");
+        MemberVO member = accountService.getMemberById(id).get();
+        model.addAttribute("member", member);
+        model.addAttribute("consulting", mine.readMyConsulting((Long) session.getAttribute("id")));
     }
 
     //    내 프로젝트

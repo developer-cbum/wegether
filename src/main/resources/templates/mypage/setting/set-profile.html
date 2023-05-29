@@ -9,7 +9,11 @@
     <title>프로필 설정 | 위게더</title>
     <link rel="stylesheet" href="/css/mypage/setting/set-profile.css">
     <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+
   </head>
+  <header th:replace="~{/fix/header :: #header}"></header>
   <body>
   <form th:action="@{/mypage/setting/set-profile}" method="post" th:object="${memberVO}" name="writeForm">
     <div class="waccount-wrap">

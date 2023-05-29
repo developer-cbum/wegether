@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/consult/mypage.css">
     <link rel="stylesheet" href="/css/mypage/project/list.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
 
+    <title>나의 자료 | 위게더</title>
   </head>
+  <header th:replace="~{/fix/header :: #header}"></header>
   <body>
     <section class="OrderListPage_container__PZnPd">
       <h2>나의 자료</h2>
@@ -89,6 +92,8 @@
       </ul>
       <div></div>
     </section>
+    <footer th:replace="~{/fix/footer :: #footer}"></footer>
+
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script th:inline="javascript">
