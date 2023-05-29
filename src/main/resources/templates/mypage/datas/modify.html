@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="/css/dataroom/register.css" />
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+
+    <!-- 상품 수정 css -->
+    <link href="https://static.wadiz.kr/studio/funding/static/css/5.6aa6dee4.chunk.css" rel="stylesheet" />
+    <link href="https://static.wadiz.kr/studio/funding/static/css/main.2b8a3946.chunk.css" rel="stylesheet" />
+    <link
+            rel="stylesheet" type="text/css"
+            href="https://static.wadiz.kr/studio/funding/static/css/6.eb91f874.chunk.css"
+    />
+
+    <title>자료 수정 | 위게더</title>
+</head>
+<body class="ReactModal__Body--open" aria-hidden="true">
+<div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
+<header th:replace="~{/fix/header :: #header}"></header>
+<div id="root">
+    <div id="AppLayout_Container" class="AppLayout_container__3zbzb">
+        <div class="AppLayout_main__14bCi">
+            <div id="AppLayout_Contents" class="AppLayout_contents__wv3DF">
+                <div id="container" class="ContentsLayout_container__11k-W" style="display: flex; justify-content: center">
+                    <div class="FundingStoryContainer_container__33WY0">
+                        <div class="HeaderLayout_container__3fXkO">
+                            <div class="HeaderLayout_contents__F4hlC">
+                                <h2 class="FundingStoryContainer_title__1r0ZE">자료 수정</h2>
+                                <p class="FundingStoryContainer_description__1sMTR">
+                                    자료 관련 내용을 작성해주세요.
+                                </p>
+                            </div>
+                        </div>
+                        <form
+                                class="modifyForm wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
+                                th:action="@{/mypage/datas/modify(id=*{id})}" method="post" th:object="${dataDTO}" name="modifyForm"
+                        >
+                            <input type="hidden" name="id" th:field="*{id}">
+
+                            <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
+
+                            <!-- 자료 제목 -->
+                            <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
+                                <div class="Section_header__1qwS7 spacing-4">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">자료 제목</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                                        <label></label>
+                                        <div class="TextField_field__1E9vt">
+                                            <input
+                                                    th:field="*{dataTitle}"
+                                                    placeholder="제목을 입력해 주세요"
+                                                    maxlength="40"
+                                                    class="Input_input__2kAAL Input_md__3-eZ6"
+                                                    name="dataTitle"
+                                            />
+                                            <!--                                                    <input th:field="*{dataTitle}" placeholder="제목을 입력해 주세요" class="Input_input__2kAAL Input_md__3-eZ6"/>-->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- 자료 가격 -->
+                            <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
+                                <div class="Section_header__1qwS7 spacing-4">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">자료 가격</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                                        <label></label>
+                                        <div class="TextField_field__1E9vt">
+                                            <input
+                                                    th:field="*{dataPrice}"
+                                                    placeholder="자료 가격을 입력해 주세요"
+                                                    maxlength="40"
+                                                    class="Input_input__2kAAL Input_md__3-eZ6"
+                                                    name="dataPrice"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- 자료 학교 -->
+                            <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
+                                <div class="Section_header__1qwS7 spacing-4">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">
+                                        자료 출처(학교)
+                                    </h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                                        <label></label>
+                                        <div class="TextField_field__1E9vt">
+                                            <input
+                                                    th:field="*{dataSchool}"
+                                                    placeholder="어떤 학교 자료인지 입력해 주세요"
+                                                    maxlength="40"
+                                                    class="Input_input__2kAAL Input_md__3-eZ6"
+                                                    name="dataSchool"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- 자료 전공 -->
+                            <section class="Section_container__3md8M spacing-9" style="max-width: 630px">
+                                <div class="Section_header__1qwS7 spacing-4">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">
+                                        자료 출처(전공)
+                                    </h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="TextField_textField__23rCe TextField_md__2zsQn">
+                                        <label></label>
+                                        <div class="TextField_field__1E9vt">
+                                            <input th:value="*{dataMajor}" type="hidden"
+                                                   placeholder="어떤 전공 자료인지 선택해 주세요" maxlength="40"
+                                                   class="Input_input__2kAAL Input_md__3-eZ6"
+                                                   name="dataMajor" id="dataMajor" value=""
+                                            />
+                                            <div id="dataMajor-div" class=" Input_input__2kAAL Input_md__3-eZ6">어떤 전공 자료인지 선택해 주세요</div>
+
+
+                                            <!-- [S] category list -->
+                                            <div class="select-menu__menu css-1gwc4zc-menu select_category_wrap" style="display: none;">
+                                                <ul class="select_category_lists">
+                                                    <li class="computer select_category">
+                                                        <a href="#" data-value="computer" class="" >컴퓨터공학과</a>
+                                                    </li>
+                                                    <li class="design select_category">
+                                                        <a href="#" data-value="design" class="" >디자인학과</a>
+                                                    </li>
+                                                    <li class="sports select_category">
+                                                        <a href="#" data-value="sports" class="" >스포츠과학과</a>
+                                                    </li>
+                                                    <li class="biology select_category">
+                                                        <a href="#" data-value="biology" class="" >생명과학과</a>
+                                                    </li>
+                                                    <li class="chemistry select_category">
+                                                        <a href="#" data-value="chemistry" class="" >화학과</a>
+                                                    </li>
+                                                    <li class="machine select_category">
+                                                        <a href="#" data-value="machine" class="" >기계공학과</a>
+                                                    </li>
+                                                    <li class="engineering select_category">
+                                                        <a href="#" data-value="engineering" class="" >전기공학과</a>
+                                                    </li>
+                                                    <li class="math select_category">
+                                                        <a href="#" data-value="math" class="" >수학과</a>
+                                                    </li>
+                                                    <li class="media select_category">
+                                                        <a href="#" data-value="media" class="" >미디어영상학과</a>
+                                                    </li>
+                                                    <li class="applied_music select_category">
+                                                        <a href="#" data-value="applied_music" class="" >실용음악과</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- [E] category list -->
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- 사진 수정 -->
+                            <section class="Section_container__3md8M" style="max-width: 630px">
+                                <div class="Section_header__1qwS7">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">썸네일 수정</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_description__10Uwo">자료 대표 사진을 수정해 주세요.</div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="StoryVideoOrImageField_container__1lnfV">
+                                        <div class="field Form_field__35I9T required ImageFormField_field__X1jTW StoryImageField_field__3O6yy"
+                                             style="padding-left: 0px">
+                                            <div class="attach-wrap ImageFormField_buttonWrapper__su3pO">
+                                                <label for="upload1" class="attach wz label ImageFileButton_label__3thB2 Label_label__3oH0h">
+                                                    <button type="button" class="file_upload_btn wz button gray ImageFileButton_button__3gAHD">
+                                                        <i class="icon-camera-o" aria-hidden="true"></i>
+                                                        수정하기
+                                                    </button>
+                                                    <div class="wz input right ImageFileButton_input__1Dnch">
+                                                        <!--                                                                <input accept="image/JPG,image/JPEG,image/GIF,image/PNG"-->
+                                                        <!--                                                                    name="uploadFile" type="file" value=""/>-->
+                                                        <img src="" class="thumbnail">
+                                                        <div class="x">
+                                                            <img src="/image/data/x.png">
+                                                        </div>
+                                                        <!--                                                                <h6 class="plus">+</h6>-->
+                                                        <h6>
+<!--                                                            <span class="file-size"></span>-->
+                                                        </h6>
+                                                    </div>
+                                                </label>
+                                                <input type="file" id="upload1" class="upload" style="display: none;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="Section_container__3md8M" style="max-width: 630px">
+                                <div class="Section_header__1qwS7">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">자료 내용</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <!--                                        <br />(여기에 썸머노트 라이브러리 필요, 실제로 저장이 되는지도 같이 확인을-->
+                                <!--                                        해야해서 기능 구현하면서 넣어서 진행하면 될듯)-->
+                                <div class="Section_description__10Uwo">
+                                    자료에 대한 설명을 적어주세요 <br />
+                                    설명은 제목에 적지 못한 내용을 작성하면 좋아요
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="StorySummaryField_container__25ePA">
+                                        <div class="field Form_field__35I9T FormFieldTextarea_field__33Ncu">
+                                            <div class="wide column-2"></div>
+                                            <div class="wide column-4">
+                                                <div class="wz input">
+                                                            <textarea th:field="*{dataContent}"
+                                                                      placeholder="내용 입력"
+                                                                      helper="[object Object]"
+                                                                      maxlength="100"
+                                                                      name="dataContent"
+                                                                      rows="3"
+                                                            ></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="StoryEditorForComingWrapper_container__1cngW"></div>
+                            <div class="FundingStoryContainer_btnWrapper__32tvJ">
+                                <button
+                                        class="ok-button Button_button__1e2A2 Button_primary__PxOJr Button_contained__TTXSM Button_lg__3vRQD"
+                                        type="button"
+                                        style="width: 100%"
+                                        >
+                                    <span><span class="Button_children__q9VCZ">수정하기</span></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Toast_toast__1b_B2"><div class="Toast_content__G-bTq"></div></div>
+</div>
+
+<div data-react-modal-body-trap="" tabindex="0" style="position: absolute; opacity: 0"></div>
+
+<!-- 모달 부분 -->
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
+
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script th:inline="javascript">
+    let memberid = [[${memberId}]];
+    // let dataMajor =[[${dataMajor}]];
+    let dataDTO=[[${dataDTO}]];
+    let files = [[${dataDTO.files}]];
+    console.log(files)
+    console.log(dataDTO);
+    console.log(memberid);
+    // console.log(dataMajor);
+
+    // $(".ok-button").on('click',function(){
+    //     $(".modifyForm").submit();
+    // })
+
+</script>
+<script src="/js/dataroom/modify.js"></script>
+<script src="/js/dataroom/modal.js"></script>
+<script src="/js/dataroom/modify-basic.js"></script>
+
+</html>

@@ -207,6 +207,19 @@ $(document).on('click', '.SimplePayCard_unregisted__2uiqp', function () {
     });
 
     $('.yes-button').on('click', function () {
+
+        // $.ajax({
+        //
+        //     url: `/mypage/paycard/remove`,
+        //     type: `post`,
+        //     success: function (cards) {
+        //         dataType: "json",
+        //             contentType : "application/json",
+        //
+        //         }
+        //     }
+        // });
+
         $('#' + id).remove();
         $('#alertify-o-cover').css('display', 'none');
         $('#alertify-o').css('display', 'none');

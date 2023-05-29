@@ -12,11 +12,11 @@
 
 <!--    전체 찜 조회-->
     <select id="selectHeartAll" resultType="heartDTO">
-        SELECT  w.MEMBER_ID num, p.PROJECT_TITLE title, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , TO_CHAR(PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL) sub, PROJECT_UPDATE_DATE line
+        SELECT  (SELECT '프로젝트' FROM dual) name, P.MEMBER_ID num, p.PROJECT_TITLE title, P.PROJECT_INTRODUCING contents, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , TO_CHAR(PROJECT_NOW_PERSONNEL|| '명  /  ' || PROJECT_TOTAL_PERSONNEL)|| '명' sub, PROJECT_UPDATE_DATE line
         FROM TBL_PROJECT p, TBL_WISH_PROJECT w
         WHERE w.MEMBER_ID=#{memberId} AND p.ID =w.PROJECT_ID
 		UNION ALL
-      SELECT  W.MEMBER_ID num, D.DATA_TITLE title, DATA_SCHOOL || ' ' || DATA_MAJOR info , TO_CHAR(DATA_PRICE) sub, DATA_UPDATE_DATE line
+        SELECT (SELECT '데이터' FROM dual) name, W.MEMBER_ID num, D.DATA_TITLE title, D.DATA_CONTENT contents ,DATA_SCHOOL || ' ' || DATA_MAJOR info , CONCAT(TO_CHAR(DATA_PRICE), '원') sub, DATA_UPDATE_DATE line
         FROM TBL_DATA D, TBL_WISH_DATA W
         WHERE W.MEMBER_ID=#{memberId} AND D.ID =W.DATA_ID
         ORDER BY line ASC
@@ -30,7 +30,7 @@
 
 <!--    프로젝트 찜 조회-->
     <select id="selectAll" resultType="projectDTO">
-       SELECT  w.MEMBER_ID, p.PROJECT_TITLE, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL now
+       SELECT  w.MEMBER_ID, p.PROJECT_TITLE, p.PROJECT_INTRODUCING, PROJECT_SCHOOL || ' ' || PROJECT_MAJOR info , PROJECT_NOW_PERSONNEL|| ' / ' || PROJECT_TOTAL_PERSONNEL now
         FROM TBL_PROJECT p, TBL_WISH_PROJECT w
         WHERE w.MEMBER_ID=#{memberId} AND p.ID =w.PROJECT_ID
     </select>

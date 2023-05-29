@@ -30,6 +30,14 @@ public interface DataService {
     //  결제 페이지
     public Optional<DataDTO> readDataPay(Long id);
 
+    // 자료 수정
+    public void modify(DataDTO dataDTO);
+
+
+    public void dataImageWrite (DataFileDTO dataFileDTO);
+
+    public void dataImageMiddleWrite(DataFileVO dataFileVO);
+
     //  결제 완료 - insert pay
     public void completePay(PayVO payVO);
 
@@ -74,7 +82,12 @@ public interface DataService {
     }
 
 
+    // 파일 삭제
+    public void fileRemove(Long id);
+
 }
+
+
 
 
 

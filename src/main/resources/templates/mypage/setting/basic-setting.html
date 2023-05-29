@@ -22,34 +22,25 @@
         <!-- account-wrap -->
         <div class="account-wrap">
             <h2>기본 정보 설정</h2>
-            <form id="saveForm">
+
+            <form id="saveform" th:action="@{/mypage/setting/basic}" method="post" >
+<!--                <input type="hidden" name="id" th:value="${memberId}">-->
+
                 <div class="email-input-wrap">
 <!--                    <input type="text" name="nickName" class="input-text" maxlength="20" placeholder="닉네임" value="이종문"/>-->
-                    <input type="text" name="nickName" class="input-text disable hide" maxlength="20" placeholder="닉네임"
-                           value="이종문" disabled="" style="display: none"/>
+<!--                    <input type="text" name="nickName" class="input-text disable hide" maxlength="20" placeholder="닉네임"-->
+<!--                           value="이종문" disabled="" style="display: none"/>-->
                     <div class="input-btn-wrap">
                         <div class="input">
                             <input
-                                    type="email"
-                                    id="userName"
-                                    name="userName"
-                                    class="disable input-text"
+                                    name="memberNickname"
+                                    type="text"
+                                    class="input-text"
                                     placeholder="닉네임"
                                     th:value="${setting.memberNickname}"
-                                    disabled=""
                             />
                         </div>
-                        <div id="emailChangeBtn" class="emailAuthBtn btn"
-                             style="display: block; background-color: #8c8881;">
-                            <a href="#" onclick="return false;">
-                                <span>변경</span>
-                            </a>
-                        </div>
-                        <div id="emailCheckBtn" class="emailAuthBtn btn" style="display: none" data-status="check">
-                            <button class="email-change-button" type="button" disabled="disable">
-                                <span>변경하기</span>
-                            </button>
-                        </div>
+
                     </div>
                 </div>
 <!--                <p id="emailError" class="error-text emailMsg" style="display: none">이메일 형식이 올바르지 않습니다.</p>-->
@@ -61,22 +52,14 @@
 
                 <div class="input-btn-wrap">
                     <div class="input">
-                        <input id="mobileNumber" name="mobileNumber" type="tel" class="input-text" placeholder="휴대폰 번호"
-                               th:value="${setting.memberPhoneNumber}" readonly
+                        <input id="mobileNumber" name="memberPhoneNumber" type="text" class="input-text" placeholder="휴대폰 번호"
+                               th:value="${setting.memberPhoneNumber}"
                         />
                     </div>
-                    <div id="mobileCheckBtn" class="mobileAuthBtn btn" style="display: none">
-                        <button class="mobile-change-button" type="button" disabled="disable">
-                            <span>변경하기</span>
-                        </button>
-                    </div>
-                    <div id="mobileChangeBtn" class="mobileAuthBtn btn"
-                         style="display: block; background-color: #8c8881;">
-                        <a href="#" onclick="return false;">
-                            <span>변경</span>
-                        </a>
-                    </div>
+
+
                 </div>
+            </form>
                 <p id="phoneError" class="error-text emailMsg" style="display: none">휴대폰 번호 형식이 올바르지 않습니다.</p>
                 <p class="sns-text-wrap">
                     <strong class="sns-text">SNS 연동</strong>
@@ -84,8 +67,8 @@
                     카카오를 연동하시면 피드에서 친구의 활동을 확인할 수 있어요</p>
                 <div>
                     <button
-                            class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_kakaoButton__2lTDs SNSButtonList_spacer__38ac5"
-                            type="button"
+                            class="kakao-button Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_kakaoButton__2lTDs SNSButtonList_spacer__38ac5"
+                            type="button" th:onclick="@{/login}"
                     >
                     <span
                     ><span class="Button_children__raEW4"
@@ -103,10 +86,11 @@
                     ></span
                     ></button
                     >
+                    <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=yPLfiIWc1PIqc4_vQtH5&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Faccounts%2Fnaver-login&amp;state=ec590b74-1b80-4d2f-8d1f-479e00d36538" id="naver_id_login_anchor">
+
                     <button
                             class="Button_button__3MO4n Button_lg__D7OVb Button_block__3npc4 SNSButtonList_naverButton__1rzZ_ SNSButtonList_spacer__38ac5"
                             type="button"
-                    >
                     <span
                     ><span class="Button_children__raEW4"
                     ><svg
@@ -123,7 +107,7 @@
                     ></span
                     >
                     </button>
-
+                    </a>
                 </div>
                 <!--  <div class="social-account-wrap">
                     <ul>
@@ -143,13 +127,17 @@
                   </div>-->
                 <div class="email-input-wrap small">
                     <div class="btn-wrap">
-                        <button type="button" id="saveBtn" class="wz button primary block btn-block-mint">확인</button>
+                        <button type="submit" id="saveBtn" class="wz button primary block btn-block-mint">변경</button>
                     </div>
                 </div>
         </div>
         <input type="hidden" id="validEmailFirstCheck" value="Y"/>
         <input type="hidden" id="validEmail" value="1"/>
-        </form>
+
+
+
+
+
     </div>
     <!-- //account-wrap -->
 </div>
@@ -167,4 +155,18 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/mypage/setting/basic-setting.js"></script>
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("yPLfiIWc1PIqc4_vQtH5", "http://localhost:10000/accounts/naver-login");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("green", 5, 40);
+    naver_id_login.setDomain("http://localhost:10000");
+    naver_id_login.setState(state);
+    naver_id_login.init_naver_id_login();
+</script>
+<script th:inline="javascript">
+    let setting = [[${setting}]];
+    // let Id=[[${memberId}]];
+    console.log(setting);
+    // console.log(memberId);
+</script>
 </html>

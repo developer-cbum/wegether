@@ -209,6 +209,11 @@ public class AccountController {
                 accountService.getMemberById(memberVO.getId()).get() != null){
                 accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getSnsProfile());
            session.setAttribute("id", memberVO.getId());
+        }else if(memberVO.getMemberLoginStatus().equals("WEGETHER")){
+//            회원의 계정을 네이버 계정으로 변경(연동)
+            Long id = (Long) session.getAttribute("id");
+            log.info("=====id: {}", id);
+            accountService.changeLoginStatusToNaver(String.valueOf(id));
         }
 
         //로그인후 마이페이지에서 연동하는 것이면
