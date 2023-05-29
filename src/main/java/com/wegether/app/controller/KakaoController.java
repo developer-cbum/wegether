@@ -74,11 +74,11 @@ public class KakaoController {
         }
 
 //        카카오 로그인해서 db에 계정이 있을때
-        Optional<Long> foundNumber = accountService.login(kakaoInfo.get("memberId").toString(), kakaoInfo.get("memberPassword").toString());
-        if(foundNumber.isPresent()){
+        Long foundNumber = accountService.checkId(kakaoInfo.get("memberId").toString()).get().getId();
+        if(foundNumber != null){
             log.info(kakaoInfo.get("profile").toString());
             accountService.changeLoginStatusToKakao(kakaoInfo.get("memberId").toString(), kakaoInfo.get("profile").toString());
-            session.setAttribute("id", foundNumber.get());
+            session.setAttribute("id", foundNumber);
         }
 
 
