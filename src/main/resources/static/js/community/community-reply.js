@@ -369,7 +369,7 @@ function showList(result, replyResult, id) {
                     text += `<div class="Avatar_avatar__1d9Wt" style="width: 40px; height: 40px">
                                     <span class="Avatar_hasImage__2TKl6" style="
                                 background-image:
-                                  url(/lecture-files/display?fileName=${reply.filePath}/${reply.fileUuid}_${reply.fileName});
+                                  url(/files/display?fileName=${reply.filePath}/${reply.fileUuid}_${reply.fileName});
                                 border: 1px solid;
                                 rgb(221, 226, 230);
                                 color: black;
@@ -469,7 +469,7 @@ function showList(result, replyResult, id) {
                     text += `<div class="Avatar_avatar__1d9Wt" style="width: 40px; height: 40px">
                                                             <span class="Avatar_hasImage__2TKl6" style="
                                                         background-image:
-                                                          url(/lecture-files/display?fileName=${reply.filePath}/${reply.fileUuid}_${reply.fileName});
+                                                          url(/files/display?fileName=${reply.filePath}/${reply.fileUuid}_${reply.fileName});
                                                         border: 1px solid;
                                                         rgb(221, 226, 230);
                                                         color: black;
@@ -574,7 +574,7 @@ function showList(result, replyResult, id) {
                             text += `<div class="Avatar_avatar__1d9Wt" style="width: 40px; height: 40px">
                                                             <span class="Avatar_hasImage__2TKl6" style="
                                                         background-image:
-                                                          url(/lecture-files/display?fileName=${replyResult[i].filePath}/${replyResult[i].fileUuid}_${replyResult[i].fileName});
+                                                          url(/files/display?fileName=${replyResult[i].filePath}/${replyResult[i].fileUuid}_${replyResult[i].fileName});
                                                         border: 1px solid;
                                                         rgb(221, 226, 230);
                                                         color: black;
@@ -677,7 +677,7 @@ function showList(result, replyResult, id) {
                                 text += `<div class="Avatar_avatar__1d9Wt" style="width: 40px; height: 40px">
                                                             <span class="Avatar_hasImage__2TKl6" style="
                                                         background-image:
-                                                          url(/lecture-files/display?fileName=${member.filePath}/${member.fileUuid}_${member.fileName});
+                                                          url(/files/display?fileName=${member.filePath}/${member.fileUuid}_${member.fileName});
                                                         border: 1px solid;
                                                         rgb(221, 226, 230);
                                                         color: black;
@@ -791,7 +791,7 @@ function showList(result, replyResult, id) {
                         text += `<div class="Avatar_avatar__1d9Wt" style="width: 40px; height: 40px">
                                                             <span class="Avatar_hasImage__2TKl6" style="
                                                         background-image:
-                                                          url(/lecture-files/display?fileName=${member.filePath}/${member.fileUuid}_${member.fileName});
+                                                          url(/files/display?fileName=${member.filePath}/${member.fileUuid}_${member.fileName});
                                                         border: 1px solid;
                                                         rgb(221, 226, 230);
                                                         color: black;
