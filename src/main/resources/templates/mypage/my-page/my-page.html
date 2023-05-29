@@ -82,18 +82,12 @@
                   <dd>위게더 회원</dd>
                 </dl>
               </div>
-                <ul class="MyWadizSupporterProfile_interestedList__lw_-k">
-                  <li>교육∙키즈</li>
-                  <li>패션∙잡화∙뷰티</li>
-                  <li>홈리빙∙디자인소품</li>
-                  <li>공연∙컬쳐</li>
-                  <li>스포츠∙모빌리티</li>
-                </ul>
+
               <div class="MyWadizSupporterProfile_setting__n8-M7">
                 <p class="MyWadizLoginMode_loginMode__2smkD">[[${main.memberLoginStatus}]]로 로그인</p>
-                <button
+                <button th:if="${session.id != null}"
                   class="Button_button__1HNjI Button_md__2Tyci Button_circular__3BLWf Button_block__3-IpL"
-                  type="button"
+                  type="button" onclick="location.href='/accounts/logout'";
                 >
                   <span><span class="Button_children__lqBGI">로그아웃</span></span>
                 </button>
@@ -129,13 +123,12 @@
                               ><span class="MyWadizSupporterAccumulate_name__1mWXC">포인트</span>
                             </dt>
                           <dd class="MyWadizSupporterAccumulate_value__1oBSj"><span th:text="${main.memberPoint}"></span>P</dd>
-                          </dl></a
-                        >
-                      </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                         .                    </div>
+                          </dl></a>
+                      </div>                                                                                                                                                                                                                                                                                                                                                                                              </div>
                     <div class="MyWadizSupporterProjectInfo_container__3MC9F">
                       <div class="MyWadizSupporterProjectInfo_project__3Vaun">
                         <div class="MyWadizSupporterProjectInfo_projectLink__2K77b">
-                            <div class="MyWadizSupporterProjectInfo_titleInfo__2yN9F">
+                            <div class="MyWadizSupporterProjectInfo_titleInfo__2yN9F" onclick="location.href='/mypage/pay-card/list'">
                                 <i
                                   class="MyWadizSupporterProjectInfo_icon__SSJbz"
                                   aria-hidden="true"
@@ -149,7 +142,7 @@
                                 
                               </div>
                               <div class="divide"></div>
-                          <div class="MyWadizSupporterProjectInfo_titleInfo__2yN9F">
+                          <div class="MyWadizSupporterProjectInfo_titleInfo__2yN9F" onclick="location.href='/mypage/heart-list/heart'">
                             <div class="heartContainer">
                             <i
                              aria-hidden="true"
@@ -178,18 +171,47 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            <div class="MyWadizEventBanner_pare__2jf7V">
-              <div class="banner_eventBanner__cLcyF MyWadizEventBanner_banner__2PC1U MyWadizEventBanner_banner__2PC1U" style="background-color: rgb(254, 237, 132);">
-                <div class="banner_adBadge__2iyux"></div>
-                <a href="https://www.wadiz.kr/web/campaign/detail/199429?acid=10030673&amp;_refer_section_st=ME4_0" class="banner_link__11Ogl" data-promo-acid="10030673" data-promo-id="https://www.wadiz.kr/web/campaign/detail/199429?acid=10030673&amp;_refer_section_st=ME4_0" data-promo-name="마시기만해도 살이 쏘옥" data-promo-position="ME4" data-gtm-vis-recent-on-screen-11319722_2047="2608" data-gtm-vis-first-on-screen-11319722_2047="2608" data-gtm-vis-total-visible-time-11319722_2047="2000" data-gtm-vis-recent-on-screen-11319722_2115="2608" data-gtm-vis-first-on-screen-11319722_2115="2608" data-gtm-vis-total-visible-time-11319722_2115="2000" data-gtm-vis-has-fired-11319722_2047="1" data-gtm-vis-has-fired-11319722_2115="1"><div class="banner_inner__1Pn-n"><div class="banner_contents__1rLTm" style="background-image: url(&quot;https://cdn1.wadiz.kr/images/20230508/1683513705831.png/wadiz/optimize&quot;);">
-                  <div class="banner_text__ROckl"><p>마법의 다이어트 음료</p><strong>마시기만해도 살이 쏘옥</strong>
-                  </div></div></div></a></div><div class="banner_eventBanner__cLcyF MyWadizEventBanner_banner__2PC1U MyWadizEventBanner_banner__2PC1U" style="background-color: rgb(165, 229, 230);"><a href="https://ad.wadiz.kr?_refer_section_st=MY3_0" class="banner_link__11Ogl" data-promo-id="https://ad.wadiz.kr?_refer_section_st=MY3_0" data-promo-name="프로젝트 홍보를 시작하세요!" data-promo-position="MY3" data-gtm-vis-recent-on-screen-11319722_2047="2608" data-gtm-vis-first-on-screen-11319722_2047="2608" data-gtm-vis-total-visible-time-11319722_2047="2000" data-gtm-vis-has-fired-11319722_2047="1"><div class="banner_inner__1Pn-n"><div class="banner_contents__1rLTm" style="background-image: url(&quot;https://static.wadiz.kr/main/media/group-23@3x.1afee7f0.png&quot;);"><div class="banner_text__ROckl">
-                    <p>위게더와 함께</p>
-                    <strong>여러사람과 프로젝트를 시작하세요!</strong>
-                  </div>
-                  </div>
                 </div>
+                <div class="MyWadizEventBanner_pare__2jf7V">
+                  <div class="banner_eventBanner__cLcyF MyWadizEventBanner_banner__2PC1U MyWadizEventBanner_banner__2PC1U"
+                       style="background-color: rgb(254, 237, 132);">
+                    <div class="banner_adBadge__2iyux"></div>
+                    <a href="https://www.wadiz.kr/web/campaign/detail/199429?acid=10030673&amp;_refer_section_st=ME4_0"
+                       class="banner_link__11Ogl" data-promo-acid="10030673"
+                       data-promo-id="https://www.wadiz.kr/web/campaign/detail/199429?acid=10030673&amp;_refer_section_st=ME4_0"
+                       data-promo-name="마시기만해도 살이 쏘옥" data-promo-position="ME4"
+                       data-gtm-vis-recent-on-screen-11319722_2047="2608"
+                       data-gtm-vis-first-on-screen-11319722_2047="2608"
+                       data-gtm-vis-total-visible-time-11319722_2047="2000"
+                       data-gtm-vis-recent-on-screen-11319722_2115="2608"
+                       data-gtm-vis-first-on-screen-11319722_2115="2608"
+                       data-gtm-vis-total-visible-time-11319722_2115="2000" data-gtm-vis-has-fired-11319722_2047="1"
+                       data-gtm-vis-has-fired-11319722_2115="1">
+                      <div class="banner_inner__1Pn-n">
+                        <div class="banner_contents__1rLTm"
+                             style="background-image: url(&quot;https://cdn1.wadiz.kr/images/20230508/1683513705831.png/wadiz/optimize&quot;);">
+                          <div class="banner_text__ROckl"><p>마법의 다이어트 음료</p><strong>마시기만해도 살이 쏘옥</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </a></div>
+                  <div class="banner_eventBanner__cLcyF MyWadizEventBanner_banner__2PC1U MyWadizEventBanner_banner__2PC1U"
+                       style="background-color: rgb(165, 229, 230);">
+<!--                    <a-->
+<!--                          href="https://ad.wadiz.kr?_refer_section_st=MY3_0" class="banner_link__11Ogl"-->
+<!--                          data-promo-id="https://ad.wadiz.kr?_refer_section_st=MY3_0" data-promo-name="프로젝트 홍보를 시작하세요!"-->
+<!--                          data-promo-position="MY3" data-gtm-vis-recent-on-screen-11319722_2047="2608"-->
+<!--                          data-gtm-vis-first-on-screen-11319722_2047="2608"-->
+<!--                          data-gtm-vis-total-visible-time-11319722_2047="2000" data-gtm-vis-has-fired-11319722_2047="1">-->
+                    <div class="banner_inner__1Pn-n">
+                      <div class="banner_contents__1rLTm"
+                           style="background-image: url(&quot;https://static.wadiz.kr/main/media/group-23@3x.1afee7f0.png&quot;);">
+                        <div class="banner_text__ROckl">
+                          <p>위게더와 함께</p>
+                          <strong>여러사람과 프로젝트를 시작하세요!</strong>
+                        </div>
+                      </div>
+                    </div>
               </a>
             </div>
          </div>
@@ -198,7 +220,7 @@
                 <div>
                   <ul>
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a href="/web/social/followingmaker"
+                      <a href="/mypage/my-page/my-project-list"
                         ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><i class="fa-regular fa-clipboard" style="
                           margin-left: 2px; margin-right: 15px; font-size:22px;"></i><span class="MyWadizMenu_text__9ryGW">내 프로젝트</span
@@ -216,7 +238,7 @@
                       ></span></a>
                     </li>
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a href="/web/wmypage/myfunding/investfundinglist"
+                      <a href="/mypage/my-page/my-data-list"
                         ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><i class="fa-regular fa-folder" style=" font-size:22px;"></i></span
                         ><span class="MyWadizMenu_text__9ryGW">내 자료</span
@@ -235,7 +257,7 @@
                     </li>
 
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a href="/web/wmypage/myfunding/investfundinglist"
+                      <a href="/mypage/my-page/my-consult-detail"
                         ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><i class="fa-regular fa-comment" style=" font-size:22px; margin-right: 15px"></i><span class="MyWadizMenu_text__9ryGW">내 상담 </span
                         ><span class="MyWadizMenu_arrowIcon__2sutN" aria-hidden="true"
@@ -259,7 +281,7 @@
                 <div>
                   <ul>
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a th:href="@{/inquiry/inquiry-detail}"> <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
+                      <a href="/mypage/inquiry/inquiry-detail"> <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><svg
                             viewBox="0 0 32 32"
                             focusable="false"
@@ -293,7 +315,7 @@
                 <div>
                   <ul class="MyWadizOtherMenu_otherMenu__2GlwQ">
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a href="/web/wboard/newsBoardList"
+                      <a href="/notices/list"
                         ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><i class="MyWadizOtherMenu_noticeIcon__2AXx5"></i></span
                         ><span class="MyWadizMenu_text__9ryGW">공지사항</span
@@ -311,7 +333,7 @@
                       ></a>
                     </li>
                     <li class="MyWadizMenu_menu__3b-H-">
-                      <a href="/web/waccount/wAccountUpdateBasicInfoIntro"
+                      <a href="/mypage/setting"
                         ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                           ><svg
                             viewBox="0 0 32 32"

@@ -26,8 +26,14 @@ $(document).ready(function(){
                                  
                         <dd title="" class="PurchaseSummaryCard_title__uCiz5">${point.pointHistory} Point ${point.pointCategory}</dd>
                       </dl>
-                      ${point.dataTitle}
-                    </div>
+                      `
+                if(point.dataTitle == null){
+                   text+= `이벤트`
+                }else{
+                    text+=`${point.dataTitle}`
+                }
+
+                  text+=  `</div>
                     <!--                     <div class="PurchaseSummaryCard_detailText__2GWWi" aria-hidden="true">
                       상세보기<svg
                         viewBox="0 0 40 40"

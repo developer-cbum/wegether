@@ -190,6 +190,8 @@ public class AccountController {
         model.addAttribute("memberPassword", memberPassword);
         model.addAttribute("snsProfile", snsProfile);
         ;}
+
+
     @PostMapping("naver-join")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView naverJoin(MemberVO memberVO, HttpSession session,RedirectAttributes redirectAttributes){

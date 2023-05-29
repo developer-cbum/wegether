@@ -142,7 +142,7 @@ function project(){
             projects.forEach((project, i) => {
                 text += `
                
-                <li class="ProjectCardList_cardList__Eh497 projectli">
+                <li class="ProjectCardList_cardList__Eh497 projectli" onclick="location.href='/project/detail?id=${project.id}'">
               <div class="ProjectCard_container__1jpWF App_projectCard__2z3D2">
                 <a
                   class="ProjectCard_card__EvFnb"
@@ -184,14 +184,14 @@ function project(){
                       </div>
                     </div>
                     <strong class="ProjectCard_title__3ZLcD"
-                      >${project.contents} </strong
+                      >${project.projectIntroducing} </strong
                     >
                     <dl class="ProjectCard_subInfo__nidZs">
                       <dt class="ProjectCard_fontBlind__2JaYu">카테고리</dt>
                       <dd class="ProjectCard_subInfoText__-pKhs"> ${project.info}</dd>
                       <dt class="ProjectCard_fontBlind__2JaYu">메이커</dt>
                       <dd class="ProjectCard_subInfoText__-pKhs ProjectCard_ellipsis1__3fNOy">
-                       ${project.sub}
+                       ${project.now}
                       </dd>
                     </dl>
                   </div>
@@ -258,9 +258,10 @@ function data(){
             let text=``;
             console.log("dd");
             datas.forEach((data, i) => {
+                console.log(data);
                 text += `
              
-                <li class="ProjectCardList_cardList__Eh497 projectli">
+                <li class="ProjectCardList_cardList__Eh497 projectli" onclick="location.href='/datas/detail?id=${data.id}'">
               <div class="ProjectCard_container__1jpWF App_projectCard__2z3D2">
                 <a
                   class="ProjectCard_card__EvFnb"
@@ -302,7 +303,7 @@ function data(){
                       </div>
                     </div>
                     <strong class="ProjectCard_title__3ZLcD"
-                      >${data.contents}</strong
+                      >${data.dataContent}</strong
                     >
                     <dl class="ProjectCard_subInfo__nidZs">
                       <dt class="ProjectCard_fontBlind__2JaYu">카테고리</dt>
