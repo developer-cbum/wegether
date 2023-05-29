@@ -1,4 +1,4 @@
-// 공지사항 페이지 이동
+// 검색 페이지 이동
 $("a.notice-change-page").on("click", function(e){
     e.preventDefault();
     let page = $(this).attr("href");
@@ -6,3 +6,4 @@ $("a.notice-change-page").on("click", function(e){
     let keyword = $("input[name=keyword]").val();
     location.href = `/index/search-list?page=${page}`;
 });
+

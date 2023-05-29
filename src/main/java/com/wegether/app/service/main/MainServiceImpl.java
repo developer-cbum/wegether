@@ -1,19 +1,13 @@
 package com.wegether.app.service.main;
 
-import com.sun.tools.javac.Main;
-import com.wegether.app.dao.AdminDAO;
 import com.wegether.app.dao.MainDAO;
 import com.wegether.app.dao.MainFileDAO;
 import com.wegether.app.domain.dto.*;
-import com.wegether.app.domain.vo.NoticeVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -67,32 +61,37 @@ public class MainServiceImpl implements MainService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<MainDTO> mainSPGetList(MainPagination mainPagination) {
+    public List<MainDTO> mainSPGetList(MainProjectPagination mainProjectPagination, Search search) {
 //        총 갯수 넣기
-//        mainPagination.setTotal(mainDAO.findCountOfProject());
-//        mainPagination.progress();
+        mainProjectPagination.setTotal(mainDAO.findCountOfProject(search));
+        mainProjectPagination.progress();
 //        게시글 전체 목록
-        final List<MainDTO> mainDTOS = mainDAO.mainSPFindAll(mainPagination);
+        final List<MainDTO> mainDTOS = mainDAO.mainSPFindAll(mainProjectPagination, search);
 //        게시글 하나씩 첨부파일 목록 담기
         mainDTOS.forEach(mainDTO -> mainDTO.setFiles(mainFileDAO.mainPFFindAll(mainDTO.getId())));
         return mainDTOS;
     }
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public List<MainDTO> mainSDGetList(MainPagination mainPagination) {
-//        총 갯수 넣기
-//        mainPagination.setTotal(mainDAO.findCountOfData());
-//        mainPagination.progress();
-//        게시글 전체 목록
-        final List<MainDTO> mainDTOS = mainDAO.mainSDFindAll(mainPagination);
-//        게시글 하나씩 첨부파일 목록 담기
-        mainDTOS.forEach(mainDTO -> mainDTO.setFiles(mainFileDAO.mainDFFindAll(mainDTO.getId())));
-        return mainDTOS;
-    }
+//    @Override
+//    @Transactional(rollbackFor = Exception.class)
+//    public List<MainDTO> mainSDGetList(MainDataPagination mainDataPagination, Search search) {
+////        총 갯수 넣기
+//        mainDataPagination.setTotal(mainDAO.findCountOfData(search));
+//        mainDataPagination.progress();
+////        게시글 전체 목록
+//        final List<MainDTO> mainDTOS = mainDAO.mainSDFindAll(mainDataPagination, search);
+////        게시글 하나씩 첨부파일 목록 담기
+//        mainDTOS.forEach(mainDTO -> mainDTO.setFiles(mainFileDAO.mainDFFindAll(mainDTO.getId())));
+//        return mainDTOS;
+//    }
+//
+//
+////
+//    @Override
+//     public int getDataTotal(Search search){return mainDAO.findCountOfData(search);}
 
     @Override
-     public int getTotal(){return mainDAO.findCountOfData();}
+     public int getProjectTotal(Search search){return mainDAO.findCountOfProject(search);}
 
 
 

@@ -73,8 +73,13 @@ public class KakaoController {
             return new RedirectView("/accounts/kakao-register");
         }
 
-//        카카오 로그인해서 db에 계정이 있을때
         Long foundNumber = accountService.checkId(kakaoInfo.get("memberId").toString()).get().getId();
+        if(!accountService.getMemberById(foundNumber).get().isMemberStatus()){
+            redirectAttributes.addFlashAttribute("withdraw", true);
+            return new RedirectView("/accounts/login");
+        }
+        
+//        카카오 로그인해서 db에 계정이 있을때
         if(foundNumber != null){
             log.info(kakaoInfo.get("profile").toString());
             accountService.changeLoginStatusToKakao(kakaoInfo.get("memberId").toString(), kakaoInfo.get("profile").toString());
