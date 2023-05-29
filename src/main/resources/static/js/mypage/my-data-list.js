@@ -49,14 +49,14 @@ $(document).ready(function(){
 
                   </dd>
                   <dd class="PurchaseSummaryCard_description__245z_">
-                    <span class="PurchaseSummaryCard_makerName__1n7dA">info</span>
+                    <span class="PurchaseSummaryCard_makerName__1n7dA">${data.dataPrice}</span>
                   </dd>
                 </dl>
               </div>
               <div class="PurchaseSummaryCard_detailText__2GWWi" aria-hidden="true">
                 <button><a href="/mypage/datas/modify?id=${data.id}">수정</a></button>
                 <span>&nbsp | &nbsp</span>
-                <button>삭제</button>
+                <button id="${data.id}">삭제</button>
               </div>
 
             </div>

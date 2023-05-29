@@ -7,7 +7,10 @@
     <title>설정 | 위게더</title>
     <link rel="stylesheet" href="/css/mypage/setting/setting.css">
     <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <title>문의 등록 | 위게더</title>
   </head>
+  <header th:replace="~{/fix/header :: #header}"></header>
   <body>
     <div id="accountWrap">
       <!-- S : #newContainer -->
@@ -25,7 +28,7 @@
             </div>
           </a>
 
-          <a class="my-info" href="/web/waccount/wAccountUpdatePwd">
+          <a class="my-info" href="/mypage/setting/check-password">
             <div class="my-info-text">
               <h3>비밀번호 설정</h3>
               <p>비밀번호 재설정</p>
@@ -35,7 +38,7 @@
             </div>
           </a>
 
-          <a class="my-info" href="/web/wmypage/myprofile/modifyprofile">
+          <a class="my-info" href="/mypage/setting/set-profile">
             <div class="my-info-text">
               <h3>프로필 정보 설정</h3>
               <p>프로필 사진, 경력, 학력, 관심분야</p>
@@ -54,7 +57,7 @@
             </div>
           </a>
           <div class="my-info">
-            <h3><a href="/web/waccount/wAccountDropOutUser">회원 탈퇴</a></h3>
+            <h3><a href="/mypage/setting/member-secession">회원 탈퇴</a></h3>
           </div>
         </div>
         <!-- //account-wrap with-footer -->

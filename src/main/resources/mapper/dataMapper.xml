@@ -105,7 +105,7 @@
 
 <!--    내가 등록한 자료-->
     <select id="selectmydata" resultType="dataDTO">
-    SELECT ID, DATA_TITLE, DATA_UPDATE_DATE
+    SELECT ID, DATA_TITLE, DATA_CONTENT, DATA_PRICE, DATA_UPDATE_DATE
     FROM TBL_DATA WHERE MEMBER_ID=#{memberId}
     </select>
 

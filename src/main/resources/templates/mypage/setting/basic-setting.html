@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="/css/mypage/setting/basic-setting.css">
     <link rel="stylesheet" href="/css/mypage/setting/save-password-modal.css">
     <link rel="stylesheet" href="/css/account/login/login.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
 
     <title>기본 설정 | 위게더</title>
 </head>
 <body>
+<header th:replace="~{/fix/header :: #header}"></header>
+
 <div id="accountWrap">
     <!-- S : #newContainer -->
     <div id="newContainer">
@@ -58,6 +61,11 @@
                     </div>
 
 
+                </div>
+                <div class="email-input-wrap small">
+                    <div class="btn-wrap">
+                        <button type="submit" id="saveBtn" class="wz button primary block btn-block-mint">변경</button>
+                    </div>
                 </div>
             </form>
                 <p id="phoneError" class="error-text emailMsg" style="display: none">휴대폰 번호 형식이 올바르지 않습니다.</p>
@@ -125,11 +133,11 @@
                       </li>
                     </ul>
                   </div>-->
-                <div class="email-input-wrap small">
-                    <div class="btn-wrap">
-                        <button type="submit" id="saveBtn" class="wz button primary block btn-block-mint">변경</button>
-                    </div>
-                </div>
+<!--                <div class="email-input-wrap small">-->
+<!--                    <div class="btn-wrap">-->
+<!--                        <button type="submit" id="saveBtn" class="wz button primary block btn-block-mint">변경</button>-->
+<!--                    </div>-->
+<!--                </div>-->
         </div>
         <input type="hidden" id="validEmailFirstCheck" value="Y"/>
         <input type="hidden" id="validEmail" value="1"/>
