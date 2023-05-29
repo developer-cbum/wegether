@@ -11,12 +11,13 @@ import com.wegether.app.domain.dto.ProjectPagination;
 import com.wegether.app.domain.type.FileType;
 import com.wegether.app.domain.vo.ProjectFileVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ProjectServiceImpl implements ProjectService {
@@ -77,6 +78,7 @@ public class ProjectServiceImpl implements ProjectService {
 //    }
 
     //    자료 등록 - 파일
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void write(ProjectDTO projectDTO) {
@@ -84,7 +86,8 @@ public class ProjectServiceImpl implements ProjectService {
         for(int i=0; i<projectDTO.getFiles().size(); i++){
             projectDTO.getFiles().get(i).setProjectId(projectDTO.getId());
             projectDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
-            fileDAO.save(projectDTO.getFiles().get(i));
+            log.info(projectDTO.getFiles().get(i).toString());
+            fileDAO.projectsave(projectDTO.getFiles().get(i));
         }
         projectDTO.getFiles().forEach(projectFileDTO ->
         { ProjectFileVO projectFileVO = new ProjectFileVO();
