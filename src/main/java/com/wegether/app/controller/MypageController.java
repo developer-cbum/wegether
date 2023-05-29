@@ -392,6 +392,12 @@ public class MypageController {
 
 //문의 등록
 
+    public 
+
+    @GetMapping("/inquiry/inquiry-register")
+    public void goToInquiry(InquiryVO inquiryVO, Model model){
+        model.addAttribute("inquiry", inqui)
+    }
 
 
 
