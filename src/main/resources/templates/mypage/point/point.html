@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleag.org">
-
-<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,7 +17,7 @@
           <div class="mypage-project short">
             <p class="point-guide">포인트 적립, 사용내역입니다.</p>
             <div class="usable-point">
-              <p>현재 사용가능 포인트 <em th:text="${points.memberName}"> P</em></p>
+              <p>현재 사용가능 포인트 <em th:text="${member.memberPoint + 'P'}"></em></p>
             </div>
 
             <div class="point-list">
