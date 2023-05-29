@@ -11,5 +11,6 @@ public class PointDTO {
     private String dataTitle;
     private String dataSchool;
     private String dataMajor;
-
+    private String memberName;
+    private Long getMemberPoint;
 }

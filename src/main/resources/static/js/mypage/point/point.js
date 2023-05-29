@@ -23,8 +23,10 @@ $(document).ready(function(){
                         </div>
                       </div>
                       <dl class="PurchaseSummaryCard_titleArea__3qDl4">
-                        <dd title="" class="PurchaseSummaryCard_title__uCiz5">${points.memberPoint} Point 사용</dd>
+                                 
+                        <dd title="" class="PurchaseSummaryCard_title__uCiz5">${point.pointHistory} Point ${point.pointCategory}</dd>
                       </dl>
+                      ${point.dataTitle}
                     </div>
                     <!--                     <div class="PurchaseSummaryCard_detailText__2GWWi" aria-hidden="true">
                       상세보기<svg

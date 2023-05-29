@@ -31,11 +31,11 @@ public interface MemberMapper {
     //아이디 찾기 세션으로
     public Optional<MemberVO> selectById(Long id);
 
-//   프로필 포함 아이디 조회
+    //   프로필 포함 아이디 조회
     public Optional<ProfileMemberDTO> selectIdAndProfile(Long id);
 
 
-// 마이페이지 프로필 설정
+    // 마이페이지 프로필 설정
     public void updateProfile(MemberVO memberVO);
 
 

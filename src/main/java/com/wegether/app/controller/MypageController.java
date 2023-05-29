@@ -252,8 +252,10 @@ public class MypageController {
         );
         //        파일 삭제
         dataDTO.getFileIdsForDelete().forEach(dataService::fileRemove);
-        redirectAttributes.addAttribute("id", dataDTO.getId());
-        return new RedirectView("/datas/detail");
+
+        Long id = dataDTO.getId();
+
+        return new RedirectView("/datas/detail?id=" +id);
     }
 
 
@@ -354,10 +356,10 @@ public class MypageController {
     private final PointImpl pointImpl;
 
     @GetMapping("/point/point")
-    public List<PointDTO> goToPoint(HttpSession session, Long memberId, Model model){
-        final List<PointDTO> points=pointImpl.getPoints((Long) session.getAttribute("id"));
-        return points;
+    public void goToPoint(HttpSession session, Model model){
+        model.addAttribute(pointImpl.getPoints((Long) session.getAttribute("id")));
     }
+
 
 //    프로필 사진 수정
 //    mypage/setting/set-profile
@@ -368,11 +370,12 @@ public class MypageController {
     }
 
     @PostMapping("/setting/set-profile")
-    public void setProfile(MemberVO memberVO){
+    public RedirectView setProfile(MemberVO memberVO){
         Long id = (Long)session.getAttribute("id");
         memberVO.setId(id);
 
         accountService.setProfile(memberVO);
+        return new RedirectView("/mypage/my-page");
 
 
     }

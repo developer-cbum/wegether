@@ -23,10 +23,9 @@ public class MemberVO {
     private String memberMajor;
     private String memberIntroducing;
     private String memberLoginStatus;
-    private long fileId;
     private String filePath;
     private String fileUuid;
     private String fileName;
     private Long fileSize;
-    private String fileType;
+    private String snsProfile;
 }

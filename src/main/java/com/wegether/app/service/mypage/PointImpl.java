@@ -22,8 +22,8 @@ public class PointImpl implements MypageService{
         log.info("포인트 서비스");
     }
 
-    public List<PointDTO> getPoints (Long memberId) {
-        return pointDAO.getMyPoint(memberId) ;
+    public List<PointDTO> getPoints (Long id) {
+        return pointDAO.getMyPoint(id) ;
     }
 
 }

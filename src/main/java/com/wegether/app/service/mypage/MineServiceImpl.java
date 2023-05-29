@@ -86,4 +86,10 @@ public class MineServiceImpl implements MypageService {
 //    public List<ProjectDTO> readMyProject(Long memberId){return projectDAO.showmyProject(memberId);}
 
 
+//    마이페이지 프로필 설정
+    public void modifyProfile(MemberVO memberVO){
+        memberDAO.setProfile(memberVO);
+
+    }
+
 }

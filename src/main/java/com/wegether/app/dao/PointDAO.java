@@ -21,8 +21,8 @@ public class PointDAO {
     }
 
 //    포인트 내역
-    public List<PointDTO> getMyPoint(Long memberId){
-        return pointMapper.selectPoint(memberId);
+    public List<PointDTO> getMyPoint(Long id){
+        return pointMapper.selectMyPoint(id);
     }
 
 }

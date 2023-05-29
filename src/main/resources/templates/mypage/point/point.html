@@ -19,7 +19,7 @@
           <div class="mypage-project short">
             <p class="point-guide">포인트 적립, 사용내역입니다.</p>
             <div class="usable-point">
-              <p>현재 사용가능 포인트 <em> 100p</em></p>
+              <p>현재 사용가능 포인트 <em th:text="${points.memberName}"> P</em></p>
             </div>
 
             <div class="point-list">
@@ -107,6 +107,5 @@
     let points = [[${points}]];
     console.log(points);
   </script>
-  <script src="/js/mypage/my-project-list.js"></script>
   <script src="/js/mypage/point/point.js"></script>
 </html>

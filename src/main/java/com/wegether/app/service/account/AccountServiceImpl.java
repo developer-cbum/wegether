@@ -74,5 +74,7 @@ public class AccountServiceImpl implements AccountService {
     public void setProfile(MemberVO memberVO) {
         memberDAO.setProfile(memberVO);
     }
+
+
 }
 

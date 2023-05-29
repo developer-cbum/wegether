@@ -56,10 +56,10 @@
     </select>
 
 <!--    마이페이지 프로필-->
-    <update id="insertProfile">
+    <update id="updateProfile">
         UPDATE TBL_MEMBER
-        SET MEMBER_SCHOOL=#{memberSchool}, MEMBER_MAJOR=#{memberMajor}, MEMBER_INTRODUCING=#{memberIntroducing}, FILE_ID=#{fileId}, FILE_PATH=#{filePath}, FILE_UUID=#{fileUuid}, FILE_NAME=#{fileName}, FILE_SIZE=#{fileSize}
-        WHERE MEMBER_ID=#{memberId};
+        SET MEMBER_SCHOOL=#{memberSchool}, MEMBER_MAJOR=#{memberMajor}, MEMBER_INTRODUCING=#{memberIntroducing}, FILE_PATH=#{filePath}, FILE_UUID=#{fileUuid}, FILE_NAME=#{fileName}, FILE_SIZE=#{fileSize}
+        WHERE MEMBER_ID=#{memberId}
     </update>
 
 

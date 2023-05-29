@@ -41,7 +41,7 @@
                         </div>
                         <form
                                 class="modifyForm wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
-                                th:action="@{datas/modify?id=*{id}}" method="post" th:object="${dataDTO}" name="modifyForm"
+                                th:action="@{/mypage/datas/modify(id=*{id})}" method="post" th:object="${dataDTO}" name="modifyForm"
                         >
                             <input type="hidden" name="id" th:field="*{id}">
 

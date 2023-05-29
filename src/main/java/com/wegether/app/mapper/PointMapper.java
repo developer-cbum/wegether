@@ -14,6 +14,6 @@ public interface PointMapper {
     public void insertJoinPoint(Long memberId);
 
     // 포인트 내역
-    public List<PointDTO> selectPoint(Long memberId);
+    public List<PointDTO> selectMyPoint(Long id);
 
 }
