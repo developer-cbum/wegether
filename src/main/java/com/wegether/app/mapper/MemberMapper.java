@@ -20,7 +20,7 @@ public interface MemberMapper {
     public Optional<Long> selectByMemberIdAndMemberPassword(String memberId,String memberPassword);
 
     //비밀번호 재설정
-    public void updatePassword(@Param("id") Long id, @Param("memberPassword") String memberPassword);
+    public void updatePassword(Long id, String memberPassword);
 
     //카카오 로그인 상태 업데이트
     public void updateLoginStatusToKakao(String memberId, String snsProfile);

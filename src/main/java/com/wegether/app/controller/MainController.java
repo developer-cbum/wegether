@@ -7,9 +7,7 @@ import com.wegether.app.service.inquiry.InquiryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.wegether.app.domain.dto.MainDTO;
@@ -22,7 +20,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import java.io.File;
@@ -40,7 +37,11 @@ public class MainController {
 
 
     @GetMapping("main")
-    public void goToListForm(Model model){
+    public void goToListForm(Model model, @RequestParam(required = false) String sns){
+
+        if(sns !=null){
+            model.addAttribute("snsStatus", sns);
+        }
 //        List<MainDTO> projects = mainService.mainPGetList();
 //        List<MainDTO> datas = mainService.mainDGetList();
 //        List<MainDTO> communities = mainService.mainCGetList();
