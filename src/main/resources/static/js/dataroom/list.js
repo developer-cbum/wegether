@@ -89,39 +89,14 @@ $(document).ready(function () {
     load("all");
 
 
-    // //  page
-    // let modalCheck;
-    // function showWarnModal(modalMessage) {
-    //     modalCheck = false;
-    //     $('div#content-wrap').html(modalMessage);
-    //     $('div.warn-modal').css('animation', 'popUp 0.5s');
-    //     $('div.modal').css('display', 'flex').hide().fadeIn(500);
-    //     setTimeout(function () {
-    //         modalCheck = true;
-    //     }, 500);
-    // }
-    //
-    // $('div.modal').on('click', function () {
-    //     if (modalCheck) {
-    //         $('div.warn-modal').css('animation', 'popDown 0.5s');
-    //         $('div.modal').fadeOut(500);
-    //     }
-    // });
-
     //  더보기 버튼
     $("#searchMoreData_btn").on("click", function(){
         page++;
-        if (!`${dataPagination.next}`) {
-            showWarnModal("<span>마지막 페이지입니다</span>");
-        }
-
         load(categoryType);
     });
 
 
-    // category
-
-
+    // category list
     $('.category_lists button').on("click", function () {
         text="";
         $list.html("");
@@ -136,28 +111,24 @@ $(document).ready(function () {
     });
 
 
-
     //  sort_list
-
+    //  최신순
     $('.new').on("click", function () {
         $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
         page = 1;
-        // text="";
         $list.html("");
         order="new";
         load(categoryType);
     })
 
+    //  인기순
     $('.trand').on("click", function () {
         $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
-        // text="";
         $list.html("");
         page = 1;
         order="trand";
         load(categoryType);
     })
-
-
 
     //load ajax
     function load(categoryType) {
@@ -166,20 +137,19 @@ $(document).ready(function () {
             url: `/datas/list/${page}/${categoryType}/${order}`,
             contentType : "application/json; charset=UTF-8;",
             success:  function (datas) {
-                text="";
-                // $list.html("");
-                showList(datas);
 
-                console.log(datas);
-                console.log(page);
-                console.log(categoryType);
-                console.log(order);
+                if (datas.length == 0) {
+                    showWarnModal("<span>마지막 페이지입니다</span>");
+                    $('#searchMoreData_btn').hide();
+                    return;
+                }
+                text="";
+                showList(datas);
 
 
             }
         })
     }
-
 
 
     //TOP btn

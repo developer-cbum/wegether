@@ -31,7 +31,6 @@ public class DataController {
     private final AccountService accountService;
     private final HttpSession httpSession;
 
-
 //    자료 목록 - 기본
 //    @GetMapping("list")
 //    public void goToDataList(DataPagination dataPagination, CategoryType categoryType, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "new") String order, Model model){
@@ -67,9 +66,6 @@ public class DataController {
         model.addAttribute("dataDTO", dataService.read(id).get());
     }
 
-//    자료 등록
-//    @GetMapping("register")
-//    public void goToWriteForm(DataDTO dataDTO, Model model){; }
 
     //    자료 등록 - HttpSession session
     @GetMapping("register")
@@ -87,7 +83,8 @@ public class DataController {
         dataService.write(dataDTO);
         return new RedirectView("/datas/list");
     }
-    
+
+
 //    자료 결제 페이지
     @GetMapping("payment")
     public void goToPayment(@RequestParam Long dataId, Model model, PayVO payVO, HttpSession session, DataDTO dataDTO){
@@ -95,12 +92,8 @@ public class DataController {
         Long memberId = (Long)httpSession.getAttribute("id");
         MemberVO member = accountService.getMemberById(memberId).get();
 
-
         model.addAttribute("dataDTO", readDataPay);
         model.addAttribute("memberId", member);
-
-
-
     }
 
 //      결제 완료 - insert pay + update memberPoint + insert point
@@ -112,10 +105,6 @@ public class DataController {
         dataService.completePay(payVO);
         dataService.modifyPoint(memberId, payPointUse);
         dataService.getPoint(pointVO);
-
-//        int i = (int)(Math.floor(pointVO.getPointHistory()));
-//        Long changeFormat = Long.valueOf(i);
-//        pointVO.setPointHistory(changeFormat);
 
         if(payPointUse != 0){
             dataService.usePoint(pointVO);
