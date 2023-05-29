@@ -16,6 +16,7 @@
         SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE, COMMUNITY_ID
         FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C
         ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}
+        ORDER BY FILE_TYPE DESC
     </select>
 
     <delete id="communityDelete">
