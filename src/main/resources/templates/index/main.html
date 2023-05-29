@@ -230,6 +230,11 @@
 <script src="/js/modal/modal.js"></script>
 <script th:inline="javascript">
     let joinStatus = [[${join}]];
+    let sns = [[${sns}]];
+
+    if(sns){
+        showWarnModal("<span>SNS 계정연동이 되었습니다</span>");
+    }
 
     if(joinStatus){
         showWarnModal("<span>회원가입을 축하드립니다</span><br><span>Welcome Event</span><br><span>2000 Point 적립</span>");

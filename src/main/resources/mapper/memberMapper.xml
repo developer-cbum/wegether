@@ -3,7 +3,7 @@
 <mapper namespace="com.wegether.app.mapper.MemberMapper">
     <!-- 아이디중복검사 & 아이디 찾기  -->
     <select id="selectByMemberId" resultType="memberVO">
-        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS
+        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS, SNS_PROFILE
         FROM TBL_MEMBER
         WHERE MEMBER_ID = #{memberId}
     </select>
@@ -30,20 +30,20 @@
 <!--   카카오나 로그인 상태 업데이트-->
     <update id="updateLoginStatusToKakao">
          UPDATE TBL_MEMBER
-        SET MEMBER_LOGIN_STATUS = 'KAKAO'
+        SET MEMBER_LOGIN_STATUS = 'KAKAO', SNS_PROFILE = #{snsProfile}
         WHERE MEMBER_ID = #{memberId}
     </update>
 
     <!--   네이버로 로그인 상태 업데이트-->
     <update id="updateLoginStatusToNaver">
          UPDATE TBL_MEMBER
-        SET MEMBER_LOGIN_STATUS = 'NAVER'
+        SET MEMBER_LOGIN_STATUS = 'NAVER', SNS_PROFILE= #{snsProfile}
         WHERE MEMBER_ID = #{memberId}
     </update>
 
 <!--    세션 맴버 아이디로 아이디 찾기-->
     <select id="selectById" resultType="memberVO">
-        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS
+        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS, FILE_NAME, SNS_PROFILE
         FROM TBL_MEMBER
         WHERE ID = #{id}
     </select>

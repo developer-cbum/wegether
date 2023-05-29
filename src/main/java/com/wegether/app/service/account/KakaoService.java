@@ -114,19 +114,23 @@ public class KakaoService {
             }
 
             //프로필 링크가져오기 (썸네일사이즈)
+            String profile = "";
             boolean hasImage =element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("profile").getAsJsonObject().get("is_default_image").getAsBoolean();
             if(!hasImage){
-                log.info(element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("profile").getAsJsonObject().get("thumbnail_image_url").getAsString());
+              profile= element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("profile").getAsJsonObject().get("thumbnail_image_url").getAsString();
             }
          
 
             log.info("id : " + id);
             log.info("email : " + email);
+            log.info("profile" + profile);
 
 
 
             map.put("memberId", email);
             map.put("memberPassword", id);
+            map.put("profile", profile);
+
 
 
             br.close();
