@@ -77,7 +77,7 @@
 
 
 						<form th:action="@{/datas/payment}" method="post" name="payment-submit" id="payment-submit">
-							<input type="hidden" name="id" th:field="*{id}" >
+							<input type="hidden" name="dataId" th:field="*{id}" >
 							<input type="hidden" name="memberId" th:field="*{memberId}" >
 							<!--                        <input type="hidden" name="deliveryRegion.isJeju" value="false">-->
 							<!--                        <input type="hidden" name="deliveryRegion.isIslandOrMountainous" value="false">-->
@@ -120,7 +120,7 @@
 									<h3 class="StorePaymentSection_title__DLi4F">포인트 할인</h3>
 								</div>
 								<div class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM" style="position: relative;">
-									<input type="text" th:value="${payVO.payPointUse}" name="payPointUse" id="payPointUse"/>
+									<input type="text" th:value="0" name="payPointUse" id="payPointUse"/>
 									<div class="select-menu__placeholder css-1wa3eu0-placeholder">사용 가능한 포인트 : <span th:text="*{memberPoint}"></span></div>
 
 									<!--포인트 없을 때-->

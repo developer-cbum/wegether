@@ -81,9 +81,9 @@ public class DataServiceImpl implements DataService {
     @Override
     public Optional<DataDTO> readDataPay(Long id) {
         final Optional<DataDTO> foundMember = dataDAO.findByIdDataPay(id);
-        if(foundMember.isPresent()){
-            foundMember.get().setMemberId(2L);
-        }
+//        if(foundMember.isPresent()){
+//            foundMember.get().setMemberId(2L);
+//        }
         return foundMember;
     }
 
@@ -115,6 +115,14 @@ public class DataServiceImpl implements DataService {
     public void modifyPoint(Long memberId, Long payPointUse) {
         payDAO.updatePoint(memberId, payPointUse);
     }
+
+    //  결제 완료 insert point
+//    사용, 적립 같이 되어야하고, 사용은 선택, 적립은 무조건
+    @Override
+    public void getPoint(PointVO pointVO) {
+        payDAO.savePoint(pointVO);
+    }
+
 
     //    찜하기
     @Override
