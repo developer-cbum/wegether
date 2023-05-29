@@ -14,4 +14,5 @@ public class PointVO {
     private Long pointHistory;
     private String pointCategory;
     private String pointRecordDate;
+
 }

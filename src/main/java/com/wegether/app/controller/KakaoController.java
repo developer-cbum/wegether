@@ -32,7 +32,7 @@ public class KakaoController {
         HashMap<String, Object> kakaoInfo = kakaoService.getKakaoInfo(token);
 
 
-    //애초에 카카오 로그인 할때 그 아이디가 있을때 중복이고 그 계정이 카카오 연동이 아닐떄
+        //애초에 카카오 로그인 할때 그 아이디가 있을때 중복이고 그 계정이 카카오 연동이 아닐떄
 
         //카카오 계정 로그인 할떄 이미 아이디가 일반 회원이나 네이버가로 가입되어있을경우
 
@@ -40,7 +40,7 @@ public class KakaoController {
 
 
         if(accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()){
-        //마이페이지에서 로그인한후 연동할때
+            //마이페이지에서 로그인한후 연동할때
             if(session.getAttribute("id") != null){
                 Optional<MemberVO> foundMember = accountService.checkId(kakaoInfo.get("memberId").toString());
                 foundMember.ifPresent(member -> {

@@ -74,9 +74,15 @@
     <!--  결제 페이지  -->
 <!--  data / member / point / pay  -->
     <select id="selectPay" resultType="dataDTO">
+        SELECT D.ID, M.ID AS "MEMBER_ID", M.MEMBER_NAME, M.MEMBER_PHONE_NUMBER, M.MEMBER_ID AS "MEMBER_EMAIL",
+            M.MEMBER_POINT, D.DATA_TITLE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_PRICE, M.MEMBER_NIC KNAME, P.PAY_REGISTER_DATE
+            FROM TBL_MEMBER M JOIN TBL_PAY P
+            ON M.ID = P.MEMBER_ID JOIN TBL_DATA D
+
         SELECT D.ID, M.ID MEMBER_ID, M.MEMBER_NAME, M.MEMBER_PHONE_NUMBER, M.MEMBER_ID MEMBER_EMAIL,
             M.MEMBER_POINT, D.DATA_TITLE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_PRICE, M.MEMBER_NICKNAME
             FROM TBL_MEMBER M JOIN TBL_DATA D
+
             ON M.ID = D.MEMBER_ID JOIN TBL_POINT T
             ON M.ID = T.MEMBER_ID
         AND D.ID = #{id} AND M.ID = #{memberId}
@@ -111,6 +117,21 @@
 
 
     <!--    소영 마이페이지-내가 업로드한 자료-->
+
+
+<!--    자료 수정-->
+    <update id="updateData">
+        UPDATE TBL_DATA
+        SET DATA_TITLE=#{dataTitle}, DATA_CONTENT=#{dataContent}, DATA_PRICE=#{dataPrice} , DATA_SCHOOL=#{dataSchool}, DATA_MAJOR=#{dataMajor}
+        WHERE ID=#{id}
+    </update>
+
+
+
+
+<!--    </select>-->
+
+<!--    자료 삭제-->
 
 
 </mapper>

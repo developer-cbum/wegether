@@ -62,5 +62,7 @@ public class HeartDTO {
     private String title;
     private String sub;
 
+    private String name;
+    private String contents;
 
 }

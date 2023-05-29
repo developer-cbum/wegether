@@ -64,7 +64,7 @@ public class DataController {
 
     //    자료 상세
     @GetMapping("detail")
-    public void read(@RequestParam Long id, Model model, DataDTO dataDTO){
+    public void read(@RequestParam Long id, Model model, DataDTO dataDTO, RedirectAttributes redirectAttributes){
         dataService.modifyViewCountUp(dataDTO.getId());
         model.addAttribute("dataDTO", dataService.read(id).get());
     }

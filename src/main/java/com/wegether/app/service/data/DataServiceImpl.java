@@ -87,6 +87,10 @@ public class DataServiceImpl implements DataService {
         return foundMember;
     }
 
+    @Override
+    public void modify(DataDTO dataDTO) {
+        dataDAO.setData(dataDTO);
+    }
 
 //      결제 완료 - insert pay
     @Override
@@ -94,6 +98,18 @@ public class DataServiceImpl implements DataService {
         payDAO.savePay(payVO);
     }
 
+    @Override
+    public void dataImageWrite (DataFileDTO dataFileDTO) {
+        dataFileDAO.dataImageSave(dataFileDTO);
+    }
+
+    public void dataImageMiddleWrite(DataFileVO dataFileVO) {
+        dataFileDAO.save(dataFileVO);
+    }
+    // 파일 삭제
+    public void fileRemove(Long id){
+        dataFileDAO.delete(id);
+    };
 //      결제 완료 - member point
     @Override
     public void modifyPoint(Long memberId, Long payPointUse) {

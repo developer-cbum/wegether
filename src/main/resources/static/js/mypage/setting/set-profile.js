@@ -1,29 +1,7 @@
-
-
-<!-- 모달 부분 js -->
-
-let modalCheck;
-function showWarnModal(modalMessage) {
-    modalCheck = false;
-    $('div#content-wrap').html(modalMessage);
-    $('div.warn-modal').css('animation', 'popUp 0.5s');
-    $('div.modal').css('display', 'flex').hide().fadeIn(500);
-    setTimeout(function () {
-        modalCheck = true;
-    }, 500);
-}
-
-$('div.modal').on('click', function () {
-    if (modalCheck) {
-        $('div.warn-modal').css('animation', 'popDown 0.5s');
-        $('div.modal').fadeOut(500);
-    }
-});
-
-
-
 const $upload = $("input.upload");
-const $thumbnail = $("label.attach img.thumbnail");
+const $thumbnail = $("img.thumbnail");
+
+console.log("set-profile");
 
 $("img.preview").each(function(i){
     if(!$(this).attr("src")){
@@ -38,7 +16,9 @@ $upload.on("change", function(e){
     let name = files[0].name;
     let formData = new FormData();
 
-    sizes.push(files[0].size);
+    console.log("업로드 들어옴");
+
+    sizes.push()(files[0].size);
 
     $(files).each((i, file) => {
         formData.append("uploadFile", file);
@@ -70,7 +50,10 @@ $upload.on("change", function(e){
 
 });
 
-$("div.x").on("click", function(e){
+$(".file_upload_btn").on("click", function(e){
+
+    console.log("버튼 들어옴");
+
     e.preventDefault();
     let i = $("div.x").index($(this));
     sizes = sizes.splice(i, 1);
@@ -82,7 +65,9 @@ $("div.x").on("click", function(e){
     $thumbnail.eq(i).hide();
 });
 
-$("button.ok-button").on("click", function(){
+
+
+$("button.changeProfile").on("click", function(){
     const imgs = $("img.thumbnail").filter((i, img) => $(img).attr("src"));
     let text = ``;
     imgs.each((i, img) => {
@@ -100,6 +85,7 @@ $("button.ok-button").on("click", function(){
             <input type="hidden" name="files[${i}].fileSize" value="${fileSize}">
         `
 
+        console.log("전달 완료");
         // 저장완료 모달
         showWarnModal('등록이 완료되었습니다');
         setTimeout(function () {
@@ -113,3 +99,29 @@ $("button.ok-button").on("click", function(){
 
 
 });
+
+
+
+//
+//     /*사진변경*/
+//     $(document).ready(function () {
+//         $("#btn_updatePhoto").click(function () {
+//             $("#file_input").click();
+//         });
+//
+//         $("#file_input").change(function () {
+//             var file = this.files[0];
+//             var reader = new FileReader();
+//
+//             reader.onload = function (e) {
+//                 $("#profile_image").attr("src", e.target.result);
+//             };
+//
+//             reader.readAsDataURL(file);
+//         }))
+//
+//         // $("#btn_deletePhoto").click(function () {
+//         //     $("#profile_image").attr("src", "https://d2v80xjmx68n4w.cloudfront.net/assets/icon/mykmong-profile-default@3x.png");
+//         // });
+//
+// )})
