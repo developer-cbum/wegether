@@ -99,11 +99,12 @@ public class DataController {
 //      결제 완료 - insert pay + update memberPoint + insert point
     @PostMapping("payment")
     @Transactional(rollbackFor = Exception.class)
-    public RedirectView completePay(PayVO payVO, Long payPointUse, PointVO pointVO) {
+    public RedirectView completePay(PayVO payVO, Long payPointUse, PointVO pointVO, Long getHistory) {
         Long memberId = (Long)httpSession.getAttribute("id");
         pointVO.setDataId(payVO.getDataId());
         dataService.completePay(payVO);
         dataService.modifyPoint(memberId, payPointUse);
+        dataService.modifyMemberPointPlus(memberId, getHistory);
         dataService.getPoint(pointVO);
 
         if(payPointUse != 0){
