@@ -107,13 +107,18 @@ public class DataController {
     @PostMapping("payment")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView completePay(PayVO payVO, Long payPointUse, PointVO pointVO) {
-//        Long memberId = 2L;
         Long memberId = (Long)httpSession.getAttribute("id");
         pointVO.setDataId(payVO.getDataId());
         dataService.completePay(payVO);
         dataService.modifyPoint(memberId, payPointUse);
-        if(payPointUse == 0){
-            dataService.getPoint(pointVO);
+        dataService.getPoint(pointVO);
+
+//        int i = (int)(Math.floor(pointVO.getPointHistory()));
+//        Long changeFormat = Long.valueOf(i);
+//        pointVO.setPointHistory(changeFormat);
+
+        if(payPointUse != 0){
+            dataService.usePoint(pointVO);
         }
         return new RedirectView("/datas/list");
 

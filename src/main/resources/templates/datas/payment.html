@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
 	<link rel="stylesheet" href="/css/dataroom/payment.css" />
+	<link rel="stylesheet" href="/css/modal.css" />
 	<link rel="stylesheet" href="/css/fix/header.css">
 	<link rel="stylesheet" href="/css/fix/footer.css">
 
@@ -15,7 +16,9 @@
 </head>
 <script th:inline="javascript">
 	let ad = [[${dataDTO}]];
+	let memberId = [[${memberId}]];
 	console.log(ad);
+	console.log(memberId);
 </script>
 <body style="overflow: auto;" class>
 
@@ -23,6 +26,14 @@
 
 <div >
 	<main id="page-container">
+
+		<!--	modal	-->
+		<div class="modal">
+			<div class="warn-modal">
+				<div id="content-wrap"></div>
+			</div>
+		</div>
+
 		<div class="MainWrapper_content__GZkTa">
 			<div>
 				<div th:object="${dataDTO}" class="PaymentLayout_paymentLayoutContainer__3Ef47">
@@ -82,11 +93,8 @@
 						<form th:action="@{/datas/payment}" method="post" name="payment-submit" id="payment-submit">
 							<input type="hidden" name="dataId" th:value="*{id}" >
 							<input type="hidden" name="memberId" th:value="${memberId.id}" >
-							<input type="hidden" name="pointHistory" th:value="${dataDTO.dataPrice * 0.1}" >
-							<!--                        <input type="hidden" name="deliveryRegion.isJeju" value="false">-->
-							<!--                        <input type="hidden" name="deliveryRegion.isIslandOrMountainous" value="false">-->
-							<!--                        <input type="hidden" name="couponKey" value="">-->
-							<!--                        <input type="hidden" name="isMobileCertification" value="false">-->
+							<input type="hidden" name="getHistory" value="100">
+<!--							<input type="hidden" name="pointHistory" th:value="payPointUse">-->
 
 
 							<!--            [S] 상품 정보            -->
@@ -124,7 +132,7 @@
 									<h3 class="StorePaymentSection_title__DLi4F">포인트 할인</h3>
 								</div>
 								<div class="StorePaymentSection_sectionContent__1a3aW StorePaymentSection_active__2fVyM" style="position: relative;">
-									<input type="text" th:value="0" name="payPointUse" id="payPointUse"/>
+									<input type="text" th:value="payPointUse" name="payPointUse" id="payPointUse"/>
 									<div class="select-menu__placeholder css-1wa3eu0-placeholder">사용 가능한 포인트 : <span th:text="${memberId.memberPoint}"></span></div>
 
 									<!--포인트 없을 때-->
@@ -404,11 +412,7 @@
 
 <footer th:replace="~{/fix/footer :: #footer}"></footer>
 
-<div class="modal">
-	<div class="warn-modal">
-		<div id="content-wrap"></div>
-	</div>
-</div>
+
 
 </body>
 
@@ -417,7 +421,6 @@
 <script  th:inline="javascript" >
 	let dataDTO = [[${dataDTO}]];
 	let payVO = [[${payVO}]];
-	console.log(dataDTO);
 </script>
 
 <script src="/js/modal.js"></script>

@@ -77,9 +77,8 @@
         SELECT D.ID, M.ID MEMBER_ID, M.MEMBER_NAME, M.MEMBER_PHONE_NUMBER, M.MEMBER_ID MEMBER_EMAIL,
             M.MEMBER_POINT, D.DATA_TITLE, D.DATA_SCHOOL, D.DATA_MAJOR, D.DATA_PRICE, M.MEMBER_NICKNAME
             FROM TBL_MEMBER M JOIN TBL_DATA D
-            ON M.ID = D.MEMBER_ID JOIN TBL_POINT T
-            ON M.ID = T.MEMBER_ID
-        AND D.ID = #{id}
+            ON M.ID = D.MEMBER_ID
+        AND D.ID = #{dataId}
     </select>
 
     <!--찜하기-->

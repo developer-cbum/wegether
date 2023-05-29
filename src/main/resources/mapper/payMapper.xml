@@ -6,7 +6,7 @@
     <insert id="insertPay">
         INSERT INTO TBL_PAY
         (ID, MEMBER_ID, DATA_ID, PAY_POINT_USE)
-        VALUES(SEQ_PAY.NEXTVAL, #{memberId}, #{id}, #{payPointUse})
+        VALUES(SEQ_PAY.NEXTVAL, #{memberId}, #{dataId}, #{payPointUse})
     </insert>
 
     <!--  결제 member update  -->
@@ -17,11 +17,18 @@
     </update>
 
     <!--  결제 point insert  -->
-    <!--  사용, 적립 같이 되어야하고, 사용은 선택, 적립은 무조건  -->
+    <!--  적립  -->
     <insert id="insertPoint">
         INSERT INTO TBL_POINT
         (ID, MEMBER_ID, DATA_ID, POINT_HISTORY, POINT_CATEGORY)
-        VALUES(SEQ_POINT.NEXTVAL, #{memberId}, #{dataId}, #{pointHistory}, '적립')
+        VALUES(SEQ_POINT.NEXTVAL, #{memberId}, #{dataId}, #{getHistory}, '적립')
+    </insert>
+
+    <!--  사용  -->
+    <insert id="insertPayPoint">
+        INSERT INTO TBL_POINT
+        (ID, MEMBER_ID, DATA_ID, POINT_HISTORY, POINT_CATEGORY)
+        VALUES(SEQ_POINT.NEXTVAL, #{memberId}, #{dataId}, #{payPointUse}, '사용')
     </insert>
 
 
