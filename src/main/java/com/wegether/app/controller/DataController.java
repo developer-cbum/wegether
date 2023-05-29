@@ -92,11 +92,12 @@ public class DataController {
     
 //    자료 결제 페이지
     @GetMapping("payment")
-    public void goToPayment(@RequestParam Long id, Model model, PayVO payVO){
+    public void goToPayment(Long id, Model model, PayVO payVO, HttpSession session){
         Optional<DataDTO> readDataPay = dataService.readDataPay(id);
-        Long memberId = (Long)httpSession.getAttribute("id");
+//        Long memberId = (Long)httpSession.getAttribute("id");
+//        model.addAttribute("dataDTO", dataService.readDataPay(id).get());
 
-        model.addAttribute("dataDTO", dataService.readDataPay(id).get());
+        Long memberId = accountService.getMemberById((Long) session.getAttribute("id")).get().getId();
         model.addAttribute("dataDTO", dataService.readDataPay(memberId).get());
         log.info(readDataPay.get().toString());
     }
@@ -113,7 +114,7 @@ public class DataController {
         if(payPointUse == 0){
             dataService.getPoint(pointVO);
         }
-        return new RedirectView("/datas/payment-complete");
+        return new RedirectView("/datas/list");
 
     }
 

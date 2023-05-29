@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     const $list = $("#list-container");
-    const $ul = $("#list-container");
     const $btnWrap = $(".searchMoreData");
 
     let page = 1;
@@ -109,6 +108,7 @@ $(document).ready(function () {
     //     }
     // });
 
+    //  더보기 버튼
     $("#searchMoreData_btn").on("click", function(){
         page++;
         load(categoryType);
@@ -117,11 +117,10 @@ $(document).ready(function () {
 
     // category
 
-    load("all");
-
 
     $('.category_lists button').on("click", function () {
         text="";
+        $list.html("");
         page =1;
         // 클릭한 버튼 활성화
         text="";
@@ -134,20 +133,21 @@ $(document).ready(function () {
 
 
 
-
     //  sort_list
 
     $('.new').on("click", function () {
         $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
         page = 1;
-        text="";
+        // text="";
+        $list.html("");
         order="new";
         load(categoryType);
     })
 
     $('.trand').on("click", function () {
         $(this).addClass('OrderSelectDesktop_active__YTP2K').siblings().removeClass('OrderSelectDesktop_active__YTP2K');
-        text="";
+        // text="";
+        $list.html("");
         page = 1;
         order="trand";
         load(categoryType);
@@ -163,8 +163,7 @@ $(document).ready(function () {
             contentType : "application/json; charset=UTF-8;",
             success:  function (datas) {
                 text="";
-                $list.html("");
-                $ul.html("");
+                // $list.html("");
                 showList(datas);
 
                 console.log(datas);
@@ -198,7 +197,7 @@ $(document).ready(function () {
         return false;
     });
 
-    //    작성하기 로그인 모달
+    //    작성하기 로그인 체크 + 모달
     $("button.go-write-form").on("click", function(){
         if(id){
             location.href = "/datas/register"

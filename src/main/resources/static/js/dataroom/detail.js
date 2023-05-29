@@ -336,11 +336,14 @@ $(document).ready(function () {
         if(id) {
             location.href = "/datas/payment?id=${id}"
             return;
-        }
-         else {
+        } else {
+            location.href = "/accounts/login"
             showWarnModal("<span>로그인 후 구매 가능합니다.</span>");
+            return;
         }
     });
+
+
 
 
     // 찜하기 버튼
