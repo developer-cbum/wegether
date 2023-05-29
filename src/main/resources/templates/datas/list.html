@@ -264,7 +264,8 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
-	let id = [[${session.id}]]
+	let id = [[${session.id}]];
+	console.log("member-id : " + id);
 </script>
 
 <script src="/js/modal.js"></script>

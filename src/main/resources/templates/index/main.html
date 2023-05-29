@@ -19,11 +19,6 @@
 
     <div id="page-container">
         <main id="main-app">
-            <div class="modal">
-                <div class="warn-modal">
-                    <div id="content-wrap"></div>
-                </div>
-            </div>
             <div id="header">
             </div>
             <div class="desktop">
@@ -222,13 +217,17 @@
     let sns = [[${sns}]];
     let snsStatus= [[${snsStatus}]];
     if(snsStatus) {
+        console.log("들어옴1")
         showWarnModal("<span>SNS 계정연동이 되었습니다</span>");
     }
+
     if(sns){
+        console.log("들어옴2")
         showWarnModal("<span>SNS 계정연동이 되었습니다</span>");
     }
 
     if(joinStatus){
+        console.log("들어옴3")
         showWarnModal("<span>회원가입을 축하드립니다</span><br><span>Welcome Event</span><br><span>2000 Point 적립</span>");
     }
 

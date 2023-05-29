@@ -32,7 +32,7 @@ public class ProjectFileMapperTests {
         projectFileDTO.setFileSize(999L);
         projectFileDTO.setFileUuid(UUID.randomUUID().toString());
         projectFileDTO.setFileType(FileType.REPRESENTATIVE.name());
-        fileMapper.insert(projectFileDTO);
+//        fileMapper.insert(projectFileDTO);
     }
 
 

@@ -6,7 +6,8 @@ $(document).ready(function () {
     const $contentContainer = $(".inner-contents");
     let image = "";
     let text = "";
-    let content = "";
+    let content ="";
+
 
     console.log("dataDTO : " + dataDTO);
     console.log("id : " + id);
@@ -114,9 +115,9 @@ $(document).ready(function () {
                                 </span>
                             </button>
                         </div>
-                        <a href="/datas/payment?id=${dataDTO.id}" style="width: 100%;">
-                            <button id="payButton" rel="noreferrer noopener"
-                                class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA">
+                        <a href="#" style="width: 100%;">
+                            <button id="${dataDTO.id}" rel="noreferrer noopener"
+                                class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA payButton">
 <!--                                type="button" -->
                                 
                                 <span>
@@ -332,15 +333,20 @@ $(document).ready(function () {
     });
 
     /* 구매하기 버튼 로그인 체크 */
-    $("#payButton").on("click", function(){
+    $(document).on("click", '.payButton', function(e){
+        let dataId = $(this).attr("id");
+        e.preventDefault();
         if(id) {
-            location.href = "/datas/payment?id=${id}"
+            location.href = `/datas/payment?dataId=${dataId}`
+            return;
+        } else {
+            showWarnModal("<span>로그인 후 구매 가능합니다.</span>");
+            $('.modal').on("click", ()=>{location.href = "/accounts/login"});
             return;
         }
-         else {
-            showWarnModal("<span>로그인 후 구매 가능합니다.</span>");
-        }
     });
+
+
 
 
     // 찜하기 버튼

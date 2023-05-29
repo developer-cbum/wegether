@@ -42,7 +42,7 @@
                                     class="wz form FundingStoryFormContainer_form__326Zc Form_form__3ASTU"
                                     th:action="@{/datas/register}" method="post" th:object="${dataDTO}" name="writeForm"
                                 >
-                                    <input type="hidden" name="id" th:value="${memberId}">
+                                    <input type="hidden" name="id" th:value="${id}">
 
                                     <div class="Loader_loader__d9YUC Form_loader__1YJ5I"></div>
 
@@ -284,7 +284,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script th:inline="javascript">
-        let memberid = [[${memberId}]];
+        // let memberid = [[${memberId}]];
         let dataMajor = [[${dataMajor}]];
         console.log(memberid);
         console.log(dataMajor);
