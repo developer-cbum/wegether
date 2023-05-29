@@ -53,8 +53,8 @@ public class FileDAO {
     public List<ProjectFileDTO> projectFindAll(Long projectId) { return fileMapper.projectSelectAll(projectId); }
 
     //        파일 추가
-    public void save(ProjectFileDTO projectFileDTO){
-        fileMapper.insert(projectFileDTO);
+    public void projectsave(ProjectFileDTO projectFileDTO){
+        fileMapper.projectInsert(projectFileDTO);
     }
 
     //       파일 삭제

@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.DataFileDTO;
 import com.wegether.app.domain.vo.DataFileVO;
 import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.mapper.DataFileMapper;
@@ -23,7 +24,7 @@ public class DataFileDAO {
         return dataFileMapper.selectAll(dataId);
     }
 
-    //    파일 추가
+    //    파일 추가 (중간테이블)
     public void save(DataFileVO dataFileVO){
         dataFileMapper.insert(dataFileVO);
     }
@@ -38,5 +39,8 @@ public class DataFileDAO {
         dataFileMapper.deleteAll(dataId);
     }
 
+    public void dataImageSave(DataFileDTO dataFileDTO){
+        dataFileMapper.dataImageInsert(dataFileDTO);
+    }
 
 }
