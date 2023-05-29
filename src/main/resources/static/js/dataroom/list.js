@@ -111,6 +111,10 @@ $(document).ready(function () {
     //  더보기 버튼
     $("#searchMoreData_btn").on("click", function(){
         page++;
+        if (!`${dataPagination.next}`) {
+            showWarnModal("<span>마지막 페이지입니다</span>");
+        }
+
         load(categoryType);
     });
 
@@ -202,8 +206,11 @@ $(document).ready(function () {
         if(id){
             location.href = "/datas/register"
             return;
+        } else {
+            showWarnModal("<span>로그인 후 작성 가능합니다.</span>");
+            $('.modal').on("click", ()=>{location.href = "/accounts/login"});
+            return;
         }
-        showWarnModal("<span>로그인 후 작성 가능합니다.</span>");
     })
 
 }); //E

@@ -126,25 +126,25 @@ public class DataController {
 
 
 //    찜하기
-    @GetMapping("do-wish")
+    @GetMapping("do-wish/{dataId}")
     @ResponseBody
-    public void doWish(Long dataId){
+    public void doWish(@PathVariable Long dataId){
         Long id = (Long) httpSession.getAttribute("id");
         dataService.doWish(id, dataId);
     }
 
 //    찜하기 취소
-    @GetMapping("do-not-wish")
+    @GetMapping("do-not-wish/{dataId}")
     @ResponseBody
-    public void doNotWish(Long dataId){
+    public void doNotWish(@PathVariable Long dataId){
         Long id = (Long) httpSession.getAttribute("id");
         dataService.doNotWish(id, dataId);
     }
 
 //    찜 검사
-    @GetMapping("wish")
+    @GetMapping("wish/{dataId}")
     @ResponseBody
-    public boolean checkMyWish(Long dataId){
+    public boolean checkMyWish(@PathVariable Long dataId){
         Long id = (Long) httpSession.getAttribute("id");
         return dataService.getWishId(id, dataId) != null;
     }
