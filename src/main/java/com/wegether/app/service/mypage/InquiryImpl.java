@@ -2,7 +2,9 @@ package com.wegether.app.service.mypage;
 
 
 import com.wegether.app.dao.InquiryDAO;
+import com.wegether.app.domain.dto.DataFileDTO;
 import com.wegether.app.domain.dto.InquiryDTO;
+import com.wegether.app.domain.vo.DataFileVO;
 import com.wegether.app.domain.vo.InquiryVO;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +25,9 @@ public class InquiryImpl implements MypageService{
     }
 
 
-//    문의 등록
+
+
+    //    문의 등록
     public void register(InquiryVO inquiryVO) {
         inquiryDAO.save(inquiryVO);
     }

@@ -2,7 +2,6 @@ package com.wegether.app.dao;
 
 import com.wegether.app.domain.dto.MemberDTO;
 import com.wegether.app.domain.dto.ProfileMemberDTO;
-import com.wegether.app.domain.vo.FileVO;
 import com.wegether.app.domain.vo.MemberVO;
 import com.wegether.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -17,42 +16,53 @@ public class MemberDAO {
     private final MemberMapper memberMapper;
 
     //    아이디 중복검사
-    public Optional<MemberVO> findByMemberId(String memberId){
+    public Optional<MemberVO> findByMemberId(String memberId) {
         return memberMapper.selectByMemberId(memberId);
     }
 
     //    회원가입
-    public void save(MemberVO memberVO){
+    public void save(MemberVO memberVO) {
         memberMapper.insert(memberVO);
     }
 
     //    로그인
-    public Optional<Long> findByMemberIdAndMemberPassword(String memberId, String memberPassword){
+    public Optional<Long> findByMemberIdAndMemberPassword(String memberId, String memberPassword) {
         return memberMapper.selectByMemberIdAndMemberPassword(memberId, memberPassword);
     }
 
     //비밀번호 재설정
-    public void setPassword(Long id, String memberPassword){
+    public void setPassword(Long id, String memberPassword) {
         memberMapper.updatePassword(id, memberPassword);
     }
 
     //카카오 로그인 상태 업데이트
-    public void setLoginStatusToKakao(String memberId, String fileName){memberMapper.updateLoginStatusToKakao(memberId, fileName);}
+//    public void setLoginStatusToKakao(String memberId) {
+//        memberMapper.updateLoginStatusToKakao(memberId);
+//    }
+//
+//    //네이버 로그인 상태 업데이트
+//    public void setLoginStatusToNaver(String memberId) {
+//        memberMapper.updateLoginStatusToNaver(memberId);
+//    }
+    public void setLoginStatusToKakao(String memberId, String snsProfile){memberMapper.updateLoginStatusToKakao(memberId, snsProfile);}
 
     //네이버 로그인 상태 업데이트
-    public void setLoginStatusToNaver(String memberId, String fileName){memberMapper.updateLoginStatusToNaver(memberId, fileName);}
+    public void setLoginStatusToNaver(String memberId, String snsProfile){memberMapper.updateLoginStatusToNaver(memberId, snsProfile);}
 
     // 세션값으로 회원정보찾기
-    public Optional<MemberVO> findById(Long id){
+    public Optional<MemberVO> findById(Long id) {
         return memberMapper.selectById(id);
     }
 
     //   프로필 포함 아이디 조회
-    public Optional<ProfileMemberDTO> findIdAndProfile(Long id){
+    public Optional<ProfileMemberDTO> findIdAndProfile(Long id) {
         return memberMapper.selectIdAndProfile(id);
     }
 
-
+//      마이페이지 프로필 설정
+    public void setProfile(MemberVO memberVO){
+        memberMapper.updateProfile(memberVO);
+    }
 
 
 
@@ -70,7 +80,7 @@ public class MemberDAO {
 
 
     //    소영 마이페이지 화면 띄우기
-    public MemberDTO showmypage(Long id){
+    public Optional<MemberDTO> showmypage(Long id){
         return memberMapper.selectmypage(id);
     }
 
@@ -81,22 +91,15 @@ public class MemberDAO {
     }
 
 
-    public void setBasicSetting(MemberVO memberVO) {
-        memberMapper.updateBasicSet(memberVO);
+    public void setBasicSetting(Long id, String memberNickname, String memberPhoneNumber) {
+        memberMapper.updateBasicSet(id, memberNickname, memberPhoneNumber);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // 마이페이지 사진 가져오기
-    public MemberDTO showMyPageProfile(Long id) {
-        return  memberMapper.selectMyPageImage(id);
+
+    public void linkConnection(Long memberId){
+        memberMapper.updateConnection(memberId);
     }
+
+
 }
 
 

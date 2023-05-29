@@ -3,7 +3,7 @@
 <mapper namespace="com.wegether.app.mapper.MemberMapper">
     <!-- 아이디중복검사 & 아이디 찾기  -->
     <select id="selectByMemberId" resultType="memberVO">
-        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS
+        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS, SNS_PROFILE
         FROM TBL_MEMBER
         WHERE MEMBER_ID = #{memberId}
     </select>
@@ -30,20 +30,20 @@
 <!--   카카오나 로그인 상태 업데이트-->
     <update id="updateLoginStatusToKakao">
          UPDATE TBL_MEMBER
-        SET MEMBER_LOGIN_STATUS = 'KAKAO', FILE_NAME = #{fileName}
+        SET MEMBER_LOGIN_STATUS = 'KAKAO', SNS_PROFILE = #{snsProfile}
         WHERE MEMBER_ID = #{memberId}
     </update>
 
     <!--   네이버로 로그인 상태 업데이트-->
     <update id="updateLoginStatusToNaver">
-         UPDATE TBL_MEMBER
-        SET MEMBER_LOGIN_STATUS = 'NAVER', FILE_NAME= #{fileName}
+        UPDATE TBL_MEMBER
+        SET MEMBER_LOGIN_STATUS = 'NAVER', SNS_PROFILE= #{snsProfile}
         WHERE MEMBER_ID = #{memberId}
     </update>
 
 <!--    세션 맴버 아이디로 아이디 찾기-->
     <select id="selectById" resultType="memberVO">
-        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS, FILE_NAME
+        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS, FILE_NAME, SNS_PROFILE
         FROM TBL_MEMBER
         WHERE ID = #{id}
     </select>
@@ -55,6 +55,12 @@
             WHERE ID = #{id}
     </select>
 
+<!--    마이페이지 프로필-->
+    <update id="updateProfile">
+        UPDATE TBL_MEMBER
+        SET MEMBER_SCHOOL=#{memberSchool}, MEMBER_MAJOR=#{memberMajor}, MEMBER_INTRODUCING=#{memberIntroducing}, FILE_PATH=#{filePath}, FILE_UUID=#{fileUuid}, FILE_NAME=#{fileName}, FILE_SIZE=#{fileSize}
+        WHERE MEMBER_ID=#{memberId}
+    </update>
 
 
 
@@ -87,6 +93,7 @@
 
 <!--    소영 마이페이지 화면 띄우기-->
     <select id="selectmypage" resultType="memberDTO">
+--     SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, M.MEMBER_POINT point, M.MEMBER_NICKNAME, M.MEMBER_PHONE_NUMBER
     SELECT M.MEMBER_NAME, M.MEMBER_LOGIN_STATUS, M.MEMBER_POINT, M.MEMBER_NICKNAME, M.MEMBER_PHONE_NUMBER
     FROM TBL_MEMBER M LEFT JOIN TBL_POINT P ON M.ID =P.MEMBER_ID
     WHERE M.ID =#{id}
@@ -107,8 +114,9 @@
     <update id="updateBasicSet">
         UPDATE TBL_MEMBER
         SET MEMBER_NICKNAME = #{memberNickname}, MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
-        WHERE ID=#{id};
+        WHERE ID=#{id}
     </update>
+
 
 
 

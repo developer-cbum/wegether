@@ -15,6 +15,9 @@ $(document).ready(function(){
           "
           >
             <div role="link" class="PurchaseSummaryCard_item__3LlZ3">
+            <input type="hidden" name="id" th:value="${datas.id}">
+
+            <a href="/datas/detail?id=${datas.id}">
               <dl class="PurchaseSummaryCard_etcArea__3Ummh">
                 <dd> </dd>
                 <dd> </dd>
@@ -51,11 +54,10 @@ $(document).ready(function(){
                 </dl>
               </div>
               <div class="PurchaseSummaryCard_detailText__2GWWi" aria-hidden="true">
-                <button>수정</button>
+                <button><a href="/mypage/datas/modify?id=${data.id}">수정</a></button>
                 <span>&nbsp | &nbsp</span>
                 <button>삭제</button>
               </div>
-
 
             </div>
           </li>
@@ -65,6 +67,8 @@ $(document).ready(function(){
 
     $ul.html(text);
 });
+
+
 
 
 

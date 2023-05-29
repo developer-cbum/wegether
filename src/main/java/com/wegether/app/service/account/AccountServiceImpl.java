@@ -29,7 +29,7 @@ public class AccountServiceImpl implements AccountService {
     public void join(MemberVO memberVO) {
         memberDAO.save(memberVO);
         Optional<MemberVO> byMemberId = memberDAO.findByMemberId(memberVO.getMemberId());
-        pointDAO.saveJoinPoint(byMemberId.get().getId());
+//        pointDAO.saveJoinPoint(byMemberId.get().getId());
     }
 
     @Override
@@ -43,13 +43,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void changeLoginStatusToKakao(String memberId, String fileName) {
-        memberDAO.setLoginStatusToKakao(memberId, fileName);
+    public void changeLoginStatusToKakao(String memberId, String snsProfile) {
+        memberDAO.setLoginStatusToKakao(memberId, snsProfile);
     }
 
     @Override
-    public void changeLoginStatusToNaver(String memberId, String fileName) {
-        memberDAO.setLoginStatusToNaver(memberId, fileName);
+    public void changeLoginStatusToNaver(String memberId, String snsProfile) {
+        memberDAO.setLoginStatusToNaver(memberId, snsProfile);
     }
 
     @Override
@@ -69,4 +69,12 @@ public class AccountServiceImpl implements AccountService {
     public Optional<ProfileMemberDTO> getIdAndProfile(Long id) {
         return memberDAO.findIdAndProfile(id);
     }
+
+    @Override
+    public void setProfile(MemberVO memberVO) {
+        memberDAO.setProfile(memberVO);
+    }
+
+
 }
+

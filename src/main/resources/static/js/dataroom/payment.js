@@ -72,9 +72,10 @@ $(function () {
         usePoint= Number($("#payPointUse").val());
         pointError();
 
-        // 최종 금액 (자료금액 - 포인트)
+        // point text 바꾸기
         $(".pointUse span").text(usePoint);
-        $(".total_price .total").text(dataPrice - usePoint);
+        // 최종 금액 (자료금액 - 포인트)
+        Number($(".total_price .total").text(dataPrice - usePoint));
 
     });
 
@@ -114,9 +115,9 @@ $(function () {
     };
 
     //  input placeHolder 숨기기
-    $("#payPointUse").click(function () {
-        $(".select-menu__placeholder").hide();
-    });
+    // $("#payPointUse").click(function () {
+    //     $(".select-menu__placeholder").hide();
+    // });
 
 
 

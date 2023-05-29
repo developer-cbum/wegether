@@ -86,5 +86,9 @@
 
 <!--     5월 26일 추가   -->
         <typeAlias type="com.wegether.app.domain.dto.ProfileMemberDTO" alias="profileMemberDTO"/>
+
+        <!--        5/27 문소영 추가-->
+        <typeAlias type="com.wegether.app.domain.dto.PointDTO" alias="pointDTO"/>
+
     </typeAliases>
 </configuration>

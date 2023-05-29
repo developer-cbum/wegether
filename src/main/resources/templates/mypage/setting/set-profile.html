@@ -1,14 +1,17 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>프로필 설정 | 위게더</title>
-    <link rel="stylesheet" href="../../../static/css/mypage/setting/set-profile.css">
-    <link rel="stylesheet" href="../../../static/css/mypage/my-page/mypage.css">
+    <link rel="stylesheet" href="/css/mypage/setting/set-profile.css">
+    <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
   </head>
   <body>
+  <form th:action="@{/mypage/setting/set-profile}" method="post" th:object="${memberVO}" name="writeForm">
     <div class="waccount-wrap">
       <div id="waccountContainer">
         <h3>프로필 정보 설정</h3>
@@ -21,17 +24,18 @@
               class="profileimg"
               onclick="$('#uploadProfileImg').click();"
             >
-              <em
-                style="
-                  background-image: url(https://static.wadiz.kr/assets/icon/profile-icon-6.png);
-                "
-              ></em>
+              <img id="profile_image"  class="thumbnail"  style="background-image:url(https://static.wadiz.kr/assets/icon/profile-icon-6.png)"/>
+
+
             </button>
+
             <p class="setting-profileimg">
-              <button type="button" onclick="$('#uploadProfileImg').click()" id="btn_updatePhoto">
+              <input type="file" class="upload" id="file_input" style="display: none;">
+              <button type="button" onclick="$('#uploadProfileImg').click()" class="file_upload_btn" id="btn_updatePhoto">
                 <span>바꾸기</span>
               </button>
-              <button type="button" onclick="deletePhoto()" id="btn_deletePhoto">삭제</button>
+              <button type="button" class="file-delete-btn"  id="btn_deletePhoto">삭제</button>
+<!--              onclick="deletePhoto()"-->
             </p>
           </div>
 
@@ -111,9 +115,8 @@
                 type="text"
                 class="input-text"
                 maxlength="20"
-                id="school"
                 placeholder="학교"
-                value=""
+                th:field="*{memberSchool}"
               />
             </li>
             <li>
@@ -121,16 +124,16 @@
                 type="text"
                 class="input-text"
                 maxlength="20"
-                id="major"
                 placeholder="전공"
-                value=""
+                th:field="*{memberMajor}"
+
               />
             </li>
           </ul>
 
           <h5>간단한 한 마디로 나를 소개해주세요</h5>
           <div class="textarea-wrap">
-            <textarea id="introduceme" maxlength="80"></textarea>
+            <textarea id="introduceme" maxlength="80" th:field="*{memberIntroducing}"></textarea>
           </div>
           <div class="btn-bottom">
             <ul class="btn-div2">
@@ -140,7 +143,7 @@
                 </button>
               </li>
               <li>
-                <button type="button" class="wz button primary btn-mint" onclick="modify()">
+                <button type="button" class="wz button primary btn-mint changeProfile" onclick="modify()">
                   확인
                 </button>
               </li>
@@ -149,7 +152,10 @@
         </div>
       </div>
     </div>
-    <input type="file" id="uploadProfileImg" class="file-profileimg" accept="image/*" />
+<!--    <input type="file" id="uploadProfileImg" class="file-profileimg" accept="image/*" />-->
+  </form>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="/js/mypage/setting/set-profile.js"></script>
+
 </html>

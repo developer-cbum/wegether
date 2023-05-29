@@ -114,41 +114,5 @@ $("button.ok-button").on("click", function () {
         text += `<input type="hidden" name="fileIdsForDelete[${i}]" value="${id}">`
     })
 
-    $(noticeWriteForm).append(text);
-    $(noticeWriteForm).submit();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(noticeWriteForm).append();
-
-
-$(".attach").css({
-    "margin-right": "10px"
+    $("#noticeWriteForm").append(text);
 });

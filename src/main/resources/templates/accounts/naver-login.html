@@ -5,6 +5,9 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
     <body>
+    <script th:inline="javascript">
+        let session = [[${session.id}]];
+    </script>
     <script type="text/javascript">
         var naver_id_login = new naver_id_login("yPLfiIWc1PIqc4_vQtH5", "http://localhost:10000/accounts/naver-login");
         // 접근 토큰 값 출력
@@ -33,12 +36,12 @@
                         $('#memberId').val(memberId);
                         $('#memberName').val(nickname);
                         $('#memberPassword').val(id);
-                        $('#fileName').val(profileImage);
+                        $('#snsProfile').val(profileImage);
                         $('#naver-form').submit();
                     } else if (memberVO != null && memberVO.memberLoginStatus == 'NAVER') {
                         // alert("들어옴")
                        //네이버 로그인 세션담기
-                        memberVO.fileName = profileImage;
+                        memberVO.snsProfile = profileImage;
                         $.ajax({
                             url: "naver-login",
                             type: "POST",
@@ -49,10 +52,22 @@
                                 location.href="/index/main";
                             }
                         })
-
+                    } else {
+                        // alert("들어옴")
+                        //네이버 로그인 세션담기
+                        memberVO.snsProfile = profileImage;
+                        $.ajax({
+                            url: "naver-login",
+                            type: "POST",
+                            data: JSON.stringify(memberVO),
+                            contentType: "application/json; charset=UTF-8;",
+                            success: function () {
+                                location.href = "/index/main?sns=true";
+                            }
+                        })
                     }
 
-                    if (memberVO !=null && (memberVO.memberLoginStatus =='WEGETHER' || memberVO.memberLoginStatus=='KAKAO')){console.log("들어옴")
+                    if (session == null && memberVO !=null && (memberVO.memberLoginStatus =='WEGETHER' || memberVO.memberLoginStatus=='KAKAO')){
                         location.href = "/accounts/login?status=false";
                     }
                 }
@@ -63,7 +78,7 @@
         <input type="hidden" id="memberId" name="memberId">
         <input type="hidden" id="memberName" name="memberName" >
         <input type="hidden" id="memberPassword" name="memberPassword">
-        <input type="hidden" id="fileName" name="fileName">
+        <input type="hidden" id="snsProfile" name="snsProfile">
     </form>
     </body>
 </html>
