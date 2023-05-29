@@ -4,12 +4,12 @@ $(document).ready(function () {
     const $imageContainer = $("#image_container");
     const $textContainer = $("#text_container");
     const $contentContainer = $(".inner-contents");
-
     let image = "";
     let text = "";
     let content = "";
 
-    console.log(dataDTO);
+    console.log("dataDTO : " + dataDTO);
+    console.log("id : " + id);
 
     dataDTO.files.forEach(file => {
         if(file.fileType == "REPRESENTATIVE") {
@@ -115,7 +115,7 @@ $(document).ready(function () {
                             </button>
                         </div>
                         <a href="/datas/payment?id=${dataDTO.id}" style="width: 100%;">
-                            <button rel="noreferrer noopener"
+                            <button id="payButton" rel="noreferrer noopener"
                                 class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_xl__1FM1L ProductFloatButton_button__tpSGA">
 <!--                                type="button" -->
                                 
@@ -212,8 +212,6 @@ $(document).ready(function () {
 
 
 
-
-
 // 스토리 아래 추가 정보 버튼
     $(document).on("click", "#btn1", function () {
         $(".ProductNoticeInfo_notiContainer__1Ui4k").toggle();
@@ -229,9 +227,6 @@ $(document).ready(function () {
         $(".DetailStory_service__2rTtM").toggle();
         $(".rotate-icon3").toggleClass("rotate");
     });
-
-
-
 
 //   판매자 정보 더보기 버튼
     var moreButton = $(".StoreMakerInfoContainer_accordionButton__3rhUd:contains('더보기')");
@@ -303,23 +298,48 @@ $(document).ready(function () {
         return {doWish: doWish, doNotWish: doNotWish, checkMyWish, checkMyWish}
     })();
 
+
+    // 찜하기 버튼 아이콘 변경
+    var svgIcon = $(this).find('svg');
+    // 찜하기 버튼 텍스트 업데이트
+    var buttonCount = $(this).find('.ProductFloatButton_count__1a-7B');
+    var count = parseInt(buttonCount.text().replace(/,/g, ''));
+
     function doWish(){
     //    스타일 변경(찜한 걸로)
+        svgIcon.addClass('selected');
     }
 
     function doNotWish(){
     //    스타일 변경(찜 취소한걸로)
+        svgIcon.removeClass('selected');
     }
 
     /*찜하기*/
     $textContainer.on("click", "#wishlist-btn", function(){
-        dataService.checkMyWish(function(check){
-            if(check){
-                dataService.doWish(doWish);
-            }else{
-                dataService.doNotWish(doNotWish);
-            }
-        });
+        if(id){
+            dataService.checkMyWish(function(check){
+                if(check){
+                    dataService.doWish(doWish);
+                }else{
+                    dataService.doNotWish(doNotWish);
+                }
+            });
+            return;
+        } else {
+            showWarnModal("<span>로그인 후 찜하기 가능합니다.</span>");
+        }
+    });
+
+    /* 구매하기 버튼 로그인 체크 */
+    $("#payButton").on("click", function(){
+        if(id) {
+            location.href = "/datas/payment?id=${id}"
+            return;
+        }
+         else {
+            showWarnModal("<span>로그인 후 구매 가능합니다.</span>");
+        }
     });
 
 

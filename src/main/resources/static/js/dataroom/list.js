@@ -198,6 +198,7 @@ $(document).ready(function () {
         return false;
     });
 
+    //    작성하기 로그인 모달
     $("button.go-write-form").on("click", function(){
         if(id){
             location.href = "/datas/register"
