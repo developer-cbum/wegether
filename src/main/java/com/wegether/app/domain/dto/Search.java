@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class Search {
+    String type;
     String keyword;
     String order;
 }

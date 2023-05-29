@@ -1,10 +1,8 @@
 package com.wegether.app.service.main;
 
 import com.wegether.app.domain.dto.*;
-import com.wegether.app.domain.vo.NoticeVO;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface MainService {
 
@@ -16,11 +14,13 @@ public interface MainService {
 
     public List<MainDTO> mainDRGetList();
 
-    public List<MainDTO> mainSPGetList(MainPagination mainPagination);
+    public List<MainDTO> mainSPGetList(MainProjectPagination mainProjectPagination, Search search);
 
-    public List<MainDTO> mainSDGetList(MainPagination mainPagination);
+//    public List<MainDTO> mainSDGetList(MainDataPagination maindataPagination, Search search);
 
-    public int getTotal();
+    public int getProjectTotal(Search search);
+
+//    public int getDataTotal(Search search);
 }
 
 

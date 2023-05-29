@@ -53,10 +53,13 @@
                     ORDER BY P.ID DESC
                  )
             <![CDATA[
-                WHERE ROWNUM <= #{mainPagination.page} * #{mainPagination.rowCount}
+                WHERE ROWNUM <= #{mainProjectPagination.page} * #{mainProjectPagination.rowCount}
             )
-        F WHERE R > (#{mainPagination.page} - 1) * #{mainPagination.rowCount}
+        F WHERE R > (#{mainProjectPagination.page} - 1) * #{mainProjectPagination.rowCount}
         ]]>
+        <if test="search.keyword != null">
+            AND PROJECT_TITLE LIKE '%'||#{search.keyword}||'%'
+        </if>
     </select>
 
 
@@ -66,29 +69,32 @@
     </select>
 
 
-<!-- 자료실 전체 목록 -->
-<select id="searchDSelectAll" resultType="MainDTO">
-     SELECT F.ID, DATA_TITLE, DATA_MAJOR, DATA_PRICE, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_PATH
-    FROM
-            (
-            SELECT ROWNUM R, ID, DATA_TITLE, DATA_MAJOR, DATA_PRICE, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_PATH
-            FROM
-                (
-                    SELECT ROWNUM R, D.ID, D.DATA_TITLE, D.DATA_MAJOR, D.DATA_PRICE, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH
-                    FROM TBL_DATA D, TBL_DATA_FILE DF, TBL_FILE F
-                    WHERE D.ID = DF.DATA_ID AND DF.ID = F.ID
-                    ORDER BY D.ID DESC
-                 )
-            <![CDATA[
-                WHERE ROWNUM <= #{mainPagination.page} * #{mainPagination.rowCount}
-            )
-        F WHERE R > (#{mainPagination.page} - 1) * #{mainPagination.rowCount}
-        ]]>
-</select>
+<!--&lt;!&ndash; 자료실 전체 목록 &ndash;&gt;-->
+<!--<select id="searchDSelectAll" resultType="MainDTO">-->
+<!--     SELECT F.ID, DATA_TITLE, DATA_MAJOR, DATA_PRICE, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_PATH-->
+<!--    FROM-->
+<!--            (-->
+<!--            SELECT ROWNUM R, ID, DATA_TITLE, DATA_MAJOR, DATA_PRICE, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_PATH-->
+<!--            FROM-->
+<!--                (-->
+<!--                    SELECT ROWNUM R, D.ID, D.DATA_TITLE, D.DATA_MAJOR, D.DATA_PRICE, F.FILE_UUID, F.FILE_NAME, F.FILE_SIZE, F.FILE_PATH-->
+<!--                    FROM TBL_DATA D, TBL_DATA_FILE DF, TBL_FILE F-->
+<!--                    WHERE D.ID = DF.DATA_ID AND DF.ID = F.ID-->
+<!--                    ORDER BY D.ID DESC-->
+<!--                 )-->
+<!--            <![CDATA[-->
+<!--                WHERE ROWNUM <= #{mainDataPagination.page} * #{mainDataPagination.rowCount}-->
+<!--            )-->
+<!--        F WHERE R > (#{mainDataPagination.page} - 1) * #{mainDataPagination.rowCount}-->
+<!--        ]]>-->
+<!--    <if test="search.keyword != null">-->
+<!--        AND DATA_TITLE LIKE '%'||#{search.keyword}||'%'-->
+<!--    </if>-->
+<!--</select>-->
 
-<!--자료실 총 갯수-->
-<select id="selectCountOfData" resultType="_int">
-    SELECT COUNT(ID) FROM TBL_DATA
-</select>
+<!--&lt;!&ndash;자료실 총 갯수&ndash;&gt;-->
+<!--<select id="selectCountOfData" resultType="_int">-->
+<!--    SELECT COUNT(ID) FROM TBL_DATA-->
+<!--</select>-->
 
 </mapper>

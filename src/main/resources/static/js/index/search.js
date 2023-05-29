@@ -1,6 +1,18 @@
-$(document).ready(function() {
-        const $psearch = $("#project-search");
+//
+// $.ajax({
+//         url: `/index/search-list`,
+//         type: 'post',
+//         success: function(result){
+//                 showList(result);
+//                 console.log("들어옴")
+//         }
+//
+// });
 
+$(document).ready(function() {
+// function showList(result) {
+        console.log("들어옴")
+        const $psearch = $("#project-search");
         let text = "";
         searches.forEach(search => {
                 text += `
@@ -14,7 +26,9 @@ $(document).ready(function() {
                 })
                 text += `
                             <p class="PreOrderCard_projectCard_title__psAv4">
+                                            <!-- 제목 -->
                                 <strong>${search.projectTitle}</strong>
+                                            <!-- 학과 -->
                             <small class="PreOrderCard_projectCard_subInfo__vbiVf">
                                 <span>${search.projectMajor}</span>
                             </small>
@@ -30,4 +44,5 @@ $(document).ready(function() {
                 "margin-bottom": "50px"
 
         });
+// }
 });
