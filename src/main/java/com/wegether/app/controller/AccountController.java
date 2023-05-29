@@ -112,11 +112,6 @@ public class AccountController {
             if(session.getAttribute("location") != null){
                 return new RedirectView(session.getAttribute("location").toString());
             }
-            String link = "/accounts/login?location=/mypage/my-page/my-consult-detail?id=";
-            //일단 내상담가기
-            if(session.getAttribute("location").equals(link)){
-                return new RedirectView(session.getAttribute("location").toString() + session.getAttribute("id"));
-            }
 
             return new RedirectView("/index/main");
         }
