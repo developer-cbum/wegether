@@ -5,7 +5,7 @@
     <insert id="insertJoinPoint">
     INSERT INTO TBL_POINT
     (ID, MEMBER_ID, POINT_HISTORY, POINT_CATEGORY)
-    VALUES(SEQ_POINT.NEXTVAL, #{memberId}, 2000, 'ADD'
+    VALUES(SEQ_POINT.NEXTVAL, #{memberId}, 2000, '적립'
     )
     </insert>
 
