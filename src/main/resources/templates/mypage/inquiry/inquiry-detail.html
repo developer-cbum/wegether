@@ -14,10 +14,10 @@
     <div class="Community_contentWrapper__2tclW">
       <div class="RatingFaq_container__1uVo5">
         <div class="RatingFaq_title__EK2eZ">
-          <p class="RatingFaq_info__3DGAB">
-            000님!<br />처음 <strong>000의 열정과 가치에 공감</strong>해주셨듯,<br />마지막까지
-            <strong>위게더 회원님들을 응원</strong>해주세요.
-          </p>
+          <p class="RatingFaq_info__3DGAB" th:text="${member.memberName}+ '님 안녕하세요'"></p>
+          <p><br /> 위게더 서비스에 대해<strong>궁금한 사항</strong>이 있다면,<br />
+            <strong>문의를 남겨주세요</strong></p>
+
         </div>
         <div class="RatingFaq_question__2H7l7">
           <h2 class="inquiry-title">문의 내역</h2>
@@ -50,7 +50,7 @@
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href="http://help.wadiz.kr"
+                  href="/mypage/inquiry/inquiry-register"
                   class="Button_button__2FuOU Button_primary__2mZni Button_contained__2SIAT Button_sm__16X6h"
                   ><span><span class="Button_children__ilFun">위게더에 문의하기</span></span></a
                 >

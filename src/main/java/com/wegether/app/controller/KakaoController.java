@@ -41,11 +41,11 @@ public class KakaoController {
 
         if(accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()){
             //마이페이지에서 로그인한후 연동할때
-            if(session.getAttribute("id") != null){
+            if(session.getAttribute("id") != null &&
+                    accountService.getMemberById((Long)session.getAttribute("id")).get().getMemberLoginStatus().equals("WEGETHER")){
                 Long id = (Long) session.getAttribute("id");
                 MemberVO memberVO = accountService.getMemberById(id).get();
                     if (memberVO.getMemberLoginStatus().equals("WEGETHER")) {
-                        log.info("들어옴");
                         log.info(memberVO.getMemberId());
 //                회원의 계정을 카카오 계정으로 변경(연동)
                         accountService.changeLoginStatusToKakao(memberVO.getMemberId(), kakaoInfo.get("profile").toString());
@@ -74,11 +74,11 @@ public class KakaoController {
         }
 
 //        카카오 로그인해서 db에 계정이 있을때
-        Optional<Long> foundNumber = accountService.login(kakaoInfo.get("memberId").toString(), kakaoInfo.get("memberPassword").toString());
-        if(foundNumber.isPresent()){
+        Long foundNumber = accountService.checkId(kakaoInfo.get("memberId").toString()).get().getId();
+        if(foundNumber != null){
             log.info(kakaoInfo.get("profile").toString());
             accountService.changeLoginStatusToKakao(kakaoInfo.get("memberId").toString(), kakaoInfo.get("profile").toString());
-            session.setAttribute("id", foundNumber.get());
+            session.setAttribute("id", foundNumber);
         }
 
 
