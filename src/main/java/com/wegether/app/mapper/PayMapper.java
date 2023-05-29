@@ -14,7 +14,9 @@ public interface PayMapper {
     public void updateMemberPoint(Long memberId, Long payPointUse);
 
     //  결제 완료 insert point
-//    사용, 적립 같이 되어야하고, 사용은 선택, 적립은 무조건
+//    적립
     public void insertPoint(PointVO pointVO);
 
+//    사용
+    public void insertPayPoint(PointVO pointVO);
 }

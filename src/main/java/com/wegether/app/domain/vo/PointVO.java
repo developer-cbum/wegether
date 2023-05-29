@@ -12,6 +12,8 @@ public class PointVO {
     private Long memberId;
     private Long dataId;
     private Long pointHistory;
+    private Long getHistory;
+    private Long payPointUse;
     private String pointCategory;
     private String pointRecordDate;
 
