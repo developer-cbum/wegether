@@ -28,7 +28,7 @@ lists.forEach(list => {
                   일시 : ${list.lectureDate} <br> 강연 시간 : ${list.lectureTime} <br>장소 : ${list.lectureLocation} 
                 </p>
                 <p class="SchoolLectureListDesktop_lectureNum__oypsR">
-                  <em>Wegether 강연중</em> 모집 인원 ${list.lectureTotalPersonnel} 명
+                  <em>Wegether 강연</em> 모집 인원 ${list.lectureTotalPersonnel} 명
                 </p>
               </div></a>
           </div>
@@ -44,9 +44,13 @@ $("a.change-page").on("click", function(e){
     location.href = `/consults/list?page=${page}`
 });
 
-$('.my-consult-list').on("click", function () {
+$('.my-consult-list').on("click", function (e) {
+    e.preventDefault();
     if(id ==null){
         showWarnModal("로그인 후 이용해주세요")
+        $('.modal').on("click", function () {
+            location.href=`/accounts/login?list=3`;
+        })
     }else{
         location.href=`/mypage/my-page/my-consult-detail`;
     }

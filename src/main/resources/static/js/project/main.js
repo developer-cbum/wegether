@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     const $listContainer = $("#list-container");
+    let $recentViewContainer = $('.RecentView_container__1boAT');
 
     let text = "";
     projects.forEach(project => {
@@ -124,19 +125,10 @@ $(document).ready(function () {
         return new URLSearchParams(location.search).get(key);
     };
 
-    //
-    // $('.category_lists button').on("click", function (e) {
-    //     e.preventDefault();
-    //     let type = this.classList[0];
-    //     location.href = `/datas/list?type=${type}`;
-    // });
+
     $('.computer').on("click", function () {
         load('computer');
     })
-
-    $('.RecentView_container__1boAT').on("click", function () {
-        history.replaceState({}, null, location.pathname);
-    });
 
     function load(categoryType) {
         $.ajax({
@@ -149,5 +141,18 @@ $(document).ready(function () {
             }
         })
     }
+
+// 등록하기폼으로 이동하기 버튼
+     $recentViewContainer.on("click", function () {
+        if (session == null) {
+            showWarnModal("<span>로그인 후</span><span>이용해주세요.</span>");
+            $('.modal').on("click", () => {
+                location.href = '/accounts/login?list=false';
+            })
+        } else {
+
+            location.href = '/project/write';
+        }
+    })
 
 });

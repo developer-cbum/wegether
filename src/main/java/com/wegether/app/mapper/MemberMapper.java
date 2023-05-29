@@ -25,10 +25,10 @@ public interface MemberMapper {
     public void updatePassword(@Param("id") Long id, @Param("memberPassword") String memberPassword);
 
     //카카오 로그인 상태 업데이트
-    public void updateLoginStatusToKakao(String memberId);
+    public void updateLoginStatusToKakao(String memberId, String snsProfile);
 
     //네이버로 로그인 상태 업데이트
-    public void updateLoginStatusToNaver(String memberId);
+    public void updateLoginStatusToNaver(String memberId, String snsProfile);
 
     //아이디 찾기 세션으로
     public Optional<MemberVO> selectById(Long id);

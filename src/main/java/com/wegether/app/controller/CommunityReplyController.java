@@ -25,6 +25,7 @@ import java.util.List;
 public class CommunityReplyController {
 
     private final CommunityReplyService communityReplyService;
+    private final HttpSession session;
 
 //    댓글 등록
 
@@ -35,7 +36,7 @@ public class CommunityReplyController {
         communityReplyService.register(communityReplyDTO);
         CommunityReplyVO communityReplyVO = new CommunityReplyVO();
         communityReplyVO.setId(communityReplyDTO.getId());
-        communityReplyVO.setMemberId(1L);
+        communityReplyVO.setMemberId((Long)session.getAttribute("id"));
         communityReplyVO.setCommunityId(communityReplyDTO.getCommunityId());
         communityReplyService.registerMiddle(communityReplyVO);
         List<Integer> totals = new ArrayList<>();
@@ -66,7 +67,7 @@ public class CommunityReplyController {
         log.info(communityReplyDTO.getId().toString());
         communityReplyVO.setId(communityReplyDTO.getId());
         communityReplyVO.setCommunityId(communityReplyDTO.getCommunityId());
-        communityReplyVO.setMemberId(1L);
+        communityReplyVO.setMemberId((Long)session.getAttribute("id"));
         log.info("=================" + communityReplyVO.toString());
         communityReplyService.registerMiddle(communityReplyVO);
         return communityReplyService.getTotal(communityReplyDTO.getCommunityId());

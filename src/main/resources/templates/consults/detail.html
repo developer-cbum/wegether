@@ -154,11 +154,11 @@ text-align: right;">
                                                     <div>
                                                         <div>
                                                             <button
-                                                                    class="Button_button__2FuOU Button_secondary__LNLsN Button_contained__2SIAT Button_lg__1Dftp gray CommunityCommentWriteButton_button__3bPl4 write-button"
+                                                                    class="Button_button__2FuOU Button_secondary__LNLsN Button_contained__2SIAT Button_lg__1Dftp gray CommunityCommentWriteButton_button__3bPl4 reviewButton"
                                                                     type="button"
                                                             >
                                                                 <span
-                                                                ><span class="Button_children__ilFun reviewButton"
+                                                                ><span class="Button_children__ilFun"
                                                                 >댓글 쓰기</span
                                                                 ></span
                                                                 >
@@ -190,7 +190,7 @@ text-align: right;">
                                                                     ></span></div
                                                                 >
                                                                 <!--    로그인 했는데   프로필 사진 없음-->
-                                                                <div th:if="${memberVO != null && memberVO.fileName == null}"
+                                                                <div th:if="${memberVO != null && memberVO.memberLoginStatus == 'WEGETHER' && memberVO.fileName == null}"
                                                                      class="Avatar_avatar__1d9Wt"
                                                                      style="width: 36px; height: 36px"
                                                                 >
@@ -204,7 +204,7 @@ text-align: right;">
                                                                     ></span></div
                                                                 >
 <!--                                                        프로필이 있을때-->
-                                                                <div th:if="${memberVO != null && memberVO.fileName != null}"
+                                                                <div th:if="${memberVO != null && memberVO.memberLoginStatus == 'WEGETHER' && memberVO.fileName != null}"
                                                                      class="Avatar_avatar__1d9Wt"
                                                                      style="width: 36px; height: 36px"
                                                                 >
@@ -216,6 +216,20 @@ text-align: right;">
                                                                            ' "
                                                                     ></span></div
                                                                 >
+
+                                                                <div th:if="${memberVO != null && memberVO.snsProfile != null}"
+                                                                     class="Avatar_avatar__1d9Wt"
+                                                                     style="width: 36px; height: 36px"
+                                                                >
+                                                                    <span
+                                                                            class="Avatar_hasImage__2TKl6 hi"
+                                                                            th:style="'
+                                                                            background-image: url(' + ${memberVO.snsProfile} + ');
+                                                                            border: 1px solid rgb(221, 226 , 230);
+                                                                           ' "
+                                                                    ></span></div
+                                                                >
+
 <!--                                                                -->
                                                             </a>
                                                         </div>
@@ -847,8 +861,10 @@ text-align: right;">
     let consult = [[${consultDTO}]];
     let session = [[${session.id}]];
     let consultingId = [[${consultId}]];
+    console.log(consultingId);
     let total = [[${total}]];
     let basicTotal = [[${basicReplyTotal}]];
+    console.log(basicTotal);
     let member;
     if(session != null){
         member = [[${memberVO}]];

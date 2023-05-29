@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public class PayVO {
     private Long id;
     private Long memberId;
-    private Long cardId;
-    private String payMethod;
-    private String payCardNumber;
+    private Long dataId;
+    private Long payTotalPrice;
+    private Long payPointUse;
     private String payRegisterDate;
     private boolean payStatus;
 }

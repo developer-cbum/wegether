@@ -15,18 +15,15 @@ $upload.on("change", function(e){
     let i = $upload.index($(this));
     let files = $(this)[0].files;
     let name = files[0].name;
-    name = name.split(".")[0] + i + "." + name.split(".")[1];
-    console.log(name);
 
     let formData = new FormData();
 
-    sizes[i] = (files[0].size / 1024).toFixed(2);
-    $('.file-size').eq(i).text(sizes[i] + "KB");
+    sizes[i] = files[0].size;
+    $('.file-size').eq(i).text((files[0].size / 1024).toFixed(2) + "KB");
 
     $(files).each((i, file) => {
-        console.log(file);
-        formData.append("uploadFile", file, name);
-        console.log(formData);
+        formData.append("uploadFile", file);
+        formData.append("name", $(this).attr("id"));
     });
 
     $.ajax({

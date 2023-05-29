@@ -13,9 +13,7 @@ let text ="";
             <div class="school-img-con">
             `
 lecture.files.forEach((file) => {
-    let check = file.fileName.split(".")[0].slice(-1);
-        console.log(check);
-    if(check == 1){
+    if(file.fileType == "NON_REPRESENTATIVE"){
         text += `
           <img src="/lecture-files/display?fileName=${file.filePath}/${file.fileUuid}_${file.fileName}" height="390" width="540"/>
           `
@@ -63,8 +61,7 @@ lecture.files.forEach((file) => {
 
 
             lecture.files.forEach(file => {
-                let check = file.fileName.split(".")[0].slice(-1);
-    if (check == 2) {
+    if (file.fileType == "CONTENT_REPRESENTATIVE") {
 
         text += `
           <img src="/lecture-files/display?fileName=${file.filePath}/${file.fileUuid}_${file.fileName}" style="
@@ -76,6 +73,7 @@ lecture.files.forEach((file) => {
                   border: none;
                   cursor: pointer;
                 "/>
+                <br><h3>${lecture.lectureContent}</h3>
           `
     }
 })
