@@ -65,7 +65,8 @@ public class AccountController {
 
     //    로그인
     @GetMapping("login")
-    public void goToLoginForm(MemberVO memberVO, RedirectAttributes redirectAttributes){;}
+    public void goToLoginForm(MemberVO memberVO, RedirectAttributes redirectAttributes, @RequestParam(required = false) String withdraw, Model model){
+       model.addAttribute("naverWithdraw", withdraw) ;}
 
     @PostMapping("login")
     public RedirectView login(String memberId, String memberPassword, String list, String id, HttpSession session, RedirectAttributes redirectAttributes){
@@ -85,6 +86,14 @@ public class AccountController {
             if (accountService.checkId(memberId).get().getMemberGrade().equals("ADMIN")) {
                 session.setAttribute("id", foundMember.get());
                 return new RedirectView("/admins/notice/list");
+            }
+        }
+
+        //회원탈퇴 계정 검사
+        if(foundMember.isPresent()){
+            if(!accountService.checkId(memberId).get().isMemberStatus()){
+                redirectAttributes.addFlashAttribute("withdraw", "true");
+                return new RedirectView("/accounts/login");
             }
         }
 
@@ -109,6 +118,7 @@ public class AccountController {
 
             return new RedirectView("/index/main");
         }
+
 
 
         // 아예 로그인 실패
