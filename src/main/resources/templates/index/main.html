@@ -231,7 +231,10 @@
 <script th:inline="javascript">
     let joinStatus = [[${join}]];
     let sns = [[${sns}]];
-
+    let snsStatus= [[${snsStatus}]];
+    if(snsStatus) {
+        showWarnModal("<span>SNS 계정연동이 되었습니다</span>");
+    }
     if(sns){
         showWarnModal("<span>SNS 계정연동이 되었습니다</span>");
     }
