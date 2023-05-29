@@ -72,23 +72,23 @@ public class MainServiceImpl implements MainService {
         return mainDTOS;
     }
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public List<MainDTO> mainSDGetList(MainDataPagination mainDataPagination, Search search) {
-//        총 갯수 넣기
-        mainDataPagination.setTotal(mainDAO.findCountOfData(search));
-        mainDataPagination.progress();
-//        게시글 전체 목록
-        final List<MainDTO> mainDTOS = mainDAO.mainSDFindAll(mainDataPagination, search);
-//        게시글 하나씩 첨부파일 목록 담기
-        mainDTOS.forEach(mainDTO -> mainDTO.setFiles(mainFileDAO.mainDFFindAll(mainDTO.getId())));
-        return mainDTOS;
-    }
-
-
+//    @Override
+//    @Transactional(rollbackFor = Exception.class)
+//    public List<MainDTO> mainSDGetList(MainDataPagination mainDataPagination, Search search) {
+////        총 갯수 넣기
+//        mainDataPagination.setTotal(mainDAO.findCountOfData(search));
+//        mainDataPagination.progress();
+////        게시글 전체 목록
+//        final List<MainDTO> mainDTOS = mainDAO.mainSDFindAll(mainDataPagination, search);
+////        게시글 하나씩 첨부파일 목록 담기
+//        mainDTOS.forEach(mainDTO -> mainDTO.setFiles(mainFileDAO.mainDFFindAll(mainDTO.getId())));
+//        return mainDTOS;
+//    }
 //
-    @Override
-     public int getDataTotal(Search search){return mainDAO.findCountOfData(search);}
+//
+////
+//    @Override
+//     public int getDataTotal(Search search){return mainDAO.findCountOfData(search);}
 
     @Override
      public int getProjectTotal(Search search){return mainDAO.findCountOfProject(search);}

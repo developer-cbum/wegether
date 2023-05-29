@@ -61,9 +61,11 @@ public class MainController {
 //    검색 목록
     @GetMapping("search-list")
     @Transactional(rollbackFor = Exception.class)
-    public void goToSearch(Model model, MainProjectPagination mainProjectPagination, Search search, MainDataPagination mainDataPagination){
+    public void goToSearch(Model model, MainProjectPagination mainProjectPagination, Search search){
+        mainProjectPagination.setTotal(mainService.getProjectTotal(search));
+        mainProjectPagination.progress();
         model.addAttribute("searchproject", mainService.mainSPGetList(mainProjectPagination, search));
-        model.addAttribute("searchdata", mainService.mainSDGetList(mainDataPagination, search));
+//        model.addAttribute("searchdata", mainService.mainSDGetList(mainDataPagination, search));
 
     }
 
