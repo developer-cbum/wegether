@@ -34,17 +34,44 @@ public class KakaoController {
 
         //애초에 카카오 로그인 할때 그 아이디가 있을때 중복이고 그 계정이 카카오 연동이 아닐떄
 
-        //카카오 계정 로그인 할떄 이미 아이디가 일반 회원이나 네이버로 가입되어있을경우
-        if (accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()) {
-            Optional<MemberVO> foundMember = accountService.checkId(kakaoInfo.get("memberId").toString());
-            foundMember.ifPresent(member -> {
-                if (member.getMemberLoginStatus().equals("WEGETHER")) {
+//        //카카오 계정 로그인 할떄 이미 아이디가 일반 회원이나 네이버로 가입되어있을경우
+//        if (accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()) {
+//            Optional<MemberVO> foundMember = accountService.checkId(kakaoInfo.get("memberId").toString());
+//            foundMember.ifPresent(member -> {
+//                if (member.getMemberLoginStatus().equals("WEGETHER")) {
+////                회원의 계정을 카카오 계정으로 변경(연동)
+//                    Long id = (Long) session.getAttribute("id");
+//                    log.info("=====id: {}", id);
+//                    accountService.changeLoginStatusToKakao(String.valueOf(id));
+//                }
+//            });
+        //카카오 계정 로그인 할떄 이미 아이디가 일반 회원이나 네이버가로 가입되어있을경우
+
+//        마이페이지에서 연동할 경우
+
+        if(accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()){
+        //마이페이지에서 로그인한후 연동할때
+            if(session.getAttribute("id") != null){
+                Optional<MemberVO> foundMember = accountService.checkId(kakaoInfo.get("memberId").toString());
+                foundMember.ifPresent(member -> {
+                    if (member.getMemberLoginStatus().equals("WEGETHER")) {
 //                회원의 계정을 카카오 계정으로 변경(연동)
-                    Long id = (Long) session.getAttribute("id");
-                    log.info("=====id: {}", id);
-                    accountService.changeLoginStatusToKakao(String.valueOf(id));
-                }
-            });
+                        Long id = (Long) session.getAttribute("id");
+                        log.info("=====id: {}", id);
+                        accountService.changeLoginStatusToKakao(accountService.getMemberById(id).get().getMemberId()
+                                , kakaoInfo.get("profile").toString());
+                    }
+                });
+                redirectAttributes.addFlashAttribute("sns", "true");
+                return new RedirectView("/index/main");
+            }
+
+
+            //로그인창에서 할경우.
+            if(!accountService.checkId(kakaoInfo.get("memberId").toString()).get().getMemberLoginStatus().equals("KAKAO")){
+                redirectAttributes.addFlashAttribute("status", "false");
+                return new RedirectView("/accounts/login");
+            }
         }
 
 
@@ -55,12 +82,15 @@ public class KakaoController {
             log.info(kakaoInfo.get("memberId").toString());
             redirectAttributes.addFlashAttribute("memberId", kakaoInfo.get("memberId").toString());
             redirectAttributes.addFlashAttribute("memberPassword", kakaoInfo.get("memberPassword").toString());
+            redirectAttributes.addFlashAttribute("profile", kakaoInfo.get("profile").toString());
             return new RedirectView("/accounts/kakao-register");
         }
 
 //        카카오 로그인해서 db에 계정이 있을때
         Optional<Long> foundNumber = accountService.login(kakaoInfo.get("memberId").toString(), kakaoInfo.get("memberPassword").toString());
         if(foundNumber.isPresent()){
+            log.info(kakaoInfo.get("profile").toString());
+            accountService.changeLoginStatusToKakao(kakaoInfo.get("memberId").toString(), kakaoInfo.get("profile").toString());
             session.setAttribute("id", foundNumber.get());
         }
 

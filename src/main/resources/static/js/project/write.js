@@ -58,32 +58,29 @@ $("div.x").on("click", function(e){
     $thumbnail.eq(i).hide();
 });
 
-$("button.ok-button").on("click", function(){
-    let text = ``;
-    let count = 0;
-    $("img.thumbnail").each((i, img) => {
-        let fullPath = $(img).attr("src");
-        if(!fullPath) {return;}
+$("span.ok-button").on("click", function(){
 
-        let datas = fullPath.split("_");
+    let text = ``;
+    if($("img.thumbnail").attr("src")){
+        let datas = $("img.thumbnail").attr("src").split("_");
         let filePath = datas[0].split("=")[1].replace("/t", "");
         let fileUuid = datas[1];
         let fileName = datas[2];
-        let fileType = $(img).hasClass("representative");
-        let fileSize = sizes[i];
+        let fileType = $("img.thumbnail").hasClass("representative");
+        let fileSize = sizes[0];
 
         text += `
-            <input type="hidden" name="files[${count}].filePath" value="${filePath}">
-            <input type="hidden" name="files[${count}].fileUuid" value="${fileUuid}">
-            <input type="hidden" name="files[${count}].fileName" value="${fileName}">
-            <input type="hidden" name="files[${count}].fileSize" value="${fileSize}">
+            <input type="hidden" name="files[0].filePath" value="${filePath}">
+            <input type="hidden" name="files[0].fileUuid" value="${fileUuid}">
+            <input type="hidden" name="files[0].fileName" value="${fileName}">
+            <input type="hidden" name="files[0].fileSize" value="${fileSize}">
         `
         if(fileType){
-            text += `<input type="hidden" name="files[${count}].fileType" value="REPRESENTATIVE">`;
+            text += `<input type="hidden" name="files[0].fileType" value="REPRESENTATIVE">`;
         }
-        count++;
-    });
-    $(writeForm).append(text);
-    $(writeForm).submit();
+        console.log(text);
+        $("form[name='writeForm']").append(text);
+        $("form[name='writeForm']").submit();
+    }
 });
 

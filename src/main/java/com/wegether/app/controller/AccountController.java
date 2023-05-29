@@ -54,10 +54,11 @@ public class AccountController {
 
     @PostMapping("kakao-register")
     @Transactional(rollbackFor = Exception.class)
-    public RedirectView joinToKakao(MemberVO memberVO, RedirectAttributes redirectAttributes){
+    public RedirectView joinToKakao(MemberVO memberVO, RedirectAttributes redirectAttributes, HttpSession session){
         accountService.join(memberVO);
-        accountService.changeLoginStatusToKakao(memberVO.getMemberId());
+        accountService.changeLoginStatusToKakao(memberVO.getMemberId(), memberVO.getSnsProfile());
         redirectAttributes.addFlashAttribute("join", "true");
+        session.setAttribute("id", accountService.checkId(memberVO.getMemberId()).get().getId());
         return new RedirectView("/index/main");
     }
 
@@ -183,16 +184,17 @@ public class AccountController {
     public void naverLogin(){;}
 
     @PostMapping("naver-register")
-    public void naverRegister(String memberId, String memberName, String memberPassword, Model model){
+    public void naverRegister(String memberId, String memberName, String memberPassword, String snsProfile, Model model){
         model.addAttribute("memberId", memberId);
         model.addAttribute("memberName", memberName);
         model.addAttribute("memberPassword", memberPassword);
+        model.addAttribute("snsProfile", snsProfile);
         ;}
     @PostMapping("naver-join")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView naverJoin(MemberVO memberVO, HttpSession session,RedirectAttributes redirectAttributes){
         accountService.join(memberVO);
-        accountService.changeLoginStatusToNaver(memberVO.getMemberId());
+        accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getSnsProfile());
         Optional<MemberVO> JoinMemberVO = accountService.checkId(memberVO.getMemberId());
         session.setAttribute("id", JoinMemberVO.get().getId());
         redirectAttributes.addFlashAttribute("join", "true");
@@ -205,6 +207,7 @@ public class AccountController {
     public void naverlogin(@RequestBody MemberVO memberVO, HttpSession session){
         if(memberVO.getMemberLoginStatus().equals("NAVER") &&
                 accountService.getMemberById(memberVO.getId()).get() != null){
+                accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getSnsProfile());
            session.setAttribute("id", memberVO.getId());
         }else if(memberVO.getMemberLoginStatus().equals("WEGETHER")){
 //            회원의 계정을 네이버 계정으로 변경(연동)
@@ -212,7 +215,20 @@ public class AccountController {
             log.info("=====id: {}", id);
             accountService.changeLoginStatusToNaver(String.valueOf(id));
         }
+
+        //로그인후 마이페이지에서 연동하는 것이면
+        if(session.getAttribute("id") != null){
+            if(memberVO.getMemberLoginStatus().equals("WEGETHER")){
+//            회원의 계정을 네이버 계정으로 변경(연동)
+                Long id = (Long) session.getAttribute("id");
+                log.info("=====id: {}", id);
+                accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getSnsProfile());
+            }
+        }
     }
+
+
+
 
 }
 
