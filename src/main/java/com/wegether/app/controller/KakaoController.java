@@ -41,7 +41,8 @@ public class KakaoController {
 
         if(accountService.checkId(kakaoInfo.get("memberId").toString()).isPresent()){
             //마이페이지에서 로그인한후 연동할때
-            if(session.getAttribute("id") != null){
+            if(session.getAttribute("id") != null &&
+                    accountService.getMemberById((Long)session.getAttribute("id")).get().getMemberLoginStatus().equals("WEGETHER")){
                 Long id = (Long) session.getAttribute("id");
                 MemberVO memberVO = accountService.getMemberById(id).get();
                     if (memberVO.getMemberLoginStatus().equals("WEGETHER")) {
