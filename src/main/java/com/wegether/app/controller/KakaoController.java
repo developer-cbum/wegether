@@ -46,7 +46,6 @@ public class KakaoController {
                 Long id = (Long) session.getAttribute("id");
                 MemberVO memberVO = accountService.getMemberById(id).get();
                     if (memberVO.getMemberLoginStatus().equals("WEGETHER")) {
-                        log.info("들어옴");
                         log.info(memberVO.getMemberId());
 //                회원의 계정을 카카오 계정으로 변경(연동)
                         accountService.changeLoginStatusToKakao(memberVO.getMemberId(), kakaoInfo.get("profile").toString());
