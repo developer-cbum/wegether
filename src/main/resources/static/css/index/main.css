@@ -243,6 +243,7 @@ div.dots {
   left: 50%;
   transform: translateX(-50%);
   bottom: 10px;
+  opacity: 0.5;
 }
 
 div.dot {
@@ -1161,7 +1162,6 @@ li {
   border-radius: 8px;
   background-color: #f2f4f6;
   width: 100%;
-  height: 90%;
   overflow: hidden;
 }
 
@@ -1692,6 +1692,12 @@ video {
   border-radius: 3px 3px 0 0;
   width: 100%;
   height: 17rem;
+  overflow: hidden;
+}
+
+.preview{
+  height: 100%;
+  width: 100%;
 }
 
 .CardType_projectCard__3xhjb.CardType_earlybirdCard__1t1n1 .CardType_cardContent__3UMOr {

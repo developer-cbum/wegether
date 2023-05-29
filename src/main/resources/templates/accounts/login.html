@@ -182,6 +182,16 @@
     let statusCheck =[[${status}]];
     let loginStatusCheck = [[${loginStatus}]];
     let joinStatus = [[${join}]];
+    let withdraw = [[${withdraw}]];
+    let naverWithdraw = [[${naverWithdraw}]];
+
+    if(naverWithdraw){
+        showWarnModal("<span>탈퇴된 계정입니다.</span>");
+    }
+
+    if(withdraw){
+        showWarnModal("<span>탈퇴된 계정입니다.</span>");
+    }
 
     //네이버는 js로 사용해서 적응이안되네용..
     let naverLoginStatus = new URLSearchParams(window.location.search);

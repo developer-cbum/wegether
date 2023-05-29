@@ -6,7 +6,7 @@ $(document).ready(function() {
     for (let i = 0; i < Math.min(numToShow, communities.length); i++) {
         const comu = communities[i];
         text += `
-            <a href="/web/campaign/detail/209392?_refer_section_st=earlyBird_0"
+            <a href="/community/detail?id=${comu.id}"
                 data-ec-list="홈_얼리버드_프리오더" data-ec-id="209392"
                 data-ec-name="뻔하고 후줄근한 티셔츠는 그만!  [프리미엄 소프트 코튼 티셔츠]" data-ec-position="0"
                 data-ec-category="패션·잡화" data-ec-brand="주식회사 포인트나인크루"

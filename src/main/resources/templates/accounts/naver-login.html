@@ -32,6 +32,11 @@
                     memberId: memberId
                 },
                 success: function (memberVO) {
+                    if(memberVO !=null && !memberVO.memberStatus){
+                        location.href = "/accounts/login?withdraw=true";
+                        return;
+                    }
+
                     if (memberVO == null) {
                         $('#memberId').val(memberId);
                         $('#memberName').val(nickname);
