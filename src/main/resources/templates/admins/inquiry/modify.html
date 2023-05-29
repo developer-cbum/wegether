@@ -95,7 +95,7 @@
                                         <!-- 등록 날짜 -->
                                         <span th:text="${answerModifyBoards.answerRegisterDate}"></span>
                                     </div>
-                                    <form th:action="@{/admins/inquiry/modify}" method="post" name="answerModifyForm">
+                                    <form th:action="@{/admins/inquiry/modify}" method="post" id="answerModifyForm" name="answerModifyForm">
                                         <input type="hidden" name="id" th:value="${answerModifyBoards.id}">
                                         <hr>
                                         <!-- 등록 내용 -->
