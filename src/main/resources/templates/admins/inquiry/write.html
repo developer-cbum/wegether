@@ -89,7 +89,7 @@
                                 <span>문의 답변</span>
                             </div>
                             <div class="info-table">
-                                <form th:action="@{/admins/inquiry/write}" method="post" name="answerWriteForm">
+                                <form th:action="@{/admins/inquiry/write}" method="post" id= "answerWriteForm" name="answerWriteForm">
                                     <input type="hidden" name="inquiryId" th:value="${inquiryBoards.id}">
                                     <hr>
                                     <div>
