@@ -29,7 +29,7 @@ public class AccountServiceImpl implements AccountService {
     public void join(MemberVO memberVO) {
         memberDAO.save(memberVO);
         Optional<MemberVO> byMemberId = memberDAO.findByMemberId(memberVO.getMemberId());
-//        pointDAO.saveJoinPoint(byMemberId.get().getId());
+        pointDAO.saveJoinPoint(byMemberId.get().getId());
     }
 
     @Override
