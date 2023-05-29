@@ -79,5 +79,4 @@ $("button.ok-button").on("click", function () {
         `
     });
     $(noticeWriteForm).append(text);
-    $(noticeWriteForm).submit();
 });
