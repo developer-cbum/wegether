@@ -107,20 +107,20 @@
 
 
 <!--             페이지 부분-->
-<!--            <div id="paging-wrap">-->
-<!--                <a th:if="${mainProjectPagination.prev}" th:href="${mainProjectPagination.startPage - 1}"-->
-<!--                   class="notice-change-page paging paging-move">-->
-<!--                    <img src="/image/admin/prev.png" width="15px"></a>-->
-<!--                <th:block th:each="page:${#numbers.sequence(mainProjectPagination.startPage, mainProjectPagination.endPage)}">-->
-<!--                    <a th:if="${page eq mainProjectPagination.page}" class="paging paging-checked" th:text="${page}"></a>-->
-<!--                    <a th:unless="${page eq mainProjectPagination.page}" th:href="${page}"-->
-<!--                       class="notice-change-page paging" th:text="${page}"></a>-->
-<!--                </th:block>-->
-<!--                <a th:if="${mainProjectPagination.next}" th:href="${mainProjectPagination.endPage + 1}"-->
-<!--                   class="notice-change-page paging paging-move">-->
-<!--                    <img src="/image/admin/next.png" width="15px"></a>-->
-<!--                <div></div>-->
-<!--            </div>-->
+            <div id="paging-wrap">
+                <a th:if="${mainProjectPagination.prev}" th:href="${mainProjectPagination.startPage - 1}"
+                   class="notice-change-page paging paging-move">
+                    <img src="/image/admin/prev.png" width="15px"></a>
+                <th:block th:each="page:${#numbers.sequence(mainProjectPagination.startPage, mainProjectPagination.endPage)}">
+                    <a th:if="${page eq mainProjectPagination.page}" class="paging paging-checked" th:text="${page}"></a>
+                    <a th:unless="${page eq mainProjectPagination.page}" th:href="${page}"
+                       class="notice-change-page paging" th:text="${page}"></a>
+                </th:block>
+                <a th:if="${mainProjectPagination.next}" th:href="${mainProjectPagination.endPage + 1}"
+                   class="notice-change-page paging paging-move">
+                    <img src="/image/admin/next.png" width="15px"></a>
+                <div></div>
+            </div>
 
 
             </div>
