@@ -238,7 +238,7 @@ public class MypageController {
 
 
     @GetMapping("/my-page/my-data-list")
-    public void goToData(HttpSession session, Long id, Model model) {
+    public void goToData(Model model) {
         model.addAttribute("datas", mine.readMine((Long) session.getAttribute("id")));
     }
 
