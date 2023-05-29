@@ -85,7 +85,7 @@ public class ProjectServiceImpl implements ProjectService {
         projectDAO.projectSave(projectDTO);
         for(int i=0; i<projectDTO.getFiles().size(); i++){
             projectDTO.getFiles().get(i).setProjectId(projectDTO.getId());
-            projectDTO.getFiles().get(i).setFileType(i == 0 ? FileType.REPRESENTATIVE.name() : FileType.NON_REPRESENTATIVE.name());
+            projectDTO.getFiles().get(i).setFileType(FileType.REPRESENTATIVE.name());
             log.info(projectDTO.getFiles().get(i).toString());
             fileDAO.projectsave(projectDTO.getFiles().get(i));
         }

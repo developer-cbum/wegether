@@ -38,12 +38,21 @@ public class MypageController {
     //    마이페이지 메인
     private final MineServiceImpl mine;
 
-    @GetMapping("/my-page/my-page")
-    public void main(Long id, Model model) {
+    @GetMapping("/main")
+    public String main(Long id, Model model) {
 
-        model.addAttribute("main", mine.loadMine(3L).get());
+        model.addAttribute("main", mine.loadMine((Long) session.getAttribute("id")).get());
+        return "/mypage/my-page/my-page";
     }
 //===========================================================================================================================
+
+//    설정 버튼 연결
+
+    @GetMapping("setting")
+    public String goSetting(){
+        return "mypage/setting/setting";
+    }
+
 //    비밀번호 재설정
 
     private final AccountService accountService;
@@ -110,7 +119,7 @@ public class MypageController {
 
     @GetMapping("/setting/basic-setting")
     public void goToBasicSetting(HttpSession session, Model model) {
-        model.addAttribute("setting",  mine.loadMine((Long) session.getAttribute("id")).get());
+        model.addAttribute("setting", mine.loadMine((Long) session.getAttribute("id")).get());
     }
 
 //    @GetMapping("/setting/basic-setting")
@@ -193,8 +202,15 @@ public class MypageController {
 //    문의 등록
 
     @GetMapping("/inquiry/inquiry-register")
-    public void goToRegister(InquiryVO inquiryVO, HttpSession session, Model model) {
-        model.addAttribute("inquiry", accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberId());
+    public void goToRegister(InquiryVO inquiryVO, Model model) {
+
+    }
+
+    @PostMapping("/inquiry/inquiry-register")
+    public RedirectView register(InquiryVO inquiryVO) {
+        inquiryVO.setMemberId((Long) session.getAttribute("id"));
+        inquiry.register(inquiryVO);
+        return new RedirectView("/mypage/inquiry/inquiry-detail");
     }
 
 //    @PostMapping("write")
@@ -211,8 +227,11 @@ public class MypageController {
 
     //목록 조회
     @GetMapping("/inquiry/inquiry-detail")
-    public void goToDetail(Long memberId, Model model) {
-        model.addAttribute("inquiry", inquiry.read(1L));
+    public void goToDetail(Model model) {
+        Long id = (Long)session.getAttribute("id");
+        MemberVO member = accountService.getMemberById(id).get();
+        model.addAttribute("member", member);
+        model.addAttribute("inquiry", inquiry.read(((Long) session.getAttribute("id"))));
     }
 
 
@@ -255,9 +274,8 @@ public class MypageController {
 
         Long id = dataDTO.getId();
 
-        return new RedirectView("/datas/detail?id=" +id);
+        return new RedirectView("/datas/detail?id=" + id);
     }
-
 
 
     //    내 상담
@@ -356,22 +374,28 @@ public class MypageController {
     private final PointImpl pointImpl;
 
     @GetMapping("/point/point")
-    public void goToPoint(HttpSession session, Model model){
-        model.addAttribute(pointImpl.getPoints((Long) session.getAttribute("id")));
+    public void goToPoint(HttpSession session, Model model) {
+        Long id = (Long)session.getAttribute("id");
+        MemberVO member = accountService.getMemberById(id).get();
+        model.addAttribute("member", member);
+        log.info(pointImpl.getPoints((Long) session.getAttribute("id")).toString());
+        model.addAttribute("points", pointImpl.getPoints((Long) session.getAttribute("id")));
     }
 
 
-//    프로필 사진 수정
+
+
+    //    프로필 사진 수정
 //    mypage/setting/set-profile
     @GetMapping("/setting/set-profile")
-    public void goToSetProfileForm(MemberVO memberVO){
-        memberVO.setId((Long)session.getAttribute("id"));
+    public void goToSetProfileForm(MemberVO memberVO) {
+        memberVO.setId((Long) session.getAttribute("id"));
 
     }
 
     @PostMapping("/setting/set-profile")
-    public RedirectView setProfile(MemberVO memberVO){
-        Long id = (Long)session.getAttribute("id");
+    public RedirectView setProfile(MemberVO memberVO) {
+        Long id = (Long) session.getAttribute("id");
         memberVO.setId(id);
 
         accountService.setProfile(memberVO);
@@ -379,20 +403,19 @@ public class MypageController {
 
 
     }
-
-
-
-
-
-
-
-
 }
 
 
-//문의 등록
-
-
+////문의 등록
+//
+//    private final InquiryImpl inquiry;
+//
+//    @GetMapping("/inquiry/inquiry-register")
+//    public void goToInquiry(InquiryVO inquiryVO, Model model) {
+////        model.addAttribute("inquiry", inqui)
+//    }
+//
+//}
 
 
 

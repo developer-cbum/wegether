@@ -14,6 +14,7 @@ $(document).ready(function(){
             margin-right: 0px;
             margin-bottom: 20px;
           "
+                  onclick=location.href="/project/detail?id=${project.id}"
           >
             <div role="link" class="PurchaseSummaryCard_item__3LlZ3">
               <dl class="PurchaseSummaryCard_etcArea__3Ummh">
