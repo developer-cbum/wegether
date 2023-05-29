@@ -1,10 +1,12 @@
 package com.wegether.app.domain.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Data
 @Component
+@NoArgsConstructor
 public class CommunityReplyDTO {
     private Long id;
     private String replyContent;
@@ -19,4 +21,6 @@ public class CommunityReplyDTO {
     private String filePath;
     private String fileUuid;
     private String fileName;
+    private String memberLoginStatus;
+    private String snsProfile;
 }

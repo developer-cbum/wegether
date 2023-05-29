@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -33,60 +32,60 @@
             </div>
             <div class="MainWrapper_content__GZkTa">
                 <div class="DesktopSearchResult_headContainer__1hnOM">
-                    <div class="DesktopSearchResult_keyword__13uuG">00</div>
-                    <h2>검색결과</h2>
-                    <div class="DesktopSearchResult_number__kryRO"><br><th:block th:text="${mainPagination.total}"></th:block></div>
-                    <div class="DesktopSearchResult_unit__24BC1">개</div>
+                    <div class="DesktopSearchResult_keyword__13uuG" th:text = "${search.keyword}"></div>
+                    <h2><small>검색결과</small></h2>
+<!--                    <div class="DesktopSearchResult_number__kryRO"><br><th:block th:text="${mainPagination.total}"></th:block></div>-->
+<!--                    <div class="DesktopSearchResult_unit__24BC1">개</div>-->
                 </div>
                 <!-- 카테고리란 -->
                 <div class="DesktopSearchResult_tabContainer__18T4j">
                     <ul class="SearchResultTabs_tabContainer__3rQre">
-                        <button id="all-btn" type="button">전체</button>
-                        <button id="project-btn" type="button">프로젝트</button>
-                        <button id="data-btn" type="button">자료실</button>
+                        <button id="all-btn" type="button">프로젝트</button>
+<!--                        <button id="project-btn" type="button">프로젝트</button>-->
+<!--                        <button id="data-btn" type="button">자료실</button>-->
                     </ul>
                 </div>
                 <!-- 검색결과가 있을 때 없을 때를 타임리프문으로 처리해주십시오 -->
                 <!-- 검색결과 없을 때 -->
-                <section class="EmptyResult_container__3omiy">
-                    <h2>검색결과가 없어요</h2>
-                    <h4>새로운 프로젝트를 발견해보세요</h4>
+<!--                <section class="EmptyResult_container__3omiy">-->
+<!--                    <h2>검색결과가 없어요</h2>-->
+<!--                    <h4>새로운 프로젝트를 발견해보세요</h4>-->
 
 
 
-                    <div class="EmptyResult_tagContainer__ceRsP">
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">캠핑</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">가방</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">캐리어</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">텐트</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">안경</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">선풍기</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">우산</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">신발</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">보드게임</div>
-                        </div>
-                        <div class="PopularTag_container__Lxt5N">
-                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">키보드</div>
-                        </div>
-                    </div>
-                </section>
+<!--                    <div class="EmptyResult_tagContainer__ceRsP">-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">컴퓨터공학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">디자인학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">스포츠과학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">생명과학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">화학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">기계공학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">전기공학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">수학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">미디어영상학과</div>-->
+<!--                        </div>-->
+<!--                        <div class="PopularTag_container__Lxt5N">-->
+<!--                            <div class="PopularTag_keyword__2-ryF" tabindex="-1">실용음</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </section>-->
 
                 <!-- 검색결과 있을 때 -->
                     <div>
@@ -101,24 +100,27 @@
                     </div>
                 </div>
             </div>
+<div style="height:200px">
 
 
+</div>
 
-            <!-- 페이지 부분 -->
-            <div id="paging-wrap">
-                <a th:if="${mainPagination.prev}" th:href="${mainPagination.startPage - 1}"
-                   class="notice-change-page paging paging-move">
-                    <img src="/image/admin/prev.png" width="15px"></a>
-                <th:block th:each="page:${#numbers.sequence(mainPagination.startPage, mainPagination.endPage)}">
-                    <a th:if="${page eq mainPagination.page}" class="paging paging-checked" th:text="${page}"></a>
-                    <a th:unless="${page eq mainPagination.page}" th:href="${page}"
-                       class="notice-change-page paging" th:text="${page}"></a>
-                </th:block>
-                <a th:if="${mainPagination.next}" th:href="${mainPagination.endPage + 1}"
-                   class="notice-change-page paging paging-move">
-                    <img src="/image/admin/next.png" width="15px"></a>
-                <div></div>
-            </div>
+
+<!--             페이지 부분-->
+<!--            <div id="paging-wrap">-->
+<!--                <a th:if="${mainProjectPagination.prev}" th:href="${mainProjectPagination.startPage - 1}"-->
+<!--                   class="notice-change-page paging paging-move">-->
+<!--                    <img src="/image/admin/prev.png" width="15px"></a>-->
+<!--                <th:block th:each="page:${#numbers.sequence(mainProjectPagination.startPage, mainProjectPagination.endPage)}">-->
+<!--                    <a th:if="${page eq mainProjectPagination.page}" class="paging paging-checked" th:text="${page}"></a>-->
+<!--                    <a th:unless="${page eq mainProjectPagination.page}" th:href="${page}"-->
+<!--                       class="notice-change-page paging" th:text="${page}"></a>-->
+<!--                </th:block>-->
+<!--                <a th:if="${mainProjectPagination.next}" th:href="${mainProjectPagination.endPage + 1}"-->
+<!--                   class="notice-change-page paging paging-move">-->
+<!--                    <img src="/image/admin/next.png" width="15px"></a>-->
+<!--                <div></div>-->
+<!--            </div>-->
 
 
             </div>
@@ -148,14 +150,13 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script th:inline="javascript">
-    let searches = [[${searches}]];
-    console.log(searches);
-    let searchtest = [[${searchtest}]];
-    console.log(searchtest);
-    let mainPagination = [[${mainPagination}]];
-    console.log(mainPagination);
+    let searchproject = [[${searchproject}]];
+    console.log(searchproject);
+    let searchdata = [[${searchdata}]];
+    console.log(searchdata);
+
 </script>
-<script src="/js/index/search.js"></script>
+<!--<script src="/js/index/search.js"></script>-->
 <script src="/js/index/test.js"></script>
 <script src="/js/index/paging.js"></script>
 
