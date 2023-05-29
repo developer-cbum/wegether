@@ -90,24 +90,24 @@ $(document).ready(function () {
     load("all");
 
 
-    //  page
-    let modalCheck;
-    function showWarnModal(modalMessage) {
-        modalCheck = false;
-        $('div#content-wrap').html(modalMessage);
-        $('div.warn-modal').css('animation', 'popUp 0.5s');
-        $('div.modal').css('display', 'flex').hide().fadeIn(500);
-        setTimeout(function () {
-            modalCheck = true;
-        }, 500);
-    }
-
-    $('div.modal').on('click', function () {
-        if (modalCheck) {
-            $('div.warn-modal').css('animation', 'popDown 0.5s');
-            $('div.modal').fadeOut(500);
-        }
-    });
+    // //  page
+    // let modalCheck;
+    // function showWarnModal(modalMessage) {
+    //     modalCheck = false;
+    //     $('div#content-wrap').html(modalMessage);
+    //     $('div.warn-modal').css('animation', 'popUp 0.5s');
+    //     $('div.modal').css('display', 'flex').hide().fadeIn(500);
+    //     setTimeout(function () {
+    //         modalCheck = true;
+    //     }, 500);
+    // }
+    //
+    // $('div.modal').on('click', function () {
+    //     if (modalCheck) {
+    //         $('div.warn-modal').css('animation', 'popDown 0.5s');
+    //         $('div.modal').fadeOut(500);
+    //     }
+    // });
 
     $("#searchMoreData_btn").on("click", function(){
         page++;
@@ -198,5 +198,13 @@ $(document).ready(function () {
         return false;
     });
 
+    //    작성하기 로그인 모달
+    $("button.go-write-form").on("click", function(){
+        if(id){
+            location.href = "/datas/register"
+            return;
+        }
+        showWarnModal("<span>로그인 후 작성 가능합니다.</span>");
+    })
 
 }); //E

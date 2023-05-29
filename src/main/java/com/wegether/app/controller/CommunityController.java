@@ -1,7 +1,6 @@
 package com.wegether.app.controller;
 
 import com.wegether.app.domain.dto.*;
-import com.wegether.app.domain.vo.ConsultingVO;
 import com.wegether.app.service.account.AccountService;
 import com.wegether.app.service.community.CommunityReplyService;
 import com.wegether.app.service.community.CommunityService;
@@ -50,6 +49,7 @@ public class CommunityController {
     @PostMapping("write")
     public RedirectView register(CommunityDTO communityDTO, HttpSession session) {
         communityDTO.setMemberId((Long) session.getAttribute("id"));
+        log.info(communityDTO.toString());
         communityService.write(communityDTO);
         return new RedirectView("/community/list");
     }
@@ -59,9 +59,9 @@ public class CommunityController {
         if(session.getAttribute("id") != null){
             model.addAttribute("memberVO", accountService.getIdAndProfile((Long)session.getAttribute("id")).get());
         }
-        model.addAttribute("memberVO", accountService.getIdAndProfile((1L)).get());
         model.addAttribute("total", communityReplyService.getTotal(id));
         model.addAttribute("community", communityService.getCommunity(id).get());
+        model.addAttribute("basicReplyTotal", communityReplyService.getTotal(id));
         log.info("===========" + communityReplyDTO);
     }
 
