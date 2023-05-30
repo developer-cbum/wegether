@@ -89,7 +89,7 @@ public class MypageController {
     public RedirectView changePassword(MemberVO memberVO, HttpSession session) {
         log.info(memberVO.getMemberPassword());
         accountService.changePassword((Long) session.getAttribute("id"), memberVO.getMemberPassword());
-        return new RedirectView("/mypage/my-page/my-page");
+        return new RedirectView("/mypage/setting");
     }
 
 //===========================================================================================================================
