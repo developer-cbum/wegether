@@ -4,7 +4,7 @@
 
 
 <h2>1. 기획 배경</h2>
-<img src="[https://ifh.cc/v-pXF6B7](https://photos.google.com/album/AF1QipNj4m31MhL2oJQypk8ha1YuxBFdj-og32vfylVu/photo/AF1QipN5nJzA_8FD3pv1s3sFqO0Pmhh_g4ZiqNJflrXc)"/>
+<img src="https://photos.google.com/album/AF1QipNj4m31MhL2oJQypk8ha1YuxBFdj-og32vfylVu/photo/AF1QipN5nJzA_8FD3pv1s3sFqO0Pmhh_g4ZiqNJflrXc"/>
 해가 갈수록 운전면허 소지자의 숫자는 증가하지만, <strong>취득 당해년도에 운전을 시작하는 비율은 36%</strong>가 전부이다. 신규취득자 10명 중 6명은 면허만 취득할 뿐, 운전을 바로 시작하지 않는다.
 이 초보운전자들은 운전의 경험이 부족해 운전하기를 주저한다고 답한다. 따라서 에코위원회 팀에서는 <strong>베테랑 운전자와 초보 운전연수자를 1대1 매칭</strong>하여 개인간 운전 연수가 이루어질 수 있도록 기획하였다. 
 
