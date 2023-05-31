@@ -12,71 +12,72 @@
 
 
 <h2>2. 기대 효과</h2>
-<img src="https://lh3.googleusercontent.com/fife/APg5EOY8ytbtjdN1tbnB5pHjTfm-uf_IIIsEsvW3XJlZD8gmJ440-myM9IDsULAMHTNSqNE9IJWkhp305wNpXDpzr4i9wMjeOS8jy5N8egZ9mN0fjf6Plk7-wge9WiBTdnhSpOehogr7iLpm9rIkQcHVyA5w5b_Tl7MxJKj_aOwL6JSgOxX0HU-26tPzlFTV9bvyD5YIJG7SFb-_m1WqUrHBv-8VzZrtcOUcnVA3JMR-ljh0eosDFtfgXIGjAaFyyvggFojzndTXsaTPO9fAjAO4Wy2DTIArkV9KjPnfcKwfSWIsVjZSb63j7A9D3EcFQ2jiQ3str7rb-lPjrcr1vELl0OOPnu6HpOKgPlgT9UnMX_nsINQWDq1HIxszYcWgOj63NVeE6rpAz4O5oENgy2Ef2Gm7Q8uAA33YEz3JZc91LdxdfgTwSPzlcRFutddYPhmgrQnngzpQAq4Ij6wnECHikv1_Wtcc3ltz2zm8hMpl6qY-tqba_Lj2E1HpfnRN_EQp3RylVHwmXFTn61mIk77dM52gSZvQqFjyoAVciDYJ8FRjh9yM7IC3DIf6KVK8kyqLu7R94-dT-NqUbOk6PT7AQsrP3TrbBy0slOih1w9R52Bgwrj82O4uJO0WhGQhGUsFgzq8l5ocDg0u69knDHSRHCJZKCT-mD8P9iu3t5tnn14M3XnW3Mipan6L4A5tFyLm9um8F2vJWFIE4fedq9O3f0X4nf6XTgWXazEbIXsPAigY2Q4NapguAIZRgBzmq4TSwAQcYFQpldzZtoqVf0Ht9Q-5ojeK21xJYA02xdTPPmPZeegDXKboqqCSkPV-oaYqrTfSKnhKli8HbSnZk0XtP751B6ymLrR94agMD_mwSU-DHJYOXqSPeRXXMJpPpYa4_pJR_TAeQh-OGqlC7DFDodLt0quXb5bfbokHW9y4VJvPdxG2Ur6UeWhGW72N-nF5WwfoBSipy5qCa-xG7V46qVznaPp3Q18RDauIubRoLqVv-DMPPI9r92TIsd_ytFzbsKYDdQ5iDr5ktQQfc8zPqzMXDx87fAFfZu1tMJOS_8BKy_MsSBEbLjhIBLCCWVtSvmGJ-MU8RJIz7PPWtPwasqQdl74EzvvinXEf07t98xKaBkX1xWITbZCxoGADwHAnq_ChECujA_dchHReQ-sYZfdCsys4OMuHhzEM5ucJWUx3ZzQjXam9KUjcrB4D0iW1zr0F3Y4ZUGfUSHRTC2CcDBnVeX9N2H1phOIAVIfCi7F4N9vG3V5jrv_iSGIsz0U50s3hgkrrb5SM7XcJba2A3rCyooqQHGlZUn735GHbQUeHuySOmtD0Rdox67kraQZiuJvIf9Dij6HM94DoJXSY_eC1TLOtOpxQHGzRBG243jxdVNZd-5EE4q4jhxWI7eUWZdOezqpwghhM_mv5OmGQeqeHF1RWqK_OHuCOyvBnYoewMPLg6x_lk1YbKqsPQayfhJcpJqi6p6FSZWeYOgD1B4MkUs0XCY3jiWCxf1kXRH_oMskwmQF7kihyVOlq=w1920-h892" style = "width: 80%; height : 480">
-STEP 1. 베테랑 연수자와 초보 연수자가 원하는 날짜와 지역을 선택할 수 있게 하여 시간과 장소에 구애받지 않도록 한다. 따라서 바쁜 현대인들도 정해진 스케줄이 아니라 맞춤형 검색 시스템을 이용하여 사용자들의 편의를 제공한다.<br>
-STEP 2. 코스별로 금액을 지정하여 사용자간 금전거래가 이루어진다. 이를 통하여 연수의 선순환을 창출하고 회원간 연수를 독려한다.<br>
-STEP 3. 운전연수의 접근성을 용이하게 하여 초보운전자들의 운전경험이 많아진다면 결국 운전미숙으로 일어나는 사고는 감소하게 될 것이다. <br><br>
-교차로 프로젝트는 초보자들의 운전연수 경험을 통해 실력을 향상시킴으로서 최종적으로는 교통사고율을 감소시킬 수 있도록 기획하였다. <br>
+<img src="https://lh3.googleusercontent.com/Fjab1P2hgQKOpEGgk5W5w7p54-ntXEUe95OeNqjLiOr3JkoBvqQRPUosjTwqrSqhdvwOnXzD4FTwbMGzZMZsvd1kqquADH5BJQE7jyCpkbRpZi4HSOV9Q1wveJ3Z4FMhUGmMT6-gyC0SQ2undlwkDkKbdWN0jw-Sp4C2FK4mr6GeZLxdUyJpgHkkkMKkWiZXYjL-srdtp7YVsnh5jnwNELjlNUybon84w54odwdb6hP7oKPYPxXPFYZQ9x5CIYVIrsibBjeAvleJs6rE4_nyC6LptuOx3d8T83BtuVasTNBrTYzAWvmZbl9XZ5MGgGTKvLGW9Orr2LPhvr3MWkQ9hR6vEz3LeBRGVRWw4-GfXQGdNy_FD4AwRZNKRlXmfsjJaHjDaUuaxjC2rDCSqb-rVKvvcq5OdQmEqwAVIPKQqE7mMmeFFI7Nov1KFaWMgOZEt-Pcp4ho4EPDZQcU--tV9RZsT14T6jUxrbQa4GknBkLkpTQotoI17_IPy8wiU0vVt5CAQiBw-u-B7ZLmsCjit1eUZp2cXM9lkSi3_pUyVeYTFLA5vIWoNrih4FZY9KpKuZk1mi9CTxgO4sVmIQEx11HHBfOaQcYy_kcJxfpKbDhbjs0iy8xUCfB-HHh52WfEmcTuRapFvfm-As7fxd8AvyHGlCwtIANwnnYnElEkjjWksCvuw3c_a52l1mY5O3HMWob0RS5xcNteL2_Y9X1BioGsQZNMn8ie4Ua48T_RhT99t0_b3wWJ-zsqHtFV5GDVvUsjFy9fBDhANgiLYY8uWiLcl-tktRwti5kdboZg03GRMeI6fFOIGU272Jqz5qVwvrYyhWQe8XjywvYyD4_4v3F5lB7jOEBqBqJO7QyJW7eWVh7wKkGZ5hOkxvf43NPsSoHP92PwHKHmigLOHMySuUy-kV8ae6OLfUnujjvmVwYYhdpd76UHneIn1GSeqp5yYa1P7ZucBjOwFOaZxdAmGUOrslful12TIAAVQi97cw4Fw9frIodQtN2WBtiZlzC8eBpFYoBGHp9vW-hYn3tQih9Zyvc=w1057-h574-s-no?authuser=0" style = "width: 80%; height : 480">
+<br>
+<h4>다양한 전공 관련 자료 접근성 증진에 기인한 대학 수준 상향 평준화</h4>
+<h4>대학생 커뮤니티 관련 플랫폼 구축</h2>
+<h4>커뮤니케이션 스킬 및 협업 능력 향상</h2>
+<h4>입시 관련 상담 및 정보 제공으로 인한 입시 스트레스 완화</h4>
 
 
 <h2>3. 프로젝트 사용 툴</h2>
-- Java<br>
-- Java Script<br>
-- tomcat<br>
-- jQuery<br>
-- MyBatis<br>
-- Spring Boot<br>
-- MySQL<br>
-- Visual Studio Code<br>
-- DBeaver<br>
-- Sourcetree<br>
-- git, github<br>
-- JSON<br>
-- Ajax<br>
-- JDK 11.0.15<br>
-- Naver DEVELOPER API<br>
-- Kakao DEVELOPER API<br>
-- SMTP Gmail API<br>
-- Google Cloud Vision API<br>
+<img src="https://lh3.googleusercontent.com/gvAR47YCUug9fUljP_rLkUoQhzWU1RBOeL-euKEQQFVJJON_paWDtAeE5mfysvTy4Nq25ccZoWylvjKty_ZeGpgXkDjc8WQhMvAm3V5-6nrEUt1ZjR-_H5rr-OSMDRplI1xKzAhCiv6W-LPpZOK1UR8QOQ1sOMonfcAA3TiJru3ktUmZCG44t8JvNo7CpTknqWh7dRoAaGWQR4Al8NpKzhjs2-2ri7wiJ6J1PW22MKUkkyxxwIjSpoMFBAN1VXhHfRKJM7OWn4AcHRi2msuqvREWaRcVnPlsW6JEbDJn3oicanZPc_Lqljx6uKG9XEELVCLipvFY7b4GeB0Cm-dQLNu3vAcbgk3XUhhfKuvLpk0haNsTsVSOnp9_DpLsCC9X4sK7ih5X2EHRIPhd5AVNb3WOJybAWIcD6AK7bAnSJfUcZgvyPC8P1yNaEnolCETD1se-qp8PXe7YuQlzOxiEW1WwBHLklyTVIC-3oAXwzCw5wCkATwECSPtA5s5cL9tXA_4uXmc8lG9uj4WX0YuDU72Stqc3TQxwMhdUw0GoRn3kTIhA8T-pBtR0uSuGCHBUIye_ffqbfGw4zgOlUqJYvJRqdo0oZpEx10Pdf48fLkG9Ma6y4xBWJUynj5YoUXS5ORsVgqa_UFF7XU9jIFqJIuJQVi2bnYNr3_4oBwATk8zswkcmEYH8cTv-iuJ9zaXGgevL3USO-DEoyzRkuDg_sMJ7JODBWpTRYw5j07PGuMgBns_iNUAl_YXEXSzu0PiNciU9OEmQBcBl3LA_a0bysH6WSP-oGfoEPDGoUg3jiiI6i8_lxMvzockRY2_n6xo7LuXmTnqYLcd0nixqWKtbbE5IpCxHevnsLBkbXCw5ipAuxNfBEugGmTE-A7ythDwzKGCVq6Ru5Ti2217D9VrporcepF_gwcCiRY2kMeR2NN4vGCELrDKib13FxnMsWDEL_vDUOWL0h-Fx4Q-QsawMF54SBuQbSgzQ0RICNCCWl0gjxojLI3QLg7nhJxqjhMo6gl7v6ooF9NLQ6wZGA8wEelMktwg=w611-h346-no?authuser=0"style = "width: 80%; height : 480">
+<br>
+        - Java<br>
+        - Java Script<br>
+        - tomcat<br>
+        - jQuery<br>
+        - MyBatis<br>
+        - Spring Boot<br>
+        - Oracle<br>
+        - Visual Studio Code<br>
+        - DBeaver<br>
+        - Sourcetree<br>
+        - git, github<br>
+        - JSON<br>
+        - Ajax<br>
+        - JDK 11.0.15<br>
+        - Naver DEVELOPER API<br>
+        - Kakao DEVELOPER API<br>
+        - bootpay API<br>
+        - postman<br>
+        - gradle<br>
 
 <h2>4. ERD</h2>
-<img src="https://lh3.googleusercontent.com/fife/APg5EOZn5xKCrWyBGnAO6Kjx01bUERgnejSENdskzzjHLHZ7qUs14orSZ4Wz1OWtaJXEYj0M80hkwgrPyjyDZOcbKSpMpCrkEXMhi4x5Y5v-u1N1kDPtbV1R5a3_g0kNYdZXqz4e_dBUfe3pRFrlhBAoXIzfakGVh0Y8d9ace1GnHW6CLgYpN3Q-5JwSwVqnjoARfLbclra2nDZhBdBsynQ5mg_oEH9_yMvMX4h0YSbKLxd4YGmF99y59rsywet4KnqO7GEjd-Hi1FSFfHwbTrGWuc_VfoaimRvzs3iF_fpuqS5kOHCGniTIVCJea9y5ugCx4uU0i6ZGIPXeLZTvMFIdyz6mDON3Z03rNjI4n0Hc7FDMLkTSMkVRvbGUtgd1R_-mVj73_DVdbwjx6Ihu13-3EXCz_3n7kYHYgDrgcIKODVEeoSFPveMoaskDRbebJN0HpoF8HKO5f2CjdOMvotoF8ZQf4MDvrBQILWR76FuG8b1hcExzo1ampC-NaCfI1_fgcHJyxkCC212_QKIOqA8ym-31rHGjGKjBGl8qdbeg0LV4Dg_yvpz3NTPFgWcCt7s_LprbPdxQEoP4vDeJvj3qrhuW6AD4e5lI3WXqjZEzMKgDmQOyttVI_4YwRw-gK9Oq04niyoLA71yYKZhKKMqWBc31VBriwH_ti3Ki7Q774PmptzMjR-YJP7JtnpiimA0Hx021O9M5ECCzYtNRsJY8CMoCMPnka-h-Vzwl63EMufAEzDmDWcsSbqRiq8JwZNsSqujdNmGG12vK3yxgTuV2p9y8dC0Uh5uKeG4TQlgm0Z2GoT8ZvIvK2M4dHfpvvLqAEsz2JuzWNvzR9wXFDuaj4vNaG9R8O94mv503Ul8iHw6rPss4Bq-h1Nwo__SxriXxnuRBGpqF1HgxCYz-KLOG3h_GeQ-NYEb2eMifcvEzl5Gc1b47xf-tYnt0qHlug_KCUJE6RHRTzEJGmPqqDmn8JxYsXq6wz-vT0E63bsvj0n-OICQfXVjrh1u61pjbbRp0R-hyICayJl27dKL_GNuAHRatPsraep70-1q9f2iYN69bhBI_3emh0zfN3-ZnS_bynqHa9_9jz7QMO4Vju4yKh-OJZdqJoIkfixRwRqkguWy6g3a2haurb6y1x1FuQletWA6aOf__hmhPKgSDK8L-uH_FedavZ1XcPlA9oiqnZSYuVTAR1xhdYV5yXIkLXGo5nhhpvPZClCfX5S4ybcthVhZ3RllZNELwta-fj6t7-ymz0Ozq3jc9CIv0O4wkauScLMcKb10fb8_Sdm_wS3c6abxmmYzzizIeQyh4nm4jdyGLFH10cL6jLA0t-3sqSORIPKWfviyVEesXbR2JHPTxOI2TuevDzhGcZblAaszMKrCrxlbDz4XA23rgAryHsqq1S9bEYkGaVYph1KOTq1P9aymnOMrJOXoDJygmEkVJDkr52OJ4hzHPStvyYocWCqgSJXPjJQVuVUeEum5MgFB5bP4zHIk9Q2VfN2hqXsu9KxSwnhbP-N4mlo6l8sts=w1920-h929"  style = "width: 80%; height : 480">
+<img src="https://lh3.googleusercontent.com/9IvCTei0aSLynpjg9pJqtJ74MJxIZ2MwUuHYtgS-LW4jmAdjNJ03MH9aVZ-S_l1IHaLb08wLyFPJyrqHzuG3RYkyVJsVKvQSwHQN-yy77OLB3Nf10TVl3QFEXPB_ZsB1UGnx1bzrVbnlvLlvis8iLdEGGwfsAeqLUsCsq7HONtKWJBE2-92AuBuct4bMmxKjMS14tojbOb63jJBQY87m9RHZytzjHWhCEt3QEljMZ1KSQ-4HgJRKo4BkG2EeVvpET8u-skL43rTBHCqiFHM3kj_PrAMlxcs0qUDK41RdB7Kz2IEnAlEZKjMptxsEAhZ8Tk69oXdjVtjJky68R8T3VGgPeDuLD3zVE08ZRjyzPtLBiudjR_qh_cYhOvKi79UDJYGS8LkJDkPlMwpCO6pTc27h_1aQ5kCzJTaF4gF2x6UVmQogxAMWTCAg2rCGPg5Ua64OFKW6yAATd7crLaYJH5lLX8PQSe7fHKumAKjDjMz3srl9-ULwr_YQ-sBbMpIt9JvGlgszaNJy0AhMRn67p7GMiZk03ZQ7wPzudMSxToBE3Ujy-TH6JLYFc2tbyR9K3GHfvmA-kdyY3QxIuQZgXC3owabl0EKiaRqjFcvKqVu6NTdj9abPBD4tkJJJo55wMLEbtKejdgQObUKO2OpJdAEI8tnkvluTYU-Heq4FSpemXJ28oaHXKCRXm_AS4KnyenFt0E7FrnfOeKm_N4etZudItlaGaTrmyhHN5nCVKk2boMrGrjPL20FOe-5RmTiM422JIo6iPPk4j6IWC00vbQEnmwYTYvTzwtG2kRfvfCp-6yE_AHWewp6GROXvldRKdKTW05l4BIIgHcq_uChoEuxqNdULnJuu9MLk2WYFNOT4S05NKI5r98NyQ24NzILGh464ml0XQ-yiIdQ2KJ9vHRbSNzVcYfh3CHcKjiw7SsHADSyKN9UO84CPGKGKX13JcBvctzTTUfeF9mu-45tpr9IklFy-6IWLZbkgCEe88APpcpr1Ji-Z_q8h127hTzT-QgPp4rFPbdvLII6UEtRoD8Dc_Kc=w838-h920-s-no?authuser=0">
 
   
 <h2>5. 담당 업무</h2>
-5-1 프론트엔드<br>
-<img src="https://lh3.googleusercontent.com/fife/APg5EOYxNYHTDUowAoBF_lySeXMALleA2wBGa1cOOuS0EMmy3xj7jhGU4E04cOKCdf018-CvUoX4WUJK1uv4iTiGox_qJktWonBkUl1j8NIL7pMtP6nH8qkxvT7Kf871sK8eCITjOtg0All6vT4NDP--M7-jaQHSu1vzhnjoNGyzHqZ3n3NX0nBE_kLVuic2e4ML6R6gTJ8m9pCYpEyZFqA6KtKM04At04gmGMuVr1qo6xyp71eklgc3Yjn6bhXa66JogKwrubcYRiZ-jz9gNd03PNGsOg1KZownjWMu0976z1bJzudMwuSnfNXxhC74hoZbtjG1AnQBl-C51XpZvB2aOtP55PPfaSahfZnXfyg69TF0IHBJvtBr4tsWpaNyq_6YvDhqjVq-EQh5O8tKxrBLr0iIqWm1_d7AFIUqkp2qZr-83oW1hP4mZXlphcn0ywXiXZ-l_OJiobyOZ_jqM3mOVfeEu_-GMTpod7ahUgO8EGSbEl6ElQDBnPxJ6qwguL8wLOC5eM23ps5K2BLd8CeHbNX9XLPgMDRzTKAH11r52JXy8eI6_hr-ATGaMVqNfHlPmeT-ipyvrZIAvQaqgmAqeC348229FcASXFXj_MjhowVqCu83eO7lDVrFVlT22Na5Ray3dBG6LMyylwkYbMsqAIzpunggHbD92qoVYH5hBp-qP8BQjNoxp2lEKX6SdFIpzeghjnyooo4poUxNZ5y2-gMRbMG82ClmN8fmdgImW1LHUj9F7FYOtnUy5gYkDbyIOcFvc7jvWXPW1uFOVrCMv8k-ygTH1xpIOnOUy1UkXBI5x5QLK3Skp7l50iVSYa5LelzQ2Hicj13DZ38pppp9P3SrtbpL6JnvM1Ydab1OjMx43ZkktnnCq_62fQyQHOmwt5KxlsGFNx-JZSmXd1Ns2Ky2IwxCm--9bY0ig7osCF1DW0TUMvBdRCnL6udj-UbYb0dq60PzsTIInuJi5_l2xxmwZAQZiXu-W6gaFm7c44HwDfEFyLzcgZm8CUbr9XzA_FnQGuHQdxoVLUjM3_9aoM8pGIGqfsV3DkO5saV6QssdvIVbRg3A1hmWXE5B2VSpCwwPjXDfo_Db8mhxNT_LIGihbXcTVJ-yZORAGD7XdFebbjkfCvd_wirPzXxH6CP4PrEojnFFtjzOI9QI1Hnev93qBkFSghQ5MGz33So_lSrQQgPaidigzjZRjAkKOWclW0Mpe8uYlUiN02VcP_gaDpfktCdbXvPTbCZEWYFsfSPjpU7SiL38of9uaEiEGI26JP_bfg4O3SroEYxJ2sAzpXXVn1gaOriIYX2qX0-WFm58eKEIJc_mHD7H3e2ILX8uXTU4qzSSUgT3Lis057pdulnYp1H7-1B10lg9pRGS24a2wMoLl2-y887RGWAdu-Z-_HCHGoDuaQ1iIxPzNNGdLL1zWbZv54YvPqposf5SKzRr1v2KEyea-efY40PYPglOXTGiFJzWwslC1sBmfR91gceQR40C3tWbKVBxJFySVhN2jrxW5zfF1r33qUGY=w1920-h892" style = "width: 90%;">
+5-1 퍼블리싱<br>
+<img src="https://lh3.googleusercontent.com/sOkOmAeUABNeJ7huONB9GkJU6cv5nWapszvv6XEXLBIri7Fni-HB6I23UPoFOXbpMimJ6Dq4RQo63ycr-2YpADg8AoK6C52UMs30IMW5XtexoFClZQ-_3kMFT88yM_7KmtipHsMAvGgXCygJonqfP_uQZY5jLh617ywEmtVLo3DxN4m4ygJMPI2pAyQqrm4NuH3QTRKVOZ4DZMjCV_aH2FqXNg0M52ZKoks67vE1BPO1VscNnzq4YphJHfhHONnh_bbIyUCAyu3-J-4h2k7ROgfUiqyAvgStH1XYgmjbTVMVopZsYHFGahLhncWa7D0HSEBtoH0KI4TSqJqy3j7fqPRHbRapZ72W6bq61Og6UNiOMutiHB5ResVgrd1bQ41JY0bjszYcf-WMbYuCbQHvMR9irZtMC5tfZQobRRwVaAbI8DOO2VJUTBytgP-xy-Up057WVXsM85arRzPGGEm_enYdH_DJuTNl3XjWIXsCUn6QjAVEP-6dviF4nncllyK5jvn4DqAOnPl7DhchLQmeFe7vQM0XHLLzBy-bb93unExN947cH-4nKdDeN4byz09DlBMx6143FPpm-YTMiGGvS1bosFAKbycEYJmAUVVY8nWylkOKnOV5QCujjf2rf89QYRqLP0tHyQt0XEPB5wBZrcMjW3O01LxbD_dVSkX8oIAuLO9OeGXblgHCuurrsLHcn1dCuR29Gk4_4XK595vFtZSwIBDQViKbRzYewWniWWetATIAsqwts0CJaok9_-eak7bUZz7HDfrzyH0jVbC3oJP7RL7uSSCaPtxA8cBmc7FUgLDuAHKIqi1kyq0lftppkhhncHSMl2bbjY-2nL27AC25TOfC25j_tZOKxfq41fhfudY2oYoOMlX3uPrCCtQT9mn8qfXVzp813rS-u5Ldi-o5BEFLakzZ4iUhNXa6xpIj5BaCUAMJhrHLNtqRfbg6SC4IROAhSDrQu0eiQzpmZzHYaYLBTafvTfNXSBNbbHwt3J6w-0f6BWwS_CBKEH8M8euWCRmvIfIRC7_OcEOmWZtKu5A=w974-h380-s-no?authuser=0" style = "width: 90%;">
 
-▶ 회원정보 확인 및 수정
-- 연수 내역
-- 나의 후기
-- 포인트 조회
-- 내가 쓴 게시글
-- 내가 쓴 댓글
+▶ 마이페이지
 
-▶ 비밀번호 변경
-- 이메일 등록
-- 이메일 발송 완료
-- 비밀번호 변경
+- 마이페이지 메인
+- 프로필 설정
+- 포인트 안내
+- 내 구매 목록
+- 간편 결제
+- 카드 등록
+- 내 참여
+- 찜 목록
+- 내 문의 목록
+- 내 문의 상세
+- 비밀번호 확인
+- 비밀번호 재설정
+- 기본 정보 설정
+- 알림 설정
+- 알림 동의 여부
+- 탈퇴 안내 및 본인확인
 
-▶ 회원 탈퇴
-- 비밀번호 인증
-- 탈퇴 약관 동의
-
-▶ 오류페이지
-- 404 오류(웹)
-- 404 오류(모바일)
-- 자유게시판 준비중 
 
 <br>
 5-2 백엔드<br>
-<img src="https://lh3.googleusercontent.com/fife/APg5EObvLBxUpxUuoAQxMdFfOwbTSEI0CVJ9v00be8DDKu76tIIG-tFMj16Qp7lFGGX6JpPpCiElLoWU6zPzdiGfFQTO4U-6pl7CaqL5H6w-J8vf-WEH1H6ZrT8sFD0YAdOEA0wYbl0-vQB_kH-9LDukqoSV_JSbB4K71372HHBdRrpkTE9D7q6KpxsasIjsm3y5DtTj-7nPhQkX5Ewwkp3V3sbk-9cLHDW9G9VZCF-4UMwGgBE5Ner2ay-kDzbeJ3mHJbZWxbqkXMnEQySsoBjhhuA9u3v4DD0qPYfr4Nj65ZiykfeT9QaewUiiWYVqA_rzgnRTIgacWofRvljlTVJpu8iFqmSle19PM2jEEjPshcLM-UEp4w2NSceE_ko-jA1y1TB6vJ_PYgR21XYN7FCE6JgR34uJUmM8V3SlYSH7GeUPjKonLoA3tMxTFU919vyv9spLz3wduytUeAhIU6qd_dFi5CzU_fiLzHzudS9A10oYkItx2dF0t2qxcMbTSt20tJM2PR__fTu4h9By_0_y_022I5IMhZt2xBpA67sapfHLUqF0q8nh_SRhcR94slUMlFFzcVCUCIzKyz85tPUuAksQMH-GqqXw_-8OnSe0ZiZ4IJlESUoBe9WTcRarBSuPWdxSzOl2qX_9eAiaBg8qeckEayjQBTK_U6NrefvJhs9zJuNas1soUheAj2cPpkSilhsakq16COi2XgcnXU6qT2r7AxEoko0XcNiHL31wfKbGfC9vtvjn3scol3_dYIXKrSMEBkReA4OGnU0hRLpM3xQbICyItL1gamEh2BF46zjxQozluBjpKqZyzr0o3gA0N41GMGXOHx82eLvKR1lO9TmR6AoKiMCSoG5Wfd8i0A2_ZpsA6B97PQ2JgNuHqOaTXjSDbT4mCk4OKnKOnLo1rSq8RdoAuTXIHXS-VGt9pxrZxOLgbiKHjOlpCa4m1wVrN-mujsE39mFptbYcsTOlBeafe_7EK2GMSKfy12p0IH4cWhF05KpjfaTcAflN5SjHZ8JMeQsNVA-8RlYicJGDoTmnTi-D_Md--uvkSgTZnKa7A1jk-mOr87gRJ22mtwGLcjA9p-QkHqpqYaH7PptQDNA3pf3tYGRPykAW0rzYv5JZFw8Bf1SaENDXFjc5RPamCCPtpDKUxk_9xDfXnnfdwiZKztkXytDS80ltm7ujhi1qdKSTkgXBii3RkUQPQklrFfbv4ySIsWPD7N509iygpybIQoeX7ydRJDoXqsIerAETf2YGZWozEqgHZMd4emFVPdkHHgkjVJoX_xwFA7g4LdgKl8Jf0gBZaKJrlpv2qJb0ARJZuXDf_IoYZJgTzdAwB_g0D5rIK6iOOVxM5f9TwSQH66T94TIrfsxLCFDFcwWfm8LmIiSuUYzGn0b95Oo8FQ6Nr_jerCvMCCEanW8qcTjFmpU0U78mDEbms2nIznP2pMYEf26KgiWNeaQ5TUD3zmsSvFhKYVbbWvxWah2Mi-qoTfTUVTSPZ8evwNh_t9tdZLtw4zbRxKXFvz-E=w1920-h892" style = "width: 90%;">
+<img src="https://lh3.googleusercontent.com/-ICpfgEJmsnBJOLYXFCvPbPq5PdQKV6C140jWMlRPEqTZFhT3Q6heM0RwdnZcG6t_R2xh8UNWTlyZxEiTcIxxuRy2vryMD51sZgMGopHJgAjuj4E3ZfBHtw9Z5O99zOPSqxFu9swAuft2Eg5d36kqaW0_ulfDKpI-fWhVfPuYL6AA0eco1Fx0ads_oZ0759p_O8Sw-TIig5lFrL36Vb8l5zHYMjXtuU0gOPYS5MZHre1lAW5yRvsH00c8mmR6uVpWnACTBbQAlwkyLlo5OjYS5KQO3BDW5mCEVxEiVG8TxP4e9FsM76Vc_aXXCUWNol0_53WyivR2nJuyNRchAX6beysleYHBZZFWX5IqCZOjS0ihSMPtuTa3apAqfgnYNbz_L2f2k4phPA8lp1Hwa-cne6CtszFwceg5-WOnYeL6dOZwKGHBdQ5ztZOvVZCHKreG_NMPlhdc-_KhU_C1-I71foyG-h9vC3ZoWdNXgibuYLenqpnbl8Hh427ntBY2dZU1_GEWDlrrMf3C1nWzteWZGZ4JLJUgIi9E0q2OFizQ3S3xR5MMHf7CoYVK2yP6ghwEq38xygla7MzZZmCyHqYxZUI5UPJmhuesvLcf7jO2hRHNmzUc7YwZ5bcRYAFdTvGiPzcSSYcFpDypmJJaYGk-Dk1w4uoPKw24iodVeaw7qs0fHDccuTVS0QVXhSSJhpooOxFnCGadEL-RVDxFifLZyc2hVZgEmqVobjqLSQpWt_h9OFQluVf8nO9XI7Cg8Va6L6SFAD8uYYwbTO7ewu5QehOfoOEngydtIfrpu3ScV3hLmnqYuEVvfjZP2zPvT5FOLSuLRjYSn_SYdUloOlnI0PrDMSxVcoJSC90vRLB2KqUIUAW7dPUPICrZSGa6TJ0jRxBizV6dXuwffyH083ZrtZar-xHjSYDGBatiX6X4Qq9gAWtPCHPJfdZy38F022T1vHQMMMWRoCo3z_ZdHs79qo-Tlh2bZzLogWc6lx-wI1H8L25buTSfHckdWUB57JDNcY-yX7BK-YCB0ImkzsxF_c0jTo=w1434-h421-s-no?authuser=0" style = "width: 90%;">
 
 
 ▶ 회원가입
 - 아이디, 이메일 중복 검사
-- 아이디, 이메일, 이름, 휴대폰 입력 형식 검사
-- 구글 클라우드 비전 API를 통해 운전면허증 하단의 취득일 자동 감지 및 회원구분
 - 필수 정보 입력 여부 검사
 - 조건 충족 시 회원가입
 - 카카오 API를 이용한 간편 회원가입
@@ -88,71 +89,95 @@ STEP 3. 운전연수의 접근성을 용이하게 하여 초보운전자들의 �
 - 네이버 API를 이용한 간편 로그인
 - 로그아웃 기능 구현
 
+▶ 아이디 찾기
+- 사용자가 입력한 이메일과 DB 비교
+- 정보 일치 여부 전달
+
+
 ▶ 비밀번호 찾기
 - 사용자가 입력한 이메일과 DB 비교
-- 정보 일치할 경우 SMTP API 이용하여 비밀번호 변경 링크 발송
+- 정보 일치할 경우 MAIL API 이용하여 비밀번호 변경 링크 발송
 - 비밀번호 변경 구현
 
-▶ 연수신청
--  로그인 여부 확인하여 페이지 이동
-- 이름, 보유 포인트, 휴대폰 번호 조회
-- 보유 포인트 0일 경우 충전하기 페이지 이동
- 
 
+▶ 강연
+- 관리자 페이지에 강연목록에서 강연등록 기능 구현
+- 필수 정보를 입력 충족 시 등록
+- 3개의 사진 파일 업로드
+- DB에서 조회한 썸네일 사진과 강연 정보를 가져와 페이징처리로 구현
+- DB에서 조회한 정보와 썸네일을 제외한 사진을 2개를 원하는 위치에서 보여줄 수 있도록 구현
+
+▶ 상담소
+- 등록 폼에 필수 정보 확인 후 게시판 등록 구현
+- DB에서 원하는 상담 게시글을 불러오는 기능 구현
+- DB로 검사하여 자기가 작성한 상담 게시글을 수정하는 기능 구현
+- DB로 검사하여 자기가 작성한 상담 게시글을 삭제하는 기능 구현
+ 
+ 
+ <h4>REST CONTROLLER</h4>
+ 
+ <댓글 / 대댓글>
+- 댓글 / 대댓글을 작성 기능 구현
+- 댓글 / 대댓글 수정 기능 구현
+- 댓글 / 대댓글 삭제 기능 구현
+  
+ 
+ 
 
 <h2>6. 느낀점</h2>
 <h3>6-1. 어려웠던 부분</h3>
-📌MVC 단계를 순차적으로 진행하는 것이 어려웠다. <br>
-✔ 단계가 익숙하지 않아 mapper부터 controller까지 진행하는 것이 어려웠지만, 단계별로 완성될 때마다 단위 테스트 등을 통해 진행하여 순서를 익혔다.<br><br>
+ERD를 만들 때, 정규화와 반정규화를 고려하고 어떤 테이블과 컬럼으로 구성해야하는지 그리고 PK, FK 관계도 어려웠으며 , 특히 슈퍼키 서브키를 통한 정규화 테이블들도 ERD 제작하는 데 어려움을 느꼈습니다. <br>
+JSP 프로젝트 때도 느꼈지만, 팀원들과 협업하는 프로젝트이기 때문에 GIT, GITHUB를 사용하면서 소통이 중요하고 어려웠다는 것을 느꼈습니다.<br>
+댓글과 대댓글을 한테이블에서 제작하여 구성하는 것이 어려웠습니다.<br>
 <br>
 
 
 <h3>6-2. 문제를 해결했던 부분</h3>
-<h4>📌로그인에서의 생각의 전환</h4>
+<h4>📌Oauth 카카오, 네이버 로그인 API 사용</h4>
 🌩문제 상황🌩<br>
-네이버 간편로그인을 할 경우, 로그인 토큰을 인식하고 자동 로그인이 되는 과정에서 흰 화면(callback.html)이 1~2초가량 무조건 노출되었다. <br><br>
+카카오, 네이버 로그인을 통하여 가입한 회원 프로필 설정<br><br>
 🚨문제 원인🚨 <br>
-기능 구현에는 문제가 없었으나, 서버 구동 속도가 느릴 경우 callback.html 화면이 비춰지며 보이는 현상이었다. <br><br>
+처음에는 MEMBER TABLE에 파일 컬럼에 추가해야하는 줄 알았는데, 네이버나 카카오는 프로필을 링크로 주기 때문에 어떻게 DB에 INSERT하여 사용할지 방향성을 못잡았다 <br>
 🚀해결 방법🚀<br>
-네이버 로그인 API 설명 페이지에서는 로그인 페이지에서 데이터 이동 시 post로 callback.html로 이동시킨 후 로그인 컨트롤러로 이동할 수 있도록 설명되어 있었다. 그러나 로그인.html에서 바로 데이터를 넘겨받아 메인으로 이동하도록 하였다. 따라서 페이지 이동이 한 번 줄어들어 해당 증상이 없어졌다. 아주 간단한 생각의 전환이었지만 기다리는 사용자의 입장에서 생각해본 해결방법이었다. 
+MEMBER TABLE에 SNS_PROFILE을 NULL로 컬럼을 추가하여 ERD 구성이 바뀌었지만, 그 컬럼에 링크를 받아서 검사하여 화면에서 프로필 사진을 보여지게 하였습니다.
 <br><br><br>
 
 
 
-<h4>📌운전면허 API 로딩 사건</h4> <br>
+<h4>📌Mapper 매개변수</h4> <br>
 🌩문제 상황🌩<br>
- 스캔한 운전면허증을 첨부할 경우 구글 클라우드 비전 api를 사용하여 운전면허증 취득일자를 인식한다. 데이터를 받는 과정에서 7초~10초 정도 소요되었다.<br><br>
+ Mapper.xml과 Mapping 되는 Mapper Interface를 설정할 때 매개변수로 객체로 2개 받을 경우 param1, param2 라는 오류가 발생<br><br>
 🚨문제 원인🚨 <br>
-ajax에서 데이터를 받아 처리하는 과정이 많다보니 문제가 발생하였다. 취득일자를 문자열로 받아 int 타입으로 바꾸고, 이를 날짜 계산하여 시스템 날짜와 비교하여 5년 단위 기준으로 나눈다. 이후 5년이 지나지 않았을 경우 초보자, 5년이 넘었을 경우 베테랑으로 회원 구분을 하기 때문에 처리 과정이 많아 최종적인 데이터가 산출될 때까지 적지 않은 시간이 소요되었다. <br><br>
+Mapper Interface 매개변수 객체 2개 앞에 @Param("이름")과 Mapper.xml 파일에서 #{이름.필드명}을 작성하지 않아서 발생되었다. <br><br>
 🚀해결 방법🚀<br>
-운전연수 사이트인만큼 운전면허증의 취득일자를 받는 것은 필수적이었기 때문에 해당 과정이 필요했다. 따라서 사용자가 로딩 과정을 인식할 수 있도록 처리 시작부터 마지막 순간까지 로딩중 화면을 띄워 화면에서 진행경과를 알 수 있도록 하였다. 
+Mapper Interface 매개변수 객체 2개 앞에 @Param("이름")을 각각 붙혀주고 Mapper.xml 파일에서 #{이름.필드명} 으로 접근해서 사용해서 해결 했다. 
 <br><br><br>
 
 
 
-<h4>📌유지되지 않는 코스</h4> <br>
+<h4>📌게시판 / 댓글 / 대댓글</h4> <br>
 🌩문제 상황🌩<br>
-첫번째 페이지에서 선택한 항목(코스)이 두번째 페이지까지 이어지지 않아 최종 연수 신청이 되지 않았다. 
+삭제 기능을 구현해서 사용한 결과 FK 오류가 발생
 <br><br>
 🚨문제 원인🚨 <br>
-운전연수 신청은 총 두페이지로 나뉜다. 페이지 이동 시 컨트롤러에서 선택값을 세션에 담았으나 페이지 이동 시 폼에서 제출되지 않았다. 
+FK 관계 때문에 삭제에도 순서가 있는데 기능 구현 할때 순서를 고려하지 않아서 발생하였다.
  <br><br>
 🚀해결 방법🚀<br>
-컨트롤러에서 addFlashAttribute 사용하여 값을 받아온 뒤 두번째 페이지에서 타임리프를 사용하여 input value를 받을 수 있도록 했다.
+ServiceImp에서 fk를 고려하여 순서에 맞게 삭제 DAO를 사용하여 오류를 해결하였다.
 
 
 
 <h3>5-4. 총평</h3>
-<h4>🌟 기획: 꺼진 불도 다시 보자  </h4>
-개발에는 끝이 없다는 사실을 알게 되었다. 전부 완료했다고 생각하였으나, 끝이 없었다. 프론트엔드 작업 중에도 처리가 됐을 경우보다 처리가 되지 않았을 때, 올바르지 못한 경로로 접근했을 때 등을 가정하여 자바스크립트와 제이쿼리로 화면 처리를 해야했으며, 백엔드 작업에서는 세션이 담기지 않았을 때 회원만 이용할 수 있는 메뉴 등에서는 어떻게 처리해야할지, 카카오 회원가입이 되어있지 않은 상태에서 카카오 로그인을 누를 경우 등 하나하나 다 기획하여 작업해야한다는 것을 알게 되었다. 사용자가 올바른 경로로만 서비스를 이용한다고 생각하는 것이 아니라, 여러 상황을 가정하여 여러 버튼을 눌러보고 오류를 확인해야 한다는 것을 깨닫게 되었다. 
+<h4>🌟 기획: 기반이 중요 </h4>
+프로젝트를 진행하는 기간인 약 4주안에 서비스를 구현하는 것이 정말 어려웠지만, 그 중에 제일 중요한 것은 기획이라고 많이 느꼈다. 기획이 탄탄해야 나중에 가서 중간에 화면이나 SQL문을 수정하는 상황과 불필요한 테이블이 생기는 상황을 막을 수 있다는 것을 느꼈고, 그 프로젝트 웹개발 완성도의 퀄리티가 기획에 따라 엄청난 차이가 난다는 것을 느꼈다.
 
 
-<h4>🌟 협업: 소통은 해도해도 모자르다 </h4>
-팀원들과의 소통에는 자신있었다. 그러나 사이의 원만함과 빈도수와는 별개로 프로젝트 진행 시 나의 작업 상황 진행과 오류 발생 부분, 백업을 어디까지 했는지 등 상세하고 자세하게 공유해야 한다는 것을 알게 되었다. 예를 들어 프로젝트 작업 중 깃허브에서 충돌이 발생하여 브랜치 생성 시 이 내용까지 공유하지 않으면, 다른 팀원들의 코드에도 영향을 미칠 수 있으며, 이 사실을 모르는 팀원이 직접 해결하기까지는 적지 않은 시간이 소요된다는 것을 알게 되었다. 따라서 프로젝트 종료 후 팀원들과 프로젝트 리뷰 시간을 가지고 다음 프로젝트 때 부족했던 점과 보완할 점을 의견을 나누며 다음 프로젝트에서 건설적인 방향으로 나아갈 수 있도록 하였다. 
+<h4>🌟 협업: 기록과 소통과 회의는 필수 </h4>
+협업은 서로 소통이 무조건 우선이라고 느꼈다. 그 이유는 소통을 못하면 아무리 구현을 잘해도 GIT, GITHUB 소통에 과정에서 열심히 짠 코드가 사라질 수 도 있는 것이며, 충돌 그리고 의사소통에 문제로 구현되어야하는 서비스가 구현이 안 되어있고, 제작 의도와 다른 서비스로 구현 될 수 있음을 느꼈다. 그래서 소통을 자주 함으로써 이러한 문제 발생을 막을 수 있다고 생각이 들었다. 그리고 회의를 통해 서로 어떤 문제점이 있는 지 공유하여 해결하고 앞으로 방향성도 정할 수 있었다. 그에 대한 기록을 통하여 자신이 까먹을 수 있는 부분을 자료로 확인하여 실수를 최소화하여 결과적으로 협업에서 기록, 소통, 회의를 함으로써 완성된 작업물에 퀄리티가 엄청나게 상승할 수 있다는 것을 알게 되었다.
 
 
-<h4>🌟 미래: 내일이 궁금한 개발자! </h4>
-이번 프로젝트에서는 막연히 상상만 하던 api를 직접 구현해보았다. 특히나, 글자를 인식하는 구글 클라우드 비전 api를 사용해본 것이 매우 신기하고 재밌었다. 물론 시작은 어려웠지만, 주변의 도움과 혼자만의 코드 연구를 통하여 기능을 구현할 수 있었다. 하나하나 완성될 때마다 뿌듯함을 느낄 수 있었다. 이후 다음 프로젝트를 기획하면서 내가 구현했던 기능 뿐만 아니라 다른 api도 사용해보고 싶다는 갈증이 생겼다. 예를 들어 게시글 네이버 공유하기 api를 진행해보고 싶다. 
+<h4>🌟 공부: 공부할수록 나의 가치는 올라간다. </h4>
+개발을 접하면서부터 느낀점은 정말 개발이라는 분야에서 공부는 끝이 없고, 개발 트랜드는 계속 변해가고 그 변화에 따라가야 나의 발전도 멈추지 않고 올라간다고 느꼈다. 그래서 만약 취업에 성공한다하더라도 나머지 개인시간에는 공부를 위한 재투자를 무조건 해야한다고 느꼈다. 그리고 점점 새로운 기술을 알아갈수록 그에 대한 보상이 성취감과 만족감으로 나에게 다가왔기 때문에 더욱 더 발전해야겠다는 생각이 하루가 지날때 마다 깨닫게 되었다.
 
 
 
