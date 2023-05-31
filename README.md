@@ -5,8 +5,8 @@
 
 <h2>1. 기획 배경</h2>
 <img src="https://lh3.googleusercontent.com/IoldFYjyY0odxUx4qDb5fLm7p1zPwjDMtRepQyxiDF7ScvHpy039qkerto1UimfR-eM22vat3N32A4wNd3kGzM5CtgA1nD5FZF20m4WIa2Ls1d4SoSX-bCdMTKHuL_7BVPd5KSMY5bq8_b6XRb_5tIs9j_JEuXLK5bCXiCYkKoYw9nXEC4SgFGwkBIHbWO6oCyw-SvTbdSCNXwozU1CcGTySaxIr4AMXcsCqtKk0nLN8P2z_0HGqpc3Cn2WNrdUwo3CWZPl5nPDDnxTAIMnHeywkfh6HLBDtabPvSVcl7VeVgq4RJUhQTFM2iOQrYOgn3lJi9xhb_wXH2SJuZ971T8ZrVWrJMF8FnMitcyE0VBiQFLVAI8PBTmS3OulAl5D2m11zRXO_uAnoDvgQIr8HNuk69jhJFaG91WfCUni_L3Ak_bLiEPzxBCLPjDyv16i0Nf2BTF4TGZiyrjyY6en-oX9c2AyWz4rgLpLvf8M7cXQ-PTLo25_Zx6x2zB4gJYob7KJ9ebk46-KAgOUVsOrWanmCn3VUdbblNQvl_gZkXRSWLWhOx1Eqml4eDL0-85I4xMOTM17gdAmKhipW_npKuaCAqxVZWHlkB_lIlY--GTLDPIAwJFw8hZSol9IHOTASNJTsIYdLYa5nupH6anjena-j1cISITnaheXZ9N87rJtV-wi4VYWrKMxKHSVCpSUH08ePFBncvydKhCr3T6IVn-RqfPzeuY3Q8fkTbdJqaLuUmapjtXgjODHqjtLIuzzp9LlDbTmgTuSc6ag0pdhpmM-kcAx3vIG1RnLOh8XHyI6CtcC0kT52ceRC7trWmaRzpkqYdLBr9MKwN6a1zCt9bunxQRojXF5hESTUhePk-3ZWiJV2YSMpkQiGjV5OYp0DSsi2Bi0H1Db5SPc4DOvF28RZ6lVlwlYZaFx8ftslP9OKig7KAObG9ESCcsvNpL39HoXJ7b8tyPbLYuEkFrMcKEIABxyP4cYlaCumGEtfMULaFDRqnylbZbmpJJF_VKc9y9EvkDCqTsOAQeCPnX4ll0_mzJU=w1495-h748-s-no?authuser=0"/>
-해가 갈수록 운전면허 소지자의 숫자는 증가하지만, <strong>취득 당해년도에 운전을 시작하는 비율은 36%</strong>가 전부이다. 신규취득자 10명 중 6명은 면허만 취득할 뿐, 운전을 바로 시작하지 않는다.
-이 초보운전자들은 운전의 경험이 부족해 운전하기를 주저한다고 답한다. 따라서 에코위원회 팀에서는 <strong>베테랑 운전자와 초보 운전연수자를 1대1 매칭</strong>하여 개인간 운전 연수가 이루어질 수 있도록 기획하였다. 
+해가 갈수록 학령인구 감소가 되고 있다. <strong>지방대는 감축 정원이 88%</strong>이다.
+대학간 경쟁률 격차도 심해져간다. <strong>수도권 비수도권 대학 간 경쟁률 격차는 수도권이 13.95 대 1 이며 비수도권은 경쟁률이 6.04 대 1</strong>이다
 
 </div>
 
