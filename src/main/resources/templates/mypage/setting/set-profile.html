@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleag.org">
+<html lang="en" xmlns:th="http://www.thymeleag.org" xmlns="http://www.w3.org/1999/html">
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>프로필 설정 | 위게더</title>
     <link rel="stylesheet" href="/css/mypage/setting/set-profile.css">
     <link rel="stylesheet" href="/css/mypage/my-page/mypage.css">
@@ -14,193 +14,208 @@
     <link rel="stylesheet" href="/css/modal.css">
 
 
-  </head>
-  <script th:inline="javascript">
+</head>
+<script th:inline="javascript">
     console.log([[${myProfile}]]);
-  </script>
-  <header th:replace="~{/fix/header :: #header}"></header>
-  <body>
-  <form class="formtag" th:action="@{/mypage/setting/set-profile}" method="post" th:object="${memberVO}" name="writeForm">
+</script>
+<header th:replace="~{/fix/header :: #header}"></header>
+<body>
+<form class="formtag" th:action="@{/mypage/setting/set-profile}" method="post" th:object="${memberVO}" name="writeForm">
     <div class="waccount-wrap">
-      <div id="waccountContainer">
-        <h3>프로필 정보 설정</h3>
-        <div id="tabContent1" class="tab-content">
+        <div id="waccountContainer">
+            <h3>프로필 정보 설정</h3>
+            <div id="tabContent1" class="tab-content">
 
-            <h5>프로필 사진</h5>
-            <div class="profileimg-wrap">
-              <button
-                      type="button"
-                      id="resultProfileImg"
-                      class="profileimg"
-                      onclick="$('#uploadProfileImg').click();"
-              >
-                <em
-                        style="
+                <h5>프로필 사진</h5>
+                <div class="profileimg-wrap">
+                    <button
+                            type="button"
+                            id="resultProfileImg"
+                            class="profileimg"
+                            onclick="$('#uploadProfileImg').click();"
+                    >
+                        <em th:if="${myProfile.memberLoginStatus == 'WEGETHER' && (myProfile.fileName == null || myProfile.fileName == 'NULL')}"
+                            style="
                   background-image: url(https://static.wadiz.kr/assets/icon/profile-icon-6.png);
                 "
-                ></em>
-              </button>
-              <p class="setting-profileimg">
-                <button type="button" id="btn_updatePhoto">
-                  <span>바꾸기</span>
-                </button>
-                <button type="button"  id="btn_deletePhoto">삭제</button>
-              </p>
+                        ></em>
+                        <em th:if="${myProfile.memberLoginStatus == 'WEGETHER' && myProfile.fileName != null && myProfile.fileName != 'NULL'}"
+                            th:style="'background-image: url(/files/display?fileName=' + ${myProfile.filePath} + '/' + ${myProfile.fileUuid} +'_'+${myProfile.fileName} + ') ' "
+                        ></em>
+
+
+                        <em th:if="${(myProfile.memberLoginStatus == 'KAKAO' || myProfile.memberLoginStatus == 'NAVER')  && myProfile.snsProfile != null}"
+                            th:style="'background-image: url(' + ${myProfile.snsProfile} + ')'"
+                        ></em>
+                    </button>
+                    <p  th:if="${myProfile.memberLoginStatus == 'WEGETHER'}" class="setting-profileimg">
+                                <button type="button" id="btn_updatePhoto">
+                                    <label for="upload">
+                                    <span>바꾸기</span>
+                                    </label>
+                                </button>
+                                 <button type="button" id="btn_deletePhoto">삭제</button>
+                    <input type="file" id="upload" class="upload" style="display: none;">
+                    </p>
+                </div>
+
+
+                <!--          <h5>관심사</h5>-->
+                <!--          <p class="sub-text">최소 5개 이상 관심사를 선택해주세요.</p>-->
+                <!--          <div class="check-list-wrap">-->
+                <!--            <ul>-->
+                <!--              <li>-->
+                <!--                <input type="checkbox" id="interest_1" name="interestGroup" value="SRV0001_01" />-->
+                <!--                <label class="input-check" for="interest_1"-->
+                <!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
+                <!--                  ><i class="icon-check-circle checked"></i>교육∙키즈</label-->
+                <!--                >-->
+                <!--              </li>-->
+
+                <!--              <li>-->
+                <!--                <input type="checkbox" id="interest_2" name="interestGroup" value="SRV0001_02" />-->
+                <!--                <label class="input-check" for="interest_2"-->
+                <!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
+                <!--                  ><i class="icon-check-circle checked"></i>패션∙잡화∙뷰티</label-->
+                <!--                >-->
+                <!--              </li>-->
+
+                <!--              <li>-->
+                <!--                <input type="checkbox" id="interest_3" name="interestGroup" value="SRV0001_03" />-->
+                <!--                <label class="input-check" for="interest_3"-->
+                <!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
+                <!--                  ><i class="icon-check-circle checked"></i>홈리빙∙디자인소품</label-->
+                <!--                >-->
+                <!--              </li>-->
+
+                <!--              <li>-->
+                <!--                <input type="checkbox" id="interest_4" name="interestGroup" value="SRV0001_04" />-->
+                <!--                <label class="input-check" for="interest_4"-->
+                <!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
+                <!--                  ><i class="icon-check-circle checked"></i>공연∙컬쳐</label-->
+                <!--                >-->
+                <!--              </li>-->
+
+                <!--              <li>-->
+                <!--                <input type="checkbox" id="interest_5" name="interestGroup" value="SRV0001_05" />-->
+                <!--                <label class="input-check" for="interest_5"-->
+                <!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
+                <!--                  ><i class="icon-check-circle checked"></i>스포츠∙모빌리티</label-->
+                <!--                >-->
+                <!--              </li>-->
+
+                <!--              <li>-->
+                <!--                <input type="checkbox" id="interest_6" name="interestGroup" value="SRV0001_06" />-->
+                <!--                <label class="input-check" for="interest_6"-->
+                <!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
+                <!--                  ><i class="icon-check-circle checked"></i>출판</label-->
+                <!--                >-->
+                <!--              </li>-->
+
+                <!--              <li>-->
+                <!--                <input type="checkbox" id="interest_7" name="interestGroup" value="SRV0001_07" />-->
+                <!--                <label class="input-check" for="interest_7"-->
+                <!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
+                <!--                  ><i class="icon-check-circle checked"></i>반려동물</label-->
+                <!--                >-->
+                <!--              </li>-->
+
+                <!--              <li>-->
+                <!--                <input type="checkbox" id="interest_8" name="interestGroup" value="SRV0001_08" />-->
+                <!--                <label class="input-check" for="interest_8"-->
+                <!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
+                <!--                  ><i class="icon-check-circle checked"></i>테크∙가전</label-->
+                <!--                >-->
+                <!--              </li>-->
+                <!--            </ul>-->
+                <!--          </div>-->
+                <h5>학교 / 전공</h5>
+                <ul class="input-div2">
+                    <li>
+                        <input
+                                type="text"
+                                class="input-text"
+                                maxlength="20"
+                                placeholder="학교"
+                                name="memberSchool"
+                                th:value="${myProfile.memberSchool}"
+                        />
+                    </li>
+                    <li>
+                        <input
+                                type="text"
+                                class="input-text"
+                                maxlength="20"
+                                placeholder="전공"
+                                name="memberMajor"
+                                th:value="${myProfile.memberMajor}"
+
+                        />
+                    </li>
+                </ul>
+
+                <h5>간단한 한 마디로 나를 소개해주세요</h5>
+                <div class="textarea-wrap">
+                    <textarea id="memberIntroducing" maxlength="80" name="memberIntroducing"
+                              th:field="${myProfile.memberIntroducing}"></textarea>
+                </div>
+                <div class="btn-bottom">
+                    <ul class="btn-div2">
+                        <li>
+                            <button type="button" class="wz button gray btn-darkgray"
+                                    onclick="location.href='/mypage/main'" ;>
+                                취소
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="wz button primary btn-mint changeProfile">
+                                확인
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-
-            <!--          <h5>관심사</h5>-->
-<!--          <p class="sub-text">최소 5개 이상 관심사를 선택해주세요.</p>-->
-<!--          <div class="check-list-wrap">-->
-<!--            <ul>-->
-<!--              <li>-->
-<!--                <input type="checkbox" id="interest_1" name="interestGroup" value="SRV0001_01" />-->
-<!--                <label class="input-check" for="interest_1"-->
-<!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
-<!--                  ><i class="icon-check-circle checked"></i>교육∙키즈</label-->
-<!--                >-->
-<!--              </li>-->
-
-<!--              <li>-->
-<!--                <input type="checkbox" id="interest_2" name="interestGroup" value="SRV0001_02" />-->
-<!--                <label class="input-check" for="interest_2"-->
-<!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
-<!--                  ><i class="icon-check-circle checked"></i>패션∙잡화∙뷰티</label-->
-<!--                >-->
-<!--              </li>-->
-
-<!--              <li>-->
-<!--                <input type="checkbox" id="interest_3" name="interestGroup" value="SRV0001_03" />-->
-<!--                <label class="input-check" for="interest_3"-->
-<!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
-<!--                  ><i class="icon-check-circle checked"></i>홈리빙∙디자인소품</label-->
-<!--                >-->
-<!--              </li>-->
-
-<!--              <li>-->
-<!--                <input type="checkbox" id="interest_4" name="interestGroup" value="SRV0001_04" />-->
-<!--                <label class="input-check" for="interest_4"-->
-<!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
-<!--                  ><i class="icon-check-circle checked"></i>공연∙컬쳐</label-->
-<!--                >-->
-<!--              </li>-->
-
-<!--              <li>-->
-<!--                <input type="checkbox" id="interest_5" name="interestGroup" value="SRV0001_05" />-->
-<!--                <label class="input-check" for="interest_5"-->
-<!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
-<!--                  ><i class="icon-check-circle checked"></i>스포츠∙모빌리티</label-->
-<!--                >-->
-<!--              </li>-->
-
-<!--              <li>-->
-<!--                <input type="checkbox" id="interest_6" name="interestGroup" value="SRV0001_06" />-->
-<!--                <label class="input-check" for="interest_6"-->
-<!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
-<!--                  ><i class="icon-check-circle checked"></i>출판</label-->
-<!--                >-->
-<!--              </li>-->
-
-<!--              <li>-->
-<!--                <input type="checkbox" id="interest_7" name="interestGroup" value="SRV0001_07" />-->
-<!--                <label class="input-check" for="interest_7"-->
-<!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
-<!--                  ><i class="icon-check-circle checked"></i>반려동물</label-->
-<!--                >-->
-<!--              </li>-->
-
-<!--              <li>-->
-<!--                <input type="checkbox" id="interest_8" name="interestGroup" value="SRV0001_08" />-->
-<!--                <label class="input-check" for="interest_8"-->
-<!--                  ><i class="icon-radio-button-unchecked unchecked"></i-->
-<!--                  ><i class="icon-check-circle checked"></i>테크∙가전</label-->
-<!--                >-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--          </div>-->
-          <h5>학교 / 전공</h5>
-          <ul class="input-div2">
-            <li>
-              <input
-                type="text"
-                class="input-text"
-                maxlength="20"
-                placeholder="학교"
-                name="memberSchool"
-                th:value="${myProfile.memberSchool}"
-              />
-            </li>
-            <li>
-              <input
-                type="text"
-                class="input-text"
-                maxlength="20"
-                placeholder="전공"
-                name="memberMajor"
-                th:value="${myProfile.memberMajor}"
-
-              />
-            </li>
-          </ul>
-
-          <h5>간단한 한 마디로 나를 소개해주세요</h5>
-          <div class="textarea-wrap">
-            <textarea id="memberIntroducing" maxlength="80" name="memberIntroducing" th:field="${myProfile.memberIntroducing}"></textarea>
-          </div>
-          <div class="btn-bottom">
-            <ul class="btn-div2">
-              <li>
-                <button type="button" class="wz button gray btn-darkgray" onclick="location.href='/mypage/main'" ;>
-                  취소
-                </button>
-              </li>
-              <li>
-                <button type="button" class="wz button primary btn-mint changeProfile">
-                  확인
-                </button>
-              </li>
-            </ul>
-          </div>
         </div>
-      </div>
     </div>
 
-<!--    <input type="file" id="uploadProfileImg" class="file-profileimg" accept="image/*" />-->
-  </form>
-  <footer th:replace="~{/fix/footer :: #footer}"></footer>
+    <!--    <input type="file" id="uploadProfileImg" class="file-profileimg" accept="image/*" />-->
+</form>
+<footer th:replace="~{/fix/footer :: #footer}"></footer>
 
-  </body>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="/js/mypage/setting/set-profile.js"></script>
-  <script src="/js/modal.js"></script>
-
-
-
-  <script>
-    console.log("$(\"#btn_updatePhoto\")");
-    console.log("들어옴");
-    console.log("$(\"#btn-darkgray\")")
-
-  $("#btn_updatePhoto").on("click", function(){
-      console.log("사진 버튼 들어옴")
-      showWarnModal('서비스 준비중입니다.');
-  })
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let member = [[${myProfile}]];
+</script>
+<script src="/js/mypage/setting/set-profile.js"></script>
+<script src="/js/modal.js"></script>
 
 
-  $("#btn_deletePhoto").on("click", function(){
-    console.log("취소 버튼 들어옴")
-  showWarnModal('서비스 준비중입니다.');
-  })
-
-
-    $(".changeProfile").on("click", function(){
-      showWarnModal('저장되었습니다.');
+<script>
+    // console.log("$(\"#btn_updatePhoto\")");
+    // console.log("들어옴");
+    // console.log("$(\"#btn-darkgray\")")
+    //
+    // $("#btn_updatePhoto").on("click", function () {
+    //     console.log("사진 버튼 들어옴")
+    //     showWarnModal('서비스 준비중입니다.');
+    // })
+    //
+    //
+    // $("#btn_deletePhoto").on("click", function () {
+    //     console.log("취소 버튼 들어옴")
+    //     showWarnModal('서비스 준비중입니다.');
+    // })
+    //
+    //
+    // $(".changeProfile").on("click", function () {
+    //     showWarnModal('저장되었습니다.');
+    // })
+    //
+    $(".changeProfile").on('click', function () {
+        $(".formtag").submit();
     })
-
-  $(".changeProfile").on('click', function(){
-     $(".formtag").submit();
-  })
 
 </script>
 
-  </html>
+</html>

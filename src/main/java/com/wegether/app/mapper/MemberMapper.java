@@ -38,8 +38,10 @@ public interface MemberMapper {
     // 마이페이지 프로필 설정
     public void updateProfile(MemberVO memberVO);
 
-
-
+//    마이페이지 프로필 사진 삭제
+    public void updateBasicProfileImage(Long id);
+    //    마이페이지 프로필 사진 수정
+    public void updateProfileImage(MemberVO memberVO);
 
 
 

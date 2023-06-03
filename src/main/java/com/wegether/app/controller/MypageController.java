@@ -38,9 +38,11 @@ public class MypageController {
     //    마이페이지 메인
     private final MineServiceImpl mine;
 
+    private final AccountService accountService;
+
     @GetMapping("/main")
     public String main(Long id, Model model) {
-
+        model.addAttribute("member",accountService.getMemberById((Long) session.getAttribute("id")).get());
         model.addAttribute("main", mine.loadMine((Long) session.getAttribute("id")).get());
         return "/mypage/my-page/my-page";
     }
@@ -55,7 +57,6 @@ public class MypageController {
 
 //    비밀번호 재설정
 
-    private final AccountService accountService;
 
     //   비밀번호 재설정 form 으로 이동
     @GetMapping("/setting/setting-password")
@@ -390,6 +391,15 @@ public class MypageController {
 
     //    프로필 사진 수정
 //    mypage/setting/set-profile
+    //프로필 사진 삭제
+    @ResponseBody
+    @PutMapping("/setting/basic-profile")
+    public void changeBasicProfile(HttpSession session){
+        String path = null;
+        session.setAttribute("profile", path);
+        accountService.setBasicProfileImage((Long)session.getAttribute("id"));
+    }
+
 
 
     @GetMapping("/setting/set-profile")
@@ -399,14 +409,19 @@ public class MypageController {
 
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @PostMapping("/setting/set-profile")
     public RedirectView setProfile(MemberVO memberVO) {
         Long id = (Long) session.getAttribute("id");
 
         memberVO.setId(id);
-
+        log.info(memberVO.toString());
+        if(memberVO.getFileName() != null){
+            String path ="/files/display?fileName=" + memberVO.getFilePath() + '/' + memberVO.getFileUuid() +'_'+memberVO.getFileName();;
+            session.setAttribute("profile", path);
+            accountService.setProfileImage(memberVO);
+        }
         mine.modifyProfile(memberVO);
-
         return new RedirectView("/mypage/main");
 
 

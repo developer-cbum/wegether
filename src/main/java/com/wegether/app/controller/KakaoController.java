@@ -46,6 +46,7 @@ public class KakaoController {
                 Long id = (Long) session.getAttribute("id");
                 MemberVO memberVO = accountService.getMemberById(id).get();
                     if (memberVO.getMemberLoginStatus().equals("WEGETHER")) {
+                        session.setAttribute("profile", accountService.getMemberById((Long)session.getAttribute("id")).get().getSnsProfile());
                         log.info(memberVO.getMemberId());
 //                회원의 계정을 카카오 계정으로 변경(연동)
                         accountService.changeLoginStatusToKakao(memberVO.getMemberId(), kakaoInfo.get("profile").toString());
@@ -84,6 +85,7 @@ public class KakaoController {
             log.info(kakaoInfo.get("profile").toString());
             accountService.changeLoginStatusToKakao(kakaoInfo.get("memberId").toString(), kakaoInfo.get("profile").toString());
             session.setAttribute("id", foundNumber);
+            session.setAttribute("profile", accountService.getMemberById(foundNumber).get().getSnsProfile());
         }
 
 

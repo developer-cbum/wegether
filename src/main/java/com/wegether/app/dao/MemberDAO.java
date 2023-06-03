@@ -64,6 +64,11 @@ public class MemberDAO {
         memberMapper.updateProfile(memberVO);
     }
 
+    //    마이페이지 프로필 사진 삭제
+    public void setBasicProfileImage(Long id){memberMapper.updateBasicProfileImage(id);}
+
+    //    마이페이지 프로필 사진 수정
+    public void setProfileImage(MemberVO memberVO){memberMapper.updateProfileImage(memberVO);};
 
 
 

@@ -107,11 +107,26 @@ public class AccountController {
 
         // 일반 계정 로그인 성공
         if(foundMember.isPresent()){
+            MemberVO member = accountService.getMemberById(foundMember.get()).get();
+            String path = null;
+            if(member.getFileName() != null){
+                path = "/files/display?fileName=" + member.getFilePath() + '/' + member.getFileUuid() +'_'+member.getFileName();
+
+                if(member.getFileName().equals("NULL")){
+                    path = null;
+                }
+            }
+
+
+
+
             session.setAttribute("id", foundMember.get());
+            session.setAttribute("profile",path);
             //등록하기 폼으로 바로 이동
             if(session.getAttribute("location") != null){
                 return new RedirectView(session.getAttribute("location").toString());
             }
+
 
             return new RedirectView("/index/main");
         }
@@ -206,6 +221,7 @@ public class AccountController {
         accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getSnsProfile());
         Optional<MemberVO> JoinMemberVO = accountService.checkId(memberVO.getMemberId());
         session.setAttribute("id", JoinMemberVO.get().getId());
+        session.setAttribute("profile", JoinMemberVO.get().getSnsProfile());
         redirectAttributes.addFlashAttribute("join", "true");
         return new RedirectView("/index/main");
     }
@@ -218,6 +234,7 @@ public class AccountController {
                 accountService.getMemberById(memberVO.getId()).get() != null){
             accountService.changeLoginStatusToNaver(memberVO.getMemberId(), memberVO.getSnsProfile());
             session.setAttribute("id", memberVO.getId());
+            session.setAttribute("profile", memberVO.getSnsProfile());
         }
 
         //로그인후 마이페이지에서 연동하는 것이면
@@ -226,6 +243,7 @@ public class AccountController {
             MemberVO member = accountService.getMemberById((Long)session.getAttribute("id")).get();
             if(member.getMemberLoginStatus().equals("WEGETHER")){
 //            회원의 계정을 네이버 계정으로 변경(연동)
+                session.setAttribute("profile", memberVO.getSnsProfile());
                 accountService.changeLoginStatusToNaver(member.getMemberId(), memberVO.getSnsProfile());
             }
         }

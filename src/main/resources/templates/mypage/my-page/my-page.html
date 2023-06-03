@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="/css/fix/footer.css">
 
   </head>
+  <script th:inline="javascript">
+    console.log([[${member}]]);
+  </script>
   <header th:replace="~{/fix/header :: #header}"></header>
   <body>
     <section class="MyWadizPage_myWadizPage__wOTdS">
@@ -41,7 +44,8 @@
           >
             <div class="MyWadizSupporterProfile_profileContainer__1q7eh">
               <div class="MyWadizSupporterProfile_profileImage__1eEvS">
-                <button
+
+                <button th:if="${member.memberLoginStatus == 'WEGETHER' && (member.fileName == null || member.fileName == 'NULL')}"
                   class="MyWadizSupporterProfile_detailProfile__1JImc"
                   aria-label="프로필 상세 보기"
                   data-event="profile"
@@ -49,7 +53,26 @@
                     background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png');
                   "
                 ></button
-                ><button
+                >
+
+
+                <button th:if="${member.memberLoginStatus == 'WEGETHER' && member.fileName != null && member.fileName != 'NULL'}"
+                        class="MyWadizSupporterProfile_detailProfile__1JImc"
+                        aria-label="프로필 상세 보기"
+                        data-event="profile"
+                        th:style="'background-image: url(/files/display?fileName=' + ${member.filePath} + '/' + ${member.fileUuid} +'_'+${member.fileName} + ') ' "
+                ></button
+                >
+
+                <button th:if="${(member.memberLoginStatus == 'KAKAO' || member.memberLoginStatus == 'NAVER')  && member.snsProfile != null}"
+                        class="MyWadizSupporterProfile_detailProfile__1JImc"
+                        aria-label="프로필 상세 보기"
+                        data-event="profile"
+                        th:style="'background-image: url(' + ${member.snsProfile} + ')'"
+                ></button
+                >
+
+                <button
                   class="MyWadizSupporterProfile_editProfile__3HG_Z"
                   aria-label="프로필 편집하기"
                   data-event="profile_edit"

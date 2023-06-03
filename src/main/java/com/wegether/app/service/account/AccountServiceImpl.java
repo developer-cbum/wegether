@@ -57,9 +57,17 @@ public class AccountServiceImpl implements AccountService {
         return memberDAO.findById(id);
     }
 
+    @Override
+    public void setBasicProfileImage(Long id) {
+        memberDAO.setBasicProfileImage(id);
+    }
 
+    @Override
+    public void setProfileImage(MemberVO memberVO) {
+        memberDAO.setProfileImage(memberVO);
+    }
 
-//    @Override
+    //    @Override
 //    public Optional<MemberVO> getMemberByPw(Long id) {
 //        return memberDAO.showByPW(id);
 //    }

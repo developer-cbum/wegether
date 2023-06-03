@@ -3,7 +3,7 @@
 <mapper namespace="com.wegether.app.mapper.MemberMapper">
     <!-- 아이디중복검사 & 아이디 찾기  -->
     <select id="selectByMemberId" resultType="memberVO">
-        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS, SNS_PROFILE
+        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS, FILE_NAME, FILE_PATH, FILE_UUID, FILE_SIZE, SNS_PROFILE
         FROM TBL_MEMBER
         WHERE MEMBER_ID = #{memberId}
     </select>
@@ -43,7 +43,7 @@
 
 <!--    세션 맴버 아이디로 아이디 찾기-->
     <select id="selectById" resultType="memberVO">
-        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS, FILE_NAME, SNS_PROFILE, MEMBER_POINT
+        SELECT ID, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_SCHOOL, MEMBER_MAJOR, MEMBER_INTRODUCING, MEMBER_PHONE_NUMBER, MEMBER_STATUS, MEMBER_GRADE, MEMBER_LOGIN_STATUS,  FILE_NAME, FILE_PATH, FILE_UUID, FILE_SIZE, SNS_PROFILE, MEMBER_POINT
         FROM TBL_MEMBER
         WHERE ID = #{id}
     </select>
@@ -65,9 +65,19 @@
 
 
 
+<!--프로필 삭제-->
+    <update id="updateBasicProfileImage">
+    UPDATE TBL_MEMBER
+    SET FILE_NAME = 'NULL'
+    WHERE ID=#{id}
+    </update>
 
-
-
+    <!--프로필 수정-->
+    <update id="updateProfileImage">
+    UPDATE TBL_MEMBER
+    SET FILE_NAME = #{fileName}, FILE_PATH = #{filePath}, FILE_UUID = #{fileUuid}, FILE_SIZE= #{fileSize}
+    WHERE ID=#{id}
+    </update>
 
 
 
