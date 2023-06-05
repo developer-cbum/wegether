@@ -1,10 +1,7 @@
 package com.wegether.app.mapper;
 
-import com.wegether.app.domain.dto.DataFileDTO;
-import com.wegether.app.domain.dto.ProjectDTO;
-import com.wegether.app.domain.dto.ProjectFileDTO;
+import com.wegether.app.domain.dto.*;
 import com.wegether.app.domain.vo.FileVO;
-import com.wegether.app.domain.dto.CommunityFileDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -36,4 +33,16 @@ public interface FileMapper {
     public void communityDeleteAll(Long communityId);
 
     public void projectDelete(Long id);
+
+
+    // 상담
+
+
+    public void consultingInsert(ConsultingFileDTO consultingFileDTO);
+
+    public List<ConsultingFileDTO> consultingSelectAll(Long consultingId);
+
+    public void consultingDelete(Long id);
+
+
 }

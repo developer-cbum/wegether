@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface ConsultService {
     //등록
-    public void register(ConsultingVO consultingVO);
+    public void register(ConsultingDTO consultingDTO);
 
     // 목록
     public List<ConsultingDTO> getList(Pagination pagination, Search search);

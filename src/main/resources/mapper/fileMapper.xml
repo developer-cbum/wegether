@@ -26,6 +26,30 @@
 
 
 
+    <!--  consulting  -->
+    <insert id="consultingInsert">
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+            SELECT SEQ_FILE.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_FILE
+        (ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE)
+        VALUES(#{id}, #{filePath}, #{fileUuid}, #{fileName}, #{fileSize}, #{fileType})
+    </insert>
+
+    <select id="consultingSelectAll" resultType="consultingFileDTO">
+        SELECT F.ID, FILE_PATH, FILE_UUID, FILE_NAME, FILE_SIZE, FILE_TYPE, CONSULTING_ID
+        FROM TBL_FILE F JOIN TBL_CONSULTING_FILE C
+        ON F.ID = C.ID AND CONSULTING_ID = #{consultingId}
+        ORDER BY FILE_TYPE DESC
+    </select>
+
+    <delete id="consultingDelete">
+        DELETE FROM TBL_FILE
+        WHERE ID = #{id}
+    </delete>
+
+
+
 
 
 

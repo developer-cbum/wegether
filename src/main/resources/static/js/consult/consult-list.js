@@ -38,7 +38,16 @@ consults.forEach(consult => {
                 <em class="category">카테고리</em>
               <em class="status closed">${consult.consultingCategory}</em>
                     <div class="info">
-                    <div class="answer-status" style="color: #868e96" >상세 보기</div>
+                    <div class="answer-status" style="color: #868e96" >`
+
+    consult.files.forEach(file => {
+        if(file.fileType == "REPRESENTATIVE"){
+            text += `<img src="/files/display?fileName=${file.filePath}/t_${file.fileUuid}_${file.fileName}" class="preview">`;
+        }
+    })
+
+        text+=`            
+                    </div>
                        <h3 class="title">[${consult.consultingCategory}] ${consult.consultingTitle} </h3>
                         <span class="author">${consult.memberNickname}</span><span class="created-at">${consult.consultingRegisterDate.split(" ")[0]}</span>
                       </div>

@@ -3,9 +3,12 @@
 <mapper namespace="com.wegether.app.mapper.ConsultingMapper">
 <!-- 등록하기-->
     <insert id="insertConsulting">
+        <selectKey keyProperty="id" order="BEFORE" resultType="Long">
+            SELECT SEQ_CONSULTING.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_CONSULTING
         (ID, MEMBER_ID, CONSULTING_TITLE, CONSULTING_CONTENT, CONSULTING_CATEGORY)
-        VALUES(SEQ_CONSULTING.NEXTVAL, #{memberId}, #{consultingTitle}, #{consultingContent}, #{consultingCategory})
+        VALUES(#{id}, #{memberId}, #{consultingTitle}, #{consultingContent}, #{consultingCategory})
     </insert>
 
 

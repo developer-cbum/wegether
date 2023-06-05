@@ -31,15 +31,15 @@ public class ConsultController {
     private final ConsultReplyService consultReplyService;
 
     @GetMapping("register")
-    public void goToRegisterForm(ConsultingVO consultingVO,  Model model){
+    public void goToRegisterForm(ConsultingDTO consultingDTO,  Model model){
        String nickName = accountService.getMemberById((Long) session.getAttribute("id")).get().getMemberNickname();
        model.addAttribute("nickName", nickName);
     };
 
     @PostMapping("register")
-    public RedirectView register(ConsultingVO consultingVO, HttpSession session){
-        consultingVO.setMemberId((Long)session.getAttribute("id"));
-        consultService.register(consultingVO);
+    public RedirectView register(ConsultingDTO consultingDTO, HttpSession session){
+        consultingDTO.setMemberId((Long)session.getAttribute("id"));
+        consultService.register(consultingDTO);
         return new RedirectView("/consults/list");
     }
 

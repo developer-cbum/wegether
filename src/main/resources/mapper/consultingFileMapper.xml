@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wegether.app.mapper.ConsultingFileMapper">
+    <insert id="insert">
+        INSERT INTO TBL_CONSULTING_FILE
+        (ID, CONSULTING_ID)
+        VALUES(#{id}, #{consultingId})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_CONSULTING_FILE WHERE CONSULTING_ID = #{consultingId}
+    </delete>
+
+
+
+<!--    <delete id="deleteAll">-->
+<!--        DELETE-->
+<!--        FROM TBL_FILE F JOIN TBL_COMMUNITY_FILE C-->
+<!--        ON F.ID = C.ID AND COMMUNITY_ID = #{communityId}-->
+<!--    </delete>-->
+</mapper>

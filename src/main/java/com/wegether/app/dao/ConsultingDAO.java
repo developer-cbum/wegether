@@ -17,8 +17,8 @@ public class ConsultingDAO {
     private final ConsultingMapper consultingMapper;
 
     // 상담 추가
-    public void saveConsulting(ConsultingVO consultingVO){
-        consultingMapper.insertConsulting(consultingVO);
+    public void saveConsulting(ConsultingDTO consultingDTO){
+        consultingMapper.insertConsulting(consultingDTO);
     }
 
     // 상담목록

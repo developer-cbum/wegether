@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @Data
 @NoArgsConstructor
@@ -16,4 +19,6 @@ public class ConsultingDTO {
         private String consultingCategory;
         private String consultingRegisterDate;
         private String memberNickname;
+        private List<ConsultingFileDTO> files = new ArrayList<>();
+        private List<Long> fileIdsForDelete = new ArrayList<>();
 }

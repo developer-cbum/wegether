@@ -13,7 +13,7 @@ import java.util.Optional;
 @Mapper
 public interface ConsultingMapper {
     //상담등록
-    public void insertConsulting(ConsultingVO consultingVO);
+    public void insertConsulting(ConsultingDTO consultingDTO);
 
     //상담 게시글 목록
     public List<ConsultingDTO> selectAll(@Param("pagination") Pagination pagination, @Param ("search")Search search);

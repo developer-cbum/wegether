@@ -25,15 +25,24 @@
                     <div class="Breadcrumb_container__3YjD4"></div>
                     <nav class="DetailNavbar_container__3SkEf">
                         <div class="AppNavbar_container__5uOnI">
-                            <div
-                                    style="
-                  background: url('https://static.wadiz.kr/studio/funding/static/media/wadiz-logo.549edcd7.svg')
-                    50% center / contain no-repeat;
-                  width: 129px;
-                  height: 48px;
-                  cursor: pointer;
-                "
-                            ></div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="129" height="48" viewBox="0 0 566.94 73.08">
+                                    <g id="Layer_2" data-name="Layer 2">
+                                        <g id="Layer_1-2" data-name="Layer 1">
+                                            <g>
+                                                <path d="M17.66,2.7,26.36,42,34.55,2.7H51.87l7.77,40,9.13-40H86.43l-17.24,68H51.53L43.09,27.78,34.81,70.7H17.23L0,2.7Z"/>
+                                                <path d="M145,28.7v14H112v13h36v15H94V2.7h53v15H112v11Z"/>
+                                                <path d="M192.61,58.08q6.85,0,11.23-3.23a13.16,13.16,0,0,0,5.23-9.15H191v-15h36v9.68a34.65,34.65,0,0,1-2.7,14.13,28.8,28.8,0,0,1-7.37,10.2A32,32,0,0,1,206,70.94a40.67,40.67,0,0,1-13.28,2.14,38.67,38.67,0,0,1-14.53-2.7,35.6,35.6,0,0,1-11.7-7.55,35,35,0,0,1-7.84-11.55,37,37,0,0,1-2.87-14.74,37,37,0,0,1,2.87-14.74,34.91,34.91,0,0,1,7.88-11.55A35.94,35.94,0,0,1,178.38,2.7,39.9,39.9,0,0,1,193.13,0a36.45,36.45,0,0,1,18.34,4.4,44.47,44.47,0,0,1,13.89,13l-11.75,10a25.38,25.38,0,0,0-8.35-9.16,22.15,22.15,0,0,0-12.39-3.4,18,18,0,0,0-7.37,1.57,18.51,18.51,0,0,0-6.13,4.41,21.94,21.94,0,0,0-4.2,6.8,23.56,23.56,0,0,0-1.59,8.85A25.51,25.51,0,0,0,175,45.39a20.42,20.42,0,0,0,4,6.8,17.57,17.57,0,0,0,6,4.36A18.43,18.43,0,0,0,192.61,58.08Z"/>
+                                                <path d="M288,28.7v14H255v13h36v15H237V2.7h53v15H255v11Z"/>
+                                                <path d="M337,17.7v53H319v-53H297V2.7h61v15Z"/>
+                                                <path d="M409,70.7V38.56l-25,6.85V70.7H366V2.7h18V31.17l25-7V2.7h18v68Z"/>
+                                                <path d="M490,28.7v14H457v13h36v15H439V2.7h53v15H457v11Z"/>
+                                                <path d="M503,2.7h38.69a29.06,29.06,0,0,1,8.43,1.19,18.83,18.83,0,0,1,6.8,3.63,16.78,16.78,0,0,1,4.5,6.27,22.94,22.94,0,0,1,1.64,9q0,6.83-2.33,11.05a17.28,17.28,0,0,1-6.93,6.78l13.16,30H548.16L537.43,45.78,521,49.37V70.7H503ZM544.7,22.56a6,6,0,0,0-1.57-4.12,5.4,5.4,0,0,0-4.21-1.74H521V33.1l16.15-3c2.89-.51,4.88-1.45,6-2.81A7.42,7.42,0,0,0,544.7,22.56Z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
                             <div class="AppNavbar_maker__2WVfm">
                                 <div class="Avatar_avatar__2DI5d Avatar_xs__i50kh"><span></span></div>
                                 <div th:text="${nickName}"></div>
@@ -55,7 +64,7 @@
 
                     </div>
 
-                    <form class="consulting-form ProjectTypeFormContainer_form__3kGVN" th:action="@{/consults/register}" method="post" th:object="${consultingVO}">
+                    <form class="consulting-form ProjectTypeFormContainer_form__3kGVN" th:action="@{/consults/register}" method="post" th:object="${consultingDTO}" name="writeForm">
                         <section class="Section_container__3md8M spacing-9">
                             <div style="max-width: 630px">
                                 <div class="Section_header__1qwS7 spacing-4">
@@ -214,7 +223,67 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="max-width: 630px">
+
+                            <!-- 사진 등록 -->
+                            <section class="Section_container__3md8M" style="max-width: 630px">
+                                <div class="Section_header__1qwS7">
+                                    <h2 class="Section_title__ikPIm Section_isRequired__F8rij">썸네일 등록</h2>
+                                    <div class="Section_guide__2xeJO"></div>
+                                </div>
+                                <div class="Section_description__10Uwo">
+                                    상담 대표 사진을 등록해 주세요.
+                                </div>
+                                <div class="Section_content__3OkLZ">
+                                    <div class="StoryVideoOrImageField_container__1lnfV">
+                                        <div
+                                                class="field Form_field__35I9T required ImageFormField_field__X1jTW StoryImageField_field__3O6yy"
+                                                style="padding-left: 0px"
+                                        >
+                                            <div class="attach-wrap">
+                                                <label for="upload1" class="attach">
+                                                    <img src="" class="thumbnail representative">
+                                                    <div class="x">
+                                                        <img src="/image/community/x.png">
+                                                    </div>
+                                                    <h6 class="plus">+</h6>
+                                                    <h6>대표 이미지</h6>
+                                                </label>
+                                                <label for="upload2" class="attach">
+                                                    <img src="" class="thumbnail">
+                                                    <div class="x">
+                                                        <img src="/image/community/x.png">
+                                                    </div>
+                                                    <h6 class="plus">+</h6>
+                                                    <h6>이미지 추가</h6>
+                                                </label>
+                                                <label for="upload3" class="attach">
+                                                    <img src="" class="thumbnail">
+                                                    <div class="x">
+                                                        <img src="/image/community/x.png">
+                                                    </div>
+                                                    <h6 class="plus">+</h6>
+                                                    <h6>이미지 추가</h6>
+                                                </label>
+                                                <label for="upload4" class="attach">
+                                                    <img src="" class="thumbnail">
+                                                    <div class="x">
+                                                        <img src="/image/community/x.png">
+                                                    </div>
+                                                    <h6 class="plus">+</h6>
+                                                    <h6>이미지 추가</h6>
+                                                </label>
+                                            </div>
+                                            <input type="file" id="upload1" class="upload" style="display: none;">
+                                            <input type="file" id="upload2" class="upload" style="display: none;">
+                                            <input type="file" id="upload3" class="upload" style="display: none;">
+                                            <input type="file" id="upload4" class="upload" style="display: none;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                            <div style="max-width: 630px; margin-top: 50px">
                                 <div class="Section_header__1qwS7">
                                     <h2 class="Section_title__ikPIm">내용 작성</h2>
                                     <div class="Section_guide__2xeJO"></div>
@@ -234,18 +303,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="Section_guideMessage__3XqrM">
-                                <h4>
-                                    <a
-                                            href="https://www.wadiz.kr/link/goal"
-                                            target="blank"
-                                            rel="nofollow noopener noreferrer"
-                                    ><strong>답변은 전문가님이! </strong></a
-                                    >
-                                </h4>
-                                <p>전문가 멘토가 답변을 달아줍니다.</p>
-                                <p>마이페이지에서 확인해주세요.</p>
                             </div>
                         </section>
                         <div class="ProjectTypeFormContainer_buttonWrapper__3fh_J">

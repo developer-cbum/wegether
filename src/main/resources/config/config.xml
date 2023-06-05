@@ -31,6 +31,8 @@
         <typeAlias type="com.wegether.app.domain.vo.WishDataVO" alias="wishDataVO"/>
         <typeAlias type="com.wegether.app.domain.vo.WishProjectVO" alias="wishProjectVO"/>
         <typeAlias type="com.wegether.app.domain.dto.MainDTO" alias="mainDTO"/>
+        <typeAlias type="com.wegether.app.domain.vo.ConsultingFileVO" alias="consultingFileVO"></typeAlias>
+        <typeAlias type="com.wegether.app.domain.dto.ConsultingFileDTO" alias="consultingFileDTO"></typeAlias>
         <!-- 05월 19일 김인진 DataAdminDTO 추가 -->
         <typeAlias type="com.wegether.app.domain.dto.DataAdminDTO" alias="dataAdminDTO"/>
         <!-- 05월 19일 김인진 ProjectAdminDTO 추가 -->

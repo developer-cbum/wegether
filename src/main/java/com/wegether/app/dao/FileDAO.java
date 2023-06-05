@@ -1,5 +1,6 @@
 package com.wegether.app.dao;
 
+import com.wegether.app.domain.dto.ConsultingFileDTO;
 import com.wegether.app.domain.dto.DataFileDTO;
 import com.wegether.app.domain.dto.ProjectFileDTO;
 import com.wegether.app.domain.vo.FileVO;
@@ -61,5 +62,13 @@ public class FileDAO {
 //    public void Projectdelete(Long id){
 //        fileMapper.projectdelete(id);
 //    }
+
+    //상담
+
+    public void consultingSave(ConsultingFileDTO consultingFileDTO){fileMapper.consultingInsert(consultingFileDTO);};
+
+    public List<ConsultingFileDTO> consultingFindAll(Long consultingId){return fileMapper.consultingSelectAll(consultingId);};
+
+    public void consultingDelete(Long id){fileMapper.consultingDelete(id);};
 
 }
