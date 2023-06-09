@@ -59,6 +59,7 @@ public class AccountController {
         accountService.changeLoginStatusToKakao(memberVO.getMemberId(), memberVO.getSnsProfile());
         redirectAttributes.addFlashAttribute("join", "true");
         session.setAttribute("id", accountService.checkId(memberVO.getMemberId()).get().getId());
+        session.setAttribute("profile", accountService.checkId(memberVO.getMemberId()).get().getSnsProfile());
         return new RedirectView("/index/main");
     }
 
