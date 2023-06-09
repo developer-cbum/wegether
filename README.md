@@ -10,7 +10,7 @@
 
 </div>
 
-
+<br>
 <h2>2. 기대 효과</h2>
 <img src="https://lh3.googleusercontent.com/pw/AJFCJaVJgTO2sjSnTZYawWbxkJa6UkbrZY_gqjw5ui9lFQp4acAz_3-sO26Mc3h7CQIH2cAL88lQfhumh19aLIpsXTJTUAuldQ5noCgwQj0OmHMB4X4ets6oC3Fd1IqMZqkqZlB1fbuCme8P_1a0mP1yuiU=w1057-h574-s-no?authuser=0" style = "width: 80%; height : 480">
 <br>
@@ -22,7 +22,6 @@
 
 <h2>3. 프로젝트 사용 툴</h2>
 <img src="https://lh3.googleusercontent.com/gvAR47YCUug9fUljP_rLkUoQhzWU1RBOeL-euKEQQFVJJON_paWDtAeE5mfysvTy4Nq25ccZoWylvjKty_ZeGpgXkDjc8WQhMvAm3V5-6nrEUt1ZjR-_H5rr-OSMDRplI1xKzAhCiv6W-LPpZOK1UR8QOQ1sOMonfcAA3TiJru3ktUmZCG44t8JvNo7CpTknqWh7dRoAaGWQR4Al8NpKzhjs2-2ri7wiJ6J1PW22MKUkkyxxwIjSpoMFBAN1VXhHfRKJM7OWn4AcHRi2msuqvREWaRcVnPlsW6JEbDJn3oicanZPc_Lqljx6uKG9XEELVCLipvFY7b4GeB0Cm-dQLNu3vAcbgk3XUhhfKuvLpk0haNsTsVSOnp9_DpLsCC9X4sK7ih5X2EHRIPhd5AVNb3WOJybAWIcD6AK7bAnSJfUcZgvyPC8P1yNaEnolCETD1se-qp8PXe7YuQlzOxiEW1WwBHLklyTVIC-3oAXwzCw5wCkATwECSPtA5s5cL9tXA_4uXmc8lG9uj4WX0YuDU72Stqc3TQxwMhdUw0GoRn3kTIhA8T-pBtR0uSuGCHBUIye_ffqbfGw4zgOlUqJYvJRqdo0oZpEx10Pdf48fLkG9Ma6y4xBWJUynj5YoUXS5ORsVgqa_UFF7XU9jIFqJIuJQVi2bnYNr3_4oBwATk8zswkcmEYH8cTv-iuJ9zaXGgevL3USO-DEoyzRkuDg_sMJ7JODBWpTRYw5j07PGuMgBns_iNUAl_YXEXSzu0PiNciU9OEmQBcBl3LA_a0bysH6WSP-oGfoEPDGoUg3jiiI6i8_lxMvzockRY2_n6xo7LuXmTnqYLcd0nixqWKtbbE5IpCxHevnsLBkbXCw5ipAuxNfBEugGmTE-A7ythDwzKGCVq6Ru5Ti2217D9VrporcepF_gwcCiRY2kMeR2NN4vGCELrDKib13FxnMsWDEL_vDUOWL0h-Fx4Q-QsawMF54SBuQbSgzQ0RICNCCWl0gjxojLI3QLg7nhJxqjhMo6gl7v6ooF9NLQ6wZGA8wEelMktwg=w611-h346-no?authuser=0"style = "width: 80%; height : 480">
-<br>
         - Java<br>
         - Java Script<br>
         - tomcat<br>
@@ -46,7 +45,6 @@
 <h2>4. ERD</h2>
 <img src="https://lh3.googleusercontent.com/9IvCTei0aSLynpjg9pJqtJ74MJxIZ2MwUuHYtgS-LW4jmAdjNJ03MH9aVZ-S_l1IHaLb08wLyFPJyrqHzuG3RYkyVJsVKvQSwHQN-yy77OLB3Nf10TVl3QFEXPB_ZsB1UGnx1bzrVbnlvLlvis8iLdEGGwfsAeqLUsCsq7HONtKWJBE2-92AuBuct4bMmxKjMS14tojbOb63jJBQY87m9RHZytzjHWhCEt3QEljMZ1KSQ-4HgJRKo4BkG2EeVvpET8u-skL43rTBHCqiFHM3kj_PrAMlxcs0qUDK41RdB7Kz2IEnAlEZKjMptxsEAhZ8Tk69oXdjVtjJky68R8T3VGgPeDuLD3zVE08ZRjyzPtLBiudjR_qh_cYhOvKi79UDJYGS8LkJDkPlMwpCO6pTc27h_1aQ5kCzJTaF4gF2x6UVmQogxAMWTCAg2rCGPg5Ua64OFKW6yAATd7crLaYJH5lLX8PQSe7fHKumAKjDjMz3srl9-ULwr_YQ-sBbMpIt9JvGlgszaNJy0AhMRn67p7GMiZk03ZQ7wPzudMSxToBE3Ujy-TH6JLYFc2tbyR9K3GHfvmA-kdyY3QxIuQZgXC3owabl0EKiaRqjFcvKqVu6NTdj9abPBD4tkJJJo55wMLEbtKejdgQObUKO2OpJdAEI8tnkvluTYU-Heq4FSpemXJ28oaHXKCRXm_AS4KnyenFt0E7FrnfOeKm_N4etZudItlaGaTrmyhHN5nCVKk2boMrGrjPL20FOe-5RmTiM422JIo6iPPk4j6IWC00vbQEnmwYTYvTzwtG2kRfvfCp-6yE_AHWewp6GROXvldRKdKTW05l4BIIgHcq_uChoEuxqNdULnJuu9MLk2WYFNOT4S05NKI5r98NyQ24NzILGh464ml0XQ-yiIdQ2KJ9vHRbSNzVcYfh3CHcKjiw7SsHADSyKN9UO84CPGKGKX13JcBvctzTTUfeF9mu-45tpr9IklFy-6IWLZbkgCEe88APpcpr1Ji-Z_q8h127hTzT-QgPp4rFPbdvLII6UEtRoD8Dc_Kc=w838-h920-s-no?authuser=0">
 
-  
 <h2>5. 담당 업무</h2>
 5-1 퍼블리싱<br>
 <img src="https://lh3.googleusercontent.com/pw/AJFCJaUWOeK6hHWAPLkiIwvD_gfWYgr7G0ADXyOtw3hcy9-E8TXgHh6_RKOHXxjS9LtaR4-jvG8y2zZH_Sc1Qm4TjfPBIIdHc86nqwi3cMHdgHcM2oa0BTuVDp6hY4ONY1__dKIwtvhSwSxoNumD1eMnpTjs=w1212-h501-s-no?authuser=0" style = "width: 90%;">
